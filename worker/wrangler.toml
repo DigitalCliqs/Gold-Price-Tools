@@ -1,0 +1,19 @@
+name = "gold-proxy"
+main = "gold-proxy.js"
+compatibility_date = "2024-01-01"
+
+# Deploy with:
+#   cd worker
+#   wrangler deploy
+#
+# Then set your secret:
+#   wrangler secret put GOLDAPI_KEY
+#   (paste the key — it is stored encrypted, never in this file)
+#
+# Your worker will be live at:
+#   https://gold-proxy.<your-cf-subdomain>.workers.dev
+# Add a custom route in Cloudflare dashboard:
+#   goldpricetools.com/api/*  →  gold-proxy worker
+
+[env.production]
+route = { pattern = "goldpricetools.com/api/*", zone_name = "goldpricetools.com" }
