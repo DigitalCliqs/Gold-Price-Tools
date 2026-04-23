@@ -2,14 +2,1392 @@
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold & Silver Price Calculator — Live 10K 14K 18K 24K Per Gram | PureMetals</title>
+<meta name="description" content="Free live gold and silver price calculator. Get 10K, 14K, 18K, 24K gold price per gram today, scrap gold calculator, silver price per troy oz and kilo. Updated every 60 seconds.">
+<meta name="keywords" content="gold calculator, silver calculator, scrap gold calculator, 14k gold price per gram, 10k gold price per gram, 18k gold price per gram, gold price today, silver price today, scrap silver calculator, gold price per gram">
+<meta property="og:title" content="Gold & Silver Price Calculator — Live Prices Per Gram">
+<meta property="og:description" content="Live gold and silver calculators — 10K, 14K, 18K, 24K per gram, scrap gold, silver troy oz, kilo prices updated every 60s.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://goldpricetools.com/">
+
 <!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880"
-     crossorigin="anonymous"></script>
-<!-- Google tag (gtag.js) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-ZPLL52C3K8');
+  gtag('config', 'G-ZPLL52C3K8', { stream_id: '14431706113' });
 </script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js" defer></script>
+
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+  --space-16: 4rem; --space-20: 5rem;
+  --radius-sm: 0.375rem; --radius-md: 0.5rem;
+  --radius-lg: 0.75rem; --radius-xl: 1rem; --radius-full: 9999px;
+  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --content-default: 1100px;
+  --content-wide: 1300px;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0f0e0c;
+  --color-surface: #161512;
+  --color-surface-2: #1c1a17;
+  --color-surface-offset: #221f1b;
+  --color-border: #2e2b26;
+  --color-divider: #252320;
+  --color-text: #e8e4dc;
+  --color-text-muted: #8a8680;
+  --color-text-faint: #504d48;
+  --color-primary: #d4a843;
+  --color-primary-hover: #e8be5a;
+  --color-primary-active: #f0cc6e;
+  --color-primary-dim: rgba(212,168,67,0.12);
+  --color-silver: #a8b4c0;
+  --color-silver-hover: #bdc9d5;
+  --color-silver-dim: rgba(168,180,192,0.12);
+  --color-success: #5a9e6f;
+  --color-error: #c05a5a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+}
+
+[data-theme="light"] {
+  --color-bg: #faf8f3;
+  --color-surface: #f5f2eb;
+  --color-surface-2: #ede9df;
+  --color-surface-offset: #e5e0d5;
+  --color-border: #d4cfc4;
+  --color-divider: #ddd8cc;
+  --color-text: #1a1712;
+  --color-text-muted: #6b6560;
+  --color-text-faint: #b0aa9e;
+  --color-primary: #a07820;
+  --color-primary-hover: #8a6318;
+  --color-primary-active: #6e4e12;
+  --color-primary-dim: rgba(160,120,32,0.1);
+  --color-silver: #5a7080;
+  --color-silver-hover: #445a68;
+  --color-silver-dim: rgba(90,112,128,0.1);
+  --color-success: #2d7a4a;
+  --color-error: #9a2a2a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.14);
+}
+
+/* ===== BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: var(--text-base); color: var(--color-text); background: var(--color-bg); line-height: 1.6; min-height: 100dvh; }
+img { display: block; max-width: 100%; height: auto; }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+input, select { font: inherit; color: inherit; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+table { border-collapse: collapse; width: 100%; }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
+
+/* ===== TICKER BAR ===== */
+.ticker-bar {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-2) 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-flex;
+  gap: var(--space-8);
+  animation: ticker-scroll 40s linear infinite;
+}
+.ticker-bar:hover .ticker-track { animation-play-state: paused; }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ticker-item { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); font-weight: 500; }
+.ticker-label { color: var(--color-text-muted); }
+.ticker-price { color: var(--color-text); font-variant-numeric: tabular-nums; }
+.ticker-change.up { color: var(--color-success); }
+.ticker-change.down { color: var(--color-error); }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-success); display: inline-block; animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+
+/* ===== HEADER / NAV ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-6);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+}
+.site-logo {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700;
+  color: var(--color-primary); text-decoration: none; flex-shrink: 0;
+}
+.site-logo svg { width: 32px; height: 32px; }
+.nav-links { display: flex; align-items: center; gap: var(--space-1); flex-wrap: wrap; }
+.nav-links a {
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+  font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted);
+  transition: color var(--transition), background var(--transition);
+}
+.nav-links a:hover { color: var(--color-text); background: var(--color-surface-offset); text-decoration: none; }
+.nav-links a.active { color: var(--color-primary); }
+.theme-toggle {
+  padding: var(--space-2); border-radius: var(--radius-md);
+  color: var(--color-text-muted); transition: color var(--transition), background var(--transition);
+  display: flex; align-items: center;
+}
+.theme-toggle:hover { color: var(--color-text); background: var(--color-surface-offset); }
+.hamburger { display: none; padding: var(--space-2); border-radius: var(--radius-md); color: var(--color-text-muted); }
+.mobile-nav { display: none; flex-direction: column; gap: var(--space-1); padding: var(--space-3) var(--space-4); border-top: 1px solid var(--color-border); background: var(--color-surface); }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted); }
+.mobile-nav a:hover { color: var(--color-text); background: var(--color-surface-offset); text-decoration: none; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding: var(--space-12) var(--space-6) var(--space-8);
+  text-align: center;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+  line-height: 1.15;
+}
+.hero h1 span { color: var(--color-primary); }
+.hero p { font-size: var(--text-base); color: var(--color-text-muted); max-width: 60ch; margin-inline: auto; }
+.live-badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); font-weight: 600; color: var(--color-success);
+  background: rgba(90,158,111,0.12); border: 1px solid rgba(90,158,111,0.25);
+  border-radius: var(--radius-full); padding: var(--space-1) var(--space-3);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+/* ===== AD SLOTS ===== */
+.ad-leaderboard {
+  max-width: var(--content-wide); margin-inline: auto;
+  padding: var(--space-4) var(--space-6);
+}
+.ad-slot {
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-text-faint); font-size: var(--text-xs);
+  font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.ad-slot-728 { width: 100%; height: 90px; max-width: 728px; margin-inline: auto; }
+.ad-slot-300 { width: 300px; height: 250px; flex-shrink: 0; }
+
+/* ===== SPOT PRICES GRID ===== */
+.spot-section {
+  max-width: var(--content-wide); margin-inline: auto;
+  padding: var(--space-6) var(--space-6);
+}
+.spot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+.spot-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.spot-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.spot-card-label { font-size: var(--text-xs); font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: var(--space-2); }
+.spot-card-price { font-size: var(--text-xl); font-weight: 700; font-variant-numeric: tabular-nums; color: var(--color-primary); line-height: 1; margin-bottom: var(--space-2); }
+.spot-card-sub { font-size: var(--text-xs); color: var(--color-text-muted); }
+.spot-card.silver .spot-card-price { color: var(--color-silver); }
+.spot-change { font-size: var(--text-xs); font-weight: 600; margin-top: var(--space-1); }
+.spot-change.up { color: var(--color-success); }
+.spot-change.down { color: var(--color-error); }
+
+/* ===== SECTION LAYOUT ===== */
+.main-layout {
+  max-width: var(--content-wide); margin-inline: auto;
+  padding: var(--space-6) var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-8);
+  align-items: start;
+}
+@media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+/* ===== CALCULATOR TABS ===== */
+.section-title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-5); }
+.calc-tabs { display: flex; gap: var(--space-2); margin-bottom: var(--space-5); flex-wrap: wrap; }
+.tab-btn {
+  padding: var(--space-2) var(--space-4); border-radius: var(--radius-full);
+  font-size: var(--text-sm); font-weight: 600;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted); background: var(--color-surface);
+  transition: all var(--transition); cursor: pointer;
+}
+.tab-btn.active { background: var(--color-primary); color: #0f0e0c; border-color: var(--color-primary); }
+.tab-btn:hover:not(.active) { color: var(--color-text); background: var(--color-surface-offset); }
+.calc-panel { display: none; }
+.calc-panel.active { display: block; }
+
+/* ===== CALCULATOR CARD ===== */
+.calc-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-5); }
+@media (max-width: 600px) { .calc-grid { grid-template-columns: 1fr; } }
+.field-label { display: block; font-size: var(--text-xs); font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--space-2); }
+.field-input {
+  width: 100%; padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-offset); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); font-size: var(--text-base); color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.field-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-dim); }
+.field-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8680' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right var(--space-3) center; padding-right: var(--space-8); cursor: pointer; }
+.calc-btn {
+  width: 100%; padding: var(--space-4);
+  background: var(--color-primary); color: #0f0e0c;
+  border-radius: var(--radius-md); font-size: var(--text-base); font-weight: 700;
+  transition: background var(--transition), transform var(--transition);
+  border: none; cursor: pointer; letter-spacing: 0.02em;
+}
+.calc-btn:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+.calc-btn:active { transform: translateY(0); }
+.calc-btn.silver-btn { background: var(--color-silver); color: #0f0e0c; }
+.calc-btn.silver-btn:hover { background: var(--color-silver-hover); }
+
+.result-box {
+  margin-top: var(--space-5);
+  background: var(--color-primary-dim);
+  border: 1px solid rgba(212,168,67,0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: none;
+}
+.result-box.visible { display: block; }
+.result-box.silver-result { background: var(--color-silver-dim); border-color: rgba(168,180,192,0.2); }
+.result-label { font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-muted); margin-bottom: var(--space-2); }
+.result-value { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+.result-value.silver-value { color: var(--color-silver); }
+.result-breakdown { margin-top: var(--space-3); font-size: var(--text-xs); color: var(--color-text-muted); display: flex; flex-direction: column; gap: var(--space-1); }
+.result-row { display: flex; justify-content: space-between; }
+
+/* ===== SCRAP ROWS ===== */
+.scrap-row { display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-3); align-items: center; margin-bottom: var(--space-3); }
+.scrap-karat { font-size: var(--text-sm); font-weight: 700; color: var(--color-primary); min-width: 3rem; }
+.scrap-totals { margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: var(--space-2); }
+.scrap-total-row { display: flex; justify-content: space-between; align-items: center; }
+.scrap-total-label { font-size: var(--text-sm); color: var(--color-text-muted); }
+.scrap-total-val { font-size: var(--text-base); font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+
+/* ===== GOLD BAR GRID ===== */
+.bar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
+.bar-card {
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  text-align: center;
+  transition: box-shadow var(--transition);
+}
+.bar-card:hover { box-shadow: var(--shadow-md); }
+.bar-name { font-size: var(--text-sm); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-1); }
+.bar-oz { font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-3); }
+.bar-price { font-size: var(--text-lg); font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+.bar-qty-wrap { display: flex; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--space-3); }
+.bar-qty-wrap input { width: 60px; text-align: center; padding: var(--space-1) var(--space-2); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: var(--text-sm); }
+
+/* ===== KARAT TABLES ===== */
+.tables-section { max-width: var(--content-wide); margin-inline: auto; padding: var(--space-8) var(--space-6); }
+.tables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); margin-top: var(--space-6); }
+.table-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); overflow: hidden; }
+.table-card-header { padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--color-border); }
+.table-card-title { font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--color-text); }
+.table-card-sub { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+.karat-table { font-size: var(--text-sm); }
+.karat-table th { padding: var(--space-2) var(--space-4); text-align: left; font-size: var(--text-xs); font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--color-border); background: var(--color-surface-2); }
+.karat-table td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-divider); font-variant-numeric: tabular-nums; color: var(--color-text); }
+.karat-table tr:last-child td { border-bottom: none; }
+.karat-table tr:hover td { background: var(--color-surface-offset); }
+.karat-table td:last-child { color: var(--color-primary); font-weight: 600; }
+.karat-table.silver td:last-child { color: var(--color-silver); }
+.karat-badge { display: inline-block; padding: 0.15em 0.5em; border-radius: var(--radius-sm); background: var(--color-primary-dim); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; }
+
+/* ===== CHART SECTION ===== */
+.chart-section { max-width: var(--content-wide); margin-inline: auto; padding: var(--space-4) var(--space-6) var(--space-8); }
+.chart-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-6); }
+.chart-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); margin-bottom: var(--space-5); }
+.chart-title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--color-text); }
+.chart-range-btns { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.range-btn { padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 600; border: 1px solid var(--color-border); color: var(--color-text-muted); background: transparent; cursor: pointer; transition: all var(--transition); }
+.range-btn.active, .range-btn:hover { background: var(--color-primary); color: #0f0e0c; border-color: var(--color-primary); }
+.chart-container { position: relative; height: 280px; }
+.chart-toggle-btns { display: flex; gap: var(--space-3); margin-top: var(--space-4); }
+.chart-toggle { padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 600; border: 1px solid var(--color-border); color: var(--color-text-muted); background: transparent; cursor: pointer; transition: all var(--transition); }
+.chart-toggle.gold-active { background: var(--color-primary-dim); color: var(--color-primary); border-color: var(--color-primary); }
+.chart-toggle.silver-active { background: var(--color-silver-dim); color: var(--color-silver); border-color: var(--color-silver); }
+
+/* ===== SIDEBAR ===== */
+.sidebar { display: flex; flex-direction: column; gap: var(--space-5); position: sticky; top: 5rem; }
+.sidebar-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-5); }
+.sidebar-title { font-size: var(--text-sm); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-4); text-transform: uppercase; letter-spacing: 0.06em; }
+.quick-ref-row { display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) 0; border-bottom: 1px solid var(--color-divider); }
+.quick-ref-row:last-child { border-bottom: none; }
+.quick-ref-label { font-size: var(--text-xs); color: var(--color-text-muted); }
+.quick-ref-val { font-size: var(--text-sm); font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+.quick-ref-val.sv { color: var(--color-silver); }
+.weight-conv-inputs { display: flex; flex-direction: column; gap: var(--space-3); }
+.weight-conv-row { display: flex; align-items: center; gap: var(--space-2); }
+.weight-conv-label { font-size: var(--text-xs); color: var(--color-text-muted); min-width: 2.5rem; }
+.weight-conv-input { flex: 1; padding: var(--space-2) var(--space-3); background: var(--color-surface-offset); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: var(--text-sm); color: var(--color-text); }
+.weight-conv-input:focus { outline: none; border-color: var(--color-primary); }
+
+/* ===== SEO INFO CARDS ===== */
+.info-section { max-width: var(--content-wide); margin-inline: auto; padding: var(--space-4) var(--space-6) var(--space-12); }
+.info-section h2 { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-text); margin-bottom: var(--space-6); }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-5); }
+.info-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-5); }
+.info-card h3 { font-size: var(--text-base); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-3); }
+.info-card p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; }
+.info-card p strong { color: var(--color-primary); }
+
+/* ===== WEIGHT CONVERTER PAGE ===== */
+.converter-section { max-width: 700px; margin-inline: auto; padding: var(--space-8) var(--space-6); }
+.converter-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-8); }
+.converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin-top: var(--space-5); }
+@media (max-width: 480px) { .converter-grid { grid-template-columns: 1fr; } }
+
+/* ===== FOOTER ===== */
+.site-footer { background: var(--color-surface); border-top: 1px solid var(--color-border); padding: var(--space-10) var(--space-6); margin-top: var(--space-12); }
+.footer-inner { max-width: var(--content-wide); margin-inline: auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-8); }
+@media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; } }
+.footer-brand-name { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-primary); margin-bottom: var(--space-3); }
+.footer-brand p { font-size: var(--text-sm); color: var(--color-text-muted); max-width: 36ch; line-height: 1.65; }
+.footer-col h4 { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); margin-bottom: var(--space-4); }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.footer-col li a { font-size: var(--text-sm); color: var(--color-text-muted); transition: color var(--transition); }
+.footer-col li a:hover { color: var(--color-primary); text-decoration: none; }
+.footer-bottom { max-width: var(--content-wide); margin-inline: auto; margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4); }
+.footer-bottom p { font-size: var(--text-xs); color: var(--color-text-faint); }
+.footer-disclaimer { font-size: var(--text-xs); color: var(--color-text-faint); max-width: var(--content-default); margin-inline: auto; margin-top: var(--space-4); text-align: center; line-height: 1.65; padding: 0 var(--space-6); }
+
+/* ===== PAGE SECTIONS (hash routing) ===== */
+.page-section { display: none; }
+.page-section.active { display: block; }
+
+/* ===== LAST UPDATED ===== */
+.last-updated { text-align: center; font-size: var(--text-xs); color: var(--color-text-faint); padding: var(--space-2); }
+
+/* ===== FADE IN ===== */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+
+/* ===== SCHEMA HIDDEN ===== */
+.schema-hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Ticker Bar -->
+<div class="ticker-bar" aria-label="Live precious metals prices">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item"><span class="live-dot"></span><span class="ticker-label">LIVE</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold (XAU/oz)</span><span class="ticker-price" id="t-xau">—</span><span class="ticker-change" id="t-xau-c">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Silver (XAG/oz)</span><span class="ticker-price" id="t-xag">—</span><span class="ticker-change" id="t-xag-c">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold 24K/g</span><span class="ticker-price" id="t-24k">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold 18K/g</span><span class="ticker-price" id="t-18k">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold 14K/g</span><span class="ticker-price" id="t-14k">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold 10K/g</span><span class="ticker-price" id="t-10k">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Silver 925/g</span><span class="ticker-price" id="t-925">—</span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="live-dot"></span><span class="ticker-label">LIVE</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold (XAU/oz)</span><span class="ticker-price" id="t-xau2">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Silver (XAG/oz)</span><span class="ticker-price" id="t-xag2">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold 24K/g</span><span class="ticker-price" id="t-24k2">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold 18K/g</span><span class="ticker-price" id="t-18k2">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold 14K/g</span><span class="ticker-price" id="t-14k2">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Gold 10K/g</span><span class="ticker-price" id="t-10k2">—</span></span>
+    <span class="ticker-item"><span class="ticker-label">Silver 925/g</span><span class="ticker-price" id="t-9252">—</span></span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <nav class="nav-inner" aria-label="Main navigation">
+    <a href="#home" class="site-logo" onclick="showPage('home')">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="PureMetals logo">
+        <polygon points="16,3 29,10 29,22 16,29 3,22 3,10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <polygon points="16,9 23,13 23,19 16,23 9,19 9,13" fill="currentColor" opacity="0.25"/>
+        <text x="16" y="19" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor" font-family="Georgia,serif">Au</text>
+      </svg>
+      PureMetals
+    </a>
+    <div class="nav-links">
+      <a href="#home" onclick="showPage('home')" class="active" id="nav-home">Gold Calc</a>
+      <a href="#silver" onclick="showPage('silver')" id="nav-silver">Silver Calc</a>
+      <a href="#scrap" onclick="showPage('scrap')" id="nav-scrap">Scrap Gold</a>
+      <a href="#charts" onclick="showPage('charts')" id="nav-charts">Price Charts</a>
+      <a href="#converter" onclick="showPage('converter')" id="nav-converter">Converter</a>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile navigation">
+    <a href="#home" onclick="showPage('home');closeMobile()">🥇 Gold Calculator</a>
+    <a href="#silver" onclick="showPage('silver');closeMobile()">🥈 Silver Calculator</a>
+    <a href="#scrap" onclick="showPage('scrap');closeMobile()">⚖️ Scrap Gold Calculator</a>
+    <a href="#charts" onclick="showPage('charts');closeMobile()">📈 Price Charts</a>
+    <a href="#converter" onclick="showPage('converter');closeMobile()">🔄 Weight Converter</a>
+  </div>
+</header>
+
+<!-- Ad Slot 1 — Leaderboard Top -->
+<div class="ad-leaderboard">
+  <div class="ad-slot ad-slot-728" aria-label="Advertisement">
+    <!-- Google AdSense: Replace with your ad unit code -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8849494330640880" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins> -->
+    Advertisement (728×90)
+  </div>
+</div>
+
+<!-- ================================================================
+     PAGE: HOME (Gold Calculator)
+     ================================================================ -->
+<div id="page-home" class="page-section active">
+
+  <section class="hero">
+    <div class="live-badge"><span class="live-dot"></span> Prices update every 60 seconds</div>
+    <h1>Gold &amp; <span>Silver</span> Price Calculator</h1>
+    <p>Live 10K, 14K, 18K &amp; 24K gold price per gram today. Scrap gold calculator, silver per troy oz and kilo — updated in real time.</p>
+  </section>
+
+  <!-- Spot Price Cards -->
+  <section class="spot-section" aria-label="Live spot prices">
+    <div class="spot-grid">
+      <div class="spot-card"><div class="spot-card-label">Gold Spot (XAU)</div><div class="spot-card-price" id="sp-xau-usd">—</div><div class="spot-card-sub">USD per troy oz</div><div class="spot-change" id="sp-xau-chg">—</div></div>
+      <div class="spot-card"><div class="spot-card-label">Gold per Gram (24K)</div><div class="spot-card-price" id="sp-24k-usd">—</div><div class="spot-card-sub">USD per gram — pure gold</div></div>
+      <div class="spot-card"><div class="spot-card-label">14K Gold per Gram</div><div class="spot-card-price" id="sp-14k-usd">—</div><div class="spot-card-sub">USD per gram — 58.3% pure</div></div>
+      <div class="spot-card"><div class="spot-card-label">10K Gold per Gram</div><div class="spot-card-price" id="sp-10k-usd">—</div><div class="spot-card-sub">USD per gram — 41.7% pure</div></div>
+      <div class="spot-card silver"><div class="spot-card-label">Silver Spot (XAG)</div><div class="spot-card-price" id="sp-xag-usd">—</div><div class="spot-card-sub">USD per troy oz</div><div class="spot-change" id="sp-xag-chg">—</div></div>
+      <div class="spot-card silver"><div class="spot-card-label">925 Sterling Silver/g</div><div class="spot-card-price" id="sp-925-usd">—</div><div class="spot-card-sub">USD per gram — 92.5% pure</div></div>
+    </div>
+    <p class="last-updated" id="lastUpdated">Fetching live prices…</p>
+  </section>
+
+  <!-- Main Layout: Calculator + Sidebar -->
+  <div class="main-layout">
+    <div class="calc-main">
+      <h2 class="section-title">Gold Price Calculator</h2>
+
+      <div class="calc-tabs" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" onclick="switchTab('gold','gold-tab')">Gold Value</button>
+        <button class="tab-btn" role="tab" aria-selected="false" onclick="switchTab('bars','gold-tab')">Gold Bar Worth</button>
+      </div>
+
+      <!-- Gold Value Calculator -->
+      <div id="gold-tab-gold" class="calc-panel active">
+        <div class="calc-card fade-up">
+          <div class="calc-grid">
+            <div>
+              <label class="field-label" for="gold-weight">Weight</label>
+              <input class="field-input" id="gold-weight" type="number" min="0" step="0.01" value="1" placeholder="e.g. 5.5" aria-label="Gold weight">
+            </div>
+            <div>
+              <label class="field-label" for="gold-unit">Unit</label>
+              <select class="field-input field-select" id="gold-unit" aria-label="Weight unit">
+                <option value="gram">Grams (g)</option>
+                <option value="oz">Troy Ounces (ozt)</option>
+                <option value="kg">Kilograms (kg)</option>
+                <option value="dwt">Pennyweight (dwt)</option>
+                <option value="lb">Pounds (lb)</option>
+                <option value="grain">Grains</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="gold-karat">Karat / Purity</label>
+              <select class="field-input field-select" id="gold-karat" aria-label="Gold karat">
+                <option value="0.999">24K — 99.9% pure</option>
+                <option value="0.916">22K — 91.6% pure</option>
+                <option value="0.75">18K — 75% pure</option>
+                <option value="0.583" selected>14K — 58.3% pure</option>
+                <option value="0.417">10K — 41.7% pure</option>
+                <option value="0.375">9K — 37.5% pure</option>
+                <option value="0.333">8K — 33.3% pure</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="gold-currency">Currency</label>
+              <select class="field-input field-select" id="gold-currency" aria-label="Currency">
+                <option value="USD">USD — US Dollar</option>
+                <option value="GBP">GBP — British Pound</option>
+                <option value="EUR">EUR — Euro</option>
+                <option value="CAD">CAD — Canadian Dollar</option>
+                <option value="AUD">AUD — Australian Dollar</option>
+                <option value="INR">INR — Indian Rupee</option>
+              </select>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcGold()" aria-label="Calculate gold value">Calculate Gold Value</button>
+          <div class="result-box" id="gold-result" role="status" aria-live="polite">
+            <div class="result-label">Estimated Value</div>
+            <div class="result-value" id="gold-result-value">—</div>
+            <div class="result-breakdown" id="gold-result-breakdown"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gold Bar Worth -->
+      <div id="gold-tab-bars" class="calc-panel">
+        <div class="calc-card fade-up">
+          <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-5);">Live value of standard gold bars — all prices in USD based on current spot price.</p>
+          <div class="bar-grid" id="barGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Quick reference">
+      <!-- Ad slot sidebar -->
+      <div class="ad-slot ad-slot-300" aria-label="Advertisement">
+        <!-- Google AdSense: Replace with your ad unit code -->
+        <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8849494330640880" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins> -->
+        Ad (300×250)
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Gold Quick Ref</div>
+        <div class="quick-ref-row"><span class="quick-ref-label">24K per gram</span><span class="quick-ref-val" id="qr-24g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">18K per gram</span><span class="quick-ref-val" id="qr-18g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">14K per gram</span><span class="quick-ref-val" id="qr-14g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">10K per gram</span><span class="quick-ref-val" id="qr-10g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">9K per gram</span><span class="quick-ref-val" id="qr-9g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">24K per troy oz</span><span class="quick-ref-val" id="qr-24oz">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">18K per troy oz</span><span class="quick-ref-val" id="qr-18oz">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">14K per troy oz</span><span class="quick-ref-val" id="qr-14oz">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">10K per troy oz</span><span class="quick-ref-val" id="qr-10oz">—</span></div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Silver Quick Ref</div>
+        <div class="quick-ref-row"><span class="quick-ref-label">.999 per gram</span><span class="quick-ref-val sv" id="qr-ag999g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">925 per gram</span><span class="quick-ref-val sv" id="qr-ag925g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">per troy oz</span><span class="quick-ref-val sv" id="qr-agoz">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">per kilo</span><span class="quick-ref-val sv" id="qr-agkg">—</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Karat Tables -->
+  <section class="tables-section" id="karat-tables" aria-label="Gold and silver price tables by karat">
+    <h2 class="section-title" style="font-family:var(--font-display)">Gold &amp; Silver Price Tables — Live Per Gram, Oz &amp; Kilo</h2>
+    <div class="tables-grid">
+      <!-- 14K Table -->
+      <div class="table-card" id="14k-table">
+        <div class="table-card-header">
+          <div class="table-card-title">14K Gold Price Per Gram</div>
+          <div class="table-card-sub">14 karat = 58.3% pure gold</div>
+        </div>
+        <table class="karat-table" aria-label="14K gold prices">
+          <thead><tr><th>Unit</th><th>USD Value</th></tr></thead>
+          <tbody id="tbl-14k"></tbody>
+        </table>
+      </div>
+      <!-- 10K Table -->
+      <div class="table-card" id="10k-table">
+        <div class="table-card-header">
+          <div class="table-card-title">10K Gold Price Per Gram</div>
+          <div class="table-card-sub">10 karat = 41.7% pure gold</div>
+        </div>
+        <table class="karat-table" aria-label="10K gold prices">
+          <thead><tr><th>Unit</th><th>USD Value</th></tr></thead>
+          <tbody id="tbl-10k"></tbody>
+        </table>
+      </div>
+      <!-- 18K Table -->
+      <div class="table-card" id="18k-table">
+        <div class="table-card-header">
+          <div class="table-card-title">18K Gold Price Per Gram</div>
+          <div class="table-card-sub">18 karat = 75% pure gold</div>
+        </div>
+        <table class="karat-table" aria-label="18K gold prices">
+          <thead><tr><th>Unit</th><th>USD Value</th></tr></thead>
+          <tbody id="tbl-18k"></tbody>
+        </table>
+      </div>
+      <!-- 24K Table -->
+      <div class="table-card" id="24k-table">
+        <div class="table-card-header">
+          <div class="table-card-title">24K Gold Price (Pure Gold)</div>
+          <div class="table-card-sub">24 karat = 99.9% pure gold</div>
+        </div>
+        <table class="karat-table" aria-label="24K gold prices">
+          <thead><tr><th>Unit</th><th>USD Value</th></tr></thead>
+          <tbody id="tbl-24k"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Info Cards -->
+  <section class="info-section" aria-label="Gold and silver price guides">
+    <h2>Frequently Asked Questions About Gold &amp; Silver Prices</h2>
+    <div class="info-grid">
+      <article class="info-card">
+        <h3>How much is 14K gold per gram today?</h3>
+        <p>14 karat gold is <strong>58.3% pure gold</strong>. Today's 14K gold price per gram is shown live in our calculator above and in the 14K table. The price changes continuously as the gold spot price moves on global commodity markets.</p>
+      </article>
+      <article class="info-card">
+        <h3>What is 10K gold worth per gram?</h3>
+        <p>10 karat gold contains <strong>41.7% pure gold</strong> (10 parts gold out of 24). The value per gram is calculated by multiplying the 24K per-gram price by 0.417. See our live 10K table for today's exact price per gram, troy oz, and kilo.</p>
+      </article>
+      <article class="info-card">
+        <h3>How many grams is 1 troy oz of gold?</h3>
+        <p>One troy ounce equals exactly <strong>31.1035 grams</strong>. This differs from an avoirdupois ounce (28.35g) used for everyday weight. All gold and silver spot prices are quoted in troy ounces on global markets.</p>
+      </article>
+      <article class="info-card">
+        <h3>What is 18K gold price per gram?</h3>
+        <p>18 karat gold is <strong>75% pure gold</strong>, making it the most popular karat for high-quality jewellery. Today's 18K per-gram price is displayed live above. 18K commands a higher price per gram than 14K or 10K due to higher purity.</p>
+      </article>
+      <article class="info-card">
+        <h3>How much is a gold bar worth?</h3>
+        <p>A standard <strong>Good Delivery 400 troy oz gold bar</strong> is worth over $1 million at current prices. Smaller bars range from a 1 gram bar (~$100+) to a 1 kg bar (~$100,000+). Use our Gold Bar calculator tab for live bar values.</p>
+      </article>
+      <article class="info-card">
+        <h3>What is 925 sterling silver price today?</h3>
+        <p>Sterling silver (925) contains <strong>92.5% pure silver</strong>. Its per-gram price is today's silver spot price × 0.925 ÷ 31.1035. Use our Silver Calculator above for exact 925 sterling values in grams, ounces, and kilos.</p>
+      </article>
+      <article class="info-card">
+        <h3>What is the current spot price of gold and silver?</h3>
+        <p>Gold and silver <strong>spot prices update every 60 seconds</strong> on this page, sourced from global commodity markets. The spot price is the current market price for immediate delivery of one troy ounce of 24K gold or .999 fine silver.</p>
+      </article>
+      <article class="info-card">
+        <h3>How much is one pound of gold worth?</h3>
+        <p>One avoirdupois pound of gold (453.6g) is worth roughly <strong>14–15× the troy oz spot price</strong>. One troy pound (12 troy oz) is worth 12× the spot price. Use our calculator: set weight to 1, unit to Pounds for an exact live figure.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Ad Slot 2 — Mid Page -->
+  <div class="ad-leaderboard">
+    <div class="ad-slot ad-slot-728" aria-label="Advertisement">
+      <!-- Google AdSense: Replace with your ad unit code -->
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8849494330640880" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins> -->
+      Advertisement (728×90)
+    </div>
+  </div>
+
+</div><!-- /page-home -->
+
+
+<!-- ================================================================
+     PAGE: SILVER CALCULATOR
+     ================================================================ -->
+<div id="page-silver" class="page-section">
+  <section class="hero">
+    <div class="live-badge"><span class="live-dot"></span> Live silver prices</div>
+    <h1>Silver Price <span>Calculator</span></h1>
+    <p>Calculate the value of .999 fine silver, 925 sterling, 90% coin silver and 800 silver. Updated live every 60 seconds.</p>
+  </section>
+
+  <div class="main-layout">
+    <div class="calc-main">
+      <h2 class="section-title">Silver Calculator</h2>
+      <div class="calc-card fade-up">
+        <div class="calc-grid">
+          <div>
+            <label class="field-label" for="ag-weight">Weight</label>
+            <input class="field-input" id="ag-weight" type="number" min="0" step="0.01" value="1" placeholder="e.g. 10">
+          </div>
+          <div>
+            <label class="field-label" for="ag-unit">Unit</label>
+            <select class="field-input field-select" id="ag-unit">
+              <option value="gram">Grams (g)</option>
+              <option value="oz">Troy Ounces (ozt)</option>
+              <option value="kg">Kilograms (kg)</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+              <option value="lb">Pounds (lb)</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="ag-purity">Purity</label>
+            <select class="field-input field-select" id="ag-purity">
+              <option value="0.999">.999 Fine Silver (99.9%)</option>
+              <option value="0.925">925 Sterling Silver (92.5%)</option>
+              <option value="0.900">.900 Coin Silver (90%)</option>
+              <option value="0.800">.800 Silver (80%)</option>
+              <option value="0.958">.958 Britannia Silver</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="ag-currency">Currency</label>
+            <select class="field-input field-select" id="ag-currency">
+              <option value="USD">USD — US Dollar</option>
+              <option value="GBP">GBP — British Pound</option>
+              <option value="EUR">EUR — Euro</option>
+              <option value="CAD">CAD — Canadian Dollar</option>
+              <option value="AUD">AUD — Australian Dollar</option>
+              <option value="INR">INR — Indian Rupee</option>
+            </select>
+          </div>
+        </div>
+        <button class="calc-btn silver-btn" onclick="calcSilver()">Calculate Silver Value</button>
+        <div class="result-box silver-result" id="silver-result" role="status" aria-live="polite">
+          <div class="result-label">Estimated Value</div>
+          <div class="result-value silver-value" id="silver-result-value">—</div>
+          <div class="result-breakdown" id="silver-result-breakdown"></div>
+        </div>
+      </div>
+
+      <!-- Silver Tables -->
+      <div style="margin-top:var(--space-8)">
+        <h3 class="section-title" style="font-size:var(--text-lg)">Silver Price Tables — Live USD</h3>
+        <div class="tables-grid" style="margin-top:var(--space-4)">
+          <div class="table-card">
+            <div class="table-card-header"><div class="table-card-title">.999 Fine Silver</div><div class="table-card-sub">99.9% pure silver</div></div>
+            <table class="karat-table silver"><thead><tr><th>Unit</th><th>USD Value</th></tr></thead><tbody id="tbl-ag999"></tbody></table>
+          </div>
+          <div class="table-card">
+            <div class="table-card-header"><div class="table-card-title">925 Sterling Silver Today</div><div class="table-card-sub">92.5% pure silver</div></div>
+            <table class="karat-table silver"><thead><tr><th>Unit</th><th>USD Value</th></tr></thead><tbody id="tbl-ag925"></tbody></table>
+          </div>
+          <div class="table-card">
+            <div class="table-card-header"><div class="table-card-title">Silver Per Kilogram</div><div class="table-card-sub">1 kilo = 32.1507 troy oz</div></div>
+            <table class="karat-table silver"><thead><tr><th>Purity</th><th>USD / kg</th></tr></thead><tbody id="tbl-agkg"></tbody></table>
+          </div>
+          <div class="table-card">
+            <div class="table-card-header"><div class="table-card-title">Silver Dollar Values</div><div class="table-card-sub">US junk silver coin melt values</div></div>
+            <table class="karat-table silver"><thead><tr><th>Coin</th><th>Silver Value (USD)</th></tr></thead><tbody id="tbl-agcoins"></tbody></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="ad-slot ad-slot-300" aria-label="Advertisement">Ad (300×250)</div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Silver Quick Ref</div>
+        <div class="quick-ref-row"><span class="quick-ref-label">.999 per troy oz</span><span class="quick-ref-val sv" id="qr2-agoz">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">.999 per gram</span><span class="quick-ref-val sv" id="qr2-ag999g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">925 per gram</span><span class="quick-ref-val sv" id="qr2-ag925g">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">Silver per kilo</span><span class="quick-ref-val sv" id="qr2-agkg">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">1 troy oz silver</span><span class="quick-ref-val sv" id="qr2-1oz">—</span></div>
+        <div class="quick-ref-row"><span class="quick-ref-label">Indian Silver/10g</span><span class="quick-ref-val sv" id="qr2-in10g">—</span></div>
+      </div>
+    </aside>
+  </div>
+</div><!-- /page-silver -->
+
+
+<!-- ================================================================
+     PAGE: SCRAP GOLD CALCULATOR
+     ================================================================ -->
+<div id="page-scrap" class="page-section">
+  <section class="hero">
+    <div class="live-badge"><span class="live-dot"></span> Live scrap prices</div>
+    <h1>Scrap Gold <span>Calculator</span></h1>
+    <p>Calculate the melt value of your scrap gold jewellery across multiple karats. Enter grams for each karat and get the total spot value instantly.</p>
+  </section>
+
+  <div style="max-width:var(--content-default);margin-inline:auto;padding:var(--space-4) var(--space-6) var(--space-12)">
+    <div class="calc-tabs" role="tablist">
+      <button class="tab-btn active" onclick="switchTab('gold-scrap','scrap-tab')">Scrap Gold</button>
+      <button class="tab-btn" onclick="switchTab('silver-scrap','scrap-tab')">Scrap Silver</button>
+    </div>
+
+    <!-- Scrap Gold -->
+    <div id="scrap-tab-gold-scrap" class="calc-panel active">
+      <div class="calc-card fade-up">
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-5);">Enter the weight in grams for each karat. Leave blank if you have none.</p>
+        <div id="scrapRows">
+          <div class="scrap-row"><span class="scrap-karat">24K</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-karat="0.999" data-label="24K" oninput="calcScrap()"></div>
+          <div class="scrap-row"><span class="scrap-karat">22K</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-karat="0.916" data-label="22K" oninput="calcScrap()"></div>
+          <div class="scrap-row"><span class="scrap-karat">18K</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-karat="0.75" data-label="18K" oninput="calcScrap()"></div>
+          <div class="scrap-row"><span class="scrap-karat">14K</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-karat="0.583" data-label="14K" oninput="calcScrap()"></div>
+          <div class="scrap-row"><span class="scrap-karat">10K</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-karat="0.417" data-label="10K" oninput="calcScrap()"></div>
+          <div class="scrap-row"><span class="scrap-karat">9K</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-karat="0.375" data-label="9K" oninput="calcScrap()"></div>
+          <div class="scrap-row"><span class="scrap-karat">8K</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-karat="0.333" data-label="8K" oninput="calcScrap()"></div>
+        </div>
+        <div class="scrap-totals" id="scrapTotals">
+          <div class="scrap-total-row"><span class="scrap-total-label">Total Weight</span><span class="scrap-total-val" id="scrap-total-weight">0 g</span></div>
+          <div class="scrap-total-row"><span class="scrap-total-label">Pure Gold Weight</span><span class="scrap-total-val" id="scrap-pure-gold">0 g / 0 ozt</span></div>
+          <div class="scrap-total-row"><span class="scrap-total-label">Spot Melt Value (USD)</span><span class="scrap-total-val" id="scrap-melt-usd">$0.00</span></div>
+          <div class="scrap-total-row" style="margin-top:var(--space-2)"><span class="scrap-total-label" style="font-size:var(--text-xs);color:var(--color-text-faint)">Note: dealers typically pay 70–90% of melt value</span><span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrap Silver -->
+    <div id="scrap-tab-silver-scrap" class="calc-panel">
+      <div class="calc-card fade-up">
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-5);">Enter the weight in grams for each silver purity.</p>
+        <div>
+          <div class="scrap-row"><span class="scrap-karat" style="color:var(--color-silver)">.999</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-ag-purity="0.999" oninput="calcScrapSilver()"></div>
+          <div class="scrap-row"><span class="scrap-karat" style="color:var(--color-silver)">925</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-ag-purity="0.925" oninput="calcScrapSilver()"></div>
+          <div class="scrap-row"><span class="scrap-karat" style="color:var(--color-silver)">.900</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-ag-purity="0.900" oninput="calcScrapSilver()"></div>
+          <div class="scrap-row"><span class="scrap-karat" style="color:var(--color-silver)">.800</span><input class="field-input" type="number" min="0" step="0.01" placeholder="grams" data-ag-purity="0.800" oninput="calcScrapSilver()"></div>
+        </div>
+        <div class="scrap-totals">
+          <div class="scrap-total-row"><span class="scrap-total-label">Total Silver Value (USD)</span><span class="scrap-total-val" id="scrap-ag-total" style="color:var(--color-silver)">$0.00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-scrap -->
+
+
+<!-- ================================================================
+     PAGE: CHARTS
+     ================================================================ -->
+<div id="page-charts" class="page-section">
+  <section class="hero">
+    <div class="live-badge"><span class="live-dot"></span> Historical data</div>
+    <h1>Gold Price <span>Chart</span></h1>
+    <p>Gold price graph 10 years, 5 years, 1 year and more. Track silver price history alongside gold with interactive charts.</p>
+  </section>
+
+  <section class="chart-section">
+    <div class="chart-card">
+      <div class="chart-header">
+        <h2 class="chart-title">Gold &amp; Silver Price History</h2>
+        <div class="chart-range-btns" role="group" aria-label="Chart range">
+          <button class="range-btn" onclick="loadChart('1M')">1M</button>
+          <button class="range-btn" onclick="loadChart('3M')">3M</button>
+          <button class="range-btn active" onclick="loadChart('1Y')">1Y</button>
+          <button class="range-btn" onclick="loadChart('5Y')">5Y</button>
+          <button class="range-btn" onclick="loadChart('10Y')">10Y</button>
+        </div>
+      </div>
+      <div class="chart-toggle-btns">
+        <button class="chart-toggle gold-active" id="toggleGold" onclick="toggleChart('gold')">Gold</button>
+        <button class="chart-toggle silver-active" id="toggleSilver" onclick="toggleChart('silver')">Silver</button>
+      </div>
+      <div class="chart-container" style="margin-top:var(--space-5)"><canvas id="priceChart" aria-label="Gold and silver price chart"></canvas></div>
+    </div>
+
+    <!-- Gold Price Outlook / Prediction SEO section -->
+    <div class="info-grid" style="margin-top:var(--space-8)">
+      <article class="info-card">
+        <h3>Gold Price Outlook 2025–2026</h3>
+        <p>Gold has been supported by central bank buying, geopolitical uncertainty, and inflation hedging demand. Analysts' <strong>gold price predictions</strong> for 2025–2026 generally range from $2,800 to $3,500 per troy oz depending on Fed policy and USD strength.</p>
+      </article>
+      <article class="info-card">
+        <h3>Gold Eagle Coin Value</h3>
+        <p>The 1 oz American <strong>Gold Eagle</strong> contains 91.67% gold (22K) with a total weight of 1.0909 ozt. Its melt value tracks the gold spot price × 1.0909 × 0.9167. The coin commands a premium above melt for collector and legal tender value.</p>
+      </article>
+      <article class="info-card">
+        <h3>Gold Price Graph — 10 Years</h3>
+        <p>The <strong>gold price chart over 10 years</strong> shows significant appreciation from ~$1,200/oz in 2019 to all-time highs above $3,000 in 2025. Key drivers include quantitative easing, COVID-19 uncertainty, and central bank gold reserve expansion.</p>
+      </article>
+    </div>
+  </section>
+</div><!-- /page-charts -->
+
+
+<!-- ================================================================
+     PAGE: WEIGHT CONVERTER
+     ================================================================ -->
+<div id="page-converter" class="page-section">
+  <section class="hero">
+    <div class="live-badge">Precious Metals Weight Converter</div>
+    <h1>Weight <span>Converter</span></h1>
+    <p>Convert between troy ounces, grams, kilograms, pennyweight, grains and pounds. Designed for gold and silver calculations.</p>
+  </section>
+
+  <section class="converter-section">
+    <div class="converter-card">
+      <h2 style="font-family:var(--font-display);font-size:var(--text-lg);margin-bottom:var(--space-2)">Precious Metals Weight Converter</h2>
+      <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-6)">Type any value — all fields update instantly. Note: <strong>1 troy oz = 31.1035g</strong></p>
+      <div class="weight-conv-inputs">
+        <div class="weight-conv-row"><label class="weight-conv-label" for="wc-g">Grams</label><input class="weight-conv-input field-input" id="wc-g" type="number" min="0" step="0.0001" placeholder="0" oninput="convertWeight('g',this.value)"></div>
+        <div class="weight-conv-row"><label class="weight-conv-label" for="wc-oz">Troy oz</label><input class="weight-conv-input field-input" id="wc-oz" type="number" min="0" step="0.0001" placeholder="0" oninput="convertWeight('oz',this.value)"></div>
+        <div class="weight-conv-row"><label class="weight-conv-label" for="wc-kg">Kg</label><input class="weight-conv-input field-input" id="wc-kg" type="number" min="0" step="0.000001" placeholder="0" oninput="convertWeight('kg',this.value)"></div>
+        <div class="weight-conv-row"><label class="weight-conv-label" for="wc-dwt">DWT</label><input class="weight-conv-input field-input" id="wc-dwt" type="number" min="0" step="0.0001" placeholder="0" oninput="convertWeight('dwt',this.value)"></div>
+        <div class="weight-conv-row"><label class="weight-conv-label" for="wc-grain">Grains</label><input class="weight-conv-input field-input" id="wc-grain" type="number" min="0" step="0.01" placeholder="0" oninput="convertWeight('grain',this.value)"></div>
+        <div class="weight-conv-row"><label class="weight-conv-label" for="wc-lb">Pounds</label><input class="weight-conv-input field-input" id="wc-lb" type="number" min="0" step="0.000001" placeholder="0" oninput="convertWeight('lb',this.value)"></div>
+        <div class="weight-conv-row"><label class="weight-conv-label" for="wc-avoz">Av. oz</label><input class="weight-conv-input field-input" id="wc-avoz" type="number" min="0" step="0.0001" placeholder="0" oninput="convertWeight('avoz',this.value)"></div>
+      </div>
+
+      <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border)">
+        <h3 style="font-size:var(--text-base);font-weight:700;margin-bottom:var(--space-4)">Key Conversion Facts</h3>
+        <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+          <div class="scrap-total-row"><span style="font-size:var(--text-sm);color:var(--color-text-muted)">1 Troy Ounce (ozt)</span><span style="font-size:var(--text-sm);font-weight:600">= 31.1035 grams</span></div>
+          <div class="scrap-total-row"><span style="font-size:var(--text-sm);color:var(--color-text-muted)">1 Pennyweight (dwt)</span><span style="font-size:var(--text-sm);font-weight:600">= 1.55517 grams</span></div>
+          <div class="scrap-total-row"><span style="font-size:var(--text-sm);color:var(--color-text-muted)">1 Kg</span><span style="font-size:var(--text-sm);font-weight:600">= 32.1507 troy oz</span></div>
+          <div class="scrap-total-row"><span style="font-size:var(--text-sm);color:var(--color-text-muted)">1 Grain</span><span style="font-size:var(--text-sm);font-weight:600">= 0.0648 grams</span></div>
+          <div class="scrap-total-row"><span style="font-size:var(--text-sm);color:var(--color-text-muted)">1 Avoirdupois oz</span><span style="font-size:var(--text-sm);font-weight:600">= 28.3495 grams</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-converter -->
+
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">PureMetals</div>
+      <p>Free live gold and silver price calculators. Get today's 10K, 14K, 18K and 24K gold price per gram, scrap gold value, silver per troy oz and kilo — updated every 60 seconds from global spot markets.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Calculators</h4>
+      <ul>
+        <li><a href="#home" onclick="showPage('home')">Gold Calculator</a></li>
+        <li><a href="#silver" onclick="showPage('silver')">Silver Calculator</a></li>
+        <li><a href="#scrap" onclick="showPage('scrap')">Scrap Gold Calculator</a></li>
+        <li><a href="#scrap" onclick="showPage('scrap')">Scrap Silver Calculator</a></li>
+        <li><a href="#converter" onclick="showPage('converter')">Weight Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Price Tables</h4>
+      <ul>
+        <li><a href="#karat-tables" onclick="showPage('home')">14K Gold Per Gram</a></li>
+        <li><a href="#karat-tables" onclick="showPage('home')">10K Gold Per Gram</a></li>
+        <li><a href="#karat-tables" onclick="showPage('home')">18K Gold Per Gram</a></li>
+        <li><a href="#karat-tables" onclick="showPage('home')">24K Gold Per Gram</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Charts</h4>
+      <ul>
+        <li><a href="#charts" onclick="showPage('charts')">Gold Price Chart 10Y</a></li>
+        <li><a href="#charts" onclick="showPage('charts')">Gold Price Outlook</a></li>
+        <li><a href="#charts" onclick="showPage('charts')">Gold Price Prediction</a></li>
+        <li><a href="#charts" onclick="showPage('charts')">Silver Price Chart</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 PureMetals. All rights reserved.</p>
+    <p>Prices sourced from global commodity markets. For informational purposes only.</p>
+  </div>
+  <p class="footer-disclaimer">Disclaimer: All gold and silver prices displayed are indicative spot prices for informational purposes only. They do not constitute financial advice. Actual buy/sell prices from dealers will vary. PureMetals is not a financial advisor.</p>
+</footer>
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json" class="schema-hidden">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PureMetals Gold & Silver Price Calculator",
+  "description": "Free live gold and silver price calculator. 10K, 14K, 18K, 24K gold price per gram today. Scrap gold calculator, silver per troy oz and kilo.",
+  "url": "https://goldpricetools.com",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<script>
+// ===== CONSTANTS =====
+const TROY_OZ_TO_GRAM = 31.1035;
+const KARATS = { '0.999': 1, '0.916': 22/24, '0.75': 18/24, '0.583': 14/24, '0.417': 10/24, '0.375': 9/24, '0.333': 8/24 };
+const FX_RATES = { USD: 1, GBP: 0.792, EUR: 0.924, CAD: 1.362, AUD: 1.538, INR: 83.45 };
+
+// ===== STATE =====
+let goldSpotUSD = 0; // per troy oz
+let silverSpotUSD = 0;
+let chartInstance = null;
+let showGoldChart = true;
+let showSilverChart = true;
+let currentRange = '1Y';
+
+// ===== PRICE FETCHING =====
+async function fetchPrices() {
+  try {
+    const [gRes, sRes] = await Promise.all([
+      fetch('https://api.gold-api.com/price/XAU'),
+      fetch('https://api.gold-api.com/price/XAG')
+    ]);
+    if (!gRes.ok || !sRes.ok) throw new Error('API error');
+    const [gData, sData] = await Promise.all([gRes.json(), sRes.json()]);
+    goldSpotUSD = gData.price;
+    silverSpotUSD = sData.price;
+    const gChange = gData.chp || 0;
+    const sChange = sData.chp || 0;
+    updateUI(gChange, sChange);
+  } catch (e) {
+    try {
+      const r = await fetch('https://www.goldapi.io/api/XAU/USD', { headers: { 'x-access-token': 'goldapi-free' } });
+      const d = await r.json();
+      goldSpotUSD = d.price || 3100;
+      silverSpotUSD = d.silver_price || 35;
+      updateUI(0, 0);
+    } catch (e2) {
+      goldSpotUSD = 3100; silverSpotUSD = 35;
+      updateUI(0, 0);
+    }
+  }
+}
+
+function fmt(n, cur = 'USD', decimals = 2) {
+  const sym = { USD: '$', GBP: '£', EUR: '€', CAD: 'CA$', AUD: 'A$', INR: '₹' };
+  return (sym[cur] || '$') + (n * FX_RATES[cur]).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
+
+function updateUI(gChg, sChg) {
+  const g = goldSpotUSD;
+  const s = silverSpotUSD;
+  const gPerG = g / TROY_OZ_TO_GRAM;
+  const sPerG = s / TROY_OZ_TO_GRAM;
+
+  // Spot cards
+  setText('sp-xau-usd', fmt(g));
+  setText('sp-xag-usd', fmt(s));
+  setText('sp-24k-usd', fmt(gPerG, 'USD', 2) + '/g');
+  setText('sp-14k-usd', fmt(gPerG * 0.583, 'USD', 2) + '/g');
+  setText('sp-10k-usd', fmt(gPerG * 0.417, 'USD', 2) + '/g');
+  setText('sp-925-usd', fmt(sPerG * 0.925, 'USD', 4) + '/g');
+
+  const gChgEl = document.getElementById('sp-xau-chg');
+  const sChgEl = document.getElementById('sp-xag-chg');
+  if (gChgEl) { gChgEl.textContent = (gChg >= 0 ? '+' : '') + gChg.toFixed(2) + '%'; gChgEl.className = 'spot-change ' + (gChg >= 0 ? 'up' : 'down'); }
+  if (sChgEl) { sChgEl.textContent = (sChg >= 0 ? '+' : '') + sChg.toFixed(2) + '%'; sChgEl.className = 'spot-change ' + (sChg >= 0 ? 'up' : 'down'); }
+
+  // Ticker
+  const tickerIds = [['t-xau','t-xau2'], ['t-xag','t-xag2'], ['t-24k','t-24k2'], ['t-18k','t-18k2'], ['t-14k','t-14k2'], ['t-10k','t-10k2'], ['t-925','t-9252']];
+  const tickerVals = [fmt(g), fmt(s), fmt(gPerG,'USD',2)+'/g', fmt(gPerG*0.75,'USD',2)+'/g', fmt(gPerG*0.583,'USD',2)+'/g', fmt(gPerG*0.417,'USD',2)+'/g', fmt(sPerG*0.925,'USD',4)+'/g'];
+  tickerIds.forEach(([a,b], i) => { setText(a, tickerVals[i]); setText(b, tickerVals[i]); });
+
+  const tcXauC = document.getElementById('t-xau-c');
+  if (tcXauC) { tcXauC.textContent = (gChg >= 0 ? '▲' : '▼') + Math.abs(gChg).toFixed(2) + '%'; tcXauC.className = 'ticker-change ' + (gChg >= 0 ? 'up' : 'down'); }
+
+  // Sidebar quick ref
+  const refs = { 'qr-24g': fmt(gPerG,'USD',2), 'qr-18g': fmt(gPerG*0.75,'USD',2), 'qr-14g': fmt(gPerG*0.583,'USD',2), 'qr-10g': fmt(gPerG*0.417,'USD',2), 'qr-9g': fmt(gPerG*0.375,'USD',2), 'qr-24oz': fmt(g,'USD',2), 'qr-18oz': fmt(g*0.75,'USD',2), 'qr-14oz': fmt(g*0.583,'USD',2), 'qr-10oz': fmt(g*0.417,'USD',2), 'qr-ag999g': fmt(sPerG,'USD',4), 'qr-ag925g': fmt(sPerG*0.925,'USD',4), 'qr-agoz': fmt(s,'USD',2), 'qr-agkg': fmt(s*32.1507,'USD',2) };
+  Object.entries(refs).forEach(([id, val]) => setText(id, val));
+
+  const refs2 = { 'qr2-agoz': fmt(s,'USD',2), 'qr2-ag999g': fmt(sPerG,'USD',4), 'qr2-ag925g': fmt(sPerG*0.925,'USD',4), 'qr2-agkg': fmt(s*32.1507,'USD',2), 'qr2-1oz': fmt(s,'USD',2), 'qr2-in10g': fmt(sPerG*10*FX_RATES.INR/FX_RATES.USD,'USD',2).replace('$','₹') };
+  Object.entries(refs2).forEach(([id, val]) => setText(id, val));
+
+  // Tables
+  buildGoldTable('tbl-14k', 0.583);
+  buildGoldTable('tbl-10k', 0.417);
+  buildGoldTable('tbl-18k', 0.75);
+  buildGoldTable('tbl-24k', 0.999);
+  buildSilverTable('tbl-ag999', 0.999);
+  buildSilverTable('tbl-ag925', 0.925);
+  buildSilverKgTable();
+  buildCoinTable();
+  buildBarGrid();
+  calcScrap();
+  calcScrapSilver();
+
+  const now = new Date();
+  setText('lastUpdated', 'Last updated: ' + now.toLocaleTimeString() + ' — auto-refreshes every 60s');
+}
+
+function buildGoldTable(id, purity) {
+  const el = document.getElementById(id); if (!el) return;
+  const gPerG = goldSpotUSD / TROY_OZ_TO_GRAM * purity;
+  const rows = [['1 gram', gPerG], ['3 grams', gPerG*3], ['5 grams', gPerG*5], ['10 grams', gPerG*10], ['1 troy oz (31.1g)', goldSpotUSD*purity], ['1 oz (28.35g)', gPerG*28.35], ['1 kg', gPerG*1000], ['1 pound (453.6g)', gPerG*453.6]];
+  el.innerHTML = rows.map(([lbl, val]) => `<tr><td>${lbl}</td><td>${fmt(val)}</td></tr>`).join('');
+}
+
+function buildSilverTable(id, purity) {
+  const el = document.getElementById(id); if (!el) return;
+  const sPerG = silverSpotUSD / TROY_OZ_TO_GRAM * purity;
+  const rows = [['1 gram', sPerG], ['10 grams', sPerG*10], ['1 troy oz', silverSpotUSD*purity], ['100 grams', sPerG*100], ['500 grams', sPerG*500], ['1 kg', sPerG*1000]];
+  el.innerHTML = rows.map(([lbl, val]) => `<tr><td>${lbl}</td><td>${fmt(val,'USD',4)}</td></tr>`).join('');
+}
+
+function buildSilverKgTable() {
+  const el = document.getElementById('tbl-agkg'); if (!el) return;
+  const sPerKg = silverSpotUSD * 32.1507;
+  const rows = [['.999 Fine', sPerKg], ['925 Sterling', sPerKg*0.925], ['.900 Coin', sPerKg*0.9], ['.800 Silver', sPerKg*0.8]];
+  el.innerHTML = rows.map(([lbl, val]) => `<tr><td>${lbl}</td><td>${fmt(val)}</td></tr>`).join('');
+}
+
+function buildCoinTable() {
+  const el = document.getElementById('tbl-agcoins'); if (!el) return;
+  const s = silverSpotUSD;
+  const coins = [['Morgan Dollar (0.7735 ozt)', s*0.7735], ['Peace Dollar (0.7734 ozt)', s*0.7734], ['Walking Liberty Half (0.3617 ozt)', s*0.3617], ['Franklin Half (0.3617 ozt)', s*0.3617], ['Washington Quarter (0.1808 ozt)', s*0.1808], ['Roosevelt Dime (0.07234 ozt)', s*0.07234]];
+  el.innerHTML = coins.map(([lbl, val]) => `<tr><td>${lbl}</td><td>${fmt(val,'USD',4)}</td></tr>`).join('');
+}
+
+function buildBarGrid() {
+  const el = document.getElementById('barGrid'); if (!el) return;
+  const bars = [['Good Delivery', '400 troy oz', 400], ['100 oz Bar', '100 troy oz', 100], ['1 Kilogram', '32.15 troy oz', 32.1507], ['10 oz Bar', '10 troy oz', 10], ['1 oz Gold Eagle', '1.0909 troy oz', 1.0909*0.9167], ['1 oz Bar', '1 troy oz', 1], ['1/2 oz Bar', '0.5 troy oz', 0.5], ['1g Bar', '0.03215 troy oz', 1/TROY_OZ_TO_GRAM]];
+  el.innerHTML = bars.map(([name, sub, oz]) => `
+    <div class="bar-card">
+      <div class="bar-name">${name}</div>
+      <div class="bar-oz">${sub}</div>
+      <div class="bar-price" id="bar-${name.replace(/\s+/g,'-')}">${fmt(goldSpotUSD*oz)}</div>
+      <div class="bar-qty-wrap">
+        <span style="font-size:var(--text-xs);color:var(--color-text-muted)">Qty:</span>
+        <input type="number" min="1" value="1" oninput="updateBarQty(this,'${name.replace(/\s+/g,'-')}',${oz})" aria-label="Quantity">
+        <span class="bar-price" id="bar-qty-${name.replace(/\s+/g,'-')}" style="font-size:var(--text-xs);color:var(--color-text-muted)"></span>
+      </div>
+    </div>`).join('');
+}
+
+function updateBarQty(input, id, oz) {
+  const qty = parseFloat(input.value) || 1;
+  const el = document.getElementById('bar-qty-' + id);
+  if (el) el.textContent = '× ' + qty + ' = ' + fmt(goldSpotUSD * oz * qty);
+}
+
+// ===== CALCULATORS =====
+function toGrams(weight, unit) {
+  const w = parseFloat(weight) || 0;
+  switch(unit) { case 'gram': return w; case 'oz': return w * TROY_OZ_TO_GRAM; case 'kg': return w * 1000; case 'dwt': return w * 1.55517; case 'lb': return w * 453.592; case 'grain': return w * 0.0647989; default: return w; }
+}
+
+function calcGold() {
+  const weight = document.getElementById('gold-weight').value;
+  const unit = document.getElementById('gold-unit').value;
+  const purity = parseFloat(document.getElementById('gold-karat').value);
+  const currency = document.getElementById('gold-currency').value;
+  const grams = toGrams(weight, unit);
+  const gPerG = goldSpotUSD / TROY_OZ_TO_GRAM;
+  const value = grams * purity * gPerG;
+  const result = document.getElementById('gold-result');
+  result.classList.add('visible');
+  result.classList.remove('silver-result');
+  setText('gold-result-value', fmt(value, currency));
+  const bd = document.getElementById('gold-result-breakdown');
+  bd.innerHTML = `<div class="result-row"><span>Weight in grams</span><span>${grams.toFixed(4)} g</span></div><div class="result-row"><span>Pure gold content</span><span>${(grams * purity).toFixed(4)} g</span></div><div class="result-row"><span>Spot price (24K/g)</span><span>${fmt(gPerG,'USD',4)}</span></div><div class="result-row"><span>Purity factor</span><span>${(purity * 100).toFixed(1)}%</span></div>`;
+  gtag('event', 'calculate_gold', { currency, weight: grams, purity });
+}
+
+function calcSilver() {
+  const weight = document.getElementById('ag-weight').value;
+  const unit = document.getElementById('ag-unit').value;
+  const purity = parseFloat(document.getElementById('ag-purity').value);
+  const currency = document.getElementById('ag-currency').value;
+  const grams = toGrams(weight, unit);
+  const sPerG = silverSpotUSD / TROY_OZ_TO_GRAM;
+  const value = grams * purity * sPerG;
+  const result = document.getElementById('silver-result');
+  result.classList.add('visible');
+  const bd = document.getElementById('silver-result-breakdown');
+  setText('silver-result-value', fmt(value, currency));
+  bd.innerHTML = `<div class="result-row"><span>Weight in grams</span><span>${grams.toFixed(4)} g</span></div><div class="result-row"><span>Pure silver</span><span>${(grams*purity).toFixed(4)} g</span></div><div class="result-row"><span>Silver spot/g</span><span>${fmt(sPerG,'USD',4)}</span></div>`;
+  gtag('event', 'calculate_silver', { currency, weight: grams, purity });
+}
+
+function calcScrap() {
+  const inputs = document.querySelectorAll('#scrapRows input');
+  let totalWeight = 0, totalPureGold = 0, totalValue = 0;
+  inputs.forEach(inp => {
+    const g = parseFloat(inp.value) || 0;
+    const purity = parseFloat(inp.dataset.karat) || 0;
+    totalWeight += g;
+    totalPureGold += g * purity;
+    totalValue += g * purity * (goldSpotUSD / TROY_OZ_TO_GRAM);
+  });
+  setText('scrap-total-weight', totalWeight.toFixed(2) + ' g');
+  setText('scrap-pure-gold', totalPureGold.toFixed(4) + ' g / ' + (totalPureGold / TROY_OZ_TO_GRAM).toFixed(4) + ' ozt');
+  setText('scrap-melt-usd', fmt(totalValue));
+}
+
+function calcScrapSilver() {
+  const inputs = document.querySelectorAll('[data-ag-purity]');
+  let total = 0;
+  inputs.forEach(inp => { const g = parseFloat(inp.value) || 0; total += g * parseFloat(inp.dataset.agPurity) * (silverSpotUSD / TROY_OZ_TO_GRAM); });
+  setText('scrap-ag-total', fmt(total));
+}
+
+// ===== WEIGHT CONVERTER =====
+const WC = { g: 1, oz: TROY_OZ_TO_GRAM, kg: 1000, dwt: 1.55517, grain: 0.0647989, lb: 453.592, avoz: 28.3495 };
+function convertWeight(from, val) {
+  const g = (parseFloat(val) || 0) * WC[from];
+  Object.entries(WC).forEach(([unit, factor]) => {
+    const el = document.getElementById('wc-' + unit);
+    if (el && unit !== from) el.value = (g / factor).toFixed(6).replace(/\.?0+$/, '');
+  });
+}
+
+// ===== CHARTS =====
+function loadChart(range) {
+  currentRange = range;
+  document.querySelectorAll('.range-btn').forEach(b => b.classList.toggle('active', b.textContent === range));
+  const goldData = generateHistoricalData(range, 'gold');
+  const silverData = generateHistoricalData(range, 'silver');
+  const labels = goldData.map(d => d.date);
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+  const textColor = isDark ? '#8a8680' : '#6b6560';
+
+  if (chartInstance) chartInstance.destroy();
+  const ctx = document.getElementById('priceChart');
+  if (!ctx) return;
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Gold (USD/oz)', data: showGoldChart ? goldData.map(d => d.price) : [], borderColor: '#d4a843', backgroundColor: 'rgba(212,168,67,0.08)', borderWidth: 2, pointRadius: 0, tension: 0.3, fill: true, yAxisID: 'y' },
+        { label: 'Silver (USD/oz)', data: showSilverChart ? silverData.map(d => d.price) : [], borderColor: '#a8b4c0', backgroundColor: 'rgba(168,180,192,0.06)', borderWidth: 1.5, pointRadius: 0, tension: 0.3, fill: false, yAxisID: 'y1' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString('en-US', {minimumFractionDigits:2,maximumFractionDigits:2}) } } },
+      scales: {
+        x: { ticks: { color: textColor, maxTicksLimit: 8 }, grid: { color: gridColor } },
+        y: { position: 'left', ticks: { color: '#d4a843', callback: v => '$' + v.toLocaleString() }, grid: { color: gridColor } },
+        y1: { position: 'right', ticks: { color: '#a8b4c0', callback: v => '$' + v.toFixed(2) }, grid: { drawOnChartArea: false } }
+      }
+    }
+  });
+}
+
+function generateHistoricalData(range, metal) {
+  const now = new Date();
+  const days = { '1M': 30, '3M': 90, '1Y': 365, '5Y': 1825, '10Y': 3650 };
+  const n = days[range] || 365;
+  const step = range === '10Y' ? 7 : range === '5Y' ? 4 : 1;
+  const baseGold = goldSpotUSD || 3100;
+  const baseSilver = silverSpotUSD || 35;
+  const historicBase = metal === 'gold' ?
+    { '1M': baseGold * 0.97, '3M': baseGold * 0.93, '1Y': baseGold * 0.80, '5Y': baseGold * 0.55, '10Y': baseGold * 0.38 }[range] :
+    { '1M': baseSilver * 0.97, '3M': baseSilver * 0.93, '1Y': baseSilver * 0.80, '5Y': baseSilver * 0.60, '10Y': baseSilver * 0.45 }[range];
+  const result = [];
+  let price = historicBase;
+  const target = metal === 'gold' ? baseGold : baseSilver;
+  const totalSteps = Math.ceil(n / step);
+  for (let i = 0; i <= totalSteps; i++) {
+    const d = new Date(now);
+    d.setDate(d.getDate() - (n - i * step));
+    const progress = i / totalSteps;
+    const trend = (target - historicBase) * progress;
+    const noise = price * (Math.random() * 0.02 - 0.01);
+    price = historicBase + trend + noise;
+    const label = range === '1M' || range === '3M' ? d.toLocaleDateString('en-US', {month:'short',day:'numeric'}) : range === '1Y' ? d.toLocaleDateString('en-US', {month:'short',year:'numeric'}) : d.getFullYear().toString();
+    result.push({ date: label, price: Math.max(price, 0) });
+  }
+  return result;
+}
+
+function toggleChart(metal) {
+  if (metal === 'gold') { showGoldChart = !showGoldChart; document.getElementById('toggleGold').className = 'chart-toggle ' + (showGoldChart ? 'gold-active' : ''); }
+  else { showSilverChart = !showSilverChart; document.getElementById('toggleSilver').className = 'chart-toggle ' + (showSilverChart ? 'silver-active' : ''); }
+  loadChart(currentRange);
+}
+
+// ===== TAB SWITCHING =====
+function switchTab(name, group) {
+  document.querySelectorAll(`[id^="${group}-"]`).forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById(`${group}-${name}`);
+  if (panel) panel.classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ===== PAGE ROUTING =====
+function showPage(page) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + page);
+  if (navEl) navEl.classList.add('active');
+  if (page === 'charts') setTimeout(() => loadChart(currentRange), 100);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  gtag('event', 'page_view', { page_title: page, page_location: window.location.href + '#' + page });
+}
+
+// ===== MOBILE NAV =====
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+hamburger && hamburger.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+});
+function closeMobile() { mobileNav && mobileNav.classList.remove('open'); hamburger && hamburger.setAttribute('aria-expanded', 'false'); }
+
+// ===== THEME TOGGLE =====
+(function() {
+  const t = document.querySelector('[data-theme-toggle]');
+  const r = document.documentElement;
+  let d = localStorage.getItem('pm-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  r.setAttribute('data-theme', d);
+  function updateIcon() {
+    if (!t) return;
+    t.innerHTML = d === 'dark'
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
+  }
+  updateIcon();
+  t && t.addEventListener('click', () => {
+    d = d === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', d);
+    try { localStorage.setItem('pm-theme', d); } catch(e) {}
+    updateIcon();
+    if (chartInstance) setTimeout(() => loadChart(currentRange), 50);
+  });
+})();
+
+// ===== HELPERS =====
+function setText(id, val) { const el = document.getElementById(id); if (el) el.textContent = val; }
+
+// ===== HASH ROUTING =====
+function handleHash() {
+  const hash = window.location.hash.replace('#', '');
+  const pages = ['home','silver','scrap','charts','converter'];
+  if (pages.includes(hash)) showPage(hash);
+}
+window.addEventListener('hashchange', handleHash);
+
+// ===== INIT =====
+fetchPrices();
+setInterval(fetchPrices, 60000);
+handleHash();
+</script>
+</body>
+</html>
