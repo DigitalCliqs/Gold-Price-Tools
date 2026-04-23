@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gold & Silver Price Calculator — Live 10K 14K 18K 24K Per Gram | PureMetals</title>
+<title>Gold &amp; Silver Price Calculator — Live 10K 14K 18K 24K Per Gram | PureMetals</title>
 <meta name="description" content="Free live gold and silver price calculator. Get 10K, 14K, 18K, 24K gold price per gram today, scrap gold calculator, silver price per troy oz and kilo. Updated every 60 seconds.">
 <meta name="keywords" content="gold calculator, silver calculator, scrap gold calculator, 14k gold price per gram, 10k gold price per gram, 18k gold price per gram, gold price today, silver price today, scrap silver calculator, gold price per gram">
-<meta property="og:title" content="Gold & Silver Price Calculator — Live Prices Per Gram">
+<meta property="og:title" content="Gold &amp; Silver Price Calculator — Live Prices Per Gram">
 <meta property="og:description" content="Live gold and silver calculators — 10K, 14K, 18K, 24K per gram, scrap gold, silver troy oz, kilo prices updated every 60s.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://goldpricetools.com/">
@@ -517,12 +517,12 @@ table { border-collapse: collapse; width: 100%; }
   <!-- Spot Price Cards -->
   <section class="spot-section" aria-label="Live spot prices">
     <div class="spot-grid">
-      <div class="spot-card"><div class="spot-card-label">Gold Spot (XAU)</div><div class="spot-card-price" id="sp-xau-usd">—</div><div class="spot-card-sub">USD per troy oz</div><div class="spot-change" id="sp-xau-chg">—</div></div>
-      <div class="spot-card"><div class="spot-card-label">Gold per Gram (24K)</div><div class="spot-card-price" id="sp-24k-usd">—</div><div class="spot-card-sub">USD per gram — pure gold</div></div>
-      <div class="spot-card"><div class="spot-card-label">14K Gold per Gram</div><div class="spot-card-price" id="sp-14k-usd">—</div><div class="spot-card-sub">USD per gram — 58.3% pure</div></div>
-      <div class="spot-card"><div class="spot-card-label">10K Gold per Gram</div><div class="spot-card-price" id="sp-10k-usd">—</div><div class="spot-card-sub">USD per gram — 41.7% pure</div></div>
-      <div class="spot-card silver"><div class="spot-card-label">Silver Spot (XAG)</div><div class="spot-card-price" id="sp-xag-usd">—</div><div class="spot-card-sub">USD per troy oz</div><div class="spot-change" id="sp-xag-chg">—</div></div>
-      <div class="spot-card silver"><div class="spot-card-label">925 Sterling Silver/g</div><div class="spot-card-price" id="sp-925-usd">—</div><div class="spot-card-sub">USD per gram — 92.5% pure</div></div>
+      <div class="spot-card"><div class="spot-card-label">Gold Spot (XAU)</div><div class="spot-card-price" id="sp-xau-usd">Loading…</div><div class="spot-card-sub">USD per troy oz</div><div class="spot-change" id="sp-xau-chg"></div></div>
+      <div class="spot-card"><div class="spot-card-label">Gold per Gram (24K)</div><div class="spot-card-price" id="sp-24k-usd">Loading…</div><div class="spot-card-sub">USD per gram — pure gold</div></div>
+      <div class="spot-card"><div class="spot-card-label">14K Gold per Gram</div><div class="spot-card-price" id="sp-14k-usd">Loading…</div><div class="spot-card-sub">USD per gram — 58.3% pure</div></div>
+      <div class="spot-card"><div class="spot-card-label">10K Gold per Gram</div><div class="spot-card-price" id="sp-10k-usd">Loading…</div><div class="spot-card-sub">USD per gram — 41.7% pure</div></div>
+      <div class="spot-card silver"><div class="spot-card-label">Silver Spot (XAG)</div><div class="spot-card-price" id="sp-xag-usd">Loading…</div><div class="spot-card-sub">USD per troy oz</div><div class="spot-change" id="sp-xag-chg"></div></div>
+      <div class="spot-card silver"><div class="spot-card-label">925 Sterling Silver/g</div><div class="spot-card-price" id="sp-925-usd">Loading…</div><div class="spot-card-sub">USD per gram — 92.5% pure</div></div>
     </div>
     <p class="last-updated" id="lastUpdated">Fetching live prices…</p>
   </section>
@@ -1035,48 +1035,75 @@ table { border-collapse: collapse; width: 100%; }
 <script>
 // ===== CONSTANTS =====
 const TROY_OZ_TO_GRAM = 31.1035;
-const KARATS = { '0.999': 1, '0.916': 22/24, '0.75': 18/24, '0.583': 14/24, '0.417': 10/24, '0.375': 9/24, '0.333': 8/24 };
+// FX rates relative to USD (approximate - gold-api.com returns USD prices)
 const FX_RATES = { USD: 1, GBP: 0.792, EUR: 0.924, CAD: 1.362, AUD: 1.538, INR: 83.45 };
 
-// ===== STATE =====
-let goldSpotUSD = 0; // per troy oz
-let silverSpotUSD = 0;
+// ===== STATE — initialised with realistic defaults so page is never blank =====
+let goldSpotUSD = 3300;   // sensible default; replaced on first API response
+let silverSpotUSD = 33;   // sensible default; replaced on first API response
+let pricesLoaded = false;
 let chartInstance = null;
 let showGoldChart = true;
 let showSilverChart = true;
 let currentRange = '1Y';
 
 // ===== PRICE FETCHING =====
+// FIX: removed broken goldapi.io fallback (required paid API key).
+// Primary: api.gold-api.com (free, no key, CORS-enabled).
+// Fallback: open.er-api.com XAU/USD conversion.
+// Final fallback: keep current defaults and show stale-data notice.
 async function fetchPrices() {
   try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
     const [gRes, sRes] = await Promise.all([
-      fetch('https://api.gold-api.com/price/XAU'),
-      fetch('https://api.gold-api.com/price/XAG')
+      fetch('https://api.gold-api.com/price/XAU', { signal: controller.signal }),
+      fetch('https://api.gold-api.com/price/XAG', { signal: controller.signal })
     ]);
-    if (!gRes.ok || !sRes.ok) throw new Error('API error');
+    clearTimeout(timer);
+    if (!gRes.ok || !sRes.ok) throw new Error('API HTTP error');
     const [gData, sData] = await Promise.all([gRes.json(), sRes.json()]);
-    goldSpotUSD = gData.price;
-    silverSpotUSD = sData.price;
-    const gChange = gData.chp || 0;
-    const sChange = sData.chp || 0;
-    updateUI(gChange, sChange);
-  } catch (e) {
+    // Validate numeric price before assigning
+    const gPrice = parseFloat(gData.price);
+    const sPrice = parseFloat(sData.price);
+    if (!isFinite(gPrice) || gPrice <= 0) throw new Error('Invalid gold price');
+    if (!isFinite(sPrice) || sPrice <= 0) throw new Error('Invalid silver price');
+    goldSpotUSD = gPrice;
+    silverSpotUSD = sPrice;
+    pricesLoaded = true;
+    // api.gold-api.com does not provide a chp (change %) field — show n/a safely
+    updateUI(null, null);
+  } catch (primaryErr) {
+    // Fallback: try open.er-api.com which gives XAU and XAG rates vs USD
     try {
-      const r = await fetch('https://www.goldapi.io/api/XAU/USD', { headers: { 'x-access-token': 'goldapi-free' } });
+      const r = await fetch('https://open.er-api.com/v6/latest/USD');
+      if (!r.ok) throw new Error('er-api error');
       const d = await r.json();
-      goldSpotUSD = d.price || 3100;
-      silverSpotUSD = d.silver_price || 35;
-      updateUI(0, 0);
-    } catch (e2) {
-      goldSpotUSD = 3100; silverSpotUSD = 35;
-      updateUI(0, 0);
+      // XAU and XAG rates here are oz per USD (inverted), so gold = 1 / rates.XAU
+      const xauRate = d.rates && d.rates.XAU;
+      const xagRate = d.rates && d.rates.XAG;
+      if (xauRate && xauRate > 0) goldSpotUSD = 1 / xauRate;
+      if (xagRate && xagRate > 0) silverSpotUSD = 1 / xagRate;
+      pricesLoaded = true;
+      updateUI(null, null);
+    } catch (fallbackErr) {
+      // Both APIs failed — use defaults already set, render page with note
+      updateUI(null, null);
+      setText('lastUpdated', 'Using estimated prices — live feed temporarily unavailable. Refresh to retry.');
     }
   }
 }
 
 function fmt(n, cur = 'USD', decimals = 2) {
-  const sym = { USD: '$', GBP: '£', EUR: '€', CAD: 'CA$', AUD: 'A$', INR: '₹' };
-  return (sym[cur] || '$') + (n * FX_RATES[cur]).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  const syms = { USD: '$', GBP: '£', EUR: '€', CAD: 'CA$', AUD: 'A$', INR: '₹' };
+  const rate = FX_RATES[cur] || 1;
+  const sym = syms[cur] || '$';
+  return sym + (n * rate).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
+
+// Format INR without double-applying rate (INR rate already in FX_RATES)
+function fmtINR(valueUSD, decimals = 2) {
+  return '₹' + (valueUSD * FX_RATES.INR).toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 }
 
 function updateUI(gChg, sChg) {
@@ -1093,27 +1120,67 @@ function updateUI(gChg, sChg) {
   setText('sp-10k-usd', fmt(gPerG * 0.417, 'USD', 2) + '/g');
   setText('sp-925-usd', fmt(sPerG * 0.925, 'USD', 4) + '/g');
 
+  // Change indicators — only show if valid number provided by API
   const gChgEl = document.getElementById('sp-xau-chg');
   const sChgEl = document.getElementById('sp-xag-chg');
-  if (gChgEl) { gChgEl.textContent = (gChg >= 0 ? '+' : '') + gChg.toFixed(2) + '%'; gChgEl.className = 'spot-change ' + (gChg >= 0 ? 'up' : 'down'); }
-  if (sChgEl) { sChgEl.textContent = (sChg >= 0 ? '+' : '') + sChg.toFixed(2) + '%'; sChgEl.className = 'spot-change ' + (sChg >= 0 ? 'up' : 'down'); }
+  if (gChgEl && gChg !== null && isFinite(gChg)) {
+    gChgEl.textContent = (gChg >= 0 ? '+' : '') + gChg.toFixed(2) + '%';
+    gChgEl.className = 'spot-change ' + (gChg >= 0 ? 'up' : 'down');
+  }
+  if (sChgEl && sChg !== null && isFinite(sChg)) {
+    sChgEl.textContent = (sChg >= 0 ? '+' : '') + sChg.toFixed(2) + '%';
+    sChgEl.className = 'spot-change ' + (sChg >= 0 ? 'up' : 'down');
+  }
 
-  // Ticker
-  const tickerIds = [['t-xau','t-xau2'], ['t-xag','t-xag2'], ['t-24k','t-24k2'], ['t-18k','t-18k2'], ['t-14k','t-14k2'], ['t-10k','t-10k2'], ['t-925','t-9252']];
-  const tickerVals = [fmt(g), fmt(s), fmt(gPerG,'USD',2)+'/g', fmt(gPerG*0.75,'USD',2)+'/g', fmt(gPerG*0.583,'USD',2)+'/g', fmt(gPerG*0.417,'USD',2)+'/g', fmt(sPerG*0.925,'USD',4)+'/g'];
-  tickerIds.forEach(([a,b], i) => { setText(a, tickerVals[i]); setText(b, tickerVals[i]); });
+  // Ticker bar
+  const tickerPairs = [
+    ['t-xau','t-xau2', fmt(g)],
+    ['t-xag','t-xag2', fmt(s)],
+    ['t-24k','t-24k2', fmt(gPerG,'USD',2)+'/g'],
+    ['t-18k','t-18k2', fmt(gPerG*0.75,'USD',2)+'/g'],
+    ['t-14k','t-14k2', fmt(gPerG*0.583,'USD',2)+'/g'],
+    ['t-10k','t-10k2', fmt(gPerG*0.417,'USD',2)+'/g'],
+    ['t-925','t-9252', fmt(sPerG*0.925,'USD',4)+'/g']
+  ];
+  tickerPairs.forEach(([a, b, val]) => { setText(a, val); setText(b, val); });
 
   const tcXauC = document.getElementById('t-xau-c');
-  if (tcXauC) { tcXauC.textContent = (gChg >= 0 ? '▲' : '▼') + Math.abs(gChg).toFixed(2) + '%'; tcXauC.className = 'ticker-change ' + (gChg >= 0 ? 'up' : 'down'); }
+  if (tcXauC && gChg !== null && isFinite(gChg)) {
+    tcXauC.textContent = (gChg >= 0 ? '▲' : '▼') + Math.abs(gChg).toFixed(2) + '%';
+    tcXauC.className = 'ticker-change ' + (gChg >= 0 ? 'up' : 'down');
+  }
 
-  // Sidebar quick ref
-  const refs = { 'qr-24g': fmt(gPerG,'USD',2), 'qr-18g': fmt(gPerG*0.75,'USD',2), 'qr-14g': fmt(gPerG*0.583,'USD',2), 'qr-10g': fmt(gPerG*0.417,'USD',2), 'qr-9g': fmt(gPerG*0.375,'USD',2), 'qr-24oz': fmt(g,'USD',2), 'qr-18oz': fmt(g*0.75,'USD',2), 'qr-14oz': fmt(g*0.583,'USD',2), 'qr-10oz': fmt(g*0.417,'USD',2), 'qr-ag999g': fmt(sPerG,'USD',4), 'qr-ag925g': fmt(sPerG*0.925,'USD',4), 'qr-agoz': fmt(s,'USD',2), 'qr-agkg': fmt(s*32.1507,'USD',2) };
+  // Sidebar quick ref — gold
+  const refs = {
+    'qr-24g': fmt(gPerG,'USD',2),
+    'qr-18g': fmt(gPerG*0.75,'USD',2),
+    'qr-14g': fmt(gPerG*0.583,'USD',2),
+    'qr-10g': fmt(gPerG*0.417,'USD',2),
+    'qr-9g':  fmt(gPerG*0.375,'USD',2),
+    'qr-24oz': fmt(g,'USD',2),
+    'qr-18oz': fmt(g*0.75,'USD',2),
+    'qr-14oz': fmt(g*0.583,'USD',2),
+    'qr-10oz': fmt(g*0.417,'USD',2),
+    'qr-ag999g': fmt(sPerG,'USD',4),
+    'qr-ag925g': fmt(sPerG*0.925,'USD',4),
+    'qr-agoz':   fmt(s,'USD',2),
+    'qr-agkg':   fmt(s*32.1507,'USD',2)
+  };
   Object.entries(refs).forEach(([id, val]) => setText(id, val));
 
-  const refs2 = { 'qr2-agoz': fmt(s,'USD',2), 'qr2-ag999g': fmt(sPerG,'USD',4), 'qr2-ag925g': fmt(sPerG*0.925,'USD',4), 'qr2-agkg': fmt(s*32.1507,'USD',2), 'qr2-1oz': fmt(s,'USD',2), 'qr2-in10g': fmt(sPerG*10*FX_RATES.INR/FX_RATES.USD,'USD',2).replace('$','₹') };
+  // Silver page quick ref
+  const refs2 = {
+    'qr2-agoz':   fmt(s,'USD',2),
+    'qr2-ag999g': fmt(sPerG,'USD',4),
+    'qr2-ag925g': fmt(sPerG*0.925,'USD',4),
+    'qr2-agkg':   fmt(s*32.1507,'USD',2),
+    'qr2-1oz':    fmt(s,'USD',2),
+    // Indian silver per 10g — convert USD to INR directly (FX_RATES.INR = INR per 1 USD)
+    'qr2-in10g':  fmtINR(sPerG * 10, 2)
+  };
   Object.entries(refs2).forEach(([id, val]) => setText(id, val));
 
-  // Tables
+  // Karat tables
   buildGoldTable('tbl-14k', 0.583);
   buildGoldTable('tbl-10k', 0.417);
   buildGoldTable('tbl-18k', 0.75);
@@ -1133,45 +1200,80 @@ function updateUI(gChg, sChg) {
 function buildGoldTable(id, purity) {
   const el = document.getElementById(id); if (!el) return;
   const gPerG = goldSpotUSD / TROY_OZ_TO_GRAM * purity;
-  const rows = [['1 gram', gPerG], ['3 grams', gPerG*3], ['5 grams', gPerG*5], ['10 grams', gPerG*10], ['1 troy oz (31.1g)', goldSpotUSD*purity], ['1 oz (28.35g)', gPerG*28.35], ['1 kg', gPerG*1000], ['1 pound (453.6g)', gPerG*453.6]];
+  const rows = [
+    ['1 gram', gPerG],
+    ['3 grams', gPerG * 3],
+    ['5 grams', gPerG * 5],
+    ['10 grams', gPerG * 10],
+    ['1 troy oz (31.1g)', goldSpotUSD * purity],
+    ['1 oz (28.35g)', gPerG * 28.35],
+    ['1 kg', gPerG * 1000],
+    ['1 pound (453.6g)', gPerG * 453.6]
+  ];
   el.innerHTML = rows.map(([lbl, val]) => `<tr><td>${lbl}</td><td>${fmt(val)}</td></tr>`).join('');
 }
 
 function buildSilverTable(id, purity) {
   const el = document.getElementById(id); if (!el) return;
   const sPerG = silverSpotUSD / TROY_OZ_TO_GRAM * purity;
-  const rows = [['1 gram', sPerG], ['10 grams', sPerG*10], ['1 troy oz', silverSpotUSD*purity], ['100 grams', sPerG*100], ['500 grams', sPerG*500], ['1 kg', sPerG*1000]];
+  const rows = [
+    ['1 gram', sPerG],
+    ['10 grams', sPerG * 10],
+    ['1 troy oz', silverSpotUSD * purity],
+    ['100 grams', sPerG * 100],
+    ['500 grams', sPerG * 500],
+    ['1 kg', sPerG * 1000]
+  ];
   el.innerHTML = rows.map(([lbl, val]) => `<tr><td>${lbl}</td><td>${fmt(val,'USD',4)}</td></tr>`).join('');
 }
 
 function buildSilverKgTable() {
   const el = document.getElementById('tbl-agkg'); if (!el) return;
   const sPerKg = silverSpotUSD * 32.1507;
-  const rows = [['.999 Fine', sPerKg], ['925 Sterling', sPerKg*0.925], ['.900 Coin', sPerKg*0.9], ['.800 Silver', sPerKg*0.8]];
+  const rows = [['.999 Fine', sPerKg], ['925 Sterling', sPerKg * 0.925], ['.900 Coin', sPerKg * 0.9], ['.800 Silver', sPerKg * 0.8]];
   el.innerHTML = rows.map(([lbl, val]) => `<tr><td>${lbl}</td><td>${fmt(val)}</td></tr>`).join('');
 }
 
 function buildCoinTable() {
   const el = document.getElementById('tbl-agcoins'); if (!el) return;
   const s = silverSpotUSD;
-  const coins = [['Morgan Dollar (0.7735 ozt)', s*0.7735], ['Peace Dollar (0.7734 ozt)', s*0.7734], ['Walking Liberty Half (0.3617 ozt)', s*0.3617], ['Franklin Half (0.3617 ozt)', s*0.3617], ['Washington Quarter (0.1808 ozt)', s*0.1808], ['Roosevelt Dime (0.07234 ozt)', s*0.07234]];
+  const coins = [
+    ['Morgan Dollar (0.7735 ozt)', s * 0.7735],
+    ['Peace Dollar (0.7734 ozt)', s * 0.7734],
+    ['Walking Liberty Half (0.3617 ozt)', s * 0.3617],
+    ['Franklin Half (0.3617 ozt)', s * 0.3617],
+    ['Washington Quarter (0.1808 ozt)', s * 0.1808],
+    ['Roosevelt Dime (0.07234 ozt)', s * 0.07234]
+  ];
   el.innerHTML = coins.map(([lbl, val]) => `<tr><td>${lbl}</td><td>${fmt(val,'USD',4)}</td></tr>`).join('');
 }
 
 function buildBarGrid() {
   const el = document.getElementById('barGrid'); if (!el) return;
-  const bars = [['Good Delivery', '400 troy oz', 400], ['100 oz Bar', '100 troy oz', 100], ['1 Kilogram', '32.15 troy oz', 32.1507], ['10 oz Bar', '10 troy oz', 10], ['1 oz Gold Eagle', '1.0909 troy oz', 1.0909*0.9167], ['1 oz Bar', '1 troy oz', 1], ['1/2 oz Bar', '0.5 troy oz', 0.5], ['1g Bar', '0.03215 troy oz', 1/TROY_OZ_TO_GRAM]];
-  el.innerHTML = bars.map(([name, sub, oz]) => `
+  const bars = [
+    ['Good Delivery', '400 troy oz', 400],
+    ['100 oz Bar', '100 troy oz', 100],
+    ['1 Kilogram', '32.15 troy oz', 32.1507],
+    ['10 oz Bar', '10 troy oz', 10],
+    ['1 oz Gold Eagle', '1.0909 troy oz', 1.0909 * 0.9167],
+    ['1 oz Bar', '1 troy oz', 1],
+    ['1/2 oz Bar', '0.5 troy oz', 0.5],
+    ['1g Bar', '0.03215 troy oz', 1 / TROY_OZ_TO_GRAM]
+  ];
+  el.innerHTML = bars.map(([name, sub, oz]) => {
+    const safeId = name.replace(/\s+/g, '-');
+    return `
     <div class="bar-card">
       <div class="bar-name">${name}</div>
       <div class="bar-oz">${sub}</div>
-      <div class="bar-price" id="bar-${name.replace(/\s+/g,'-')}">${fmt(goldSpotUSD*oz)}</div>
+      <div class="bar-price" id="bar-${safeId}">${fmt(goldSpotUSD * oz)}</div>
       <div class="bar-qty-wrap">
         <span style="font-size:var(--text-xs);color:var(--color-text-muted)">Qty:</span>
-        <input type="number" min="1" value="1" oninput="updateBarQty(this,'${name.replace(/\s+/g,'-')}',${oz})" aria-label="Quantity">
-        <span class="bar-price" id="bar-qty-${name.replace(/\s+/g,'-')}" style="font-size:var(--text-xs);color:var(--color-text-muted)"></span>
+        <input type="number" min="1" value="1" oninput="updateBarQty(this,'${safeId}',${oz})" aria-label="Quantity">
+        <span class="bar-price" id="bar-qty-${safeId}" style="font-size:var(--text-xs);color:var(--color-text-muted)"></span>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function updateBarQty(input, id, oz) {
@@ -1183,51 +1285,66 @@ function updateBarQty(input, id, oz) {
 // ===== CALCULATORS =====
 function toGrams(weight, unit) {
   const w = parseFloat(weight) || 0;
-  switch(unit) { case 'gram': return w; case 'oz': return w * TROY_OZ_TO_GRAM; case 'kg': return w * 1000; case 'dwt': return w * 1.55517; case 'lb': return w * 453.592; case 'grain': return w * 0.0647989; default: return w; }
+  switch (unit) {
+    case 'gram':  return w;
+    case 'oz':    return w * TROY_OZ_TO_GRAM;
+    case 'kg':    return w * 1000;
+    case 'dwt':   return w * 1.55517;
+    case 'lb':    return w * 453.592;
+    case 'grain': return w * 0.0647989;
+    default:      return w;
+  }
 }
 
 function calcGold() {
-  const weight = document.getElementById('gold-weight').value;
-  const unit = document.getElementById('gold-unit').value;
-  const purity = parseFloat(document.getElementById('gold-karat').value);
+  const weight   = document.getElementById('gold-weight').value;
+  const unit     = document.getElementById('gold-unit').value;
+  const purity   = parseFloat(document.getElementById('gold-karat').value);
   const currency = document.getElementById('gold-currency').value;
-  const grams = toGrams(weight, unit);
-  const gPerG = goldSpotUSD / TROY_OZ_TO_GRAM;
-  const value = grams * purity * gPerG;
-  const result = document.getElementById('gold-result');
+  const grams    = toGrams(weight, unit);
+  const gPerG    = goldSpotUSD / TROY_OZ_TO_GRAM;
+  const value    = grams * purity * gPerG;
+  const result   = document.getElementById('gold-result');
   result.classList.add('visible');
   result.classList.remove('silver-result');
   setText('gold-result-value', fmt(value, currency));
   const bd = document.getElementById('gold-result-breakdown');
-  bd.innerHTML = `<div class="result-row"><span>Weight in grams</span><span>${grams.toFixed(4)} g</span></div><div class="result-row"><span>Pure gold content</span><span>${(grams * purity).toFixed(4)} g</span></div><div class="result-row"><span>Spot price (24K/g)</span><span>${fmt(gPerG,'USD',4)}</span></div><div class="result-row"><span>Purity factor</span><span>${(purity * 100).toFixed(1)}%</span></div>`;
-  gtag('event', 'calculate_gold', { currency, weight: grams, purity });
+  bd.innerHTML = `
+    <div class="result-row"><span>Weight in grams</span><span>${grams.toFixed(4)} g</span></div>
+    <div class="result-row"><span>Pure gold content</span><span>${(grams * purity).toFixed(4)} g</span></div>
+    <div class="result-row"><span>Spot price (24K/g)</span><span>${fmt(gPerG,'USD',4)}</span></div>
+    <div class="result-row"><span>Purity factor</span><span>${(purity * 100).toFixed(1)}%</span></div>`;
+  if (typeof gtag === 'function') gtag('event', 'calculate_gold', { currency, weight: grams, purity });
 }
 
 function calcSilver() {
-  const weight = document.getElementById('ag-weight').value;
-  const unit = document.getElementById('ag-unit').value;
-  const purity = parseFloat(document.getElementById('ag-purity').value);
+  const weight   = document.getElementById('ag-weight').value;
+  const unit     = document.getElementById('ag-unit').value;
+  const purity   = parseFloat(document.getElementById('ag-purity').value);
   const currency = document.getElementById('ag-currency').value;
-  const grams = toGrams(weight, unit);
-  const sPerG = silverSpotUSD / TROY_OZ_TO_GRAM;
-  const value = grams * purity * sPerG;
-  const result = document.getElementById('silver-result');
+  const grams    = toGrams(weight, unit);
+  const sPerG    = silverSpotUSD / TROY_OZ_TO_GRAM;
+  const value    = grams * purity * sPerG;
+  const result   = document.getElementById('silver-result');
   result.classList.add('visible');
-  const bd = document.getElementById('silver-result-breakdown');
   setText('silver-result-value', fmt(value, currency));
-  bd.innerHTML = `<div class="result-row"><span>Weight in grams</span><span>${grams.toFixed(4)} g</span></div><div class="result-row"><span>Pure silver</span><span>${(grams*purity).toFixed(4)} g</span></div><div class="result-row"><span>Silver spot/g</span><span>${fmt(sPerG,'USD',4)}</span></div>`;
-  gtag('event', 'calculate_silver', { currency, weight: grams, purity });
+  const bd = document.getElementById('silver-result-breakdown');
+  bd.innerHTML = `
+    <div class="result-row"><span>Weight in grams</span><span>${grams.toFixed(4)} g</span></div>
+    <div class="result-row"><span>Pure silver</span><span>${(grams * purity).toFixed(4)} g</span></div>
+    <div class="result-row"><span>Silver spot/g</span><span>${fmt(sPerG,'USD',4)}</span></div>`;
+  if (typeof gtag === 'function') gtag('event', 'calculate_silver', { currency, weight: grams, purity });
 }
 
 function calcScrap() {
   const inputs = document.querySelectorAll('#scrapRows input');
   let totalWeight = 0, totalPureGold = 0, totalValue = 0;
   inputs.forEach(inp => {
-    const g = parseFloat(inp.value) || 0;
+    const g      = parseFloat(inp.value) || 0;
     const purity = parseFloat(inp.dataset.karat) || 0;
-    totalWeight += g;
-    totalPureGold += g * purity;
-    totalValue += g * purity * (goldSpotUSD / TROY_OZ_TO_GRAM);
+    totalWeight    += g;
+    totalPureGold  += g * purity;
+    totalValue     += g * purity * (goldSpotUSD / TROY_OZ_TO_GRAM);
   });
   setText('scrap-total-weight', totalWeight.toFixed(2) + ' g');
   setText('scrap-pure-gold', totalPureGold.toFixed(4) + ' g / ' + (totalPureGold / TROY_OZ_TO_GRAM).toFixed(4) + ' ozt');
@@ -1237,7 +1354,10 @@ function calcScrap() {
 function calcScrapSilver() {
   const inputs = document.querySelectorAll('[data-ag-purity]');
   let total = 0;
-  inputs.forEach(inp => { const g = parseFloat(inp.value) || 0; total += g * parseFloat(inp.dataset.agPurity) * (silverSpotUSD / TROY_OZ_TO_GRAM); });
+  inputs.forEach(inp => {
+    const g = parseFloat(inp.value) || 0;
+    total += g * parseFloat(inp.dataset.agPurity) * (silverSpotUSD / TROY_OZ_TO_GRAM);
+  });
   setText('scrap-ag-total', fmt(total));
 }
 
@@ -1255,12 +1375,12 @@ function convertWeight(from, val) {
 function loadChart(range) {
   currentRange = range;
   document.querySelectorAll('.range-btn').forEach(b => b.classList.toggle('active', b.textContent === range));
-  const goldData = generateHistoricalData(range, 'gold');
+  const goldData   = generateHistoricalData(range, 'gold');
   const silverData = generateHistoricalData(range, 'silver');
-  const labels = goldData.map(d => d.date);
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
-  const textColor = isDark ? '#8a8680' : '#6b6560';
+  const labels     = goldData.map(d => d.date);
+  const isDark     = document.documentElement.getAttribute('data-theme') === 'dark';
+  const gridColor  = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+  const textColor  = isDark ? '#8a8680' : '#6b6560';
 
   if (chartInstance) chartInstance.destroy();
   const ctx = document.getElementById('priceChart');
@@ -1270,52 +1390,63 @@ function loadChart(range) {
     data: {
       labels,
       datasets: [
-        { label: 'Gold (USD/oz)', data: showGoldChart ? goldData.map(d => d.price) : [], borderColor: '#d4a843', backgroundColor: 'rgba(212,168,67,0.08)', borderWidth: 2, pointRadius: 0, tension: 0.3, fill: true, yAxisID: 'y' },
+        { label: 'Gold (USD/oz)',   data: showGoldChart   ? goldData.map(d => d.price)   : [], borderColor: '#d4a843', backgroundColor: 'rgba(212,168,67,0.08)',   borderWidth: 2,   pointRadius: 0, tension: 0.3, fill: true,  yAxisID: 'y'  },
         { label: 'Silver (USD/oz)', data: showSilverChart ? silverData.map(d => d.price) : [], borderColor: '#a8b4c0', backgroundColor: 'rgba(168,180,192,0.06)', borderWidth: 1.5, pointRadius: 0, tension: 0.3, fill: false, yAxisID: 'y1' }
       ]
     },
     options: {
       responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString('en-US', {minimumFractionDigits:2,maximumFractionDigits:2}) } } },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) } }
+      },
       scales: {
-        x: { ticks: { color: textColor, maxTicksLimit: 8 }, grid: { color: gridColor } },
-        y: { position: 'left', ticks: { color: '#d4a843', callback: v => '$' + v.toLocaleString() }, grid: { color: gridColor } },
-        y1: { position: 'right', ticks: { color: '#a8b4c0', callback: v => '$' + v.toFixed(2) }, grid: { drawOnChartArea: false } }
+        x:  { ticks: { color: textColor, maxTicksLimit: 8 }, grid: { color: gridColor } },
+        y:  { position: 'left',  ticks: { color: '#d4a843', callback: v => '$' + v.toLocaleString() }, grid: { color: gridColor } },
+        y1: { position: 'right', ticks: { color: '#a8b4c0', callback: v => '$' + v.toFixed(2) },       grid: { drawOnChartArea: false } }
       }
     }
   });
 }
 
 function generateHistoricalData(range, metal) {
-  const now = new Date();
+  const now  = new Date();
   const days = { '1M': 30, '3M': 90, '1Y': 365, '5Y': 1825, '10Y': 3650 };
-  const n = days[range] || 365;
+  const n    = days[range] || 365;
   const step = range === '10Y' ? 7 : range === '5Y' ? 4 : 1;
-  const baseGold = goldSpotUSD || 3100;
-  const baseSilver = silverSpotUSD || 35;
-  const historicBase = metal === 'gold' ?
-    { '1M': baseGold * 0.97, '3M': baseGold * 0.93, '1Y': baseGold * 0.80, '5Y': baseGold * 0.55, '10Y': baseGold * 0.38 }[range] :
-    { '1M': baseSilver * 0.97, '3M': baseSilver * 0.93, '1Y': baseSilver * 0.80, '5Y': baseSilver * 0.60, '10Y': baseSilver * 0.45 }[range];
+  const baseGold   = goldSpotUSD   || 3300;
+  const baseSilver = silverSpotUSD || 33;
+  const historicBase = metal === 'gold'
+    ? { '1M': baseGold   * 0.97, '3M': baseGold   * 0.93, '1Y': baseGold   * 0.80, '5Y': baseGold   * 0.55, '10Y': baseGold   * 0.38 }[range]
+    : { '1M': baseSilver * 0.97, '3M': baseSilver * 0.93, '1Y': baseSilver * 0.80, '5Y': baseSilver * 0.60, '10Y': baseSilver * 0.45 }[range];
   const result = [];
   let price = historicBase;
-  const target = metal === 'gold' ? baseGold : baseSilver;
+  const target     = metal === 'gold' ? baseGold : baseSilver;
   const totalSteps = Math.ceil(n / step);
   for (let i = 0; i <= totalSteps; i++) {
     const d = new Date(now);
     d.setDate(d.getDate() - (n - i * step));
     const progress = i / totalSteps;
-    const trend = (target - historicBase) * progress;
-    const noise = price * (Math.random() * 0.02 - 0.01);
+    const trend    = (target - historicBase) * progress;
+    const noise    = price * (Math.random() * 0.02 - 0.01);
     price = historicBase + trend + noise;
-    const label = range === '1M' || range === '3M' ? d.toLocaleDateString('en-US', {month:'short',day:'numeric'}) : range === '1Y' ? d.toLocaleDateString('en-US', {month:'short',year:'numeric'}) : d.getFullYear().toString();
+    const label =
+      range === '1M' || range === '3M' ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) :
+      range === '1Y'                   ? d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) :
+      d.getFullYear().toString();
     result.push({ date: label, price: Math.max(price, 0) });
   }
   return result;
 }
 
 function toggleChart(metal) {
-  if (metal === 'gold') { showGoldChart = !showGoldChart; document.getElementById('toggleGold').className = 'chart-toggle ' + (showGoldChart ? 'gold-active' : ''); }
-  else { showSilverChart = !showSilverChart; document.getElementById('toggleSilver').className = 'chart-toggle ' + (showSilverChart ? 'silver-active' : ''); }
+  if (metal === 'gold') {
+    showGoldChart = !showGoldChart;
+    document.getElementById('toggleGold').className = 'chart-toggle ' + (showGoldChart ? 'gold-active' : '');
+  } else {
+    showSilverChart = !showSilverChart;
+    document.getElementById('toggleSilver').className = 'chart-toggle ' + (showSilverChart ? 'silver-active' : '');
+  }
   loadChart(currentRange);
 }
 
@@ -1325,7 +1456,7 @@ function switchTab(name, group) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   const panel = document.getElementById(`${group}-${name}`);
   if (panel) panel.classList.add('active');
-  event.target.classList.add('active');
+  if (event && event.target) event.target.classList.add('active');
 }
 
 // ===== PAGE ROUTING =====
@@ -1338,23 +1469,34 @@ function showPage(page) {
   if (navEl) navEl.classList.add('active');
   if (page === 'charts') setTimeout(() => loadChart(currentRange), 100);
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  gtag('event', 'page_view', { page_title: page, page_location: window.location.href + '#' + page });
+  if (typeof gtag === 'function') gtag('event', 'page_view', { page_title: page, page_location: window.location.href + '#' + page });
 }
 
 // ===== MOBILE NAV =====
 const hamburger = document.getElementById('hamburgerBtn');
 const mobileNav = document.getElementById('mobileNav');
-hamburger && hamburger.addEventListener('click', () => {
+if (hamburger) hamburger.addEventListener('click', () => {
   const open = mobileNav.classList.toggle('open');
   hamburger.setAttribute('aria-expanded', open);
 });
-function closeMobile() { mobileNav && mobileNav.classList.remove('open'); hamburger && hamburger.setAttribute('aria-expanded', 'false'); }
+function closeMobile() {
+  if (mobileNav) mobileNav.classList.remove('open');
+  if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+}
 
 // ===== THEME TOGGLE =====
+// FIX: localStorage wrapped in helper to prevent crashes on hosts that block storage.
+// Theme preference is kept in JS variable as fallback.
 (function() {
+  function safeGetTheme() {
+    try { return localStorage.getItem('pm-theme'); } catch(e) { return null; }
+  }
+  function safeSetTheme(val) {
+    try { localStorage.setItem('pm-theme', val); } catch(e) { /* storage blocked — theme persists in memory only */ }
+  }
   const t = document.querySelector('[data-theme-toggle]');
   const r = document.documentElement;
-  let d = localStorage.getItem('pm-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  let d = safeGetTheme() || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   r.setAttribute('data-theme', d);
   function updateIcon() {
     if (!t) return;
@@ -1364,27 +1506,32 @@ function closeMobile() { mobileNav && mobileNav.classList.remove('open'); hambur
     t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
   }
   updateIcon();
-  t && t.addEventListener('click', () => {
+  if (t) t.addEventListener('click', () => {
     d = d === 'dark' ? 'light' : 'dark';
     r.setAttribute('data-theme', d);
-    try { localStorage.setItem('pm-theme', d); } catch(e) {}
+    safeSetTheme(d);
     updateIcon();
     if (chartInstance) setTimeout(() => loadChart(currentRange), 50);
   });
 })();
 
 // ===== HELPERS =====
-function setText(id, val) { const el = document.getElementById(id); if (el) el.textContent = val; }
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
 
 // ===== HASH ROUTING =====
 function handleHash() {
-  const hash = window.location.hash.replace('#', '');
-  const pages = ['home','silver','scrap','charts','converter'];
+  const hash  = window.location.hash.replace('#', '');
+  const pages = ['home', 'silver', 'scrap', 'charts', 'converter'];
   if (pages.includes(hash)) showPage(hash);
 }
 window.addEventListener('hashchange', handleHash);
 
 // ===== INIT =====
+// Render page immediately with defaults, then replace with live prices
+updateUI(null, null);
 fetchPrices();
 setInterval(fetchPrices, 60000);
 handleHash();
