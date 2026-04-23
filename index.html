@@ -2,6 +2,14 @@
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZPLL52C3K8');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Gold &amp; Silver Calculator – Live 10K 14K 18K Price Per Gram</title>
 <meta name="description" content="Free live gold and silver calculator. Get the exact 10K, 14K, 18K &amp; 24K gold price per gram today. Scrap gold calculator, silver spot price, gold bar values — updated every 60 seconds.">
@@ -36,6 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.gold-api.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="https://unpkg.com">
 <!-- Fonts -->
@@ -901,7 +910,6 @@ async function fetchPrices(){
       spotPrices.XAU=d2.price||3320;
     }catch(e2){spotPrices.XAU=3320;}
   }
-  // Approximate silver ratio
   spotPrices.XAG=spotPrices.XAU/90;
   spotPrices.XPT=1050;
   spotPrices.XPD=1200;
@@ -913,14 +921,12 @@ function updateUI(){
   var au=spotPrices.XAU,ag=spotPrices.XAG;
   var pg=au/31.1035;
 
-  // Spot cards
   document.getElementById('spot-gold').textContent='$'+fmt(au,2);
   document.getElementById('spot-silver').textContent='$'+fmt(ag,2);
   document.getElementById('spot-platinum').textContent='$'+fmt(spotPrices.XPT,2);
   document.getElementById('spot-palladium').textContent='$'+fmt(spotPrices.XPD,2);
   document.getElementById('last-updated').textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+' BST';
 
-  // Karat table
   var karats=[[24,1,'k24'],[22,0.9167,'k22'],[18,0.75,'k18'],[14,0.5833,'k14'],[10,0.4167,'k10'],[9,0.375,'k9']];
   karats.forEach(function(k){
     var gUSD=pg*k[1],gGBP=gUSD*(FX.GBP||0.79),ozUSD=au*k[1];
@@ -930,7 +936,6 @@ function updateUI(){
     el=document.getElementById(id+'-oz-usd'); if(el) el.textContent='$'+fmt(ozUSD,2);
   });
 
-  // Silver table
   var ag_g=ag/31.1035,ag_kg=ag*32.1507;
   var purities=[[999,0.999,'s999'],[925,0.925,'s925'],[900,0.900,'s900'],[800,0.800,'s800']];
   purities.forEach(function(p){
@@ -941,7 +946,6 @@ function updateUI(){
     el=document.getElementById(id+'-kg'); if(el) el.textContent='$'+fmt(kg,2);
   });
 
-  // Ticker
   buildTicker(au,ag);
 }
 
@@ -959,183 +963,13 @@ function buildTicker(au,ag){
   ];
   var html=items.map(function(i){return '<span class="ticker-item"><span class="ticker-label">'+i.label+'</span><span class="ticker-price">'+i.price+'</span></span>';}).join('');
   var t=document.getElementById('ticker-track');
-  if(t){t.innerHTML=html+html;}// duplicate for seamless loop
+  if(t){t.innerHTML=html+html;}
 }
 
-// Initial fetch + auto-refresh every 60s
 fetchPrices();
 setInterval(fetchPrices,60000);
 
 // ── TABS ──
 document.querySelectorAll('.tab-btn').forEach(function(btn){
   btn.addEventListener('click',function(){
-    document.querySelectorAll('.tab-btn').forEach(function(b){b.setAttribute('aria-selected','false');});
-    document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
-    btn.setAttribute('aria-selected','true');
-    document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
-  });
-  btn.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
-      var tabs=Array.from(document.querySelectorAll('.tab-btn'));
-      var idx=tabs.indexOf(btn);
-      var next=e.key==='ArrowRight'?(idx+1)%tabs.length:(idx-1+tabs.length)%tabs.length;
-      tabs[next].focus();tabs[next].click();
-    }
-  });
-});
-
-// ── GOLD CALC ──
-function toGrams(v,unit){
-  var factors={g:1,oz:31.1035,kg:1000,dwt:1.55517,lb:453.592,grain:0.0647989};
-  return v*(factors[unit]||1);
-}
-function calcGold(){
-  var w=parseFloat(document.getElementById('gold-weight').value)||0;
-  var u=document.getElementById('gold-unit').value;
-  var k=parseFloat(document.getElementById('gold-karat').value)||1;
-  var cur=document.getElementById('gold-currency').value;
-  if(!w){alert('Please enter a weight.');return;}
-  var grams=toGrams(w,u);
-  var val=(grams*k*spotPrices.XAU)/31.1035;
-  var rate=cur==='USD'?1:(FX[cur]||1);
-  var sym={USD:'$',GBP:'£',EUR:'€',CAD:'C$',AUD:'A$',INR:'₹'}[cur]||'$';
-  document.getElementById('result-gold-val').textContent=sym+fmt(val*rate,2);
-  document.getElementById('result-gold-sub').textContent=fmt(grams,3)+'g × '+Math.round(k*100)+'% purity @ $'+fmt(spotPrices.XAU,2)+'/oz';
-  document.getElementById('result-gold').style.display='block';
-}
-
-// ── SILVER CALC ──
-function calcSilver(){
-  var w=parseFloat(document.getElementById('silver-weight').value)||0;
-  var u=document.getElementById('silver-unit').value;
-  var p=parseFloat(document.getElementById('silver-purity').value)||0.999;
-  var cur=document.getElementById('silver-currency').value;
-  if(!w){alert('Please enter a weight.');return;}
-  var grams=toGrams(w,u);
-  var val=(grams*p*spotPrices.XAG)/31.1035;
-  var rate=cur==='USD'?1:(FX[cur]||1);
-  var sym={USD:'$',GBP:'£',EUR:'€',INR:'₹'}[cur]||'$';
-  document.getElementById('result-silver-val').textContent=sym+fmt(val*rate,2);
-  document.getElementById('result-silver-sub').textContent=fmt(grams,3)+'g × '+(p*100)+'% purity @ $'+fmt(spotPrices.XAG,2)+'/oz';
-  document.getElementById('result-silver').style.display='block';
-}
-
-// ── SCRAP ──
-function addScrapRow(){
-  var row=document.querySelector('.scrap-row').cloneNode(true);
-  row.querySelectorAll('input').forEach(function(i){i.value='';});
-  document.getElementById('scrap-rows').appendChild(row);
-}
-function removeScrapRow(btn){
-  var rows=document.querySelectorAll('.scrap-row');
-  if(rows.length>1){btn.closest('.scrap-row').remove();}
-}
-function calcScrap(){
-  var total=0,totalPureOz=0,totalWeight=0;
-  document.querySelectorAll('.scrap-row').forEach(function(row){
-    var k=parseFloat(row.querySelector('.scrap-karat').value)||0;
-    var w=parseFloat(row.querySelector('.scrap-weight').value)||0;
-    if(w){
-      var val=(w*k*spotPrices.XAU)/31.1035;
-      var pureOz=(w*k)/31.1035;
-      total+=val;totalPureOz+=pureOz;totalWeight+=w;
-      var inp=row.querySelectorAll('input')[1];if(inp)inp.value='$'+fmt(val,2);
-    }
-  });
-  document.getElementById('scrap-total-val').textContent='$'+fmt(total,2);
-  document.getElementById('scrap-pure-oz').textContent=fmt(totalPureOz,4)+' oz';
-  document.getElementById('scrap-avg-purity').textContent=totalWeight?fmt((totalPureOz*31.1035/totalWeight)*100,1)+'%':'—';
-  document.getElementById('scrap-total').style.display='block';
-}
-
-// ── BAR CALC ──
-function calcBar(){
-  var sz=parseFloat(document.getElementById('bar-size').value)||1;
-  var qty=parseInt(document.getElementById('bar-qty').value)||1;
-  var cur=document.getElementById('bar-currency').value;
-  var val=sz*qty*spotPrices.XAU;
-  var rate=cur==='USD'?1:(FX[cur]||1);
-  var sym={USD:'$',GBP:'£',EUR:'€'}[cur]||'$';
-  document.getElementById('result-bar-val').textContent=sym+fmt(val*rate,2);
-  document.getElementById('result-bar-sub').textContent=qty+' × '+sz+' troy oz @ $'+fmt(spotPrices.XAU,2)+'/oz';
-  document.getElementById('result-bar').style.display='block';
-}
-
-// ── WEIGHT CONVERTER ──
-var convFactors={g:1,oz:31.1035,kg:1000,dwt:1.55517,grain:0.0647989,lb:453.592};
-function convertWeight(from,val){
-  var v=parseFloat(val)||0;
-  var g=v*convFactors[from];
-  Object.keys(convFactors).forEach(function(unit){
-    if(unit!==from){
-      var el=document.getElementById('conv-'+unit);
-      if(el)el.value=val===''?'':(g/convFactors[unit]).toFixed(6).replace(/\.?0+$/,'');
-    }
-  });
-}
-
-// ── CHART ──
-var chartInst=null;
-var chartColors={gold:'#c9960e',silver:'#9ca3af'};
-function getChartData(range){
-  var now=Date.now(),pts=[];
-  var days={"1M":30,"3M":90,"1Y":365,"5Y":1825,"10Y":3650}[range]||30;
-  var baseGold=spotPrices.XAU||3320;
-  var baseSilver=spotPrices.XAG||(baseGold/90);
-  for(var i=days;i>=0;i--){
-    var d=new Date(now-i*86400000);
-    var frac=i/days;
-    var trend=0.35;
-    var goldFactor=Math.exp(-trend*frac)*(0.92+Math.random()*0.16);
-    var silverFactor=Math.exp(-trend*0.9*frac)*(0.88+Math.random()*0.24);
-    pts.push({x:d.toISOString().slice(0,10),gold:+(baseGold*goldFactor).toFixed(2),silver:+(baseSilver*silverFactor).toFixed(2)});
-  }
-  return pts;
-}
-function loadChart(range,btn){
-  if(btn){
-    document.querySelectorAll('.chart-btn').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-pressed','false');});
-    btn.classList.add('active');btn.setAttribute('aria-pressed','true');
-  }
-  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
-  var gridColor=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
-  var textColor=isDark?'#8a8880':'#7a7974';
-  var data=getChartData(range);
-  var labels=data.map(function(d){return d.x;});
-  var goldData=data.map(function(d){return d.gold;});
-  var silverData=data.map(function(d){return d.silver;});
-  var ctx=document.getElementById('price-chart');
-  if(!ctx)return;
-  if(chartInst){chartInst.destroy();}
-  chartInst=new Chart(ctx,{
-    type:'line',
-    data:{
-      labels:labels,
-      datasets:[
-        {label:'Gold (USD/oz)',data:goldData,borderColor:chartColors.gold,borderWidth:2,pointRadius:0,tension:0.3,yAxisID:'y'},
-        {label:'Silver (USD/oz)',data:silverData,borderColor:chartColors.silver,borderWidth:1.5,pointRadius:0,tension:0.3,yAxisID:'y1'}
-      ]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:true,
-      interaction:{mode:'index',intersect:false},
-      plugins:{legend:{labels:{color:textColor,font:{size:12}}},tooltip:{backgroundColor:isDark?'#1a1917':'#fff',titleColor:isDark?'#e8e6e0':'#28251d',bodyColor:textColor,borderColor:isDark?'#2a2926':'#d4d1ca',borderWidth:1}},
-      scales:{
-        x:{ticks:{color:textColor,maxTicksLimit:8,font:{size:11}},grid:{color:gridColor}},
-        y:{position:'left',ticks:{color:chartColors.gold,callback:function(v){return '$'+v.toLocaleString();},font:{size:11}},grid:{color:gridColor}},
-        y1:{position:'right',ticks:{color:chartColors.silver,callback:function(v){return '$'+v.toFixed(2);},font:{size:11}},grid:{display:false}}
-      }
-    }
-  });
-}
-window.addEventListener('load',function(){if(typeof Chart!=='undefined'){loadChart('1M',null);}});
-
-// ── FAQ ARIA ──
-document.querySelectorAll('.faq-item details').forEach(function(d){
-  d.addEventListener('toggle',function(){
-    d.querySelector('summary').setAttribute('aria-expanded',d.open?'true':'false');
-  });
-});
-</script>
-</body>
-</html>
+    document
