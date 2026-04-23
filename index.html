@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<!-- FIX 3: AdSense publisher script loaded async in <head> as required by Google policy -->
+<!-- AdSense publisher script loaded async in <head> as required by Google policy -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
 <style>
 :root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;--color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-gold:#b07a00;--color-gold-bright:#d19900;--color-silver:#6b7280;--shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'Instrument Serif',Georgia,serif;--transition:180ms cubic-bezier(0.16,1,0.3,1)}
@@ -70,10 +70,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .mobile-menu a{font-size:var(--text-base);color:var(--color-text-muted);text-decoration:none;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md)}
 .mobile-menu a:hover{background:var(--color-surface-offset);color:var(--color-text)}
 
-/* FIX 2: AD SLOTS — responsive format, no hardcoded 728x90, no overflow risk */
+/* AD SLOTS */
 .ad-slot{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;margin:var(--space-6) auto;max-width:1200px;padding:0 var(--space-4)}
 .ad-slot ins{display:block;width:100%}
-/* Sidebar ad — no horizontal padding needed */
 .ad-slot-sidebar{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;min-height:250px}
 .ad-slot-sidebar ins{display:block;width:100%}
 
@@ -294,7 +293,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </div>
 </section>
 
-<!-- FIX 2: AD SLOT 1 — below hero (not above it), responsive auto format -->
+<!-- AD SLOT 1 — below hero, responsive auto format -->
 <div class="ad-slot" aria-label="Advertisement">
   <ins class="adsbygoogle"
        style="display:block"
@@ -472,7 +471,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       </div>
     </div>
 
-    <!-- AD SLOT 2 — Mid-content, between calculators and karat tables, responsive -->
+    <!-- AD SLOT 2 — Mid-content, responsive -->
     <div class="ad-slot" aria-label="Advertisement" style="margin:var(--space-6) 0;padding:0">
       <ins class="adsbygoogle"
            style="display:block"
@@ -689,6 +688,10 @@ const KARATS = [
   {k:'9K',  purity:0.375,  label:'9 Karat Gold'}
 ];
 
+// GoldAPI.io credentials
+const GOLDAPI_KEY = 'goldapi-3586db5787111d16221e5cb06b4bb4df-io';
+const GOLDAPI_BASE = 'https://www.goldapi.io/api';
+
 let goldSpotOz = null, silverSpotOz = null;
 let goldChart = null, silverChart = null;
 let currentGoldRange = '1M', currentSilverRange = '1M';
@@ -725,30 +728,53 @@ function fmtCurr(val, rate) {
 }
 function fmtUSD(val) { return '$' + val.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
 
-// FETCH PRICES
+// ─── FETCH PRICES ────────────────────────────────────────────────────────────
+// PRIMARY:   GoldAPI.io — authenticated requests for XAU and XAG
+// FALLBACK:  api.gold-api.com — unauthenticated free tier
+// HARDCODED: last-resort static values if both APIs fail
+// ─────────────────────────────────────────────────────────────────────────────
 async function fetchPrices() {
+  const headers = { 'x-access-token': GOLDAPI_KEY, 'Content-Type': 'application/json' };
+
   try {
+    // Primary: GoldAPI.io — fetch XAU and XAG in parallel
     const [gRes, sRes] = await Promise.all([
-      fetch('https://api.gold-api.com/price/XAU'),
-      fetch('https://api.gold-api.com/price/XAG')
+      fetch(GOLDAPI_BASE + '/XAU/USD', { headers }),
+      fetch(GOLDAPI_BASE + '/XAG/USD', { headers })
     ]);
-    if(!gRes.ok || !sRes.ok) throw new Error('API error');
+    if (!gRes.ok || !sRes.ok) throw new Error('GoldAPI response error: ' + gRes.status);
     const gData = await gRes.json();
     const sData = await sRes.json();
+    if (!gData.price || !sData.price) throw new Error('GoldAPI missing price field');
     goldSpotOz = gData.price;
     silverSpotOz = sData.price;
-    updateAll(gData, sData);
-  } catch(e) {
+    updateAll(
+      { price: gData.price, prev_close_price: gData.prev_close_price },
+      { price: sData.price, prev_close_price: sData.prev_close_price }
+    );
+  } catch (primaryErr) {
+    console.warn('GoldAPI.io primary fetch failed:', primaryErr.message, '— trying fallback');
     try {
-      const r = await fetch('https://www.goldapi.io/api/XAU/USD', {headers:{'x-access-token':'goldapi-free'}});
-      const d = await r.json();
-      goldSpotOz = d.price;
-      silverSpotOz = d.silver_price || silverSpotOz;
-      updateAll({price:goldSpotOz, prev_close_price: d.prev_close_price}, {price:silverSpotOz});
-    } catch(e2) {
-      console.warn('Price fetch failed, using fallback');
-      goldSpotOz = 3320; silverSpotOz = 32.5;
-      updateAll({price:goldSpotOz}, {price:silverSpotOz});
+      // Fallback: free unauthenticated API
+      const [gRes, sRes] = await Promise.all([
+        fetch('https://api.gold-api.com/price/XAU'),
+        fetch('https://api.gold-api.com/price/XAG')
+      ]);
+      if (!gRes.ok || !sRes.ok) throw new Error('Fallback API error');
+      const gData = await gRes.json();
+      const sData = await sRes.json();
+      if (!gData.price || !sData.price) throw new Error('Fallback missing price field');
+      goldSpotOz = gData.price;
+      silverSpotOz = sData.price;
+      updateAll(
+        { price: gData.price, prev_close_price: gData.prev_close_price },
+        { price: sData.price, prev_close_price: sData.prev_close_price }
+      );
+    } catch (fallbackErr) {
+      console.warn('Fallback API also failed:', fallbackErr.message, '— using static defaults');
+      goldSpotOz = goldSpotOz || 3320;
+      silverSpotOz = silverSpotOz || 32.5;
+      updateAll({ price: goldSpotOz }, { price: silverSpotOz });
     }
   }
 }
