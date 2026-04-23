@@ -16,10 +16,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<!-- FIX 3: AdSense publisher script loaded async in <head> as required by Google policy -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
 <style>
 :root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;--color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-gold:#b07a00;--color-gold-bright:#d19900;--color-silver:#6b7280;--shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'Instrument Serif',Georgia,serif;--transition:180ms cubic-bezier(0.16,1,0.3,1)}
-[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-2:#1b1a18;--color-surface-offset:#1d1c1a;--color-surface-offset-2:#222120;--color-surface-dynamic:#2a2927;--color-divider:#252422;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7977;--color-text-faint:#4a4947;--color-text-inverse:#1a1917;--color-primary:#4f98a3;--color-primary-hover:#6ab3be;--color-gold:#e8af34;--color-gold-bright:#f0c040;--color-silver:#9ca3af;--shadow-sm:0 1px 2px oklch(0 0 0/0.3);--shadow-md:0 4px 12px oklch(0 0 0/0.4);--shadow-lg:0 12px 32px oklch(0 0 0/0.5)}
+[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-2:#1b1a18;--color-surface-offset:#1d1c1a;--color-surface-offset-2:#222120;--color-surface-dynamic:#2a2927;--color-divider:#252422;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7977;--color-text-faint:#4a4947;--color-text-inverse:#1a1917;--color-primary:#4f98a3;--color-primary-hover:#6ab3be;--color-gold:#b07a00;--color-gold-bright:#e8af34;--color-silver:#9ca3af;--shadow-sm:0 1px 2px oklch(0 0 0/0.3);--shadow-md:0 4px 12px oklch(0 0 0/0.4);--shadow-lg:0 12px 32px oklch(0 0 0/0.5)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
 body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg)}
@@ -69,9 +70,12 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .mobile-menu a{font-size:var(--text-base);color:var(--color-text-muted);text-decoration:none;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md)}
 .mobile-menu a:hover{background:var(--color-surface-offset);color:var(--color-text)}
 
-/* AD SLOTS */
-.ad-slot{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;min-height:90px;margin:var(--space-6) auto;max-width:1200px;padding:0 var(--space-4);overflow:hidden}
+/* FIX 2: AD SLOTS — responsive format, no hardcoded 728x90, no overflow risk */
+.ad-slot{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;margin:var(--space-6) auto;max-width:1200px;padding:0 var(--space-4)}
 .ad-slot ins{display:block;width:100%}
+/* Sidebar ad — no horizontal padding needed */
+.ad-slot-sidebar{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;min-height:250px}
+.ad-slot-sidebar ins{display:block;width:100%}
 
 /* HERO */
 .hero{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center}
@@ -256,7 +260,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   <a href="#faq">FAQ</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO — content first, no ads above the fold -->
 <section class="hero" aria-label="Live gold and silver prices">
   <div>
     <div class="hero-badge"><span class="live-dot"></span> Prices Update Every 60 Seconds</div>
@@ -290,7 +294,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </div>
 </section>
 
-<!-- AD SLOT 1 — Below hero, above calculators (highest CTR position) -->
+<!-- FIX 2: AD SLOT 1 — below hero (not above it), responsive auto format -->
 <div class="ad-slot" aria-label="Advertisement">
   <ins class="adsbygoogle"
        style="display:block"
@@ -468,8 +472,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       </div>
     </div>
 
-    <!-- AD SLOT 2 — Mid-content, between calculators and karat tables -->
-    <div class="ad-slot" aria-label="Advertisement" style="margin:var(--space-6) 0">
+    <!-- AD SLOT 2 — Mid-content, between calculators and karat tables, responsive -->
+    <div class="ad-slot" aria-label="Advertisement" style="margin:var(--space-6) 0;padding:0">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-8849494330640880"
@@ -611,8 +615,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <div class="quick-ref-row"><span class="quick-ref-label">.999 / kg</span><span class="quick-ref-value silver-val" id="qr-ag999kg">—</span></div>
       <div class="quick-ref-row"><span class="quick-ref-label">1 Troy oz = </span><span class="quick-ref-value silver-val">31.1035 g</span></div>
     </div>
-    <!-- AD SLOT 3 — Sidebar -->
-    <div style="min-height:250px">
+    <!-- AD SLOT 3 — Sidebar, responsive -->
+    <div class="ad-slot-sidebar" aria-label="Advertisement">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-8849494330640880"
@@ -624,7 +628,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </aside>
 </section>
 
-<!-- AD SLOT 4 — Above footer -->
+<!-- AD SLOT 4 — Above footer, responsive -->
 <div class="ad-slot" aria-label="Advertisement">
   <ins class="adsbygoogle"
        style="display:block"
@@ -815,7 +819,6 @@ function updateAll(gData, sData) {
 function buildKaratGrid(gOz) {
   const grid = document.getElementById('karatGrid');
   if(!grid || grid.dataset.built === '1') {
-    // Just update values
     KARATS.forEach(k => {
       const perG = gOz / TROY_OZ_TO_GRAM * k.purity;
       const el = document.getElementById('kg-' + k.k);
