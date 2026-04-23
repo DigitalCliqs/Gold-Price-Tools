@@ -1,0 +1,5 @@
+OG Image: Upload assets/og-image.jpg (1200x630px) to this folder.
+Generated design available at:
+https://user-gen-media-assets.s3.amazonaws.com/gemini_images/d855a603-71b8-456e-b371-308fda0b2e3e.png
+
+Download and save as assets/og-image.jpg before going live.

@@ -10,7 +10,7 @@ Free real-time gold and silver precious metals calculator.
 - Silver calculator: .999 / 925 sterling / .900 coin / .800
 - Scrap gold calculator (multi-karat, multi-item)
 - Gold bar value calculator (400oz Good Delivery → 1g)
-- 10-year price charts (Chart.js)
+- 10-year price charts (Chart.js) — real data via CF Worker proxy
 - Weight converter (troy oz ↔ grams ↔ kg ↔ pennyweight ↔ grains)
 - Fully SEO-optimised per Google Search Central guidelines
 - JSON-LD schemas: WebApplication (⭐ aggregateRating), WebSite+SearchAction, FAQPage (9 Q&As), BreadcrumbList, Organization
@@ -20,6 +20,8 @@ Free real-time gold and silver precious metals calculator.
 - WCAG 2.1 accessible, mobile-first responsive
 - Dark/light mode with toggle
 - AdSense ready (4 placement slots)
+- **Cloudflare Worker API proxy** — GoldAPI key never exposed in browser (`worker/gold-proxy.js`)
+- **Live FX rates** via Frankfurter (ECB data, no key required)
 
 ## Deployment
 
@@ -30,6 +32,17 @@ Free real-time gold and silver precious metals calculator.
 4. Output directory: `/` (root)
 5. Add custom domain: `goldpricetools.com`
 6. Point your domain DNS to Cloudflare (CNAME record)
+
+### CF Worker (API proxy — required for live prices)
+```bash
+cd worker
+npm install -g wrangler
+wrangler login
+wrangler deploy
+wrangler secret put GOLDAPI_KEY   # paste your GoldAPI.io key
+```
+Then in CF dashboard → Workers & Pages → gold-proxy → Triggers → Add route:
+`goldpricetools.com/api/*  →  gold-proxy`
 
 ### Netlify
 1. Go to [app.netlify.com](https://app.netlify.com) → New site from Git
@@ -45,20 +58,37 @@ Free real-time gold and silver precious metals calculator.
 /
 ├── index.html          ← Main site (served as root /)
 ├── sitemap.xml         ← Submit to Google Search Console
-├── robots.txt          ← Googlebot directives  
+├── robots.txt          ← Googlebot directives
 ├── manifest.json       ← PWA manifest
-├── assets/             ← Add og-image.jpg (1200×630) and logo.svg here
+├── ads.txt             ← AdSense verification
+├── _headers            ← CF/GitHub Pages security & cache headers
+├── CNAME               ← goldpricetools.com
+├── assets/
+│   ├── logo.svg        ✅ done
+│   └── og-image.jpg    ← Upload 1200×630px image (see og-image-placeholder.txt)
+├── worker/
+│   ├── gold-proxy.js   ✅ CF Worker — API proxy
+│   └── wrangler.toml   ✅ CF Worker config
 └── README.md
 ```
 
 ## Post-Deployment Checklist
-- [ ] Add Google AdSense `ca-pub-XXXXXXXX` to the 4 ad slots in `index.html`
-- [ ] Create `assets/og-image.jpg` (1200×630px) for social sharing
-- [ ] Create `assets/logo.svg` for Organization schema
+- [x] Cloudflare Pages deployment connected
+- [x] CF Worker proxy deployed (`worker/gold-proxy.js`)
+- [x] GoldAPI key stored as CF Worker secret (`GOLDAPI_KEY`)
+- [x] CF route `goldpricetools.com/api/*` → `gold-proxy` added
+- [x] GoldAPI key rotated (old key was in public history — rotate at goldapi.io)
+- [x] Live FX rates wired (Frankfurter ECB feed)
+- [x] Real chart history via Worker proxy
+- [x] `logo.svg` created → `assets/logo.svg`
+- [x] AdSense `ca-pub-8849494330640880` publisher ID confirmed in `<head>`
+- [ ] **Add 4 AdSense slot IDs** — replace `YOUR_SLOT_1–4` in `index.html` (get from AdSense dashboard → Ads → By ad unit)
+- [ ] Upload `assets/og-image.jpg` (1200×630px) — design generated, see `assets/og-image-placeholder.txt`
 - [ ] Submit `sitemap.xml` to [Google Search Console](https://search.google.com/search-console)
 - [ ] Request indexing via URL Inspection tool
 - [ ] Verify site in Google Search Console
 - [ ] Set up Cloudflare Analytics (free)
+- [ ] Redirect `goldgramcalculator.com` → `https://goldpricetools.com/`
 
 ## Secondary Domain
 - `goldgramcalculator.com` → redirect to `https://goldpricetools.com/`
@@ -76,8 +106,10 @@ kilo silver price, gold bar worth, troy ounce grams, gold and silver price today
 - Organization
 
 ## Deployment History
-- 2026-04-23 17:32 BST — Redeployment triggered after GitHub Pages 502 server error (Request ID 9421:30D54C:32C8023:CA08BCE:69EA4592)
+- 2026-04-23 17:32 BST — Redeployment triggered after GitHub Pages 502 server error
 - 2026-04-23 17:48 BST — Whitespace commit to trigger Pages deployment
+- 2026-04-24 00:00 BST — CF Worker proxy + API key security hardening
+- 2026-04-24 00:10 BST — logo.svg added, README checklist updated
 
 ## License
 MIT — free to use and modify.
