@@ -2,6 +2,9 @@
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880"
+     crossorigin="anonymous"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
 <script>
@@ -45,6 +48,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.gold-api.com">
 <link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://pagead2.googlesyndication.com">
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="https://unpkg.com">
 <!-- Fonts -->
@@ -283,10 +287,6 @@ header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--col
 .live-dot{width:7px;height:7px;border-radius:50%;background:var(--color-up);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-/* ── ADSENSE PLACEHOLDER ── */
-.ad-leaderboard{width:100%;max-width:728px;height:90px;background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-inline:auto;margin-block:var(--space-6);color:var(--color-text-faint);font-size:var(--text-xs)}
-.ad-rectangle{width:300px;height:250px;background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:var(--color-text-faint);font-size:var(--text-xs)}
-
 /* ── TABS ── */
 .tabs-wrapper{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:var(--space-8)}
 .tab-list{display:flex;overflow-x:auto;border-bottom:1px solid var(--color-divider);background:var(--color-surface-offset);scrollbar-width:none}
@@ -382,7 +382,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
 .breadcrumb-sep{margin:0 var(--space-2);color:var(--color-text-faint)}
 
 /* ── PRINT ── */
-@media print{.ticker-bar,.header-actions,.tab-list,.btn-calc,.chart-section,.ad-leaderboard,.ad-rectangle{display:none}body{color:#000;background:#fff}}
+@media print{.ticker-bar,.header-actions,.tab-list,.btn-calc,.chart-section{display:none}body{color:#000;background:#fff}}
 @media(forced-colors:active){.btn-calc,.tab-btn[aria-selected=true]{forced-color-adjust:none}}
 
 /* ── RESPONSIVE ── */
@@ -402,9 +402,15 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
 
 <!-- ── HEADER ── -->
 <header role="banner">
-  <!-- AdSense Leaderboard Top -->
-  <!-- REPLACE WITH: <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script> -->
-  <div class="ad-leaderboard" aria-hidden="true">AdSense 728×90 — Replace with your ca-pub code</div>
+  <!-- Google AdSense — Leaderboard Top -->
+  <div style="text-align:center;padding:8px 0">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-8849494330640880"
+         data-ad-slot="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
   <div class="header-inner">
     <a href="https://goldpricetools.com" class="logo" aria-label="GoldPriceTools – Live gold and silver calculator home">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="GoldPriceTools logo" role="img">
@@ -475,9 +481,14 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
     <p class="last-updated">Last updated: <time id="last-updated" aria-live="polite" data-nosnippet>—</time></p>
   </section>
 
-  <!-- ── ADSENSE RECTANGLE (below hero) ── -->
-  <!-- REPLACE: <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins> -->
-  <div style="display:flex;justify-content:center;margin-bottom:var(--space-6)"><div class="ad-rectangle" aria-hidden="true">AdSense 300×250</div></div>
+  <!-- Google AdSense — Rectangle (below hero) -->
+  <div style="display:flex;justify-content:center;margin-bottom:var(--space-6)">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-8849494330640880"
+         data-ad-slot="auto"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
 
   <!-- ── CALCULATOR TABS ── -->
   <section id="calculators" aria-labelledby="calc-heading">
@@ -751,8 +762,15 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
     </div>
   </section>
 
-  <!-- ── ADSENSE MID ── -->
-  <div class="ad-leaderboard" aria-hidden="true">AdSense 728×90 — Mid-page</div>
+  <!-- Google AdSense — Mid-page Leaderboard -->
+  <div style="text-align:center;padding:8px 0;margin-bottom:var(--space-8)">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-8849494330640880"
+         data-ad-slot="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
 
   <!-- ── CHARTS ── -->
   <section class="chart-section" aria-labelledby="chart-heading" id="gold-price-chart-10-years">
@@ -853,8 +871,15 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-divider)
     </details>
   </section>
 
-  <!-- ── ADSENSE BOTTOM ── -->
-  <div class="ad-leaderboard" aria-hidden="true">AdSense 728×90 — Bottom</div>
+  <!-- Google AdSense — Bottom Leaderboard -->
+  <div style="text-align:center;padding:8px 0;margin-bottom:var(--space-6)">
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-8849494330640880"
+         data-ad-slot="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
 
 </div><!-- /container -->
 </main>
