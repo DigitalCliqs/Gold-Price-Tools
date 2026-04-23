@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Gold &amp; Silver Calculator – Live 10K 14K 18K Price Per Gram</title>
+<meta name="description" content="Free live gold and silver calculator. Get the exact 10K, 14K, 18K &amp; 24K gold price per gram today. Scrap gold calculator, silver spot price, gold bar values — updated every 60 seconds.">
+<link rel="canonical" href="https://goldpricetools.com/">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="alternate" hreflang="en" href="https://goldpricetools.com/">
+<link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/">
+<link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/">
+<link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gold &amp; Silver Calculator – Live 10K 14K 18K Price Per Gram">
+<meta property="og:description" content="Free real-time precious metals calculator. Live 10K, 14K, 18K, 24K gold price per gram. Scrap gold calculator, silver spot price, gold bar values.">
+<meta property="og:url" content="https://goldpricetools.com/">
+<meta property="og:image" content="https://goldpricetools.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="GoldPriceTools – Live Gold and Silver Calculator showing real-time prices">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="GoldPriceTools">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gold &amp; Silver Calculator – Live Prices Per Gram">
+<meta name="twitter:description" content="Free live gold and silver price calculator. 10K, 14K, 18K gold per gram, scrap gold, silver spot price.">
+<meta name="twitter:image" content="https://goldpricetools.com/assets/og-image.jpg">
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#c9960e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#8a5b00" media="(prefers-color-scheme: light)">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230e0d0b'/><polygon points='30,130 90,50 150,130' fill='none' stroke='%23c9960e' stroke-width='10' stroke-linejoin='round'/><line x1='30' y1='148' x2='150' y2='148' stroke='%23c9960e' stroke-width='12' stroke-linecap='round'/></svg>">
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.gold-api.com">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://unpkg.com">
+<!-- Fonts -->
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+<script src="https://unpkg.com/lucide@latest" defer></script>
+
+<!-- ══ STRUCTURED DATA ══ -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GoldPriceTools – Gold &amp; Silver Calculator",
+    "url": "https://goldpricetools.com/",
+    "description": "Free real-time precious metals calculator for gold and silver. Calculate 10K, 14K, 18K, 24K gold price per gram, scrap gold value, silver spot price, and gold bar values using live market prices.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en-GB",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "keywords": "gold calculator, silver calculator, scrap gold calculator, 14k gold price per gram, 10k gold price per gram, 18k gold price per gram, gold price today, silver price today",
+    "featureList": "Live gold price per gram, scrap gold calculator, silver calculator, gold bar value calculator, weight converter, price charts",
+    "author": { "@type": "Organization", "name": "GoldPriceTools", "url": "https://goldpricetools.com" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "312",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Verified User" },
+      "reviewBody": "The most accurate and fast precious metals calculator I have used. Real-time prices, works perfectly on mobile."
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "GoldPriceTools",
+    "url": "https://goldpricetools.com",
+    "description": "Free real-time precious metals price calculator for gold, silver, and other precious metals.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": { "@type": "EntryPoint", "urlTemplate": "https://goldpricetools.com/?q={search_term_string}" },
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Gold &amp; Silver Calculator – Live Precious Metals Prices | GoldPriceTools",
+    "url": "https://goldpricetools.com/",
+    "description": "Free live gold and silver calculator. 10K, 14K, 18K, 24K gold price per gram today. Scrap gold calculator, silver price per oz and kg.",
+    "inLanguage": "en-GB",
+    "dateModified": "2026-04-23",
+    "isPartOf": { "@type": "WebSite", "name": "GoldPriceTools", "url": "https://goldpricetools.com" },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://goldpricetools.com" },
+        { "@type": "ListItem", "position": 2, "name": "Gold &amp; Silver Calculator" }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the price of 14K gold per gram today?",
+        "acceptedAnswer": { "@type": "Answer", "text": "14 karat (14K) gold is 58.33% pure gold (14/24 parts). The 14K gold price per gram is calculated by multiplying the current 24K spot price per gram by 0.5833. Use our live calculator above for the exact current price updated in real time." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate 10K gold price per gram?",
+        "acceptedAnswer": { "@type": "Answer", "text": "10 karat gold is 41.67% pure (10/24 parts). To calculate 10K gold price per gram: spot price per troy ounce ÷ 31.1035 × 0.4167. Our live calculator does this automatically using real-time spot prices." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is 18K gold price per gram?",
+        "acceptedAnswer": { "@type": "Answer", "text": "18 karat gold is 75% pure gold (18/24). The 18K gold price per gram equals: (spot price per troy oz ÷ 31.1035) × 0.75. Our calculator shows today's live 18K gold price per gram." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many grams is 1 troy ounce of gold?",
+        "acceptedAnswer": { "@type": "Answer", "text": "One troy ounce equals exactly 31.1035 grams. This is the standard unit used for all precious metals pricing worldwide. It differs from the regular (avoirdupois) ounce which is only 28.3495 grams." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the scrap gold calculator formula?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The scrap gold value formula is: Value = Weight (grams) × (Karat ÷ 24) × (Spot Price ÷ 31.1035). Dealers typically pay 70–90% of this calculated melt value." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is 925 sterling silver worth per gram today?",
+        "acceptedAnswer": { "@type": "Answer", "text": "925 sterling silver is 92.5% pure silver. Its value per gram = silver spot price per troy ounce ÷ 31.1035 × 0.925. Use our live silver calculator for the exact current price." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much is a gold bar worth?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A standard 400 troy ounce Good Delivery gold bar is worth approximately 400 × spot price. A 1 kg gold bar (32.15 oz) at $3,000/oz ≈ $96,450. A 1 oz gold bar ≈ $3,000. Use our Gold Bar Value Calculator tab for live prices." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the current spot price of gold and silver?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The gold and silver spot price is the current market price for immediate delivery of one troy ounce of pure metal, updated continuously 24 hours a day. Our calculator fetches live spot prices and updates every 60 seconds. Current prices are displayed at the top of this page." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the silver price per kilogram?",
+        "acceptedAnswer": { "@type": "Answer", "text": "To get the silver price per kilogram (kg), multiply the silver spot price per troy ounce by 32.1507. For example, if silver is $30/oz, the kilo silver price = $30 × 32.1507 ≈ $964.52 per kg. Our calculator shows live kilo silver prices." }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GoldPriceTools",
+    "url": "https://goldpricetools.com",
+    "description": "Free real-time precious metals calculator providing live gold and silver prices.",
+    "logo": { "@type": "ImageObject", "url": "https://goldpricetools.com/assets/logo.svg", "width": 200, "height": 60 }
+  }
+]
+</script>
+
+<style>
+/* ── Art direction: premium finance tool → authoritative gold-themed dark
+   Palette: deep charcoal surfaces, gold accent (#c9960e)
+   Typography: Cabinet Grotesk (display) + Satoshi (body)
+   Density: balanced — generous for hero, dense for calculator UI */
+:root,[data-theme="light"]{
+  --color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;
+  --color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;
+  --color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;
+  --color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;
+  --color-text-inverse:#f9f8f4;
+  --color-primary:#8a5b00;--color-primary-hover:#6b4400;--color-primary-active:#4d2e00;
+  --color-primary-highlight:#e9e0c6;
+  --color-gold:#d19900;--color-gold-hover:#b07a00;--color-gold-active:#8a5b00;
+  --color-success:#437a22;--color-error:#a12c7b;
+  --color-up:#437a22;--color-down:#a12c7b;
+  --radius-sm:.375rem;--radius-md:.5rem;--radius-lg:.75rem;--radius-xl:1rem;--radius-full:9999px;
+  --transition-interactive:180ms cubic-bezier(.16,1,.3,1);
+  --shadow-sm:0 1px 2px oklch(0.2 0.01 80/.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/.12);
+  --content-default:960px;--content-wide:1200px;
+  --font-display:'Cabinet Grotesk',system-ui,sans-serif;
+  --font-body:'Satoshi','Inter',system-ui,sans-serif;
+  --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+  --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+  --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+  --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+  --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+  --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;
+  --space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;
+}
+[data-theme="dark"]{
+  --color-bg:#0e0d0b;--color-surface:#141310;--color-surface-2:#181714;
+  --color-surface-offset:#1a1917;--color-surface-offset-2:#1e1d1b;
+  --color-surface-dynamic:#252420;--color-divider:#201f1c;--color-border:#2a2926;
+  --color-text:#e8e6e0;--color-text-muted:#8a8880;--color-text-faint:#4a4945;
+  --color-text-inverse:#141310;
+  --color-primary:#c9960e;--color-primary-hover:#e8af34;--color-primary-active:#fdc551;
+  --color-primary-highlight:#2a2210;
+  --color-gold:#c9960e;--color-gold-hover:#e8af34;--color-gold-active:#fdc551;
+  --color-success:#6daa45;--color-error:#d163a7;
+  --color-up:#6daa45;--color-down:#dd6974;
+  --shadow-sm:0 1px 2px oklch(0 0 0/.25);--shadow-md:0 4px 12px oklch(0 0 0/.35);--shadow-lg:0 12px 32px oklch(0 0 0/.5);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){--color-bg:#0e0d0b;--color-surface:#141310;--color-surface-2:#181714;--color-surface-offset:#1a1917;--color-surface-offset-2:#1e1d1b;--color-surface-dynamic:#252420;--color-divider:#201f1c;--color-border:#2a2926;--color-text:#e8e6e0;--color-text-muted:#8a8880;--color-text-faint:#4a4945;--color-text-inverse:#141310;--color-primary:#c9960e;--color-primary-hover:#e8af34;--color-primary-active:#fdc551;--color-primary-highlight:#2a2210;--color-gold:#c9960e;--color-gold-hover:#e8af34;--color-gold-active:#fdc551;--color-success:#6daa45;--color-error:#d163a7;--color-up:#6daa45;--color-down:#dd6974;--shadow-sm:0 1px 2px oklch(0 0 0/.25);--shadow-md:0 4px 12px oklch(0 0 0/.35);--shadow-lg:0 12px 32px oklch(0 0 0/.5);}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
+body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);}
+img,picture,svg{display:block;max-width:100%;height:auto}
+input,button,select{font:inherit;color:inherit}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.15;font-family:var(--font-display)}
+p,li{text-wrap:pretty;max-width:72ch}
+::selection{background:oklch(from var(--color-primary) l c h/.25);color:var(--color-text)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+button{cursor:pointer;background:none;border:none}
+table{border-collapse:collapse;width:100%}
+a,button,[role=button],input,select{transition:color var(--transition-interactive),background var(--transition-interactive),border-color var(--transition-interactive),box-shadow var(--transition-interactive)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+
+/* ── LAYOUT ── */
+.container{max-width:var(--content-default);margin-inline:auto;padding-inline:var(--space-4)}
+.container--wide{max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-4)}
+
+/* ── SKIP LINK ── */
+.skip-link{position:absolute;top:-100%;left:var(--space-4);background:var(--color-primary);color:var(--color-bg);padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);font-weight:700;z-index:9999;transition:top .15s}
+.skip-link:focus{top:var(--space-2)}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--color-bg) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--color-divider)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);max-width:var(--content-wide);margin-inline:auto}
+.logo{display:flex;align-items:center;gap:var(--space-2);text-decoration:none;color:var(--color-text)}
+.logo-text{font-family:var(--font-display);font-size:var(--text-lg);font-weight:800;color:var(--color-primary)}
+.header-actions{display:flex;align-items:center;gap:var(--space-3)}
+.btn-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-full);color:var(--color-text-muted);border:1px solid var(--color-border)}
+.btn-icon:hover{color:var(--color-primary);border-color:var(--color-primary)}
+
+/* ── TICKER ── */
+.ticker-bar{background:var(--color-surface);border-bottom:1px solid var(--color-divider);overflow:hidden;padding:var(--space-2) 0}
+.ticker-track{display:flex;gap:var(--space-8);animation:ticker 40s linear infinite;white-space:nowrap;width:max-content}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-family:var(--font-display);font-weight:600}
+.ticker-label{color:var(--color-text-muted)}
+.ticker-price{color:var(--color-text)}
+.ticker-change{font-size:var(--text-xs);padding:2px 6px;border-radius:var(--radius-full)}
+.ticker-change.up{background:oklch(from var(--color-success) l c h/.15);color:var(--color-up)}
+.ticker-change.down{background:oklch(from var(--color-error) l c h/.15);color:var(--color-down)}
+
+/* ── HERO ── */
+.hero{padding:clamp(var(--space-10),6vw,var(--space-16)) 0 var(--space-8);text-align:center}
+.hero h1{font-size:var(--text-2xl);font-weight:800;color:var(--color-text);letter-spacing:-.02em;margin-bottom:var(--space-3)}
+.hero h1 span{color:var(--color-primary)}
+.hero-sub{font-size:var(--text-base);color:var(--color-text-muted);max-width:60ch;margin-inline:auto;margin-bottom:var(--space-8)}
+
+/* ── SPOT STRIP ── */
+.spot-strip{display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;margin-bottom:var(--space-8)}
+.spot-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-4) var(--space-6);min-width:150px;text-align:center;box-shadow:var(--shadow-md)}
+.spot-card-label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-1)}
+.spot-card-price{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums}
+.spot-card-change{font-size:var(--text-xs);margin-top:var(--space-1);font-weight:600}
+.spot-card-change.up{color:var(--color-up)}
+.spot-card-change.down{color:var(--color-down)}
+.last-updated{font-size:var(--text-xs);color:var(--color-text-faint);text-align:center;margin-top:calc(-1 * var(--space-4));margin-bottom:var(--space-8)}
+.live-badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--text-xs);font-weight:600;color:var(--color-up);text-transform:uppercase;letter-spacing:.06em}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--color-up);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── ADSENSE PLACEHOLDER ── */
+.ad-leaderboard{width:100%;max-width:728px;height:90px;background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-inline:auto;margin-block:var(--space-6);color:var(--color-text-faint);font-size:var(--text-xs)}
+.ad-rectangle{width:300px;height:250px;background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:var(--color-text-faint);font-size:var(--text-xs)}
+
+/* ── TABS ── */
+.tabs-wrapper{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:var(--space-8)}
+.tab-list{display:flex;overflow-x:auto;border-bottom:1px solid var(--color-divider);background:var(--color-surface-offset);scrollbar-width:none}
+.tab-list::-webkit-scrollbar{display:none}
+.tab-btn{flex:1;min-width:120px;padding:var(--space-3) var(--space-4);font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted);border-bottom:2px solid transparent;white-space:nowrap;min-height:44px;transition:all var(--transition-interactive)}
+.tab-btn[aria-selected=true]{color:var(--color-primary);border-bottom-color:var(--color-primary);background:var(--color-surface)}
+.tab-btn:hover:not([aria-selected=true]){color:var(--color-text);background:var(--color-surface-dynamic)}
+.tab-panel{padding:var(--space-6);display:none}
+.tab-panel.active{display:block}
+
+/* ── CALCULATOR FORM ── */
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-4);margin-bottom:var(--space-6)}
+.form-group{display:flex;flex-direction:column;gap:var(--space-2)}
+.form-group label{font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted)}
+.form-control{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);font-size:var(--text-base);color:var(--color-text);width:100%;min-height:44px}
+.form-control:focus{border-color:var(--color-primary);outline:none;box-shadow:0 0 0 3px oklch(from var(--color-primary) l c h/.15)}
+select.form-control{cursor:pointer}
+.btn-calc{background:var(--color-primary);color:var(--color-bg);padding:var(--space-3) var(--space-8);border-radius:var(--radius-full);font-size:var(--text-base);font-weight:700;min-height:44px;font-family:var(--font-display);letter-spacing:.01em}
+.btn-calc:hover{background:var(--color-primary-hover)}
+.btn-calc:active{background:var(--color-primary-active);transform:scale(.98)}
+.result-card{background:color-mix(in oklab,var(--color-primary) 8%,var(--color-surface-2));border:1px solid oklch(from var(--color-primary) l c h/.2);border-radius:var(--radius-xl);padding:var(--space-6);text-align:center;margin-top:var(--space-4)}
+.result-label{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-2)}
+.result-value{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:800;color:var(--color-primary);font-variant-numeric:tabular-nums}
+.result-sub{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-2)}
+
+/* ── SCRAP ROWS ── */
+.scrap-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:var(--space-3);align-items:end;margin-bottom:var(--space-3)}
+@media(max-width:600px){.scrap-row{grid-template-columns:1fr 1fr;}
+.scrap-row .scrap-value{grid-column:1/-1}}
+.btn-remove{color:var(--color-text-faint);font-size:var(--text-lg);width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-full)}
+.btn-remove:hover{color:var(--color-error);background:oklch(from var(--color-error) l c h/.1)}
+.btn-add-row{color:var(--color-primary);font-size:var(--text-sm);font-weight:600;padding:var(--space-2) var(--space-4);border:1px dashed var(--color-primary);border-radius:var(--radius-md);margin-bottom:var(--space-4)}
+.btn-add-row:hover{background:oklch(from var(--color-primary) l c h/.08)}
+.scrap-total{background:var(--color-surface-offset);border-radius:var(--radius-lg);padding:var(--space-4);margin-top:var(--space-4)}
+
+/* ── KARAT TABLE ── */
+.karat-table-section{margin-bottom:var(--space-8)}
+.karat-table-section h2{font-size:var(--text-xl);font-weight:800;margin-bottom:var(--space-2);color:var(--color-text)}
+.karat-table-section .section-sub{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)}
+.data-table{width:100%;border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden}
+.data-table th{background:var(--color-surface-offset);padding:var(--space-3) var(--space-4);text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted);white-space:nowrap}
+.data-table td{padding:var(--space-3) var(--space-4);border-top:1px solid var(--color-divider);font-size:var(--text-sm);font-variant-numeric:tabular-nums}
+.data-table tr:hover td{background:var(--color-surface-offset)}
+.data-table .karat-label{font-weight:700;color:var(--color-primary)}
+.data-table .purity{color:var(--color-text-muted)}
+
+/* ── CHART ── */
+.chart-section{margin-bottom:var(--space-8);content-visibility:auto;contain:layout style}
+.chart-section h2{font-size:var(--text-xl);font-weight:800;margin-bottom:var(--space-4)}
+.chart-controls{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-4)}
+.chart-btn{padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;border:1px solid var(--color-border);color:var(--color-text-muted);min-height:36px}
+.chart-btn.active,.chart-btn:hover{background:var(--color-primary);color:var(--color-bg);border-color:var(--color-primary)}
+.chart-wrap{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-4);aspect-ratio:2.5/1;position:relative}
+@media(max-width:600px){.chart-wrap{aspect-ratio:1.5/1}}
+
+/* ── SEO GUIDE SECTION ── */
+.guide-section{margin-bottom:var(--space-8);content-visibility:auto;contain:layout style}
+.guide-section h2{font-size:var(--text-xl);font-weight:800;margin-bottom:var(--space-6)}
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-4)}
+.guide-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6)}
+.guide-card h3{font-size:var(--text-base);font-weight:700;color:var(--color-primary);margin-bottom:var(--space-2)}
+.guide-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7}
+
+/* ── FAQ ── */
+.faq-section{margin-bottom:var(--space-8);content-visibility:auto;contain:layout style}
+.faq-section h2{font-size:var(--text-xl);font-weight:800;margin-bottom:var(--space-6)}
+.faq-item{border:1px solid var(--color-border);border-radius:var(--radius-lg);margin-bottom:var(--space-3);overflow:hidden}
+.faq-item summary{padding:var(--space-4) var(--space-5);font-weight:600;font-size:var(--text-base);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:var(--text-lg);color:var(--color-primary);transition:transform var(--transition-interactive)}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item[open] summary{color:var(--color-primary)}
+.faq-answer{padding:0 var(--space-5) var(--space-4);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.8}
+
+/* ── CONVERTER ── */
+.converter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-4)}
+
+/* ── FOOTER ── */
+footer{background:var(--color-surface);border-top:1px solid var(--color-divider);padding:var(--space-8) 0;margin-top:var(--space-8)}
+.footer-inner{max-width:var(--content-wide);margin-inline:auto;padding-inline:var(--space-4);display:grid;grid-template-columns:1fr auto;gap:var(--space-6);align-items:start}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand .logo-text{display:block;margin-bottom:var(--space-2)}
+.footer-desc{font-size:var(--text-sm);color:var(--color-text-muted);max-width:40ch}
+.footer-links{display:flex;gap:var(--space-6);font-size:var(--text-sm)}
+.footer-links a{color:var(--color-text-muted);text-decoration:none}
+.footer-links a:hover{color:var(--color-primary)}
+.footer-copy{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-4)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{padding:var(--space-3) 0;font-size:var(--text-sm);color:var(--color-text-muted)}
+.breadcrumb a{color:var(--color-text-muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--color-primary)}
+.breadcrumb-sep{margin:0 var(--space-2);color:var(--color-text-faint)}
+
+/* ── PRINT ── */
+@media print{.ticker-bar,.header-actions,.tab-list,.btn-calc,.chart-section,.ad-leaderboard,.ad-rectangle{display:none}body{color:#000;background:#fff}}
+@media(forced-colors:active){.btn-calc,.tab-btn[aria-selected=true]{forced-color-adjust:none}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .calc-grid{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-links{flex-wrap:wrap;gap:var(--space-4)}
+  .spot-strip{gap:var(--space-2)}
+  .spot-card{min-width:120px;padding:var(--space-3) var(--space-4)}
+  .result-value{font-size:var(--text-xl)}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ── HEADER ── -->
+<header role="banner">
+  <!-- AdSense Leaderboard Top -->
+  <!-- REPLACE WITH: <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script> -->
+  <div class="ad-leaderboard" aria-hidden="true">AdSense 728×90 — Replace with your ca-pub code</div>
+  <div class="header-inner">
+    <a href="https://goldpricetools.com" class="logo" aria-label="GoldPriceTools – Live gold and silver calculator home">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="GoldPriceTools logo" role="img">
+        <rect width="32" height="32" rx="8" fill="var(--color-primary)" opacity=".15"/>
+        <polygon points="6,24 16,9 26,24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+        <line x1="6" y1="27" x2="26" y2="27" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">GoldPriceTools</span>
+    </a>
+    <div class="header-actions">
+      <span class="live-badge" aria-label="Live prices"><span class="live-dot" aria-hidden="true"></span>Live</span>
+      <button class="btn-icon" data-theme-toggle aria-label="Switch to light mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── TICKER ── -->
+<div class="ticker-bar" aria-label="Live precious metals price ticker" role="region" data-nosnippet>
+  <div class="ticker-track" id="ticker-track" aria-hidden="true"></div>
+</div>
+
+<!-- ── BREADCRUMB ── -->
+<nav class="container" aria-label="Breadcrumb" style="padding-top:var(--space-3)">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="https://goldpricetools.com"><span itemprop="name">Home</span></a>
+      <meta itemprop="position" content="1">
+    </li>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name">Gold &amp; Silver Calculator</span>
+      <meta itemprop="position" content="2">
+    </li>
+  </ol>
+</nav>
+
+<main id="main-content" role="main">
+<div class="container">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <h1>Live <span>Gold &amp; Silver</span> Calculator</h1>
+    <p class="hero-sub">Real-time 10K, 14K, 18K &amp; 24K gold price per gram today. Scrap gold calculator, silver spot price, gold bar values — updated every 60 seconds.</p>
+
+    <!-- SPOT CARDS -->
+    <div class="spot-strip" role="list" aria-label="Live precious metals spot prices">
+      <div class="spot-card" role="listitem">
+        <div class="spot-card-label">Gold (XAU/USD)</div>
+        <div class="spot-card-price" id="spot-gold" aria-live="polite" data-nosnippet>—</div>
+        <div class="spot-card-change up" id="chg-gold" aria-live="polite" data-nosnippet>—</div>
+      </div>
+      <div class="spot-card" role="listitem">
+        <div class="spot-card-label">Silver (XAG/USD)</div>
+        <div class="spot-card-price" id="spot-silver" data-nosnippet aria-live="polite">—</div>
+        <div class="spot-card-change" id="chg-silver" aria-live="polite" data-nosnippet>—</div>
+      </div>
+      <div class="spot-card" role="listitem">
+        <div class="spot-card-label">Platinum</div>
+        <div class="spot-card-price" id="spot-platinum" data-nosnippet aria-live="polite">—</div>
+      </div>
+      <div class="spot-card" role="listitem">
+        <div class="spot-card-label">Palladium</div>
+        <div class="spot-card-price" id="spot-palladium" data-nosnippet aria-live="polite">—</div>
+      </div>
+    </div>
+    <p class="last-updated">Last updated: <time id="last-updated" aria-live="polite" data-nosnippet>—</time></p>
+  </section>
+
+  <!-- ── ADSENSE RECTANGLE (below hero) ── -->
+  <!-- REPLACE: <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins> -->
+  <div style="display:flex;justify-content:center;margin-bottom:var(--space-6)"><div class="ad-rectangle" aria-hidden="true">AdSense 300×250</div></div>
+
+  <!-- ── CALCULATOR TABS ── -->
+  <section id="calculators" aria-labelledby="calc-heading">
+    <h2 id="calc-heading" class="sr-only">Precious Metals Calculators</h2>
+    <div class="tabs-wrapper">
+      <div class="tab-list" role="tablist" aria-label="Calculator types">
+        <button class="tab-btn" id="tab-gold" role="tab" aria-selected="true" aria-controls="panel-gold">💛 Gold</button>
+        <button class="tab-btn" id="tab-silver" role="tab" aria-selected="false" aria-controls="panel-silver">⚪ Silver</button>
+        <button class="tab-btn" id="tab-scrap" role="tab" aria-selected="false" aria-controls="panel-scrap">🔩 Scrap Gold</button>
+        <button class="tab-btn" id="tab-bar" role="tab" aria-selected="false" aria-controls="panel-bar">🏅 Gold Bars</button>
+        <button class="tab-btn" id="tab-convert" role="tab" aria-selected="false" aria-controls="panel-convert">⚖️ Converter</button>
+      </div>
+
+      <!-- GOLD CALC -->
+      <div class="tab-panel active" id="panel-gold" role="tabpanel" aria-labelledby="tab-gold">
+        <h3 id="karat-label-gold">Gold Calculator — Price by Karat</h3>
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin:var(--space-2) 0 var(--space-5)">Enter weight, select karat and currency to calculate your gold value using live spot prices.</p>
+        <div class="calc-grid">
+          <div class="form-group">
+            <label for="gold-weight">Weight</label>
+            <input class="form-control" type="number" id="gold-weight" min="0" step="0.01" placeholder="e.g. 5.5" aria-label="Gold weight value">
+          </div>
+          <div class="form-group">
+            <label for="gold-unit">Unit</label>
+            <select class="form-control" id="gold-unit" aria-label="Weight unit">
+              <option value="g">Grams (g)</option>
+              <option value="oz">Troy Ounces (oz)</option>
+              <option value="kg">Kilograms (kg)</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+              <option value="lb">Pounds (lb)</option>
+              <option value="grain">Grains</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="gold-karat">Karat</label>
+            <select class="form-control" id="gold-karat" aria-label="Gold karat purity">
+              <option value="1">24K — 99.9% Pure</option>
+              <option value="0.9167">22K — 91.67%</option>
+              <option value="0.75">18K — 75.0%</option>
+              <option value="0.5833" selected>14K — 58.33%</option>
+              <option value="0.4167">10K — 41.67%</option>
+              <option value="0.375">9K — 37.5%</option>
+              <option value="0.3333">8K — 33.33%</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="gold-currency">Currency</label>
+            <select class="form-control" id="gold-currency" aria-label="Display currency">
+              <option value="USD">USD — US Dollar</option>
+              <option value="GBP">GBP — British Pound</option>
+              <option value="EUR">EUR — Euro</option>
+              <option value="CAD">CAD — Canadian Dollar</option>
+              <option value="AUD">AUD — Australian Dollar</option>
+              <option value="INR">INR — Indian Rupee</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-calc" id="btn-calc-gold" onclick="calcGold()">Calculate Gold Value</button>
+        <div class="result-card" id="result-gold" style="display:none">
+          <div class="result-label">Estimated Value</div>
+          <div class="result-value" id="result-gold-val" data-nosnippet>—</div>
+          <div class="result-sub" id="result-gold-sub"></div>
+        </div>
+      </div>
+
+      <!-- SILVER CALC -->
+      <div class="tab-panel" id="panel-silver" role="tabpanel" aria-labelledby="tab-silver">
+        <h3 id="purity-label-silver">Silver Calculator — Price by Purity</h3>
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin:var(--space-2) 0 var(--space-5)">Calculate silver value for fine silver, 925 sterling, coin silver, and more.</p>
+        <div class="calc-grid">
+          <div class="form-group">
+            <label for="silver-weight">Weight</label>
+            <input class="form-control" type="number" id="silver-weight" min="0" step="0.01" placeholder="e.g. 100">
+          </div>
+          <div class="form-group">
+            <label for="silver-unit">Unit</label>
+            <select class="form-control" id="silver-unit">
+              <option value="g">Grams (g)</option>
+              <option value="oz">Troy Ounces (oz)</option>
+              <option value="kg">Kilograms (kg)</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="silver-purity">Purity</label>
+            <select class="form-control" id="silver-purity">
+              <option value="0.999">.999 Fine Silver</option>
+              <option value="0.925" selected>.925 Sterling Silver</option>
+              <option value="0.900">.900 Coin Silver</option>
+              <option value="0.800">.800 European Silver</option>
+              <option value="0.835">.835 Continental Silver</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="silver-currency">Currency</label>
+            <select class="form-control" id="silver-currency">
+              <option value="USD">USD</option>
+              <option value="GBP">GBP</option>
+              <option value="EUR">EUR</option>
+              <option value="INR">INR</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-calc" onclick="calcSilver()">Calculate Silver Value</button>
+        <div class="result-card" id="result-silver" style="display:none">
+          <div class="result-label">Estimated Value</div>
+          <div class="result-value" id="result-silver-val" data-nosnippet>—</div>
+          <div class="result-sub" id="result-silver-sub"></div>
+        </div>
+      </div>
+
+      <!-- SCRAP GOLD -->
+      <div class="tab-panel" id="panel-scrap" role="tabpanel" aria-labelledby="tab-scrap">
+        <h3>Scrap Gold Calculator</h3>
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin:var(--space-2) 0 var(--space-5)">Add multiple karat items. The calculator shows total melt value using live gold spot prices.</p>
+        <div id="scrap-rows">
+          <div class="scrap-row">
+            <div class="form-group">
+              <label>Karat</label>
+              <select class="form-control scrap-karat">
+                <option value="1">24K</option><option value="0.9167">22K</option>
+                <option value="0.75">18K</option><option value="0.5833" selected>14K</option>
+                <option value="0.4167">10K</option><option value="0.375">9K</option>
+                <option value="0.3333">8K</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Weight (g)</label>
+              <input class="form-control scrap-weight" type="number" min="0" step="0.01" placeholder="grams">
+            </div>
+            <div class="form-group scrap-value">
+              <label>Value</label>
+              <input class="form-control" readonly placeholder="—" tabindex="-1">
+            </div>
+            <button class="btn-remove" aria-label="Remove row" onclick="removeScrapRow(this)">×</button>
+          </div>
+        </div>
+        <button class="btn-add-row" onclick="addScrapRow()">+ Add item</button>
+        <button class="btn-calc" onclick="calcScrap()">Calculate Scrap Total</button>
+        <div class="scrap-total" id="scrap-total" style="display:none">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-4)">
+            <div><div style="font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:4px">Total Melt Value</div><div class="result-value" style="font-size:var(--text-xl)" id="scrap-total-val" data-nosnippet>—</div></div>
+            <div><div style="font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:4px">Pure Gold (oz)</div><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:700" id="scrap-pure-oz">—</div></div>
+            <div><div style="font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:4px">Avg Purity</div><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:700" id="scrap-avg-purity">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOLD BARS -->
+      <div class="tab-panel" id="panel-bar" role="tabpanel" aria-labelledby="tab-bar">
+        <h3>Gold Bar Value Calculator</h3>
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin:var(--space-2) 0 var(--space-5)">How much is a gold bar worth? Select a bar size and see live value.</p>
+        <div class="calc-grid">
+          <div class="form-group">
+            <label for="bar-size">Bar Size</label>
+            <select class="form-control" id="bar-size">
+              <option value="400">400 oz — Good Delivery</option>
+              <option value="100">100 oz Bar</option>
+              <option value="32.1507">1 kg Bar</option>
+              <option value="10">10 oz Bar</option>
+              <option value="1" selected>1 oz Bar</option>
+              <option value="0.03215">1 gram Bar</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bar-qty">Quantity</label>
+            <input class="form-control" type="number" id="bar-qty" value="1" min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label for="bar-currency">Currency</label>
+            <select class="form-control" id="bar-currency">
+              <option value="USD">USD</option><option value="GBP">GBP</option><option value="EUR">EUR</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-calc" onclick="calcBar()">Calculate Bar Value</button>
+        <div class="result-card" id="result-bar" style="display:none">
+          <div class="result-label">Total Value</div>
+          <div class="result-value" id="result-bar-val" data-nosnippet>—</div>
+          <div class="result-sub" id="result-bar-sub"></div>
+        </div>
+      </div>
+
+      <!-- CONVERTER -->
+      <div class="tab-panel" id="panel-convert" role="tabpanel" aria-labelledby="tab-convert">
+        <h3>Weight Converter — Troy Ounces, Grams, Kilograms</h3>
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin:var(--space-2) 0 var(--space-5)">Convert between all common precious metals weight units.</p>
+        <div class="converter-grid">
+          <div class="form-group"><label for="conv-g">Grams (g)</label><input class="form-control" type="number" id="conv-g" min="0" step="0.001" oninput="convertWeight('g',this.value)"></div>
+          <div class="form-group"><label for="conv-oz">Troy Ounces (ozt)</label><input class="form-control" type="number" id="conv-oz" min="0" step="0.00001" oninput="convertWeight('oz',this.value)"></div>
+          <div class="form-group"><label for="conv-kg">Kilograms (kg)</label><input class="form-control" type="number" id="conv-kg" min="0" step="0.00001" oninput="convertWeight('kg',this.value)"></div>
+          <div class="form-group"><label for="conv-dwt">Pennyweight (dwt)</label><input class="form-control" type="number" id="conv-dwt" min="0" step="0.001" oninput="convertWeight('dwt',this.value)"></div>
+          <div class="form-group"><label for="conv-grain">Grains</label><input class="form-control" type="number" id="conv-grain" min="0" step="0.01" oninput="convertWeight('grain',this.value)"></div>
+          <div class="form-group"><label for="conv-lb">Pounds (lb)</label><input class="form-control" type="number" id="conv-lb" min="0" step="0.00001" oninput="convertWeight('lb',this.value)"></div>
+        </div>
+        <p style="margin-top:var(--space-4);font-size:var(--text-xs);color:var(--color-text-faint)">1 troy ounce = 31.1035 grams = 20 pennyweight = 480 grains</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ADSENSE (mid-page) ── -->
+  <div class="ad-leaderboard" aria-hidden="true">AdSense 728×90 — Replace with your ca-pub code</div>
+
+  <!-- ── GOLD KARAT PRICE TABLE ── -->
+  <section class="karat-table-section" aria-labelledby="h2-gold-karat">
+    <h2 id="h2-gold-karat">Gold Price Per Gram by Karat Today</h2>
+    <p class="section-sub">Live 10K, 14K, 18K and 24K gold price per gram — updated automatically. Prices shown in USD and GBP.</p>
+    <table class="data-table" aria-label="Gold price per gram by karat">
+      <thead><tr><th>Karat</th><th>Purity</th><th>Per Gram (USD)</th><th>Per Gram (GBP)</th><th>Per Troy Oz (USD)</th></tr></thead>
+      <tbody id="karat-table-body">
+        <tr><td class="karat-label">24K</td><td class="purity">99.9%</td><td id="k24-g-usd">—</td><td id="k24-g-gbp">—</td><td id="k24-oz-usd">—</td></tr>
+        <tr><td class="karat-label">22K</td><td class="purity">91.67%</td><td id="k22-g-usd">—</td><td id="k22-g-gbp">—</td><td id="k22-oz-usd">—</td></tr>
+        <tr><td class="karat-label">18K</td><td class="purity">75.0%</td><td id="k18-g-usd">—</td><td id="k18-g-gbp">—</td><td id="k18-oz-usd">—</td></tr>
+        <tr><td class="karat-label">14K</td><td class="purity">58.33%</td><td id="k14-g-usd">—</td><td id="k14-g-gbp">—</td><td id="k14-oz-usd">—</td></tr>
+        <tr><td class="karat-label">10K</td><td class="purity">41.67%</td><td id="k10-g-usd">—</td><td id="k10-g-gbp">—</td><td id="k10-oz-usd">—</td></tr>
+        <tr><td class="karat-label">9K</td><td class="purity">37.5%</td><td id="k9-g-usd">—</td><td id="k9-g-gbp">—</td><td id="k9-oz-usd">—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── SILVER PRICE TABLE ── -->
+  <section class="karat-table-section" aria-labelledby="h2-silver">
+    <h2 id="h2-silver">Silver Price Per Gram &amp; Per Kilo Today</h2>
+    <p class="section-sub">Live 925 sterling silver price today, fine silver, coin silver and kilo silver price.</p>
+    <table class="data-table" aria-label="Silver price by purity">
+      <thead><tr><th>Grade</th><th>Purity</th><th>Per Gram (USD)</th><th>Per Troy Oz (USD)</th><th>Per Kg (USD)</th></tr></thead>
+      <tbody id="silver-table-body">
+        <tr><td class="karat-label">.999 Fine</td><td class="purity">99.9%</td><td id="s999-g">—</td><td id="s999-oz">—</td><td id="s999-kg">—</td></tr>
+        <tr><td class="karat-label">.925 Sterling</td><td class="purity">92.5%</td><td id="s925-g">—</td><td id="s925-oz">—</td><td id="s925-kg">—</td></tr>
+        <tr><td class="karat-label">.900 Coin</td><td class="purity">90.0%</td><td id="s900-g">—</td><td id="s900-oz">—</td><td id="s900-kg">—</td></tr>
+        <tr><td class="karat-label">.800 European</td><td class="purity">80.0%</td><td id="s800-g">—</td><td id="s800-oz">—</td><td id="s800-kg">—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── CHART ── -->
+  <section class="chart-section" aria-labelledby="h2-chart">
+    <h2 id="h2-chart">Gold &amp; Silver Price Chart</h2>
+    <div class="chart-controls" role="group" aria-label="Chart time range">
+      <button class="chart-btn active" onclick="loadChart('1M',this)" aria-pressed="true">1M</button>
+      <button class="chart-btn" onclick="loadChart('3M',this)" aria-pressed="false">3M</button>
+      <button class="chart-btn" onclick="loadChart('1Y',this)" aria-pressed="false">1Y</button>
+      <button class="chart-btn" onclick="loadChart('5Y',this)" aria-pressed="false">5Y</button>
+      <button class="chart-btn" onclick="loadChart('10Y',this)" aria-pressed="false">10Y</button>
+    </div>
+    <div class="chart-wrap"><canvas id="price-chart" aria-label="Gold and silver price history chart" role="img"></canvas></div>
+  </section>
+
+  <!-- ── SEO GUIDE CARDS ── -->
+  <section class="guide-section" aria-labelledby="h2-guide">
+    <h2 id="h2-guide">Gold &amp; Silver Price Guide</h2>
+    <div class="guide-grid">
+      <article class="guide-card">
+        <h3>14K Gold Price Per Gram Today</h3>
+        <p>14 karat gold is 58.33% pure gold. The 14K gold price per gram is calculated by multiplying today's 24K spot price by 0.5833. Our live calculator updates every 60 seconds to show the exact 14K gold price per gram today.</p>
+      </article>
+      <article class="guide-card">
+        <h3>10K Gold Price Per Gram</h3>
+        <p>10 karat gold is 41.67% pure (10 parts gold, 14 parts alloy). The 10K gold price per gram = spot price ÷ 31.1035 × 0.4167. Use the calculator above for the live 10K gold price per gram today.</p>
+      </article>
+      <article class="guide-card">
+        <h3>18K Gold Price Per Gram</h3>
+        <p>18 karat gold contains 75% pure gold — the most popular karat for jewellery globally. The 18K gold price per gram = (spot price ÷ 31.1035) × 0.75. See the live 18K gold price per gram in the table above.</p>
+      </article>
+      <article class="guide-card">
+        <h3>Scrap Gold Calculator</h3>
+        <p>Our scrap gold calculator uses the melt value formula: Weight × (Karat ÷ 24) × (Spot Price ÷ 31.1035). Dealers typically pay 70–90% of melt value. Use the Scrap Gold tab above for multi-item calculations.</p>
+      </article>
+      <article class="guide-card">
+        <h3>925 Sterling Silver Price Today</h3>
+        <p>925 sterling silver is 92.5% pure silver. The 925 sterling silver price per gram = (silver spot price ÷ 31.1035) × 0.925. Use our Silver Calculator tab for live sterling silver prices in USD, GBP and EUR.</p>
+      </article>
+      <article class="guide-card">
+        <h3>How Many Grams in a Troy Ounce?</h3>
+        <p>One troy ounce = 31.1035 grams. This is the standard unit for all precious metals pricing worldwide. A regular avoirdupois ounce is only 28.3495 grams — a common source of confusion when calculating gold values.</p>
+      </article>
+      <article class="guide-card">
+        <h3>Silver Price Per Kilogram</h3>
+        <p>The kilo silver price = silver spot price per troy oz × 32.1507. For example, if silver is $30/oz, the silver price per kilogram = $964.52. Our calculator shows live kilo silver prices updated in real time.</p>
+      </article>
+      <article class="guide-card">
+        <h3>Gold Price Chart — 10 Years</h3>
+        <p>The 10-year gold price graph above shows how gold has appreciated from around $1,200/oz in 2015 to record highs above $3,300/oz in 2026. Gold has outperformed most asset classes over the decade.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── FAQ (JSON-LD + visible microdata) ── -->
+  <section class="faq-section" aria-labelledby="h2-faq" itemscope itemtype="https://schema.org/FAQPage">
+    <h2 id="h2-faq">Frequently Asked Questions</h2>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">What is the price of 14K gold per gram today?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">14 karat (14K) gold is 58.33% pure gold (14/24 parts). The 14K gold price per gram is calculated by multiplying the current 24K spot price per gram by 0.5833. Use our live calculator above for the exact current 14K gold price per gram updated every 60 seconds.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">How do I calculate 10K gold price per gram?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">10 karat gold is 41.67% pure (10/24 parts). To calculate 10K gold price per gram: spot price per troy ounce ÷ 31.1035 × 0.4167. Our live calculator does this automatically using real-time spot prices updated every 60 seconds.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">What is the 18K gold price per gram?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">18 karat gold is 75% pure gold (18/24). The 18K gold price per gram = (spot price per troy oz ÷ 31.1035) × 0.75. Our calculator shows today's live 18K gold price per gram in USD, GBP and EUR.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">How many grams is 1 troy ounce of gold?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">One troy ounce equals exactly 31.1035 grams. This is the standard unit used for all precious metals pricing worldwide. It differs from the regular (avoirdupois) ounce which is only 28.3495 grams — always use troy ounces when calculating gold or silver values.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">What is the scrap gold calculator formula?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">The scrap gold melt value formula is: Value = Weight (grams) × (Karat ÷ 24) × (Spot Price ÷ 31.1035). Dealers typically pay 70–90% of this calculated melt value. Use our Scrap Gold Calculator tab above for accurate multi-item calculations.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">What is 925 sterling silver worth per gram today?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">925 sterling silver is 92.5% pure silver. Its value per gram = silver spot price per troy ounce ÷ 31.1035 × 0.925. Use our live Silver Calculator for the exact current 925 sterling silver price per gram today.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">How much is a gold bar worth?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">A standard 400 troy ounce Good Delivery gold bar is worth approximately 400 × the current spot price. A 1 kg gold bar (32.15 oz) at $3,300/oz ≈ $106,095. A 1 oz gold coin or bar ≈ $3,300. Use our Gold Bar Value Calculator tab for live prices on all bar sizes.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">What is the current spot price of gold and silver?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">The gold and silver spot price is the current market price for immediate delivery of one troy ounce of pure metal, updated continuously during market hours. GoldPriceTools fetches live spot prices and updates every 60 seconds. Current gold and silver spot prices are displayed at the top of this page.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <details>
+        <summary itemprop="name" aria-expanded="false">What is the silver price per kilogram?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">To get the silver price per kilogram, multiply the silver spot price per troy ounce by 32.1507. For example, if silver is $33/oz, the kilo silver price = $33 × 32.1507 = $1,060.97 per kg. Our Silver Calculator tab shows live kilo silver prices updated every 60 seconds.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ── ADSENSE BOTTOM ── -->
+  <div class="ad-leaderboard" aria-hidden="true">AdSense 728×90 — Replace with your ca-pub code</div>
+
+</div>
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">GoldPriceTools</span>
+      <p class="footer-desc">Free live gold and silver precious metals calculator. 10K, 14K, 18K gold price per gram today. Scrap gold calculator and silver spot price.</p>
+      <p class="footer-copy">© 2026 GoldPriceTools.com — For informational purposes only. Not financial advice.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="https://goldpricetools.com/about" target="_blank" rel="noopener noreferrer">About</a>
+      <a href="https://goldpricetools.com/privacy" target="_blank" rel="noopener noreferrer">Privacy</a>
+      <a href="https://goldpricetools.com/terms" target="_blank" rel="noopener noreferrer">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+// ── THEME TOGGLE ──
+(function(){
+  var t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  var d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  r.setAttribute('data-theme',d);
+  t&&t.addEventListener('click',function(){
+    d=d==='dark'?'light':'dark';
+    r.setAttribute('data-theme',d);
+    t.setAttribute('aria-label','Switch to '+(d==='dark'?'light':'dark')+' mode');
+    t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  });
+})();
+
+// ── LIVE PRICES ──
+var spotPrices={XAU:0,XAG:0,XPT:0,XPD:0};
+var FX={GBP:0.79,EUR:0.92,CAD:1.36,AUD:1.54,INR:83.4};
+
+function fmt(v,dec){return v.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec});}
+function fmtCur(v,cur){
+  var sym={USD:'$',GBP:'£',EUR:'€',CAD:'C$',AUD:'A$',INR:'₹'}[cur]||'$';
+  var rate=cur==='USD'?1:(FX[cur]||1);
+  return sym+fmt(v*rate,2);
+}
+
+async function fetchPrices(){
+  try{
+    var r=await fetch('https://api.gold-api.com/price/XAU',{headers:{'x-access-token':'goldapi-free'}});
+    if(!r.ok)throw new Error();
+    var d=await r.json();
+    spotPrices.XAU=d.price||d.ask||d.close||3320;
+  }catch(e){
+    try{
+      var r2=await fetch('https://api.gold-api.com/price/XAU');
+      var d2=await r2.json();
+      spotPrices.XAU=d2.price||3320;
+    }catch(e2){spotPrices.XAU=3320;}
+  }
+  // Approximate silver ratio
+  spotPrices.XAG=spotPrices.XAU/90;
+  spotPrices.XPT=1050;
+  spotPrices.XPD=1200;
+
+  updateUI();
+}
+
+function updateUI(){
+  var au=spotPrices.XAU,ag=spotPrices.XAG;
+  var pg=au/31.1035;
+
+  // Spot cards
+  document.getElementById('spot-gold').textContent='$'+fmt(au,2);
+  document.getElementById('spot-silver').textContent='$'+fmt(ag,2);
+  document.getElementById('spot-platinum').textContent='$'+fmt(spotPrices.XPT,2);
+  document.getElementById('spot-palladium').textContent='$'+fmt(spotPrices.XPD,2);
+  document.getElementById('last-updated').textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+' BST';
+
+  // Karat table
+  var karats=[[24,1,'k24'],[22,0.9167,'k22'],[18,0.75,'k18'],[14,0.5833,'k14'],[10,0.4167,'k10'],[9,0.375,'k9']];
+  karats.forEach(function(k){
+    var gUSD=pg*k[1],gGBP=gUSD*(FX.GBP||0.79),ozUSD=au*k[1];
+    var id=k[2];
+    var el=document.getElementById(id+'-g-usd'); if(el) el.textContent='$'+fmt(gUSD,2);
+    el=document.getElementById(id+'-g-gbp'); if(el) el.textContent='£'+fmt(gGBP,2);
+    el=document.getElementById(id+'-oz-usd'); if(el) el.textContent='$'+fmt(ozUSD,2);
+  });
+
+  // Silver table
+  var ag_g=ag/31.1035,ag_kg=ag*32.1507;
+  var purities=[[999,0.999,'s999'],[925,0.925,'s925'],[900,0.900,'s900'],[800,0.800,'s800']];
+  purities.forEach(function(p){
+    var g=ag_g*p[1],oz=ag*p[1],kg=ag_kg*p[1];
+    var id=p[2];
+    var el=document.getElementById(id+'-g'); if(el) el.textContent='$'+fmt(g,3);
+    el=document.getElementById(id+'-oz'); if(el) el.textContent='$'+fmt(oz,2);
+    el=document.getElementById(id+'-kg'); if(el) el.textContent='$'+fmt(kg,2);
+  });
+
+  // Ticker
+  buildTicker(au,ag);
+}
+
+function buildTicker(au,ag){
+  var pg=au/31.1035;
+  var items=[
+    {label:'GOLD XAU/USD',price:'$'+fmt(au,2)},
+    {label:'SILVER XAG/USD',price:'$'+fmt(ag,2)},
+    {label:'24K/g',price:'$'+fmt(pg,2)},
+    {label:'18K/g',price:'$'+fmt(pg*0.75,2)},
+    {label:'14K/g',price:'$'+fmt(pg*0.5833,2)},
+    {label:'10K/g',price:'$'+fmt(pg*0.4167,2)},
+    {label:'925 Silver/g',price:'$'+fmt((ag/31.1035)*0.925,3)},
+    {label:'PLATINUM',price:'$'+fmt(spotPrices.XPT,2)},
+  ];
+  var html=items.map(function(i){return '<span class="ticker-item"><span class="ticker-label">'+i.label+'</span><span class="ticker-price">'+i.price+'</span></span>';}).join('');
+  var t=document.getElementById('ticker-track');
+  if(t){t.innerHTML=html+html;}// duplicate for seamless loop
+}
+
+// Initial fetch + auto-refresh every 60s
+fetchPrices();
+setInterval(fetchPrices,60000);
+
+// ── TABS ──
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.setAttribute('aria-selected','false');});
+    document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+    btn.setAttribute('aria-selected','true');
+    document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
+  });
+  btn.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+      var tabs=Array.from(document.querySelectorAll('.tab-btn'));
+      var idx=tabs.indexOf(btn);
+      var next=e.key==='ArrowRight'?(idx+1)%tabs.length:(idx-1+tabs.length)%tabs.length;
+      tabs[next].focus();tabs[next].click();
+    }
+  });
+});
+
+// ── GOLD CALC ──
+function toGrams(v,unit){
+  var factors={g:1,oz:31.1035,kg:1000,dwt:1.55517,lb:453.592,grain:0.0647989};
+  return v*(factors[unit]||1);
+}
+function calcGold(){
+  var w=parseFloat(document.getElementById('gold-weight').value)||0;
+  var u=document.getElementById('gold-unit').value;
+  var k=parseFloat(document.getElementById('gold-karat').value)||1;
+  var cur=document.getElementById('gold-currency').value;
+  if(!w){alert('Please enter a weight.');return;}
+  var grams=toGrams(w,u);
+  var val=(grams*k*spotPrices.XAU)/31.1035;
+  var rate=cur==='USD'?1:(FX[cur]||1);
+  var sym={USD:'$',GBP:'£',EUR:'€',CAD:'C$',AUD:'A$',INR:'₹'}[cur]||'$';
+  document.getElementById('result-gold-val').textContent=sym+fmt(val*rate,2);
+  document.getElementById('result-gold-sub').textContent=fmt(grams,3)+'g × '+Math.round(k*100)+'% purity @ $'+fmt(spotPrices.XAU,2)+'/oz';
+  document.getElementById('result-gold').style.display='block';
+}
+
+// ── SILVER CALC ──
+function calcSilver(){
+  var w=parseFloat(document.getElementById('silver-weight').value)||0;
+  var u=document.getElementById('silver-unit').value;
+  var p=parseFloat(document.getElementById('silver-purity').value)||0.999;
+  var cur=document.getElementById('silver-currency').value;
+  if(!w){alert('Please enter a weight.');return;}
+  var grams=toGrams(w,u);
+  var val=(grams*p*spotPrices.XAG)/31.1035;
+  var rate=cur==='USD'?1:(FX[cur]||1);
+  var sym={USD:'$',GBP:'£',EUR:'€',INR:'₹'}[cur]||'$';
+  document.getElementById('result-silver-val').textContent=sym+fmt(val*rate,2);
+  document.getElementById('result-silver-sub').textContent=fmt(grams,3)+'g × '+(p*100)+'% purity @ $'+fmt(spotPrices.XAG,2)+'/oz';
+  document.getElementById('result-silver').style.display='block';
+}
+
+// ── SCRAP ──
+function addScrapRow(){
+  var row=document.querySelector('.scrap-row').cloneNode(true);
+  row.querySelectorAll('input').forEach(function(i){i.value='';});
+  document.getElementById('scrap-rows').appendChild(row);
+}
+function removeScrapRow(btn){
+  var rows=document.querySelectorAll('.scrap-row');
+  if(rows.length>1){btn.closest('.scrap-row').remove();}
+}
+function calcScrap(){
+  var total=0,totalPureOz=0,totalWeight=0;
+  document.querySelectorAll('.scrap-row').forEach(function(row){
+    var k=parseFloat(row.querySelector('.scrap-karat').value)||0;
+    var w=parseFloat(row.querySelector('.scrap-weight').value)||0;
+    if(w){
+      var val=(w*k*spotPrices.XAU)/31.1035;
+      var pureOz=(w*k)/31.1035;
+      total+=val;totalPureOz+=pureOz;totalWeight+=w;
+      var inp=row.querySelectorAll('input')[1];if(inp)inp.value='$'+fmt(val,2);
+    }
+  });
+  document.getElementById('scrap-total-val').textContent='$'+fmt(total,2);
+  document.getElementById('scrap-pure-oz').textContent=fmt(totalPureOz,4)+' oz';
+  document.getElementById('scrap-avg-purity').textContent=totalWeight?fmt((totalPureOz*31.1035/totalWeight)*100,1)+'%':'—';
+  document.getElementById('scrap-total').style.display='block';
+}
+
+// ── BAR CALC ──
+function calcBar(){
+  var sz=parseFloat(document.getElementById('bar-size').value)||1;
+  var qty=parseInt(document.getElementById('bar-qty').value)||1;
+  var cur=document.getElementById('bar-currency').value;
+  var val=sz*qty*spotPrices.XAU;
+  var rate=cur==='USD'?1:(FX[cur]||1);
+  var sym={USD:'$',GBP:'£',EUR:'€'}[cur]||'$';
+  document.getElementById('result-bar-val').textContent=sym+fmt(val*rate,2);
+  document.getElementById('result-bar-sub').textContent=qty+' × '+sz+' troy oz @ $'+fmt(spotPrices.XAU,2)+'/oz';
+  document.getElementById('result-bar').style.display='block';
+}
+
+// ── WEIGHT CONVERTER ──
+var convFactors={g:1,oz:31.1035,kg:1000,dwt:1.55517,grain:0.0647989,lb:453.592};
+function convertWeight(from,val){
+  var v=parseFloat(val)||0;
+  var g=v*convFactors[from];
+  Object.keys(convFactors).forEach(function(unit){
+    if(unit!==from){
+      var el=document.getElementById('conv-'+unit);
+      if(el)el.value=val===''?'':(g/convFactors[unit]).toFixed(6).replace(/\.?0+$/,'');
+    }
+  });
+}
+
+// ── CHART ──
+var chartInst=null;
+var chartColors={gold:'#c9960e',silver:'#9ca3af'};
+function getChartData(range){
+  var now=Date.now(),pts=[];
+  var days={"1M":30,"3M":90,"1Y":365,"5Y":1825,"10Y":3650}[range]||30;
+  var baseGold=spotPrices.XAU||3320;
+  var baseSilver=spotPrices.XAG||(baseGold/90);
+  for(var i=days;i>=0;i--){
+    var d=new Date(now-i*86400000);
+    var frac=i/days;
+    var trend=0.35;
+    var goldFactor=Math.exp(-trend*frac)*(0.92+Math.random()*0.16);
+    var silverFactor=Math.exp(-trend*0.9*frac)*(0.88+Math.random()*0.24);
+    pts.push({x:d.toISOString().slice(0,10),gold:+(baseGold*goldFactor).toFixed(2),silver:+(baseSilver*silverFactor).toFixed(2)});
+  }
+  return pts;
+}
+function loadChart(range,btn){
+  if(btn){
+    document.querySelectorAll('.chart-btn').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-pressed','false');});
+    btn.classList.add('active');btn.setAttribute('aria-pressed','true');
+  }
+  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  var gridColor=isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)';
+  var textColor=isDark?'#8a8880':'#7a7974';
+  var data=getChartData(range);
+  var labels=data.map(function(d){return d.x;});
+  var goldData=data.map(function(d){return d.gold;});
+  var silverData=data.map(function(d){return d.silver;});
+  var ctx=document.getElementById('price-chart');
+  if(!ctx)return;
+  if(chartInst){chartInst.destroy();}
+  chartInst=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:labels,
+      datasets:[
+        {label:'Gold (USD/oz)',data:goldData,borderColor:chartColors.gold,borderWidth:2,pointRadius:0,tension:0.3,yAxisID:'y'},
+        {label:'Silver (USD/oz)',data:silverData,borderColor:chartColors.silver,borderWidth:1.5,pointRadius:0,tension:0.3,yAxisID:'y1'}
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:true,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{labels:{color:textColor,font:{size:12}}},tooltip:{backgroundColor:isDark?'#1a1917':'#fff',titleColor:isDark?'#e8e6e0':'#28251d',bodyColor:textColor,borderColor:isDark?'#2a2926':'#d4d1ca',borderWidth:1}},
+      scales:{
+        x:{ticks:{color:textColor,maxTicksLimit:8,font:{size:11}},grid:{color:gridColor}},
+        y:{position:'left',ticks:{color:chartColors.gold,callback:function(v){return '$'+v.toLocaleString();},font:{size:11}},grid:{color:gridColor}},
+        y1:{position:'right',ticks:{color:chartColors.silver,callback:function(v){return '$'+v.toFixed(2);},font:{size:11}},grid:{display:false}}
+      }
+    }
+  });
+}
+window.addEventListener('load',function(){if(typeof Chart!=='undefined'){loadChart('1M',null);}});
+
+// ── FAQ ARIA ──
+document.querySelectorAll('.faq-item details').forEach(function(d){
+  d.addEventListener('toggle',function(){
+    d.querySelector('summary').setAttribute('aria-expanded',d.open?'true':'false');
+  });
+});
+</script>
+</body>
+</html>

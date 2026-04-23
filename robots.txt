@@ -1,0 +1,21 @@
+# robots.txt for GoldPriceTools
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://goldpricetools.com/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /assets/
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /

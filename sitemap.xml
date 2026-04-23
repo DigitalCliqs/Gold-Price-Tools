@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
+
+  <url>
+    <loc>https://goldpricetools.com/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <mobile:mobile/>
+    <image:image>
+      <image:loc>https://goldpricetools.com/assets/og-image.jpg</image:loc>
+      <image:title>GoldPriceTools – Live Gold and Silver Price Calculator</image:title>
+      <image:caption>Free real-time gold and silver calculator showing live 10K, 14K, 18K and 24K gold price per gram, scrap gold value, and silver spot price.</image:caption>
+      <image:geo_location>United Kingdom</image:geo_location>
+      <image:license>https://goldpricetools.com/terms</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://goldpricetools.com/assets/logo.svg</image:loc>
+      <image:title>GoldPriceTools Calculator Logo</image:title>
+      <image:caption>GoldPriceTools – Free live precious metals calculator for gold, silver, platinum and palladium.</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
