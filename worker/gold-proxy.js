@@ -1,126 +1,187 @@
 /**
- * Cloudflare Worker — Gold/Silver price proxy
- * Keeps GOLDAPI_KEY secret server-side.
- * Deploy with: wrangler deploy
+ * GoldPriceTools — Cloudflare Worker Proxy
+ * Routes: GET /api/spot  |  GET /api/history?metal=XAU&days=30
  *
- * Set secret:  wrangler secret put GOLDAPI_KEY
- * (paste your key when prompted — never commit it)
+ * Required Cloudflare Worker Secret (set via wrangler or CF dashboard):
+ *   GOLDAPI_KEY  — your key from https://www.goldapi.io/
  *
- * Routes handled:
- *   GET /api/spot           → { gold, silver, goldChange, silverChange }
- *   GET /api/history?metal=XAU&days=30  → { labels[], data[] }
+ * Deploy:
+ *   cd worker
+ *   wrangler deploy
+ *
+ * wrangler.toml (place in /worker/):
+ *   name = "gold-price-proxy"
+ *   main = "gold-proxy.js"
+ *   compatibility_date = "2025-01-01"
+ *   [vars]
+ *   # GOLDAPI_KEY is set as a secret, not a var
+ *   [[routes]]
+ *   pattern = "goldpricetools.com/api/*"
+ *   zone_name = "goldpricetools.com"
  */
 
+const GOLDAPI_BASE  = 'https://www.goldapi.io/api';
+const CACHE_TTL_SPOT = 55;        // seconds — just under 60s refresh
+const CACHE_TTL_HIST = 3600;      // 1 hour for historical data
+
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin':  'https://goldpricetools.com',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const origin = request.headers.get('Origin') || '';
-    const allowed = ['https://goldpricetools.com', 'https://www.goldpricetools.com'];
+  async fetch(request, env, ctx) {
+    const url    = new URL(request.url);
+    const path   = url.pathname;   // e.g. /api/spot  or  /api/history
 
-    // CORS — only allow our own domain (and localhost for dev)
-    const corsOrigin = allowed.includes(origin) || origin.startsWith('http://localhost')
-      ? origin
-      : allowed[0];
-
-    const corsHeaders = {
-      'Access-Control-Allow-Origin': corsOrigin,
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Max-Age': '86400',
-    };
-
+    // CORS preflight
     if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: corsHeaders });
+      return new Response(null, { status: 204, headers: CORS_HEADERS });
+    }
+
+    // Only allow GET
+    if (request.method !== 'GET') {
+      return jsonError(405, 'Method not allowed');
     }
 
     const apiKey = env.GOLDAPI_KEY;
-    const apiHeaders = { 'x-access-token': apiKey, 'Content-Type': 'application/json' };
-    const BASE = 'https://www.goldapi.io/api';
+    if (!apiKey) return jsonError(500, 'GOLDAPI_KEY secret not configured');
 
-    try {
-      // ── /api/spot ────────────────────────────────────────────────────────────
-      if (url.pathname === '/api/spot') {
-        const [gRes, sRes] = await Promise.all([
-          fetch(`${BASE}/XAU/USD`, { headers: apiHeaders }),
-          fetch(`${BASE}/XAG/USD`, { headers: apiHeaders }),
-        ]);
-        if (!gRes.ok || !sRes.ok) throw new Error(`GoldAPI error ${gRes.status}`);
-        const [gData, sData] = await Promise.all([gRes.json(), sRes.json()]);
+    // ---------- /api/spot ----------
+    if (path === '/api/spot' || path === '/api/spot/') {
+      const cacheKey = new Request('https://cache.goldpricetools.com/spot', request);
+      const cache    = caches.default;
 
-        const body = JSON.stringify({
-          gold: gData.price,
-          silver: sData.price,
-          goldPrevClose: gData.prev_close_price,
-          silverPrevClose: sData.prev_close_price,
-          ts: Date.now(),
-        });
+      let cachedRes  = await cache.match(cacheKey);
+      if (cachedRes) return addCors(cachedRes);
 
-        return new Response(body, {
-          headers: {
-            ...corsHeaders,
-            'Content-Type': 'application/json',
-            'Cache-Control': 'public, max-age=55', // cache just under 60s refresh
-          },
-        });
-      }
+      const [goldRes, silverRes] = await Promise.all([
+        fetchMetal('XAU', apiKey),
+        fetchMetal('XAG', apiKey),
+      ]);
 
-      // ── /api/history ─────────────────────────────────────────────────────────
-      if (url.pathname === '/api/history') {
-        const metal = url.searchParams.get('metal') === 'XAG' ? 'XAG' : 'XAU';
-        const days = Math.min(parseInt(url.searchParams.get('days') || '30', 10), 3650);
+      if (!goldRes.ok)   return jsonError(502, 'GoldAPI XAU error: ' + goldRes.status);
+      if (!silverRes.ok) return jsonError(502, 'GoldAPI XAG error: ' + silverRes.status);
 
-        // Build list of dates (skip weekends — markets closed)
-        const dates = [];
-        const now = new Date();
-        for (let i = days; i >= 0 && dates.length < days; i--) {
-          const d = new Date(now);
-          d.setDate(d.getDate() - i);
-          const dow = d.getDay();
-          if (dow !== 0 && dow !== 6) {
-            dates.push(d.toISOString().slice(0, 10).replace(/-/g, ''));
-          }
-        }
+      const [g, s] = await Promise.all([goldRes.json(), silverRes.json()]);
 
-        // Fetch last-day and first-day to bracket the range (GoldAPI history)
-        // For performance we sample at most 60 data points evenly
-        const step = Math.max(1, Math.floor(dates.length / 60));
-        const sampled = dates.filter((_, i) => i % step === 0);
-        // Always include the most recent date
-        if (sampled[sampled.length - 1] !== dates[dates.length - 1]) {
-          sampled.push(dates[dates.length - 1]);
-        }
-
-        const fetches = sampled.map(d =>
-          fetch(`${BASE}/${metal}/USD/${d}`, { headers: apiHeaders }).then(r => r.json())
-        );
-        const results = await Promise.all(fetches);
-
-        const labels = [];
-        const data = [];
-        results.forEach((r, i) => {
-          if (r && r.price) {
-            const dateStr = sampled[i];
-            const parsed = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}`;
-            labels.push(parsed);
-            data.push(r.price);
-          }
-        });
-
-        return new Response(JSON.stringify({ labels, data }), {
-          headers: {
-            ...corsHeaders,
-            'Content-Type': 'application/json',
-            'Cache-Control': 'public, max-age=3600', // history changes rarely
-          },
-        });
-      }
-
-      return new Response('Not found', { status: 404, headers: corsHeaders });
-    } catch (err) {
-      return new Response(JSON.stringify({ error: err.message }), {
-        status: 502,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      const payload = JSON.stringify({
+        gold:             g.price,
+        goldPrevClose:    g.prev_close_price,
+        silver:           s.price,
+        silverPrevClose:  s.prev_close_price,
+        ts:               Date.now(),
       });
+
+      const freshRes = new Response(payload, {
+        status: 200,
+        headers: {
+          'Content-Type':  'application/json',
+          'Cache-Control': `public, max-age=${CACHE_TTL_SPOT}, s-maxage=${CACHE_TTL_SPOT}`,
+        },
+      });
+
+      ctx.waitUntil(cache.put(cacheKey, freshRes.clone()));
+      return addCors(freshRes);
     }
+
+    // ---------- /api/history ----------
+    if (path === '/api/history' || path === '/api/history/') {
+      const metal = (url.searchParams.get('metal') || 'XAU').toUpperCase();
+      const days  = Math.min(Math.max(parseInt(url.searchParams.get('days') || '30'), 1), 3650);
+
+      if (!['XAU', 'XAG'].includes(metal)) return jsonError(400, 'metal must be XAU or XAG');
+
+      const cacheKey = new Request(
+        `https://cache.goldpricetools.com/history/${metal}/${days}`,
+        request
+      );
+      const cache = caches.default;
+      let cachedRes = await cache.match(cacheKey);
+      if (cachedRes) return addCors(cachedRes);
+
+      const labels = [], data = [];
+      const today  = new Date();
+
+      // GoldAPI historical endpoint: GET /XAU/USD/YYYYMMDD
+      // We batch up to 30 individual dates or use the date-range sweep
+      // For larger ranges, reduce data density (weekly/monthly sampling)
+      const step = days <= 90 ? 1 : days <= 365 ? 7 : days <= 1825 ? 30 : 90;
+      const fetchPromises = [];
+
+      for (let i = days; i >= 0; i -= step) {
+        const d    = new Date(today);
+        d.setDate(d.getDate() - i);
+        // Skip weekends (markets closed)
+        if (d.getDay() === 0) d.setDate(d.getDate() + 1);
+        if (d.getDay() === 6) d.setDate(d.getDate() - 1);
+        const dateStr = d.toISOString().slice(0, 10).replace(/-/g, '');
+        const isoDate = d.toISOString().slice(0, 10);
+        fetchPromises.push({ isoDate, promise: fetchMetalDate(metal, dateStr, apiKey) });
+      }
+
+      // Fetch all in parallel (Cloudflare allows high concurrency)
+      const results = await Promise.all(
+        fetchPromises.map(({ isoDate, promise }) =>
+          promise
+            .then(r => r.ok ? r.json() : null)
+            .then(j => ({ isoDate, price: j?.price || null }))
+            .catch(() => ({ isoDate, price: null }))
+        )
+      );
+
+      results.forEach(({ isoDate, price }) => {
+        if (price !== null) { labels.push(isoDate); data.push(price); }
+      });
+
+      const payload = JSON.stringify({ metal, days, labels, data });
+
+      const freshRes = new Response(payload, {
+        status: 200,
+        headers: {
+          'Content-Type':  'application/json',
+          'Cache-Control': `public, max-age=${CACHE_TTL_HIST}, s-maxage=${CACHE_TTL_HIST}`,
+        },
+      });
+
+      ctx.waitUntil(cache.put(cacheKey, freshRes.clone()));
+      return addCors(freshRes);
+    }
+
+    return jsonError(404, 'Not found — valid routes: /api/spot  /api/history?metal=XAU&days=30');
   },
 };
+
+// ── helpers ──────────────────────────────────────────────────────────────────
+
+function fetchMetal(metal, apiKey) {
+  return fetch(`${GOLDAPI_BASE}/${metal}/USD`, {
+    headers: {
+      'x-access-token': apiKey,
+      'Content-Type':   'application/json',
+    },
+  });
+}
+
+function fetchMetalDate(metal, dateStr, apiKey) {
+  return fetch(`${GOLDAPI_BASE}/${metal}/USD/${dateStr}`, {
+    headers: {
+      'x-access-token': apiKey,
+      'Content-Type':   'application/json',
+    },
+  });
+}
+
+function jsonError(status, message) {
+  return new Response(JSON.stringify({ error: message }), {
+    status,
+    headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+  });
+}
+
+function addCors(response) {
+  const r = new Response(response.body, response);
+  Object.entries(CORS_HEADERS).forEach(([k, v]) => r.headers.set(k, v));
+  return r;
+}
