@@ -75,5 +75,8 @@ kilo silver price, gold bar worth, troy ounce grams, gold and silver price today
 - FAQPage × 9 Q&As (FAQ rich results eligible)
 - Organization
 
+## Deployment History
+- 2026-04-23 17:32 BST — Redeployment triggered after GitHub Pages 502 server error (Request ID 9421:30D54C:32C8023:CA08BCE:69EA4592)
+
 ## License
 MIT — free to use and modify.
