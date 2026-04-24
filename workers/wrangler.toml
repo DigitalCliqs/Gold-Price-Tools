@@ -1,0 +1,19 @@
+name = "goldpricetools-chart"
+main = "chart.js"
+compatibility_date = "2024-01-01"
+
+# Route: goldpricetools.com/api/chart*
+# Set this in the Cloudflare dashboard under Workers > Routes, or uncomment:
+# routes = [
+#   { pattern = "goldpricetools.com/api/chart*", zone_name = "goldpricetools.com" }
+# ]
+
+[observability]
+enabled = true
+
+# --- Deploy instructions ---
+# 1. cd workers
+# 2. npx wrangler login
+# 3. npx wrangler deploy
+# 4. In CF dashboard > Workers & Pages > goldpricetools-chart:
+#    Add route: goldpricetools.com/api/chart*
