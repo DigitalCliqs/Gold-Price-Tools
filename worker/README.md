@@ -1,56 +1,44 @@
-# GoldPriceTools — Cloudflare Worker Proxy
+# GoldPriceTools — Cloudflare Worker
 
-This Worker sits between `index.html` and the [GoldAPI.io](https://www.goldapi.io/) API so that your **API key is never exposed in the browser**.
+This worker runs on the Cloudflare edge at `goldpricetools.com/api/*`.
+It proxies two free, keyless data sources server-side so the browser avoids CORS restrictions.
 
 ## Routes
 
 | Route | Description |
 |---|---|
-| `GET /api/spot` | Live gold + silver spot prices, prev_close, timestamp |
-| `GET /api/history?metal=XAU&days=30` | Historical price array (labels + data) |
+| `GET /api/chart?metal=XAU&range=1M` | Yahoo Finance historical chart data |
+| `GET /api/spot` | gold-api.com live spot prices |
 
-Both responses are cached at Cloudflare's edge: 55 s for spot, 1 h for history.
+## Range values
 
-## Setup
+| range | Yahoo range | Interval |
+|---|---|---|
+| `1M` | `1mo` | daily |
+| `3M` | `3mo` | daily |
+| `1Y` | `1y` | weekly |
+| `5Y` | `5y` | weekly |
+| `10Y` | `10y` | monthly |
 
-### 1. Install Wrangler
-```bash
-npm install -g wrangler
-wrangler login
-```
+## No API keys required
 
-### 2. Get a GoldAPI key
-Sign up free at https://www.goldapi.io/ — the free tier gives 100 requests/month, paid plans start at $10/mo for unlimited.
+- **Charts**: Yahoo Finance public API (`query1.finance.yahoo.com/v8/finance/chart`) — free, no auth
+- **Spot prices**: gold-api.com (`api.gold-api.com/price/XAU`) — free, no auth
 
-### 3. Set the secret
+## Deploy
+
 ```bash
 cd worker
-wrangler secret put GOLDAPI_KEY
-# Paste your key when prompted
-```
-
-### 4. Deploy
-```bash
+npm install -g wrangler   # if not installed
+wrangler login
 wrangler deploy
 ```
 
-The Worker will be live at `https://goldpricetools.com/api/spot` (routed via Cloudflare — your domain must be on Cloudflare).
+## Caching
 
-### 5. Verify
-```bash
-curl https://goldpricetools.com/api/spot
-# {"gold":3320.50,"goldPrevClose":3310.00,"silver":32.45,"silverPrevClose":32.10,"ts":1745449200000}
-```
+- Chart data cached 1 hour at Cloudflare edge
+- Spot prices cached 55 seconds
 
-## Local dev
-```bash
-wrangler dev --local
-# Worker runs at http://localhost:8787
-# Update PROXY_BASE in index.html to http://localhost:8787 for local testing
-```
+## CORS
 
-## Environment Variables
-
-| Variable | Type | Description |
-|---|---|---|
-| `GOLDAPI_KEY` | Secret | Your GoldAPI.io access token |
+Only allows requests from `https://goldpricetools.com`.

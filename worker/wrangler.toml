@@ -1,6 +1,10 @@
-# Cloudflare Worker config for GoldPriceTools price proxy
-# Deploy: wrangler deploy  (from /worker/ directory)
-# Set secret: wrangler secret put GOLDAPI_KEY
+# GoldPriceTools Cloudflare Worker
+# Routes /api/* on goldpricetools.com to this worker.
+# No secrets required — Yahoo Finance and gold-api.com are both free & keyless.
+#
+# Deploy:
+#   cd worker
+#   wrangler deploy
 
 name = "gold-price-proxy"
 main = "gold-proxy.js"
