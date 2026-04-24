@@ -744,10 +744,10 @@ const KARATS = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// API ENDPOINTS
+// API ENDPOINTS  — no proxy, direct public APIs only
 // ─────────────────────────────────────────────────────────────────────────────
-const PROXY_BASE = '/api';
-const FX_BASE    = 'https://api.frankfurter.app/latest?from=USD';
+const GOLD_API_BASE = 'https://api.gold-api.com/price';
+const FX_BASE       = 'https://api.frankfurter.app/latest?from=USD';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
@@ -819,42 +819,28 @@ async function fetchFxRates() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FETCH SPOT PRICES
+// FETCH SPOT PRICES  — gold-api.com is the primary source (no proxy needed)
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchPrices() {
   try {
-    const res = await fetch(`${PROXY_BASE}/spot`);
-    if (!res.ok) throw new Error('Proxy error ' + res.status);
-    const d = await res.json();
-    if (!d.gold || !d.silver) throw new Error('Missing price fields');
-    goldSpotOz   = d.gold;
-    silverSpotOz = d.silver;
+    const [gRes, sRes] = await Promise.all([
+      fetch(`${GOLD_API_BASE}/XAU`),
+      fetch(`${GOLD_API_BASE}/XAG`)
+    ]);
+    if (!gRes.ok || !sRes.ok) throw new Error('API response error');
+    const [gData, sData] = await Promise.all([gRes.json(), sRes.json()]);
+    if (!gData.price || !sData.price) throw new Error('Missing price fields');
+    goldSpotOz   = gData.price;
+    silverSpotOz = sData.price;
     updateAll(
-      { price: d.gold,   prev_close_price: d.goldPrevClose },
-      { price: d.silver, prev_close_price: d.silverPrevClose }
+      { price: gData.price, prev_close_price: gData.prev_close_price },
+      { price: sData.price, prev_close_price: sData.prev_close_price }
     );
-  } catch (proxyErr) {
-    console.warn('Proxy failed:', proxyErr.message, '— trying public fallback');
-    try {
-      const [gRes, sRes] = await Promise.all([
-        fetch('https://api.gold-api.com/price/XAU'),
-        fetch('https://api.gold-api.com/price/XAG')
-      ]);
-      if (!gRes.ok || !sRes.ok) throw new Error('Fallback error');
-      const [gData, sData] = await Promise.all([gRes.json(), sRes.json()]);
-      if (!gData.price || !sData.price) throw new Error('Fallback missing price');
-      goldSpotOz   = gData.price;
-      silverSpotOz = sData.price;
-      updateAll(
-        { price: gData.price, prev_close_price: gData.prev_close_price },
-        { price: sData.price, prev_close_price: sData.prev_close_price }
-      );
-    } catch (fbErr) {
-      console.warn('All APIs failed — using static defaults:', fbErr.message);
-      goldSpotOz   = goldSpotOz   || 3320;
-      silverSpotOz = silverSpotOz || 32.5;
-      updateAll({ price: goldSpotOz }, { price: silverSpotOz });
-    }
+  } catch (err) {
+    console.warn('Price fetch failed — using static fallback:', err.message);
+    goldSpotOz   = goldSpotOz   || 4692;
+    silverSpotOz = silverSpotOz || 33.0;
+    updateAll({ price: goldSpotOz }, { price: silverSpotOz });
   }
 }
 
@@ -1022,21 +1008,21 @@ function calcConverter() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CHARTS
+// CHARTS  — chart history still uses /api/history (gracefully fails if absent)
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchChartHistory(metal, range) {
   const key  = `${metal}-${range}`;
   if (chartHistoryCache[key]) return chartHistoryCache[key];
   const days = RANGE_DAYS[range] || 30;
   try {
-    const res = await fetch(`${PROXY_BASE}/history?metal=${metal}&days=${days}`);
+    const res = await fetch(`/api/history?metal=${metal}&days=${days}`);
     if (!res.ok) throw new Error('History proxy error');
     const data = await res.json();
     if (!data.labels || !data.data || data.labels.length === 0) throw new Error('Empty history');
     chartHistoryCache[key] = data;
     return data;
   } catch (e) {
-    console.warn(`Chart history fetch failed for ${key}:`, e.message);
+    console.warn(`Chart history unavailable for ${key}:`, e.message);
     return null;
   }
 }
