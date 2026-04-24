@@ -744,21 +744,34 @@ const KARATS = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// API ENDPOINTS  — no proxy, direct public APIs only
+// API ENDPOINTS
 // ─────────────────────────────────────────────────────────────────────────────
 const GOLD_API_BASE = 'https://api.gold-api.com/price';
-const FX_BASE       = 'https://api.frankfurter.app/latest?from=USD';
+// FX: frankfurter.app now permanently redirects to frankfurter.dev/v1
+const FX_BASE = 'https://api.frankfurter.dev/v1/latest?from=USD';
+// Chart history: Yahoo Finance (free, no API key, CORS-enabled)
+const YAHOO_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
 // ─────────────────────────────────────────────────────────────────────────────
 let goldSpotOz = null, silverSpotOz = null;
-let fxRates = { USD:1, GBP:0.79, EUR:0.92, CAD:1.36, AUD:1.53, INR:83.5 };
+let fxRates = { USD:1, GBP:0.74, EUR:0.855, CAD:1.367, AUD:1.398, INR:94.11 };
 let goldChart = null, silverChart = null;
 let currentGoldRange = '1M', currentSilverRange = '1M';
 let chartHistoryCache = {};
 
-const RANGE_DAYS = { '1M':30, '3M':90, '1Y':365, '5Y':1825, '10Y':3650 };
+// Yahoo Finance range config: [yahooRange, interval]
+const YAHOO_RANGE_MAP = {
+  '1M':  ['1mo',  '1d'],
+  '3M':  ['3mo',  '1d'],
+  '1Y':  ['1y',   '1d'],
+  '5Y':  ['5y',   '1wk'],
+  '10Y': ['10y',  '1wk']
+};
+
+// Yahoo Finance tickers for gold and silver futures
+const YAHOO_TICKERS = { 'XAU': 'GC%3DF', 'XAG': 'SI%3DF' };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // THEME TOGGLE
@@ -803,7 +816,7 @@ function fmtUSD(val) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FETCH LIVE FX RATES
+// FETCH LIVE FX RATES — frankfurter.dev/v1 (migrated from frankfurter.app)
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchFxRates() {
   try {
@@ -819,7 +832,7 @@ async function fetchFxRates() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FETCH SPOT PRICES  — gold-api.com is the primary source (no proxy needed)
+// FETCH SPOT PRICES — gold-api.com direct (no proxy)
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchPrices() {
   try {
@@ -839,7 +852,7 @@ async function fetchPrices() {
   } catch (err) {
     console.warn('Price fetch failed — using static fallback:', err.message);
     goldSpotOz   = goldSpotOz   || 4692;
-    silverSpotOz = silverSpotOz || 33.0;
+    silverSpotOz = silverSpotOz || 75.0;
     updateAll({ price: goldSpotOz }, { price: silverSpotOz });
   }
 }
@@ -880,14 +893,14 @@ function updateAll(gData, sData) {
   setText('qr-ag999g', fmtUSD(sGram*0.999));   setText('qr-ag925g', fmtUSD(sGram*0.925));
   setText('qr-ag999oz',fmtUSD(sOz*0.999));     setText('qr-ag999kg',fmtUSD(sOz*32.1507*0.999));
 
-  setText('faq-14k',    fmtUSD(gGram*0.5833));
-  setText('faq-10k',    fmtUSD(gGram*0.4167));
-  setText('faq-18k',    fmtUSD(gGram*0.75));
+  setText('faq-14k',     fmtUSD(gGram*0.5833));
+  setText('faq-10k',     fmtUSD(gGram*0.4167));
+  setText('faq-18k',     fmtUSD(gGram*0.75));
   setText('faq-sterling',fmtUSD(sGram*0.925));
-  setText('faq-bar400', fmtUSD(gOz*400));
-  setText('faq-bar1oz', fmtUSD(gOz));
-  setText('faq-1g',     fmtUSD(gGram));
-  setText('faq-agkg',   fmtUSD(sOz*32.1507));
+  setText('faq-bar400',  fmtUSD(gOz*400));
+  setText('faq-bar1oz',  fmtUSD(gOz));
+  setText('faq-1g',      fmtUSD(gGram));
+  setText('faq-agkg',    fmtUSD(sOz*32.1507));
 
   setText('lastUpdated', new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' BST');
 
@@ -907,8 +920,8 @@ function buildKaratGrid(gOz) {
       const el   = document.getElementById('kg-' + k.k);
       if (el) {
         el.querySelector('.kv-usd').textContent = fmtUSD(perG);
-        el.querySelector('.kv-gbp').textContent = '£' + (perG * (fxRates.GBP||0.79)).toFixed(2);
-        el.querySelector('.kv-eur').textContent = '€' + (perG * (fxRates.EUR||0.92)).toFixed(2);
+        el.querySelector('.kv-gbp').textContent = '£' + (perG * (fxRates.GBP||0.74)).toFixed(2);
+        el.querySelector('.kv-eur').textContent = '€' + (perG * (fxRates.EUR||0.855)).toFixed(2);
         el.querySelector('.kv-oz').textContent  = fmtUSD(gOz * k.purity);
         el.querySelector('.kv-kg').textContent  = fmtUSD(perG * 1000);
       }
@@ -928,8 +941,8 @@ function buildKaratGrid(gOz) {
       </div>
       <table class="karat-table" aria-labelledby="karat-${k.k}-heading">
         <tr><td>Per gram (USD)</td><td class="kv-usd">${fmtUSD(perG)}</td></tr>
-        <tr><td>Per gram (GBP)</td><td class="kv-gbp">£${(perG*(fxRates.GBP||0.79)).toFixed(2)}</td></tr>
-        <tr><td>Per gram (EUR)</td><td class="kv-eur">€${(perG*(fxRates.EUR||0.92)).toFixed(2)}</td></tr>
+        <tr><td>Per gram (GBP)</td><td class="kv-gbp">£${(perG*(fxRates.GBP||0.74)).toFixed(2)}</td></tr>
+        <tr><td>Per gram (EUR)</td><td class="kv-eur">€${(perG*(fxRates.EUR||0.855)).toFixed(2)}</td></tr>
         <tr><td>Per troy oz</td>  <td class="kv-oz">${fmtUSD(gOz*k.purity)}</td></tr>
         <tr><td>Per kilogram</td> <td class="kv-kg">${fmtUSD(perG*1000)}</td></tr>
       </table>`;
@@ -1008,21 +1021,38 @@ function calcConverter() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CHARTS  — chart history still uses /api/history (gracefully fails if absent)
+// CHART HISTORY — Yahoo Finance (GC=F gold futures, SI=F silver futures)
+// No API key needed. Free, CORS-enabled public endpoint.
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchChartHistory(metal, range) {
-  const key  = `${metal}-${range}`;
+  const key = `${metal}-${range}`;
   if (chartHistoryCache[key]) return chartHistoryCache[key];
-  const days = RANGE_DAYS[range] || 30;
+  const [yahooRange, interval] = YAHOO_RANGE_MAP[range] || ['1mo', '1d'];
+  const ticker = YAHOO_TICKERS[metal];
+  if (!ticker) return null;
   try {
-    const res = await fetch(`/api/history?metal=${metal}&days=${days}`);
-    if (!res.ok) throw new Error('History proxy error');
-    const data = await res.json();
-    if (!data.labels || !data.data || data.labels.length === 0) throw new Error('Empty history');
-    chartHistoryCache[key] = data;
-    return data;
+    const url = `${YAHOO_BASE}/${ticker}?interval=${interval}&range=${yahooRange}`;
+    const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+    if (!res.ok) throw new Error(`Yahoo Finance HTTP ${res.status}`);
+    const json = await res.json();
+    const result = json?.chart?.result?.[0];
+    if (!result) throw new Error('No chart result from Yahoo Finance');
+    const timestamps = result.timestamp;
+    const closes     = result.indicators?.quote?.[0]?.close;
+    if (!timestamps || !closes || timestamps.length === 0) throw new Error('Empty Yahoo Finance data');
+    // Build parallel arrays, skipping null closes (market holidays)
+    const labels = [], data = [];
+    timestamps.forEach((ts, i) => {
+      const price = closes[i];
+      if (price == null) return;
+      labels.push(new Date(ts * 1000).toISOString().split('T')[0]);
+      data.push(parseFloat(price.toFixed(2)));
+    });
+    const history = { labels, data };
+    chartHistoryCache[key] = history;
+    return history;
   } catch (e) {
-    console.warn(`Chart history unavailable for ${key}:`, e.message);
+    console.warn(`Chart history failed for ${key}:`, e.message);
     return null;
   }
 }
@@ -1036,12 +1066,16 @@ async function buildChart(canvasId, loadingId, metal, range, color, chartRef) {
   const style     = getComputedStyle(document.documentElement);
   const textMuted = style.getPropertyValue('--color-text-muted').trim();
   const border    = style.getPropertyValue('--color-border').trim();
-  const days = RANGE_DAYS[range] || 30;
-  const labelFmt = days <= 90
+  const isShortRange = (range === '1M' || range === '3M');
+  const labelFmt = isShortRange
     ? (s) => { const d = new Date(s); return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short'}); }
     : (s) => { const d = new Date(s); return d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'}); };
   const labels = history ? history.labels.map(labelFmt) : [];
   const data   = history ? history.data : [];
+  if (!history || data.length === 0) {
+    if (loadingEl) { loadingEl.textContent = 'Chart data unavailable'; loadingEl.style.display = 'flex'; }
+    return chartRef;
+  }
   if (chartRef) chartRef.destroy();
   chartRef = new Chart(document.getElementById(canvasId), {
     type: 'line',
