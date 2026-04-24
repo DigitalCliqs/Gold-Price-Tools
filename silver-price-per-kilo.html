@@ -11,7 +11,7 @@
 <meta property="og:description" content="Real-time silver price per kilogram in USD, GBP, EUR. Updated every 60 seconds.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://goldpricetools.com/silver-price-per-kilo">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the silver price per kilogram today?","acceptedAnswer":{"@type":"Answer","text":"The live silver price per kilogram is calculated by multiplying the current silver spot price per troy ounce by 32.1507 (the number of troy ounces in one kilogram). This value updates every 60 seconds on Gold Price Tools."}},{"@type":"Question","name":"How much is a kilo of silver worth?","acceptedAnswer":{"@type":"Answer","text":"One kilogram of fine (.999) silver is worth the current silver spot price multiplied by 32.1507. For example, if silver is $33 per troy ounce, then 1 kilo of silver = $33 x 32.1507 = approximately $1,061. See the live value on this page."}},{"@type":"Question","name":"What is the silver price per kilo in GBP?","acceptedAnswer":{"@type":"Answer","text":"The silver price per kilo in GBP is calculated from the live USD spot price converted at the current USD/GBP exchange rate, then multiplied by 32.1507 troy ounces per kilogram. The live GBP kilo price is displayed on this page and updates every 60 seconds."}},{"@type":"Question","name":"How many troy ounces are in a kilogram of silver?","acceptedAnswer":{"@type":"Answer","text":"There are exactly 32.1507 troy ounces in one kilogram. This is the conversion factor used to calculate silver price per kilo from the spot price per troy ounce. Formula: kilo price = spot price per troy oz x 32.1507."}},{"@type":"Question","name":"What is the price of 925 sterling silver per gram?","acceptedAnswer":{"@type":"Answer","text":"925 sterling silver is 92.5% pure silver. Its price per gram = (silver spot price per troy oz / 31.1035) x 0.925. For example, if silver spot is $33/oz, sterling silver = ($33 / 31.1035) x 0.925 = approximately $0.98 per gram."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the silver price per kilogram today?","acceptedAnswer":{"@type":"Answer","text":"The live silver price per kilogram is calculated by multiplying the current silver spot price per troy ounce by 32.1507. Updates every 60 seconds on Gold Price Tools."}},{"@type":"Question","name":"How much is a kilo of silver worth?","acceptedAnswer":{"@type":"Answer","text":"One kilogram of fine (.999) silver is worth the current silver spot price multiplied by 32.1507 troy ounces per kilogram. See the live value on this page."}},{"@type":"Question","name":"What is the silver price per kilo in GBP?","acceptedAnswer":{"@type":"Answer","text":"The silver price per kilo in GBP is calculated from the live USD spot price converted at the current USD/GBP exchange rate, then multiplied by 32.1507 troy ounces per kilogram."}},{"@type":"Question","name":"What is the price of 925 sterling silver per gram?","acceptedAnswer":{"@type":"Answer","text":"925 sterling silver is 92.5% pure. Price per gram = (silver spot per troy oz / 31.1035) x 0.925."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@ body{min-height:100dvh;line-height:1.7;font-family:var(--font-body);font-size:va
 nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px)}
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:56px}
 .nav-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:var(--text-sm);color:var(--color-text);text-decoration:none}
-.nav-links{display:flex;gap:var(--space-4)}
+.nav-links{display:flex;gap:var(--space-3);flex-wrap:wrap}
 .nav-links a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
 .nav-links a:hover{color:var(--color-text)}
 .wrap{max-width:1100px;margin:0 auto;padding:0 var(--space-4) var(--space-16)}
@@ -91,9 +91,13 @@ footer a{color:var(--color-primary);text-decoration:none;margin:0 .5rem}
       Gold Price Tools
     </a>
     <div class="nav-links">
-      <a href="/">Calculator</a>
-      <a href="/about">About</a>
-      <a href="/privacy-policy">Privacy</a>
+      <a href="/#calculators">Calculators</a>
+      <a href="/14k-gold-price-per-gram">14K Gold</a>
+      <a href="/18k-gold-price-per-gram">18K Gold</a>
+      <a href="/10k-gold-price-per-gram">10K Gold</a>
+      <a href="/scrap-gold-calculator">Scrap Gold</a>
+      <a href="/silver-price-per-kilo">Silver/kg</a>
+      <a href="/how-many-grams-in-troy-ounce">Troy Oz</a>
     </div>
   </div>
 </nav>
@@ -122,7 +126,7 @@ footer a{color:var(--color-primary);text-decoration:none;margin:0 .5rem}
 
   <div class="section-card">
     <h2>Silver Price Per Kilo — All Purities &amp; Weights</h2>
-    <p>The table below shows today’s live silver price across all common purities and weight units, calculated from the live XAG/USD spot price.</p>
+    <p>Today's live silver price across all common purities and weight units, from the live XAG/USD spot price.</p>
     <table class="data-table" aria-label="Silver price by purity and weight">
       <thead><tr><th>Purity</th><th>Grade</th><th>Per Gram (USD)</th><th>Per Gram (GBP)</th><th>Per Kilo (USD)</th><th>Per Troy Oz (USD)</th></tr></thead>
       <tbody>
@@ -137,7 +141,7 @@ footer a{color:var(--color-primary);text-decoration:none;margin:0 .5rem}
 
   <div class="section-card">
     <h2>Silver Weight Calculator</h2>
-    <p>Enter the weight and purity of your silver to calculate its current melt value at today’s live spot price.</p>
+    <p>Enter the weight and purity of your silver to calculate its current melt value at today's live spot price.</p>
     <div class="calc-embed">
       <div class="calc-row">
         <div class="form-group">
@@ -187,35 +191,17 @@ footer a{color:var(--color-primary);text-decoration:none;margin:0 .5rem}
 
   <div class="section-card">
     <h2>Silver Price Per Kilo Explained</h2>
-    <p>The <strong>silver price per kilogram</strong> is derived from the global silver spot price (XAG/USD), which is quoted in US dollars per troy ounce. Since one kilogram equals 32.1507 troy ounces, the formula is:</p>
+    <p>The <strong>silver price per kilogram</strong> is derived from the global silver spot price (XAG/USD), quoted in US dollars per troy ounce. Since one kilogram equals 32.1507 troy ounces, the formula is:</p>
     <p><strong>Silver price per kg = Silver spot price (per troy oz) × 32.1507</strong></p>
-    <p>For example, if the silver spot price is $33.00 per troy ounce: $33.00 × 32.1507 = <strong>$1,060.97 per kilogram</strong>.</p>
-
-    <h3>Silver Price Per Kilo vs. Per Gram vs. Per Troy Ounce</h3>
-    <p>Silver is traded globally in troy ounces, but buyers and sellers of physical silver often work in grams or kilograms. Here are the key unit relationships:</p>
-    <ul>
-      <li><strong>1 kilogram</strong> = 1,000 grams = 32.1507 troy ounces</li>
-      <li><strong>1 troy ounce</strong> = 31.1035 grams = 0.0311 kilograms</li>
-      <li><strong>1 gram</strong> = 0.03215 troy ounces = 0.001 kilograms</li>
-    </ul>
-    <p>The kilogram is the standard unit for industrial silver buyers, refineries, and large-volume bullion traders. Jewellers and small-scale dealers more commonly work in grams. Investors and coin collectors typically use troy ounces.</p>
-
     <h3>925 Sterling Silver Price Per Gram</h3>
-    <p>Sterling silver (.925) is 92.5% pure silver, alloyed with 7.5% copper or other metals to improve hardness. It is the most common silver standard for jewellery and silverware worldwide. The formula for sterling silver value per gram is:</p>
-    <p><strong>Sterling silver per gram = (Spot price ÷ 31.1035) × 0.925</strong></p>
-    <p>Sterling silver hallmarks to look for: <strong>925</strong>, <strong>Sterling</strong>, <strong>Ster</strong>, or a lion passant (UK hallmark). Items marked “Silver Plated” or “EPNS” are not sterling silver and have negligible melt value.</p>
-
-    <h3>Kilo of Silver Price — What Affects It?</h3>
+    <p>Sterling silver (.925) is 92.5% pure silver. Formula: <strong>(Spot price ÷ 31.1035) × 0.925</strong></p>
+    <h3>What Affects the Silver Price?</h3>
     <ul>
-      <li><strong>Global supply and demand:</strong> Silver has significant industrial demand (electronics, solar panels, EVs) in addition to investment demand — more so than gold.</li>
-      <li><strong>USD strength:</strong> Silver is priced in USD, so a stronger dollar generally pushes the silver price lower and vice versa.</li>
-      <li><strong>Gold/silver ratio:</strong> The gold-to-silver ratio (how many ounces of silver equal one ounce of gold) historically averages 60–80:1. Traders use this ratio to identify relative value between the two metals.</li>
-      <li><strong>Industrial cycles:</strong> Silver demand from solar manufacturing, EV batteries, and 5G infrastructure directly affects the spot price.</li>
-      <li><strong>ETF flows:</strong> Large inflows or outflows from silver ETFs (e.g. iShares Silver Trust, SLV) can move the price significantly on short timeframes.</li>
+      <li><strong>Global supply and demand:</strong> Significant industrial demand (electronics, solar panels, EVs).</li>
+      <li><strong>USD strength:</strong> Silver is priced in USD, so a stronger dollar pushes the price lower.</li>
+      <li><strong>Gold/silver ratio:</strong> Historically averages 60–80:1.</li>
+      <li><strong>ETF flows:</strong> Large inflows/outflows from silver ETFs move the price on short timeframes.</li>
     </ul>
-
-    <h3>Silver Price in India (INR)</h3>
-    <p>The silver price in India is quoted in Indian Rupees (INR) per kilogram and per 10 grams. It is influenced by the MCX (Multi Commodity Exchange) rate, which is derived from the international spot price converted at the USD/INR exchange rate, plus import duties and local taxes. Use the calculator above and select INR to get the current indicative silver price per kilogram in Indian Rupees.</p>
   </div>
 
   <div class="ad-slot" aria-label="Advertisement">
@@ -225,26 +211,11 @@ footer a{color:var(--color-primary);text-decoration:none;margin:0 .5rem}
 
   <div class="section-card">
     <h2>Frequently Asked Questions — Silver Price Per Kilo</h2>
-    <div class="faq-item">
-      <div class="faq-q">What is the silver price per kilogram today?</div>
-      <div class="faq-a">The current silver price per kilogram is <strong id="faq-pkg-live">—</strong> USD. This is the melt value of one kilogram of fine (.999) silver at today’s live spot price, calculated as spot price per troy oz × 32.1507. Updates every 60 seconds.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">How much is a kilo of silver worth in GBP?</div>
-      <div class="faq-a">One kilogram of fine silver is currently worth <strong id="faq-pkg-gbp">—</strong> GBP. This is calculated from the live USD spot price converted to GBP at the current exchange rate, then multiplied by 32.1507 troy ounces per kilogram.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What is the price of 925 sterling silver per gram?</div>
-      <div class="faq-a">The current price of .925 sterling silver per gram is <strong id="faq-925-live">—</strong> USD. Sterling silver is 92.5% pure, so its per-gram value equals the fine silver price per gram multiplied by 0.925. This is the melt value — actual dealer prices will include a spread.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">How many troy ounces are in a kilogram of silver?</div>
-      <div class="faq-a">There are exactly <strong>32.1507 troy ounces</strong> in one kilogram of silver. This is the standard conversion factor used by all silver traders and refineries worldwide. To convert: kilograms × 32.1507 = troy ounces. To reverse: troy ounces ÷ 32.1507 = kilograms.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What is the silver price per kilo in India today?</div>
-      <div class="faq-a">The indicative silver price per kilogram in India is approximately <strong id="faq-pkg-inr">—</strong> INR, based on the international spot price converted at the current USD/INR exchange rate. The actual price on the MCX exchange may differ due to local import duties, taxes, and exchange premiums.</div>
-    </div>
+    <div class="faq-item"><div class="faq-q">What is the silver price per kilogram today?</div><div class="faq-a">The current silver price per kilogram is <strong id="faq-pkg-live">—</strong> USD. Updates every 60 seconds.</div></div>
+    <div class="faq-item"><div class="faq-q">How much is a kilo of silver worth in GBP?</div><div class="faq-a">One kilogram of fine silver is currently worth <strong id="faq-pkg-gbp">—</strong> GBP.</div></div>
+    <div class="faq-item"><div class="faq-q">What is the price of 925 sterling silver per gram?</div><div class="faq-a">The current price of .925 sterling silver per gram is <strong id="faq-925-live">—</strong> USD. Sterling silver is 92.5% pure.</div></div>
+    <div class="faq-item"><div class="faq-q">How many troy ounces are in a kilogram of silver?</div><div class="faq-a">There are exactly <strong>32.1507 troy ounces</strong> in one kilogram of silver.</div></div>
+    <div class="faq-item"><div class="faq-q">What is the silver price per kilo in India today?</div><div class="faq-a">The indicative silver price per kilogram in India is approximately <strong id="faq-pkg-inr">—</strong> INR.</div></div>
   </div>
 
   <div class="section-card">
@@ -265,20 +236,20 @@ footer a{color:var(--color-primary);text-decoration:none;margin:0 .5rem}
   <a href="/10k-gold-price-per-gram">10K Gold</a>
   <a href="/18k-gold-price-per-gram">18K Gold</a>
   <a href="/scrap-gold-calculator">Scrap Gold</a>
+  <a href="/how-many-grams-in-troy-ounce">Troy Oz</a>
   <a href="/about">About</a>
   <a href="/privacy-policy">Privacy Policy</a>
   <span style="display:block;margin-top:.5rem">&copy; 2026 Gold Price Tools &mdash; goldpricetools.com. Not financial advice.</span>
 </footer>
 <script>
 const TROY=31.1035,KG_TROY=32.1507;
-const KEY='goldapi-3586db5787111d16221e5cb06b4bb4df-io';
 const FMT=(v,s,d=2)=>(s||'$')+v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
 const SYMS={'1':'$','0.79':'£','0.92':'€','1.36':'C$','1.53':'A$','83.5':'₹'};
 const PURITIES=[{id:'999',p:0.999},{id:'958',p:0.958},{id:'925',p:0.925},{id:'900',p:0.900},{id:'800',p:0.800}];
 let spot=null;
 async function fetchSpot(){
-  try{const r=await fetch('https://www.goldapi.io/api/XAG/USD',{headers:{'x-access-token':KEY}});const d=await r.json();if(!d.price)throw 0;spot=d.price;}
-  catch{try{const r=await fetch('https://api.gold-api.com/price/XAG');const d=await r.json();spot=d.price;}catch{spot=spot||33;}}
+  try{const r=await fetch('https://api.gold-api.com/price/XAG');const d=await r.json();if(!d.price)throw 0;spot=d.price;}
+  catch{spot=spot||33;}
   updatePage();
 }
 function updatePage(){
