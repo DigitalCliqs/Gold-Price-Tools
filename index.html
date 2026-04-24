@@ -88,6 +88,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .mobile-menu.open{display:flex;flex-direction:column;gap:var(--space-2)}
 .mobile-menu a{font-size:var(--text-base);color:var(--color-text-muted);text-decoration:none;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md)}
 .mobile-menu a:hover{background:var(--color-surface-offset);color:var(--color-text)}
+.mobile-menu .menu-section{font-size:var(--text-xs);font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.08em;padding:var(--space-3) var(--space-4) var(--space-1)}
 
 /* AD SLOTS */
 .ad-slot{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;margin:var(--space-6) auto;max-width:1200px;padding:0 var(--space-4)}
@@ -176,6 +177,12 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .quick-ref-value{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums}
 .quick-ref-value.silver-val{color:var(--color-silver)}
 
+/* SIDEBAR NAV LINKS */
+.sidebar-nav{display:flex;flex-direction:column;gap:var(--space-2)}
+.sidebar-nav a{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
+.sidebar-nav a:hover{color:var(--color-gold-bright);border-color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset))}
+.sidebar-nav a span{color:var(--color-text-faint);font-size:var(--text-xs)}
+
 /* CHART */
 .chart-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin-bottom:var(--space-6);box-shadow:var(--shadow-sm)}
 .chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4);flex-wrap:wrap;gap:var(--space-3)}
@@ -203,8 +210,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 
 /* FOOTER */
 footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-8) var(--space-4)}
-.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-8)}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr}}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--space-8)}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr}}
 .footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
 .footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
 .footer-col ul{list-style:none}
@@ -252,10 +260,12 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </a>
     <div class="nav-links">
       <a href="#calculators">Calculators</a>
-      <a href="#karat-prices">Karat Prices</a>
-      <a href="#charts">Charts</a>
-      <a href="#converter">Converter</a>
-      <a href="#faq">FAQ</a>
+      <a href="/14k-gold-price-per-gram">14K Gold</a>
+      <a href="/18k-gold-price-per-gram">18K Gold</a>
+      <a href="/10k-gold-price-per-gram">10K Gold</a>
+      <a href="/scrap-gold-calculator">Scrap Gold</a>
+      <a href="/silver-price-per-kilo">Silver/kg</a>
+      <a href="/how-many-grams-in-troy-ounce">Troy Oz</a>
     </div>
     <div class="nav-actions">
       <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
@@ -268,11 +278,16 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#calculators">Calculators</a>
-  <a href="#karat-prices">Karat Prices</a>
-  <a href="#charts">Charts</a>
-  <a href="#converter">Converter</a>
-  <a href="#faq">FAQ</a>
+  <span class="menu-section">Tools</span>
+  <a href="#calculators">Gold &amp; Silver Calculators</a>
+  <a href="/scrap-gold-calculator">Scrap Gold Calculator</a>
+  <span class="menu-section">Gold Prices</span>
+  <a href="/14k-gold-price-per-gram">14K Gold Price Per Gram</a>
+  <a href="/18k-gold-price-per-gram">18K Gold Price Per Gram</a>
+  <a href="/10k-gold-price-per-gram">10K Gold Price Per Gram</a>
+  <span class="menu-section">Silver &amp; Guides</span>
+  <a href="/silver-price-per-kilo">Silver Price Per Kilo</a>
+  <a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce</a>
 </div>
 
 <!-- HERO — content first, no ads above the fold -->
@@ -636,6 +651,18 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <div class="quick-ref-row"><span class="quick-ref-label">.999 / kg</span><span class="quick-ref-value silver-val" id="qr-ag999kg">—</span></div>
       <div class="quick-ref-row"><span class="quick-ref-label">1 Troy oz = </span><span class="quick-ref-value silver-val">31.1035 g</span></div>
     </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar-widget">
+      <h3>Price Pages</h3>
+      <div class="sidebar-nav">
+        <a href="/14k-gold-price-per-gram">14K Gold Price Per Gram <span>→</span></a>
+        <a href="/18k-gold-price-per-gram">18K Gold Price Per Gram <span>→</span></a>
+        <a href="/10k-gold-price-per-gram">10K Gold Price Per Gram <span>→</span></a>
+        <a href="/scrap-gold-calculator">Scrap Gold Calculator <span>→</span></a>
+        <a href="/silver-price-per-kilo">Silver Price Per Kilo <span>→</span></a>
+        <a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce <span>→</span></a>
+      </div>
+    </div>
     <!-- AD SLOT 3 — Sidebar, responsive -->
     <div class="ad-slot-sidebar" aria-label="Advertisement">
       <ins class="adsbygoogle"
@@ -671,21 +698,28 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <p class="footer-brand">Live gold and silver price calculator. Real-time 10K, 14K, 18K &amp; 24K gold per gram. Scrap gold calculator, silver per troy oz, kilo and kilogram. Prices sourced from global markets, updated every 60 seconds.</p>
     </div>
     <div class="footer-col">
-      <h4>Calculators</h4>
+      <h4>Gold Prices</h4>
       <ul>
-        <li><a href="#calculators">Gold Calculator</a></li>
-        <li><a href="#calculators">Silver Calculator</a></li>
-        <li><a href="#calculators">Scrap Gold Calculator</a></li>
-        <li><a href="#calculators">Gold Bar Value</a></li>
+        <li><a href="/14k-gold-price-per-gram">14K Gold Price Per Gram</a></li>
+        <li><a href="/18k-gold-price-per-gram">18K Gold Price Per Gram</a></li>
+        <li><a href="/10k-gold-price-per-gram">10K Gold Price Per Gram</a></li>
+        <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Prices</h4>
+      <h4>Silver &amp; Guides</h4>
       <ul>
-        <li><a href="#karat-prices">14K Gold Per Gram</a></li>
-        <li><a href="#karat-prices">18K Gold Per Gram</a></li>
-        <li><a href="#karat-prices">10K Gold Per Gram</a></li>
-        <li><a href="#karat-prices">Silver Per Kilo</a></li>
+        <li><a href="/silver-price-per-kilo">Silver Price Per Kilo</a></li>
+        <li><a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce</a></li>
+        <li><a href="/#calculators">Gold Calculator</a></li>
+        <li><a href="/#calculators">Silver Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
@@ -711,21 +745,18 @@ const KARATS = [
 
 // ─────────────────────────────────────────────────────────────────────────────
 // API ENDPOINTS
-// Spot prices and history are proxied through the Cloudflare Worker so
-// the GoldAPI key is NEVER exposed in client-side code.
-// Worker repo: worker/gold-proxy.js  |  deploy: cd worker && wrangler deploy
 // ─────────────────────────────────────────────────────────────────────────────
-const PROXY_BASE = '/api';           // routes via CF Worker (same domain)
+const PROXY_BASE = '/api';
 const FX_BASE    = 'https://api.frankfurter.app/latest?from=USD';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
 // ─────────────────────────────────────────────────────────────────────────────
 let goldSpotOz = null, silverSpotOz = null;
-let fxRates = { USD:1, GBP:0.79, EUR:0.92, CAD:1.36, AUD:1.53, INR:83.5 }; // defaults until live fetch
+let fxRates = { USD:1, GBP:0.79, EUR:0.92, CAD:1.36, AUD:1.53, INR:83.5 };
 let goldChart = null, silverChart = null;
 let currentGoldRange = '1M', currentSilverRange = '1M';
-let chartHistoryCache = {};  // keyed by "XAU-1M" etc
+let chartHistoryCache = {};
 
 const RANGE_DAYS = { '1M':30, '3M':90, '1Y':365, '5Y':1825, '10Y':3650 };
 
@@ -758,7 +789,7 @@ document.getElementById('hamburger').addEventListener('click', function(){
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CURRENCY HELPERS  (now driven by live fxRates object)
+// CURRENCY HELPERS
 // ─────────────────────────────────────────────────────────────────────────────
 const CURRENCY_SYMBOLS = { USD:'$', GBP:'£', EUR:'€', CAD:'C$', AUD:'A$', INR:'₹' };
 
@@ -772,7 +803,7 @@ function fmtUSD(val) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FETCH LIVE FX RATES  (Frankfurter — free, no key needed, ECB data)
+// FETCH LIVE FX RATES
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchFxRates() {
   try {
@@ -788,7 +819,7 @@ async function fetchFxRates() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FETCH SPOT PRICES  (via CF Worker proxy — API key never in browser)
+// FETCH SPOT PRICES
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchPrices() {
   try {
@@ -991,7 +1022,7 @@ function calcConverter() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CHARTS  — real historical data via CF Worker proxy
+// CHARTS
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchChartHistory(metal, range) {
   const key  = `${metal}-${range}`;
