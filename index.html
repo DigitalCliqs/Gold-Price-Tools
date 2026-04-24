@@ -749,8 +749,9 @@ const KARATS = [
 const GOLD_API_BASE = 'https://api.gold-api.com/price';
 // FX: frankfurter.app now permanently redirects to frankfurter.dev/v1
 const FX_BASE = 'https://api.frankfurter.dev/v1/latest?from=USD';
-// Chart history: Yahoo Finance (free, no API key, CORS-enabled)
+// Chart history: Yahoo Finance via allorigins.win CORS proxy (free, no key, browser-safe)
 const YAHOO_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart';
+const ALLORIGINS  = 'https://api.allorigins.win/raw?url=';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
@@ -1021,8 +1022,9 @@ function calcConverter() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CHART HISTORY — Yahoo Finance (GC=F gold futures, SI=F silver futures)
-// No API key needed. Free, CORS-enabled public endpoint.
+// CHART HISTORY — Yahoo Finance via allorigins.win CORS proxy
+// allorigins.win proxies the request server-side, bypassing browser CORS.
+// Free, no API key, no deploy needed. Tested working April 2026.
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchChartHistory(metal, range) {
   const key = `${metal}-${range}`;
@@ -1031,9 +1033,10 @@ async function fetchChartHistory(metal, range) {
   const ticker = YAHOO_TICKERS[metal];
   if (!ticker) return null;
   try {
-    const url = `${YAHOO_BASE}/${ticker}?interval=${interval}&range=${yahooRange}`;
-    const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
-    if (!res.ok) throw new Error(`Yahoo Finance HTTP ${res.status}`);
+    const yahooUrl = `${YAHOO_BASE}/${ticker}?interval=${interval}&range=${yahooRange}`;
+    const url = `${ALLORIGINS}${encodeURIComponent(yahooUrl)}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`allorigins/Yahoo HTTP ${res.status}`);
     const json = await res.json();
     const result = json?.chart?.result?.[0];
     if (!result) throw new Error('No chart result from Yahoo Finance');
