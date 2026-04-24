@@ -1,0 +1,22 @@
+# Cloudflare Pages _redirects
+# Clean URL routing — strip .html extension
+/guides/what-is-14k-gold                  /guides/what-is-14k-gold.html              200
+/guides/how-to-calculate-scrap-gold       /guides/how-to-calculate-scrap-gold.html   200
+/guides/troy-ounce-vs-gram-explained      /guides/troy-ounce-vs-gram-explained.html  200
+/guides/gold-purity-guide                 /guides/gold-purity-guide.html             200
+/guides/what-is-925-sterling-silver       /guides/silver-price-per-gram-explained.html 200
+/guides/best-time-to-sell-scrap-gold      /guides/how-to-sell-gold-jewellery.html    200
+/guides/gold-vs-silver-investment         /guides/gold-vs-silver-investment.html     200
+/guides/how-to-invest-in-gold             /guides/how-to-invest-in-gold.html         200
+/guides/gold-price-history                /guides/gold-price-history.html            200
+/guides/how-to-read-gold-spot-price       /guides/how-to-read-gold-spot-price.html   200
+/about                                    /about.html                                200
+/contact                                  /contact.html                              200
+/privacy-policy                           /privacy-policy.html                       200
+/terms                                    /terms.html                                200
+/14k-gold-price-per-gram                  /14k-gold-price-per-gram.html              200
+/18k-gold-price-per-gram                  /18k-gold-price-per-gram.html              200
+/10k-gold-price-per-gram                  /10k-gold-price-per-gram.html              200
+/scrap-gold-calculator                    /scrap-gold-calculator.html                200
+/silver-price-per-kilo                    /silver-price-per-kilo.html                200
+/how-many-grams-in-troy-ounce             /how-many-grams-in-troy-ounce.html         200
