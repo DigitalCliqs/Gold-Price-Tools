@@ -746,12 +746,12 @@ const KARATS = [
 // ─────────────────────────────────────────────────────────────────────────────
 // API ENDPOINTS
 // ─────────────────────────────────────────────────────────────────────────────
-const GOLD_API_BASE = 'https://api.gold-api.com/price';
-// FX: frankfurter.app now permanently redirects to frankfurter.dev/v1
-const FX_BASE = 'https://api.frankfurter.dev/v1/latest?from=USD';
-// Chart history: Yahoo Finance via allorigins.win CORS proxy (free, no key, browser-safe)
-const YAHOO_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart';
-const ALLORIGINS  = 'https://api.allorigins.win/raw?url=';
+const GOLD_API_BASE  = 'https://api.gold-api.com/price';
+const FX_BASE        = 'https://api.frankfurter.dev/v1/latest?from=USD';
+// Chart: Cloudflare Worker /api/chart (primary, no CORS) + allorigins.win/get fallback
+const CHART_API      = '/api/chart';
+const YAHOO_BASE     = 'https://query1.finance.yahoo.com/v8/finance/chart';
+const ALLORIGINS_GET = 'https://api.allorigins.win/get?url=';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATE
@@ -766,13 +766,13 @@ let chartHistoryCache = {};
 const YAHOO_RANGE_MAP = {
   '1M':  ['1mo',  '1d'],
   '3M':  ['3mo',  '1d'],
-  '1Y':  ['1y',   '1d'],
+  '1Y':  ['1y',   '1wk'],
   '5Y':  ['5y',   '1wk'],
-  '10Y': ['10y',  '1wk']
+  '10Y': ['10y',  '1mo']
 };
 
 // Yahoo Finance tickers for gold and silver futures
-const YAHOO_TICKERS = { 'XAU': 'GC%3DF', 'XAG': 'SI%3DF' };
+const YAHOO_TICKERS = { 'XAU': 'GC=F', 'XAG': 'SI=F' };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // THEME TOGGLE
@@ -817,7 +817,7 @@ function fmtUSD(val) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FETCH LIVE FX RATES — frankfurter.dev/v1 (migrated from frankfurter.app)
+// FETCH LIVE FX RATES
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchFxRates() {
   try {
@@ -1022,28 +1022,46 @@ function calcConverter() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CHART HISTORY — Yahoo Finance via allorigins.win CORS proxy
-// allorigins.win proxies the request server-side, bypassing browser CORS.
-// Free, no API key, no deploy needed. Tested working April 2026.
+// CHART HISTORY — /api/chart Worker (primary) + allorigins.win/get fallback
+// Worker proxies Yahoo Finance server-side: no CORS, no API key, CF free tier.
+// allorigins.win/get used automatically if Worker not yet deployed.
 // ─────────────────────────────────────────────────────────────────────────────
 async function fetchChartHistory(metal, range) {
   const key = `${metal}-${range}`;
   if (chartHistoryCache[key]) return chartHistoryCache[key];
+
+  // ── Primary: Cloudflare Worker /api/chart ──────────────────────────────────
+  try {
+    const res = await fetch(`${CHART_API}?metal=${metal}&range=${range}`);
+    if (res.ok) {
+      const json = await res.json();
+      if (json.labels && json.data && json.data.length > 0) {
+        chartHistoryCache[key] = json;
+        return json;
+      }
+      throw new Error('Empty /api/chart response');
+    }
+    throw new Error(`/api/chart HTTP ${res.status}`);
+  } catch (workerErr) {
+    console.warn(`Worker chart failed (${key}):`, workerErr.message, '— trying allorigins fallback');
+  }
+
+  // ── Fallback: allorigins.win/get → Yahoo Finance ───────────────────────────
   const [yahooRange, interval] = YAHOO_RANGE_MAP[range] || ['1mo', '1d'];
   const ticker = YAHOO_TICKERS[metal];
   if (!ticker) return null;
   try {
-    const yahooUrl = `${YAHOO_BASE}/${ticker}?interval=${interval}&range=${yahooRange}`;
-    const url = `${ALLORIGINS}${encodeURIComponent(yahooUrl)}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`allorigins/Yahoo HTTP ${res.status}`);
-    const json = await res.json();
-    const result = json?.chart?.result?.[0];
-    if (!result) throw new Error('No chart result from Yahoo Finance');
+    const yahooUrl = `${YAHOO_BASE}/${encodeURIComponent(ticker)}?interval=${interval}&range=${yahooRange}`;
+    const proxyUrl = `${ALLORIGINS_GET}${encodeURIComponent(yahooUrl)}`;
+    const res2     = await fetch(proxyUrl);
+    if (!res2.ok) throw new Error(`allorigins HTTP ${res2.status}`);
+    const wrapper  = await res2.json();
+    const json     = JSON.parse(wrapper.contents || '{}');
+    const result   = json?.chart?.result?.[0];
+    if (!result) throw new Error('No chart result from Yahoo via allorigins');
     const timestamps = result.timestamp;
     const closes     = result.indicators?.quote?.[0]?.close;
     if (!timestamps || !closes || timestamps.length === 0) throw new Error('Empty Yahoo Finance data');
-    // Build parallel arrays, skipping null closes (market holidays)
     const labels = [], data = [];
     timestamps.forEach((ts, i) => {
       const price = closes[i];
@@ -1055,7 +1073,7 @@ async function fetchChartHistory(metal, range) {
     chartHistoryCache[key] = history;
     return history;
   } catch (e) {
-    console.warn(`Chart history failed for ${key}:`, e.message);
+    console.warn(`allorigins fallback also failed for ${key}:`, e.message);
     return null;
   }
 }
