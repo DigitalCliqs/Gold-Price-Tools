@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/restore-and-fix-wp02.yml'
+      - '.github/scripts/inject_consent.py'
   workflow_dispatch:
 
 jobs:
@@ -15,62 +16,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Restore HTML files from good commit via raw URL
+      - name: Restore HTML files from good commit
+        env:
+          GOOD: e23d59561ca40153e7a43489cd7ea5a8cb977361
         run: |
-          GOOD="e23d59561ca40153e7a43489cd7ea5a8cb977361"
           BASE="https://raw.githubusercontent.com/DigitalCliqs/Gold-Price-Tools/${GOOD}"
-          ROOT="index.html 14k-gold-price-per-gram.html 18k-gold-price-per-gram.html 10k-gold-price-per-gram.html scrap-gold-calculator.html silver-price-per-kilo.html how-many-grams-in-troy-ounce.html about.html contact.html privacy-policy.html terms.html"
-          GUIDES="best-time-to-sell-scrap-gold gold-price-history gold-purity-guide gold-vs-silver-investment how-to-calculate-scrap-gold how-to-invest-in-gold how-to-read-gold-spot-price how-to-sell-gold-jewellery silver-price-per-gram-explained troy-ounce-vs-gram-explained what-is-14k-gold what-is-925-sterling-silver"
-          for f in $ROOT; do
+          for f in index.html 14k-gold-price-per-gram.html 18k-gold-price-per-gram.html 10k-gold-price-per-gram.html scrap-gold-calculator.html silver-price-per-kilo.html how-many-grams-in-troy-ounce.html about.html contact.html privacy-policy.html terms.html; do
             curl -fsSL "${BASE}/${f}" -o "${f}"
-            echo "Restored ${f} ($(wc -c < ${f}) bytes)"
+            echo "Restored ${f}: $(wc -c < ${f}) bytes"
           done
           mkdir -p guides
-          for g in $GUIDES; do
+          for g in best-time-to-sell-scrap-gold gold-price-history gold-purity-guide gold-vs-silver-investment how-to-calculate-scrap-gold how-to-invest-in-gold how-to-read-gold-spot-price how-to-sell-gold-jewellery silver-price-per-gram-explained troy-ounce-vs-gram-explained what-is-14k-gold what-is-925-sterling-silver; do
             curl -fsSL "${BASE}/guides/${g}.html" -o "guides/${g}.html"
-            echo "Restored guides/${g}.html ($(wc -c < guides/${g}.html) bytes)"
+            echo "Restored guides/${g}.html: $(wc -c < guides/${g}.html) bytes"
           done
 
       - name: Inject Consent Mode v2 + GA4
-        run: |
-          cat > /tmp/inject.py << 'PYEOF'
-import re, glob
-
-CONSENT = """<!-- Consent Mode v2 defaults - must fire BEFORE AdSense and GA4 -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    'ad_storage':          'denied',
-    'analytics_storage':   'denied',
-    'ad_user_data':        'denied',
-    'ad_personalization':  'denied',
-    'wait_for_update':     500
-  });
-</script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZPLL52C3K8');</script>"""
-
-ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>'
-ADSENSE_BLOCK = '<!-- AdSense publisher script loaded async in head -->\n' + ADSENSE
-
-for fpath in glob.glob('*.html') + glob.glob('guides/*.html'):
-    with open(fpath) as f: c = f.read()
-    c = re.sub(r'\n?<script async src="https://www\.googletagmanager\.com/gtag/js\?id=G-ZPLL52C3K8"></script>\n<script>window\.dataLayer[^<]+</script>', '', c)
-    c = re.sub(r'<!-- AdSense[^\n]*-->\n' + re.escape(ADSENSE), '', c)
-    c = c.replace(ADSENSE, '')
-    c = re.sub(r'\n{3,}', '\n\n', c)
-    block = CONSENT + '\n' + ADSENSE_BLOCK + '\n'
-    m = re.search(r'(<link rel="preconnect" href="https://fonts\.googleapis\.com">)', c)
-    if m:
-        c = c[:m.start()] + block + c[m.start():]
-    else:
-        c = c.replace('</head>', block + '</head>', 1)
-    with open(fpath, 'w') as f: f.write(c)
-    print('OK', fpath)
-PYEOF
-          python3 /tmp/inject.py
+        run: python3 .github/scripts/inject_consent.py
 
       - name: Commit and push
         run: |
@@ -78,5 +40,10 @@ PYEOF
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --stat
-          git commit -m "fix(wp-02): restore all 23 pages + Consent Mode v2 + GA4\n\nRestores all HTML from good commit e23d595.\nAdds Consent Mode v2 + GA4 to all 23 pages. Closes #2" || echo "Nothing to commit"
+          git commit -m "fix(wp-02): restore all 23 pages + Consent Mode v2 + GA4
+
+Restores all HTML from good commit e23d595.
+Adds Consent Mode v2 + GA4 to all 23 pages.
+Script order: Consent v2 -> GA4 -> AdSense on all 23 pages.
+Closes #2" || echo "Nothing to commit"
           git push
