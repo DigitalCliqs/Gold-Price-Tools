@@ -1,6 +1,6 @@
 # robots.txt for GoldPriceTools
 # https://developers.google.com/search/docs/crawling-indexing/robots/intro
-# Last updated: 2026-04-25
+# Last updated: 2026-04-26
 
 User-agent: *
 Allow: /
@@ -12,7 +12,6 @@ Disallow: /chart-data/
 Disallow: /*?
 
 Sitemap: https://goldpricetools.com/sitemap.xml
-Sitemap: https://goldpricetools.com/image-sitemap.xml
 
 User-agent: Googlebot
 Allow: /
