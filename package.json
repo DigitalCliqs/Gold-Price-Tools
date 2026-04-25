@@ -1,0 +1,13 @@
+{
+  "name": "goldpricetools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GoldPriceTools static site toolchain",
+  "scripts": {
+    "validate": "node scripts/validate-jsonld.js",
+    "fetch-charts": "python3 scripts/fetch-chart-data.py"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
