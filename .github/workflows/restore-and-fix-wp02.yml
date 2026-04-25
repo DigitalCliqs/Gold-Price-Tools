@@ -15,21 +15,40 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Restore HTML files from good commit
-        env:
-          GOOD: e23d59561ca40153e7a43489cd7ea5a8cb977361
+      - name: Restore HTML files from good commit using git checkout
         run: |
-          BASE="https://raw.githubusercontent.com/DigitalCliqs/Gold-Price-Tools/${GOOD}"
-          for f in index.html 14k-gold-price-per-gram.html 18k-gold-price-per-gram.html 10k-gold-price-per-gram.html scrap-gold-calculator.html silver-price-per-kilo.html how-many-grams-in-troy-ounce.html about.html contact.html privacy-policy.html terms.html; do
-            curl -fsSL "${BASE}/${f}" -o "${f}"
-            echo "Restored ${f}: $(wc -c < ${f}) bytes"
-          done
-          mkdir -p guides
-          for g in best-time-to-sell-scrap-gold gold-price-history gold-purity-guide gold-vs-silver-investment how-to-calculate-scrap-gold how-to-invest-in-gold how-to-read-gold-spot-price how-to-sell-gold-jewellery silver-price-per-gram-explained troy-ounce-vs-gram-explained what-is-14k-gold what-is-925-sterling-silver; do
-            curl -fsSL "${BASE}/guides/${g}.html" -o "guides/${g}.html"
-            echo "Restored guides/${g}.html: $(wc -c < guides/${g}.html) bytes"
-          done
+          GOOD="e23d59561ca40153e7a43489cd7ea5a8cb977361"
+          git checkout $GOOD -- \
+            index.html \
+            14k-gold-price-per-gram.html \
+            18k-gold-price-per-gram.html \
+            10k-gold-price-per-gram.html \
+            scrap-gold-calculator.html \
+            silver-price-per-kilo.html \
+            how-many-grams-in-troy-ounce.html \
+            about.html \
+            contact.html \
+            privacy-policy.html \
+            terms.html
+          git checkout $GOOD -- \
+            guides/best-time-to-sell-scrap-gold.html \
+            guides/gold-price-history.html \
+            guides/gold-purity-guide.html \
+            guides/gold-vs-silver-investment.html \
+            guides/how-to-calculate-scrap-gold.html \
+            guides/how-to-invest-in-gold.html \
+            guides/how-to-read-gold-spot-price.html \
+            guides/how-to-sell-gold-jewellery.html \
+            guides/silver-price-per-gram-explained.html \
+            guides/troy-ounce-vs-gram-explained.html \
+            guides/what-is-14k-gold.html \
+            guides/what-is-925-sterling-silver.html
+          echo "Restored sizes:"
+          wc -c index.html guides/what-is-14k-gold.html
 
       - name: Inject Consent Mode v2 + GA4
         run: python3 .github/scripts/inject_consent.py
@@ -40,10 +59,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --stat
-          git commit -m "fix(wp-02): restore all 23 pages + Consent Mode v2 + GA4
-
-Restores all HTML from good commit e23d595.
-Adds Consent Mode v2 + GA4 to all 23 pages.
-Script order: Consent v2 -> GA4 -> AdSense on all 23 pages.
-Closes #2" || echo "Nothing to commit"
+          git commit -m "fix(wp-02): restore all 23 pages + Consent Mode v2 + GA4" || echo "Nothing to commit"
           git push
