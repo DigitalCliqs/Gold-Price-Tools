@@ -1026,5 +1026,32 @@ setInterval(fetchPrices,60_000);
 setInterval(fetchFxRates,600_000);
 const chartPoll=setInterval(()=>{if(typeof Chart!=='undefined'&&goldSpotOz){clearInterval(chartPoll);buildCharts();}},200);
 </script>
+
+<!-- SITELINKS SEARCHBOX — handles ?q= parameter from Google Search Box (WP-56) -->
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const query  = params.get('q');
+  if (!query) return;
+  const q = query.toLowerCase().trim();
+  const searchMap = [
+    { terms: ['14k','14 karat','14k gold','14 karat gold'], url: '/14k-gold-price-per-gram' },
+    { terms: ['18k','18 karat','18k gold','18 karat gold'], url: '/18k-gold-price-per-gram' },
+    { terms: ['10k','10 karat','10k gold','10 karat gold'], url: '/10k-gold-price-per-gram' },
+    { terms: ['scrap','scrap gold','sell gold'],             url: '/scrap-gold-calculator' },
+    { terms: ['silver','silver price','silver kilo','silver per kilo','silver kg'], url: '/silver-price-per-kilo' },
+    { terms: ['troy','troy ounce','grams in troy','troy oz','troy ounce grams'], url: '/how-many-grams-in-troy-ounce' },
+  ];
+  for (const entry of searchMap) {
+    if (entry.terms.some(t => q.includes(t))) {
+      window.location.replace(entry.url);
+      return;
+    }
+  }
+  // No keyword match — scroll to calculators section
+  const calcSection = document.getElementById('calculators');
+  if (calcSection) calcSection.scrollIntoView({ behavior: 'smooth' });
+})();
+</script>
 </body>
 </html>
