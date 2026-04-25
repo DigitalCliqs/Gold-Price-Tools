@@ -1,0 +1,50 @@
+name: Update dateModified in JSON-LD
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update-dates:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update dateModified in all HTML files
+        run: |
+          TODAY=$(date -u +"%Y-%m-%dT06:00:00Z")
+          echo "Updating dateModified to $TODAY"
+          find . -name "*.html" -not -path "./.git/*" | while read file; do
+            sed -i "s/\"dateModified\": \"[0-9T:Z-]*\"/\"dateModified\": \"$TODAY\"/g" "$file"
+          done
+          # Also update visible datetime elements
+          find . -name "*.html" -not -path "./.git/*" | while read file; do
+            sed -i "s|<time datetime=\"[0-9-]*\"|<time datetime=\"$(date -u +"%Y-%m-%d")\"|g" "$file"
+          done
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git commit -m "chore: update dateModified to $(date -u +"%Y-%m-%d")"
+          git push
+
+      - name: Ping IndexNow (Bing)
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          curl -s -X GET "https://api.indexnow.org/indexnow?url=https://goldpricetools.com/sitemap.xml&key=YOUR_INDEXNOW_KEY" || true
