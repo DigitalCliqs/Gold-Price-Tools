@@ -1,6 +1,6 @@
 # robots.txt for GoldPriceTools
 # https://developers.google.com/search/docs/crawling-indexing/robots/intro
-# Last updated: 2026-04-25
+# Last updated: 2026-04-25 (re-published after failed deploy #103)
 
 User-agent: *
 Allow: /
