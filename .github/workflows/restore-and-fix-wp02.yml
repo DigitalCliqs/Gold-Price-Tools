@@ -1,6 +1,10 @@
 name: restore-and-fix-wp02
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restore-and-fix-wp02.yml'
   workflow_dispatch:
 
 jobs:
@@ -27,48 +31,50 @@ jobs:
 
       - name: Inject Consent Mode v2 + GA4 into all pages
         run: |
-          python3 - << 'PYEOF'
+          cat > /tmp/inject.py << 'PYEOF'
           import re, glob
 
-          CONSENT_BLOCK = """<!-- Consent Mode v2 defaults - must fire BEFORE AdSense and GA4 config -->
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('consent', 'default', {
-              'ad_storage':          'denied',
-              'analytics_storage':   'denied',
-              'ad_user_data':        'denied',
-              'ad_personalization':  'denied',
-              'wait_for_update':     500
-            });
-          </script>
-          <!-- Google Analytics 4 -->
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
-          <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZPLL52C3K8');</script>"""
+          CONSENT = '''<!-- Consent Mode v2 defaults - must fire BEFORE AdSense and GA4 config -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("consent", "default", {
+    "ad_storage":          "denied",
+    "analytics_storage":   "denied",
+    "ad_user_data":        "denied",
+    "ad_personalization":  "denied",
+    "wait_for_update":     500
+  });
+</script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-ZPLL52C3K8");</script>'''
 
-          ADSENSE_TAG = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>'
-          ADSENSE_FULL = '<!-- AdSense publisher script loaded async in head as required by Google policy -->\n' + ADSENSE_TAG
+          ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>'
+          ADSENSE_BLOCK = '<!-- AdSense publisher script -->' + chr(10) + ADSENSE
 
           for fpath in glob.glob('*.html') + glob.glob('guides/*.html'):
-              with open(fpath, 'r') as f: content = f.read()
-              content = re.sub(r'\n?<script async src="https://www\.googletagmanager\.com/gtag/js\?id=G-ZPLL52C3K8"></script>\n<script>window\.dataLayer=window\.dataLayer\|\|\[\];function gtag\(\)\{dataLayer\.push\(arguments\);}gtag\(\'js\',new Date\(\)\);gtag\(\'config\',\'G-ZPLL52C3K8\'\);</script>', '', content)
-              content = re.sub(r'<!-- AdSense publisher script[^\n]*-->\n' + re.escape(ADSENSE_TAG), '', content)
-              content = content.replace(ADSENSE_TAG, '')
-              content = re.sub(r'\n{3,}', '\n\n', content)
-              inject = CONSENT_BLOCK + '\n' + ADSENSE_FULL + '\n'
-              preconnect = re.compile(r'(<link rel="preconnect" href="https://fonts\.googleapis\.com">)')
-              if preconnect.search(content):
-                  content = preconnect.sub(inject + r'\1', content, count=1)
+              with open(fpath) as f: c = f.read()
+              c = re.sub(r'\n?<script async src="https://www\.googletagmanager[^<]+</script>\n<script>window\.dataLayer[^<]+</script>', '', c)
+              c = re.sub(r'<!-- AdSense[^\n]*-->\n' + re.escape(ADSENSE), '', c)
+              c = c.replace(ADSENSE, '')
+              c = re.sub(r'\n{3,}', '\n\n', c)
+              block = CONSENT + chr(10) + ADSENSE_BLOCK + chr(10)
+              m = re.search(r'(<link rel="preconnect" href="https://fonts\.googleapis\.com">)', c)
+              if m:
+                  c = c[:m.start()] + block + c[m.start():]
               else:
-                  content = content.replace('</head>', inject + '</head>', 1)
-              with open(fpath, 'w') as f: f.write(content)
-              print(f'Processed {fpath}')
+                  c = c.replace('</head>', block + '</head>', 1)
+              with open(fpath, 'w') as f: f.write(c)
+              print('OK', fpath)
           PYEOF
+          python3 /tmp/inject.py
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "fix(wp-02): restore all 23 pages + Consent Mode v2 + GA4\n\nRestores all HTML from good commit e23d595. Adds Consent Mode v2\ndefaults and GA4 to all pages. Script order: Consent v2 -> GA4 ->\nAdSense on all 23 pages. Closes #2"
+          git diff --cached --stat
+          git commit -m "fix(wp-02): restore all 23 pages + Consent Mode v2 + GA4" || echo "Nothing to commit"
           git push
