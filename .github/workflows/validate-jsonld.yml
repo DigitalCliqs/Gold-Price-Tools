@@ -1,0 +1,27 @@
+name: Validate JSON-LD Structured Data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+  pull_request:
+    branches: [main]
+    paths:
+      - '**/*.html'
+
+jobs:
+  validate-jsonld:
+    name: Validate JSON-LD (WP-61)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run JSON-LD Validator
+        run: node scripts/validate-jsonld.js
