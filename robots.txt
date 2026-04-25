@@ -1,14 +1,21 @@
 # robots.txt for GoldPriceTools
 # https://developers.google.com/search/docs/crawling-indexing/robots/intro
+# Last updated: 2026-04-25
 
 User-agent: *
 Allow: /
-Disallow:
+Allow: /?q=
+Disallow: /scripts/
+Disallow: /worker/
+Disallow: /workers/
+Disallow: /chart-data/
+Disallow: /*?
 
 Sitemap: https://goldpricetools.com/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
+Allow: /?q=
 Crawl-delay: 0
 
 User-agent: Googlebot-Image
