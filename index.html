@@ -856,16 +856,11 @@ const KARATS = [
 ];
 const GOLD_API_BASE  = 'https://api.gold-api.com/price';
 const FX_BASE        = 'https://api.frankfurter.dev/v1/latest?from=USD';
-const CHART_API      = '/api/chart';
-const YAHOO_BASE     = 'https://query1.finance.yahoo.com/v8/finance/chart';
-const ALLORIGINS_GET = 'https://api.allorigins.win/get?url=';
 let goldSpotOz = null, silverSpotOz = null;
 let fxRates = { USD:1, GBP:0.74, EUR:0.855, CAD:1.367, AUD:1.398, INR:94.11 };
 let goldChart = null, silverChart = null;
 let currentGoldRange = '1M', currentSilverRange = '1M';
 let chartHistoryCache = {};
-const YAHOO_RANGE_MAP = {'1M':['1mo','1d'],'3M':['3mo','1d'],'1Y':['1y','1wk'],'5Y':['5y','1wk'],'10Y':['10y','1mo']};
-const YAHOO_TICKERS = { 'XAU': 'GC=F', 'XAG': 'SI=F' };
 (function(){
   const t = document.querySelector('[data-theme-toggle]'), r = document.documentElement;
   let d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
@@ -997,23 +992,12 @@ async function fetchChartHistory(metal, range) {
   const key=`${metal}-${range}`;
   if(chartHistoryCache[key]) return chartHistoryCache[key];
   try {
-    const res=await fetch(`${CHART_API}?metal=${metal}&range=${range}`);
-    if(res.ok){const json=await res.json();if(json.labels&&json.data&&json.data.length>0){chartHistoryCache[key]=json;return json;}throw new Error('Empty /api/chart response');}
-    throw new Error(`/api/chart HTTP ${res.status}`);
-  } catch(workerErr){console.warn(`Worker chart failed (${key}):`,workerErr.message,'— trying allorigins fallback');}
-  const [yahooRange,interval]=YAHOO_RANGE_MAP[range]||['1mo','1d'],ticker=YAHOO_TICKERS[metal];
-  if(!ticker) return null;
-  try {
-    const yahooUrl=`${YAHOO_BASE}/${encodeURIComponent(ticker)}?interval=${interval}&range=${yahooRange}`,proxyUrl=`${ALLORIGINS_GET}${encodeURIComponent(yahooUrl)}`,res2=await fetch(proxyUrl);
-    if(!res2.ok) throw new Error(`allorigins HTTP ${res2.status}`);
-    const wrapper=await res2.json(),json=JSON.parse(wrapper.contents||'{}'),result=json?.chart?.result?.[0];
-    if(!result) throw new Error('No chart result from Yahoo via allorigins');
-    const timestamps=result.timestamp,closes=result.indicators?.quote?.[0]?.close;
-    if(!timestamps||!closes||timestamps.length===0) throw new Error('Empty Yahoo Finance data');
-    const labels=[],data=[];
-    timestamps.forEach((ts,i)=>{const price=closes[i];if(price==null)return;labels.push(new Date(ts*1000).toISOString().split('T')[0]);data.push(parseFloat(price.toFixed(2)));});
-    const history={labels,data};chartHistoryCache[key]=history;return history;
-  } catch(e){console.warn(`allorigins fallback also failed for ${key}:`,e.message);return null;}
+    const res=await fetch(`/chart-data/${metal}-${range}.json`);
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json=await res.json();
+    if(json.labels&&json.data&&json.data.length>0){chartHistoryCache[key]=json;return json;}
+    throw new Error('Empty chart data');
+  } catch(e){console.warn(`Chart data unavailable (${key}):`,e.message);return null;}
 }
 async function buildChart(canvasId,loadingId,metal,range,color,chartRef) {
   const loadingEl=document.getElementById(loadingId);
