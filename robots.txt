@@ -12,6 +12,7 @@ Disallow: /chart-data/
 Disallow: /*?
 
 Sitemap: https://goldpricetools.com/sitemap.xml
+Sitemap: https://goldpricetools.com/image-sitemap.xml
 
 User-agent: Googlebot
 Allow: /

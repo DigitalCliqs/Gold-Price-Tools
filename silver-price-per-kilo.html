@@ -68,5 +68,6 @@ async function fetchFx(){try{const r=await fetch('https://api.goldpricetoolswork
 async function fetchSpot(){try{const r=await fetch('https://api.gold-api.com/price/XAG',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();const ozUSD=d.price;const gbpusd=window._gbpusd||0.79;const perG_USD=ozUSD/31.1035;const perG_GBP=perG_USD*gbpusd;const perKg_USD=perG_USD*1000;const perKg_GBP=perG_GBP*1000;document.getElementById('p-kg-gbp').textContent='£'+perKg_GBP.toFixed(2);document.getElementById('p-kg-usd').textContent='$'+perKg_USD.toFixed(2);document.getElementById('p-oz-gbp').textContent='£'+(ozUSD*gbpusd).toFixed(2);document.getElementById('p-g-gbp').textContent='£'+perG_GBP.toFixed(3);[[1,'1g'],[10,'10g'],[100,'100g'],[31.1035,'oz'],[500,'500g'],[1000,'1k']].forEach(([w,id])=>{const g=document.getElementById('t-'+id+'-gbp');const u=document.getElementById('t-'+id+'-usd');if(g)g.textContent='£'+(perG_GBP*w).toFixed(2);if(u)u.textContent='$'+(perG_USD*w).toFixed(2);});gtag('event','price_view',{metal:'silver',unit:'kilo'});}catch(e){console.warn('Silver price fetch failed',e);}}
 Promise.all([fetchFx(),fetchSpot()]);setInterval(fetchSpot,60000);
 </script>
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 </body>
 </html>
