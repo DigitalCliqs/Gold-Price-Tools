@@ -5,10 +5,11 @@
 User-agent: *
 Allow: /
 Allow: /?q=
+Allow: /chart-data/
 Disallow: /scripts/
 Disallow: /worker/
 Disallow: /workers/
-Disallow: /chart-data/
+Disallow: /api/
 Disallow: /*?
 
 Sitemap: https://goldpricetools.com/sitemap.xml
@@ -17,6 +18,7 @@ Sitemap: https://goldpricetools.com/image-sitemap.xml
 User-agent: Googlebot
 Allow: /
 Allow: /?q=
+Allow: /chart-data/
 Crawl-delay: 0
 
 User-agent: Googlebot-Image
