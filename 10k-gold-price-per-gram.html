@@ -61,5 +61,6 @@ async function fetchFx(){try{const r=await fetch('https://api.goldpricetoolswork
 async function fetchSpot(){const PURITY=0.4167;try{const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();const spotUSD=d.price;const pgUSD=spotUSD/31.1035*PURITY;const pgGBP=pgUSD*(window._gbpusd||0.79);document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';[[1,'1'],[5,'5'],[10,'10'],[20,'20'],[31.1035,'31']].forEach(([w,id])=>{const g=document.getElementById('t-'+id+'-gbp');const u=document.getElementById('t-'+id+'-usd');if(g)g.textContent='£'+(pgGBP*w).toFixed(2);if(u)u.textContent='$'+(pgUSD*w).toFixed(2);});}catch(e){console.warn('Price fetch failed',e);}}
 Promise.all([fetchFx(),fetchSpot()]);setInterval(fetchSpot,60000);
 </script>
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 </body>
 </html>

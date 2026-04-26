@@ -16,10 +16,10 @@ jobs:
 
       - name: Update dateModified in all HTML files
         run: |
-          TODAY=$(date -u +"%Y-%m-%dT06:00:00Z")
+          TODAY=$(date -u +"%Y-%m-%d")T06:00:00Z
           echo "Updating dateModified to $TODAY"
           find . -name "*.html" -not -path "./.git/*" | while read file; do
-            sed -i "s/\"dateModified\": \"[0-9T:Z-]*\"/\"dateModified\": \"$TODAY\"/g" "$file"
+            sed -i "s/\"dateModified\":\"[0-9T:Z-]*\"/\"dateModified\":\"$TODAY\"/g" "$file"
           done
           # Also update visible datetime elements
           find . -name "*.html" -not -path "./.git/*" | while read file; do
