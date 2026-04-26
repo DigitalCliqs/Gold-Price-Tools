@@ -43,6 +43,7 @@
   <p style="font-size:.9375rem;color:var(--color-text-muted);margin-bottom:1.5rem">Find out what your scrap gold jewellery is worth today. Enter weight and karat &mdash; live melt value is calculated instantly.</p>
   <div class="calc-card">
     <div id="calc-rows">
+      <!-- STATIC-FIRST: Calculator karat options pre-rendered for SEO; values are JS-updated by design -->
       <div class="calc-row" data-row="0">
         <div><div class="calc-label">Weight (grams)</div><input class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 5.5" id="w-0" oninput="calc()"></div>
         <div><div class="calc-label">Karat</div><select class="calc-select" id="k-0" onchange="calc()"><option value="0.999">24K (99.9%)</option><option value="0.9167">22K (91.67%)</option><option value="0.75">18K (75%)</option><option value="0.5833" selected>14K (58.33%)</option><option value="0.4167">10K (41.67%)</option><option value="0.375">9K (37.5%)</option></select></div>
