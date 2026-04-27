@@ -18,47 +18,50 @@ We need to implement the following 301 (Permanent) Redirects:
 
 ## Implementation Methods
 
-Depending on where `goldgramcalculator.com` is hosted/managed, follow the appropriate method below.
+Because cross-domain redirects using absolute URLs are invalid in Cloudflare Pages `_redirects` file when added to the destination site, the redirects must be configured on the secondary domain's own deployment or zone.
 
-### Method 1: Cloudflare Pages (Recommended)
+### Method 1: Cloudflare Bulk Redirects or Page Rules (Recommended & Simplest)
 
-Since the main site is hosted on Cloudflare Pages, the simplest method is to add `goldgramcalculator.com` as a Custom Domain to the existing Cloudflare Pages project.
+If `goldgramcalculator.com` is managed in a Cloudflare zone, the easiest way to handle this without deploying any code is to use Cloudflare's dashboard rules.
 
-1.  Log in to the **Cloudflare Dashboard**.
-2.  Go to **Workers & Pages** -> select the `Gold-Price-Tools` project.
-3.  Click the **Custom Domains** tab.
-4.  Click **Set up a custom domain** and enter `goldgramcalculator.com`. Add it.
-5.  Repeat for `www.goldgramcalculator.com`.
-6.  Cloudflare will prompt you to update the DNS records for `goldgramcalculator.com` to point to the Pages project. Add the necessary CNAME records.
-7.  The routing rules we added to the `_redirects` file in the repository will automatically handle the specific path mappings (e.g., `/14k` to `/14k-gold-price-per-gram`) because the rules are prefixed with the hostname.
+**Option A: Page Rules (Catch-all)**
+1. Go to the Cloudflare dashboard for `goldgramcalculator.com`.
+2. Navigate to **Rules** -> **Page Rules**.
+3. Create a new Page Rule for the URL: `*goldgramcalculator.com/*`
+4. Set the setting to **Forwarding URL**, Status Code `301 - Permanent Redirect`.
+5. Destination URL: `https://goldpricetools.com/$2` (the `$2` carries over the path, matching the second wildcard `*`).
 
-### Method 2: Cloudflare Bulk Redirects (If using a separate Cloudflare zone)
+**Option B: Bulk Redirect List (Exact Mapping)**
+For fine-grained control mapping exact karat paths as specified above:
+1. Navigate to **Rules** -> **Redirect Rules** (or Bulk Redirects).
+2. Create a list that maps each exact path (`/9k`, `/10k`, etc.) to its corresponding destination (`https://goldpricetools.com/9k-gold-price-per-gram`, etc.).
 
-If `goldgramcalculator.com` is managed in Cloudflare but not attached directly to the Pages project:
+Ensure you have a proxy-enabled (orange cloud) DNS record for the root `@` and `www` to trigger the rules (a dummy A record to `192.0.2.1` works).
 
-1.  Go to the Cloudflare dashboard for `goldgramcalculator.com`.
-2.  Go to **Rules** -> **Redirect Rules** (or Bulk Redirects).
-3.  Create a new Redirect Rule or Bulk Redirect List mapping the exact URLs above to their target destinations using `301 Permanent Redirect`.
-4.  Ensure you have a proxy-enabled (orange cloud) DNS record for the root `@` and `www` to trigger the rules (a dummy A record to `192.0.2.1` works).
+### Method 2: Separate Cloudflare Pages Project
+
+If you prefer to maintain the redirects in code, you must create a **separate** Cloudflare Pages project specifically for `goldgramcalculator.com`.
+
+1. Create a new repository (e.g., `goldgramcalculator-redirects`).
+2. Add a `_redirects` file to the root of that repository.
+3. Use **PATH-ONLY** sources in this file. The content should be:
+
+```text
+/9k https://goldpricetools.com/9k-gold-price-per-gram 301
+/10k https://goldpricetools.com/10k-gold-price-per-gram 301
+/14k https://goldpricetools.com/14k-gold-price-per-gram 301
+/18k https://goldpricetools.com/18k-gold-price-per-gram 301
+/22k https://goldpricetools.com/22k-gold-price-per-gram 301
+/24k https://goldpricetools.com/24k-gold-price-per-gram 301
+/index https://goldpricetools.com/ 301
+/ https://goldpricetools.com/ 301
+/* https://goldpricetools.com/:splat 301
+```
+
+4. Deploy this repository to Cloudflare Pages.
+5. In the Cloudflare Pages dashboard for this new project, go to **Custom Domains** and add `goldgramcalculator.com` and `www.goldgramcalculator.com`.
 
 ### Method 3: GitHub Pages
 
 If you are hosting via GitHub Pages on the secondary domain:
-
-1.  A `CNAME` file is typically used to configure a single custom domain per repository. GitHub Pages does not support multiple custom domains per repository natively.
-2.  To use GitHub Pages for the redirect, you would need a *separate* repository containing just a `CNAME` file (set to `goldgramcalculator.com`) and an HTML-based redirect or a Jekyll redirect plugin, as GitHub Pages doesn't support an equivalent of Cloudflare's `_redirects` file directly.
-3.  Because of this limitation, **Method 1 (Cloudflare Pages Custom Domain)** or using your domain registrar's redirect tool is highly recommended instead.
-
-### DNS Settings Summary
-
-If routing via Cloudflare Pages (Method 1), your DNS for `goldgramcalculator.com` should look like:
-
-*   **Type:** CNAME
-*   **Name:** `@` (or `goldgramcalculator.com`)
-*   **Target:** `your-pages-project-name.pages.dev`
-*   **Proxy status:** Proxied (Orange Cloud)
-
-*   **Type:** CNAME
-*   **Name:** `www`
-*   **Target:** `your-pages-project-name.pages.dev`
-*   **Proxy status:** Proxied (Orange Cloud)
+GitHub Pages does not support a `_redirects` file natively. To perform redirects, you'd need a separate repository with a `CNAME` file pointing to `goldgramcalculator.com` and HTML files containing meta refresh tags or a Jekyll redirect plugin. Given this complexity, Cloudflare (Method 1 or 2) is heavily preferred.
