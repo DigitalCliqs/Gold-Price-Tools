@@ -35,7 +35,24 @@
 <meta name="theme-color" content="#0f0e0c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/InstrumentSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/InstrumentSerif-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/InstrumentSerif-Italic.woff2') format('woff2');
+}
+</style>
 <style>
 :root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-offset:#f3f0ec;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;--color-primary:#01696f;--color-gold-bright:#d19900;--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'Instrument Serif',Georgia,serif}
 [data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-offset:#1d1c1a;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7977;--color-text-faint:#4a4947;--color-primary:#4f98a3;--color-gold-bright:#e8af34}
