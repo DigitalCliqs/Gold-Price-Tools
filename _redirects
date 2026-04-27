@@ -23,3 +23,23 @@
 /scrap-gold-calculator                    /scrap-gold-calculator.html                200
 /silver-price-per-kilo                    /silver-price-per-kilo.html                200
 /how-many-grams-in-troy-ounce             /how-many-grams-in-troy-ounce.html         200
+
+# Redirects from secondary domain goldgramcalculator.com
+https://goldgramcalculator.com/9k https://goldpricetools.com/9k-gold-price-per-gram 301
+https://goldgramcalculator.com/10k https://goldpricetools.com/10k-gold-price-per-gram 301
+https://goldgramcalculator.com/14k https://goldpricetools.com/14k-gold-price-per-gram 301
+https://goldgramcalculator.com/18k https://goldpricetools.com/18k-gold-price-per-gram 301
+https://goldgramcalculator.com/22k https://goldpricetools.com/22k-gold-price-per-gram 301
+https://goldgramcalculator.com/24k https://goldpricetools.com/24k-gold-price-per-gram 301
+https://goldgramcalculator.com/index https://goldpricetools.com/ 301
+https://goldgramcalculator.com/ https://goldpricetools.com/ 301
+https://www.goldgramcalculator.com/9k https://goldpricetools.com/9k-gold-price-per-gram 301
+https://www.goldgramcalculator.com/10k https://goldpricetools.com/10k-gold-price-per-gram 301
+https://www.goldgramcalculator.com/14k https://goldpricetools.com/14k-gold-price-per-gram 301
+https://www.goldgramcalculator.com/18k https://goldpricetools.com/18k-gold-price-per-gram 301
+https://www.goldgramcalculator.com/22k https://goldpricetools.com/22k-gold-price-per-gram 301
+https://www.goldgramcalculator.com/24k https://goldpricetools.com/24k-gold-price-per-gram 301
+https://www.goldgramcalculator.com/index https://goldpricetools.com/ 301
+https://www.goldgramcalculator.com/ https://goldpricetools.com/ 301
+https://goldgramcalculator.com/* https://goldpricetools.com/:splat 301
+https://www.goldgramcalculator.com/* https://goldpricetools.com/:splat 301
