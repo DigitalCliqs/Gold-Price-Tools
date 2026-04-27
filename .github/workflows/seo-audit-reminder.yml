@@ -1,0 +1,27 @@
+name: Monthly SEO Audit Reminder
+
+on:
+  schedule:
+    # Run at 00:00 on the 1st day of every month
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  issues: write
+
+jobs:
+  create_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create Issue
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Monthly SEO Audit - {{ date | date('MMMM YYYY') }}"
+          content-filepath: ./docs/seo-monthly-audit.md
+          labels: |
+            seo
+            audit
+            monthly-routine
