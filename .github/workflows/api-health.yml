@@ -1,0 +1,102 @@
+name: API Health Monitor
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check API Health
+        id: check
+        run: |
+          set +e
+          # 1. curl the primary gold-api.com endpoint
+          RESPONSE=$(curl -s -w "\n%{http_code}" "https://api.gold-api.com/price/XAU")
+          CURL_EXIT=$?
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          if [ "$CURL_EXIT" -ne 0 ] || [ "$HTTP_CODE" -ne 200 ]; then
+            echo "title=API Health Alert: HTTP $HTTP_CODE or curl failed" >> $GITHUB_ENV
+            cat <<BODY_EOF > issue_body.md
+          ## API Health Alert
+
+          The primary \`gold-api.com\` endpoint failed to respond successfully.
+
+          - **HTTP Status**: $HTTP_CODE
+          - **Curl Exit Code**: $CURL_EXIT
+
+          **Response Body:**
+          \`\`\`
+          $BODY
+          \`\`\`
+
+          Please refer to [docs/api-health.md](./docs/api-health.md) for fallback instructions.
+          BODY_EOF
+            echo "status=failed" >> $GITHUB_ENV
+          else
+            # 2. Parse JSON with jq
+            UPDATED_AT=$(echo "$BODY" | jq -r '.updatedAt // empty')
+            if [ -z "$UPDATED_AT" ]; then
+              echo "title=API Health Alert: Missing timestamp" >> $GITHUB_ENV
+              cat <<BODY_EOF > issue_body.md
+          ## API Health Alert
+
+          The primary \`gold-api.com\` endpoint returned a response without an \`updatedAt\` field.
+
+          **Response Body:**
+          \`\`\`json
+          $BODY
+          \`\`\`
+
+          Please refer to [docs/api-health.md](./docs/api-health.md) for fallback instructions.
+          BODY_EOF
+              echo "status=failed" >> $GITHUB_ENV
+            else
+              # 3. Detect staleness (timestamp older than 30 minutes from now)
+              EPOCH_UPDATED=$(date -d "$UPDATED_AT" +%s)
+              EPOCH_NOW=$(date +%s)
+              DIFF=$((EPOCH_NOW - EPOCH_UPDATED))
+
+              if [ "$DIFF" -gt 1800 ]; then
+                echo "title=API Health Alert: Stale Data Detected" >> $GITHUB_ENV
+                cat <<BODY_EOF > issue_body.md
+          ## API Health Alert
+
+          The primary \`gold-api.com\` endpoint returned stale data.
+
+          - **Timestamp**: $UPDATED_AT
+          - **Age**: $DIFF seconds (> 1800 seconds limit)
+
+          **Response Body:**
+          \`\`\`json
+          $BODY
+          \`\`\`
+
+          Please refer to [docs/api-health.md](./docs/api-health.md) for fallback instructions.
+          BODY_EOF
+                echo "status=failed" >> $GITHUB_ENV
+              else
+                echo "API is healthy. Data is $DIFF seconds old."
+                echo "status=ok" >> $GITHUB_ENV
+              fi
+            fi
+          fi
+
+      - name: Create Issue
+        if: env.status == 'failed'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: ${{ env.title }}
+          content-filepath: ./issue_body.md
+          labels: api-health
