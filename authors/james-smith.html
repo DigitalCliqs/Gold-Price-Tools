@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James Smith - Precious Metals Expert | GoldPriceTools</title>
+<meta name="description" content="James Smith is a precious metals expert and senior editor at GoldPriceTools with over 15 years of experience in the bullion and scrap gold markets.">
+<link rel="canonical" href="https://goldpricetools.com/authors/james-smith/">
+<link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+<meta name="theme-color" content="#0f0e0c">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "James Smith",
+  "jobTitle": "Senior Editor & Precious Metals Expert",
+  "description": "James Smith is a senior editor at GoldPriceTools with over 15 years of experience in the bullion and scrap gold markets.",
+  "url": "https://goldpricetools.com/authors/james-smith/",
+  "knowsAbout": ["Gold", "Silver", "Precious Metals Market", "Scrap Gold", "Bullion Investment"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "GoldPriceTools"
+  }
+}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://goldpricetools.com/"},{"@type":"ListItem","position":2,"name":"Authors","item":"https://goldpricetools.com/authors/"},{"@type":"ListItem","position":3,"name":"James Smith"}]}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<style>
+/* Base styles - keep it consistent with the rest of the site */
+:root{--color-bg:#0f0e0c;--color-surface:#1a1917;--color-surface-hover:#24221f;--color-border:#33302a;--color-text:#f5f4f0;--color-text-muted:#a39f96;--color-gold-bright:#ffd700;--color-gold-dim:#ccad00;--color-primary:var(--color-gold-bright);--color-error:#ff4d4f;--color-success:#4caf50;--font-sans:'Inter',system-ui,-apple-system,sans-serif;--font-display:'Instrument Serif',Georgia,serif;--space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--space-16:4rem;--radius-sm:4px;--radius-md:8px;--radius-lg:12px}
+*,::after,::before{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);background-color:var(--color-bg);color:var(--color-text);line-height:1.5;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+nav{background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:var(--space-3) var(--space-4);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{display:flex;align-items:center;gap:var(--space-2);color:var(--color-text);text-decoration:none;font-weight:700;font-size:1.125rem}
+.nav-links{display:flex;gap:var(--space-4)}
+.nav-links a{color:var(--color-text-muted);text-decoration:none;font-size:.875rem;transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--color-primary)}
+.breadcrumb{max-width:900px;margin:var(--space-6) auto 0;padding:0 var(--space-4);list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-2);font-size:.875rem;color:var(--color-text-muted)}
+.breadcrumb li{display:flex;align-items:center}
+.breadcrumb li:not(:last-child)::after{content:"›";margin-left:var(--space-2);color:var(--color-border)}
+.breadcrumb a{color:var(--color-primary);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* Author specific styles */
+.author-profile {
+    max-width: 900px;
+    margin: var(--space-8) auto;
+    padding: 0 var(--space-4);
+}
+.author-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+}
+@media (min-width: 640px) {
+    .author-header {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+.author-photo-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+}
+.author-info {
+    flex-grow: 1;
+}
+.author-info h1 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: var(--space-2);
+    color: var(--color-gold-bright);
+}
+.author-title {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+    font-weight: 500;
+}
+.author-social {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+.author-social a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+.author-social a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+.author-bio {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+}
+.author-bio h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-4);
+    color: var(--color-text);
+}
+.author-bio p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+    line-height: 1.7;
+}
+.author-bio p:last-child {
+    margin-bottom: 0;
+}
+.expertise-areas {
+    margin-top: var(--space-8);
+}
+.expertise-areas h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-3);
+    color: var(--color-text);
+}
+.expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+.expertise-tag {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--color-gold-bright);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-6) var(--space-4);text-align:center;font-size:var(--text-sm);color:var(--color-text-muted);margin-top:auto;}
+footer a{color:var(--color-primary);text-decoration:none;margin:0 .5rem}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/assets/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="eager" onerror="this.style.display='none'">
+      GoldPriceTools
+    </a>
+    <nav class="nav-links" aria-label="Site navigation">
+      <a href="/">Calculator</a>
+      <a href="/guides/">Guides</a>
+      <a href="/about">About</a>
+    </nav>
+  </div>
+</nav>
+
+<ol class="breadcrumb" aria-label="Breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li><a href="/about">About</a></li>
+  <li aria-current="page">James Smith</li>
+</ol>
+
+<main class="author-profile">
+    <div class="author-header">
+        <!-- Using a placeholder initial since no photo is available -->
+        <div class="author-photo-placeholder" aria-label="James Smith">
+            JS
+        </div>
+        <div class="author-info">
+            <h1>James Smith</h1>
+            <div class="author-title">Senior Editor & Precious Metals Expert</div>
+
+            <div class="author-social">
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="author-bio">
+        <h2>About James</h2>
+        <p>James Smith is the Senior Editor and lead precious metals analyst at GoldPriceTools. With over 15 years of experience in the bullion and scrap metal markets across the UK and Europe, James provides clear, accurate, and actionable insights into the complexities of gold and silver pricing.</p>
+        <p>Before joining GoldPriceTools, James worked extensively with independent jewellers and regional bullion dealers, developing a deep understanding of hallmarking standards, spot price mechanics, and fair-value assessment for scrap metals. He is passionate about market transparency and helping consumers understand exactly what their precious metals are worth.</p>
+        <p>At GoldPriceTools, James oversees the editorial direction of our guides, ensuring all content is factually accurate, up-to-date with current LBMA standards, and easy to understand for both industry professionals and everyday consumers.</p>
+
+        <div class="expertise-areas">
+            <h3>Areas of Expertise</h3>
+            <div class="expertise-tags">
+                <span class="expertise-tag">Gold</span>
+                <span class="expertise-tag">Silver</span>
+                <span class="expertise-tag">Scrap Metals</span>
+                <span class="expertise-tag">Bullion Investment</span>
+                <span class="expertise-tag">Market Analysis</span>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+  <a href="/">Calculator</a>
+  <a href="/guides/">Guides</a>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <a href="/privacy-policy">Privacy Policy</a>
+  <a href="/terms">Terms</a>
+  <span style="display:block;margin-top:.5rem">&copy; 2026 GoldPriceTools &mdash; Operated by DigitalCliqs, UK. Not financial advice.</span>
+</footer>
+</body>
+</html>
