@@ -140,6 +140,16 @@
   </url>
 
   <url>
+    <loc>https://goldpricetools.com/authors/james-smith/</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://goldpricetools.com/assets/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://goldpricetools.com/guides/gold-price-history</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
