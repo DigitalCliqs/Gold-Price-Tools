@@ -150,6 +150,21 @@
   </url>
 
   <url>
+    <loc>https://goldpricetools.com/data/</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/data/"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/data/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/data/"/>
+    <image:image>
+      <image:loc>https://goldpricetools.com/assets/og-image.jpg</image:loc>
+      <image:title>Live Gold &amp; Silver Price Data Feed | GoldPriceTools</image:title>
+      <image:caption>Real-time spot prices for gold and silver bullion across multiple karats and units. Free to use with attribution.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://goldpricetools.com/guides/gold-price-history</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
