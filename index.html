@@ -1031,14 +1031,17 @@ function calcSilver() {
   setText('silverResult',fmtCurr(usdVal,currency));setText('silverResultMeta',`${grams.toFixed(4)}g × ${(purity*100).toFixed(2)}% purity × ${fmtUSD(silverSpotOz/TROY_OZ_TO_GRAM)}/g spot`);
 }
 function calcScrap() {
+  let inputsFilled = 0;
   if (!goldSpotOz) return;
   const ppg=goldSpotOz/TROY_OZ_TO_GRAM;let totalWeight=0,totalPureOz=0,totalValue=0;
   document.querySelectorAll('#scrapRows tr').forEach(row=>{
     const purity=parseFloat(row.dataset.purity),input=row.querySelector('input'),grams=parseFloat(input?.value)||0,value=ppg*purity*grams,valCell=row.querySelector('.scrap-row-val');
     if(valCell) valCell.textContent=grams>0?fmtUSD(value):'—';
+    if (grams > 0) inputsFilled++;
     totalWeight+=grams;totalPureOz+=(grams*purity)/TROY_OZ_TO_GRAM;totalValue+=value;
   });
   setText('scrapTotalWeight',totalWeight.toFixed(3)+' g');setText('scrapPureOz',totalPureOz.toFixed(4)+' oz t');setText('scrapTotalValue',fmtUSD(totalValue));
+  if (inputsFilled >= 3) fireScrapIntent();
 }
 function calcBars() {
   if (!goldSpotOz) return;
@@ -1103,10 +1106,27 @@ document.querySelectorAll('.calc-tab').forEach(tab=>{
     document.getElementById('panel-'+this.dataset.tab).classList.add('active');
   });
 });
-['goldKarat','goldWeight','goldUnit','goldCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcGold));
-['silverPurity','silverWeight','silverUnit','silverCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcSilver));
-document.querySelectorAll('#scrapRows input').forEach(inp=>inp.addEventListener('input',calcScrap));
-['barSize','barQty'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcBars));
+let _scrapIntentFired = false;
+document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll('a[href*="/scrap-gold-calculator"]').forEach(a => { a.addEventListener('click', fireScrapIntent); }); });
+function fireScrapIntent() {
+  if (!_scrapIntentFired) {
+    gtag("event", "scrap_seller_intent");
+    _scrapIntentFired = true;
+  }
+}
+
+let _calcEngagedFired = false;
+function fireCalcEngaged() {
+  if (!_calcEngagedFired) {
+    gtag("event", "calculator_engaged");
+    _calcEngagedFired = true;
+  }
+}
+
+['goldKarat','goldWeight','goldUnit','goldCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcGold(); }));
+['silverPurity','silverWeight','silverUnit','silverCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcSilver(); }));
+document.querySelectorAll('#scrapRows input').forEach(inp=>inp.addEventListener('input',() => { fireCalcEngaged(); calcScrap(); }));
+['barSize','barQty'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcBars(); }));
 ['convInput','convFrom'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcConverter));
 function setText(id,val){const el=document.getElementById(id);if(el) el.textContent=val;}
 Promise.all([fetchFxRates(),fetchPrices()]).then(()=>{if(goldSpotOz){calcGold();calcSilver();buildKaratGrid(goldSpotOz);}});
