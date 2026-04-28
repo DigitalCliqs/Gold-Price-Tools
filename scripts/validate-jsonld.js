@@ -9,8 +9,9 @@
  *           that mirror Google's Rich Results Test criteria. Google's API
  *           requires a key and is not suitable for open CI; these checks
  *           replicate the documented required/recommended properties for
- *           each eligible type (FAQPage, BreadcrumbList, WebSite,
- *           Organization, SoftwareApplication, Dataset, WebPage).
+ *           each eligible type (Article, FAQPage, BreadcrumbList, HowTo,
+ *           Product, WebSite, WebPage, Organization, Person,
+ *           SoftwareApplication, Dataset, WebApplication).
  *
  * Run via: node scripts/validate-jsonld.js
  */
@@ -23,9 +24,40 @@ const KNOWN_TYPES = new Set([
   'NewsArticle', 'BlogPosting', 'Product', 'Event', 'Person', 'WebApplication',
 ]);
 
+// Shared checker for Article / NewsArticle / BlogPosting
+function checkArticle(obj) {
+  const errs = [];
+  const t = [].concat(obj['@type'])[0] || 'Article';
+  if (!obj.headline)       errs.push(`${t}: missing headline`);
+  if (!obj.author)         errs.push(`${t}: missing author (required for Article rich result)`);
+  if (!obj.datePublished)  errs.push(`${t}: missing datePublished`);
+  if (!obj.image)          errs.push(`${t}: missing image (required for Article rich result)`);
+  return errs;
+}
+
 // Rich Results required-field checks per type.
 // Returns an array of error strings; empty = pass.
 const RICH_RESULTS_CHECKS = {
+  Article:     checkArticle,
+  NewsArticle: checkArticle,
+  BlogPosting: checkArticle,
+
+  HowTo(obj) {
+    const errs = [];
+    if (!obj.name) errs.push('HowTo: missing name');
+    if (!obj.step) {
+      errs.push('HowTo: missing step (array of HowToStep required for rich result)');
+    } else {
+      const steps = Array.isArray(obj.step) ? obj.step : [obj.step];
+      if (steps.length === 0) errs.push('HowTo: step array is empty');
+      steps.forEach((s, i) => {
+        if (!s.name) errs.push(`HowTo.step[${i}]: missing name`);
+        if (!s.text) errs.push(`HowTo.step[${i}]: missing text`);
+      });
+    }
+    return errs;
+  },
+
   FAQPage(obj) {
     const errs = [];
     if (!obj.mainEntity) return ['FAQPage: missing mainEntity (required for FAQ rich result)'];
@@ -37,54 +69,76 @@ const RICH_RESULTS_CHECKS = {
     });
     return errs;
   },
+
   BreadcrumbList(obj) {
     const errs = [];
     if (!obj.itemListElement) return ['BreadcrumbList: missing itemListElement'];
     const items = Array.isArray(obj.itemListElement) ? obj.itemListElement : [obj.itemListElement];
     if (items.length < 2) errs.push('BreadcrumbList: needs ≥2 items for rich result eligibility');
     items.forEach((item, i) => {
-      if (!item.name) errs.push(`BreadcrumbList.itemListElement[${i}]: missing name`);
-      if (item.position == null) errs.push(`BreadcrumbList.itemListElement[${i}]: missing position`);
+      if (!item.name)             errs.push(`BreadcrumbList.itemListElement[${i}]: missing name`);
+      if (item.position == null)  errs.push(`BreadcrumbList.itemListElement[${i}]: missing position`);
     });
     return errs;
   },
+
+  Product(obj) {
+    const errs = [];
+    if (!obj.name) errs.push('Product: missing name');
+    if (!obj.review && !obj.aggregateRating && !obj.offers) {
+      errs.push('Product: must have at least one of review, aggregateRating, or offers for rich result');
+    }
+    return errs;
+  },
+
+  Person(obj) {
+    const errs = [];
+    if (!obj.name) errs.push('Person: missing name');
+    return errs;
+  },
+
   WebSite(obj) {
     const errs = [];
     if (!obj.name) errs.push('WebSite: missing name');
-    if (!obj.url) errs.push('WebSite: missing url');
+    if (!obj.url)  errs.push('WebSite: missing url');
     return errs;
   },
+
   Organization(obj) {
     const errs = [];
     if (!obj.name) errs.push('Organization: missing name');
-    if (!obj.url) errs.push('Organization: missing url');
+    if (!obj.url)  errs.push('Organization: missing url');
     return errs;
   },
+
   WebApplication(obj) {
     const errs = [];
-    if (!obj.name) errs.push('WebApplication: missing name');
+    if (!obj.name)                errs.push('WebApplication: missing name');
     if (!obj.applicationCategory) errs.push('WebApplication: missing applicationCategory');
-    if (!obj.offers) errs.push('WebApplication: missing offers (required for SoftwareApp rich result)');
+    if (!obj.offers)              errs.push('WebApplication: missing offers (required for SoftwareApp rich result)');
     return errs;
   },
+
   SoftwareApplication(obj) {
     const errs = [];
-    if (!obj.name) errs.push('SoftwareApplication: missing name');
+    if (!obj.name)                errs.push('SoftwareApplication: missing name');
     if (!obj.applicationCategory) errs.push('SoftwareApplication: missing applicationCategory');
-    if (!obj.offers) errs.push('SoftwareApplication: missing offers (required for rich result)');
+    if (!obj.offers)              errs.push('SoftwareApplication: missing offers (required for rich result)');
     return errs;
   },
+
   Dataset(obj) {
     const errs = [];
-    if (!obj.name) errs.push('Dataset: missing name');
+    if (!obj.name)        errs.push('Dataset: missing name');
     if (!obj.description) errs.push('Dataset: missing description');
-    if (!obj.url) errs.push('Dataset: missing url');
+    if (!obj.url)         errs.push('Dataset: missing url');
     return errs;
   },
+
   WebPage(obj) {
     const errs = [];
     if (!obj.name) errs.push('WebPage: missing name');
-    if (!obj.url) errs.push('WebPage: missing url');
+    if (!obj.url)  errs.push('WebPage: missing url');
     return errs;
   },
 };

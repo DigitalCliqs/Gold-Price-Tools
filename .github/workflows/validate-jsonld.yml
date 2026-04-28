@@ -6,11 +6,13 @@ on:
     paths:
       - '**/*.html'
       - 'scripts/validate-jsonld.js'
+      - '.github/workflows/validate-jsonld.yml'
   pull_request:
     branches: [main]
     paths:
       - '**/*.html'
       - 'scripts/validate-jsonld.js'
+      - '.github/workflows/validate-jsonld.yml'
 
 jobs:
   validate-jsonld:
@@ -26,14 +28,15 @@ jobs:
           node-version: '20'
 
       - name: Run JSON-LD Validator
+        id: validate
         run: node scripts/validate-jsonld.js
 
       - name: Summary
         if: always()
         run: |
           echo "### JSON-LD Validation" >> $GITHUB_STEP_SUMMARY
-          if [ $? -eq 0 ]; then
+          if [ "${{ steps.validate.outcome }}" = "success" ]; then
             echo "✅ All JSON-LD blocks valid" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ JSON-LD errors detected — check logs above" >> $GITHUB_STEP_SUMMARY
+            echo "❌ JSON-LD errors detected — check the **Run JSON-LD Validator** step above" >> $GITHUB_STEP_SUMMARY
           fi
