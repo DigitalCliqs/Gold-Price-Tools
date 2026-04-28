@@ -11,5 +11,17 @@
 <script>window.location.replace('/guides/what-is-best-time-to-sell-scrap-gold');</script>
 <p>Redirecting… <a href="/guides/what-is-best-time-to-sell-scrap-gold">click here if not redirected</a></p>
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
+<script>
+let _deepReadFired = false;
+window.addEventListener('scroll', () => {
+  if (_deepReadFired) return;
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  if (scrollHeight > 0 && (scrollTop / scrollHeight) > 0.75) {
+    gtag('event', 'guide_deep_read');
+    _deepReadFired = true;
+  }
+}, { passive: true });
+</script>
 </body>
 </html>
