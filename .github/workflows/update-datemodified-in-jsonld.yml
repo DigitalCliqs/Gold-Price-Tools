@@ -5,6 +5,10 @@ on:
     - cron: '0 6 * * *'  # Daily at 06:00 UTC
   workflow_dispatch:
 
+concurrency:
+  group: push-sync
+  cancel-in-progress: false
+
 jobs:
   update-dates:
     runs-on: ubuntu-latest
@@ -42,7 +46,35 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add -A
           git commit -m "chore: update dateModified to $(date -u +"%Y-%m-%d")"
-          git push
+
+          MAX_RETRIES=3
+          RETRY_COUNT=0
+          SUCCESS=0
+
+          while [ $RETRY_COUNT -le $MAX_RETRIES ]; do
+            if git push; then
+              echo "Push successful"
+              SUCCESS=1
+              break
+            else
+              echo "Push failed, attempting rebase..."
+              git pull --rebase origin main
+
+              RETRY_COUNT=$((RETRY_COUNT+1))
+              if [ $RETRY_COUNT -eq 1 ]; then
+                sleep 5
+              elif [ $RETRY_COUNT -eq 2 ]; then
+                sleep 10
+              elif [ $RETRY_COUNT -eq 3 ]; then
+                sleep 15
+              fi
+            fi
+          done
+
+          if [ $SUCCESS -eq 0 ]; then
+            echo "Failed to push after $MAX_RETRIES retries."
+            exit 1
+          fi
 
       - name: Ping IndexNow (Bing)
         if: steps.check_changes.outputs.changed == 'true'

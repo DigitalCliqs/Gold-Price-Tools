@@ -1,28 +1,43 @@
-name: Update Chart Data
+name: Generate Sitemap
+
 on:
-  schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'scripts/generate-sitemap.js'
+      - '.github/workflows/generate-sitemap.yml'
 
 concurrency:
   group: push-sync
   cancel-in-progress: false
 
 jobs:
-  update:
+  generate-sitemap:
+    name: Auto-generate sitemap.xml
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Fetch and write chart JSON
-        run: python3 scripts/fetch-chart-data.py
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate sitemap
+        run: node scripts/generate-sitemap.js
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add chart-data/
-          git diff --cached --quiet || git commit -m "chore: chart data [$(date -u +%Y-%m-%dT%H:%M)]"
+          git add sitemap.xml
+          git diff --cached --quiet || git commit -m "chore: regenerate sitemap.xml [skip ci]"
 
           MAX_RETRIES=3
           RETRY_COUNT=0
