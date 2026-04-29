@@ -77,6 +77,12 @@
 <div class="hero">
   <div class="prose">
     <h1>How Many Grams in a Troy Ounce?</h1>
+    <p class="snippet-answer">
+      There are <strong>31.1035 grams in one troy ounce</strong>. The troy ounce
+      (abbreviated "troy oz" or "t oz") is the standard unit of weight for precious
+      metals including gold, silver, and platinum. It is approximately 10% heavier
+      than a standard avoirdupois ounce (28.3495 grams).
+    </p>
   </div>
   <div class="answer-box">
     <div class="answer-num">31.1035</div>
@@ -87,12 +93,48 @@
 <div class="content">
   <div class="prose">
     <p>One troy ounce is exactly <strong>31.1035 grams</strong>. This is the unit used worldwide to price gold, silver, platinum, and palladium. It is heavier than a regular (avoirdupois) ounce, which weighs 28.3495 grams.</p>
-    <h2 id="how-many-grams-in-a-troy-ounce">How many grams are in a troy ounce?</h2>
-<p class="snippet-answer">There are exactly 31.1035 grams in one troy ounce. This specific weight is the international standard unit used for pricing precious metals like gold, silver, platinum, and palladium on all global commodity markets.</p>
 
-<h2 id="difference-troy-regular-ounce">What is the difference between a troy ounce and a regular ounce?</h2>
-<p class="snippet-answer">A troy ounce weighs exactly 31.1035 grams, making it about 9.7% heavier than a regular avoirdupois ounce, which weighs just 28.3495 grams. Precious metals are always weighed and priced using the heavier troy ounce standard.</p>
+<div style="display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0;">
+  <div style="flex:1;min-width:300px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:1.5rem;text-align:center;">
+    <h3 style="font-size:1.1rem;margin-bottom:0.5rem;">Live Gold Spot Price</h3>
+    <div style="font-size:1.75rem;font-weight:700;color:var(--color-gold-bright);" id="t-xau" data-nosnippet>Loading...</div>
+    <div style="font-size:0.9rem;color:var(--color-text-muted);">per troy ounce</div>
+  </div>
+  <div style="flex:1;min-width:300px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:1.5rem;text-align:center;">
+    <h3 style="font-size:1.1rem;margin-bottom:0.5rem;">Live Silver Spot Price</h3>
+    <div style="font-size:1.75rem;font-weight:700;color:var(--color-text);" id="t-xag" data-nosnippet>Loading...</div>
+    <div style="font-size:0.9rem;color:var(--color-text-muted);">per troy ounce</div>
+  </div>
+</div>
 
+<h2>Live Weight Converter</h2>
+<div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:1.5rem;margin-bottom:2rem;">
+  <div style="display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+    <div style="flex:1;min-width:150px;">
+      <label style="display:block;margin-bottom:0.5rem;font-size:0.9rem;color:var(--color-text-muted);">Amount</label>
+      <input type="number" id="convInput" value="1" min="0" step="any" style="width:100%;padding:0.75rem;background:var(--color-bg);border:1px solid var(--color-border);border-radius:8px;color:var(--color-text);font-size:1rem;">
+    </div>
+    <div style="flex:1;min-width:150px;">
+      <label style="display:block;margin-bottom:0.5rem;font-size:0.9rem;color:var(--color-text-muted);">From</label>
+      <select id="convFrom" style="width:100%;padding:0.75rem;background:var(--color-bg);border:1px solid var(--color-border);border-radius:8px;color:var(--color-text);font-size:1rem;appearance:none;">
+        <option value="31.1035" selected>Troy Ounce (oz t)</option>
+        <option value="1">Gram (g)</option>
+        <option value="1000">Kilogram (kg)</option>
+        <option value="1.55517">Pennyweight (dwt)</option>
+        <option value="0.0648">Grain (gr)</option>
+        <option value="11.664">Tola</option>
+      </select>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;">
+    <div style="background:var(--color-bg);padding:1rem;border-radius:8px;border:1px solid var(--color-border);"><div style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.25rem;">Troy Ounces</div><div id="cv-ozt" style="font-weight:600;font-size:1.1rem;">—</div></div>
+    <div style="background:var(--color-bg);padding:1rem;border-radius:8px;border:1px solid var(--color-border);"><div style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.25rem;">Grams</div><div id="cv-g" style="font-weight:600;font-size:1.1rem;">—</div></div>
+    <div style="background:var(--color-bg);padding:1rem;border-radius:8px;border:1px solid var(--color-border);"><div style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.25rem;">Kilograms</div><div id="cv-kg" style="font-weight:600;font-size:1.1rem;">—</div></div>
+    <div style="background:var(--color-bg);padding:1rem;border-radius:8px;border:1px solid var(--color-border);"><div style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.25rem;">Pennyweight (dwt)</div><div id="cv-dwt" style="font-weight:600;font-size:1.1rem;">—</div></div>
+    <div style="background:var(--color-bg);padding:1rem;border-radius:8px;border:1px solid var(--color-border);"><div style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.25rem;">Grains</div><div id="cv-gr" style="font-weight:600;font-size:1.1rem;">—</div></div>
+    <div style="background:var(--color-bg);padding:1rem;border-radius:8px;border:1px solid var(--color-border);"><div style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.25rem;">Tola</div><div id="cv-tola" style="font-weight:600;font-size:1.1rem;">—</div></div>
+  </div>
+</div>
 <h2>Troy Ounce vs Regular Ounce</h2>
     <!-- STATIC-FIRST: Table structure pre-rendered for SEO; prices are JS-updated -->
     <table class="data-table" aria-label="Troy ounce vs avoirdupois ounce comparison"><thead><tr><th>Unit</th><th>Grams</th><th>Used For</th></tr></thead><tbody>
@@ -102,14 +144,14 @@
     </tbody></table>
     <h2>Troy Ounce Conversion Table</h2>
     <!-- STATIC-FIRST: Table structure pre-rendered for SEO; prices are JS-updated -->
-    <table class="data-table" aria-label="Troy ounce to gram conversion"><thead><tr><th>Troy Ounces</th><th>Grams</th><th>Kilograms</th></tr></thead><tbody>
-      <tr><td>0.5</td><td>15.55 g</td><td>0.01555 kg</td></tr>
-      <tr><td>1</td><td>31.10 g</td><td>0.03110 kg</td></tr>
-      <tr><td>2</td><td>62.21 g</td><td>0.06221 kg</td></tr>
-      <tr><td>5</td><td>155.52 g</td><td>0.15552 kg</td></tr>
-      <tr><td>10</td><td>311.03 g</td><td>0.31103 kg</td></tr>
-      <tr><td>32.1507</td><td>1,000 g</td><td>1 kg</td></tr>
-      <tr><td>400 (Good Delivery bar)</td><td>12,441 g</td><td>12.441 kg</td></tr>
+    <table class="data-table" aria-label="Troy ounce to gram conversion"><thead><tr><th>Troy Ounces</th><th>Grams</th><th>Pennyweight (dwt)</th><th>Avoirdupois Ounces</th></tr></thead><tbody>
+      <tr><td>0.1 troy oz</td><td>3.1103 g</td><td>2 dwt</td><td>0.109 oz</td></tr>
+      <tr><td>0.5 troy oz</td><td>15.552 g</td><td>10 dwt</td><td>0.548 oz</td></tr>
+      <tr><td>1 troy oz</td><td>31.1035 g</td><td>20 dwt</td><td>1.097 oz</td></tr>
+      <tr><td>2 troy oz</td><td>62.207 g</td><td>40 dwt</td><td>2.194 oz</td></tr>
+      <tr><td>5 troy oz</td><td>155.517 g</td><td>100 dwt</td><td>5.482 oz</td></tr>
+      <tr><td>10 troy oz</td><td>311.035 g</td><td>200 dwt</td><td>10.971 oz</td></tr>
+      <tr><td>100 troy oz</td><td>3,110.35 g</td><td>2,000 dwt</td><td>109.714 oz</td></tr>
     </tbody></table>
     <h2>Why Does Gold Use Troy Ounces?</h2>
     <p>The troy weight system dates to the trade fairs of Troyes in medieval France, where merchants established standardised weights for precious metals and gems. England adopted the troy system by statute in 1527, and it became the international standard for precious metal pricing. The London Bullion Market Association (LBMA) and the COMEX futures exchange both quote gold in US dollars per troy ounce.</p>
@@ -150,6 +192,75 @@
 </div>
 </div>
 <footer><p>&copy; 2026 GoldPriceTools &mdash; <a href="/">Home</a><a href="/guides/">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></p></footer>
+
+<script>
+let goldSpotOz = null;
+let silverSpotOz = null;
+let fxRates = { GBP: 1 };
+const TROY_OZ_TO_GRAM = 31.1035;
+
+async function fetchFxRates() {
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/USD');
+    const data = await res.json();
+    if(data && data.rates) fxRates = data.rates;
+  } catch(e) { console.warn('FX unavailable', e); }
+}
+
+async function fetchPrices() {
+  try {
+    const [gRes, sRes] = await Promise.all([
+      fetch('https://gold-api.com/api/XAU/USD'),
+      fetch('https://gold-api.com/api/XAG/USD')
+    ]);
+    const gData = await gRes.json();
+    const sData = await sRes.json();
+    if (gData && gData.price) goldSpotOz = parseFloat(gData.price);
+    if (sData && sData.price) silverSpotOz = parseFloat(sData.price);
+    updatePrices();
+  } catch(e) {
+    console.error('Failed to fetch prices', e);
+  }
+}
+
+function fmtUSD(val) {
+  return new Intl.NumberFormat('en-US', {style:'currency',currency:'USD',minimumFractionDigits:2}).format(val);
+}
+
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if(el) el.textContent = val;
+}
+
+function updatePrices() {
+  if(goldSpotOz) setText('t-xau', fmtUSD(goldSpotOz));
+  if(silverSpotOz) setText('t-xag', fmtUSD(silverSpotOz));
+}
+
+function calcConverter() {
+  const amount = parseFloat(document.getElementById('convInput').value) || 0;
+  const from = parseFloat(document.getElementById('convFrom').value);
+  const grams = amount * from;
+  const fmt = (v, dec) => v.toLocaleString('en-US', {minimumFractionDigits:dec||4, maximumFractionDigits:dec||4});
+
+  setText('cv-g', fmt(grams, 4) + ' g');
+  setText('cv-ozt', fmt(grams/31.1035, 4) + ' oz t');
+  setText('cv-kg', fmt(grams/1000, 6) + ' kg');
+  setText('cv-dwt', fmt(grams/1.55517, 4) + ' dwt');
+  setText('cv-gr', fmt(grams/0.0648, 2) + ' gr');
+  setText('cv-tola', fmt(grams/11.664, 4) + ' tola');
+}
+
+['convInput','convFrom'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', calcConverter);
+});
+
+Promise.all([fetchFxRates(), fetchPrices()]).then(() => {
+  calcConverter();
+});
+</script>
+
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 <script>
 let _deepReadFired = false;
