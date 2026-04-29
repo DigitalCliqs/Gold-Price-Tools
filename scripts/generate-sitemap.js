@@ -24,7 +24,7 @@ const { execSync } = require('child_process');
 
 const ROOT = process.cwd();
 const SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
-const DEFAULT_IMAGE = 'https://goldpricetools.com/assets/og-image.jpg';
+const DEFAULT_IMAGE = 'https://assets.goldpricetools.com/og-image.jpg';
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
