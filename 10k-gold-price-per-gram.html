@@ -88,7 +88,7 @@
   <p class="faq-answer">10K gold contains 10 parts gold out of 24, giving it a purity of <strong>41.67%</strong>. It is the minimum legal standard for gold jewellery in the United States. While it has a lower gold content than 14K or 18K, it is the most durable and scratch-resistant commonly available gold alloy. The European hallmark is <strong>417</strong>.</p>
 </details>
     <h2 id="q1-10K">How much is a gram of 10k gold worth?</h2>
-<p class="snippet-answer">A gram of 10K gold is worth approximately [current spot price] today. You calculate this by taking the live 24K spot price per gram and multiplying it by 0.4167, because 10 karat gold contains 41.67% pure gold.</p>
+<p class="snippet-answer">A gram of 10K gold is worth approximately <span id="snippet-price" data-nosnippet>[current spot price]</span> today. You calculate this by taking the live 24K spot price per gram and multiplying it by 0.4167, because 10 karat gold contains 41.67% pure gold.</p>
 
 <h2 id="q2-10K">What is 10k gold?</h2>
 <p class="snippet-answer">10K gold is a durable metal alloy containing 10 parts pure gold and 14 parts other metals. With a purity of 41.67%, it is the minimum legal standard for gold jewellery in the United States, offering excellent scratch resistance.</p>
@@ -142,7 +142,9 @@
 <footer><p>&copy; 2026 GoldPriceTools &mdash; <a href="/">Home</a><a href="/guides/">Guides</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a></p><p style="margin-top:.5rem">Not financial advice.</p></footer>
 <script>
 async function fetchFx(){try{const r=await fetch('https://api.goldpricetoolsworker.io/fx',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();window._gbpusd=d.GBPUSD||0.79;}catch{window._gbpusd=0.79;}}
-async function fetchSpot(){const PURITY=0.4167;try{const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();const spotUSD=d.price;const pgUSD=spotUSD/31.1035*PURITY;const pgGBP=pgUSD*(window._gbpusd||0.79);document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';[[1,'1'],[5,'5'],[10,'10'],[20,'20'],[31.1035,'31']].forEach(([w,id])=>{const g=document.getElementById('t-'+id+'-gbp');const u=document.getElementById('t-'+id+'-usd');if(g)g.textContent='£'+(pgGBP*w).toFixed(2);if(u)u.textContent='$'+(pgUSD*w).toFixed(2);});}catch(e){console.warn('Price fetch failed',e);}}
+async function fetchSpot(){const PURITY=0.4167;try{const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();const spotUSD=d.price;const pgUSD=spotUSD/31.1035*PURITY;const pgGBP=pgUSD*(window._gbpusd||0.79);document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';
+    const snippetEl = document.getElementById('snippet-price');
+    if(snippetEl) snippetEl.textContent='£'+pgGBP.toFixed(2)+' ($'+pgUSD.toFixed(2)+' USD)';[[1,'1'],[5,'5'],[10,'10'],[20,'20'],[31.1035,'31']].forEach(([w,id])=>{const g=document.getElementById('t-'+id+'-gbp');const u=document.getElementById('t-'+id+'-usd');if(g)g.textContent='£'+(pgGBP*w).toFixed(2);if(u)u.textContent='$'+(pgUSD*w).toFixed(2);});}catch(e){console.warn('Price fetch failed',e);}}
 Promise.all([fetchFx(),fetchSpot()]);setInterval(fetchSpot,60000);
 </script>
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>

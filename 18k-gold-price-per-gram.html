@@ -147,7 +147,7 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
   <p class="faq-answer">18K gold contains 18 parts gold out of 24 &mdash; a purity of <strong>75%</strong>. It is the standard for fine jewellery, high-end Swiss watches, and luxury accessories worldwide. The hallmark for 18K gold in the UK and Europe is <strong>750</strong>. In the US you will see <strong>18K</strong> or <strong>18KT</strong> stamped on items.</p>
 </details>
     <h2 id="q1-18K">What is gold value 18k per gram?</h2>
-<p class="snippet-answer">The value of 18K gold per gram is approximately [current spot price] today. This live value is determined by multiplying the current 24K pure gold spot price by 0.75, reflecting the 75% pure gold content in 18 karat items.</p>
+<p class="snippet-answer">The value of 18K gold per gram is approximately <span id="snippet-price" data-nosnippet>[current spot price]</span> today. This live value is determined by multiplying the current 24K pure gold spot price by 0.75, reflecting the 75% pure gold content in 18 karat items.</p>
 
 <h2 id="q2-18K">What is 18k gold?</h2>
 <p class="snippet-answer">18K gold is a premium gold alloy consisting of 18 parts pure gold and 6 parts other metals. It has a purity of 75.0%, making it the global standard for high-end fine jewellery, engagement rings, and luxury watches.</p>
@@ -205,7 +205,9 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 </footer>
 <script>
 async function fetchFx(){try{const r=await fetch('https://api.goldpricetoolsworker.io/fx',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();window._gbpusd=d.GBPUSD||0.79;}catch{window._gbpusd=0.79;}}
-async function fetchSpot(){const PURITY=0.75;try{const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();const spotUSD=d.price;const pgUSD=spotUSD/31.1035*PURITY;const pgGBP=pgUSD*(window._gbpusd||0.79);document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';[[1,'1'],[2,'2'],[5,'5'],[10,'10'],[20,'20'],[31.1035,'31']].forEach(([w,id])=>{const g=document.getElementById('t-'+id+'-gbp');const u=document.getElementById('t-'+id+'-usd');if(g)g.textContent='£'+(pgGBP*w).toFixed(2);if(u)u.textContent='$'+(pgUSD*w).toFixed(2);});}catch(e){console.warn('Price fetch failed',e);}}
+async function fetchSpot(){const PURITY=0.75;try{const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();const spotUSD=d.price;const pgUSD=spotUSD/31.1035*PURITY;const pgGBP=pgUSD*(window._gbpusd||0.79);document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';
+    const snippetEl = document.getElementById('snippet-price');
+    if(snippetEl) snippetEl.textContent='£'+pgGBP.toFixed(2)+' ($'+pgUSD.toFixed(2)+' USD)';[[1,'1'],[2,'2'],[5,'5'],[10,'10'],[20,'20'],[31.1035,'31']].forEach(([w,id])=>{const g=document.getElementById('t-'+id+'-gbp');const u=document.getElementById('t-'+id+'-usd');if(g)g.textContent='£'+(pgGBP*w).toFixed(2);if(u)u.textContent='$'+(pgUSD*w).toFixed(2);});}catch(e){console.warn('Price fetch failed',e);}}
 Promise.all([fetchFx(),fetchSpot()]);setInterval(fetchSpot,60000);
 </script>
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>

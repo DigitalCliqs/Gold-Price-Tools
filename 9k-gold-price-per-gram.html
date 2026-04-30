@@ -153,7 +153,7 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 </details>
 
     <h2 id="q1-9K">How much is a gram of 9k gold worth?</h2>
-<p class="snippet-answer">9K gold is worth approximately [current spot price] per gram today. This value is calculated by multiplying the live 24K spot price by 0.375, which represents the 37.5% gold purity of 9 karat gold. Dealers typically pay less than this melt value.</p>
+<p class="snippet-answer">9K gold is worth approximately <span id="snippet-price" data-nosnippet>[current spot price]</span> per gram today. This value is calculated by multiplying the live 24K spot price by 0.375, which represents the 37.5% gold purity of 9 karat gold. Dealers typically pay less than this melt value.</p>
 
 <h2 id="q2-9K">What is 9k gold?</h2>
 <p class="snippet-answer">9K gold is an alloy containing 14 parts pure gold out of 24, giving it a purity of 37.5%. It is the most popular gold alloy for jewellery in the United States, offering a great balance of durability, beautiful colour, and lasting value.</p>
@@ -250,6 +250,8 @@ async function fetchSpot(){
     const pgGBP=pgUSD*(window._gbpusd||0.79);
     document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';
     document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';
+    const snippetEl = document.getElementById('snippet-price');
+    if(snippetEl) snippetEl.textContent='£'+pgGBP.toFixed(2)+' ($'+pgUSD.toFixed(2)+' USD)';
     const weights=[0.5,1,2,5,10,20,31.1035];
     const ids=['0-5','1','2','5','10','20','31'];
     weights.forEach((w,i)=>{

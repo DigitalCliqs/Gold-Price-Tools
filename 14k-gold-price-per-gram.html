@@ -153,7 +153,7 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 </details>
 
     <h2 id="q1-14K">How much is a gram of 14k gold worth?</h2>
-<p class="snippet-answer">14K gold is worth approximately [current spot price] per gram today. This value is calculated by multiplying the live 24K spot price by 0.5833, which represents the 58.33% gold purity of 14 karat gold. Dealers typically pay less than this melt value.</p>
+<p class="snippet-answer">14K gold is worth approximately <span id="snippet-price" data-nosnippet>[current spot price]</span> per gram today. This value is calculated by multiplying the live 24K spot price by 0.5833, which represents the 58.33% gold purity of 14 karat gold. Dealers typically pay less than this melt value.</p>
 
 <h2 id="q2-14K">What is 14k gold?</h2>
 <p class="snippet-answer">14K gold is an alloy containing 14 parts pure gold out of 24, giving it a purity of 58.33%. It is the most popular gold alloy for jewellery in the United States, offering a great balance of durability, beautiful colour, and lasting value.</p>
@@ -250,6 +250,8 @@ async function fetchSpot(){
     const pgGBP=pgUSD*(window._gbpusd||0.79);
     document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';
     document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';
+    const snippetEl = document.getElementById('snippet-price');
+    if(snippetEl) snippetEl.textContent='£'+pgGBP.toFixed(2)+' ($'+pgUSD.toFixed(2)+' USD)';
     const weights=[0.5,1,2,5,10,20,31.1035];
     const ids=['0-5','1','2','5','10','20','31'];
     weights.forEach((w,i)=>{
