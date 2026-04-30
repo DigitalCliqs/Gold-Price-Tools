@@ -459,4 +459,19 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/terms"/>
   </url>
 
+  <url>
+    <loc>https://goldpricetools.com/gold-bar-value</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-bar-value"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-bar-value"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-bar-value"/>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Gold Bar Value Calculator</image:title>
+      <image:caption>Calculate the live value of Good Delivery and other standard gold bars.</image:caption>
+    </image:image>
+  </url>
+
 </urlset>
