@@ -155,7 +155,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 
   <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
     <div style="margin-bottom: 1rem; font-weight: 600; color: var(--color-text);">Ratio Calculator</div>
-    
+
     <div class="coin-row">
       <div class="coin-info">
         <div class="coin-name">Gold (oz)</div>
@@ -165,7 +165,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <input type="number" id="input-gold" class="coin-input" value="1" min="0" step="0.1">
       </div>
     </div>
-    
+
     <div class="coin-row">
       <div class="coin-info">
         <div class="coin-name" style="color:var(--color-silver)">Silver (oz)</div>
@@ -184,7 +184,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   <div class="prose">
     <h2>Understanding the Gold-Silver Ratio</h2>
     <p>The gold-silver ratio is a simple but powerful metric used by precious metals investors. It represents how many ounces of silver it takes to purchase a single ounce of gold at current spot prices. For example, if gold is trading at $2,000 per ounce and silver is trading at $25 per ounce, the ratio is 80:1.</p>
-    
+
     <h2>How to Use the Ratio</h2>
     <p>Historically, the ratio has fluctuated significantly. Many investors use it as a timing indicator to decide which metal to buy or sell:</p>
     <ul>
@@ -194,7 +194,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 
     <h2>Historical Context</h2>
     <p>In ancient times, the ratio was often fixed by governments or natural occurrence. The Roman Empire officially set the ratio at 12:1. In 1792, the US Coinage Act fixed the ratio at 15:1. However, in the modern era of free-floating fiat currencies, the ratio has been highly volatile, averaging around 60:1 over the last century but spiking above 110:1 during market panics (like early 2020) and dropping below 35:1 during precious metals bull markets (like 2011).</p>
-    
+
     <h2>Frequently Asked Questions</h2>
     <div class="faq-container">
       <details>
@@ -225,23 +225,23 @@ async function fetchSpot() {
       fetch('https://api.gold-api.com/price/XAU', {cache: 'no-store'}),
       fetch('https://api.gold-api.com/price/XAG', {cache: 'no-store'})
     ]);
-    
+
     if (!goldRes.ok || !silverRes.ok) throw new Error('API Error');
-    
+
     const goldData = await goldRes.json();
     const silverData = await silverRes.json();
-    
+
     const goldSpot = goldData.price;
     const silverSpot = silverData.price;
-    
+
     currentRatio = goldSpot / silverSpot;
-    
+
     document.getElementById('gold-spot-display').textContent = '$' + goldSpot.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     document.getElementById('silver-spot-display').textContent = '$' + silverSpot.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     document.getElementById('ratio-display').textContent = currentRatio.toFixed(2);
-    
+
     calculateValues();
-    
+
     if(typeof gtag === 'function') {
       gtag('event', 'price_view', {metal: 'ratio'});
     }
@@ -252,10 +252,10 @@ async function fetchSpot() {
 
 function calculateValues() {
   if (currentRatio === 0) return;
-  
+
   const goldInput = document.getElementById('input-gold');
   const silverInput = document.getElementById('input-silver');
-  
+
   // if this was triggered by gold input changing
   if (document.activeElement === goldInput || !document.activeElement || document.activeElement === document.body) {
      const goldOz = parseFloat(goldInput.value) || 0;
