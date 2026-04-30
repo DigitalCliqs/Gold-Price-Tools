@@ -113,3 +113,10 @@ kilo silver price, gold bar worth, troy ounce grams, gold and silver price today
 
 ## License
 MIT — free to use and modify.
+
+## Content Operations
+### Weekly Market Commentary
+A new market commentary post should be published every Monday.
+- **Location:** `/blog/`
+- **Schedule:** Every Monday at 09:00 UTC
+- **Process:** Create a GitHub issue with the title `[Blog] Weekly Market Commentary — Week of [DATE]`. Optional n8n automation can pre-fill the issue with a draft using OpenRouter API based on spot prices.
