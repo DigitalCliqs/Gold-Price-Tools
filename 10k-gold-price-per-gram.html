@@ -57,6 +57,20 @@
 </style>
 <style>:root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-offset:#f3f0ec;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;--color-primary:#01696f;--color-gold-bright:#d19900;--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'Instrument Serif',Georgia,serif}[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-offset:#1d1c1a;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7977;--color-text-faint:#4a4947;--color-primary:#4f98a3;--color-gold-bright:#e8af34}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{min-height:100dvh;line-height:1.7;font-family:var(--font-body);color:var(--color-text);background:var(--color-bg)}nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px)}.nav-inner{max-width:900px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:56px}.nav-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.9rem;color:var(--color-text);text-decoration:none}.breadcrumb-wrap{max-width:900px;margin:0 auto;padding:.625rem 1rem 0}.breadcrumb{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;font-size:.8125rem;color:var(--color-text-muted);padding:0;margin:0}.breadcrumb li+li::before{content:"\203A";margin-right:.4rem}.breadcrumb a{color:var(--color-gold-bright);text-decoration:none}.hero{max-width:900px;margin:0 auto;padding:2.5rem 1rem 1.5rem;text-align:center}.hero-tag{font-size:.75rem;font-weight:700;color:var(--color-gold-bright);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.625rem}.hero-title{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.75rem);color:var(--color-text);line-height:1.2;margin-bottom:.75rem}.hero-sub{font-size:.9375rem;color:var(--color-text-muted);margin-bottom:1.5rem}.price-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:1rem;padding:2rem;max-width:480px;margin:0 auto 2rem}.price-label{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-faint);margin-bottom:.5rem}.price-value{font-family:var(--font-display);font-size:clamp(2.25rem,6vw,3.5rem);font-weight:700;color:var(--color-gold-bright);line-height:1;margin-bottom:.375rem;min-height:3rem;min-width:120px;display:inline-block}.price-usd{font-size:1.25rem;color:var(--color-text-muted);margin-bottom:.5rem}.price-purity{font-size:.8125rem;color:var(--color-text-faint)}.content{max-width:900px;margin:0 auto;padding:0 1rem 5rem}.prose{max-width:68ch}.prose h2{font-family:var(--font-display);font-size:1.5rem;color:var(--color-text);margin:2.5rem 0 .75rem}.prose p{font-size:.9375rem;color:var(--color-text-muted);margin-bottom:1.25rem;line-height:1.75}.data-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem}.data-table th{background:var(--color-surface-offset);font-weight:600;color:var(--color-text);padding:.625rem 1rem;text-align:left;border-bottom:2px solid var(--color-border)}.data-table td{padding:.625rem 1rem;border-bottom:1px solid var(--color-border);color:var(--color-text-muted)}.disclaimer{border-left:3px solid var(--color-gold-bright);padding:.75rem 1rem;background:rgba(232,175,52,.05);font-size:.8125rem;color:var(--color-text-faint);margin:2rem 0;border-radius:0 .5rem .5rem 0}.trust-bar{font-size:.8125rem;color:var(--color-text-faint);text-align:center;padding:.75rem 1rem;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);margin-bottom:2rem}.trust-bar a{color:var(--color-text-muted);text-decoration:none}footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:2rem 1rem;text-align:center;font-size:.8125rem;color:var(--color-text-faint)}footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}#googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
 .share-buttons{display:flex;gap:12px;align-items:center;margin:2rem 0;flex-wrap:wrap;font-size:.875rem}.share-buttons span{color:var(--color-text-muted)}.share-buttons a{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:6px;font-size:.875rem;border:1px solid var(--color-border);color:var(--color-text);text-decoration:none;transition:background .2s}.share-buttons a:hover{background:var(--color-surface)}
+
+.data-source {
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+}
+.data-source a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -81,7 +95,7 @@
   <div class="price-card"><div class="price-label">10K Gold &mdash; Price Per Gram</div><div class="price-value" id="price-gbp" data-nosnippet>&mdash;</div><div class="price-usd" id="price-usd" data-nosnippet></div><div class="price-purity">10K = 41.67% pure gold (417 hallmark)</div></div>
 </div>
 <div class="content">
-  <div class="trust-bar">Live prices sourced from LBMA spot market via gold-api.com &middot; Updated every 60 seconds &middot; <a href="/about.html">About our data</a></div>
+  <p class="data-source">Live prices sourced from LBMA spot market via gold-api.com. Updated every 60 seconds. <a href="/about">About our data</a></p>
   <div class="prose">
     <details>
   <summary class="faq-answer-summary">What is 10K Gold?</summary>
