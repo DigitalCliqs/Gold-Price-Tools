@@ -352,7 +352,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   <a href="/18k-gold-price-per-gram">18K Gold Price Per Gram</a>
   <a href="/10k-gold-price-per-gram">10K Gold Price Per Gram</a>
   <span class="menu-section">Silver</span>
-  <a href="/silver-price-per-kilo">Silver Price Per Kilo</a>
+    <a href="/silver-price-per-kilo">Silver Price Per Kilo</a>
+  <a href="/900-silver-price-per-gram">.900 Coin Silver Price</a>
+  <a href="/800-silver-price-per-gram">.800 European Silver Price</a>
   <a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce</a>
   <span class="menu-section">Guides</span>
   <a href="/guides/what-is-14k-gold">What Is 14K Gold?</a>
@@ -732,6 +734,18 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </section>
 
     <!-- ARTICLES SECTION -->
+
+    <h2>Silver Purity Grades</h2>
+    <table class="data-table" aria-label="Silver purity grades and indicative prices">
+      <thead><tr><th>Purity</th><th>Grade</th><th>Price per Gram</th><th>Price per Kg</th><th>Price per Troy Oz</th></tr></thead>
+      <tbody id="silverPurityTable">
+        <tr><td>.999</td><td>Fine</td><td>[live]</td><td>[live]</td><td>[live]</td></tr>
+        <tr><td>.925</td><td>Sterling</td><td>[live]</td><td>[live]</td><td>[live]</td></tr>
+        <tr><td>.900</td><td>Coin</td><td>[live]</td><td>[live]</td><td>[live]</td></tr>
+        <tr><td>.800</td><td>European</td><td>[live]</td><td>[live]</td><td>[live]</td></tr>
+      </tbody>
+    </table>
+
     <section class="articles-section" aria-label="Gold and silver guides">
       <h2>Gold &amp; Silver Guides</h2>
       <p class="section-desc">Learn how gold karats work, how to value scrap metal, and what drives precious metals prices — from our free educational guides.</p>
@@ -830,7 +844,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <a href="/18k-gold-price-per-gram">18K Gold Price Per Gram <span>→</span></a>
         <a href="/10k-gold-price-per-gram">10K Gold Price Per Gram <span>→</span></a>
         <a href="/scrap-gold-calculator">Scrap Gold Calculator <span>→</span></a>
-        <a href="/silver-price-per-kilo">Silver Price Per Kilo <span>→</span></a>
+                <a href="/silver-price-per-kilo">Silver Price Per Kilo <span>→</span></a>
+        <a href="/900-silver-price-per-gram">.900 Silver Price <span>→</span></a>
+        <a href="/800-silver-price-per-gram">.800 Silver Price <span>→</span></a>
         <a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce <span>→</span></a>
       </div>
     </div>
@@ -894,7 +910,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <li><a href="/guides/how-to-calculate-scrap-gold">Calculate Scrap Gold</a></li>
         <li><a href="/guides/gold-purity-guide">Gold Purity Guide</a></li>
         <li><a href="/guides/gold-vs-silver-investment">Gold vs Silver</a></li>
-        <li><a href="/silver-price-per-kilo">Silver Price Per Kilo</a></li>
+                <li><a href="/silver-price-per-kilo">Silver Price Per Kilo</a></li>
+        <li><a href="/900-silver-price-per-gram">.900 Coin Silver Price</a></li>
+        <li><a href="/800-silver-price-per-gram">.800 European Silver Price</a></li>
         <li><a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce</a></li>
       </ul>
     </div>
@@ -1039,6 +1057,25 @@ function calcSilver() {
   if (!silverSpotOz) return;
   const purity=parseFloat(document.getElementById('silverPurity').value),weight=parseFloat(document.getElementById('silverWeight').value)||0,unit=parseFloat(document.getElementById('silverUnit').value),currency=document.getElementById('silverCurrency').value,grams=weight*unit,usdVal=(silverSpotOz/TROY_OZ_TO_GRAM)*purity*grams;
   setText('silverResult',fmtCurr(usdVal,currency));setText('silverResultMeta',`${grams.toFixed(4)}g × ${(purity*100).toFixed(2)}% purity × ${fmtUSD(silverSpotOz/TROY_OZ_TO_GRAM)}/g spot`);
+
+  // Purity Table logic
+  const tbody = document.getElementById('silverPurityTable');
+  if (tbody) {
+    const purities = [0.999, 0.925, 0.900, 0.800];
+    const pure_oz = silverSpotOz;
+    const pure_g = pure_oz / TROY_OZ_TO_GRAM;
+    const gbpusd = fxRates.GBP || 0.79;
+    const rows = tbody.querySelectorAll('tr');
+    purities.forEach((p, i) => {
+      if (rows[i]) {
+        const p_g = pure_g * p;
+        rows[i].cells[2].textContent = '£' + (p_g * gbpusd).toFixed(2);
+        rows[i].cells[3].textContent = '£' + (p_g * 1000 * gbpusd).toFixed(2);
+        rows[i].cells[4].textContent = '£' + (pure_oz * p * gbpusd).toFixed(2);
+      }
+    });
+  }
+
 }
 function calcScrap() {
   let inputsFilled = 0;
