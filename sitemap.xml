@@ -2,10 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://goldpricetools.com/best-gold-ira-companies.html</loc>
-    <changefreq>hourly</changefreq>
-  </url>
 
   <url>
     <loc>https://goldpricetools.com/</loc>
@@ -180,6 +176,21 @@
     <priority>0.75</priority>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://goldpricetools.com/best-gold-ira-companies.html</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/"/>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Best Gold IRA Companies in 2026 — Reviewed &amp; Compared</image:title>
+      <image:caption>Compare the top 5 gold IRA companies of 2026: Augusta, Goldco, American Hartford Gold, Birch Gold, and Noble Gold. See fees, minimums, and storage options.</image:caption>
     </image:image>
   </url>
 
