@@ -155,6 +155,36 @@
   </url>
 
   <url>
+    <loc>https://goldpricetools.com/800-silver-price-per-gram</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/800-silver-price-per-gram"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/800-silver-price-per-gram"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/800-silver-price-per-gram"/>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>.800 European Silver Price Per Gram Today (Live)</image:title>
+      <image:caption>Real-time .800 European Silver price per gram, gram and troy ounce in GBP and USD. Updated every 60 seconds.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://goldpricetools.com/900-silver-price-per-gram</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/900-silver-price-per-gram"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/900-silver-price-per-gram"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/900-silver-price-per-gram"/>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>.900 Coin Silver Price Per Gram Today (Live)</image:title>
+      <image:caption>Real-time .900 Coin Silver price per gram, gram and troy ounce in GBP and USD. Updated every 60 seconds.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://goldpricetools.com/9k-gold-price-per-gram</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -702,23 +732,4 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/terms"/>
   </url>
 
-
-  <url>
-    <loc>https://goldpricetools.com/900-silver-price-per-gram</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.90</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/900-silver-price-per-gram"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/900-silver-price-per-gram"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/900-silver-price-per-gram"/>
-  </url>
-  <url>
-    <loc>https://goldpricetools.com/800-silver-price-per-gram</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.90</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/800-silver-price-per-gram"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/800-silver-price-per-gram"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/800-silver-price-per-gram"/>
-  </url>
 </urlset>
