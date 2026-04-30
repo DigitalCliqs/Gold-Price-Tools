@@ -61,8 +61,8 @@ input,select{font:inherit;color:inherit}
 h1,h2,h3,h4{text-wrap:balance;line-height:1.2}
 p,li{text-wrap:pretty;max-width:72ch}
 a,button,[role="button"],input,select{transition:color var(--transition),background var(--transition),border-color var(--transition),box-shadow var(--transition)}
-a{color:var(--color-primary);text-decoration-thickness:1px;text-underline-offset:2px}
-a:hover{color:var(--color-primary-hover)}
+a{color:var(--color-gold-bright);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:color-mix(in oklch, var(--color-gold-bright) 80%, black)}
 
 nav{position:sticky;top:0;z-index:40;background:oklch(from var(--color-surface) l c h / 0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--color-border)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
@@ -110,7 +110,7 @@ nav{position:sticky;top:0;z-index:40;background:oklch(from var(--color-surface) 
 details{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);margin-bottom:1rem;overflow:hidden}
 summary{padding:1.25rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--color-text)}
 summary::-webkit-details-marker{display:none}
-summary::after{content:'+';font-size:1.5rem;color:var(--color-primary);line-height:1}
+summary::after{content:'+';font-size:1.5rem;color:var(--color-gold-bright);line-height:1}
 details[open] summary::after{content:'−'}
 .faq-answer{padding:0 1.25rem 1.25rem;color:var(--color-text-muted);font-size:1rem}
 
