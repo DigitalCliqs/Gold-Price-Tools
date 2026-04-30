@@ -225,6 +225,21 @@
   </url>
 
   <url>
+    <loc>https://goldpricetools.com/gold-silver-ratio</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-silver-ratio"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-silver-ratio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-silver-ratio"/>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Gold-Silver Ratio Calculator &amp; Live Chart</image:title>
+      <image:caption>Live gold-silver ratio calculator and charts. Track real-time gold and silver spot prices.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://goldpricetools.com/gold-silver-test-kit-reviews.html</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
