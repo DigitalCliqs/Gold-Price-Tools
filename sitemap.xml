@@ -180,6 +180,36 @@
   </url>
 
   <url>
+    <loc>https://goldpricetools.com/blog/</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/blog/"/>
+    <image:image>
+      <image:loc>https://goldpricetools.com/assets/og-image.jpg</image:loc>
+      <image:title>Gold &amp; Silver Blog — Market Insights &amp; Guides</image:title>
+      <image:caption>Gold and silver market analysis, price guides, and precious metals education from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://goldpricetools.com/blog/understanding-gold-karat-purities/</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/blog/understanding-gold-karat-purities/"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/blog/understanding-gold-karat-purities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/blog/understanding-gold-karat-purities/"/>
+    <image:image>
+      <image:loc>https://goldpricetools.com/assets/og-image.jpg</image:loc>
+      <image:title>Understanding Gold Karat Purities: 9K to 24K Explained</image:title>
+      <image:caption>What does 9K, 10K, 14K, 18K, 22K or 24K gold mean? Every common gold karat, its hallmark, purity percentage, and melt value calculation.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://goldpricetools.com/data/</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
