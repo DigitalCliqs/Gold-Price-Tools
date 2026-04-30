@@ -210,8 +210,8 @@ async function fetchFxRates() {
 async function fetchPrices() {
   try {
     const [gRes, sRes] = await Promise.all([
-      fetch('https://gold-api.com/api/XAU/USD'),
-      fetch('https://gold-api.com/api/XAG/USD')
+      fetch('https://api.gold-api.com/price/XAU'),
+      fetch('https://api.gold-api.com/price/XAG')
     ]);
     const gData = await gRes.json();
     const sData = await sRes.json();
