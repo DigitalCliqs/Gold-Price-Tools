@@ -66,7 +66,7 @@
 </style>
 <style>
 :root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-offset:#f3f0ec;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;--color-primary:#01696f;--color-gold-bright:#d19900;--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'Instrument Serif',Georgia,serif}
-[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-offset:#1d1c1a;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7977;--color-text-faint:#4a4947;--color-primary:#4f98a3;--color-gold-bright:#e8af34}
+[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-offset:#1d1c1a;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7974;--color-text-faint:#4a4947;--color-primary:#4f98a3;--color-gold-bright:#e8af34}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body{min-height:100dvh;line-height:1.7;font-family:var(--font-body);color:var(--color-text);background:var(--color-bg)}
@@ -84,10 +84,7 @@ body{min-height:100dvh;line-height:1.7;font-family:var(--font-body);color:var(--
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px)}
 .nav-inner{max-width:900px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:56px}
-.nav-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.9rem;color:var(--color-text);text-decoration:none}
-.nav-links{display:flex;gap:1.25rem}
-.nav-links a{font-size:.875rem;color:var(--color-text-muted);text-decoration:none}
-.nav-links a:hover,.nav-links a[aria-current]{color:var(--color-text)}
+.nav-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.9rem;color:var(--color-gold-bright);text-decoration:none}
 .breadcrumb-wrap{max-width:900px;margin:0 auto;padding:.75rem 1rem 0}
 .breadcrumb{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;font-size:.8125rem;color:var(--color-text-muted)}
 .breadcrumb li+li::before{content:"\203A";margin-right:.5rem}
@@ -136,12 +133,12 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/assets/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="eager" onerror="this.style.display='none'"> GoldPriceTools</a>
-    <div class="nav-links">
-      <a href="/">Calculator</a>
-      <a href="/guides/">Guides</a>
-      <a href="/blog/" aria-current="page">Blog</a>
-      <a href="/about">About</a>
+    <a href="/" class="nav-logo"><img src="https://assets.goldpricetools.com/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="eager" onerror="this.style.display='none'"> GoldPriceTools</a>
+    <div style="display:flex;gap:.75rem;font-size:.875rem">
+      <a href="/" style="color:var(--color-text-muted);text-decoration:none">Calculator</a>
+      <a href="/guides/" style="color:var(--color-text-muted);text-decoration:none">Guides</a>
+      <a href="/blog/" style="color:var(--color-text-muted);text-decoration:none">Blog</a>
+      <a href="/about" style="color:var(--color-text-muted);text-decoration:none">About</a>
     </div>
   </div>
 </nav>
