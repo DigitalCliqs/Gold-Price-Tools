@@ -469,6 +469,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
                 <option value="1000">Kilograms (kg)</option>
                 <option value="1.55517">Pennyweight (dwt)</option>
                 <option value="453.592">Pounds (lb)</option>
+                <option value="11.6638">Tola (tola)</option>
               </select>
             </div>
           </div>
@@ -522,6 +523,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
                 <option value="31.1035">Troy Ounces (oz t)</option>
                 <option value="1000">Kilograms (kg)</option>
                 <option value="1.55517">Pennyweight (dwt)</option>
+                <option value="11.6638">Tola (tola)</option>
               </select>
             </div>
           </div>
@@ -687,6 +689,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
                 <option value="1.55517">Pennyweight (dwt)</option>
                 <option value="0.0648">Grain (gr)</option>
                 <option value="453.592">Pound (lb)</option>
+                <option value="11.6638">Tola (tola)</option>
               </select>
             </div>
           </div>
@@ -698,6 +701,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
           <div class="converter-item"><div class="converter-label">Pennyweight</div><div class="converter-value" id="cv-dwt">—</div></div>
           <div class="converter-item"><div class="converter-label">Grains</div><div class="converter-value" id="cv-gr">—</div></div>
           <div class="converter-item"><div class="converter-label">Pounds</div><div class="converter-value" id="cv-lb">—</div></div>
+          <div class="converter-item"><div class="converter-label">Tolas</div><div class="converter-value" id="cv-tola">—</div></div>
         </div>
       </section>
     </section>
@@ -1290,7 +1294,7 @@ function calcBars() {
 }
 function calcConverter() {
   const amount=parseFloat(document.getElementById('convInput').value)||0,from=parseFloat(document.getElementById('convFrom').value),grams=amount*from,fmt=(v,dec)=>v.toLocaleString('en-US',{minimumFractionDigits:dec||4,maximumFractionDigits:dec||4});
-  setText('cv-g',fmt(grams,4)+' g');setText('cv-ozt',fmt(grams/31.1035,4)+' oz t');setText('cv-kg',fmt(grams/1000,6)+' kg');setText('cv-dwt',fmt(grams/1.55517,4)+' dwt');setText('cv-gr',fmt(grams/0.0648,2)+' gr');setText('cv-lb',fmt(grams/453.592,6)+' lb');
+  setText('cv-g',fmt(grams,4)+' g');setText('cv-ozt',fmt(grams/31.1035,4)+' oz t');setText('cv-kg',fmt(grams/1000,6)+' kg');setText('cv-dwt',fmt(grams/1.55517,4)+' dwt');setText('cv-gr',fmt(grams/0.0648,2)+' gr');setText('cv-lb',fmt(grams/453.592,6)+' lb');setText('cv-tola',fmt(grams/11.6638,4)+' tola');
 }
 async function fetchChartHistory(metal, range) {
   const key=`${metal}-${range}`;

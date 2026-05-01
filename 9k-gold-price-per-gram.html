@@ -166,15 +166,15 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
       <figcaption>9K gold price per gram in GBP and USD — live, updated every 60 seconds</figcaption>
       <!-- STATIC-FIRST: Table structure pre-rendered for SEO; prices are JS-updated -->
       <table class="data-table" aria-label="9K gold price by weight">
-        <thead><tr><th>Weight</th><th>GBP (live)</th><th>USD (live)</th></tr></thead>
+        <thead><tr><th>Weight</th><th>GBP (live)</th><th>USD (live)</th><th>INR (live)</th></tr></thead>
         <tbody>
-          <tr><td>0.5g</td><td id="t-0-5-gbp" data-nosnippet>&mdash;</td><td id="t-0-5-usd" data-nosnippet>&mdash;</td></tr>
-          <tr><td>1g</td><td id="t-1-gbp" data-nosnippet>&mdash;</td><td id="t-1-usd" data-nosnippet>&mdash;</td></tr>
-          <tr><td>2g</td><td id="t-2-gbp" data-nosnippet>&mdash;</td><td id="t-2-usd" data-nosnippet>&mdash;</td></tr>
-          <tr><td>5g</td><td id="t-5-gbp" data-nosnippet>&mdash;</td><td id="t-5-usd" data-nosnippet>&mdash;</td></tr>
-          <tr><td>10g</td><td id="t-10-gbp" data-nosnippet>&mdash;</td><td id="t-10-usd" data-nosnippet>&mdash;</td></tr>
-          <tr><td>20g</td><td id="t-20-gbp" data-nosnippet>&mdash;</td><td id="t-20-usd" data-nosnippet>&mdash;</td></tr>
-          <tr><td>1 <a href="/how-many-grams-in-troy-ounce.html">troy oz</a> (31.1g)</td><td id="t-31-gbp" data-nosnippet>&mdash;</td><td id="t-31-usd" data-nosnippet>&mdash;</td></tr>
+          <tr><td>0.5g</td><td id="t-0-5-gbp" data-nosnippet>&mdash;</td><td id="t-0-5-usd" data-nosnippet>&mdash;</td><td id="t-0-5-inr" data-nosnippet>&mdash;</td></tr>
+          <tr><td>1g</td><td id="t-1-gbp" data-nosnippet>&mdash;</td><td id="t-1-usd" data-nosnippet>&mdash;</td><td id="t-1-inr" data-nosnippet>&mdash;</td></tr>
+          <tr><td>2g</td><td id="t-2-gbp" data-nosnippet>&mdash;</td><td id="t-2-usd" data-nosnippet>&mdash;</td><td id="t-2-inr" data-nosnippet>&mdash;</td></tr>
+          <tr><td>5g</td><td id="t-5-gbp" data-nosnippet>&mdash;</td><td id="t-5-usd" data-nosnippet>&mdash;</td><td id="t-5-inr" data-nosnippet>&mdash;</td></tr>
+          <tr><td>10g</td><td id="t-10-gbp" data-nosnippet>&mdash;</td><td id="t-10-usd" data-nosnippet>&mdash;</td><td id="t-10-inr" data-nosnippet>&mdash;</td></tr>
+          <tr><td>20g</td><td id="t-20-gbp" data-nosnippet>&mdash;</td><td id="t-20-usd" data-nosnippet>&mdash;</td><td id="t-20-inr" data-nosnippet>&mdash;</td></tr>
+          <tr><td>1 <a href="/how-many-grams-in-troy-ounce.html">troy oz</a> (31.1g)</td><td id="t-31-gbp" data-nosnippet>&mdash;</td><td id="t-31-usd" data-nosnippet>&mdash;</td><td id="t-31-inr" data-nosnippet>&mdash;</td></tr>
         </tbody>
       </table>
     </figure>
@@ -233,10 +233,10 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 <script>
 async function fetchFx(){
   try{
-    const r=await fetch('https://api.goldpricetoolsworker.io/fx',{cache:'no-store'});
+    const r=await fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=GBP,INR',{cache:'no-store'});
     if(!r.ok)throw new Error();
     const d=await r.json();
-    window._gbpusd=d.GBPUSD||0.79;
+    window._gbpusd=d.rates.GBP||0.79;window._usdinr=d.rates.INR||83.5;
   }catch{window._gbpusd=0.79;}
 }
 async function fetchSpot(){
@@ -248,6 +248,7 @@ async function fetchSpot(){
     const spotUSD=d.price;
     const pgUSD=spotUSD/31.1035*PURITY;
     const pgGBP=pgUSD*(window._gbpusd||0.79);
+    const pgINR=pgUSD*(window._usdinr||83.5);
     document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';
     document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';
     const snippetEl = document.getElementById('snippet-price');
@@ -259,6 +260,8 @@ async function fetchSpot(){
       const u=document.getElementById('t-'+ids[i]+'-usd');
       if(g)g.textContent='£'+(pgGBP*w).toFixed(2);
       if(u)u.textContent='$'+(pgUSD*w).toFixed(2);
+      const inrEl=document.getElementById('t-'+ids[i]+'-inr');
+      if(inrEl)inrEl.textContent='₹'+(pgINR*w).toFixed(2);
     });
     gtag('event','price_view',{metal:'gold',karat:'9K'});
   }catch(e){
