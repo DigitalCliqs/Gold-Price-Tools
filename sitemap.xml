@@ -777,4 +777,49 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/terms"/>
   </url>
 
+  <url>
+    <loc>https://goldpricetools.com/guides/what-affects-gold-price</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/what-affects-gold-price"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/guides/what-affects-gold-price"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/guides/what-affects-gold-price"/>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/guides/how-to-test-if-gold-is-real</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/how-to-test-if-gold-is-real"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/guides/how-to-test-if-gold-is-real"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/guides/how-to-test-if-gold-is-real"/>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/guides/gold-hallmarks-explained</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/gold-hallmarks-explained"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/guides/gold-hallmarks-explained"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/guides/gold-hallmarks-explained"/>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/guides/difference-between-gold-filled-and-gold-plated</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/difference-between-gold-filled-and-gold-plated"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/guides/difference-between-gold-filled-and-gold-plated"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/guides/difference-between-gold-filled-and-gold-plated"/>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/guides/how-much-is-a-gold-ring-worth</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/how-much-is-a-gold-ring-worth"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/guides/how-much-is-a-gold-ring-worth"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/guides/how-much-is-a-gold-ring-worth"/>
+  </url>
 </urlset>
