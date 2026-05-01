@@ -358,7 +358,7 @@ function calcGold() {
 
 async function fetchFx() {
   try {
-    const r = await fetch('https://api.goldpricetoolsworker.io/fx', {cache: 'no-store'});
+    const r = await fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=GBP,INR', {cache: 'no-store'});
     if (!r.ok) throw new Error();
     const d = await r.json();
     if (d && d.rates) fxRates = { ...fxRates, ...d.rates, GBP: d.GBPUSD || d.rates.GBP };
