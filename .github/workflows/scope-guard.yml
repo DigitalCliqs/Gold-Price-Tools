@@ -73,7 +73,15 @@ jobs:
           # ── Compute changed files ──────────────────────────────────────────
           BASE_REF="origin/${{ github.base_ref }}"
           echo "Diffing HEAD against ${BASE_REF} …"
-          mapfile -t CHANGED_FILES < <(git diff --name-only --diff-filter=ACMRT "${BASE_REF}...HEAD")
+
+          # --diff-filter=ACMR: Added, Copied, Modified, Renamed only.
+          # Deletions (D) are intentional cleanup and must NOT trigger the
+          # deny-list — removing a forbidden file is the right action, not a
+          # violation. Untracked/unknown statuses are also excluded.
+          mapfile -t CHANGED_FILES < <(git diff --name-only --diff-filter=ACMR "${BASE_REF}...HEAD")
+
+          # Separately collect deleted forbidden files for the informational summary.
+          mapfile -t DELETED_FILES < <(git diff --name-only --diff-filter=D "${BASE_REF}...HEAD")
 
           if [[ ${#CHANGED_FILES[@]} -eq 0 ]]; then
             echo "No changed files found — nothing to check."
@@ -139,11 +147,26 @@ jobs:
               echo "| ✅ allowed | \`${f}\` | — |"
             done
 
+            # Informational rows for deleted files that match the deny-list.
+            # These are not failures — deleting a forbidden file is the correct fix.
+            for f in "${DELETED_FILES[@]}"; do
+              for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
+                if echo "$f" | grep -qE "$pattern"; then
+                  echo "| 🗑️ deleted (ok) | \`${f}\` | Previously forbidden; deletion is intentional cleanup |"
+                  break
+                fi
+              done
+            done
+
             echo ""
             if [[ ${#VIOLATIONS[@]} -gt 0 ]]; then
               echo "> **${#VIOLATIONS[@]} forbidden file(s) detected.** Remove them before merging."
             else
-              echo "> All ${#CLEAN[@]} changed file(s) passed the scope check."
+              echo "> All ${#CLEAN[@]} added/modified file(s) passed the scope check."
+              if [[ ${#DELETED_FILES[@]} -gt 0 ]]; then
+                echo ">"
+                echo "> ℹ️ ${#DELETED_FILES[@]} file(s) deleted in this PR (deletions are never flagged)."
+              fi
             fi
           } >> "$GITHUB_STEP_SUMMARY"
 
