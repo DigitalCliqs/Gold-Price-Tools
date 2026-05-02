@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gold Price Chart 10 Years — Live & Historical Graph | GoldPriceTools</title>
-<meta name="description" content="Interactive 10-year gold price chart and live silver spot prices. View historical gold price graph, predictions, and real-time updates.">
-<meta name="keywords" content="gold price chart 10 years, gold price graph 10 years, gold price prediction, gold price outlook, gold price history, live gold and silver price today">
+<title>Gold Rates Today — Live Gold Price Per Gram | GoldPriceTools</title>
+<meta name="description" content="Check live gold rates today. Real-time gold price per gram in USD, GBP, EUR and more. Accurate 10K, 14K, 18K, 22K and 24K gold rates updated every 60 seconds.">
+<meta name="keywords" content="gold calculator, silver calculator, scrap gold calculator, 14k gold price per gram, 10k gold price per gram, 18k gold price per gram, gold price today, scrap silver calculator, silver price per kilo, live gold silver price">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://goldpricetools.com/gold-price-chart">
+<link rel="canonical" href="https://goldpricetools.com/gold-rates-today">
 <!-- hreflang: international targeting (WP-59) -->
-<link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-price-chart">
-<link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-price-chart">
-<link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-price-chart">
+<link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/">
+<link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/">
+<link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/">
 <!-- Open Graph -->
-<meta property="og:title" content="Gold Price Chart 10 Years — Live & Historical Graph">
-<meta property="og:description" content="Interactive 10-year gold price chart and live silver spot prices. View historical gold price graph, predictions, and real-time updates.">
+<meta property="og:title" content="Gold Rates Today — Live Gold Price Per Gram">
+<meta property="og:description" content="Check live gold rates today. Real-time gold price per gram in USD, GBP, EUR and more. Accurate 10K, 14K, 18K, 22K and 24K gold rates updated every 60 seconds.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://goldpricetools.com/gold-price-chart">
+<meta property="og:url" content="https://goldpricetools.com/gold-rates-today">
 <meta property="og:image" content="https://assets.goldpricetools.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,82 +24,20 @@
 <meta property="og:site_name" content="GoldPriceTools">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Gold Price Chart 10 Years — Live & Historical Graph">
-<meta name="twitter:description" content="Interactive 10-year gold price chart and live silver spot prices. View historical gold price graph, predictions, and real-time updates.">
+<meta name="twitter:title" content="Gold Rates Today — Live Gold Price Per Gram">
+<meta name="twitter:description" content="Check live gold rates today. Real-time gold price per gram in USD, GBP, EUR and more. Accurate 10K, 14K, 18K, 22K and 24K gold rates updated every 60 seconds.">
 <meta name="twitter:image" content="https://assets.goldpricetools.com/og-image.jpg">
 <!-- PWA -->
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" type="image/svg+xml" href="https://assets.goldpricetools.com/logo.svg">
 <meta name="theme-color" content="#0f0e0c">
 <!-- JSON-LD Schemas — aggregateRating removed: must be earned, not fabricated -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Gold Price Chart 10 Years — Live & Historical Graph",
-  "description": "Interactive 10-year gold price chart and live silver spot prices. View historical gold price graph, predictions, and real-time updates.",
-  "url": "https://goldpricetools.com/gold-price-chart"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://goldpricetools.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Gold Price Chart",
-      "item": "https://goldpricetools.com/gold-price-chart"
-    }
-  ]
-}
-</script>
-// Chart Page Additions
-function updateChartPageLivePrices() {
-    if (goldSpotOz) {
-        document.getElementById('live-gold-price').textContent = '$' + goldSpotOz.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('table-live-price').textContent = '$' + goldSpotOz.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '/oz';
-
-        let gpChange = document.getElementById('live-gold-change');
-        if (goldChange) {
-            let val = parseFloat(goldChange);
-            gpChange.textContent = (val > 0 ? '+' : '') + val.toFixed(2) + '%';
-            gpChange.style.color = val > 0 ? 'var(--color-success)' : 'var(--color-danger)';
-        }
-    }
-    if (silverSpotOz) {
-        document.getElementById('live-silver-price').textContent = '$' + silverSpotOz.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        let spChange = document.getElementById('live-silver-change');
-        if (silverChange) {
-            let val = parseFloat(silverChange);
-            spChange.textContent = (val > 0 ? '+' : '') + val.toFixed(2) + '%';
-            spChange.style.color = val > 0 ? 'var(--color-success)' : 'var(--color-danger)';
-        }
-    }
-
-    // Update time
-    let timeEl = document.getElementById('last-updated-time');
-    let now = new Date();
-    timeEl.textContent = now.toLocaleTimeString();
-    timeEl.dateTime = now.toISOString();
-}
-
-// Intercept fetchPrices success or just call it
-// The original fetchPrices is in the script we copied. We can hook into it or just poll.
-setInterval(updateChartPageLivePrices, 2000);
-
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","dateModified":"2026-05-01T06:00:00Z","name":"Gold Rates Today — Live Gold Price Per Gram","url":"https://goldpricetools.com/gold-rates-today","description":"Check live gold rates today. Real-time gold price per gram in USD, GBP, EUR and more. Accurate 10K, 14K, 18K, 22K and 24K gold rates updated every 60 seconds.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://goldpricetools.com/#organization","name":"GoldPriceTools","legalName":"DigitalCliqs","url":"https://goldpricetools.com","logo":{"@type":"ImageObject","url":"https://goldpricetools.comhttps://assets.goldpricetools.com/logo.svg","width":112,"height":112},"description":"GoldPriceTools provides free live gold and silver price calculators with real-time LBMA spot prices, karat conversion tools, and precious metals guides for UK and international users.","foundingDate":"2026","address":{"@type":"PostalAddress","addressCountry":"GB","addressLocality":"London"},"email":"contact@goldpricetools.com","contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"contact@goldpricetools.com"},"founder":{"@type":"Person","name":"DigitalCliqs"},"sameAs":["https://github.com/DigitalCliqs"]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"GoldPriceTools","url":"https://goldpricetools.com/","inLanguage":"en-GB","publisher":{"@type":"Organization","name":"GoldPriceTools"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://goldpricetools.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","dateModified":"2026-05-02T06:00:00Z","mainEntity":[{"@type":"Question","name":"How much is 14K gold per gram today?","acceptedAnswer":{"@type":"Answer","text":"14K gold is 58.33% pure gold. The current 14K gold price per gram updates every 60 seconds based on the live spot price. Use our calculator above for the exact current value."}},{"@type":"Question","name":"What is the 10K gold price per gram?","acceptedAnswer":{"@type":"Answer","text":"10K gold contains 41.67% pure gold. 10K is the minimum karat sold as gold in the US. Check our live calculator for today's exact 10K gold price per gram."}},{"@type":"Question","name":"How much is 18K gold per gram?","acceptedAnswer":{"@type":"Answer","text":"18K gold is 75% pure gold, making it the most popular karat in European jewellery. Our calculator shows the live 18K gold price per gram updated every 60 seconds."}},{"@type":"Question","name":"How many grams is 1 troy ounce of gold?","acceptedAnswer":{"@type":"Answer","text":"1 troy ounce equals exactly 31.1035 grams. This is the standard unit for all precious metals trading worldwide, different from a regular avoirdupois ounce (28.35g)."}},{"@type":"Question","name":"What is 925 sterling silver worth today?","acceptedAnswer":{"@type":"Answer","text":"925 sterling silver is 92.5% pure silver. Use our silver calculator to find the current value of 925 sterling silver per gram based on the live silver spot price."}},{"@type":"Question","name":"How much is a gold bar worth?","acceptedAnswer":{"@type":"Answer","text":"A standard 400oz Good Delivery gold bar value depends on the current spot price. Our gold bar calculator shows live values for 400oz, 100oz, 1kg, 10oz, 1oz and 1g bars."}},{"@type":"Question","name":"What is 1 gram of gold worth?","acceptedAnswer":{"@type":"Answer","text":"1 gram of pure 24K gold price fluctuates with the global spot price, which trades 24 hours a day on international markets. Check our live calculator for the current 1 gram gold price."}},{"@type":"Question","name":"What is silver price per kilogram?","acceptedAnswer":{"@type":"Answer","text":"To convert the troy oz silver price to per kilogram, multiply by 32.1507 troy oz per kg. Our silver calculator shows the live silver price per kilogram updated every 60 seconds."}}]}</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"GoldPriceTools","url":"https://goldpricetools.com/gold-rates-today","inLanguage":"en-GB","publisher":{"@type":"Organization","name":"GoldPriceTools"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://goldpricetools.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","dateModified":"2026-05-01T06:00:00Z","mainEntity":[{"@type":"Question","name":"How much is 14K gold per gram today?","acceptedAnswer":{"@type":"Answer","text":"14K gold is 58.33% pure gold. The current 14K gold price per gram updates every 60 seconds based on the live spot price. Use our calculator above for the exact current value."}},{"@type":"Question","name":"What is the 10K gold price per gram?","acceptedAnswer":{"@type":"Answer","text":"10K gold contains 41.67% pure gold. 10K is the minimum karat sold as gold in the US. Check our live calculator for today's exact 10K gold price per gram."}},{"@type":"Question","name":"How much is 18K gold per gram?","acceptedAnswer":{"@type":"Answer","text":"18K gold is 75% pure gold, making it the most popular karat in European jewellery. Our calculator shows the live 18K gold price per gram updated every 60 seconds."}},{"@type":"Question","name":"How many grams is 1 troy ounce of gold?","acceptedAnswer":{"@type":"Answer","text":"1 troy ounce equals exactly 31.1035 grams. This is the standard unit for all precious metals trading worldwide, different from a regular avoirdupois ounce (28.35g)."}},{"@type":"Question","name":"What is 925 sterling silver worth today?","acceptedAnswer":{"@type":"Answer","text":"925 sterling silver is 92.5% pure silver. Use our silver calculator to find the current value of 925 sterling silver per gram based on the live silver spot price."}},{"@type":"Question","name":"How much is a gold bar worth?","acceptedAnswer":{"@type":"Answer","text":"A standard 400oz Good Delivery gold bar value depends on the current spot price. Our gold bar calculator shows live values for 400oz, 100oz, 1kg, 10oz, 1oz and 1g bars."}},{"@type":"Question","name":"What is 1 gram of gold worth?","acceptedAnswer":{"@type":"Answer","text":"1 gram of pure 24K gold price fluctuates with the global spot price, which trades 24 hours a day on international markets. Check our live calculator for the current 1 gram gold price."}},{"@type":"Question","name":"What is silver price per kilogram?","acceptedAnswer":{"@type":"Answer","text":"To convert the troy oz silver price to per kilogram, multiply by 32.1507 troy oz per kg. Our silver calculator shows the live silver price per kilogram updated every 60 seconds."}}]}</script>
+<!-- Dataset JSON-LD (WP-53) -->
+<script type="application/ld+json">{"@context":"https://schema.org/","@type":"Dataset","name":"Live Gold Price Per Gram — Daily Historical Data","description":"Daily gold spot price data for 24K, 18K, 14K, 10K, and 9K gold per gram in GBP and USD. Updated daily from LBMA spot market via gold-api.com. Covers 1 month, 3 months, 1 year, 5 years, and 10 years of historical price data.","url":"https://goldpricetools.com/","keywords":["gold price","gold price per gram","LBMA spot price","precious metals data","gold karat price","XAU/GBP","XAU/USD"],"license":"https://goldpricetools.com/terms","isAccessibleForFree":true,"creator":{"@type":"Organization","name":"GoldPriceTools","url":"https://goldpricetools.com"},"distribution":[{"@type":"DataDownload","encodingFormat":"JSON","contentUrl":"https://goldpricetools.com/chart-data/XAU-1Y.json"},{"@type":"DataDownload","encodingFormat":"JSON","contentUrl":"https://goldpricetools.com/chart-data/XAU-10Y.json"}],"temporalCoverage":"2016-06-01/..","variableMeasured":"Gold spot price per troy ounce in USD (XAU/USD) and GBP (XAU/GBP)"}</script>
 <!-- Consent Mode v2 defaults - must fire BEFORE AdSense and GA4 -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -348,6 +286,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 #googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://goldpricetools.com/"},{"@type":"ListItem","position":2,"name":"Gold Rates Today","item":"https://goldpricetools.com/gold-rates-today"}]}</script>
 </head>
 <body>
 
@@ -390,8 +330,12 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <a href="/18k-gold-price-per-gram">18K Gold</a>
       <a href="/10k-gold-price-per-gram">10K Gold</a>
       <a href="/scrap-gold-calculator">Scrap Gold</a>
+      <a href="/gold-price-chart">Price Chart</a>
       <a href="/silver-price-per-kilo">Silver/kg</a>
+      <a href="/us-silver-dollar-values.html">Silver Dollars</a>
       <a href="/how-many-grams-in-troy-ounce"><a href="/how-many-grams-in-troy-ounce.html">Troy Oz</a></a>
+      <a href="/how-many-grams-in-troy-ounce">Troy Oz</a>
+      <a href="/blog/">Blog</a>
       <form action="/" method="GET" class="nav-search-form" style="display:inline-flex; align-items:center; margin-left: 10px;">
         <input type="search" name="q" placeholder="Search..." aria-label="Search site" style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-text); font-size: 0.9em; max-width: 120px;">
       </form>
@@ -410,12 +354,17 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   <span class="menu-section">Tools</span>
   <a href="#calculators">Gold &amp; Silver Calculators</a>
   <a href="/scrap-gold-calculator">Scrap Gold Calculator</a>
+  <a href="/gold-price-chart">Gold Price Chart</a>
   <span class="menu-section">Gold Prices</span>
   <a href="/14k-gold-price-per-gram">14K Gold Price Per Gram</a>
   <a href="/18k-gold-price-per-gram">18K Gold Price Per Gram</a>
   <a href="/10k-gold-price-per-gram">10K Gold Price Per Gram</a>
   <span class="menu-section">Silver</span>
   <a href="/silver-price-per-kilo">Silver Price Per Kilo</a>
+  <a href="/us-silver-dollar-values.html">US Silver Dollar Values</a>
+    <a href="/silver-price-per-kilo">Silver Price Per Kilo</a>
+  <a href="/900-silver-price-per-gram">.900 Coin Silver Price</a>
+  <a href="/800-silver-price-per-gram">.800 European Silver Price</a>
   <a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce</a>
   <span class="menu-section">Guides</span>
   <a href="/guides/what-is-14k-gold">What Is 14K Gold?</a>
@@ -439,8 +388,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 <section class="hero" aria-label="Live gold and silver prices">
   <div>
     <div class="hero-badge"><span class="live-dot"></span> Prices Update Every 60 Seconds</div>
-    <h1>Gold &amp; <span class="silver">Silver</span> Price<br><span class="gold">Calculator</span></h1>
-    <p class="hero-desc">Live 10K, 14K, 18K &amp; 24K gold price per gram today. Scrap gold calculator, silver per troy oz and kilo — updated in real time.</p>
+    <h1><span class="gold">Gold Rates Today</span><br>Live Gold Price Per Gram</h1>
+    <p class="hero-desc">Check live gold rates today. Real-time 24K, 22K, 18K, 14K and 10K gold price per gram in USD, GBP, EUR and more. Updated every 60 seconds.</p>
     <p class="last-updated">Last updated: <span id="lastUpdated">Loading...</span></p>
   </div>
   <div class="spot-cards">
@@ -681,7 +630,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
           <li><a href="/14k-gold-price-per-gram">14K Gold Price Per Gram (58.33% pure)</a></li>
           <li><a href="/18k-gold-price-per-gram">18K Gold Price Per Gram (75% pure)</a></li>
           <li><a href="/10k-gold-price-per-gram">10K Gold Price Per Gram (41.67% pure)</a></li>
-          <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a></li>
+          <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a>
+  <a href="/gold-price-chart">Gold Price Chart</a></li>
           <li><a href="/silver-price-per-kilo">Silver Price Per Kilogram</a></li>
         </ul>
       </noscript>
@@ -795,6 +745,18 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </section>
 
     <!-- ARTICLES SECTION -->
+
+    <h2>Silver Purity Grades</h2>
+    <table class="data-table" aria-label="Silver purity grades and indicative prices">
+      <thead><tr><th>Purity</th><th>Grade</th><th>Price per Gram</th><th>Price per Kg</th><th>Price per Troy Oz</th></tr></thead>
+      <tbody id="silverPurityTable">
+        <tr><td>.999</td><td>Fine</td><td>[live]</td><td>[live]</td><td>[live]</td></tr>
+        <tr><td>.925</td><td>Sterling</td><td>[live]</td><td>[live]</td><td>[live]</td></tr>
+        <tr><td>.900</td><td>Coin</td><td>[live]</td><td>[live]</td><td>[live]</td></tr>
+        <tr><td>.800</td><td>European</td><td>[live]</td><td>[live]</td><td>[live]</td></tr>
+      </tbody>
+    </table>
+
     <section class="articles-section" aria-label="Gold and silver guides">
       <h2>Gold &amp; Silver Guides</h2>
       <p class="section-desc">Learn how gold karats work, how to value scrap metal, and what drives precious metals prices — from our free educational guides.</p>
@@ -803,6 +765,181 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
           <div class="article-tag">Gold Guide</div>
           <div class="article-title">What Is 14K Gold? Purity, Value &amp; How to Identify It</div>
           <div class="article-excerpt">14K gold is 58.33% pure gold, the most popular karat for everyday jewellery in the US. Learn why, and what it's worth today.</div>
+        </a>
+        <a href="/guides/gold-karat-explained" class="article-card">
+          <div class="article-tag">Gold Guide</div>
+          <div class="article-title">Gold Karat Explained</div>
+          <div class="article-excerpt">What does 14K, 18K, and 10K mean? A deep dive into karat purity.</div>
+        </a>
+        <a href="/guides/scrap-gold-guide" class="article-card">
+          <div class="article-tag">Scrap Gold</div>
+          <div class="article-title">Scrap Gold Guide</div>
+          <div class="article-excerpt">How scrap gold is valued and how to calculate its true melt value.</div>
+        </a>
+        <a href="/guides/silver-price-guide" class="article-card">
+          <div class="article-tag">Silver Guide</div>
+          <div class="article-title">Silver Price Guide</div>
+          <div class="article-excerpt">Everything you need to know about silver spot prices and 925 sterling.</div>
+        </a>
+        <a href="/guides/troy-ounce-guide" class="article-card">
+          <div class="article-tag">Precious Metals</div>
+          <div class="article-title">Troy Ounce Guide</div>
+          <div class="article-excerpt">The history of the troy ounce and how it compares to standard grams.</div>
+        </a>
+        <a href="/guides/gold-bar-guide" class="article-card">
+          <div class="article-tag">Gold Bars</div>
+          <div class="article-title">Gold Bar Guide</div>
+          <div class="article-excerpt">From 1g to 400oz Good Delivery bars, learn about gold bar sizes.</div>
+        </a>
+        <a href="/guides/us-silver-dollar-values" class="article-card">
+          <div class="article-tag">Silver Coins</div>
+          <div class="article-title">US Silver Dollar Values</div>
+          <div class="article-excerpt">Discover the prices and melt values of historic US silver dollars.</div>
+        </a>
+        <a href="/guides/gold-price-prediction-2026" class="article-card">
+          <div class="article-tag">Market Outlook</div>
+          <div class="article-title">Gold Price Prediction 2026</div>
+          <div class="article-excerpt">Market outlook and forecasts for gold prices in 2026.</div>
+        </a>
+        <a href="/guides/gold-price-guide" class="article-card">
+          <div class="article-tag">Pillar Guide</div>
+          <div class="article-title">Comprehensive Gold Price Guide</div>
+          <div class="article-excerpt">The ultimate guide to how gold is priced, the LBMA, and market factors.</div>
+        </a>
+        <a href="/guides/indian-gold-silver-prices" class="article-card">
+          <div class="article-tag">India Rates</div>
+          <div class="article-title">Indian Gold & Silver Prices</div>
+          <div class="article-excerpt">Live rates and information for gold and silver pricing in INR.</div>
+        </a>
+        <a href="/guides/gold-karat-explained" class="article-card">
+          <div class="article-tag">Gold Guide</div>
+          <div class="article-title">Gold Karat Explained</div>
+          <div class="article-excerpt">What does 14K, 18K, and 10K mean? A deep dive into karat purity.</div>
+        </a>
+        <a href="/guides/scrap-gold-guide" class="article-card">
+          <div class="article-tag">Scrap Gold</div>
+          <div class="article-title">Scrap Gold Guide</div>
+          <div class="article-excerpt">How scrap gold is valued and how to calculate its true melt value.</div>
+        </a>
+        <a href="/guides/silver-price-guide" class="article-card">
+          <div class="article-tag">Silver Guide</div>
+          <div class="article-title">Silver Price Guide</div>
+          <div class="article-excerpt">Everything you need to know about silver spot prices and 925 sterling.</div>
+        </a>
+        <a href="/guides/troy-ounce-guide" class="article-card">
+          <div class="article-tag">Precious Metals</div>
+          <div class="article-title">Troy Ounce Guide</div>
+          <div class="article-excerpt">The history of the troy ounce and how it compares to standard grams.</div>
+        </a>
+        <a href="/guides/gold-bar-guide" class="article-card">
+          <div class="article-tag">Gold Bars</div>
+          <div class="article-title">Gold Bar Guide</div>
+          <div class="article-excerpt">From 1g to 400oz Good Delivery bars, learn about gold bar sizes.</div>
+        </a>
+        <a href="/guides/us-silver-dollar-values" class="article-card">
+          <div class="article-tag">Silver Coins</div>
+          <div class="article-title">US Silver Dollar Values</div>
+          <div class="article-excerpt">Discover the prices and melt values of historic US silver dollars.</div>
+        </a>
+        <a href="/guides/gold-price-prediction-2026" class="article-card">
+          <div class="article-tag">Market Outlook</div>
+          <div class="article-title">Gold Price Prediction 2026</div>
+          <div class="article-excerpt">Market outlook and forecasts for gold prices in 2026.</div>
+        </a>
+        <a href="/guides/gold-price-guide" class="article-card">
+          <div class="article-tag">Pillar Guide</div>
+          <div class="article-title">Comprehensive Gold Price Guide</div>
+          <div class="article-excerpt">The ultimate guide to how gold is priced, the LBMA, and market factors.</div>
+        </a>
+        <a href="/guides/indian-gold-silver-prices" class="article-card">
+          <div class="article-tag">India Rates</div>
+          <div class="article-title">Indian Gold & Silver Prices</div>
+          <div class="article-excerpt">Live rates and information for gold and silver pricing in INR.</div>
+        </a>
+<a href="/guides/gold-karat-explained" class="article-card">
+          <div class="article-tag">Gold Guide</div>
+          <div class="article-title">Gold Karat Explained</div>
+          <div class="article-excerpt">What does 14K, 18K, and 10K mean? A deep dive into karat purity.</div>
+        </a>
+        <a href="/guides/scrap-gold-guide" class="article-card">
+          <div class="article-tag">Scrap Gold</div>
+          <div class="article-title">Scrap Gold Guide</div>
+          <div class="article-excerpt">How scrap gold is valued and how to calculate its true melt value.</div>
+        </a>
+        <a href="/guides/silver-price-guide" class="article-card">
+          <div class="article-tag">Silver Guide</div>
+          <div class="article-title">Silver Price Guide</div>
+          <div class="article-excerpt">Everything you need to know about silver spot prices and 925 sterling.</div>
+        </a>
+        <a href="/guides/troy-ounce-guide" class="article-card">
+          <div class="article-tag">Precious Metals</div>
+          <div class="article-title">Troy Ounce Guide</div>
+          <div class="article-excerpt">The history of the troy ounce and how it compares to standard grams.</div>
+        </a>
+        <a href="/guides/gold-bar-guide" class="article-card">
+          <div class="article-tag">Gold Bars</div>
+          <div class="article-title">Gold Bar Guide</div>
+          <div class="article-excerpt">From 1g to 400oz Good Delivery bars, learn about gold bar sizes.</div>
+        </a>
+        <a href="/guides/us-silver-dollar-values" class="article-card">
+          <div class="article-tag">Silver Coins</div>
+          <div class="article-title">US Silver Dollar Values</div>
+          <div class="article-excerpt">Discover the prices and melt values of historic US silver dollars.</div>
+        </a>
+        <a href="/guides/gold-price-prediction-2026" class="article-card">
+          <div class="article-tag">Market Outlook</div>
+          <div class="article-title">Gold Price Prediction 2026</div>
+          <div class="article-excerpt">Market outlook and forecasts for gold prices in 2026.</div>
+        </a>
+        <a href="/guides/gold-price-guide" class="article-card">
+          <div class="article-tag">Pillar Guide</div>
+          <div class="article-title">Comprehensive Gold Price Guide</div>
+          <div class="article-excerpt">The ultimate guide to how gold is priced, the LBMA, and market factors.</div>
+        </a>
+        <a href="/guides/indian-gold-silver-prices" class="article-card">
+          <div class="article-tag">India Rates</div>
+          <div class="article-title">Indian Gold & Silver Prices</div>
+          <div class="article-excerpt">Live rates and information for gold and silver pricing in INR.</div>
+        </a>
+<a href="/guides/what-is-14k-gold" class="article-card">
+          <h3 class="article-card-title">What Is 14K Gold?</h3>
+          <p class="article-card-desc">Understand karat purity and why 14K is the standard for durable, affordable jewellery.</p>
+        </a>
+        <a href="/guides/gold-karat-explained" class="article-card">
+          <h3 class="article-card-title">Gold Karat Explained</h3>
+          <p class="article-card-desc">What does 14K, 18K, and 10K mean? A deep dive into karat purity.</p>
+        </a>
+        <a href="/guides/scrap-gold-guide" class="article-card">
+          <h3 class="article-card-title">Scrap Gold Guide</h3>
+          <p class="article-card-desc">How scrap gold is valued and how to calculate its true melt value.</p>
+        </a>
+        <a href="/guides/silver-price-guide" class="article-card">
+          <h3 class="article-card-title">Silver Price Guide</h3>
+          <p class="article-card-desc">Everything you need to know about silver spot prices and 925 sterling.</p>
+        </a>
+        <a href="/guides/troy-ounce-guide" class="article-card">
+          <h3 class="article-card-title">Troy Ounce Guide</h3>
+          <p class="article-card-desc">The history of the troy ounce and how it compares to standard grams.</p>
+        </a>
+        <a href="/guides/gold-bar-guide" class="article-card">
+          <h3 class="article-card-title">Gold Bar Guide</h3>
+          <p class="article-card-desc">From 1g to 400oz Good Delivery bars, learn about gold bar sizes.</p>
+        </a>
+        <a href="/guides/us-silver-dollar-values" class="article-card">
+          <h3 class="article-card-title">US Silver Dollar Values</h3>
+          <p class="article-card-desc">Discover the prices and melt values of historic US silver dollars.</p>
+        </a>
+        <a href="/guides/gold-price-prediction-2026" class="article-card">
+          <h3 class="article-card-title">Gold Price Prediction 2026</h3>
+          <p class="article-card-desc">Market outlook and forecasts for gold prices in 2026.</p>
+        </a>
+        <a href="/guides/gold-price-guide" class="article-card">
+          <h3 class="article-card-title">Comprehensive Gold Price Guide</h3>
+          <p class="article-card-desc">The ultimate guide to how gold is priced, the LBMA, and market factors.</p>
+        </a>
+        <a href="/guides/indian-gold-silver-prices" class="article-card">
+          <h3 class="article-card-title">Indian Gold & Silver Prices</h3>
+          <p class="article-card-desc">Live rates and information for gold and silver pricing in INR.</p>
         </a>
         <a href="/guides/how-to-calculate-scrap-gold" class="article-card">
           <div class="article-tag">Scrap Guide</div>
@@ -823,6 +960,11 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
           <div class="article-tag">Silver Guide</div>
           <div class="article-title">What Is 925 Sterling Silver and How Much Is It Worth?</div>
           <div class="article-excerpt">925 sterling silver is 92.5% pure silver. Find out how to identify it, where it's used, and how to calculate its value.</div>
+        </a>
+        <a href="/guides/how-to-store-gold-silver-at-home" class="article-card">
+          <div class="article-tag">Storage Guide</div>
+          <div class="article-title">How to Store Gold and Silver at Home Safely in 2026</div>
+          <div class="article-excerpt">The safest ways to store gold and silver at home: safe ratings explained, positioning guide, insurance requirements, and when to use professional vault storage instead.</div>
         </a>
         <a href="/guides/what-is-best-time-to-sell-scrap-gold" class="article-card">
           <div class="article-tag">Selling Guide</div>
@@ -893,7 +1035,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <a href="/18k-gold-price-per-gram">18K Gold Price Per Gram <span>→</span></a>
         <a href="/10k-gold-price-per-gram">10K Gold Price Per Gram <span>→</span></a>
         <a href="/scrap-gold-calculator">Scrap Gold Calculator <span>→</span></a>
-        <a href="/silver-price-per-kilo">Silver Price Per Kilo <span>→</span></a>
+                <a href="/silver-price-per-kilo">Silver Price Per Kilo <span>→</span></a>
+        <a href="/900-silver-price-per-gram">.900 Silver Price <span>→</span></a>
+        <a href="/800-silver-price-per-gram">.800 Silver Price <span>→</span></a>
         <a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce <span>→</span></a>
       </div>
     </div>
@@ -907,6 +1051,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <a href="/guides/gold-vs-silver-investment">Gold vs Silver Investment <span>→</span></a>
         <a href="/guides/how-to-sell-gold-jewellery">Selling Gold Jewellery <span>→</span></a>
         <a href="/guides/gold-price-history">Gold Price History <span>→</span></a>
+        <a href="/guides/how-to-store-gold-silver-at-home">Store Gold at Home <span>→</span></a>
+
       </div>
     </div>
     <!-- AD SLOT 3 — Sidebar, responsive -->
@@ -947,7 +1093,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <li><a href="/14k-gold-price-per-gram">14K Gold Price Per Gram</a></li>
         <li><a href="/18k-gold-price-per-gram">18K Gold Price Per Gram</a></li>
         <li><a href="/10k-gold-price-per-gram">10K Gold Price Per Gram</a></li>
-        <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a></li>
+        <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a>
+  <a href="/gold-price-chart">Gold Price Chart</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -958,6 +1105,10 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <li><a href="/guides/gold-purity-guide">Gold Purity Guide</a></li>
         <li><a href="/guides/gold-vs-silver-investment">Gold vs Silver</a></li>
         <li><a href="/silver-price-per-kilo">Silver Price Per Kilo</a></li>
+        <li><a href="/us-silver-dollar-values.html">US Silver Dollar Values</a></li>
+                <li><a href="/silver-price-per-kilo">Silver Price Per Kilo</a></li>
+        <li><a href="/900-silver-price-per-gram">.900 Coin Silver Price</a></li>
+        <li><a href="/800-silver-price-per-gram">.800 European Silver Price</a></li>
         <li><a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce</a></li>
       </ul>
     </div>
@@ -1102,477 +1253,25 @@ function calcSilver() {
   if (!silverSpotOz) return;
   const purity=parseFloat(document.getElementById('silverPurity').value),weight=parseFloat(document.getElementById('silverWeight').value)||0,unit=parseFloat(document.getElementById('silverUnit').value),currency=document.getElementById('silverCurrency').value,grams=weight*unit,usdVal=(silverSpotOz/TROY_OZ_TO_GRAM)*purity*grams;
   setText('silverResult',fmtCurr(usdVal,currency));setText('silverResultMeta',`${grams.toFixed(4)}g × ${(purity*100).toFixed(2)}% purity × ${fmtUSD(silverSpotOz/TROY_OZ_TO_GRAM)}/g spot`);
-}
-function calcScrap() {
-  let inputsFilled = 0;
-  if (!goldSpotOz) return;
-  const ppg=goldSpotOz/TROY_OZ_TO_GRAM;let totalWeight=0,totalPureOz=0,totalValue=0;
-  document.querySelectorAll('#scrapRows tr').forEach(row=>{
-    const purity=parseFloat(row.dataset.purity),input=row.querySelector('input'),grams=parseFloat(input?.value)||0,value=ppg*purity*grams,valCell=row.querySelector('.scrap-row-val');
-    if(valCell) valCell.textContent=grams>0?fmtUSD(value):'—';
-    if (grams > 0) inputsFilled++;
-    totalWeight+=grams;totalPureOz+=(grams*purity)/TROY_OZ_TO_GRAM;totalValue+=value;
-  });
-  setText('scrapTotalWeight',totalWeight.toFixed(3)+' g');setText('scrapPureOz',totalPureOz.toFixed(4)+' oz t');setText('scrapTotalValue',fmtUSD(totalValue));
-  if (inputsFilled >= 3) fireScrapIntent();
-}
-function calcBars() {
-  if (!goldSpotOz) return;
-  const sizeOz=parseFloat(document.getElementById('barSize').value),qty=parseInt(document.getElementById('barQty').value)||1,val=goldSpotOz*sizeOz*qty,label=document.getElementById('barSize').selectedOptions[0].text;
-  setText('barResult',fmtUSD(val));setText('barResultMeta',`${qty} × ${label} @ ${fmtUSD(goldSpotOz)}/oz`);
-}
-function calcConverter() {
-  const amount=parseFloat(document.getElementById('convInput').value)||0,from=parseFloat(document.getElementById('convFrom').value),grams=amount*from,fmt=(v,dec)=>v.toLocaleString('en-US',{minimumFractionDigits:dec||4,maximumFractionDigits:dec||4});
-  setText('cv-g',fmt(grams,4)+' g');setText('cv-ozt',fmt(grams/31.1035,4)+' oz t');setText('cv-kg',fmt(grams/1000,6)+' kg');setText('cv-dwt',fmt(grams/1.55517,4)+' dwt');setText('cv-gr',fmt(grams/0.0648,2)+' gr');setText('cv-lb',fmt(grams/453.592,6)+' lb');
-}
-async function fetchChartHistory(metal, range) {
-  const key=`${metal}-${range}`;
-  if(chartHistoryCache[key]) return chartHistoryCache[key];
-  try {
-    const res=await fetch(`/chart-data/${metal}-${range}.json`);
-    if(!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json=await res.json();
-    if(json.labels&&json.data&&json.data.length>0){chartHistoryCache[key]=json;return json;}
-    throw new Error('Empty chart data');
-  } catch(e){console.warn(`Chart data unavailable (${key}):`,e.message);return null;}
-}
-async function buildChart(canvasId,loadingId,metal,range,color,chartRef) {
-  const loadingEl=document.getElementById(loadingId);
-  if(loadingEl) loadingEl.style.display='flex';
-  const history=await fetchChartHistory(metal,range);
-  if(loadingEl) loadingEl.style.display='none';
-  if(typeof Chart==='undefined') return chartRef;
-  const style=getComputedStyle(document.documentElement),textMuted=style.getPropertyValue('--color-text-muted').trim(),border=style.getPropertyValue('--color-border').trim();
-  const isShortRange=(range==='1M'||range==='3M');
-  const labelFmt=isShortRange?(s)=>{const d=new Date(s);return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short'});}:(s)=>{const d=new Date(s);return d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'});};
-  const labels=history?history.labels.map(labelFmt):[],data=history?history.data:[];
-  if(!history||data.length===0){if(loadingEl){loadingEl.textContent='Chart data unavailable';loadingEl.style.display='flex';}return chartRef;}
-  if(chartRef) chartRef.destroy();
-  chartRef=new Chart(document.getElementById(canvasId),{type:'line',data:{labels,datasets:[{data,borderColor:color,borderWidth:2,fill:true,backgroundColor:ctx=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,280);g.addColorStop(0,color+'33');g.addColorStop(1,color+'00');return g;}}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,backgroundColor:'rgba(0,0,0,0.8)',titleColor:'#fff',bodyColor:'#fff',padding:10,callbacks:{label:ctx=>' $'+ctx.parsed.y.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}}},scales:{x:{ticks:{color:textMuted,font:{size:11},maxTicksLimit:8},grid:{color:border+'40'}},y:{ticks:{color:textMuted,font:{size:11},callback:v=>'$'+v.toLocaleString()},grid:{color:border+'40'},position:'right'}},elements:{point:{radius:0,hitRadius:10},line:{tension:0.3}}}});
-  return chartRef;
-}
-async function buildCharts() {
-  if(typeof Chart==='undefined'||!goldSpotOz) return;
-  const style=getComputedStyle(document.documentElement),goldColor=style.getPropertyValue('--color-gold-bright').trim()||'#e8af34',silverColor=style.getPropertyValue('--color-silver').trim()||'#9ca3af';
-  goldChart=await buildChart('goldChart','goldChartLoading','XAU',currentGoldRange,goldColor,goldChart);
-  silverChart=await buildChart('silverChart','silverChartLoading','XAG',currentSilverRange,silverColor,silverChart);
-}
-document.querySelectorAll('[data-range]').forEach(btn=>{
-  btn.addEventListener('click',async function(){
-    document.querySelectorAll('[data-range]').forEach(b=>b.classList.remove('active'));
-    this.classList.add('active');currentGoldRange=this.dataset.range;
-    if(goldSpotOz&&typeof Chart!=='undefined'){const style=getComputedStyle(document.documentElement),color=style.getPropertyValue('--color-gold-bright').trim()||'#e8af34';goldChart=await buildChart('goldChart','goldChartLoading','XAU',currentGoldRange,color,goldChart);}
-  });
-});
-document.querySelectorAll('[data-range-silver]').forEach(btn=>{
-  btn.addEventListener('click',async function(){
-    document.querySelectorAll('[data-range-silver]').forEach(b=>b.classList.remove('active'));
-    this.classList.add('active');currentSilverRange=this.dataset.rangeSilver;
-    if(silverSpotOz&&typeof Chart!=='undefined'){const style=getComputedStyle(document.documentElement),color=style.getPropertyValue('--color-silver').trim()||'#9ca3af';silverChart=await buildChart('silverChart','silverChartLoading','XAG',currentSilverRange,color,silverChart);}
-  });
-});
-document.querySelectorAll('.calc-tab').forEach(tab=>{
-  tab.addEventListener('click',function(){
-    document.querySelectorAll('.calc-tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});
-    document.querySelectorAll('.calc-panel').forEach(p=>p.classList.remove('active'));
-    this.classList.add('active');this.setAttribute('aria-selected','true');
-    document.getElementById('panel-'+this.dataset.tab).classList.add('active');
-  });
-});
-let _scrapIntentFired = false;
-document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll('a[href*="/scrap-gold-calculator"]').forEach(a => { a.addEventListener('click', fireScrapIntent); }); });
-function fireScrapIntent() {
-  if (!_scrapIntentFired) {
-    gtag("event", "scrap_seller_intent");
-    _scrapIntentFired = true;
-  }
-}
 
-let _calcEngagedFired = false;
-function fireCalcEngaged() {
-  if (!_calcEngagedFired) {
-    gtag("event", "calculator_engaged");
-    _calcEngagedFired = true;
-  }
-}
-
-['goldKarat','goldWeight','goldUnit','goldCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcGold(); }));
-['silverPurity','silverWeight','silverUnit','silverCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcSilver(); }));
-document.querySelectorAll('#scrapRows input').forEach(inp=>inp.addEventListener('input',() => { fireCalcEngaged(); calcScrap(); }));
-['barSize','barQty'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcBars(); }));
-['convInput','convFrom'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcConverter));
-function setText(id,val){const el=document.getElementById(id);if(el) el.textContent=val;}
-Promise.all([fetchFxRates(),fetchPrices()]).then(()=>{if(goldSpotOz){calcGold();calcSilver();buildKaratGrid(goldSpotOz);}});
-setInterval(fetchPrices,60_000);
-setInterval(fetchFxRates,600_000);
-const chartPoll=setInterval(()=>{if(typeof Chart!=='undefined'&&goldSpotOz){clearInterval(chartPoll);buildCharts();}},200);
-</script>
-
-<!-- SITELINKS SEARCHBOX — handles ?q= parameter from Google Search Box (WP-56) -->
-<script defer>
-(function(){
-  const params = new URLSearchParams(window.location.search);
-  const query  = params.get('q');
-  if (!query) return;
-  const q = query.toLowerCase().trim();
-
-  // 1. Try to find an in-page match from navigation links / guide titles
-  let bestMatch = null;
-  const elements = document.querySelectorAll('a, h1, h2, h3, [id]');
-  for (const el of elements) {
-    const text = el.textContent || el.innerText;
-    if (text && text.toLowerCase().includes(q)) {
-      if (el.tagName !== 'A' || el.href.startsWith(window.location.origin) || el.href.startsWith('/') || el.href.startsWith('#')) {
-          bestMatch = el;
-          break; // Use first found
+  // Purity Table logic
+  const tbody = document.getElementById('silverPurityTable');
+  if (tbody) {
+    const purities = [0.999, 0.925, 0.900, 0.800];
+    const pure_oz = silverSpotOz;
+    const pure_g = pure_oz / TROY_OZ_TO_GRAM;
+    const gbpusd = fxRates.GBP || 0.79;
+    const rows = tbody.querySelectorAll('tr');
+    purities.forEach((p, i) => {
+      if (rows[i]) {
+        const p_g = pure_g * p;
+        rows[i].cells[2].textContent = '£' + (p_g * gbpusd).toFixed(2);
+        rows[i].cells[3].textContent = '£' + (p_g * 1000 * gbpusd).toFixed(2);
+        rows[i].cells[4].textContent = '£' + (pure_oz * p * gbpusd).toFixed(2);
       }
-    }
+    });
   }
 
-  if (bestMatch) {
-    bestMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    // highlight temporarily
-    const origBg = bestMatch.style.backgroundColor;
-    const origTrans = bestMatch.style.transition;
-    bestMatch.style.transition = 'background-color 0.5s ease';
-    bestMatch.style.backgroundColor = 'var(--color-gold-bright, #e8af34)';
-    setTimeout(() => {
-        bestMatch.style.backgroundColor = origBg;
-        setTimeout(() => { bestMatch.style.transition = origTrans; }, 500);
-    }, 2000);
-    return;
-  }
-
-  const searchMap = [
-    { terms: ['14k','14 karat','14k gold','14 karat gold'], url: '/14k-gold-price-per-gram' },
-    { terms: ['18k','18 karat','18k gold','18 karat gold'], url: '/18k-gold-price-per-gram' },
-    { terms: ['10k','10 karat','10k gold','10 karat gold'], url: '/10k-gold-price-per-gram' },
-    { terms: ['scrap','scrap gold','sell gold'],             url: '/scrap-gold-calculator' },
-    { terms: ['silver','silver price','silver kilo','silver per kilo','silver kg'], url: '/silver-price-per-kilo' },
-    { terms: ['troy','troy ounce','grams in troy','troy oz','troy ounce grams'], url: '/how-many-grams-in-troy-ounce' },
-  ];
-  for (const entry of searchMap) {
-    if (entry.terms.some(t => q.includes(t))) {
-      window.location.replace(entry.url);
-      return;
-    }
-  }
-  // No keyword match — scroll to calculators section
-  const calcSection = document.getElementById('calculators');
-  if (calcSection) calcSection.scrollIntoView({ behavior: 'smooth' });
-})();
-</script>
-<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
-</body>
-</html><main>
-  <div class="container">
-    <div class="content-grid">
-      <div class="main-column">
-        <header class="page-header" style="text-align:center; padding: 2rem 0;">
-          <h1 style="font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-gold-bright); margin-bottom: 0.5rem;">Gold Price Chart — Live & 10-Year History</h1>
-          <p style="color: var(--color-text-muted);">Real-time spot prices and historical charts for gold and silver.</p>
-        </header>
-
-        <!-- Live Spot Price Display -->
-        <section class="chart-section" style="text-align:center; margin-bottom: 2rem;" aria-label="Live Spot Prices">
-            <h2 class="chart-title">Live Spot Prices</h2>
-            <div style="display:flex; justify-content:center; gap: 2rem; margin-top: 1rem; flex-wrap:wrap;">
-                <div>
-                    <div style="font-size: 0.9rem; color: var(--color-text-muted);">Gold (XAU/USD)</div>
-                    <div style="font-size: 2rem; font-weight: 600; color: var(--color-gold-bright);" id="live-gold-price" data-nosnippet>—</div>
-                    <div id="live-gold-change" style="font-size: 0.9rem; margin-top: 0.25rem;">—</div>
-                </div>
-                <div>
-                    <div style="font-size: 0.9rem; color: var(--color-text-muted);">Silver (XAG/USD)</div>
-                    <div style="font-size: 2rem; font-weight: 600; color: var(--color-silver);" id="live-silver-price" data-nosnippet>—</div>
-                    <div id="live-silver-change" style="font-size: 0.9rem; margin-top: 0.25rem;">—</div>
-                </div>
-            </div>
-            <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">
-                Last updated: <time id="last-updated-time" datetime="">—</time>
-            </div>
-        </section>
-
-        <!-- Charts -->
-        <div class="charts-container" style="display: flex; flex-direction: column; gap: 2rem;">
-            <!-- CHARTS -->
-      <section id="charts" class="chart-section" aria-label="Gold price chart">
-        <div class="chart-header">
-          <h2 class="chart-title">Gold Price Chart</h2>
-          <div class="chart-controls">
-            <button class="chart-btn active" data-range="1M">1M</button>
-            <button class="chart-btn" data-range="3M">3M</button>
-            <button class="chart-btn" data-range="1Y">1Y</button>
-            <button class="chart-btn" data-range="5Y">5Y</button>
-            <button class="chart-btn" data-range="10Y">10Y</button>
-          </div>
-        </div>
-        <div class="chart-wrap">
-          <canvas id="goldChart" aria-label="Gold price history chart"></canvas>
-          <div class="chart-loading" id="goldChartLoading">Loading chart data…</div>
-        </div>
-      </section>
-
-      <!-- SILVER PRICE CHART -->
-      <section class="chart-section" aria-label="Silver price chart">
-        <div class="chart-header">
-          <h2 class="chart-title">Silver Price Chart</h2>
-          <div class="chart-controls">
-            <button class="chart-btn active" data-range-silver="1M">1M</button>
-            <button class="chart-btn" data-range-silver="3M">3M</button>
-            <button class="chart-btn" data-range-silver="1Y">1Y</button>
-            <button class="chart-btn" data-range-silver="5Y">5Y</button>
-            <button class="chart-btn" data-range-silver="10Y">10Y</button>
-          </div>
-        </div>
-        <div class="chart-wrap">
-          <canvas id="silverChart" aria-label="Silver price history chart"></canvas>
-          <div class="chart-loading" id="silverChartLoading">Loading chart data…</div>
-        </div>
-      </section>
-        </div>
-
-        <!-- AdSense Slot 1 -->
-        <div class="ad-slot" aria-label="Advertisement" style="margin: 2rem 0; text-align:center;">
-          <!-- YOUR_SLOT_1 -->
-          <div style="padding:20px;text-align:center;color:#666;border:1px dashed #444; width:100%; max-width:728px; height:90px; margin: 0 auto;">Ad Slot 1</div>
-        </div>
-
-        <section class="content-section" style="margin-top: 3rem;">
-            <h2 id="gold-price-prediction" style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: 1rem; color: var(--color-gold-bright);">Gold Price Prediction 2026</h2>
-            <p class="snippet-answer">Gold price forecasts for 2026 from major institutions range from $2,800 to $3,500/oz, driven by central bank demand, geopolitical uncertainty, and a weakening USD. Analysts at JP Morgan and Goldman Sachs have cited $3,000+ as a realistic mid-year target. These are forecasts, not guarantees.</p>
-            <p style="margin-top:1rem; color:var(--color-text-muted); font-size: 0.9rem;"><em>Disclaimer: Price predictions and historical data are provided for informational purposes only and do not constitute financial advice.</em></p>
-        </section>
-
-        <section class="content-section" style="margin-top: 3rem;">
-            <h2 id="gold-price-history" style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: 1rem; color: var(--color-gold-bright);">Gold Price History — Key Events</h2>
-            <div class="table-wrap">
-                <table class="data-table" style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid var(--color-border); text-align: left;">
-                            <th style="padding: 0.75rem; color: var(--color-text-muted);">Year</th>
-                            <th style="padding: 0.75rem; color: var(--color-text-muted);">Key Event</th>
-                            <th style="padding: 0.75rem; color: var(--color-text-muted);">Gold Price at Peak</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid var(--color-border);">
-                            <td style="padding: 0.75rem;">2011</td>
-                            <td style="padding: 0.75rem;">Post-GFC peak</td>
-                            <td style="padding: 0.75rem;">~$1,920/oz</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--color-border);">
-                            <td style="padding: 0.75rem;">2020</td>
-                            <td style="padding: 0.75rem;">COVID peak</td>
-                            <td style="padding: 0.75rem;">~$2,067/oz</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--color-border);">
-                            <td style="padding: 0.75rem;">2024</td>
-                            <td style="padding: 0.75rem;">Central bank buying</td>
-                            <td style="padding: 0.75rem;">~$2,450/oz</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--color-border);">
-                            <td style="padding: 0.75rem;">2025</td>
-                            <td style="padding: 0.75rem;">Record high</td>
-                            <td style="padding: 0.75rem;">~$3,100/oz</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem;">2026</td>
-                            <td style="padding: 0.75rem;">Current</td>
-                            <td style="padding: 0.75rem;" id="table-live-price" data-nosnippet>Live</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Internal Links -->
-        <section class="content-section" style="margin-top: 3rem;">
-            <h2 style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: 1rem; color: var(--color-gold-bright);">Related Resources</h2>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 0.5rem;">→ <a href="/" style="color: var(--color-gold-bright); text-decoration: none;">Live Gold Calculator</a></li>
-                <li style="margin-bottom: 0.5rem;">→ <a href="/guides/gold-price-history" style="color: var(--color-gold-bright); text-decoration: none;">Complete Gold Price History Guide</a></li>
-                <li>→ <a href="/guides/gold-price-prediction-2026" style="color: var(--color-gold-bright); text-decoration: none;">Gold Price Prediction 2026 Analysis</a></li>
-            </ul>
-        </section>
-      </div>
-
-
-    </div>
-  </div>
-</main>
-
-<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="nav-logo" style="margin-bottom:var(--space-3)">
-        <img src="https://assets.goldpricetools.com/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="lazy" onerror="this.style.display='none'">
-        <span style="font-weight:700">GoldPriceTools</span>
-      </div>
-      <p class="footer-brand">Live gold and silver price calculator. Real-time 10K, 14K, 18K &amp; 24K gold per gram. Scrap gold calculator, silver per troy oz, kilo and kilogram. Prices sourced from global markets, updated every 60 seconds.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Gold Prices</h4>
-      <ul>
-        <li><a href="/14k-gold-price-per-gram">14K Gold Price Per Gram</a></li>
-        <li><a href="/18k-gold-price-per-gram">18K Gold Price Per Gram</a></li>
-        <li><a href="/10k-gold-price-per-gram">10K Gold Price Per Gram</a></li>
-        <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Guides</h4>
-      <ul>
-        <li><a href="/guides/what-is-14k-gold">What Is 14K Gold?</a></li>
-        <li><a href="/guides/how-to-calculate-scrap-gold">Calculate Scrap Gold</a></li>
-        <li><a href="/guides/gold-purity-guide">Gold Purity Guide</a></li>
-        <li><a href="/guides/gold-vs-silver-investment">Gold vs Silver</a></li>
-        <li><a href="/silver-price-per-kilo">Silver Price Per Kilo</a></li>
-        <li><a href="/how-many-grams-in-troy-ounce">Grams in a Troy Ounce</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Info</h4>
-      <ul>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms of Use</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 GoldPriceTools — goldpricetools.com. Prices are indicative and for reference only. Not financial advice.</span>
-    <span>Spot data refreshes every 60 seconds.</span>
-  </div>
-</footer>
-
-<script>
-const TROY_OZ_TO_GRAM = 31.1035;
-const KARATS = [
-  {k:'24K', purity:0.9999, label:'24 Karat Gold'},
-  {k:'22K', purity:0.9167, label:'22 Karat Gold'},
-  {k:'18K', purity:0.75,   label:'18 Karat Gold'},
-  {k:'14K', purity:0.5833, label:'14 Karat Gold'},
-  {k:'10K', purity:0.4167, label:'10 Karat Gold'},
-  {k:'9K',  purity:0.375,  label:'9 Karat Gold'}
-];
-const GOLD_API_BASE  = 'https://api.gold-api.com/price';
-const FX_BASE        = 'https://api.frankfurter.dev/v1/latest?from=USD';
-let goldSpotOz = null, silverSpotOz = null;
-let fxRates = { USD:1, GBP:0.74, EUR:0.855, CAD:1.367, AUD:1.398, INR:94.11 };
-let goldChart = null, silverChart = null;
-let currentGoldRange = '1M', currentSilverRange = '1M';
-let chartHistoryCache = {};
-(function(){
-  const t = document.querySelector('[data-theme-toggle]'), r = document.documentElement;
-  let d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
-  r.setAttribute('data-theme', d);
-  if(t) t.addEventListener('click', () => {
-    d = d === 'dark' ? 'light' : 'dark';
-    r.setAttribute('data-theme', d);
-    t.setAttribute('aria-label', 'Switch to ' + (d==='dark'?'light':'dark') + ' mode');
-    t.innerHTML = d === 'dark'
-      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    if(goldChart) goldChart.update();
-    if(silverChart) silverChart.update();
-  });
-})();
-document.getElementById('hamburger').addEventListener('click', function(){
-  const m = document.getElementById('mobileMenu');
-  const open = m.classList.toggle('open');
-  this.setAttribute('aria-expanded', open);
-});
-const CURRENCY_SYMBOLS = { USD:'$', GBP:'£', EUR:'€', CAD:'C$', AUD:'A$', INR:'₹' };
-function fmtCurr(usdVal, currency) {
-  const rate = fxRates[currency] || 1;
-  const sym  = CURRENCY_SYMBOLS[currency] || '$';
-  return sym + (usdVal * rate).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-}
-function fmtUSD(val) {
-  return '$' + val.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-}
-async function fetchFxRates() {
-  try {
-    const res  = await fetch(`${FX_BASE}&to=GBP,EUR,CAD,AUD,INR`);
-    if (!res.ok) throw new Error('FX fetch failed');
-    const data = await res.json();
-    if (data && data.rates) fxRates = { USD: 1, ...data.rates };
-  } catch (e) { console.warn('FX rates fetch failed — using defaults:', e.message); }
-}
-async function fetchPrices() {
-  try {
-    const [gRes, sRes] = await Promise.all([fetch(`${GOLD_API_BASE}/XAU`), fetch(`${GOLD_API_BASE}/XAG`)]);
-    if (!gRes.ok || !sRes.ok) throw new Error('API response error');
-    const [gData, sData] = await Promise.all([gRes.json(), sRes.json()]);
-    if (!gData.price || !sData.price) throw new Error('Missing price fields');
-    goldSpotOz   = gData.price;
-    silverSpotOz = sData.price;
-    updateAll({price:gData.price,prev_close_price:gData.prev_close_price},{price:sData.price,prev_close_price:sData.prev_close_price});
-  } catch (err) {
-    console.warn('Price fetch failed — using static fallback:', err.message);
-    goldSpotOz   = goldSpotOz   || 4692;
-    silverSpotOz = silverSpotOz || 75.0;
-    updateAll({ price: goldSpotOz }, { price: silverSpotOz });
-  }
-}
-function updateAll(gData, sData) {
-  const gOz = gData.price, sOz = sData.price;
-  const gGram = gOz / TROY_OZ_TO_GRAM;
-  const sGram = sOz / TROY_OZ_TO_GRAM;
-  const gChg = gData.prev_close_price ? ((gOz - gData.prev_close_price) / gData.prev_close_price * 100).toFixed(2) : null;
-  const sChg = sData.prev_close_price ? ((sOz - sData.prev_close_price) / sData.prev_close_price * 100).toFixed(2) : null;
-  setText('spotGoldOz',   fmtUSD(gOz));
-  setText('spotSilverOz', fmtUSD(sOz));
-  setText('spotGoldGram', fmtUSD(gGram));
-  setText('spotSilverKg', fmtUSD(sOz * 32.1507));
-  if(gChg !== null) { const el = document.getElementById('spotGoldChg');   el.textContent = (gChg > 0 ? '▲' : '▼') + ' ' + Math.abs(gChg) + '% today'; el.className = 'spot-card-change ' + (gChg >= 0 ? 'up' : 'down'); }
-  if(sChg !== null) { const el = document.getElementById('spotSilverChg'); el.textContent = (sChg > 0 ? '▲' : '▼') + ' ' + Math.abs(sChg) + '% today'; el.className = 'spot-card-change ' + (sChg >= 0 ? 'up' : 'down'); }
-  const td = [['t-xau',fmtUSD(gOz)],['t-xag',fmtUSD(sOz)],['t-24k',fmtUSD(gGram*0.9999)],['t-18k',fmtUSD(gGram*0.75)],['t-14k',fmtUSD(gGram*0.5833)],['t-10k',fmtUSD(gGram*0.4167)],['t-agoz',fmtUSD(sOz)],['t-agkg',fmtUSD(sOz*32.1507)],['t-xau2',fmtUSD(gOz)],['t-xag2',fmtUSD(sOz)],['t-24k2',fmtUSD(gGram*0.9999)],['t-18k2',fmtUSD(gGram*0.75)],['t-14k2',fmtUSD(gGram*0.5833)],['t-10k2',fmtUSD(gGram*0.4167)],['t-agoz2',fmtUSD(sOz)],['t-agkg2',fmtUSD(sOz*32.1507)]];
-  td.forEach(([id,val]) => setText(id, val));
-  setText('qr-24g',fmtUSD(gGram*0.9999));setText('qr-18g',fmtUSD(gGram*0.75));setText('qr-14g',fmtUSD(gGram*0.5833));setText('qr-10g',fmtUSD(gGram*0.4167));setText('qr-24oz',fmtUSD(gOz*0.9999));setText('qr-18oz',fmtUSD(gOz*0.75));setText('qr-14oz',fmtUSD(gOz*0.5833));setText('qr-10oz',fmtUSD(gOz*0.4167));
-  setText('qr-ag999g',fmtUSD(sGram*0.999));setText('qr-ag925g',fmtUSD(sGram*0.925));setText('qr-ag999oz',fmtUSD(sOz*0.999));setText('qr-ag999kg',fmtUSD(sOz*32.1507*0.999));
-  setText('faq-14k',fmtUSD(gGram*0.5833));setText('faq-10k',fmtUSD(gGram*0.4167));setText('faq-18k',fmtUSD(gGram*0.75));setText('faq-sterling',fmtUSD(sGram*0.925));setText('faq-bar400',fmtUSD(gOz*400));setText('faq-bar1oz',fmtUSD(gOz));setText('faq-1g',fmtUSD(gGram));setText('faq-agkg',fmtUSD(sOz*32.1507));
-  setText('lastUpdated', new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' BST');
-  buildKaratGrid(gOz); calcGold(); calcSilver(); calcScrap(); calcBars(); calcConverter();
-}
-function buildKaratGrid(gOz) {
-  const grid = document.getElementById('karatGrid');
-  if (!grid) return;
-  if (grid.dataset.built === '1') {
-    KARATS.forEach(k => {
-      const perG = gOz / TROY_OZ_TO_GRAM * k.purity;
-      const el   = document.getElementById('kg-' + k.k);
-      if (el) {
-        el.querySelector('.kv-usd').textContent = fmtUSD(perG);
-        el.querySelector('.kv-gbp').textContent = '£' + (perG * (fxRates.GBP||0.74)).toFixed(2);
-        el.querySelector('.kv-eur').textContent = '€' + (perG * (fxRates.EUR||0.855)).toFixed(2);
-        el.querySelector('.kv-oz').textContent  = fmtUSD(gOz * k.purity);
-        el.querySelector('.kv-kg').textContent  = fmtUSD(perG * 1000);
-      }
-    }); return;
-  }
-  grid.innerHTML = ''; grid.dataset.built = '1';
-  KARATS.forEach(k => {
-    const perG = gOz / TROY_OZ_TO_GRAM * k.purity;
-    const card = document.createElement('div');
-    card.className = 'karat-card'; card.id = 'kg-' + k.k;
-    card.innerHTML = `<div class="karat-card-header"><span class="karat-card-title" id="karat-${k.k}-heading">${k.label}</span><span class="karat-card-purity">${(k.purity*100).toFixed(2)}% pure</span></div><table class="karat-table" aria-labelledby="karat-${k.k}-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">${fmtUSD(perG)}</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">£${(perG*(fxRates.GBP||0.74)).toFixed(2)}</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">€${(perG*(fxRates.EUR||0.855)).toFixed(2)}</td></tr><tr><td>Per troy oz</td><td class="kv-oz">${fmtUSD(gOz*k.purity)}</td></tr><tr><td>Per kilogram</td><td class="kv-kg">${fmtUSD(perG*1000)}</td></tr></table>`;
-    grid.appendChild(card);
-  });
-}
-function calcGold() {
-  if (!goldSpotOz) return;
-  const purity=parseFloat(document.getElementById('goldKarat').value),weight=parseFloat(document.getElementById('goldWeight').value)||0,unit=parseFloat(document.getElementById('goldUnit').value),currency=document.getElementById('goldCurrency').value,grams=weight*unit,usdVal=(goldSpotOz/TROY_OZ_TO_GRAM)*purity*grams;
-  setText('goldResult',fmtCurr(usdVal,currency));setText('goldResultMeta',`${grams.toFixed(4)}g × ${(purity*100).toFixed(2)}% purity × ${fmtUSD(goldSpotOz/TROY_OZ_TO_GRAM)}/g spot`);
-}
-function calcSilver() {
-  if (!silverSpotOz) return;
-  const purity=parseFloat(document.getElementById('silverPurity').value),weight=parseFloat(document.getElementById('silverWeight').value)||0,unit=parseFloat(document.getElementById('silverUnit').value),currency=document.getElementById('silverCurrency').value,grams=weight*unit,usdVal=(silverSpotOz/TROY_OZ_TO_GRAM)*purity*grams;
-  setText('silverResult',fmtCurr(usdVal,currency));setText('silverResultMeta',`${grams.toFixed(4)}g × ${(purity*100).toFixed(2)}% purity × ${fmtUSD(silverSpotOz/TROY_OZ_TO_GRAM)}/g spot`);
 }
 function calcScrap() {
   let inputsFilled = 0;
