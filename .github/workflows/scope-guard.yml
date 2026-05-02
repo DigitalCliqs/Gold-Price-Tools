@@ -1,0 +1,158 @@
+name: Scope Guard
+
+# Fails any PR that introduces files matching the deny-list below.
+# Background: recurring Jules PRs have landed sandbox/helper artefacts
+# (pr.py, submit.py, commit_helper*.py, issue_body.txt, raw spec dumps)
+# in main. This workflow catches them before merge.
+#
+# To EXTEND the deny-list, add a new entry to the FORBIDDEN_PATTERNS
+# array in the "Check for forbidden files" step. Each entry is an
+# extended-regex pattern matched against every path changed by the PR
+# (relative to repo root, no leading slash).
+#
+# To SUPPRESS a false-positive for a specific path, add an entry to
+# ALLOWED_OVERRIDES in the same step.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+jobs:
+  scope-guard:
+    name: Scope guard — deny-list check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so we can diff against the PR base ref exactly.
+          fetch-depth: 0
+
+      - name: Check for forbidden files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # ── Deny-list ──────────────────────────────────────────────────────
+          # Extended-regex patterns (ERE) matched against each changed file path.
+          # Paths are relative to repo root with no leading slash.
+          # Add new patterns here — one per line for readability.
+          FORBIDDEN_PATTERNS=(
+            # Jules sandbox / PR-helper scripts that have leaked into main
+            "^pr\.py$"
+            "^submit.*\.py$"
+            "^commit_helper.*\.py$"
+
+            # Raw spec / issue body dumps
+            "^issue_body.*\.txt$"
+            "^.*_dump\.txt$"
+
+            # Node artefacts — this is not a Node project at repo root
+            "^node_modules/"
+            "^package-lock\.json$"
+
+            # Log files at repo root (logs belong in .gitignore, not commits)
+            "^[^/]+\.log$"
+
+            # Throwaway / editor temp files at repo root
+            "^[^/]+\.(tmp|bak|swp)$"
+          )
+
+          # ── Allowed overrides ──────────────────────────────────────────────
+          # If a path matches a FORBIDDEN_PATTERNS entry but also matches one
+          # of these overrides, it is allowed through. Use sparingly.
+          ALLOWED_OVERRIDES=(
+            # example: "^scripts/allowed-script\.py$"
+          )
+
+          # ── Compute changed files ──────────────────────────────────────────
+          BASE_REF="origin/${{ github.base_ref }}"
+          echo "Diffing HEAD against ${BASE_REF} …"
+          mapfile -t CHANGED_FILES < <(git diff --name-only "${BASE_REF}...HEAD")
+
+          if [[ ${#CHANGED_FILES[@]} -eq 0 ]]; then
+            echo "No changed files found — nothing to check."
+            exit 0
+          fi
+
+          echo "Changed files (${#CHANGED_FILES[@]}):"
+          printf '  %s\n' "${CHANGED_FILES[@]}"
+          echo ""
+
+          # ── Check each file ────────────────────────────────────────────────
+          VIOLATIONS=()
+          CLEAN=()
+
+          for file in "${CHANGED_FILES[@]}"; do
+            matched_pattern=""
+
+            # Test every forbidden pattern
+            for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
+              if echo "$file" | grep -qE "$pattern"; then
+                matched_pattern="$pattern"
+                break
+              fi
+            done
+
+            if [[ -z "$matched_pattern" ]]; then
+              CLEAN+=("$file")
+              continue
+            fi
+
+            # Check overrides before flagging
+            override_hit=false
+            for override in "${ALLOWED_OVERRIDES[@]}"; do
+              if echo "$file" | grep -qE "$override"; then
+                override_hit=true
+                break
+              fi
+            done
+
+            if [[ "$override_hit" == "true" ]]; then
+              CLEAN+=("$file (override: allowed)")
+            else
+              VIOLATIONS+=("$file | matched: $matched_pattern")
+              # Emit a GitHub annotation so the error is visible inline in the PR
+              echo "::error file=${file}::Forbidden file detected (pattern: ${matched_pattern}). Remove this file before merging."
+            fi
+          done
+
+          # ── Job summary table ──────────────────────────────────────────────
+          {
+            echo "## Scope Guard Results"
+            echo ""
+            echo "| Status | File | Detail |"
+            echo "| ------ | ---- | ------ |"
+
+            for entry in "${VIOLATIONS[@]}"; do
+              f="${entry%% |*}"
+              detail="${entry##* | }"
+              echo "| ❌ FORBIDDEN | \`${f}\` | ${detail} |"
+            done
+
+            for f in "${CLEAN[@]}"; do
+              echo "| ✅ allowed | \`${f}\` | — |"
+            done
+
+            echo ""
+            if [[ ${#VIOLATIONS[@]} -gt 0 ]]; then
+              echo "> **${#VIOLATIONS[@]} forbidden file(s) detected.** Remove them before merging."
+            else
+              echo "> All ${#CLEAN[@]} changed file(s) passed the scope check."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          # ── Final exit ─────────────────────────────────────────────────────
+          if [[ ${#VIOLATIONS[@]} -gt 0 ]]; then
+            echo ""
+            echo "FAILED: ${#VIOLATIONS[@]} forbidden file(s) detected:"
+            printf '  %s\n' "${VIOLATIONS[@]}"
+            exit 1
+          fi
+
+          echo "PASSED: all ${#CLEAN[@]} file(s) are within scope."
