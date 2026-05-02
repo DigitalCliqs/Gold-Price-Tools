@@ -73,7 +73,7 @@ jobs:
           # ── Compute changed files ──────────────────────────────────────────
           BASE_REF="origin/${{ github.base_ref }}"
           echo "Diffing HEAD against ${BASE_REF} …"
-          mapfile -t CHANGED_FILES < <(git diff --name-only "${BASE_REF}...HEAD")
+          mapfile -t CHANGED_FILES < <(git diff --name-only --diff-filter=ACMRT "${BASE_REF}...HEAD")
 
           if [[ ${#CHANGED_FILES[@]} -eq 0 ]]; then
             echo "No changed files found — nothing to check."
