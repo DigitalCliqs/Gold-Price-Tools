@@ -851,18 +851,6 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/guides/us-silver-dollar-values.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>US Silver Dollar Values: Coin Prices &amp; Melt Values</image:title>
-      <image:caption>Find current values for US silver dollars. Learn about the silver content and melt values of historic American silver coins.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://goldpricetools.com/guides/what-affects-gold-price</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -942,13 +930,10 @@
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/us-silver-dollar-values"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/us-silver-dollar-values"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/us-silver-dollar-values"/>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>US Silver Dollar Values &amp; Prices Calculator</image:title>
-      <image:caption>Calculate the live melt value of US silver dollars including Morgan, Peace, and Eisenhower dollars. Updated with real-time silver prices.</image:caption>
+      <image:title>US Silver Dollar Values: Coin Prices &amp; Melt Values</image:title>
+      <image:caption>Find current values for US silver dollars. Learn about the silver content and melt values of historic American silver coins.</image:caption>
     </image:image>
   </url>
 
