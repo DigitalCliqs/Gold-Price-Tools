@@ -34,9 +34,12 @@ jobs:
         run: node scripts/generate-sitemap.js
 
       - name: Commit and push
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/DigitalCliqs/Gold-Price-Tools.git"
           git add sitemap.xml
           git diff --cached --quiet || git commit -m "chore: regenerate sitemap.xml [skip ci]"
 
@@ -45,21 +48,17 @@ jobs:
           SUCCESS=0
 
           while [ $RETRY_COUNT -le $MAX_RETRIES ]; do
-            if git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/DigitalCliqs/Gold-Price-Tools.git HEAD:main; then
+            if git push origin main; then
               echo "Push successful"
               SUCCESS=1
               break
             else
               echo "Push failed, attempting rebase..."
-              git pull --rebase https://x-access-token:${{ secrets.GH_PAT }}@github.com/DigitalCliqs/Gold-Price-Tools.git main
-
+              git pull --rebase origin main
               RETRY_COUNT=$((RETRY_COUNT+1))
-              if [ $RETRY_COUNT -eq 1 ]; then
-                sleep 5
-              elif [ $RETRY_COUNT -eq 2 ]; then
-                sleep 10
-              elif [ $RETRY_COUNT -eq 3 ]; then
-                sleep 15
+              if [ $RETRY_COUNT -eq 1 ]; then sleep 5
+              elif [ $RETRY_COUNT -eq 2 ]; then sleep 10
+              elif [ $RETRY_COUNT -eq 3 ]; then sleep 15
               fi
             fi
           done
