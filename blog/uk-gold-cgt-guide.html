@@ -503,6 +503,17 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 .footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
 .footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}
 
+
+/* Related Guides Card Section */
+.related-guides{background:var(--color-surface-offset);border-top:1px solid var(--color-border);padding:2.5rem 0;margin-top:2rem}
+.related-guides .container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+.related-guides h2{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:1.5rem}
+.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.related-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.2rem;text-decoration:none;transition:border-color var(--transition),box-shadow var(--transition)}
+.related-card:hover{border-color:var(--color-gold);box-shadow:var(--shadow-md)}
+.related-card__tag{font-size:var(--text-xs);font-weight:600;color:var(--color-gold-bright);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem}
+.related-card__title{font-weight:700;color:var(--color-text);margin-bottom:0.3rem;font-size:var(--text-sm)}
+.related-card__desc{font-size:var(--text-sm);color:var(--color-text-muted)}
 </style>
 </head>
 <body>
@@ -762,7 +773,7 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
   
 <!-- FAQ Section -->
 <section style="padding:2rem 0 0;">
-  <h2 style="font-size:1.3rem;font-weight:700;color:#1a1a1a;margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+  <h2 style="font-size:1.3rem;font-weight:700;color:var(--color-text);margin-bottom:1.2rem;">Frequently Asked Questions</h2>
   <div class="faq-container">
     <details>
       <summary class="faq-answer-summary">Which gold coins are CGT-exempt in the UK?</summary>
@@ -784,39 +795,39 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 </section>
 
 <!-- Related Guides Section -->
-<section class="related-guides" style="background:#faf9f6;border-top:1px solid #e8e2d4;padding:2.5rem 0;margin-top:2rem;">
-  <div class="container" style="max-width:900px;margin:0 auto;padding:0 1.5rem;">
-    <h2 style="font-size:1.4rem;font-weight:700;color:#1a1a1a;margin-bottom:1.5rem;">Related Articles &amp; Guides</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
-      <a href="/blog/how-to-buy-gold-royal-mint" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Article</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">How to Buy Gold from the Royal Mint</div>
-        <div style="font-size:0.875rem;color:#666;">Buy CGT-exempt Britannias and Sovereigns directly from the Royal Mint.</div>
+<section class="related-guides" >
+  <div class="container" >
+    <h2>Related Articles &amp; Guides</h2>
+    <div class="related-guides-grid">
+      <a href="/blog/how-to-buy-gold-royal-mint" class="related-card">
+        <div class="related-card__tag">Article</div>
+        <div class="related-card__title">How to Buy Gold from the Royal Mint</div>
+        <div class="related-card__desc">Buy CGT-exempt Britannias and Sovereigns directly from the Royal Mint.</div>
       </a>
-      <a href="/blog/gold-etf-vs-physical-gold-uk" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Article</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Gold ETF vs Physical Gold UK</div>
-        <div style="font-size:0.875rem;color:#666;">Compare CGT treatment of ETFs (ISA-sheltered) vs physical gold coins.</div>
+      <a href="/blog/gold-etf-vs-physical-gold-uk" class="related-card">
+        <div class="related-card__tag">Article</div>
+        <div class="related-card__title">Gold ETF vs Physical Gold UK</div>
+        <div class="related-card__desc">Compare CGT treatment of ETFs (ISA-sheltered) vs physical gold coins.</div>
       </a>
-      <a href="/blog/gold-in-a-sipp-uk" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Article</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Gold in a SIPP UK</div>
-        <div style="font-size:0.875rem;color:#666;">Another CGT-free route to gold — holding ETCs inside a pension.</div>
+      <a href="/blog/gold-in-a-sipp-uk" class="related-card">
+        <div class="related-card__tag">Article</div>
+        <div class="related-card__title">Gold in a SIPP UK</div>
+        <div class="related-card__desc">Another CGT-free route to gold — holding ETCs inside a pension.</div>
       </a>
-      <a href="/guides/how-to-invest-in-gold" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Guide</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">How to Invest in Gold UK</div>
-        <div style="font-size:0.875rem;color:#666;">All UK gold investment options — with tax efficiency considered.</div>
+      <a href="/guides/how-to-invest-in-gold" class="related-card">
+        <div class="related-card__tag">Guide</div>
+        <div class="related-card__title">How to Invest in Gold UK</div>
+        <div class="related-card__desc">All UK gold investment options — with tax efficiency considered.</div>
       </a>
-      <a href="/blog/best-uk-gold-dealers-2026" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Article</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Best UK Gold Dealers 2026</div>
-        <div style="font-size:0.875rem;color:#666;">Where to buy CGT-exempt Britannias and Sovereigns at fair prices.</div>
+      <a href="/blog/best-uk-gold-dealers-2026" class="related-card">
+        <div class="related-card__tag">Article</div>
+        <div class="related-card__title">Best UK Gold Dealers 2026</div>
+        <div class="related-card__desc">Where to buy CGT-exempt Britannias and Sovereigns at fair prices.</div>
       </a>
-      <a href="/24k-gold-price-per-gram" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Live Price</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Live Gold Price Today</div>
-        <div style="font-size:0.875rem;color:#666;">Today's spot price — essential before calculating CGT on gold sales.</div>
+      <a href="/24k-gold-price-per-gram" class="related-card">
+        <div class="related-card__tag">Live Price</div>
+        <div class="related-card__title">Live Gold Price Today</div>
+        <div class="related-card__desc">Today's spot price — essential before calculating CGT on gold sales.</div>
       </a>
     </div>
   </div>
