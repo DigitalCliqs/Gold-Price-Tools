@@ -23,6 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -44,13 +45,13 @@ jobs:
           SUCCESS=0
 
           while [ $RETRY_COUNT -le $MAX_RETRIES ]; do
-            if git push; then
+            if git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/DigitalCliqs/Gold-Price-Tools.git HEAD:main; then
               echo "Push successful"
               SUCCESS=1
               break
             else
               echo "Push failed, attempting rebase..."
-              git pull --rebase origin main
+              git pull --rebase https://x-access-token:${{ secrets.GH_PAT }}@github.com/DigitalCliqs/Gold-Price-Tools.git main
 
               RETRY_COUNT=$((RETRY_COUNT+1))
               if [ $RETRY_COUNT -eq 1 ]; then
