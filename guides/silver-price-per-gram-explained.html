@@ -179,6 +179,35 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 .mobile-menu__search input{width:100%;padding:10px 14px;border-radius:var(--radius-md);border:1px solid var(--color-border);background:var(--color-bg);color:var(--color-text);font-size:var(--text-sm)}
 @media(max-width:900px){.mega-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.nav-logo span{display:none}}
+
+
+/* BLOG PREVIEW SECTION */
+.blog-preview-section{background:var(--color-surface-offset);border-top:1px solid var(--color-border);padding:var(--space-10) var(--space-4)}
+.blog-preview-inner{max-width:1200px;margin:0 auto}
+.blog-preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6)}
+.blog-preview-title{font-size:var(--text-xl);font-weight:700;color:var(--color-text)}
+.blog-preview-all{font-size:var(--text-sm);font-weight:600;color:var(--color-primary);text-decoration:none}
+.blog-preview-all:hover{color:var(--color-primary-hover)}
+.blog-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+@media(max-width:900px){.blog-preview-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.blog-preview-grid{grid-template-columns:1fr}}
+.blog-preview-card{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-5);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-decoration:none;transition:box-shadow .15s,border-color .15s}
+.blog-preview-card:hover{border-color:var(--color-primary);box-shadow:0 4px 16px oklch(0 0 0/.08)}
+.blog-preview-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary);padding:2px 8px;background:oklch(from var(--color-primary) l c h / .1);border-radius:99px;align-self:flex-start}
+.blog-preview-card h3{font-size:var(--text-base);font-weight:600;color:var(--color-text);line-height:1.4;margin:0}
+.blog-preview-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
+/* FOOTER */
+.footer-brand-col{max-width:260px}
+.footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr repeat(4,auto);gap:var(--space-8);align-items:start}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}.footer-brand-col{grid-column:1/-1}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr 1fr}}
+.footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
+.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;transition:color .12s}
+.footer-col a:hover{color:var(--color-text)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
+.footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the silver price per gram calculated?","acceptedAnswer":{"@type":"Answer","text":"Divide the silver spot price per troy ounce by 31.1035 (grams per troy ounce). For example, if silver is $74 per troy ounce, the price per gram is $74 \u00f7 31.1035 = $2.38 per gram. For sterling silver (.925), multiply by 0.925 to get the silver content value per gram: $2.38 \u00d7 0.925 = $2.20 per gram."}},{"@type":"Question","name":"Why is silver sold per gram in jewellery but quoted per troy ounce in markets?","acceptedAnswer":{"@type":"Answer","text":"Financial markets quote precious metals in troy ounces because that is the international standard set by the London Bullion Market Association (LBMA). However, jewellers and consumers work with small pieces measured in grams, so they convert the spot price to grams for practical pricing. This difference often causes confusion \u2014 always check whether a quoted price is per gram or per troy ounce."}},{"@type":"Question","name":"Does VAT apply to silver per gram prices in the UK?","acceptedAnswer":{"@type":"Answer","text":"Yes. Unlike investment gold (which is VAT-exempt under UK law), silver is subject to 20% VAT at the point of sale for UK retail buyers. This means the price you actually pay per gram is approximately 20% higher than the spot silver content value. For example, if 999 fine silver is worth \u00a32.38/g based on spot, you would typically pay \u00a32.86/g or more at retail after VAT and dealer premium."}},{"@type":"Question","name":"What is the difference between 999 fine silver and 925 sterling silver per gram?","acceptedAnswer":{"@type":"Answer","text":"999 fine silver (99.9% pure) contains 0.999g of silver per gram \u2014 essentially pure. 925 sterling silver contains 0.925g of silver per gram, with the remainder being alloy (typically copper). At a spot price of $74/oz, 999 fine is worth approximately $2.38/g; 925 sterling is worth approximately $2.20/g. The GoldPriceTools calculator shows live values for both purities."}}]}</script>
 </head>
@@ -398,8 +427,78 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 </section>
 
 <footer>
-  <p>&copy; 2026 GoldPriceTools &mdash; <a href="/">Home</a><a href="/guides/">Guides</a><a href="/blog/">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms of Use</a></p>
-  <p style="margin-top:.5rem">Prices are indicative only. Not financial advice.</p>
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="nav-logo" style="margin-bottom:var(--space-3)">
+        <img src="https://assets.goldpricetools.com/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="lazy" onerror="this.style.display='none'">
+        <span style="font-weight:700">GoldPriceTools</span>
+      </div>
+      <p class="footer-brand">Live gold and silver price calculator. Real-time 9K–24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Prices sourced from global markets via LBMA, updated every 60 seconds.</p>
+      <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-3)">Prices are indicative and for reference only. Not financial advice.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Gold Prices</h4>
+      <ul>
+        <li><a href="/9k-gold-price-per-gram">9K Gold Per Gram</a></li>
+        <li><a href="/10k-gold-price-per-gram">10K Gold Per Gram</a></li>
+        <li><a href="/14k-gold-price-per-gram">14K Gold Per Gram</a></li>
+        <li><a href="/18k-gold-price-per-gram">18K Gold Per Gram</a></li>
+        <li><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a></li>
+        <li><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></li>
+        <li><a href="/gold-silver-ratio">Gold / Silver Ratio</a></li>
+        <li><a href="/gold-price-chart">Gold Price Chart</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Calculators</h4>
+      <ul>
+        <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a></li>
+        <li><a href="/silver-coins-calculator">Silver Coins Calculator</a></li>
+        <li><a href="/us-silver-dollar-values">US Silver Dollar Values</a></li>
+        <li><a href="/silver-price-per-kilo">Silver Per Kilo</a></li>
+        <li><a href="/900-silver-price-per-gram">.900 Coin Silver</a></li>
+        <li><a href="/800-silver-price-per-gram">.800 European Silver</a></li>
+        <li><a href="/zakat-gold-silver-calculator">Zakat Calculator</a></li>
+        <li><a href="/how-many-grams-in-troy-ounce">Troy Ounce Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Guides</h4>
+      <ul>
+        <li><a href="/guides/how-to-invest-in-gold">How to Invest in Gold</a></li>
+        <li><a href="/guides/gold-purity-guide">Gold Purity Guide</a></li>
+        <li><a href="/guides/gold-bar-guide">Gold Bar Guide</a></li>
+        <li><a href="/guides/how-to-sell-gold-jewellery">Sell Gold Jewellery</a></li>
+        <li><a href="/guides/how-to-test-if-gold-is-real">Test if Gold Is Real</a></li>
+        <li><a href="/guides/scrap-gold-guide">Scrap Gold Guide</a></li>
+        <li><a href="/guides/gold-price-history">Gold Price History</a></li>
+        <li><a href="/guides/">All Guides</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="/blog/gold-vs-bitcoin-2026">Gold vs Bitcoin 2026</a></li>
+        <li><a href="/blog/best-uk-gold-dealers-2026">Best UK Gold Dealers</a></li>
+        <li><a href="/blog/uk-gold-cgt-guide">Gold CGT UK Guide</a></li>
+        <li><a href="/blog/is-gold-overpriced-2026">Is Gold Overpriced?</a></li>
+        <li><a href="/blog/gold-etf-vs-physical-gold-uk">ETFs vs Physical Gold</a></li>
+        <li><a href="/blog/">All Articles</a></li>
+      </ul>
+      <h4 style="margin-top:var(--space-4)">Info</h4>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/editorial-standards/">Editorial Standards</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 GoldPriceTools &mdash; goldpricetools.com</span>
+    <span>Spot data refreshes every 60 seconds. Prices sourced from LBMA via gold-api.com.</span>
+  </div>
 </footer>
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 <script>
