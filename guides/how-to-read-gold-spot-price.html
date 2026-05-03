@@ -209,6 +209,17 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 .footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
 .footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}
 
+
+/* Related Guides Card Section */
+.related-guides{background:var(--color-surface-offset);border-top:1px solid var(--color-border);padding:2.5rem 0;margin-top:2rem}
+.related-guides .container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+.related-guides h2{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:1.5rem}
+.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.related-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.2rem;text-decoration:none;transition:border-color var(--transition),box-shadow var(--transition)}
+.related-card:hover{border-color:var(--color-gold);box-shadow:var(--shadow-md)}
+.related-card__tag{font-size:var(--text-xs);font-weight:600;color:var(--color-gold-bright);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem}
+.related-card__title{font-weight:700;color:var(--color-text);margin-bottom:0.3rem;font-size:var(--text-sm)}
+.related-card__desc{font-size:var(--text-sm);color:var(--color-text-muted)}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the gold spot price?","acceptedAnswer":{"@type":"Answer","text":"The gold spot price is the current market price for immediate delivery of one troy ounce of pure (24K/999) gold, quoted in US dollars. It is determined by continuous trading on global futures exchanges \u2014 primarily COMEX in New York and OTC markets in London \u2014 and changes second by second during trading hours."}},{"@type":"Question","name":"What is the difference between the gold spot price and the price I pay at a dealer?","acceptedAnswer":{"@type":"Answer","text":"The dealer price is the spot price plus a premium. This premium covers the dealer's costs, profit margin, and in some cases government mint charges. For 1 oz Gold Britannias from the Royal Mint, the premium is typically 2\u20134% above spot. For 1 kg gold bars, the premium is around 0.5\u20131% above spot. The bid-ask spread (the difference between the buy and sell price) is also a cost \u2014 typically 0.5\u20132% on coins."}},{"@type":"Question","name":"What time does the gold market open and close?","acceptedAnswer":{"@type":"Answer","text":"The gold spot market trades essentially 24 hours a day from Sunday evening (New York time) through Friday evening, as trading passes between Sydney, Tokyo, London, and New York sessions. The London Bullion Market Association (LBMA) publishes the official Gold Price benchmark twice daily: the AM Fix at approximately 10:30 GMT and the PM Fix at approximately 15:00 GMT. The COMEX gold futures market opens at 18:00 ET Sunday and closes at 17:00 ET Friday."}},{"@type":"Question","name":"Is gold quoted per troy ounce or per gram?","acceptedAnswer":{"@type":"Answer","text":"Internationally, gold is quoted per troy ounce (31.1035 grams). However, jewellers and scrap gold buyers typically quote prices per gram. To convert: divide the spot price per troy ounce by 31.1035 to get the 24K price per gram. Then multiply by the karat purity factor \u2014 0.75 for 18K, 0.5833 for 14K, 0.375 for 9K \u2014 to get the gold content value per gram for each karat."}}]}</script>
 </head>
@@ -398,39 +409,39 @@ footer a{color:var(--color-text-muted);text-decoration:none;margin:0 .5rem}
 
 
 <!-- Related Guides Section -->
-<section class="related-guides" style="background:#faf9f6;border-top:1px solid #e8e2d4;padding:2.5rem 0;margin-top:2rem;">
-  <div class="container" style="max-width:900px;margin:0 auto;padding:0 1.5rem;">
-    <h2 style="font-size:1.4rem;font-weight:700;color:#1a1a1a;margin-bottom:1.5rem;">Related Gold &amp; Silver Guides</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
-      <a href="/" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Live Tool</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Gold & Silver Price Calculator</div>
-        <div style="font-size:0.875rem;color:#666;">Live gold and silver price calculator — all karats, in GBP and USD.</div>
+<section class="related-guides" >
+  <div class="container" >
+    <h2>Related Gold &amp; Silver Guides</h2>
+    <div class="related-guides-grid">
+      <a href="/" class="related-card">
+        <div class="related-card__tag">Live Tool</div>
+        <div class="related-card__title">Gold & Silver Price Calculator</div>
+        <div class="related-card__desc">Live gold and silver price calculator — all karats, in GBP and USD.</div>
       </a>
-      <a href="/guides/troy-ounce-vs-gram-explained" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Guide</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Troy Ounce vs Gram Explained</div>
-        <div style="font-size:0.875rem;color:#666;">Understand the difference between troy ounces and grams used in gold pricing.</div>
+      <a href="/guides/troy-ounce-vs-gram-explained" class="related-card">
+        <div class="related-card__tag">Guide</div>
+        <div class="related-card__title">Troy Ounce vs Gram Explained</div>
+        <div class="related-card__desc">Understand the difference between troy ounces and grams used in gold pricing.</div>
       </a>
-      <a href="/gold-silver-ratio" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Live Tool</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Gold-Silver Ratio</div>
-        <div style="font-size:0.875rem;color:#666;">Track the live gold-to-silver ratio alongside spot prices.</div>
+      <a href="/gold-silver-ratio" class="related-card">
+        <div class="related-card__tag">Live Tool</div>
+        <div class="related-card__title">Gold-Silver Ratio</div>
+        <div class="related-card__desc">Track the live gold-to-silver ratio alongside spot prices.</div>
       </a>
-      <a href="/guides/gold-price-history" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Guide</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Gold Price History</div>
-        <div style="font-size:0.875rem;color:#666;">Historical gold prices from 1970 — see how today's spot price compares.</div>
+      <a href="/guides/gold-price-history" class="related-card">
+        <div class="related-card__tag">Guide</div>
+        <div class="related-card__title">Gold Price History</div>
+        <div class="related-card__desc">Historical gold prices from 1970 — see how today's spot price compares.</div>
       </a>
-      <a href="/14k-gold-price-per-gram" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Live Price</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">14K Gold Price Per Gram</div>
-        <div style="font-size:0.875rem;color:#666;">Convert today's spot price to a 14K gold per-gram rate instantly.</div>
+      <a href="/14k-gold-price-per-gram" class="related-card">
+        <div class="related-card__tag">Live Price</div>
+        <div class="related-card__title">14K Gold Price Per Gram</div>
+        <div class="related-card__desc">Convert today's spot price to a 14K gold per-gram rate instantly.</div>
       </a>
-      <a href="/scrap-gold-calculator" style="display:block;background:#fff;border:1px solid #e0d8c8;border-radius:8px;padding:1.2rem;text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='#e0d8c8'">
-        <div style="font-size:0.75rem;font-weight:600;color:#c9a84c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;">Tool</div>
-        <div style="font-weight:700;color:#1a1a1a;margin-bottom:0.3rem;">Scrap Gold Calculator</div>
-        <div style="font-size:0.875rem;color:#666;">Apply today's spot price to calculate your gold's actual melt value.</div>
+      <a href="/scrap-gold-calculator" class="related-card">
+        <div class="related-card__tag">Tool</div>
+        <div class="related-card__title">Scrap Gold Calculator</div>
+        <div class="related-card__desc">Apply today's spot price to calculate your gold's actual melt value.</div>
       </a>
     </div>
   </div>
