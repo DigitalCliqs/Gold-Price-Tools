@@ -425,6 +425,21 @@
   </url>
 
   <url>
+    <loc>https://goldpricetools.com/guides/</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/guides/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/guides/"/>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Gold &amp; Silver Guides | GoldPriceTools</image:title>
+      <image:caption>Free guides covering gold and silver prices, karats, hallmarks, investing, and selling. Practical, UK-focused education from GoldPriceTools.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://goldpricetools.com/guides/difference-between-gold-filled-and-gold-plated</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
