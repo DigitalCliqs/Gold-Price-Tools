@@ -499,6 +499,15 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 /* share + related inside article */
 .article-wrap .share-buttons{margin-top:var(--space-10);padding-top:var(--space-6);border-top:1px solid var(--color-border)}
 .article-wrap h2[id],.article-wrap h2{scroll-margin-top:var(--space-10)}
+
+/* ── CTA box ── */
+.cta-box{background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 18%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-6);margin:var(--space-8) 0}
+.cta-box h3{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text);margin:0 0 var(--space-2)}
+.cta-box p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0 0 var(--space-4)}
+.cta-btn{display:inline-flex;align-items:center;gap:var(--space-1);padding:var(--space-2) var(--space-5);background:var(--color-primary);color:#fff;border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:600;text-decoration:none;transition:background .15s}
+.cta-btn:hover{background:var(--color-primary-hover);color:#fff}
+/* Related guides heading spacing */
+.article-wrap h2:has(+ .related-guides-grid){margin-top:var(--space-10);margin-bottom:var(--space-4);font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text)}
 </style>
 
 
