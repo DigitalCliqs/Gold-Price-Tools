@@ -395,6 +395,45 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
 .article-card:hover .article-card-title{color:var(--color-primary)}
 
+
+/* ── Page wrapper ── */
+.page-wrap{max-width:720px;margin:0 auto;padding:var(--space-10) var(--space-6) var(--space-16)}
+
+/* ── Page heading ── */
+.page-title{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;color:var(--color-text);line-height:1.15;margin-bottom:var(--space-2)}
+.page-subtitle{font-size:var(--text-lg);color:var(--color-text-muted);margin-bottom:var(--space-8);line-height:1.6}
+
+/* ── Contact cards ── */
+.contact-card{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);margin-bottom:var(--space-5)}
+.contact-card h2{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
+.contact-card p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7}
+.contact-card a{color:var(--color-primary);text-decoration:underline}
+.contact-card a:hover{color:var(--color-primary-hover)}
+
+/* ── Textarea ── */
+.form-textarea{width:100%;min-height:140px;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);resize:vertical;transition:border-color var(--transition)}
+.form-textarea::placeholder{color:var(--color-text-faint)}
+.form-textarea:focus{outline:none;border-color:var(--color-primary);box-shadow:0 0 0 3px color-mix(in oklch,var(--color-primary) 15%,transparent)}
+
+/* ── Error text ── */
+.error-text{font-size:var(--text-sm);color:#e55353;display:none;margin-top:calc(var(--space-1)*-1)}
+.error-text.visible{display:block}
+
+/* ── Form status ── */
+.form-status{border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);font-size:var(--text-sm);font-weight:500;margin-bottom:var(--space-4);display:none}
+.form-status.success{display:block;background:color-mix(in oklch,#22c55e 12%,var(--color-surface));border:1px solid #22c55e;color:#16a34a}
+.form-status.error{display:block;background:color-mix(in oklch,#e55353 12%,var(--color-surface));border:1px solid #e55353;color:#b91c1c}
+
+/* ── Submit button ── */
+.btn-submit{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);padding:var(--space-3) var(--space-8);background:var(--color-gold);color:var(--color-bg);font-weight:700;font-size:var(--text-base);border:none;border-radius:var(--radius-md);cursor:pointer;transition:background var(--transition),transform var(--transition);margin-top:var(--space-2)}
+.btn-submit:hover{background:var(--color-gold-bright);transform:translateY(-1px)}
+.btn-submit:active{transform:translateY(0)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+@media(max-width:600px){
+  .page-wrap{padding:var(--space-6) var(--space-4) var(--space-12)}
+  .contact-card{padding:var(--space-5)}
+}
 </style>
 <!-- GA4 -->
 
