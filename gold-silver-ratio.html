@@ -518,6 +518,26 @@ details[open] .faq-answer-summary::after{content:"▼"}
 @media(max-width:400px){
   .related-guides-grid{grid-template-columns:1fr}
 }
+
+/* ── Prose typography (article content) ── */
+.prose h2{font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:700;color:var(--color-text);margin-top:var(--space-8);margin-bottom:var(--space-3);line-height:1.25}
+.prose h3{font-size:clamp(1rem,1.8vw,1.25rem);font-weight:600;color:var(--color-text);margin-top:var(--space-6);margin-bottom:var(--space-2)}
+.prose p{margin-bottom:var(--space-4);color:var(--color-text-muted);line-height:1.75}
+.prose ul,.prose ol{margin:0 0 var(--space-4) var(--space-5);color:var(--color-text-muted);line-height:1.75}
+.prose li{margin-bottom:var(--space-2)}
+.prose li::marker{color:var(--color-gold)}
+.prose strong{font-weight:700;color:var(--color-text)}
+.prose table{width:100%;border-collapse:collapse;margin:var(--space-4) 0;font-size:var(--text-sm)}
+.prose table th{text-align:left;padding:var(--space-2) var(--space-3);font-weight:600;border-bottom:2px solid var(--color-border);color:var(--color-text-faint);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em}
+.prose table td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--color-divider);color:var(--color-text-muted)}
+.prose table tr:hover td{background:var(--color-surface-offset)}
+.prose a{color:var(--color-primary);text-decoration:underline;text-decoration-color:transparent}
+.prose a:hover{text-decoration-color:currentColor}
+/* ── FAQ section heading ── */
+.faq-container h2,.content h2{font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:700;color:var(--color-text);margin-top:var(--space-8);margin-bottom:var(--space-4)}
+/* ── Related guides fix ── */
+.related-card{display:flex;flex-direction:column;gap:var(--space-2)}
+.related-card__title{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin:var(--space-1) 0}
 </style>
 </head>
 <body>
