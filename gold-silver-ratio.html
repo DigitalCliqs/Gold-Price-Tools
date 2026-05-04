@@ -464,6 +464,14 @@ h2.hero-title{font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;margin-top:
 /* ── Spot info row ── */
 .calc-spot-info{display:flex;justify-content:space-around;align-items:center;gap:var(--space-4);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);margin-bottom:var(--space-4)}
 .gold-spot-display,.silver-spot-display{text-align:center}
+
+/* ── Content & prose layout ── */
+.content{max-width:1200px;margin:0 auto;padding:0 var(--space-4) var(--space-16)}
+.prose{max-width:72ch}
+/* ── Calculator section wrapper ── */
+.calculator-section{max-width:760px;margin:0 auto;padding:0 var(--space-4) var(--space-10)}
+.calculator-section h2{font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;margin-bottom:var(--space-3)}
+.calculator-section>p{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)}
 </style>
 </head>
 <body>
@@ -543,8 +551,9 @@ h2.hero-title{font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;margin-top:
   <h1 class="hero-title">Gold to Silver Ratio</h1>
   <p style="font-size:1.0625rem;color:var(--color-text-muted);margin-bottom:1.5rem">Compare the live spot prices of gold and silver. Find out how many ounces of silver it takes to buy one ounce of gold today.</p>
 </div>
-  <h2 class="hero-title">Gold-Silver Ratio Calculator</h2>
-  <p style="font-size:.9375rem;color:var(--color-text-muted);margin-bottom:1.5rem">Calculate the live melt value of US junk silver coins. Enter quantities below.</p>
+  <div class="calculator-section">
+  <h2>Gold-Silver Ratio Calculator</h2>
+  <p>Calculate the live melt value of US junk silver coins. Enter quantities below.</p>
 
   <div class="calc-card">
   <div class="calc-spot-info" >
@@ -643,6 +652,7 @@ h2.hero-title{font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;margin-top:
 </div>
   </div>
 </div>
+  </div><!-- /calculator-section -->
 
 <div class="content">
   <div class="prose">
