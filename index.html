@@ -71,6 +71,18 @@
   vignette: {
     new_triggers: false
   }
+}
+function calcScrapSilver() {
+  if (!silverSpotOz) return;
+  const ppg=silverSpotOz/TROY_OZ_TO_GRAM;let totalWeight=0,totalPureOz=0,totalValue=0;
+  document.querySelectorAll('#scrapSilverRows tr').forEach(row=>{
+    const purity=parseFloat(row.dataset.purity),input=row.querySelector('input'),grams=parseFloat(input?.value)||0,value=ppg*purity*grams,valCell=row.querySelector('.scrap-row-val');
+    if(valCell) valCell.textContent=grams>0?fmtUSD(value):'—';
+    totalWeight+=grams;totalPureOz+=(grams*purity)/TROY_OZ_TO_GRAM;totalValue+=value;
+  });
+  setText('scrapSilverTotalWeight',totalWeight.toFixed(3)+' g');
+  setText('scrapSilverPureOz',totalPureOz.toFixed(4)+' oz t');
+  setText('scrapSilverTotalValue',fmtUSD(totalValue));
 });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -618,7 +630,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <button class="calc-tab active" role="tab" aria-selected="true" data-tab="gold">Gold Calculator</button>
         <button class="calc-tab" role="tab" aria-selected="false" data-tab="silver">Silver Calculator</button>
         <button class="calc-tab" role="tab" aria-selected="false" data-tab="scrap">Scrap Gold</button>
-        <button class="calc-tab" role="tab" aria-selected="false" data-tab="bars">Gold Bars</button>
+        <button class="calc-tab" role="tab" aria-selected="false" data-tab="scrap-silver">Scrap Silver</button>
       </div>
 
       <!-- GOLD CALCULATOR -->
@@ -754,26 +766,26 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       </div>
 
       <!-- GOLD BARS -->
-      <div class="calc-panel" id="panel-bars" role="tabpanel">
-        <div class="calc-row">
-          <div class="form-group">
-            <label class="form-label" for="barSize">Bar Size</label>
-            <div class="form-select-wrap">
-              <select class="form-select" id="barSize">
-                <option value="400">400 oz Good Delivery Bar</option>
-                <option value="100">100 oz Bar</option>
-                <option value="32.1507">1 kg Bar (32.15 oz)</option>
-                <option value="10">10 oz Bar</option>
-                <option value="1" selected>1 oz Bar</option>
-                <option value="0.03215">1 gram Bar</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="barQty">Quantity</label>
-            <input class="form-input" type="number" id="barQty" value="1" min="1" step="1">
-          </div>
+      <div class="calc-panel" id="panel-scrap-silver" role="tabpanel">
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)">Enter the weight of your scrap silver by purity. Leave empty if you have none of that grade. The total value is the raw metal value at the current live spot price.</p>
+        <table class="scrap-table" aria-label="Scrap silver input by purity">
+          <thead><tr><th>Grade</th><th>Purity</th><th>Weight (g)</th><th>Value (USD)</th></tr></thead>
+          <tbody id="scrapSilverRows">
+            <tr data-purity="0.999"><td>.999 Fine</td><td>99.9%</td><td><input class="form-input" type="number" min="0" step="0.01" placeholder="0" aria-label=".999 fine silver weight in grams"></td><td class="scrap-row-val">—</td></tr>
+            <tr data-purity="0.9584"><td>.958 Britannia</td><td>95.84%</td><td><input class="form-input" type="number" min="0" step="0.01" placeholder="0" aria-label=".958 Britannia silver weight in grams"></td><td class="scrap-row-val">—</td></tr>
+            <tr data-purity="0.925"><td>.925 Sterling</td><td>92.5%</td><td><input class="form-input" type="number" min="0" step="0.01" placeholder="0" aria-label="925 sterling silver weight in grams"></td><td class="scrap-row-val">—</td></tr>
+            <tr data-purity="0.900"><td>.900 Coin</td><td>90%</td><td><input class="form-input" type="number" min="0" step="0.01" placeholder="0" aria-label=".900 coin silver weight in grams"></td><td class="scrap-row-val">—</td></tr>
+            <tr data-purity="0.835"><td>.835 European</td><td>83.5%</td><td><input class="form-input" type="number" min="0" step="0.01" placeholder="0" aria-label=".835 European silver weight in grams"></td><td class="scrap-row-val">—</td></tr>
+            <tr data-purity="0.800"><td>.800 Silver</td><td>80%</td><td><input class="form-input" type="number" min="0" step="0.01" placeholder="0" aria-label=".800 silver weight in grams"></td><td class="scrap-row-val">—</td></tr>
+            <tr data-purity="0.500"><td>.500 Silver</td><td>50%</td><td><input class="form-input" type="number" min="0" step="0.01" placeholder="0" aria-label=".500 silver weight in grams"></td><td class="scrap-row-val">—</td></tr>
+          </tbody>
+        </table>
+        <div class="scrap-total">
+          <div class="scrap-total-item"><div class="scrap-total-label">Total Weight</div><div class="scrap-total-value" id="scrapSilverTotalWeight">0 g</div></div>
+          <div class="scrap-total-item"><div class="scrap-total-label">Pure Silver (oz)</div><div class="scrap-total-value" id="scrapSilverPureOz">0 oz</div></div>
+          <div class="scrap-total-item"><div class="scrap-total-label">Total Value</div><div class="scrap-total-value" id="scrapSilverTotalValue">$0.00</div></div>
         </div>
+</div>
         <div class="calc-result">
           <div class="calc-result-label">Total Bar Value</div>
           <div class="calc-result-value" id="barResult">—</div>
@@ -1193,7 +1205,7 @@ function updateAll(gData, sData) {
   setText('qr-ag999g',fmtUSD(sGram*0.999));setText('qr-ag925g',fmtUSD(sGram*0.925));setText('qr-ag999oz',fmtUSD(sOz*0.999));setText('qr-ag999kg',fmtUSD(sOz*32.1507*0.999));
   setText('faq-14k',fmtUSD(gGram*0.5833));setText('faq-10k',fmtUSD(gGram*0.4167));setText('faq-18k',fmtUSD(gGram*0.75));setText('faq-sterling',fmtUSD(sGram*0.925));setText('faq-bar400',fmtUSD(gOz*400));setText('faq-bar1oz',fmtUSD(gOz));setText('faq-1g',fmtUSD(gGram));setText('faq-agkg',fmtUSD(sOz*32.1507));
   setText('lastUpdated', new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' BST');
-  buildKaratGrid(gOz); calcGold(); calcSilver(); calcScrap(); calcBars(); calcConverter();
+  buildKaratGrid(gOz); calcGold(); calcSilver(); calcScrap(); calcScrapSilver(); calcConverter();
 }
 function buildKaratGrid(gOz) {
   const grid = document.getElementById('karatGrid');
@@ -1261,6 +1273,18 @@ function calcScrap() {
   });
   setText('scrapTotalWeight',totalWeight.toFixed(3)+' g');setText('scrapPureOz',totalPureOz.toFixed(4)+' oz t');setText('scrapTotalValue',fmtUSD(totalValue));
   if (inputsFilled >= 3) fireScrapIntent();
+}
+function calcScrapSilver() {
+  if (!silverSpotOz) return;
+  const ppg=silverSpotOz/TROY_OZ_TO_GRAM;let totalWeight=0,totalPureOz=0,totalValue=0;
+  document.querySelectorAll('#scrapSilverRows tr').forEach(row=>{
+    const purity=parseFloat(row.dataset.purity),input=row.querySelector('input'),grams=parseFloat(input?.value)||0,value=ppg*purity*grams,valCell=row.querySelector('.scrap-row-val');
+    if(valCell) valCell.textContent=grams>0?fmtUSD(value):'—';
+    totalWeight+=grams;totalPureOz+=(grams*purity)/TROY_OZ_TO_GRAM;totalValue+=value;
+  });
+  setText('scrapSilverTotalWeight',totalWeight.toFixed(3)+' g');
+  setText('scrapSilverPureOz',totalPureOz.toFixed(4)+' oz t');
+  setText('scrapSilverTotalValue',fmtUSD(totalValue));
 }
 function calcBars() {
   if (!goldSpotOz) return;
@@ -1360,7 +1384,7 @@ function fireCalcEngaged() {
 ['goldKarat','goldWeight','goldUnit','goldCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcGold(); }));
 ['silverPurity','silverWeight','silverUnit','silverCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcSilver(); }));
 document.querySelectorAll('#scrapRows input').forEach(inp=>inp.addEventListener('input',() => { fireCalcEngaged(); calcScrap(); }));
-['barSize','barQty'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcBars(); }));
+// Gold Bars removed
 ['convInput','convFrom'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcConverter));
 function setText(id,val){const el=document.getElementById(id);if(el) el.textContent=val;}
 Promise.all([fetchFxRates(),fetchPrices()]).then(()=>{if(goldSpotOz){calcGold();calcSilver();buildKaratGrid(goldSpotOz);}});
