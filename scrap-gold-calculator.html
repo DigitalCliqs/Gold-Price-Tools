@@ -661,7 +661,10 @@ function fireCalcEngaged() {
   </div>
   <script>
   (function(){
-    function fillScrapTable(gbp24, usd24){
+    function fillScrapTable(){
+      if(!window._spot||!window._gbpusd) return;
+      var usd24=window._spot/31.1035;
+      var gbp24=usd24*window._gbpusd;
       var karats=[{k:'24',p:0.999},{k:'22',p:0.9167},{k:'18',p:0.75},{k:'14',p:0.5833},{k:'10',p:0.4167},{k:'9',p:0.375}];
       karats.forEach(function(item){
         var eg=document.getElementById('s'+item.k+'-gbp');
@@ -671,13 +674,10 @@ function fireCalcEngaged() {
       });
     }
     function tryFill(){
-      if(typeof window._goldGBP!=='undefined'&&typeof window._goldUSD!=='undefined'){
-        fillScrapTable(window._goldGBP, window._goldUSD);
-      } else {
-        setTimeout(tryFill, 800);
-      }
+      if(window._spot&&window._gbpusd){ fillScrapTable(); } else { setTimeout(tryFill, 600); }
     }
     tryFill();
+    window.addEventListener('goldprice_updated', fillScrapTable);
   })();
   </script>
 
