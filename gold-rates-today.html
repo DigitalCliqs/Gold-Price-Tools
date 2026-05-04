@@ -369,6 +369,12 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 @media(max-width:768px){.nav-logo span{display:none}}
 
 .footer-brand-col{max-width:260px}.footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr repeat(4,auto);gap:var(--space-8);align-items:start}@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}.footer-brand-col{grid-column:1/-1}}@media(max-width:600px){.footer-inner{grid-template-columns:1fr 1fr}}.footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}.footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;transition:color .12s}.footer-col a:hover{color:var(--color-text)}.footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}.footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}.blog-preview-section{background:var(--color-surface-offset);border-top:1px solid var(--color-border);padding:var(--space-10) var(--space-4)}.blog-preview-inner{max-width:1200px;margin:0 auto}.blog-preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6)}.blog-preview-title{font-size:var(--text-xl);font-weight:700;color:var(--color-text)}.blog-preview-all{font-size:var(--text-sm);font-weight:600;color:var(--color-primary);text-decoration:none}.blog-preview-all:hover{color:var(--color-primary-hover)}.blog-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}@media(max-width:900px){.blog-preview-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.blog-preview-grid{grid-template-columns:1fr}}.blog-preview-card{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-5);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-decoration:none;transition:box-shadow .15s,border-color .15s}.blog-preview-card:hover{border-color:var(--color-primary);box-shadow:0 4px 16px oklch(0 0 0/.08)}.blog-preview-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary);padding:2px 8px;background:oklch(from var(--color-primary) l c h/.1);border-radius:99px;align-self:flex-start}.blog-preview-card h3{font-size:var(--text-base);font-weight:600;color:var(--color-text);line-height:1.4;margin:0}.blog-preview-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
+
+/* ── Article card — unified markup styles ── */
+.article-card-title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:var(--space-1) 0 var(--space-2);line-height:1.3}
+.article-card .article-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-gold-bright);margin-bottom:var(--space-2)}
+.article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
+.article-card:hover .article-card-title{color:var(--color-primary)}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
 
@@ -848,243 +854,113 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <div class="articles-grid">
         <a href="/guides/what-is-14k-gold" class="article-card">
           <div class="article-tag">Gold Guide</div>
-          <div class="article-title">What Is 14K Gold? Purity, Value &amp; How to Identify It</div>
-          <div class="article-excerpt">14K gold is 58.33% pure gold, the most popular karat for everyday jewellery in the US. Learn why, and what it's worth today.</div>
+          <h3 class="article-card-title">What Is 14K Gold? Purity, Value &amp; How to Identify It</h3>
+          <p class="article-card-desc">14K gold is 58.33% pure gold, the most popular karat for everyday jewellery in the US. Learn why, and what it's worth today.</p>
         </a>
         <a href="/guides/gold-karat-explained" class="article-card">
           <div class="article-tag">Gold Guide</div>
-          <div class="article-title">Gold Karat Explained</div>
-          <div class="article-excerpt">What does 14K, 18K, and 10K mean? A deep dive into karat purity.</div>
-        </a>
-        <a href="/guides/scrap-gold-guide" class="article-card">
-          <div class="article-tag">Scrap Gold</div>
-          <div class="article-title">Scrap Gold Guide</div>
-          <div class="article-excerpt">How scrap gold is valued and how to calculate its true melt value.</div>
-        </a>
-        <a href="/guides/silver-price-guide" class="article-card">
-          <div class="article-tag">Silver Guide</div>
-          <div class="article-title">Silver Price Guide</div>
-          <div class="article-excerpt">Everything you need to know about silver spot prices and 925 sterling.</div>
-        </a>
-        <a href="/guides/troy-ounce-guide" class="article-card">
-          <div class="article-tag">Precious Metals</div>
-          <div class="article-title">Troy Ounce Guide</div>
-          <div class="article-excerpt">The history of the troy ounce and how it compares to standard grams.</div>
-        </a>
-        <a href="/guides/gold-bar-guide" class="article-card">
-          <div class="article-tag">Gold Bars</div>
-          <div class="article-title">Gold Bar Guide</div>
-          <div class="article-excerpt">From 1g to 400oz Good Delivery bars, learn about gold bar sizes.</div>
-        </a>
-        <a href="/guides/us-silver-dollar-values" class="article-card">
-          <div class="article-tag">Silver Coins</div>
-          <div class="article-title">US Silver Dollar Values</div>
-          <div class="article-excerpt">Discover the prices and melt values of historic US silver dollars.</div>
-        </a>
-        <a href="/guides/gold-price-prediction-2026" class="article-card">
-          <div class="article-tag">Market Outlook</div>
-          <div class="article-title">Gold Price Prediction 2026</div>
-          <div class="article-excerpt">Market outlook and forecasts for gold prices in 2026.</div>
-        </a>
-        <a href="/guides/gold-price-guide" class="article-card">
-          <div class="article-tag">Pillar Guide</div>
-          <div class="article-title">Comprehensive Gold Price Guide</div>
-          <div class="article-excerpt">The ultimate guide to how gold is priced, the LBMA, and market factors.</div>
-        </a>
-        <a href="/guides/indian-gold-silver-prices" class="article-card">
-          <div class="article-tag">India Rates</div>
-          <div class="article-title">Indian Gold & Silver Prices</div>
-          <div class="article-excerpt">Live rates and information for gold and silver pricing in INR.</div>
-        </a>
-        <a href="/guides/gold-karat-explained" class="article-card">
-          <div class="article-tag">Gold Guide</div>
-          <div class="article-title">Gold Karat Explained</div>
-          <div class="article-excerpt">What does 14K, 18K, and 10K mean? A deep dive into karat purity.</div>
-        </a>
-        <a href="/guides/scrap-gold-guide" class="article-card">
-          <div class="article-tag">Scrap Gold</div>
-          <div class="article-title">Scrap Gold Guide</div>
-          <div class="article-excerpt">How scrap gold is valued and how to calculate its true melt value.</div>
-        </a>
-        <a href="/guides/silver-price-guide" class="article-card">
-          <div class="article-tag">Silver Guide</div>
-          <div class="article-title">Silver Price Guide</div>
-          <div class="article-excerpt">Everything you need to know about silver spot prices and 925 sterling.</div>
-        </a>
-        <a href="/guides/troy-ounce-guide" class="article-card">
-          <div class="article-tag">Precious Metals</div>
-          <div class="article-title">Troy Ounce Guide</div>
-          <div class="article-excerpt">The history of the troy ounce and how it compares to standard grams.</div>
-        </a>
-        <a href="/guides/gold-bar-guide" class="article-card">
-          <div class="article-tag">Gold Bars</div>
-          <div class="article-title">Gold Bar Guide</div>
-          <div class="article-excerpt">From 1g to 400oz Good Delivery bars, learn about gold bar sizes.</div>
-        </a>
-        <a href="/guides/us-silver-dollar-values" class="article-card">
-          <div class="article-tag">Silver Coins</div>
-          <div class="article-title">US Silver Dollar Values</div>
-          <div class="article-excerpt">Discover the prices and melt values of historic US silver dollars.</div>
-        </a>
-        <a href="/guides/gold-price-prediction-2026" class="article-card">
-          <div class="article-tag">Market Outlook</div>
-          <div class="article-title">Gold Price Prediction 2026</div>
-          <div class="article-excerpt">Market outlook and forecasts for gold prices in 2026.</div>
-        </a>
-        <a href="/guides/gold-price-guide" class="article-card">
-          <div class="article-tag">Pillar Guide</div>
-          <div class="article-title">Comprehensive Gold Price Guide</div>
-          <div class="article-excerpt">The ultimate guide to how gold is priced, the LBMA, and market factors.</div>
-        </a>
-        <a href="/guides/indian-gold-silver-prices" class="article-card">
-          <div class="article-tag">India Rates</div>
-          <div class="article-title">Indian Gold & Silver Prices</div>
-          <div class="article-excerpt">Live rates and information for gold and silver pricing in INR.</div>
-        </a>
-<a href="/guides/gold-karat-explained" class="article-card">
-          <div class="article-tag">Gold Guide</div>
-          <div class="article-title">Gold Karat Explained</div>
-          <div class="article-excerpt">What does 14K, 18K, and 10K mean? A deep dive into karat purity.</div>
-        </a>
-        <a href="/guides/scrap-gold-guide" class="article-card">
-          <div class="article-tag">Scrap Gold</div>
-          <div class="article-title">Scrap Gold Guide</div>
-          <div class="article-excerpt">How scrap gold is valued and how to calculate its true melt value.</div>
-        </a>
-        <a href="/guides/silver-price-guide" class="article-card">
-          <div class="article-tag">Silver Guide</div>
-          <div class="article-title">Silver Price Guide</div>
-          <div class="article-excerpt">Everything you need to know about silver spot prices and 925 sterling.</div>
-        </a>
-        <a href="/guides/troy-ounce-guide" class="article-card">
-          <div class="article-tag">Precious Metals</div>
-          <div class="article-title">Troy Ounce Guide</div>
-          <div class="article-excerpt">The history of the troy ounce and how it compares to standard grams.</div>
-        </a>
-        <a href="/guides/gold-bar-guide" class="article-card">
-          <div class="article-tag">Gold Bars</div>
-          <div class="article-title">Gold Bar Guide</div>
-          <div class="article-excerpt">From 1g to 400oz Good Delivery bars, learn about gold bar sizes.</div>
-        </a>
-        <a href="/guides/us-silver-dollar-values" class="article-card">
-          <div class="article-tag">Silver Coins</div>
-          <div class="article-title">US Silver Dollar Values</div>
-          <div class="article-excerpt">Discover the prices and melt values of historic US silver dollars.</div>
-        </a>
-        <a href="/guides/gold-price-prediction-2026" class="article-card">
-          <div class="article-tag">Market Outlook</div>
-          <div class="article-title">Gold Price Prediction 2026</div>
-          <div class="article-excerpt">Market outlook and forecasts for gold prices in 2026.</div>
-        </a>
-        <a href="/guides/gold-price-guide" class="article-card">
-          <div class="article-tag">Pillar Guide</div>
-          <div class="article-title">Comprehensive Gold Price Guide</div>
-          <div class="article-excerpt">The ultimate guide to how gold is priced, the LBMA, and market factors.</div>
-        </a>
-        <a href="/guides/indian-gold-silver-prices" class="article-card">
-          <div class="article-tag">India Rates</div>
-          <div class="article-title">Indian Gold & Silver Prices</div>
-          <div class="article-excerpt">Live rates and information for gold and silver pricing in INR.</div>
-        </a>
-<a href="/guides/what-is-14k-gold" class="article-card">
-          <h3 class="article-card-title">What Is 14K Gold?</h3>
-          <p class="article-card-desc">Understand karat purity and why 14K is the standard for durable, affordable jewellery.</p>
-        </a>
-        <a href="/guides/gold-karat-explained" class="article-card">
           <h3 class="article-card-title">Gold Karat Explained</h3>
           <p class="article-card-desc">What does 14K, 18K, and 10K mean? A deep dive into karat purity.</p>
         </a>
         <a href="/guides/scrap-gold-guide" class="article-card">
+          <div class="article-tag">Scrap Gold</div>
           <h3 class="article-card-title">Scrap Gold Guide</h3>
           <p class="article-card-desc">How scrap gold is valued and how to calculate its true melt value.</p>
         </a>
         <a href="/guides/silver-price-guide" class="article-card">
+          <div class="article-tag">Silver Guide</div>
           <h3 class="article-card-title">Silver Price Guide</h3>
           <p class="article-card-desc">Everything you need to know about silver spot prices and 925 sterling.</p>
         </a>
         <a href="/guides/troy-ounce-guide" class="article-card">
+          <div class="article-tag">Precious Metals</div>
           <h3 class="article-card-title">Troy Ounce Guide</h3>
           <p class="article-card-desc">The history of the troy ounce and how it compares to standard grams.</p>
         </a>
         <a href="/guides/gold-bar-guide" class="article-card">
+          <div class="article-tag">Gold Bars</div>
           <h3 class="article-card-title">Gold Bar Guide</h3>
           <p class="article-card-desc">From 1g to 400oz Good Delivery bars, learn about gold bar sizes.</p>
         </a>
         <a href="/guides/us-silver-dollar-values" class="article-card">
+          <div class="article-tag">Silver Coins</div>
           <h3 class="article-card-title">US Silver Dollar Values</h3>
           <p class="article-card-desc">Discover the prices and melt values of historic US silver dollars.</p>
         </a>
         <a href="/guides/gold-price-prediction-2026" class="article-card">
+          <div class="article-tag">Market Outlook</div>
           <h3 class="article-card-title">Gold Price Prediction 2026</h3>
           <p class="article-card-desc">Market outlook and forecasts for gold prices in 2026.</p>
         </a>
         <a href="/guides/gold-price-guide" class="article-card">
+          <div class="article-tag">Pillar Guide</div>
           <h3 class="article-card-title">Comprehensive Gold Price Guide</h3>
           <p class="article-card-desc">The ultimate guide to how gold is priced, the LBMA, and market factors.</p>
         </a>
         <a href="/guides/indian-gold-silver-prices" class="article-card">
+          <div class="article-tag">India Rates</div>
           <h3 class="article-card-title">Indian Gold & Silver Prices</h3>
           <p class="article-card-desc">Live rates and information for gold and silver pricing in INR.</p>
         </a>
         <a href="/guides/how-to-calculate-scrap-gold" class="article-card">
           <div class="article-tag">Scrap Guide</div>
-          <div class="article-title">How to Calculate Scrap Gold Value — Step by Step</div>
-          <div class="article-excerpt">A practical guide to working out what your old gold jewellery, coins, and scrap metal is worth at today's live spot price.</div>
+          <h3 class="article-card-title">How to Calculate Scrap Gold Value — Step by Step</h3>
+          <p class="article-card-desc">A practical guide to working out what your old gold jewellery, coins, and scrap metal is worth at today's live spot price.</p>
         </a>
         <a href="/guides/troy-ounce-vs-gram-explained" class="article-card">
           <div class="article-tag">Weights</div>
-          <div class="article-title">Troy Ounce vs Gram: The Complete Guide</div>
-          <div class="article-excerpt">Why precious metals are weighed in troy ounces, not grams or regular ounces — and how to convert between them.</div>
+          <h3 class="article-card-title">Troy Ounce vs Gram: The Complete Guide</h3>
+          <p class="article-card-desc">Why precious metals are weighed in troy ounces, not grams or regular ounces — and how to convert between them.</p>
         </a>
         <a href="/guides/gold-purity-guide" class="article-card">
           <div class="article-tag">Gold Guide</div>
-          <div class="article-title">Gold Purity Guide: 9K to 24K Explained</div>
-          <div class="article-excerpt">What do gold karat numbers mean? This guide explains every karat from 9K to 24K, their purity, uses, and current value.</div>
+          <h3 class="article-card-title">Gold Purity Guide: 9K to 24K Explained</h3>
+          <p class="article-card-desc">What do gold karat numbers mean? This guide explains every karat from 9K to 24K, their purity, uses, and current value.</p>
         </a>
         <a href="/guides/what-is-925-sterling-silver" class="article-card">
           <div class="article-tag">Silver Guide</div>
-          <div class="article-title">What Is 925 Sterling Silver and How Much Is It Worth?</div>
-          <div class="article-excerpt">925 sterling silver is 92.5% pure silver. Find out how to identify it, where it's used, and how to calculate its value.</div>
+          <h3 class="article-card-title">What Is 925 Sterling Silver and How Much Is It Worth?</h3>
+          <p class="article-card-desc">925 sterling silver is 92.5% pure silver. Find out how to identify it, where it's used, and how to calculate its value.</p>
         </a>
         <a href="/guides/how-to-store-gold-silver-at-home" class="article-card">
           <div class="article-tag">Storage Guide</div>
-          <div class="article-title">How to Store Gold and Silver at Home Safely in 2026</div>
-          <div class="article-excerpt">The safest ways to store gold and silver at home: safe ratings explained, positioning guide, insurance requirements, and when to use professional vault storage instead.</div>
+          <h3 class="article-card-title">How to Store Gold and Silver at Home Safely in 2026</h3>
+          <p class="article-card-desc">The safest ways to store gold and silver at home: safe ratings explained, positioning guide, insurance requirements, and when to use professional vault storage instead.</p>
         </a>
         <a href="/guides/what-is-best-time-to-sell-scrap-gold" class="article-card">
           <div class="article-tag">Selling Guide</div>
-          <div class="article-title">When Is the Best Time to Sell Scrap Gold?</div>
-          <div class="article-excerpt">Timing matters when selling scrap gold. Learn what drives the gold price, when dealers pay the most, and what to watch for.</div>
+          <h3 class="article-card-title">When Is the Best Time to Sell Scrap Gold?</h3>
+          <p class="article-card-desc">Timing matters when selling scrap gold. Learn what drives the gold price, when dealers pay the most, and what to watch for.</p>
         </a>
         <a href="/guides/gold-price-history" class="article-card">
           <div class="article-tag">Market</div>
-          <div class="article-title">Gold Price History: Key Milestones From 1970 to 2026</div>
-          <div class="article-excerpt">From the Nixon Shock to the 2020 all-time high — a guide to gold's price history and what has driven its long-term rise.</div>
+          <h3 class="article-card-title">Gold Price History: Key Milestones From 1970 to 2026</h3>
+          <p class="article-card-desc">From the Nixon Shock to the 2020 all-time high — a guide to gold's price history and what has driven its long-term rise.</p>
         </a>
         <a href="/guides/how-to-read-gold-spot-price" class="article-card">
           <div class="article-tag">Beginner</div>
-          <div class="article-title">How to Read a Gold Spot Price — A Beginner's Guide</div>
-          <div class="article-excerpt">What is the gold spot price, where does it come from, and how do you use it to calculate the value of gold jewellery or bars?</div>
+          <h3 class="article-card-title">How to Read a Gold Spot Price — A Beginner's Guide</h3>
+          <p class="article-card-desc">What is the gold spot price, where does it come from, and how do you use it to calculate the value of gold jewellery or bars?</p>
         </a>
         <a href="/guides/gold-vs-silver-investment" class="article-card">
           <div class="article-tag">Investment</div>
-          <div class="article-title">Gold vs Silver Investment — Which Precious Metal Is Better?</div>
-          <div class="article-excerpt">Comparing gold and silver as investments: returns, volatility, the gold-silver ratio, and which metal suits different goals.</div>
+          <h3 class="article-card-title">Gold vs Silver Investment — Which Precious Metal Is Better?</h3>
+          <p class="article-card-desc">Comparing gold and silver as investments: returns, volatility, the gold-silver ratio, and which metal suits different goals.</p>
         </a>
         <a href="/guides/how-to-invest-in-gold" class="article-card">
           <div class="article-tag">Investment</div>
-          <div class="article-title">How to Invest in Gold — Bullion, ETFs and More</div>
-          <div class="article-excerpt">Physical bullion, gold ETFs, mining stocks and gold ISAs — pros, cons and current price context to help you decide.</div>
+          <h3 class="article-card-title">How to Invest in Gold — Bullion, ETFs and More</h3>
+          <p class="article-card-desc">Physical bullion, gold ETFs, mining stocks and gold ISAs — pros, cons and current price context to help you decide.</p>
         </a>
         <a href="/guides/how-to-sell-gold-jewellery" class="article-card">
           <div class="article-tag">Selling Guide</div>
-          <div class="article-title">How to Sell Gold Jewellery — Get the Best Price</div>
-          <div class="article-excerpt">Step-by-step: calculate your jewellery's melt value, find the best buyer type, and avoid the common pitfalls when selling.</div>
+          <h3 class="article-card-title">How to Sell Gold Jewellery — Get the Best Price</h3>
+          <p class="article-card-desc">Step-by-step: calculate your jewellery's melt value, find the best buyer type, and avoid the common pitfalls when selling.</p>
         </a>
         <a href="/guides/silver-price-per-gram-explained" class="article-card">
           <div class="article-tag">Silver Guide</div>
-          <div class="article-title">Silver Price Per Gram Explained — Live Calculation Guide</div>
-          <div class="article-excerpt">How the silver price per gram is derived from the troy oz spot price, with live examples for fine and sterling silver.</div>
+          <h3 class="article-card-title">Silver Price Per Gram Explained — Live Calculation Guide</h3>
+          <p class="article-card-desc">How the silver price per gram is derived from the troy oz spot price, with live examples for fine and sterling silver.</p>
         </a>
       </div>
     </section>
