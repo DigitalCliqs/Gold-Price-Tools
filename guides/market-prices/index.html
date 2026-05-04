@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market & Prices Guides | GoldPriceTools</title>
+  <meta name="description" content="Gold price history, forecasts, and the market forces that drive precious metals prices.">
+  <link rel="canonical" href="https://goldpricetools.com/guides/market-prices/">
+  <meta property="og:title" content="Market & Prices Guides | GoldPriceTools">
+  <meta property="og:description" content="Gold price history, forecasts, and the market forces that drive precious metals prices.">
+  <meta property="og:url" content="https://goldpricetools.com/guides/market-prices/">
+  <meta property="og:type" content="website">
+  <style>
+    
+
+:root {
+  --color-surface: #1a1a1a;
+  --color-border: #333;
+  --color-text: #f5f5f5;
+  --color-text-muted: #a3a3a3;
+  --color-gold: #d4af37;
+  --color-gold-bright: #ffd700;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --radius-lg: 0.5rem;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --text-xs: 0.75rem;
+  --text-xl: 1.25rem;
+}
+
+  body { background: #0f0e0c; color: #fff; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+  header, footer { background: #1a1a1a; padding: 20px; text-align: center; }
+  .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+  h1, h2, h3 { color: #d4af37; }
+  .spot-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+  .spot-card { background: #1a1a1a; border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
+  .spot-card-value { font-size: 1.5em; font-weight: bold; color: #d4af37; }
+  details { background: #1a1a1a; padding: 15px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; }
+  summary { font-weight: bold; color: #d4af37; outline: none; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  th, td { border: 1px solid #333; padding: 10px; text-align: left; }
+  th { background: #1a1a1a; color: #d4af37; }
+  a { color: #d4af37; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+/* MEGA MENU */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--color-surface);border-bottom:1px solid var(--color-border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:56px;gap:var(--space-2)}
+.nav-logo{display:flex;align-items:center;gap:var(--space-2);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);text-decoration:none;flex-shrink:0}
+.mega-nav{display:flex;align-items:center;list-style:none;margin:0;padding:0;gap:2px;flex:1;justify-content:center}
+.mega-nav__item{position:relative}
+.mega-nav__trigger{display:flex;align-items:center;gap:4px;padding:6px 11px;font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);border:none;background:none;border-radius:var(--radius-md);cursor:pointer;white-space:nowrap;transition:color .15s,background .15s}
+.mega-nav__trigger:hover,.mega-nav__item:hover .mega-nav__trigger,.mega-nav__trigger[aria-expanded="true"]{color:var(--color-text);background:var(--color-surface-offset)}
+.mega-nav__trigger--link{text-decoration:none}
+.mega-nav__chevron{transition:transform .2s;flex-shrink:0}
+.mega-nav__trigger[aria-expanded="true"] .mega-nav__chevron{transform:rotate(180deg)}
+.mega-panel{display:none;position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);min-width:420px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:0 8px 32px oklch(0 0 0/.12);padding:var(--space-4);gap:var(--space-4);flex-direction:row;z-index:300;animation:megaFadeIn .15s ease-out}
+.mega-panel--wide{min-width:640px}
+.mega-panel--blog{min-width:280px}
+.mega-nav__item:hover .mega-panel,.mega-panel.is-open{display:flex}
+@keyframes megaFadeIn{from{opacity:0;transform:translateX(-50%) translateY(-6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.mega-panel__col{display:flex;flex-direction:column;gap:2px;min-width:140px}
+.mega-panel__col--blog{min-width:220px}
+.mega-panel__heading{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-faint);padding:4px 10px 8px}
+.mega-panel a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:6px 10px;border-radius:var(--radius-md);transition:color .12s,background .12s;display:block}
+.mega-panel a:hover{color:var(--color-text);background:var(--color-surface-offset)}
+.mega-panel__view-all{margin-top:var(--space-2);font-weight:600!important;color:var(--color-primary)!important}
+.mega-panel__view-all:hover{color:var(--color-primary-hover)!important}
+.mega-panel__col+.mega-panel__col{border-left:1px solid var(--color-divider);padding-left:var(--space-4)}
+.nav-actions{display:flex;align-items:center;gap:var(--space-2);flex-shrink:0}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-md);color:var(--color-text-muted);border:1px solid var(--color-border);background:none;cursor:pointer}
+.theme-toggle:hover{color:var(--color-text);background:var(--color-surface-offset)}
+.hamburger{display:none;flex-direction:column;gap:4px;padding:var(--space-2);border-radius:var(--radius-md);background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:20px;height:2px;background:var(--color-text);border-radius:2px;transition:transform .22s cubic-bezier(.4,0,.2,1),opacity .22s}
+.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--color-surface);z-index:199;overflow-y:auto;-webkit-overflow-scrolling:touch;border-top:1px solid var(--color-border);transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.mobile-menu.open{display:block;transform:translateX(0)}
+.mobile-menu__inner{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-1)}
+.mobile-section{border-radius:var(--radius-md);overflow:hidden}
+.mobile-section__toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;font-size:var(--text-sm);font-weight:600;color:var(--color-text);background:none;border:none;cursor:pointer;border-radius:var(--radius-md);transition:background .12s}
+.mobile-section__toggle:hover{background:var(--color-surface-offset)}
+.mobile-section__toggle svg{transition:transform .2s;flex-shrink:0}
+.mobile-section__toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mobile-section__toggle[aria-expanded="true"]{background:var(--color-surface-offset);border-radius:var(--radius-md) var(--radius-md) 0 0}
+.mobile-section__items{display:none;flex-direction:column;background:var(--color-surface-offset);border-radius:0 0 var(--radius-md) var(--radius-md);padding:4px 8px 8px}
+.mobile-section__items.open{display:flex}
+.mobile-section__items a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:8px 10px;border-radius:var(--radius-sm);transition:color .12s,background .12s}
+.mobile-section__items a:hover{color:var(--color-text);background:var(--color-surface-dynamic)}
+.mobile-view-all{font-weight:600!important;color:var(--color-primary)!important;margin-top:4px}
+.mobile-section--flat{display:flex;flex-direction:column;padding:8px 4px;border-top:1px solid var(--color-divider);margin-top:var(--space-2)}
+.mobile-section--flat a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:8px 10px;border-radius:var(--radius-md)}
+.mobile-section--flat a:hover{background:var(--color-surface-offset);color:var(--color-text)}
+.mobile-menu__search{margin-top:var(--space-4);padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
+.mobile-menu__search input{width:100%;padding:10px 14px;border-radius:var(--radius-md);border:1px solid var(--color-border);background:var(--color-bg);color:var(--color-text);font-size:var(--text-sm)}
+@media(max-width:900px){.mega-nav{display:none}.hamburger{display:flex}}
+@media(max-width:768px){.nav-logo span{display:none}}
+
+.footer-brand-col{max-width:260px}.footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr repeat(4,auto);gap:var(--space-8);align-items:start}@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}.footer-brand-col{grid-column:1/-1}}@media(max-width:
+    /* ── Category index page styles ── */
+    .category-hero{padding:var(--space-12) 0 var(--space-8);text-align:center}
+    .category-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--color-text);margin-bottom:var(--space-3)}
+    .category-hero p{font-size:var(--text-lg);color:var(--color-text-muted);max-width:580px;margin:0 auto var(--space-6)}
+    .breadcrumb{margin-bottom:var(--space-6);font-size:var(--text-sm)}
+    .breadcrumb ol{list-style:none;display:flex;gap:var(--space-2);flex-wrap:wrap;padding:0;margin:0}
+    .breadcrumb li{display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted)}
+    .breadcrumb li:not(:last-child)::after{content:"›";color:var(--color-text-muted)}
+    .breadcrumb a{color:var(--color-primary);text-decoration:none}
+    .breadcrumb a:hover{text-decoration:underline}
+    .articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4)}
+    .category-wrap{max-width:1100px;margin:0 auto;padding:0 var(--space-5) var(--space-16)}
+    .back-link{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-primary);text-decoration:none;margin-bottom:var(--space-8)}
+    .back-link:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="GoldPriceTools Home">
+      <img src="https://assets.goldpricetools.com/logo.svg" width="28" height="28" alt="GoldPriceTools logo" loading="eager" onerror="this.style.display='none'">
+      <span>GoldPriceTools</span>
+    </a>
+    <ul class="mega-nav" role="menubar">
+      <li class="mega-nav__item" role="none">
+        <button class="mega-nav__trigger" role="menuitem" aria-haspopup="true" aria-expanded="false">Gold Prices <svg class="mega-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="mega-panel" role="menu" aria-label="Gold Prices">
+          <div class="mega-panel__col"><span class="mega-panel__heading">Live Prices</span><a href="/gold-rates-today">Gold Rates Today</a><a href="/live-gold-silver-price-today">Live Gold &amp; Silver</a><a href="/gold-price-chart">Gold Price Chart</a><a href="/gold-silver-ratio">Gold / Silver Ratio</a><a href="/gold-and-silver-price-today">24hr Prices</a></div>
+          <div class="mega-panel__col"><span class="mega-panel__heading">By Karat</span><a href="/9k-gold-price-per-gram">9K Gold Per Gram</a><a href="/10k-gold-price-per-gram">10K Gold Per Gram</a><a href="/14k-gold-price-per-gram">14K Gold Per Gram</a><a href="/18k-gold-price-per-gram">18K Gold Per Gram</a><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></div>
+          <div class="mega-panel__col"><span class="mega-panel__heading">Price Data</span><a href="/guides/gold-price-history">Price History</a><a href="/guides/gold-price-prediction-2026">Price Prediction 2026</a><a href="/guides/what-affects-gold-price">What Affects Gold Price</a><a href="/guides/how-to-read-gold-spot-price">Reading Spot Prices</a></div>
+        </div>
+      </li>
+      <li class="mega-nav__item" role="none">
+        <button class="mega-nav__trigger" role="menuitem" aria-haspopup="true" aria-expanded="false">Calculators <svg class="mega-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="mega-panel" role="menu" aria-label="Calculators">
+          <div class="mega-panel__col"><span class="mega-panel__heading">Gold Tools</span><a href="/scrap-gold-calculator">Scrap Gold Calculator</a><a href="/gold-bar-value">Gold Bar Value</a><a href="/gold-coins-vs-bars">Gold Coins vs Bars</a><a href="/guides/how-much-is-a-gold-ring-worth">Gold Ring Worth</a><a href="/gold-silver-test-kit-reviews">Testing Kit Reviews</a></div>
+          <div class="mega-panel__col"><span class="mega-panel__heading">Special Tools</span><a href="/zakat-gold-silver-calculator">Zakat Calculator</a><a href="/how-many-grams-in-troy-ounce">Troy Ounce Converter</a><a href="/best-gold-ira-companies">Best Gold IRA Companies</a><a href="/where-to-sell-gold-silver">Where to Sell Gold</a></div>
+        </div>
+      </li>
+      <li class="mega-nav__item" role="none">
+        <button class="mega-nav__trigger" role="menuitem" aria-haspopup="true" aria-expanded="false">Silver <svg class="mega-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="mega-panel" role="menu" aria-label="Silver">
+          <div class="mega-panel__col"><span class="mega-panel__heading">Live Prices</span><a href="/silver-price-per-kilo">Silver Per Kilo</a><a href="/800-silver-price-per-gram">.800 Silver Per Gram</a><a href="/900-silver-price-per-gram">.900 Silver Per Gram</a></div>
+          <div class="mega-panel__col"><span class="mega-panel__heading">Calculators &amp; Guides</span><a href="/silver-coins-calculator">Silver Coins Calculator</a><a href="/us-silver-dollar-values">US Silver Dollar Values</a><a href="/guides/what-is-925-sterling-silver">925 Sterling Silver</a><a href="/guides/silver-price-guide">Silver Price Guide</a><a href="/guides/silver-price-per-gram-explained">Silver Per Gram Explained</a></div>
+        </div>
+      </li>
+      <li class="mega-nav__item mega-nav__item--wide" role="none">
+        <button class="mega-nav__trigger" role="menuitem" aria-haspopup="true" aria-expanded="false">Guides <svg class="mega-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="mega-panel mega-panel--wide" role="menu" aria-label="Guides">
+          <div class="mega-panel__col"><a href="/guides/buying-investing/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Buying &amp; Investing</span><span class="mega-panel__cat-desc">Bullion, ETFs, IRA &amp; more</span></a></div>
+          <div class="mega-panel__col"><a href="/guides/selling-testing/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Selling &amp; Testing</span><span class="mega-panel__cat-desc">Value, sell &amp; test your gold</span></a></div>
+          <div class="mega-panel__col"><a href="/guides/market-prices/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Market &amp; Prices</span><span class="mega-panel__cat-desc">Charts, history &amp; outlook</span></a></div>
+          <div class="mega-panel__col"><a href="/guides/silver-guides/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Silver Guides</span><span class="mega-panel__cat-desc">Silver prices &amp; silver value</span></a></div>
+          <div class="mega-panel__col"><a href="/guides/deep-dives/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Deep Dives</span><span class="mega-panel__cat-desc">Karat, purity &amp; weights</span></a></div>
+          <div class="mega-panel__col mega-panel__col--browse"><a href="/guides/" class="mega-panel__browse-all">Browse All Guides &rarr;</a></div>
+        </div>
+      </li>
+      <li class="mega-nav__item" role="none">
+        <button class="mega-nav__trigger" role="menuitem" aria-haspopup="true" aria-expanded="false">Blog <svg class="mega-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="mega-panel mega-panel--blog" role="menu" aria-label="Blog">
+          <div class="mega-panel__col mega-panel__col--blog"><span class="mega-panel__heading">Latest Articles</span><a href="/blog/gold-vs-bitcoin-2026">Gold vs Bitcoin 2026</a><a href="/blog/best-uk-gold-dealers-2026">Best UK Gold Dealers 2026</a><a href="/blog/uk-gold-cgt-guide">Gold CGT UK Guide</a><a href="/blog/is-gold-overpriced-2026">Is Gold Overpriced in 2026?</a><a href="/blog/gold-etf-vs-physical-gold-uk">Gold ETFs vs Physical Gold</a><a href="/blog/" class="mega-panel__view-all">View All Articles &rarr;</a></div>
+        </div>
+      </li>
+      <li class="mega-nav__item mega-nav__item--plain" role="none">
+        <a href="/about" class="mega-nav__trigger mega-nav__trigger--link" role="menuitem">About</a>
+      </li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+    <div class="mobile-menu__inner">
+      <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Gold Prices</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/gold-rates-today">Gold Rates Today</a><a href="/live-gold-silver-price-today">Live Gold &amp; Silver</a><a href="/gold-price-chart">Gold Price Chart</a><a href="/gold-silver-ratio">Gold / Silver Ratio</a><a href="/9k-gold-price-per-gram">9K Gold Per Gram</a><a href="/10k-gold-price-per-gram">10K Gold Per Gram</a><a href="/14k-gold-price-per-gram">14K Gold Per Gram</a><a href="/18k-gold-price-per-gram">18K Gold Per Gram</a><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></div></div>
+      <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Calculators</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/scrap-gold-calculator">Scrap Gold Calculator</a><a href="/gold-bar-value">Gold Bar Value</a><a href="/gold-coins-vs-bars">Gold Coins vs Bars</a><a href="/zakat-gold-silver-calculator">Zakat Calculator</a><a href="/how-many-grams-in-troy-ounce">Troy Ounce Converter</a><a href="/where-to-sell-gold-silver">Where to Sell Gold</a><a href="/best-gold-ira-companies">Best Gold IRA Companies</a></div></div>
+      <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Silver</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/silver-price-per-kilo">Silver Per Kilo</a><a href="/800-silver-price-per-gram">.800 Silver Per Gram</a><a href="/900-silver-price-per-gram">.900 Silver Per Gram</a><a href="/silver-coins-calculator">Silver Coins Calculator</a><a href="/us-silver-dollar-values">US Silver Dollar Values</a><a href="/guides/silver-price-guide">Silver Price Guide</a></div></div>
+      <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Guides</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/guides/how-to-invest-in-gold">How to Invest in Gold</a><a href="/guides/gold-vs-silver-investment">Gold vs Silver</a><a href="/guides/gold-bar-guide">Gold Bar Guide</a><a href="/guides/gold-purity-guide">Gold Purity Guide</a><a href="/guides/how-to-sell-gold-jewellery">Sell Gold Jewellery</a><a href="/guides/how-to-test-if-gold-is-real">Test if Gold Is Real</a><a href="/guides/scrap-gold-guide">Scrap Gold Guide</a><a href="/guides/gold-price-history">Gold Price History</a><a href="/guides/gold-hallmarks-explained">Gold Hallmarks</a><a href="/guides/troy-ounce-guide">Troy Ounce Guide</a><a href="/guides/" class="mobile-view-all">All Guides &rarr;</a></div></div>
+      <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Blog</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/blog/gold-vs-bitcoin-2026">Gold vs Bitcoin 2026</a><a href="/blog/best-uk-gold-dealers-2026">Best UK Gold Dealers 2026</a><a href="/blog/uk-gold-cgt-guide">Gold CGT UK Guide</a><a href="/blog/is-gold-overpriced-2026">Is Gold Overpriced in 2026?</a><a href="/blog/gold-etf-vs-physical-gold-uk">Gold ETFs vs Physical Gold</a><a href="/blog/" class="mobile-view-all">All Articles &rarr;</a></div></div>
+      <div class="mobile-section mobile-section--flat"><a href="/about">About</a><a href="/contact">Contact</a><a href="/editorial-standards/">Editorial Standards</a></div>
+      <div class="mobile-menu__search"><form action="/" method="GET"><input type="search" name="q" placeholder="Search GoldPriceTools..." aria-label="Search site"></form></div>
+    </div>
+  </div>
+</nav>
+</nav>
+  <main>
+    <div class="category-wrap">
+      <a href="/guides/" class="back-link">← All Guides</a>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Market & Prices Guides</li></ol></nav>
+      <div class="category-hero">
+        <h1>Market & Prices Guides</h1>
+        <p>Gold price history, forecasts, and the market forces that drive precious metals prices.</p>
+      </div>
+      <div class="articles-grid">
+        <a href="/guides/gold-price-history" class="article-card">
+          <div class="article-tag">Market</div>
+          <h3 class="article-card-title">Gold Price History: Key Milestones From 1970 to 2026</h3>
+          <p class="article-card-desc">How the gold price moved through every major economic event since 1970.</p>
+        </a>
+        <a href="/guides/gold-price-prediction-2026" class="article-card">
+          <div class="article-tag">Market Outlook</div>
+          <h3 class="article-card-title">Gold Price Prediction 2026</h3>
+          <p class="article-card-desc">Market outlook and analyst forecasts for the gold price in 2026.</p>
+        </a>
+        <a href="/guides/what-affects-gold-price" class="article-card">
+          <div class="article-tag">Market</div>
+          <h3 class="article-card-title">What Affects the Gold Price?</h3>
+          <p class="article-card-desc">Interest rates, inflation, USD strength and geopolitics — all explained.</p>
+        </a>
+        <a href="/guides/how-to-read-gold-spot-price" class="article-card">
+          <div class="article-tag">Beginner</div>
+          <h3 class="article-card-title">How to Read a Gold Spot Price — A Beginner's Guide</h3>
+          <p class="article-card-desc">What the spot price means, where it comes from, and how to use it.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+  <footer>
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="nav-logo" style="margin-bottom:var(--space-3)">
+        <img src="https://assets.goldpricetools.com/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="lazy" onerror="this.style.display='none'">
+        <span style="font-weight:700">GoldPriceTools</span>
+      </div>
+      <p class="footer-brand">Live gold and silver price calculator. Real-time 9K&ndash;24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Prices sourced from global markets via LBMA, updated every 60 seconds.</p>
+      <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-3)">Prices are indicative and for reference only. Not financial advice.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Gold Prices</h4>
+      <ul>
+        <li><a href="/9k-gold-price-per-gram">9K Gold Per Gram</a></li>
+        <li><a href="/10k-gold-price-per-gram">10K Gold Per Gram</a></li>
+        <li><a href="/14k-gold-price-per-gram">14K Gold Per Gram</a></li>
+        <li><a href="/18k-gold-price-per-gram">18K Gold Per Gram</a></li>
+        <li><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a></li>
+        <li><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></li>
+        <li><a href="/gold-silver-ratio">Gold / Silver Ratio</a></li>
+        <li><a href="/gold-price-chart">Gold Price Chart</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Calculators</h4>
+      <ul>
+        <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a></li>
+        <li><a href="/silver-coins-calculator">Silver Coins Calculator</a></li>
+        <li><a href="/us-silver-dollar-values">US Silver Dollar Values</a></li>
+        <li><a href="/silver-price-per-kilo">Silver Per Kilo</a></li>
+        <li><a href="/900-silver-price-per-gram">.900 Coin Silver</a></li>
+        <li><a href="/800-silver-price-per-gram">.800 European Silver</a></li>
+        <li><a href="/zakat-gold-silver-calculator">Zakat Calculator</a></li>
+        <li><a href="/how-many-grams-in-troy-ounce">Troy Ounce Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Guides</h4>
+      <ul>
+        <li><a href="/guides/how-to-invest-in-gold">How to Invest in Gold</a></li>
+        <li><a href="/guides/gold-purity-guide">Gold Purity Guide</a></li>
+        <li><a href="/guides/gold-bar-guide">Gold Bar Guide</a></li>
+        <li><a href="/guides/how-to-sell-gold-jewellery">Sell Gold Jewellery</a></li>
+        <li><a href="/guides/how-to-test-if-gold-is-real">Test if Gold Is Real</a></li>
+        <li><a href="/guides/scrap-gold-guide">Scrap Gold Guide</a></li>
+        <li><a href="/guides/gold-price-history">Gold Price History</a></li>
+        <li><a href="/guides/">All Guides</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="/blog/gold-vs-bitcoin-2026">Gold vs Bitcoin 2026</a></li>
+        <li><a href="/blog/best-uk-gold-dealers-2026">Best UK Gold Dealers</a></li>
+        <li><a href="/blog/uk-gold-cgt-guide">Gold CGT UK Guide</a></li>
+        <li><a href="/blog/is-gold-overpriced-2026">Is Gold Overpriced?</a></li>
+        <li><a href="/blog/gold-etf-vs-physical-gold-uk">ETFs vs Physical Gold</a></li>
+        <li><a href="/blog/">All Articles</a></li>
+      </ul>
+      <h4 style="margin-top:var(--space-4)">Info</h4>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/editorial-standards/">Editorial Standards</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 GoldPriceTools &mdash; goldpricetools.com</span>
+    <span>Spot data refreshes every 60 seconds. Prices sourced from LBMA via gold-api.com.</span>
+  </div>
+</footer>
+</body>
+</html>
+</body>
+</html>
