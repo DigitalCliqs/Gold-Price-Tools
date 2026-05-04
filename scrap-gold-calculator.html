@@ -456,18 +456,18 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .article-excerpt{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6}
 
 /* FOOTER */
-footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-8) var(--space-4)}
-.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--space-8)}
-@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.footer-inner{grid-template-columns:1fr}}
+footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-10) 0}
+.footer-inner{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-8);padding:0 var(--space-8)}
+@media(max-width:900px){.footer-inner{flex-wrap:wrap;gap:var(--space-6)}}
+@media(max-width:600px){.footer-inner{flex-direction:column;gap:var(--space-5)}}
 .footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
 .footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:var(--space-2)}
 .footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
 .footer-col a:hover{color:var(--color-text)}
-.footer-bottom{max-width:1200px;margin:var(--space-6) auto 0;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
-.last-updated{font-size:var(--text-xs);color:var(--color-text-faint)}
+.footer-bottom{margin:var(--space-6) 0 0;padding:var(--space-4) var(--space-6) 0;border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
+
 #googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
 
 /* MEGA MENU */
@@ -771,7 +771,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <li><a href="/blog/gold-etf-vs-physical-gold-uk">ETFs vs Physical Gold</a></li>
         <li><a href="/blog/">All Articles</a></li>
       </ul>
-      <h4 style="margin-top:var(--space-4)">Info</h4>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
       <ul>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
