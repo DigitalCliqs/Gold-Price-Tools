@@ -311,18 +311,18 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .article-excerpt{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6}
 
 /* FOOTER */
-footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-8) var(--space-4)}
-.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--space-8)}
-@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.footer-inner{grid-template-columns:1fr}}
+footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-10) 0}
+.footer-inner{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-8);padding:0 var(--space-8)}
+@media(max-width:900px){.footer-inner{flex-wrap:wrap;gap:var(--space-6)}}
+@media(max-width:600px){.footer-inner{flex-direction:column;gap:var(--space-5)}}
 .footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
 .footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:var(--space-2)}
 .footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
 .footer-col a:hover{color:var(--color-text)}
-.footer-bottom{max-width:1200px;margin:var(--space-6) auto 0;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
-.last-updated{font-size:var(--text-xs);color:var(--color-text-faint)}
+.footer-bottom{margin:var(--space-6) 0 0;padding:var(--space-4) var(--space-6) 0;border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
+
 #googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
 
 /* MEGA MENU */
@@ -482,14 +482,80 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 </div>
 
 <footer>
-  <a href="/">Calculator</a>
-  <a href="/guides/">Guides</a>
-  <a href="/blog/">Blog</a>
-  <a href="/about">About</a>
-  <a href="/contact">Contact</a>
-  <a href="/privacy-policy">Privacy Policy</a>
-  <a href="/terms">Terms</a>
-  <span style="display:block;margin-top:.5rem">&copy; 2026 GoldPriceTools &mdash; Operated by DigitalCliqs, UK. Not financial advice.</span>
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="nav-logo" style="margin-bottom:var(--space-3)">
+        <img src="https://assets.goldpricetools.com/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="lazy" onerror="this.style.display='none'">
+        <span style="font-weight:700">GoldPriceTools</span>
+      </div>
+      <p class="footer-brand">Live gold and silver price calculator. Real-time 9K–24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Prices sourced from global markets via LBMA, updated every 60 seconds.</p>
+      <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-3)">Prices are indicative and for reference only. Not financial advice.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Gold Prices</h4>
+      <ul>
+        <li><a href="/9k-gold-price-per-gram">9K Gold Per Gram</a></li>
+        <li><a href="/10k-gold-price-per-gram">10K Gold Per Gram</a></li>
+        <li><a href="/14k-gold-price-per-gram">14K Gold Per Gram</a></li>
+        <li><a href="/18k-gold-price-per-gram">18K Gold Per Gram</a></li>
+        <li><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a></li>
+        <li><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></li>
+        <li><a href="/gold-silver-ratio">Gold / Silver Ratio</a></li>
+        <li><a href="/gold-price-chart">Gold Price Chart</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Calculators</h4>
+      <ul>
+        <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a></li>
+        <li><a href="/silver-coins-calculator">Silver Coins Calculator</a></li>
+        <li><a href="/us-silver-dollar-values">US Silver Dollar Values</a></li>
+        <li><a href="/silver-price-per-kilo">Silver Per Kilo</a></li>
+        <li><a href="/900-silver-price-per-gram">.900 Coin Silver</a></li>
+        <li><a href="/800-silver-price-per-gram">.800 European Silver</a></li>
+        <li><a href="/zakat-gold-silver-calculator">Zakat Calculator</a></li>
+        <li><a href="/how-many-grams-in-troy-ounce">Troy Ounce Converter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Guides</h4>
+      <ul>
+        <li><a href="/guides/how-to-invest-in-gold">How to Invest in Gold</a></li>
+        <li><a href="/guides/gold-purity-guide">Gold Purity Guide</a></li>
+        <li><a href="/guides/gold-bar-guide">Gold Bar Guide</a></li>
+        <li><a href="/guides/how-to-sell-gold-jewellery">Sell Gold Jewellery</a></li>
+        <li><a href="/guides/how-to-test-if-gold-is-real">Test if Gold Is Real</a></li>
+        <li><a href="/guides/scrap-gold-guide">Scrap Gold Guide</a></li>
+        <li><a href="/guides/gold-price-history">Gold Price History</a></li>
+        <li><a href="/guides/">All Guides</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="/blog/gold-vs-bitcoin-2026">Gold vs Bitcoin 2026</a></li>
+        <li><a href="/blog/best-uk-gold-dealers-2026">Best UK Gold Dealers</a></li>
+        <li><a href="/blog/uk-gold-cgt-guide">Gold CGT UK Guide</a></li>
+        <li><a href="/blog/is-gold-overpriced-2026">Is Gold Overpriced?</a></li>
+        <li><a href="/blog/gold-etf-vs-physical-gold-uk">ETFs vs Physical Gold</a></li>
+        <li><a href="/blog/">All Articles</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/editorial-standards/">Editorial Standards</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 GoldPriceTools &mdash; goldpricetools.com</span>
+    <span>Spot data refreshes every 60 seconds. Prices sourced from LBMA via gold-api.com.</span>
+  </div>
 </footer>
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 </body>
