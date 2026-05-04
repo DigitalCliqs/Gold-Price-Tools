@@ -475,6 +475,26 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .prose li{margin-bottom:var(--space-2);line-height:1.65}
 .prose h2{margin-top:var(--space-10);margin-bottom:var(--space-3)}
 .prose h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}
+
+/* ── Prose article ── */
+.prose{max-width:860px;margin:var(--space-10) 0}
+.prose h2{font-family:var(--font-display);font-size:var(--text-2xl);margin-top:var(--space-10);margin-bottom:var(--space-3);color:var(--color-text)}
+.prose h3{font-size:var(--text-lg);font-weight:600;margin-top:var(--space-6);margin-bottom:var(--space-2)}
+.prose p{margin-bottom:var(--space-4);line-height:1.7;color:var(--color-text-muted)}
+.prose ul,.prose ol{margin-bottom:var(--space-4);padding-left:var(--space-6);color:var(--color-text-muted)}
+.prose li{margin-bottom:var(--space-2);line-height:1.65}
+.prose strong{color:var(--color-text);font-weight:600}
+
+/* ── FAQ ── */
+.faq-section{margin-top:var(--space-10)}
+.faq-item{border-bottom:1px solid var(--color-border);padding:var(--space-4) 0}
+.faq-item:last-child{border-bottom:none}
+.faq-item h3{font-size:var(--text-base);font-weight:600;color:var(--color-text);margin:0 0 var(--space-2)}
+.faq-answer p{margin:0;color:var(--color-text-muted);line-height:1.65;font-size:var(--text-sm)}
+
+/* ── Disclaimer box ── */
+.disclaimer-box{margin-top:var(--space-8);padding:var(--space-4);background:var(--color-surface-offset,var(--color-surface));border-radius:var(--radius-md);border-left:3px solid var(--color-border);font-size:var(--text-sm);color:var(--color-text-faint);line-height:1.6}
+.disclaimer-box strong{color:var(--color-text-muted)}
 </style>
 
 <script type="application/ld+json">
@@ -594,6 +614,169 @@ function fireCalcEngaged() {
 
 
 
+
+
+
+<div class="trust-bar">Live prices sourced from LBMA spot market via gold-api.com. Updated every 60 seconds. <a href="/about">About our data</a></div>
+
+<article class="prose">
+
+  <h2>How to Use the Scrap Gold Calculator</h2>
+  <ol>
+    <li><strong>Enter the weight in grams.</strong> Use a digital jewellery scale for accuracy — even small errors in weight significantly affect the melt value. Kitchen scales are not precise enough for gold weighing.</li>
+    <li><strong>Select the karat purity.</strong> Check your jewellery for a hallmark stamp (e.g. 375 = 9K, 585 = 14K, 750 = 18K, 916 = 22K, 999 = 24K). If there is no stamp, a testing kit or acid test can confirm purity.</li>
+    <li><strong>Add multiple items.</strong> Use the &ldquo;+ Add another item&rdquo; button to calculate the combined melt value of several pieces at once.</li>
+    <li><strong>Read the live melt value.</strong> The result shown is the theoretical melt value in GBP and USD, calculated from the current LBMA spot price. Dealers will offer a percentage of this figure.</li>
+  </ol>
+
+  <h2>Scrap Gold Melt Value Formula</h2>
+  <p>The melt value of any gold item is calculated using three inputs: the weight in grams, the gold purity as a decimal, and the live spot price per gram of pure 24K gold.</p>
+  <p><strong>Melt Value = Weight (g) &times; Purity (decimal) &times; Spot Price (per gram of 24K gold)</strong></p>
+  <p>For example, a 10g gold ring hallmarked 750 (18K) with a live 24K spot price of £107/g is worth:</p>
+  <p>10 &times; 0.75 &times; £107 = <strong>£802.50 melt value</strong></p>
+  <p>This is the maximum theoretical value of the pure gold content. Dealers will typically offer between 70% and 92% of this figure depending on their margin and overhead.</p>
+
+  <h2>Current Scrap Gold Prices by Karat</h2>
+  <p>The table below shows today&rsquo;s indicative scrap gold melt value per gram for each karat, updated live from the LBMA spot price.</p>
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Karat</th>
+          <th>Hallmark</th>
+          <th>Purity</th>
+          <th>GBP/gram (live)</th>
+          <th>USD/gram (live)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>24K</td><td>999</td><td>99.9%</td><td id="s24-gbp">--</td><td id="s24-usd">--</td></tr>
+        <tr><td>22K</td><td>916</td><td>91.67%</td><td id="s22-gbp">--</td><td id="s22-usd">--</td></tr>
+        <tr><td>18K</td><td>750</td><td>75.0%</td><td id="s18-gbp">--</td><td id="s18-usd">--</td></tr>
+        <tr><td>14K</td><td>585</td><td>58.33%</td><td id="s14-gbp">--</td><td id="s14-usd">--</td></tr>
+        <tr><td>10K</td><td>417</td><td>41.67%</td><td id="s10-gbp">--</td><td id="s10-usd">--</td></tr>
+        <tr><td>9K</td><td>375</td><td>37.5%</td><td id="s9-gbp">--</td><td id="s9-usd">--</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+  (function(){
+    function fillScrapTable(gbp24, usd24){
+      var karats=[{k:'24',p:0.999},{k:'22',p:0.9167},{k:'18',p:0.75},{k:'14',p:0.5833},{k:'10',p:0.4167},{k:'9',p:0.375}];
+      karats.forEach(function(item){
+        var eg=document.getElementById('s'+item.k+'-gbp');
+        var eu=document.getElementById('s'+item.k+'-usd');
+        if(eg) eg.textContent='£'+(gbp24*item.p).toFixed(2);
+        if(eu) eu.textContent='$'+(usd24*item.p).toFixed(2);
+      });
+    }
+    function tryFill(){
+      if(typeof window._goldGBP!=='undefined'&&typeof window._goldUSD!=='undefined'){
+        fillScrapTable(window._goldGBP, window._goldUSD);
+      } else {
+        setTimeout(tryFill, 800);
+      }
+    }
+    tryFill();
+  })();
+  </script>
+
+  <h2>What Is Scrap Gold?</h2>
+  <p>Scrap gold refers to any gold item sold purely for its metal content rather than its design or craftsmanship. Common scrap gold includes broken jewellery, old rings and chains, gold coins sold at melt value, dental gold, and gold that is out of fashion or damaged beyond repair.</p>
+  <p>Unlike investment-grade bullion, scrap gold carries no premium over spot price — buyers are interested only in the weight of pure gold it contains. This means the melt value calculated above represents the true ceiling of what your piece is worth to a buyer.</p>
+
+  <h2>What Percentage of Melt Value Do Scrap Gold Dealers Pay?</h2>
+  <p>No dealer pays 100% of melt value — they need a margin to cover refining costs, overheads, and profit. The percentage offered varies significantly by buyer type:</p>
+  <ul>
+    <li><strong>Online specialist refiners (e.g. Hatton Garden Metals, Gold Traders UK):</strong> Typically 85–92% of melt value. The best option for most sellers.</li>
+    <li><strong>High street jewellers:</strong> Usually 70–80% of melt value. Convenient but not the best rate.</li>
+    <li><strong>Pawnbrokers:</strong> Often 50–70% of melt value. Best avoided if maximising return is the goal.</li>
+    <li><strong>Post-in gold services:</strong> Vary widely — always check the quoted rate before sending, as some charge return postage fees if you decline their offer.</li>
+  </ul>
+  <p>Always get at least three quotes before selling. Use this calculator to know your melt value in advance so you can judge whether an offer is fair.</p>
+
+  <h2>How to Find Your Gold&rsquo;s Hallmark</h2>
+  <p>UK gold must be hallmarked by law if sold as jewellery. The hallmark is a small stamped mark, usually inside a ring band, on a clasp, or on a chain tag. The three main hallmark numbers used in the UK are:</p>
+  <ul>
+    <li><strong>375</strong> — 9 karat gold (37.5% pure). The most common karat for everyday UK jewellery.</li>
+    <li><strong>585</strong> — 14 karat gold (58.5% pure). Popular in US and European jewellery.</li>
+    <li><strong>750</strong> — 18 karat gold (75% pure). Common in fine jewellery and Swiss watches.</li>
+    <li><strong>916</strong> — 22 karat gold (91.7% pure). Traditional in Asian and Middle Eastern jewellery.</li>
+    <li><strong>999</strong> — 24 karat gold (99.9% pure). Investment bullion coins and bars.</li>
+  </ul>
+  <p>If your piece has no hallmark or the stamp is unclear, a professional jeweller can perform an acid test or XRF assay to confirm the purity accurately.</p>
+
+  <h2>Tips for Getting the Best Price for Your Scrap Gold</h2>
+  <ul>
+    <li>Weigh your items on a calibrated digital scale before approaching any buyer — this prevents sellers from under-weighing your gold.</li>
+    <li>Separate pieces by karat before getting quotes. A mixed bag of 9K and 18K should not be offered as a single lot.</li>
+    <li>Get quotes from at least three different buyers in writing.</li>
+    <li>Be wary of &ldquo;gold parties&rdquo; or door-to-door buyers — these typically offer the lowest rates.</li>
+    <li>For large quantities (100g+), consider approaching a London Bullion Market Association (LBMA) member refinery directly.</li>
+    <li>Check that any postal gold service is fully insured and provides a free tracked return if you decline their offer.</li>
+  </ul>
+
+  <section class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h3 itemprop="name">How do I calculate scrap gold value?</h3>
+      <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text">
+          <p>Multiply the weight in grams by the gold purity as a decimal, then multiply by the current 24K spot price per gram. For example, 5g of 18K gold = 5 &times; 0.75 &times; £107 = £401.25. Our calculator does this automatically using live LBMA prices.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h3 itemprop="name">What percentage of melt value do scrap gold dealers pay?</h3>
+      <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text">
+          <p>UK scrap gold dealers typically pay between 70% and 92% of the calculated melt value. Online specialist refiners usually offer the highest percentage (85–92%), while high street jewellers and pawnbrokers often offer the least (50–75%). Always compare at least three quotes before selling.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h3 itemprop="name">How do I find the karat of my gold?</h3>
+      <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text">
+          <p>Look for a hallmark stamp on your jewellery — typically inside a ring band, on a clasp, or on a chain tag. In the UK, gold is hallmarked with 375 (9K), 585 (14K), 750 (18K), 916 (22K), or 999 (24K). If there is no visible stamp, a jeweller can perform an acid test or XRF assay to confirm purity.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h3 itemprop="name">Is melt value the same as what a dealer will pay?</h3>
+      <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text">
+          <p>No. Melt value is the theoretical maximum based purely on gold content at the live spot price. Dealers always offer less than melt value — typically 70–92% — to cover their refining costs, overheads, and profit margin. The melt value gives you a reliable benchmark to judge whether a quote is fair.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h3 itemprop="name">What is the best way to sell scrap gold in the UK?</h3>
+      <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text">
+          <p>For the best price, use a specialist online gold refiner or bullion dealer (e.g. Hatton Garden Metals, Gold Traders, or Atkinsons Bullion). These typically pay 85–92% of melt value. Always verify your gold&rsquo;s weight and karat in advance using this calculator, and compare at least three quotes before committing to a sale.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h3 itemprop="name">Does gold-plated jewellery have scrap value?</h3>
+      <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text">
+          <p>Gold-plated jewellery has negligible scrap value. The gold coating is extremely thin — typically 0.5–2.5 microns — and contains only a tiny fraction of a gram of gold. Most scrap buyers will not purchase gold-plated items for their gold content. Only solid gold (9K–24K) or gold-filled items (marked GF or 1/20 14K) have meaningful melt value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="disclaimer-box"><strong>Disclaimer:</strong> Melt values shown are indicative only and based on the live LBMA spot price. They do not constitute financial advice. Dealer buy prices are typically 70–92% of melt value. Always verify prices with your chosen dealer before selling. Prices fluctuate continuously with the live gold spot price.</div>
+
+</article>
 
 <div class="share-buttons">
   <span>Share:</span>
