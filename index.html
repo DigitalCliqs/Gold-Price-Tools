@@ -197,9 +197,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .mobile-menu .menu-section{font-size:var(--text-xs);font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.08em;padding:var(--space-3) var(--space-4) var(--space-1)}
 
 /* AD SLOTS */
-.ad-slot{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;margin:var(--space-6) auto;max-width:1200px;padding:0 var(--space-4);min-height:100px}
+.ad-slot{display:block;width:100%;overflow:hidden;margin:var(--space-6) auto;max-width:1200px;min-height:0;transition:min-height .3s}
 .ad-slot ins{display:block;width:100%}
-.ad-slot-sidebar{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;min-height:250px}
+.ad-slot-sidebar{display:block;width:100%;overflow:hidden;min-height:0}
 .ad-slot-sidebar ins{display:block;width:100%}
 
 /* HERO */
@@ -229,7 +229,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .calc-tabs{display:flex;border-bottom:1px solid var(--color-border);background:var(--color-surface-offset);overflow-x:auto;scrollbar-width:none}
 .calc-tabs::-webkit-scrollbar{display:none}
 .calc-tab{flex:1;min-width:max-content;padding:var(--space-3) var(--space-4);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer}
-.calc-tab:hover{color:var(--color-text)}
+.calc-tab:hover{color:var(--color-text);background:var(--color-surface)}
 .calc-tab.active{color:var(--color-gold-bright);border-bottom-color:var(--color-gold-bright)}
 .calc-panel{display:none;padding:var(--space-6)}
 .calc-panel.active{display:block}
@@ -419,6 +419,15 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .article-card .article-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-gold-bright);margin-bottom:var(--space-2)}
 .article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
 .article-card:hover .article-card-title{color:var(--color-primary)}
+
+/* ── Hero CTA ── */
+.hero-cta-row{display:flex;gap:var(--space-3);margin-top:var(--space-5);flex-wrap:wrap}
+.btn-hero-primary{display:inline-flex;align-items:center;gap:.4em;padding:var(--space-3) var(--space-5);background:var(--color-gold-bright);color:#fff;font-weight:700;font-size:var(--text-sm);border-radius:var(--radius-full);text-decoration:none;transition:filter .15s,transform .15s;white-space:nowrap}
+.btn-hero-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-hero-secondary{display:inline-flex;align-items:center;padding:var(--space-3) var(--space-5);border:1.5px solid var(--color-border);color:var(--color-text-muted);font-weight:500;font-size:var(--text-sm);border-radius:var(--radius-full);text-decoration:none;transition:border-color .15s,color .15s;white-space:nowrap}
+.btn-hero-secondary:hover{border-color:var(--color-gold-bright);color:var(--color-gold-bright)}
+/* ── Silver spot card value color ── */
+.spot-card-value.silver-val{color:var(--color-silver)}
 </style>
 <script>
 // Lazy-load Chart.js only when chart container is visible
@@ -576,6 +585,10 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <h1>Gold &amp; <span class="silver">Silver</span> Price<br><span class="gold">Calculator</span></h1>
     <p class="hero-desc">Live 10K, 14K, 18K &amp; 24K gold price per gram today. Scrap gold calculator, silver per troy oz and kilo — updated in real time.</p>
     <p class="last-updated">Last updated: <span id="lastUpdated">Loading...</span></p>
+    <div class="hero-cta-row">
+      <a href="#calculators" class="btn-hero-primary">Calculate Your Gold →</a>
+      <a href="/scrap-gold-calculator.html" class="btn-hero-secondary">Scrap Gold Calculator</a>
+    </div>
   </div>
   <div class="spot-cards">
     <div class="spot-card">
@@ -586,7 +599,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </div>
     <div class="spot-card">
       <div class="spot-card-label">Silver Spot (XAG)</div>
-      <div class="spot-card-value" id="spotSilverOz">—</div>
+      <div class="spot-card-value" id="spotSilverOz" class="spot-card-value silver-val">—</div>
       <div class="spot-card-sub">USD per troy oz</div>
       <div class="spot-card-change" id="spotSilverChg"></div>
     </div>
