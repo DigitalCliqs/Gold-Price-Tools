@@ -29,6 +29,11 @@
 <style>
 :root{--color-bg:#0f0e0c;--color-surface:#1a1917;--color-border:#33302a;--color-text:#f5f4f0;--color-text-muted:#a39f96;--color-gold-bright:#ffd700;--font-sans:'Inter',system-ui,sans-serif;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--radius-md:8px}
 *,::after,::before{box-sizing:border-box;margin:0;padding:0}
+/* ── Global link reset — enforce brand colours site-wide ── */
+a{color:var(--color-primary);text-decoration:none}
+a:hover{color:var(--color-primary-hover);text-decoration:underline}
+a:visited{color:var(--color-primary)}
+
 body{font-family:var(--font-sans);background:var(--color-bg);color:var(--color-text);line-height:1.6}
 .container{max-width:900px;margin:var(--space-12) auto;padding:0 var(--space-4)}
 h1{font-size:2rem;margin-bottom:var(--space-4);color:var(--color-gold-bright)}
