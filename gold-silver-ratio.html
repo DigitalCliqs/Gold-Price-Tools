@@ -216,7 +216,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .ad-slot-sidebar ins{display:block;width:100%}
 
 /* HERO */
-.hero{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center}
+.hero{max-width:760px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-4)}
 @media(max-width:768px){.hero{grid-template-columns:1fr;padding:var(--space-8) var(--space-4) var(--space-4)}}
 .hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);background:color-mix(in oklch,var(--color-gold) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold) 25%,var(--color-border));padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;color:var(--color-gold-bright);margin-bottom:var(--space-4);letter-spacing:.05em;text-transform:uppercase}
 .hero h1{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-text);margin-bottom:var(--space-4);line-height:1.15}
@@ -443,6 +443,27 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
 .article-card:hover .article-card-title{color:var(--color-primary)}
 
+
+/* ── Breadcrumb ── */
+.breadcrumb-wrap{max-width:1200px;margin:0 auto;padding:var(--space-3) var(--space-4)}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:var(--space-1);list-style:none;padding:0;margin:0;font-size:var(--text-xs);color:var(--color-text-faint)}
+.breadcrumb li+li::before{content:"\203A";margin-right:var(--space-1);color:var(--color-text-faint)}
+.breadcrumb a{color:var(--color-text-faint);text-decoration:none}
+.breadcrumb a:hover{color:var(--color-text-muted)}
+.breadcrumb [aria-current="page"]{color:var(--color-text-muted)}
+/* ── Hero ── */
+.hero-tag{display:inline-block;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-gold-bright);margin-bottom:var(--space-3)}
+.hero-title{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;color:var(--color-text);line-height:1.15;margin-bottom:var(--space-4)}
+h2.hero-title{font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:700;margin-top:var(--space-8);margin-bottom:var(--space-3)}
+/* ── Calc card ── */
+.calc-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-md);max-width:640px;margin:var(--space-6) auto}
+/* ── Result display ── */
+.result-box{margin-top:var(--space-6);padding:var(--space-6);background:var(--color-surface-offset);border-radius:var(--radius-lg);text-align:center}
+.result-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-faint);margin-bottom:var(--space-2)}
+.result-usd{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,4rem);font-weight:400;color:var(--color-gold-bright);line-height:1;letter-spacing:-.02em}
+/* ── Spot info row ── */
+.calc-spot-info{display:flex;justify-content:space-around;align-items:center;gap:var(--space-4);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);margin-bottom:var(--space-4)}
+.gold-spot-display,.silver-spot-display{text-align:center}
 </style>
 </head>
 <body>
@@ -526,7 +547,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   <p style="font-size:.9375rem;color:var(--color-text-muted);margin-bottom:1.5rem">Calculate the live melt value of US junk silver coins. Enter quantities below.</p>
 
   <div class="calc-card">
-  <div class="calc-spot-info" style="display: flex; justify-content: space-around; align-items: center;">
+  <div class="calc-spot-info" >
     <div>
       <div style="font-size:0.875rem;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.05em">Gold Spot</div>
       <div id="gold-spot-display" style="font-family:var(--font-display);font-size:1.75rem;color:var(--color-gold-bright)">$0.00</div>
@@ -537,7 +558,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </div>
   </div>
 
-  <div class="result-box" style="margin-top: 2rem;">
+  <div class="result-box">
     <div class="result-label">Current Gold-Silver Ratio</div>
     <div id="ratio-display" class="result-usd" style="font-size:3.5rem">--</div>
     <div style="font-size:0.875rem;color:var(--color-text-muted);margin-top:0.5rem">Ounces of silver per ounce of gold</div>
