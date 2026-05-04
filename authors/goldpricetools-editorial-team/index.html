@@ -421,6 +421,33 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
 .article-card:hover .article-card-title{color:var(--color-primary)}
 
+
+/* ── Author page container ── */
+.container{max-width:760px;margin:0 auto;padding:var(--space-12) var(--space-6) var(--space-16)}
+
+/* ── Team avatar badge ── */
+.team-mark{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--color-gold),var(--color-gold-bright,#f5c842));color:var(--color-bg);font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-5);box-shadow:0 2px 12px color-mix(in oklch,var(--color-gold) 35%,transparent)}
+
+/* ── Author page typography ── */
+.container>h1{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.4rem);font-weight:800;color:var(--color-text);line-height:1.15;margin-bottom:var(--space-4)}
+.container>h2{font-size:var(--text-xl);font-weight:700;color:var(--color-text);margin:var(--space-8) 0 var(--space-3);line-height:1.25;padding-bottom:var(--space-2);border-bottom:1px solid var(--color-border)}
+.container>p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-4)}
+.container>ul{padding-left:var(--space-5);margin-bottom:var(--space-5)}
+.container>ul li{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-2)}
+.container>ul li strong{color:var(--color-text);font-weight:700}
+.container a{color:var(--color-primary);text-decoration:underline}
+.container a:hover{color:var(--color-primary-hover)}
+.container code{font-family:monospace;font-size:.875em;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:4px;padding:.1em .35em;color:var(--color-text)}
+
+/* ── Back link (last <p> with ← link) ── */
+.container>p:last-child{margin-top:var(--space-8);padding-top:var(--space-4);border-top:1px solid var(--color-border)}
+.container>p:last-child a{font-size:var(--text-sm);font-weight:600;text-decoration:none;color:var(--color-text-muted)}
+.container>p:last-child a:hover{color:var(--color-primary)}
+
+@media(max-width:600px){
+  .container{padding:var(--space-8) var(--space-4) var(--space-12)}
+  .team-mark{width:64px;height:64px;font-size:1.25rem}
+}
 </style>
 
     <meta property="og:title" content="GoldPriceTools Editorial Team | GoldPriceTools">
