@@ -472,6 +472,33 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .prose li{margin-bottom:var(--space-2);line-height:1.65}
 .prose h2{margin-top:var(--space-10);margin-bottom:var(--space-3)}
 .prose h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}
+
+/* ── Article layout ── */
+.article-wrap{max-width:1200px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-16)}
+.article-title{font-family:var(--font-display);font-size:clamp(1.75rem,3.5vw,2.75rem);line-height:1.15;margin:var(--space-3) 0 var(--space-5);color:var(--color-text)}
+.article-byline{font-size:var(--text-sm);color:var(--color-text-muted);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin-bottom:var(--space-6);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-border)}
+.article-byline a{color:var(--color-primary);text-decoration:none;font-weight:500}
+.article-byline a:hover{text-decoration:underline}
+.article-body{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:var(--space-10);align-items:start;margin-top:var(--space-6)}
+@media(max-width:900px){.article-body{grid-template-columns:1fr}}
+.article-sidebar{position:sticky;top:var(--space-6)}
+.sidebar-card{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4)}
+.sidebar-card h4{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin:0 0 var(--space-3)}
+.sidebar-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-1)}
+.sidebar-card li a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:var(--space-1) 0;display:block;border-bottom:1px solid var(--color-border)}
+.sidebar-card li:last-child a{border-bottom:none}
+.sidebar-card li a:hover{color:var(--color-primary)}
+/* fix prose override */
+.article-wrap .prose{max-width:100%}
+/* comparison table override */
+.article-wrap .comparison-table,.article-wrap table{width:100%;border-collapse:collapse;font-size:var(--text-sm);margin:var(--space-4) 0 var(--space-6)}
+.article-wrap table th{text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:2px solid var(--color-border)}
+.article-wrap table td{padding:var(--space-3) var(--space-3) var(--space-3) 0;border-bottom:1px solid var(--color-border);color:var(--color-text-muted);vertical-align:middle}
+.article-wrap table tr:last-child td{border-bottom:none}
+.article-wrap table td:first-child,.article-wrap table th:first-child{padding-left:0;color:var(--color-text);font-weight:500}
+/* share + related inside article */
+.article-wrap .share-buttons{margin-top:var(--space-10);padding-top:var(--space-6);border-top:1px solid var(--color-border)}
+.article-wrap h2[id],.article-wrap h2{scroll-margin-top:var(--space-10)}
 </style>
 
 
@@ -557,6 +584,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 
 
 <article class="article-wrap" itemscope itemtype="https://schema.org/Article">
+  <div class="article-body">
+  <div class="article-prose">
   <div class="article-tag">Investment Guide</div>
   <h1 class="article-title" itemprop="headline">Gold Coins vs Gold Bars &mdash; Which Should You Buy in 2026?</h1>
   <div class="article-byline">
@@ -570,7 +599,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   <div class="prose">
     <p>Gold bars are better for large investments &mdash; lower premiums over spot (0.5&ndash;2%) and easier to store. Gold coins are better for smaller purchases and resale flexibility &mdash; they carry legal tender status, are easier to sell locally, and command a numismatic premium on resale. Both hold the same intrinsic gold value.</p>
 
-    <h2>Quick Comparison Table</h2>
+    <h2 id="quick-comparison">Quick Comparison Table</h2>
     <div class="data-table-wrap"><table class="data-table" aria-label="Gold Coins vs Gold Bars comparison">
       <thead>
         <tr><th>Factor</th><th>Gold Coins</th><th>Gold Bars</th></tr>
@@ -585,22 +614,22 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       </tbody>
     </table></div>
 
-    <h2>Gold Coins Pros &amp; Cons</h2>
+    <h2 id="gold-coins">Gold Coins Pros &amp; Cons</h2>
     <p>Gold coins are widely recognised, making them exceptionally easy to buy and sell anywhere in the world. Because they are minted by sovereign governments (such as the US Mint or Royal Mint), they carry a guarantee of weight and purity. This sovereign backing also means many gold coins are considered legal tender, which can offer significant tax advantages depending on your jurisdiction. For example, UK residents pay no Capital Gains Tax on specific British coins like the Britannia or Sovereign.</p>
     <p>On the downside, gold coins carry higher premiums over the <a href="/gold-and-silver-price-today/">live spot price</a> &mdash; typically between 3% and 8%. This premium covers the intricate manufacturing process and the numismatic (collectable) value. If you are looking to acquire the maximum amount of raw gold for your money, coins are slightly less efficient than bars.</p>
 
-    <h2>Gold Bars Pros &amp; Cons</h2>
+    <h2 id="gold-bars">Gold Bars Pros &amp; Cons</h2>
     <p>Gold bars are the choice for serious volume. Because they are simpler to manufacture, the premiums are significantly lower, often just 0.5% to 2% over spot for larger bars (such as 10 oz or 1 kg sizes). This makes gold bars the most cost-effective way to build a substantial physical precious metals portfolio.</p>
     <p>However, gold bars lack the collectable appeal and legal tender status of coins. Furthermore, large bars can be harder to liquidate quickly if you only need a small amount of cash; you cannot sell half a bar. They also require more rigorous authentication when selling to local dealers, unlike widely recognised sovereign coins.</p>
 
-    <h2>Which Is Right for You?</h2>
+    <h2 id="which-is-right">Which Is Right for You?</h2>
     <p>If you have a large sum to invest at once and plan to store your metal in a secure vault, gold bars will give you more gold for your money. They are the professional standard for wealth preservation.</p>
     <p>If you are a beginner, buying a little at a time, or want the ability to sell in smaller increments, gold coins offer unparalleled flexibility. Their global recognition makes them highly liquid, whether you're selling to an online dealer or a <a href="/where-to-sell-gold-silver">local coin shop</a>.</p>
 
-    <h2>IRA Eligibility</h2>
+    <h2 id="ira-eligibility">IRA Eligibility</h2>
     <p>Both gold coins and gold bars can be held in a self-directed Gold IRA, provided they meet strict IRS purity requirements (99.5% minimum purity). However, not all coins are eligible &mdash; collectable or rare coins are generally excluded. Approved coins include the American Gold Eagle and Canadian Gold Maple Leaf. If you're interested in using retirement funds to buy physical gold, check out our guide to the <a href="/best-gold-ira-companies">best Gold IRA companies</a>.</p>
 
-    <h2>Frequently Asked Questions</h2>
+    <h2 id="faq">Frequently Asked Questions</h2>
     <h3>Are gold bars or coins better for beginners?</h3>
     <p>Gold coins are generally better for beginners. They are easier to authenticate, highly liquid, and can be purchased in smaller fractional sizes (like 1/10 oz or 1/4 oz), making them accessible for smaller budgets.</p>
 
@@ -751,4 +780,28 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 </script>
 </body>
-</html>
+</html>  </div>
+  <aside class="article-sidebar">
+    <div class="sidebar-card">
+      <h4>In This Guide</h4>
+      <ul>
+        <li><a href="#quick-comparison">Quick Comparison</a></li>
+        <li><a href="#gold-coins">Gold Coins Pros &amp; Cons</a></li>
+        <li><a href="#gold-bars">Gold Bars Pros &amp; Cons</a></li>
+        <li><a href="#which-is-right">Which Is Right for You?</a></li>
+        <li><a href="#ira-eligibility">IRA Eligibility</a></li>
+        <li><a href="#faq">Frequently Asked Questions</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-card" style="margin-top:var(--space-4)">
+      <h4>Related Tools</h4>
+      <ul>
+        <li><a href="/gold-bar-value">Gold Bar Value Calculator</a></li>
+        <li><a href="/scrap-gold-calculator">Scrap Gold Calculator</a></li>
+        <li><a href="/24k-gold-price-per-gram">24K Gold Price Per Gram</a></li>
+        <li><a href="/gold-silver-ratio">Gold / Silver Ratio</a></li>
+      </ul>
+    </div>
+  </aside>
+  </div>
+  
