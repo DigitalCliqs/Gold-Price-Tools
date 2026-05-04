@@ -251,6 +251,15 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .article-card:hover .article-title,.article-card:hover .article-card-title{color:var(--color-primary)}
 .blog-preview-card:hover h3{color:var(--color-primary)}
 .related-card:hover .related-card__title{color:var(--color-primary)}
+
+/* ── Guides mega panel — category links ── */
+.mega-panel__category-link{display:block;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1px solid var(--color-border);text-decoration:none;color:var(--color-text);transition:border-color var(--transition),background var(--transition)}
+.mega-panel__category-link:hover{border-color:var(--color-gold-bright);background:var(--color-surface-offset);color:var(--color-text)}
+.mega-panel__cat-title{display:block;font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:2px}
+.mega-panel__cat-desc{display:block;font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.4}
+.mega-panel__col--browse{display:flex;align-items:center;justify-content:center}
+.mega-panel__browse-all{display:block;padding:var(--space-3) var(--space-5);border:1px solid var(--color-gold);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:700;color:var(--color-gold);text-decoration:none;transition:background var(--transition),color var(--transition)}
+.mega-panel__browse-all:hover{background:var(--color-gold);color:var(--color-bg)}
 </style>
 </head>
 <body>
@@ -311,9 +320,12 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <li class="mega-nav__item mega-nav__item--wide" role="none">
         <button class="mega-nav__trigger" role="menuitem" aria-haspopup="true" aria-expanded="false">Guides <svg class="mega-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button>
         <div class="mega-panel mega-panel--wide" role="menu" aria-label="Guides">
-          <div class="mega-panel__col"><span class="mega-panel__heading">Buying &amp; Investing</span><a href="/guides/how-to-invest-in-gold">How to Invest in Gold</a><a href="/guides/gold-vs-silver-investment">Gold vs Silver</a><a href="/guides/gold-bar-guide">Gold Bar Guide</a><a href="/guides/gold-purity-guide">Gold Purity Guide</a><a href="/guides/gold-karat-explained">Gold Karat Explained</a><a href="/guides/gold-hallmarks-explained">Gold Hallmarks</a><a href="/guides/gold-price-guide">Gold Price Guide</a></div>
-          <div class="mega-panel__col"><span class="mega-panel__heading">Selling &amp; Testing</span><a href="/guides/how-to-sell-gold-jewellery">Sell Gold Jewellery</a><a href="/guides/how-to-test-if-gold-is-real">Test if Gold Is Real</a><a href="/guides/how-to-calculate-scrap-gold">Calculate Scrap Gold</a><a href="/guides/scrap-gold-guide">Scrap Gold Guide</a><a href="/where-to-sell-gold-silver">Where to Sell</a><a href="/guides/how-to-store-gold-silver-at-home">Store Gold at Home</a></div>
-          <div class="mega-panel__col"><span class="mega-panel__heading">Deep Dives</span><a href="/guides/what-is-14k-gold">What Is 14K Gold?</a><a href="/guides/what-is-925-sterling-silver">925 Sterling Silver</a><a href="/guides/troy-ounce-guide">Troy Ounce Guide</a><a href="/guides/troy-ounce-vs-gram-explained">Troy Oz vs Gram</a><a href="/guides/indian-gold-silver-prices">Indian Gold Prices</a><a href="/guides/difference-between-gold-filled-and-gold-plated">Gold Filled vs Plated</a></div>
+          <div class="mega-panel__col"><a href="/guides/buying-investing/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Buying &amp; Investing</span><span class="mega-panel__cat-desc">Bullion, ETFs, IRA &amp; more</span></a></div>
+          <div class="mega-panel__col"><a href="/guides/selling-testing/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Selling &amp; Testing</span><span class="mega-panel__cat-desc">Value, sell &amp; test your gold</span></a></div>
+          <div class="mega-panel__col"><a href="/guides/market-prices/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Market &amp; Prices</span><span class="mega-panel__cat-desc">Charts, history &amp; outlook</span></a></div>
+          <div class="mega-panel__col"><a href="/guides/silver-guides/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Silver Guides</span><span class="mega-panel__cat-desc">Silver prices &amp; silver value</span></a></div>
+          <div class="mega-panel__col"><a href="/guides/deep-dives/" class="mega-panel__category-link"><span class="mega-panel__cat-title">Deep Dives</span><span class="mega-panel__cat-desc">Karat, purity &amp; weights</span></a></div>
+          <div class="mega-panel__col mega-panel__col--browse"><a href="/guides/" class="mega-panel__browse-all">Browse All Guides &rarr;</a></div>
         </div>
       </li>
       <li class="mega-nav__item" role="none">
@@ -342,6 +354,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <div class="mobile-menu__search"><form action="/" method="GET"><input type="search" name="q" placeholder="Search GoldPriceTools..." aria-label="Search site"></form></div>
     </div>
   </div>
+</nav>
 </nav>
 </div>
 
