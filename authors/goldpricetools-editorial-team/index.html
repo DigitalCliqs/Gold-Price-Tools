@@ -448,6 +448,16 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   .container{padding:var(--space-8) var(--space-4) var(--space-12)}
   .team-mark{width:64px;height:64px;font-size:1.25rem}
 }
+
+/* ── Protect nav from .container a override ── */
+.container .nav-logo{color:var(--color-gold-bright) !important}
+.container .mega-nav__trigger{color:var(--color-text-muted)}
+.container .mega-nav__trigger:hover{color:var(--color-text)}
+.container .mega-nav__trigger--link{color:var(--color-text-muted);text-decoration:none}
+.container .mega-nav__trigger--link:hover{color:var(--color-text)}
+.container .mega-panel a{color:var(--color-text-muted);text-decoration:none}
+.container .mega-panel a:hover{color:var(--color-text)}
+.container .mobile-section__items a{color:var(--color-text-muted);text-decoration:none}
 </style>
 
     <meta property="og:title" content="GoldPriceTools Editorial Team | GoldPriceTools">
