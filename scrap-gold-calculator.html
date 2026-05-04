@@ -929,7 +929,7 @@ function delRow(id){
   if(el&&document.querySelectorAll('.calc-row').length>1){el.remove();calc();}
 }
 async function fetchFx(){try{const r=await fetch('https://api.goldpricetoolsworker.io/fx',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();window._gbpusd=d.GBPUSD||0.79;}catch{window._gbpusd=0.79;}}
-async function fetchSpot(){try{const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();window._spot=d.price;calc();}catch(e){console.warn('Gold API failed',e);}}
+async function fetchSpot(){try{const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});if(!r.ok)throw new Error();const d=await r.json();window._spot=d.price;calc();window.dispatchEvent(new Event('goldprice_updated'));}catch(e){console.warn('Gold API failed',e);}}
 Promise.all([fetchFx(),fetchSpot()]);setInterval(fetchSpot,60000);
 </script>
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
