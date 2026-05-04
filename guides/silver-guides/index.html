@@ -11,39 +11,254 @@
   <meta property="og:url" content="https://goldpricetools.com/guides/silver-guides/">
   <meta property="og:type" content="website">
   <style>
-    
 
-:root {
-  --color-surface: #1a1a1a;
-  --color-border: #333;
-  --color-text: #f5f5f5;
-  --color-text-muted: #a3a3a3;
-  --color-gold: #d4af37;
-  --color-gold-bright: #ffd700;
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 1rem;
-  --space-4: 1.5rem;
-  --radius-lg: 0.5rem;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --text-xs: 0.75rem;
-  --text-xl: 1.25rem;
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://assets.goldpricetools.com/Fonts/instrument-serif-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://assets.goldpricetools.com/Fonts/instrument-serif-400-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://assets.goldpricetools.com/Fonts/instrument-serif-400-ext.woff2') format('woff2');
 }
 
-  body { background: #0f0e0c; color: #fff; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
-  header, footer { background: #1a1a1a; padding: 20px; text-align: center; }
-  .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-  h1, h2, h3 { color: #d4af37; }
-  .spot-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-  .spot-card { background: #1a1a1a; border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
-  .spot-card-value { font-size: 1.5em; font-weight: bold; color: #d4af37; }
-  details { background: #1a1a1a; padding: 15px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; }
-  summary { font-weight: bold; color: #d4af37; outline: none; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-  th, td { border: 1px solid #333; padding: 10px; text-align: left; }
-  th { background: #1a1a1a; color: #d4af37; }
-  a { color: #d4af37; text-decoration: none; }
-  a:hover { text-decoration: underline; }
+/* ── Guides mega panel — category links ── */
+.mega-panel__category-link{display:block;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1px solid var(--color-border);text-decoration:none;color:var(--color-text);transition:border-color var(--transition),background var(--transition)}
+.mega-panel__category-link:hover{border-color:var(--color-gold-bright);background:var(--color-surface-offset);color:var(--color-text)}
+.mega-panel__cat-title{display:block;font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:2px}
+.mega-panel__cat-desc{display:block;font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.4}
+.mega-panel__col--browse{display:flex;align-items:center;justify-content:center}
+.mega-panel__browse-all{display:block;padding:var(--space-3) var(--space-5);border:1px solid var(--color-gold);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:700;color:var(--color-gold);text-decoration:none;transition:background var(--transition),color var(--transition)}
+.mega-panel__browse-all:hover{background:var(--color-gold);color:var(--color-bg)}
+
+
+:root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;--color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-gold:#b07a00;--color-gold-bright:#d19900;--color-silver:#6b7280;--shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'Instrument Serif',Georgia,serif;--transition:180ms cubic-bezier(0.16,1,0.3,1)}
+[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-2:#1b1a18;--color-surface-offset:#1d1c1a;--color-surface-offset-2:#222120;--color-surface-dynamic:#2a2927;--color-divider:#252422;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7974;--color-text-faint:#4a4947;--color-text-inverse:#1a1917;--color-primary:#4f98a3;--color-primary-hover:#6ab3be;--color-gold:#b07a00;--color-gold-bright:#e8af34;--color-silver:#9ca3af;--shadow-sm:0 1px 2px oklch(0 0 0/0.3);--shadow-md:0 4px 12px oklch(0 0 0/0.4);--shadow-lg:0 12px 32px oklch(0 0 0/0.5)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* ── Global link reset — enforce brand colours site-wide ── */
+a{color:var(--color-primary);text-decoration:none}
+a:hover{color:var(--color-primary-hover);text-decoration:underline}
+a:visited{color:var(--color-primary)}
+/* ── Card colour reset — cards are content blocks, not bare links ── */
+.article-card,.blog-preview-card,.related-card,.guide-card,.guide-card-link,.post-card,.byline-card{color:var(--color-text)}
+.article-card:hover,.blog-preview-card:hover,.related-card:hover,.guide-card:hover,.post-card:hover{color:var(--color-text)}
+/* Article card inner elements */
+.article-title,.article-card-title{font-weight:700;color:var(--color-text);margin-bottom:.3rem}
+.article-tag,.related-card__tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright)}
+.article-excerpt,.article-card-desc,.related-card__desc{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.55}
+/* Hover: title becomes primary teal */
+.article-card:hover .article-title,.article-card:hover .article-card-title{color:var(--color-primary)}
+.blog-preview-card:hover h3{color:var(--color-primary)}
+.related-card:hover .related-card__title{color:var(--color-primary)}
+
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
+body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg)}
+img,svg{display:block;max-width:100%;height:auto}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+input,select{font:inherit;color:inherit}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.2}
+p,li{text-wrap:pretty;max-width:72ch}
+a,button,[role="button"],input,select{transition:color var(--transition),background var(--transition),border-color var(--transition),box-shadow var(--transition)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+
+/* TICKER */
+.ticker-wrap{background:var(--color-surface);border-bottom:1px solid var(--color-border);overflow:hidden;height:36px;position:relative}
+.ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;width:60px;height:100%;z-index:2}
+.ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--color-surface),transparent)}
+.ticker-wrap::after{right:0;background:linear-gradient(-90deg,var(--color-surface),transparent)}
+.ticker{display:flex;align-items:center;height:100%;animation:ticker-scroll 40s linear infinite;white-space:nowrap;width:max-content}
+.ticker:hover{animation-play-state:paused}
+@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{display:inline-flex;align-items:center;gap:var(--space-2);padding:0 var(--space-6);font-size:var(--text-xs);font-weight:500}
+.ticker-label{color:var(--color-text-muted)}
+.ticker-value{color:var(--color-text);font-variant-numeric:tabular-nums}
+.ticker-change.up{color:#4ade80}
+.ticker-change.down{color:#f87171}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{display:flex;align-items:center;gap:var(--space-2);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:var(--space-1)}
+.nav-links a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:var(--space-2) var(--space-3);border-radius:var(--radius-md)}
+.nav-links a:hover{color:var(--color-text);background:var(--color-surface-offset)}
+.nav-actions{display:flex;align-items:center;gap:var(--space-2)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-md);color:var(--color-text-muted);border:1px solid var(--color-border)}
+.theme-toggle:hover{color:var(--color-text);background:var(--color-surface-offset)}
+.hamburger{display:none;flex-direction:column;gap:4px;padding:var(--space-2);border-radius:var(--radius-md)}
+.hamburger span{display:block;width:20px;height:2px;background:var(--color-text);border-radius:2px;transition:transform .2s,opacity .2s}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:var(--space-4);z-index:99}
+.mobile-menu.open{display:flex;flex-direction:column;gap:var(--space-2)}
+.mobile-menu a{font-size:var(--text-base);color:var(--color-text-muted);text-decoration:none;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md)}
+.mobile-menu a:hover{background:var(--color-surface-offset);color:var(--color-text)}
+.mobile-menu .menu-section{font-size:var(--text-xs);font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.08em;padding:var(--space-3) var(--space-4) var(--space-1)}
+
+/* AD SLOTS */
+.ad-slot{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;margin:var(--space-6) auto;max-width:1200px;padding:0 var(--space-4);min-height:100px}
+.ad-slot ins{display:block;width:100%}
+.ad-slot-sidebar{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;min-height:250px}
+.ad-slot-sidebar ins{display:block;width:100%}
+
+/* HERO */
+.hero{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding:var(--space-8) var(--space-4) var(--space-4)}}
+.hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);background:color-mix(in oklch,var(--color-gold) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold) 25%,var(--color-border));padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;color:var(--color-gold-bright);margin-bottom:var(--space-4);letter-spacing:.05em;text-transform:uppercase}
+.hero h1{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-text);margin-bottom:var(--space-4);line-height:1.15}
+.hero h1 .gold{color:var(--color-gold-bright)}
+.hero h1 .silver{color:var(--color-silver)}
+.hero-desc{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:52ch;margin-bottom:var(--space-6)}
+.spot-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+.spot-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);box-shadow:var(--shadow-sm)}
+.spot-card-label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-1)}
+.spot-card-value{font-size:var(--text-xl);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.spot-card-value.gold-val{color:var(--color-gold-bright)}
+.spot-card-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1)}
+.spot-card-change{font-size:var(--text-xs);font-weight:600;margin-top:var(--space-1)}
+.spot-card-change.up{color:#4ade80}
+.spot-card-change.down{color:#f87171}
+
+/* MAIN LAYOUT */
+.main-wrap{max-width:1200px;margin:0 auto;padding:0 var(--space-4) var(--space-16);display:grid;grid-template-columns:1fr 300px;gap:var(--space-8);align-items:start}
+@media(max-width:1024px){.main-wrap{grid-template-columns:1fr}}
+
+/* CALCULATORS */
+.calc-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm)}
+.calc-tabs{display:flex;border-bottom:1px solid var(--color-border);background:var(--color-surface-offset);overflow-x:auto;scrollbar-width:none}
+.calc-tabs::-webkit-scrollbar{display:none}
+.calc-tab{flex:1;min-width:max-content;padding:var(--space-3) var(--space-4);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer}
+.calc-tab:hover{color:var(--color-text)}
+.calc-tab.active{color:var(--color-gold-bright);border-bottom-color:var(--color-gold-bright)}
+.calc-panel{display:none;padding:var(--space-6)}
+.calc-panel.active{display:block}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4)}
+@media(max-width:600px){.calc-row{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:var(--space-2)}
+.form-label{font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted)}
+.form-input,.form-select{width:100%;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-base);color:var(--color-text);-webkit-appearance:none;appearance:none}
+.form-input:focus,.form-select:focus{border-color:var(--color-primary);background:var(--color-surface)}
+.form-select-wrap{position:relative}
+.form-select-wrap::after{content:'▾';position:absolute;right:var(--space-3);top:50%;transform:translateY(-50%);color:var(--color-text-muted);pointer-events:none;font-size:var(--text-xs)}
+.calc-result{background:color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 20%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin-top:var(--space-4)}
+.calc-result-label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
+.calc-result-value{font-size:var(--text-2xl);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.calc-result-meta{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1)}
+.calc-hint{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-3);line-height:1.6;max-width:60ch}
+
+/* SCRAP TABLE */
+.scrap-table{width:100%;border-collapse:collapse;margin-bottom:var(--space-4)}
+.scrap-table th{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em;padding:var(--space-2) var(--space-3);text-align:left;border-bottom:1px solid var(--color-border)}
+.scrap-table td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--color-divider)}
+.scrap-table td:last-child{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums}
+.scrap-table input{width:100%;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-3);font-size:var(--text-sm);color:var(--color-text)}
+.scrap-total{background:var(--color-surface-offset);border-radius:var(--radius-lg);padding:var(--space-4);display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-4)}
+@media(max-width:600px){.scrap-total{grid-template-columns:1fr}}
+.scrap-total-item{text-align:center}
+.scrap-total-label{font-size:var(--text-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-1)}
+.scrap-total-value{font-size:var(--text-lg);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums}
+
+/* KARAT TABLES */
+.karat-section{margin-top:var(--space-8)}
+.karat-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-2)}
+.karat-section p{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4);max-width:60ch}
+.karat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4);margin-bottom:var(--space-8)}
+.karat-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+.karat-card-header{padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border-bottom:1px solid var(--color-border);display:flex;align-items:center;justify-content:space-between}
+.karat-card-title{font-size:var(--text-sm);font-weight:700;color:var(--color-text)}
+.karat-card-purity{font-size:var(--text-xs);color:var(--color-text-muted)}
+.karat-table{width:100%;border-collapse:collapse}
+.karat-table td{padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--color-divider);font-size:var(--text-sm)}
+.karat-table td:first-child{color:var(--color-text-muted)}
+.karat-table td:last-child{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.karat-table tr:last-child td{border-bottom:none}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:var(--space-4);position:sticky;top:72px;align-self:start}
+.sidebar-widget{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:var(--shadow-sm)}
+.sidebar-widget h3{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
+.quick-ref-row{display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) 0;border-bottom:1px solid var(--color-divider);font-size:var(--text-sm)}
+.quick-ref-row:last-child{border-bottom:none}
+.quick-ref-label{color:var(--color-text-muted)}
+.quick-ref-value{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums}
+.quick-ref-value.silver-val{color:var(--color-silver)}
+
+/* SIDEBAR NAV LINKS */
+.sidebar-nav{display:flex;flex-direction:column;gap:var(--space-2)}
+.sidebar-nav a{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
+.sidebar-nav a:hover{color:var(--color-gold-bright);border-color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset))}
+.sidebar-nav a span{color:var(--color-text-faint);font-size:var(--text-xs)}
+
+/* CHART */
+.chart-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin-bottom:var(--space-6);box-shadow:var(--shadow-sm)}
+.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4);flex-wrap:wrap;gap:var(--space-3)}
+.chart-title{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text)}
+.chart-controls{display:flex;gap:var(--space-2);flex-wrap:wrap}
+.chart-btn{padding:var(--space-1) var(--space-3);font-size:var(--text-xs);font-weight:600;border-radius:var(--radius-full);border:1px solid var(--color-border);color:var(--color-text-muted)}
+.chart-btn:hover,.chart-btn.active{background:var(--color-gold-bright);color:#0f0e0c;border-color:var(--color-gold-bright)}
+.chart-wrap{position:relative;height:280px}
+.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-size:var(--text-sm)}
+
+/* FAQ / SEO CARDS */
+.faq-section{margin-top:var(--space-8)}
+.faq-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-6)}
+.faq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4)}
+.faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5)}
+.faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin-bottom:var(--space-2)}
+.faq-a{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
+.faq-a .highlight{color:var(--color-gold-bright);font-weight:600}
+
+/* CONVERTER */
+.converter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-3);margin-top:var(--space-4)}
+.converter-item{background:var(--color-surface-offset);border-radius:var(--radius-md);padding:var(--space-3);text-align:center}
+.converter-label{font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-1)}
+.converter-value{font-size:var(--text-base);font-weight:600;color:var(--color-text);font-variant-numeric:tabular-nums}
+
+/* ARTICLES SECTION */
+.articles-section{margin-top:var(--space-10)}
+.articles-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-2)}
+.articles-section .section-desc{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-6);max-width:60ch}
+.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4)}
+.article-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;display:block;transition:border-color var(--transition),box-shadow var(--transition)}
+.article-card:hover{border-color:var(--color-gold-bright);box-shadow:var(--shadow-md)}
+.article-tag{font-size:var(--text-xs);font-weight:700;color:var(--color-gold-bright);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
+.article-title{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4;margin-bottom:var(--space-2)}
+.article-excerpt{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6}
+
+/* FOOTER */
+footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-8) var(--space-4)}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--space-8)}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
+.footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:var(--space-2)}
+.footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
+.footer-col a:hover{color:var(--color-text)}
+.footer-bottom{max-width:1200px;margin:var(--space-6) auto 0;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
+.last-updated{font-size:var(--text-xs);color:var(--color-text-faint)}
+#googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
 
 /* MEGA MENU */
 .site-nav{position:sticky;top:0;z-index:200;background:var(--color-surface);border-bottom:1px solid var(--color-border)}
@@ -99,21 +314,56 @@
 @media(max-width:900px){.mega-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.nav-logo span{display:none}}
 
-.footer-brand-col{max-width:260px}.footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr repeat(4,auto);gap:var(--space-8);align-items:start}@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}.footer-brand-col{grid-column:1/-1}}@media(max-width:
-    /* ── Category index page styles ── */
-    .category-hero{padding:var(--space-12) 0 var(--space-8);text-align:center}
-    .category-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--color-text);margin-bottom:var(--space-3)}
-    .category-hero p{font-size:var(--text-lg);color:var(--color-text-muted);max-width:580px;margin:0 auto var(--space-6)}
-    .breadcrumb{margin-bottom:var(--space-6);font-size:var(--text-sm)}
-    .breadcrumb ol{list-style:none;display:flex;gap:var(--space-2);flex-wrap:wrap;padding:0;margin:0}
-    .breadcrumb li{display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-muted)}
-    .breadcrumb li:not(:last-child)::after{content:"›";color:var(--color-text-muted)}
-    .breadcrumb a{color:var(--color-primary);text-decoration:none}
-    .breadcrumb a:hover{text-decoration:underline}
-    .articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4)}
-    .category-wrap{max-width:1100px;margin:0 auto;padding:0 var(--space-5) var(--space-16)}
-    .back-link{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-primary);text-decoration:none;margin-bottom:var(--space-8)}
-    .back-link:hover{text-decoration:underline}
+
+/* BLOG PREVIEW SECTION */
+.blog-preview-section{background:var(--color-surface-offset);border-top:1px solid var(--color-border);padding:var(--space-10) var(--space-4)}
+.blog-preview-inner{max-width:1200px;margin:0 auto}
+.blog-preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6)}
+.blog-preview-title{font-size:var(--text-xl);font-weight:700;color:var(--color-text)}
+.blog-preview-all{font-size:var(--text-sm);font-weight:600;color:var(--color-primary);text-decoration:none}
+.blog-preview-all:hover{color:var(--color-primary-hover)}
+.blog-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+@media(max-width:900px){.blog-preview-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.blog-preview-grid{grid-template-columns:1fr}}
+.blog-preview-card{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-5);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-decoration:none;transition:box-shadow .15s,border-color .15s}
+.blog-preview-card:hover{border-color:var(--color-primary);box-shadow:0 4px 16px oklch(0 0 0/.08)}
+.blog-preview-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary);padding:2px 8px;background:oklch(from var(--color-primary) l c h / .1);border-radius:99px;align-self:flex-start}
+.blog-preview-card h3{font-size:var(--text-base);font-weight:600;color:var(--color-text);line-height:1.4;margin:0}
+.blog-preview-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
+/* FOOTER */
+.footer-brand-col{max-width:260px}
+.footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr repeat(4,auto);gap:var(--space-8);align-items:start}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}.footer-brand-col{grid-column:1/-1}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr 1fr}}
+.footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
+.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;transition:color .12s}
+.footer-col a:hover{color:var(--color-text)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
+.footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}
+
+
+/* ── Article card — unified markup styles ── */
+.article-card-title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:var(--space-1) 0 var(--space-2);line-height:1.3}
+.article-card .article-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-gold-bright);margin-bottom:var(--space-2)}
+.article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
+.article-card:hover .article-card-title{color:var(--color-primary)}
+
+
+/* ── Guide category index page styles ── */
+.category-hero{padding:var(--space-12,3rem) 0 var(--space-8,2rem);text-align:center}
+.category-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--color-text);margin-bottom:.75rem}
+.category-hero p{font-size:1.125rem;color:var(--color-text-muted);max-width:580px;margin:0 auto 1.5rem}
+.category-wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem 4rem}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--color-primary);text-decoration:none;margin-bottom:2rem}
+.back-link:hover{text-decoration:underline}
+.breadcrumb{margin-bottom:1.5rem;font-size:.875rem}
+.breadcrumb ol{list-style:none;display:flex;gap:.5rem;flex-wrap:wrap;padding:0;margin:0}
+.breadcrumb li{display:flex;align-items:center;gap:.5rem;color:var(--color-text-muted)}
+.breadcrumb li:not(:last-child)::after{content:"›";color:var(--color-text-muted)}
+.breadcrumb a{color:var(--color-primary);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+
   </style>
 </head>
 <body>
@@ -177,17 +427,16 @@
       <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Gold Prices</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/gold-rates-today">Gold Rates Today</a><a href="/live-gold-silver-price-today">Live Gold &amp; Silver</a><a href="/gold-price-chart">Gold Price Chart</a><a href="/gold-silver-ratio">Gold / Silver Ratio</a><a href="/9k-gold-price-per-gram">9K Gold Per Gram</a><a href="/10k-gold-price-per-gram">10K Gold Per Gram</a><a href="/14k-gold-price-per-gram">14K Gold Per Gram</a><a href="/18k-gold-price-per-gram">18K Gold Per Gram</a><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></div></div>
       <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Calculators</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/scrap-gold-calculator">Scrap Gold Calculator</a><a href="/gold-bar-value">Gold Bar Value</a><a href="/gold-coins-vs-bars">Gold Coins vs Bars</a><a href="/zakat-gold-silver-calculator">Zakat Calculator</a><a href="/how-many-grams-in-troy-ounce">Troy Ounce Converter</a><a href="/where-to-sell-gold-silver">Where to Sell Gold</a><a href="/best-gold-ira-companies">Best Gold IRA Companies</a></div></div>
       <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Silver</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/silver-price-per-kilo">Silver Per Kilo</a><a href="/800-silver-price-per-gram">.800 Silver Per Gram</a><a href="/900-silver-price-per-gram">.900 Silver Per Gram</a><a href="/silver-coins-calculator">Silver Coins Calculator</a><a href="/us-silver-dollar-values">US Silver Dollar Values</a><a href="/guides/silver-price-guide">Silver Price Guide</a></div></div>
-      <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Guides</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/guides/how-to-invest-in-gold">How to Invest in Gold</a><a href="/guides/gold-vs-silver-investment">Gold vs Silver</a><a href="/guides/gold-bar-guide">Gold Bar Guide</a><a href="/guides/gold-purity-guide">Gold Purity Guide</a><a href="/guides/how-to-sell-gold-jewellery">Sell Gold Jewellery</a><a href="/guides/how-to-test-if-gold-is-real">Test if Gold Is Real</a><a href="/guides/scrap-gold-guide">Scrap Gold Guide</a><a href="/guides/gold-price-history">Gold Price History</a><a href="/guides/gold-hallmarks-explained">Gold Hallmarks</a><a href="/guides/troy-ounce-guide">Troy Ounce Guide</a><a href="/guides/" class="mobile-view-all">All Guides &rarr;</a></div></div>
+      <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Guides</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/guides/buying-investing/">Buying &amp; Investing</a><a href="/guides/selling-testing/">Selling &amp; Testing</a><a href="/guides/market-prices/">Market &amp; Prices</a><a href="/guides/silver-guides/">Silver Guides</a><a href="/guides/deep-dives/">Deep Dives</a><a href="/guides/">Browse All Guides</a></div></div>
       <div class="mobile-section"><button class="mobile-section__toggle" aria-expanded="false"><span>Blog</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></button><div class="mobile-section__items"><a href="/blog/gold-vs-bitcoin-2026">Gold vs Bitcoin 2026</a><a href="/blog/best-uk-gold-dealers-2026">Best UK Gold Dealers 2026</a><a href="/blog/uk-gold-cgt-guide">Gold CGT UK Guide</a><a href="/blog/is-gold-overpriced-2026">Is Gold Overpriced in 2026?</a><a href="/blog/gold-etf-vs-physical-gold-uk">Gold ETFs vs Physical Gold</a><a href="/blog/" class="mobile-view-all">All Articles &rarr;</a></div></div>
       <div class="mobile-section mobile-section--flat"><a href="/about">About</a><a href="/contact">Contact</a><a href="/editorial-standards/">Editorial Standards</a></div>
       <div class="mobile-menu__search"><form action="/" method="GET"><input type="search" name="q" placeholder="Search GoldPriceTools..." aria-label="Search site"></form></div>
     </div>
   </div>
 </nav>
-</nav>
   <main>
     <div class="category-wrap">
-      <a href="/guides/" class="back-link">← All Guides</a>
+      <a href="/guides/" class="back-link">&#8592; All Guides</a>
       <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Silver Guides</li></ol></nav>
       <div class="category-hero">
         <h1>Silver Guides</h1>
@@ -224,7 +473,7 @@
         <img src="https://assets.goldpricetools.com/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="lazy" onerror="this.style.display='none'">
         <span style="font-weight:700">GoldPriceTools</span>
       </div>
-      <p class="footer-brand">Live gold and silver price calculator. Real-time 9K&ndash;24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Prices sourced from global markets via LBMA, updated every 60 seconds.</p>
+      <p class="footer-brand">Live gold and silver price calculator. Real-time 9K–24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Prices sourced from global markets via LBMA, updated every 60 seconds.</p>
       <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-3)">Prices are indicative and for reference only. Not financial advice.</p>
     </div>
     <div class="footer-col">
@@ -291,7 +540,319 @@
     <span>Spot data refreshes every 60 seconds. Prices sourced from LBMA via gold-api.com.</span>
   </div>
 </footer>
+
+<script>
+const TROY_OZ_TO_GRAM = 31.1035;
+const KARATS = [
+  {k:'24K', purity:0.9999, label:'24 Karat Gold'},
+  {k:'22K', purity:0.9167, label:'22 Karat Gold'},
+  {k:'18K', purity:0.75,   label:'18 Karat Gold'},
+  {k:'14K', purity:0.5833, label:'14 Karat Gold'},
+  {k:'10K', purity:0.4167, label:'10 Karat Gold'},
+  {k:'9K',  purity:0.375,  label:'9 Karat Gold'}
+];
+const GOLD_API_BASE  = 'https://api.gold-api.com/price';
+const FX_BASE        = 'https://api.frankfurter.dev/v1/latest?from=USD';
+let goldSpotOz = null, silverSpotOz = null;
+let fxRates = { USD:1, GBP:0.74, EUR:0.855, CAD:1.367, AUD:1.398, INR:94.11 };
+let goldChart = null, silverChart = null;
+let currentGoldRange = '1M', currentSilverRange = '1M';
+let chartHistoryCache = {};
+(function(){
+  const t = document.querySelector('[data-theme-toggle]'), r = document.documentElement;
+  let d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+  r.setAttribute('data-theme', d);
+  if(t) t.addEventListener('click', () => {
+    d = d === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', d);
+    t.setAttribute('aria-label', 'Switch to ' + (d==='dark'?'light':'dark') + ' mode');
+    t.innerHTML = d === 'dark'
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    if(goldChart) goldChart.update();
+    if(silverChart) silverChart.update();
+  });
+})();
+const CURRENCY_SYMBOLS = { USD:'$', GBP:'£', EUR:'€', CAD:'C$', AUD:'A$', INR:'₹' };
+function fmtCurr(usdVal, currency) {
+  const rate = fxRates[currency] || 1;
+  const sym  = CURRENCY_SYMBOLS[currency] || '$';
+  return sym + (usdVal * rate).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+function fmtUSD(val) {
+  return '$' + val.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+async function fetchFxRates() {
+  try {
+    const res  = await fetch(`${FX_BASE}&to=GBP,EUR,CAD,AUD,INR`);
+    if (!res.ok) throw new Error('FX fetch failed');
+    const data = await res.json();
+    if (data && data.rates) fxRates = { USD: 1, ...data.rates };
+  } catch (e) { console.warn('FX rates fetch failed — using defaults:', e.message); }
+}
+async function fetchPrices() {
+  try {
+    const [gRes, sRes] = await Promise.all([fetch(`${GOLD_API_BASE}/XAU`), fetch(`${GOLD_API_BASE}/XAG`)]);
+    if (!gRes.ok || !sRes.ok) throw new Error('API response error');
+    const [gData, sData] = await Promise.all([gRes.json(), sRes.json()]);
+    if (!gData.price || !sData.price) throw new Error('Missing price fields');
+    goldSpotOz   = gData.price;
+    silverSpotOz = sData.price;
+    updateAll({price:gData.price,prev_close_price:gData.prev_close_price},{price:sData.price,prev_close_price:sData.prev_close_price});
+  } catch (err) {
+    console.warn('Price fetch failed — using static fallback:', err.message);
+    goldSpotOz   = goldSpotOz   || 4692;
+    silverSpotOz = silverSpotOz || 75.0;
+    updateAll({ price: goldSpotOz }, { price: silverSpotOz });
+  }
+}
+function updateAll(gData, sData) {
+  const gOz = gData.price, sOz = sData.price;
+  const gGram = gOz / TROY_OZ_TO_GRAM;
+  const sGram = sOz / TROY_OZ_TO_GRAM;
+  const gChg = gData.prev_close_price ? ((gOz - gData.prev_close_price) / gData.prev_close_price * 100).toFixed(2) : null;
+  const sChg = sData.prev_close_price ? ((sOz - sData.prev_close_price) / sData.prev_close_price * 100).toFixed(2) : null;
+  setText('spotGoldOz',   fmtUSD(gOz));
+  setText('spotSilverOz', fmtUSD(sOz));
+  setText('spotGoldGram', fmtUSD(gGram));
+  setText('spotSilverKg', fmtUSD(sOz * 32.1507));
+  if(gChg !== null) { const el = document.getElementById('spotGoldChg');   el.textContent = (gChg > 0 ? '▲' : '▼') + ' ' + Math.abs(gChg) + '% today'; el.className = 'spot-card-change ' + (gChg >= 0 ? 'up' : 'down'); }
+  if(sChg !== null) { const el = document.getElementById('spotSilverChg'); el.textContent = (sChg > 0 ? '▲' : '▼') + ' ' + Math.abs(sChg) + '% today'; el.className = 'spot-card-change ' + (sChg >= 0 ? 'up' : 'down'); }
+  const td = [['t-xau',fmtUSD(gOz)],['t-xag',fmtUSD(sOz)],['t-24k',fmtUSD(gGram*0.9999)],['t-18k',fmtUSD(gGram*0.75)],['t-14k',fmtUSD(gGram*0.5833)],['t-10k',fmtUSD(gGram*0.4167)],['t-agoz',fmtUSD(sOz)],['t-agkg',fmtUSD(sOz*32.1507)],['t-xau2',fmtUSD(gOz)],['t-xag2',fmtUSD(sOz)],['t-24k2',fmtUSD(gGram*0.9999)],['t-18k2',fmtUSD(gGram*0.75)],['t-14k2',fmtUSD(gGram*0.5833)],['t-10k2',fmtUSD(gGram*0.4167)],['t-agoz2',fmtUSD(sOz)],['t-agkg2',fmtUSD(sOz*32.1507)]];
+  td.forEach(([id,val]) => setText(id, val));
+  setText('qr-24g',fmtUSD(gGram*0.9999));setText('qr-18g',fmtUSD(gGram*0.75));setText('qr-14g',fmtUSD(gGram*0.5833));setText('qr-10g',fmtUSD(gGram*0.4167));setText('qr-24oz',fmtUSD(gOz*0.9999));setText('qr-18oz',fmtUSD(gOz*0.75));setText('qr-14oz',fmtUSD(gOz*0.5833));setText('qr-10oz',fmtUSD(gOz*0.4167));
+  setText('qr-ag999g',fmtUSD(sGram*0.999));setText('qr-ag925g',fmtUSD(sGram*0.925));setText('qr-ag999oz',fmtUSD(sOz*0.999));setText('qr-ag999kg',fmtUSD(sOz*32.1507*0.999));
+  setText('faq-14k',fmtUSD(gGram*0.5833));setText('faq-10k',fmtUSD(gGram*0.4167));setText('faq-18k',fmtUSD(gGram*0.75));setText('faq-sterling',fmtUSD(sGram*0.925));setText('faq-bar400',fmtUSD(gOz*400));setText('faq-bar1oz',fmtUSD(gOz));setText('faq-1g',fmtUSD(gGram));setText('faq-agkg',fmtUSD(sOz*32.1507));
+  setText('lastUpdated', new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' BST');
+  buildKaratGrid(gOz); calcGold(); calcSilver(); calcScrap(); calcBars(); calcConverter();
+}
+function buildKaratGrid(gOz) {
+  const grid = document.getElementById('karatGrid');
+  if (!grid) return;
+  if (grid.dataset.built === '1') {
+    KARATS.forEach(k => {
+      const perG = gOz / TROY_OZ_TO_GRAM * k.purity;
+      const el   = document.getElementById('kg-' + k.k);
+      if (el) {
+        el.querySelector('.kv-usd').textContent = fmtUSD(perG);
+        el.querySelector('.kv-gbp').textContent = '£' + (perG * (fxRates.GBP||0.74)).toFixed(2);
+        el.querySelector('.kv-eur').textContent = '€' + (perG * (fxRates.EUR||0.855)).toFixed(2);
+        el.querySelector('.kv-oz').textContent  = fmtUSD(gOz * k.purity);
+        el.querySelector('.kv-kg').textContent  = fmtUSD(perG * 1000);
+      }
+    }); return;
+  }
+  grid.innerHTML = ''; grid.dataset.built = '1';
+  KARATS.forEach(k => {
+    const perG = gOz / TROY_OZ_TO_GRAM * k.purity;
+    const card = document.createElement('div');
+    card.className = 'karat-card'; card.id = 'kg-' + k.k;
+    card.innerHTML = `<div class="karat-card-header"><span class="karat-card-title" id="karat-${k.k}-heading">${k.label}</span><span class="karat-card-purity">${(k.purity*100).toFixed(2)}% pure</span></div><table class="karat-table" aria-labelledby="karat-${k.k}-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">${fmtUSD(perG)}</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">£${(perG*(fxRates.GBP||0.74)).toFixed(2)}</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">€${(perG*(fxRates.EUR||0.855)).toFixed(2)}</td></tr><tr><td>Per troy oz</td><td class="kv-oz">${fmtUSD(gOz*k.purity)}</td></tr><tr><td>Per kilogram</td><td class="kv-kg">${fmtUSD(perG*1000)}</td></tr></table>`;
+    grid.appendChild(card);
+  });
+}
+function calcGold() {
+  if (!goldSpotOz) return;
+  const purity=parseFloat(document.getElementById('goldKarat').value),weight=parseFloat(document.getElementById('goldWeight').value)||0,unit=parseFloat(document.getElementById('goldUnit').value),currency=document.getElementById('goldCurrency').value,grams=weight*unit,usdVal=(goldSpotOz/TROY_OZ_TO_GRAM)*purity*grams;
+  setText('goldResult',fmtCurr(usdVal,currency));setText('goldResultMeta',`${grams.toFixed(4)}g × ${(purity*100).toFixed(2)}% purity × ${fmtUSD(goldSpotOz/TROY_OZ_TO_GRAM)}/g spot`);
+}
+function calcSilver() {
+  if (!silverSpotOz) return;
+  const purity=parseFloat(document.getElementById('silverPurity').value),weight=parseFloat(document.getElementById('silverWeight').value)||0,unit=parseFloat(document.getElementById('silverUnit').value),currency=document.getElementById('silverCurrency').value,grams=weight*unit,usdVal=(silverSpotOz/TROY_OZ_TO_GRAM)*purity*grams;
+  setText('silverResult',fmtCurr(usdVal,currency));setText('silverResultMeta',`${grams.toFixed(4)}g × ${(purity*100).toFixed(2)}% purity × ${fmtUSD(silverSpotOz/TROY_OZ_TO_GRAM)}/g spot`);
+
+  // Purity Table logic
+  const tbody = document.getElementById('silverPurityTable');
+  if (tbody) {
+    const purities = [0.999, 0.925, 0.900, 0.800];
+    const pure_oz = silverSpotOz;
+    const pure_g = pure_oz / TROY_OZ_TO_GRAM;
+    const gbpusd = fxRates.GBP || 0.79;
+    const rows = tbody.querySelectorAll('tr');
+    purities.forEach((p, i) => {
+      if (rows[i]) {
+        const p_g = pure_g * p;
+        rows[i].cells[2].textContent = '£' + (p_g * gbpusd).toFixed(2);
+        rows[i].cells[3].textContent = '£' + (p_g * 1000 * gbpusd).toFixed(2);
+        rows[i].cells[4].textContent = '£' + (pure_oz * p * gbpusd).toFixed(2);
+      }
+    });
+  }
+
+}
+function calcScrap() {
+  let inputsFilled = 0;
+  if (!goldSpotOz) return;
+  const ppg=goldSpotOz/TROY_OZ_TO_GRAM;let totalWeight=0,totalPureOz=0,totalValue=0;
+  document.querySelectorAll('#scrapRows tr').forEach(row=>{
+    const purity=parseFloat(row.dataset.purity),input=row.querySelector('input'),grams=parseFloat(input?.value)||0,value=ppg*purity*grams,valCell=row.querySelector('.scrap-row-val');
+    if(valCell) valCell.textContent=grams>0?fmtUSD(value):'—';
+    if (grams > 0) inputsFilled++;
+    totalWeight+=grams;totalPureOz+=(grams*purity)/TROY_OZ_TO_GRAM;totalValue+=value;
+  });
+  setText('scrapTotalWeight',totalWeight.toFixed(3)+' g');setText('scrapPureOz',totalPureOz.toFixed(4)+' oz t');setText('scrapTotalValue',fmtUSD(totalValue));
+  if (inputsFilled >= 3) fireScrapIntent();
+}
+function calcBars() {
+  if (!goldSpotOz) return;
+  const sizeOz=parseFloat(document.getElementById('barSize').value),qty=parseInt(document.getElementById('barQty').value)||1,val=goldSpotOz*sizeOz*qty,label=document.getElementById('barSize').selectedOptions[0].text;
+  setText('barResult',fmtUSD(val));setText('barResultMeta',`${qty} × ${label} @ ${fmtUSD(goldSpotOz)}/oz`);
+}
+function calcConverter() {
+  const amount=parseFloat(document.getElementById('convInput').value)||0,from=parseFloat(document.getElementById('convFrom').value),grams=amount*from,fmt=(v,dec)=>v.toLocaleString('en-US',{minimumFractionDigits:dec||4,maximumFractionDigits:dec||4});
+  setText('cv-g',fmt(grams,4)+' g');setText('cv-ozt',fmt(grams/31.1035,4)+' oz t');setText('cv-kg',fmt(grams/1000,6)+' kg');setText('cv-dwt',fmt(grams/1.55517,4)+' dwt');setText('cv-gr',fmt(grams/0.0648,2)+' gr');setText('cv-lb',fmt(grams/453.592,6)+' lb');setText('cv-tola',fmt(grams/11.6638,4)+' tola');
+}
+async function fetchChartHistory(metal, range) {
+  const key=`${metal}-${range}`;
+  if(chartHistoryCache[key]) return chartHistoryCache[key];
+  try {
+    const res=await fetch(`/chart-data/${metal}-${range}.json`);
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json=await res.json();
+    if(json.labels&&json.data&&json.data.length>0){chartHistoryCache[key]=json;return json;}
+    throw new Error('Empty chart data');
+  } catch(e){console.warn(`Chart data unavailable (${key}):`,e.message);return null;}
+}
+async function buildChart(canvasId,loadingId,metal,range,color,chartRef) {
+  const loadingEl=document.getElementById(loadingId);
+  if(loadingEl) loadingEl.style.display='flex';
+  const history=await fetchChartHistory(metal,range);
+  if(loadingEl) loadingEl.style.display='none';
+  if(typeof Chart==='undefined') return chartRef;
+  const style=getComputedStyle(document.documentElement),textMuted=style.getPropertyValue('--color-text-muted').trim(),border=style.getPropertyValue('--color-border').trim();
+  const isShortRange=(range==='1M'||range==='3M');
+  const labelFmt=isShortRange?(s)=>{const d=new Date(s);return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short'});}:(s)=>{const d=new Date(s);return d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'});};
+  const labels=history?history.labels.map(labelFmt):[],data=history?history.data:[];
+  if(!history||data.length===0){if(loadingEl){loadingEl.textContent='Chart data unavailable';loadingEl.style.display='flex';}return chartRef;}
+  if(chartRef) chartRef.destroy();
+  chartRef=new Chart(document.getElementById(canvasId),{type:'line',data:{labels,datasets:[{data,borderColor:color,borderWidth:2,fill:true,backgroundColor:ctx=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,280);g.addColorStop(0,color+'33');g.addColorStop(1,color+'00');return g;}}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,backgroundColor:'rgba(0,0,0,0.8)',titleColor:'#fff',bodyColor:'#fff',padding:10,callbacks:{label:ctx=>' $'+ctx.parsed.y.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}}},scales:{x:{ticks:{color:textMuted,font:{size:11},maxTicksLimit:8},grid:{color:border+'40'}},y:{ticks:{color:textMuted,font:{size:11},callback:v=>'$'+v.toLocaleString()},grid:{color:border+'40'},position:'right'}},elements:{point:{radius:0,hitRadius:10},line:{tension:0.3}}}});
+  return chartRef;
+}
+async function buildCharts() {
+  if(typeof Chart==='undefined'||!goldSpotOz) return;
+  const style=getComputedStyle(document.documentElement),goldColor=style.getPropertyValue('--color-gold-bright').trim()||'#e8af34',silverColor=style.getPropertyValue('--color-silver').trim()||'#9ca3af';
+  goldChart=await buildChart('goldChart','goldChartLoading','XAU',currentGoldRange,goldColor,goldChart);
+  silverChart=await buildChart('silverChart','silverChartLoading','XAG',currentSilverRange,silverColor,silverChart);
+}
+document.querySelectorAll('[data-range]').forEach(btn=>{
+  btn.addEventListener('click',async function(){
+    document.querySelectorAll('[data-range]').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');currentGoldRange=this.dataset.range;
+    if(goldSpotOz&&typeof Chart!=='undefined'){const style=getComputedStyle(document.documentElement),color=style.getPropertyValue('--color-gold-bright').trim()||'#e8af34';goldChart=await buildChart('goldChart','goldChartLoading','XAU',currentGoldRange,color,goldChart);}
+  });
+});
+document.querySelectorAll('[data-range-silver]').forEach(btn=>{
+  btn.addEventListener('click',async function(){
+    document.querySelectorAll('[data-range-silver]').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');currentSilverRange=this.dataset.rangeSilver;
+    if(silverSpotOz&&typeof Chart!=='undefined'){const style=getComputedStyle(document.documentElement),color=style.getPropertyValue('--color-silver').trim()||'#9ca3af';silverChart=await buildChart('silverChart','silverChartLoading','XAG',currentSilverRange,color,silverChart);}
+  });
+});
+document.querySelectorAll('.calc-tab').forEach(tab=>{
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.calc-tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});
+    document.querySelectorAll('.calc-panel').forEach(p=>p.classList.remove('active'));
+    this.classList.add('active');this.setAttribute('aria-selected','true');
+    document.getElementById('panel-'+this.dataset.tab).classList.add('active');
+  });
+});
+let _scrapIntentFired = false;
+document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll('a[href*="/scrap-gold-calculator"]').forEach(a => { a.addEventListener('click', fireScrapIntent); }); });
+function fireScrapIntent() {
+  if (!_scrapIntentFired) {
+    gtag("event", "scrap_seller_intent");
+    _scrapIntentFired = true;
+  }
+}
+
+let _calcEngagedFired = false;
+function fireCalcEngaged() {
+  if (!_calcEngagedFired) {
+    gtag("event", "calculator_engaged");
+    _calcEngagedFired = true;
+  }
+}
+
+['goldKarat','goldWeight','goldUnit','goldCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcGold(); }));
+['silverPurity','silverWeight','silverUnit','silverCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcSilver(); }));
+document.querySelectorAll('#scrapRows input').forEach(inp=>inp.addEventListener('input',() => { fireCalcEngaged(); calcScrap(); }));
+['barSize','barQty'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcBars(); }));
+['convInput','convFrom'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcConverter));
+function setText(id,val){const el=document.getElementById(id);if(el) el.textContent=val;}
+Promise.all([fetchFxRates(),fetchPrices()]).then(()=>{if(goldSpotOz){calcGold();calcSilver();buildKaratGrid(goldSpotOz);}});
+setInterval(fetchPrices,60_000);
+setInterval(fetchFxRates,600_000);
+const chartPoll=setInterval(()=>{if(typeof Chart!=='undefined'&&goldSpotOz){clearInterval(chartPoll);buildCharts();}},200);
+</script>
+
+<!-- SITELINKS SEARCHBOX — handles ?q= parameter from Google Search Box (WP-56) -->
+<script defer>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const query  = params.get('q');
+  if (!query) return;
+  const q = query.toLowerCase().trim();
+
+  // 1. Try to find an in-page match from navigation links / guide titles
+  let bestMatch = null;
+  const elements = document.querySelectorAll('a, h1, h2, h3, [id]');
+  for (const el of elements) {
+    const text = el.textContent || el.innerText;
+    if (text && text.toLowerCase().includes(q)) {
+      if (el.tagName !== 'A' || el.href.startsWith(window.location.origin) || el.href.startsWith('/') || el.href.startsWith('#')) {
+          bestMatch = el;
+          break; // Use first found
+      }
+    }
+  }
+
+  if (bestMatch) {
+    bestMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // highlight temporarily
+    const origBg = bestMatch.style.backgroundColor;
+    const origTrans = bestMatch.style.transition;
+    bestMatch.style.transition = 'background-color 0.5s ease';
+    bestMatch.style.backgroundColor = 'var(--color-gold-bright, #e8af34)';
+    setTimeout(() => {
+        bestMatch.style.backgroundColor = origBg;
+        setTimeout(() => { bestMatch.style.transition = origTrans; }, 500);
+    }, 2000);
+    return;
+  }
+
+  const searchMap = [
+    { terms: ['14k','14 karat','14k gold','14 karat gold'], url: '/14k-gold-price-per-gram' },
+    { terms: ['18k','18 karat','18k gold','18 karat gold'], url: '/18k-gold-price-per-gram' },
+    { terms: ['10k','10 karat','10k gold','10 karat gold'], url: '/10k-gold-price-per-gram' },
+    { terms: ['scrap','scrap gold','sell gold'],             url: '/scrap-gold-calculator' },
+    { terms: ['silver','silver price','silver kilo','silver per kilo','silver kg'], url: '/silver-price-per-kilo' },
+    { terms: ['troy','troy ounce','grams in troy','troy oz','troy ounce grams'], url: '/how-many-grams-in-troy-ounce' },
+  ];
+  for (const entry of searchMap) {
+    if (entry.terms.some(t => q.includes(t))) {
+      window.location.replace(entry.url);
+      return;
+    }
+  }
+  // No keyword match — scroll to calculators section
+  const calcSection = document.getElementById('calculators');
+  if (calcSection) calcSection.scrollIntoView({ behavior: 'smooth' });
+})();
+</script>
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
+<script>(function(){
+  const themeBtn=document.querySelector('[data-theme-toggle]'),root=document.documentElement;
+  let theme=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',theme);
+  if(themeBtn){themeBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);themeBtn.setAttribute('aria-label','Switch to '+(theme==='dark'?'light':'dark')+' mode');themeBtn.innerHTML=theme==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';});}
+  const ham=document.getElementById('hamburger'),mob=document.getElementById('mobileMenu');
+  if(ham&&mob){ham.addEventListener('click',function(){const o=mob.classList.toggle('open');ham.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';});document.addEventListener('click',function(e){if(mob.classList.contains('open')&&!mob.contains(e.target)&&!ham.contains(e.target)){mob.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}});}
+  document.querySelectorAll('.mobile-section__toggle').forEach(function(btn){btn.addEventListener('click',function(){const items=this.nextElementSibling;const o=items.classList.toggle('open');this.setAttribute('aria-expanded',o);});});
+  document.querySelectorAll('.mega-nav__trigger[aria-haspopup]').forEach(function(t){t.addEventListener('click',function(e){e.stopPropagation();const p=this.nextElementSibling;if(!p)return;const o=p.classList.toggle('is-open');this.setAttribute('aria-expanded',o);document.querySelectorAll('.mega-panel.is-open').forEach(function(x){if(x!==p){x.classList.remove('is-open');const t2=x.previousElementSibling;if(t2)t2.setAttribute('aria-expanded','false');}});});});
+  document.addEventListener('click',function(e){if(!e.target.closest('.mega-nav__item')){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t)t.setAttribute('aria-expanded','false');});}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t){t.setAttribute('aria-expanded','false');t.focus();}});if(mob&&mob.classList.contains('open')){mob.classList.remove('open');if(ham){ham.setAttribute('aria-expanded','false');ham.focus();}document.body.style.overflow='';}};});
+})();</script>
 </body>
-</html>
+
 </body>
 </html>
