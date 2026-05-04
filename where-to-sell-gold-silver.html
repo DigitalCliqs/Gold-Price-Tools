@@ -473,6 +473,29 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .prose li{margin-bottom:var(--space-2);line-height:1.65}
 .prose h2{margin-top:var(--space-10);margin-bottom:var(--space-3)}
 .prose h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}
+
+/* ── Page layout fixes ── */
+ul.breadcrumb{max-width:1200px;margin:0 auto;padding:var(--space-3) var(--space-4)}
+article{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4) var(--space-16)}
+.article-header{max-width:860px}
+.article-header h1{font-family:var(--font-display)!important;font-size:clamp(1.75rem,3.5vw,2.75rem)!important;font-weight:700!important;line-height:1.15!important;margin:var(--space-2) 0 var(--space-4)!important;color:var(--color-text)!important}
+.author-meta{font-size:var(--text-sm);color:var(--color-text-muted);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin-bottom:var(--space-5);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-border)}
+.author-meta a{color:var(--color-primary);text-decoration:none;font-weight:500}
+.author-meta a:hover{text-decoration:underline}
+.featured-snippet{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-6);max-width:860px}
+article > h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin:var(--space-8) 0 var(--space-3);line-height:1.25;max-width:860px}
+article > h3{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin:var(--space-6) 0 var(--space-2);max-width:860px}
+article > p,article > .content p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-4);max-width:860px}
+article > ul,article > ol{padding-left:var(--space-5);margin-bottom:var(--space-4);max-width:860px}
+article > ul li,article > ol li{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-1)}
+article > strong,article > ul li strong,article > ol li strong{color:var(--color-text);font-weight:700}
+article > a,article > ul li a,article > ol li a{color:var(--color-primary);text-decoration:underline}
+
+.comparison-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);margin:var(--space-2) 0 var(--space-6);max-width:860px}
+.comparison-table th{text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:2px solid var(--color-border)}
+.comparison-table td{padding:var(--space-3) var(--space-3) var(--space-3) 0;border-bottom:1px solid var(--color-border);color:var(--color-text-muted);vertical-align:middle}
+.comparison-table tr:last-child td{border-bottom:none}
+.comparison-table td:first-child,.comparison-table th:first-child{color:var(--color-text);font-weight:600;padding-left:0}
 </style>
 
 </head>
@@ -609,7 +632,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
           <td>Variable</td>
         </tr>
       </tbody>
-    </table></div>
+    </table>
 
     <h2>Selling Online</h2>
     <p>Selling your precious metals online is often the best way to secure a payout closest to the spot price. Major online bullion dealers such as JM Bullion, APMEX, GoldSilver.com, and Kitco have dedicated buyback programmes. These companies handle high volumes, allowing them to operate on narrower margins and offer better prices than local shops.</p>
@@ -676,6 +699,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </a>
 </div>
 
+  </div>
 </article>
 <footer>
   <div class="footer-inner">
