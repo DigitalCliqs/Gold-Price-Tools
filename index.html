@@ -935,7 +935,33 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 
   <!-- SIDEBAR -->
   <aside class="sidebar" aria-label="Quick reference prices">
-    <div class="sidebar-widget">
+<div class="sidebar-widget">
+    <h3>Weight Converter</h3>
+    <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-3)">
+      <input id="sb-conv-input" type="number" value="1" min="0" step="any"
+             class="form-input" style="width:90px;padding:.35rem .5rem;font-size:.875rem"
+             oninput="sbConvert()" aria-label="Amount to convert">
+      <select id="sb-conv-unit" class="form-select"
+              style="flex:1;padding:.35rem .5rem;font-size:.875rem"
+              onchange="sbConvert()">
+        <option value="g">Gram (g)</option>
+        <option value="ozt">Troy Oz</option>
+        <option value="kg">Kilogram</option>
+        <option value="dwt">Pennyweight</option>
+        <option value="gr">Grain</option>
+        <option value="lb">Pound</option>
+        <option value="tola">Tola</option>
+      </select>
+    </div>
+    <div class="quick-ref-row"><span class="quick-ref-label">Grams</span><span class="quick-ref-value" id="sb-cv-g">—</span></div>
+    <div class="quick-ref-row"><span class="quick-ref-label">Troy Oz</span><span class="quick-ref-value" id="sb-cv-ozt">—</span></div>
+    <div class="quick-ref-row"><span class="quick-ref-label">Kilograms</span><span class="quick-ref-value" id="sb-cv-kg">—</span></div>
+    <div class="quick-ref-row"><span class="quick-ref-label">Pennyweight</span><span class="quick-ref-value" id="sb-cv-dwt">—</span></div>
+    <div class="quick-ref-row"><span class="quick-ref-label">Grains</span><span class="quick-ref-value" id="sb-cv-gr">—</span></div>
+    <div class="quick-ref-row"><span class="quick-ref-label">Pounds</span><span class="quick-ref-value" id="sb-cv-lb">—</span></div>
+    <div class="quick-ref-row"><span class="quick-ref-label">Tolas</span><span class="quick-ref-value" id="sb-cv-tola">—</span></div>
+  </div>
+      <div class="sidebar-widget">
       <h3>Gold Quick Reference</h3>
       <div class="quick-ref-row"><span class="quick-ref-label">24K / gram</span><span class="quick-ref-value" id="qr-24g">—</span></div>
       <div class="quick-ref-row"><span class="quick-ref-label">18K / gram</span><span class="quick-ref-value" id="qr-18g">—</span></div>
@@ -1276,6 +1302,21 @@ function calcConverter() {
   const amount=parseFloat(document.getElementById('convInput').value)||0,from=parseFloat(document.getElementById('convFrom').value),grams=amount*from,fmt=(v,dec)=>v.toLocaleString('en-US',{minimumFractionDigits:dec||4,maximumFractionDigits:dec||4});
   setText('cv-g',fmt(grams,4)+' g');setText('cv-ozt',fmt(grams/31.1035,4)+' oz t');setText('cv-kg',fmt(grams/1000,6)+' kg');setText('cv-dwt',fmt(grams/1.55517,4)+' dwt');setText('cv-gr',fmt(grams/0.0648,2)+' gr');setText('cv-lb',fmt(grams/453.592,6)+' lb');setText('cv-tola',fmt(grams/11.6638,4)+' tola');
 }
+function sbConvert(){
+  const toG={g:1,ozt:31.1035,kg:1000,dwt:1.55517,gr:0.0648,lb:453.592,tola:11.6638};
+  const amt=parseFloat(document.getElementById('sb-conv-input').value)||0;
+  const unit=document.getElementById('sb-conv-unit').value;
+  const grams=amt*(toG[unit]||1);
+  const fmt=(v,d)=>v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+  setText('sb-cv-g',fmt(grams,4)+' g');
+  setText('sb-cv-ozt',fmt(grams/31.1035,4)+' oz t');
+  setText('sb-cv-kg',fmt(grams/1000,6)+' kg');
+  setText('sb-cv-dwt',fmt(grams/1.55517,4)+' dwt');
+  setText('sb-cv-gr',fmt(grams/0.0648,2)+' gr');
+  setText('sb-cv-lb',fmt(grams/453.592,6)+' lb');
+  setText('sb-cv-tola',fmt(grams/11.6638,4)+' tola');
+}
+document.addEventListener('DOMContentLoaded',sbConvert);
 async function fetchChartHistory(metal, range) {
   const key=`${metal}-${range}`;
   if(chartHistoryCache[key]) return chartHistoryCache[key];
