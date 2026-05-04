@@ -73,6 +73,18 @@
 a{color:var(--color-primary);text-decoration:none}
 a:hover{color:var(--color-primary-hover);text-decoration:underline}
 a:visited{color:var(--color-primary)}
+/* ── Card colour reset — cards are content blocks, not bare links ── */
+.article-card,.blog-preview-card,.related-card,.guide-card,.guide-card-link,.post-card,.byline-card{color:var(--color-text)}
+.article-card:hover,.blog-preview-card:hover,.related-card:hover,.guide-card:hover,.post-card:hover{color:var(--color-text)}
+/* Article card inner elements */
+.article-title,.article-card-title{font-weight:700;color:var(--color-text);margin-bottom:.3rem}
+.article-tag,.related-card__tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright)}
+.article-excerpt,.article-card-desc,.related-card__desc{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.55}
+/* Hover: title becomes primary teal */
+.article-card:hover .article-title,.article-card:hover .article-card-title{color:var(--color-primary)}
+.blog-preview-card:hover h3{color:var(--color-primary)}
+.related-card:hover .related-card__title{color:var(--color-primary)}
+
 
 html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body{min-height:100dvh;line-height:1.7;font-family:var(--font-body);color:var(--color-text);background:var(--color-bg)}
