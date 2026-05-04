@@ -675,13 +675,32 @@
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/guides/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/guides/"/>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Gold &amp; Silver Guides | GoldPriceTools</image:title>
-      <image:caption>Free guides covering gold and silver prices, karats, hallmarks, investing, and selling. Practical, UK-focused education from GoldPriceTools.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://goldpricetools.com/guides/buying-investing/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Buying &amp; Investing Guides | GoldPriceTools</image:title>
+      <image:caption>How to buy gold, which form to choose, and how to build a gold investment strategy.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://goldpricetools.com/guides/deep-dives/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Deep Dive Guides | GoldPriceTools</image:title>
+      <image:caption>Detailed technical guides on gold purity, weights, and the science of precious metals.</image:caption>
     </image:image>
   </url>
 
@@ -911,6 +930,18 @@
   </url>
 
   <url>
+    <loc>https://goldpricetools.com/guides/market-prices/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Market &amp; Prices Guides | GoldPriceTools</image:title>
+      <image:caption>Gold price history, forecasts, and the market forces that drive precious metals prices.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://goldpricetools.com/guides/scrap-gold-guide</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -919,6 +950,30 @@
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
       <image:title>Scrap Gold Guide: How is Scrap Gold Valued?</image:title>
       <image:caption>Understand how scrap gold is valued. Learn the melt value formula and how to get the best price for your old gold jewellery.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://goldpricetools.com/guides/selling-testing/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Selling &amp; Testing Guides | GoldPriceTools</image:title>
+      <image:caption>How to value, test and sell your gold jewellery and scrap gold for the best price.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://goldpricetools.com/guides/silver-guides/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Silver Guides | GoldPriceTools</image:title>
+      <image:caption>Silver prices, silver purity, and how to value your silver coins, bars and jewellery.</image:caption>
     </image:image>
   </url>
 
