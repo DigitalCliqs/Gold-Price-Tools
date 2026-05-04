@@ -368,6 +368,30 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
 .article-card:hover .article-card-title{color:var(--color-primary)}
 
+
+/* ── Authors page container ── */
+.container{max-width:760px;margin:0 auto;padding:var(--space-12) var(--space-6) var(--space-16)}
+
+/* ── Author page typography ── */
+.container>h1{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.4rem);font-weight:800;color:var(--color-text);line-height:1.15;margin-bottom:var(--space-4)}
+.container>h2{font-size:var(--text-xl);font-weight:700;color:var(--color-text);margin:var(--space-8) 0 var(--space-3);line-height:1.25;padding-bottom:var(--space-2);border-bottom:1px solid var(--color-border)}
+.container>p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-4)}
+.container a{color:var(--color-primary);text-decoration:underline}
+.container a:hover{color:var(--color-primary-hover)}
+.container code{font-family:monospace;font-size:.875em;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:4px;padding:.1em .35em;color:var(--color-text)}
+.container>p:last-child{margin-top:var(--space-8);padding-top:var(--space-4);border-top:1px solid var(--color-border)}
+.container>p:last-child a{font-size:var(--text-sm);font-weight:600;text-decoration:none;color:var(--color-text-muted)}
+.container>p:last-child a:hover{color:var(--color-primary)}
+
+/* ── Byline card ── */
+.byline-card{display:block;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin-bottom:var(--space-4);text-decoration:none;transition:border-color var(--transition),box-shadow var(--transition)}
+.byline-card:hover{border-color:var(--color-gold);box-shadow:0 4px 16px color-mix(in oklch,var(--color-gold) 15%,transparent);text-decoration:none}
+.byline-card h3{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-2)}
+.byline-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
+
+@media(max-width:600px){
+  .container{padding:var(--space-8) var(--space-4) var(--space-12)}
+}
 </style>
 
     <meta property="og:title" content="Authors & Editorial Team | GoldPriceTools">
