@@ -456,6 +456,22 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .prose li{margin-bottom:var(--space-2);line-height:1.65}
 .prose h2{margin-top:var(--space-10);margin-bottom:var(--space-3)}
 .prose h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}
+
+/* ── Related guides grid ── */
+.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4);margin-top:var(--space-6)}
+.related-card{display:flex;flex-direction:column;gap:var(--space-2);background:var(--color-surface-offset,var(--color-surface));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);text-decoration:none;transition:border-color .15s,box-shadow .15s;min-height:140px;color:var(--color-text)}
+.related-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-sm)}
+.related-card:hover .related-card__title{color:var(--color-primary)}
+.related-card__tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright)}
+.related-card__title{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin:var(--space-1) 0}
+.related-card__desc{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.55}
+
+/* ── Share buttons ── */
+.share-buttons{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin:var(--space-8) 0 var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--color-border)}
+.share-buttons span{font-size:var(--text-sm);font-weight:600;color:var(--color-text-faint);margin-right:var(--space-1)}
+.share-buttons a{display:inline-flex;align-items:center;gap:6px;padding:var(--space-2) var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-full,9999px);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);text-decoration:none;transition:border-color .15s,color .15s,background .15s;background:var(--color-surface)}
+.share-buttons a:hover{border-color:var(--color-primary);color:var(--color-primary);background:var(--color-surface-offset)}
+.share-buttons a svg{flex-shrink:0}
 </style>
 
 <script type="application/ld+json">
