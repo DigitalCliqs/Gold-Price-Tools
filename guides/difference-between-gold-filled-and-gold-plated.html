@@ -290,9 +290,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 
 /* FOOTER */
 footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-10) 0}
-.footer-inner{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-8);padding:0 var(--space-8)}
-@media(max-width:900px){.footer-inner{flex-wrap:wrap;gap:var(--space-6)}}
-@media(max-width:600px){.footer-inner{flex-direction:column;gap:var(--space-5)}}
+.footer-inner{width:100%;display:grid;grid-template-columns:1.8fr repeat(5,1fr);gap:var(--space-6);padding:0 var(--space-8);align-items:start}
+@media(max-width:900px){.footer-inner{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.footer-inner{grid-template-columns:repeat(2,1fr);gap:var(--space-4)}}
 .footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
 .footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
 .footer-col ul{list-style:none}
