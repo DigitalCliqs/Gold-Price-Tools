@@ -427,6 +427,50 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .faq-answer-summary::after{content:"＋";float:right;color:var(--color-text-faint)}
 .faq-answer-summary::after{content:"－"}
 .faq-answer{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;padding:var(--space-4);border-top:1px solid var(--color-divider)}
+
+/* ── Hero left column ── */
+.hero-left{display:flex;flex-direction:column;justify-content:flex-start;gap:var(--space-3)}
+.hero-left .hero-title{margin-bottom:0}
+.hero-left .hero-tag{margin-bottom:var(--space-2)}
+@media(max-width:768px){.hero-left{margin-bottom:var(--space-4)}}
+
+/* ── Data Table ── */
+.data-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);margin:var(--space-4) 0 var(--space-6)}
+.data-table th{text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding:var(--space-2) var(--space-4) var(--space-2) 0;border-bottom:2px solid var(--color-border)}
+.data-table td{padding:var(--space-3) var(--space-4) var(--space-3) 0;border-bottom:1px solid var(--color-border);color:var(--color-text-muted);vertical-align:middle}
+.data-table td:first-child{color:var(--color-text);font-weight:500}
+.data-table td:not(:first-child){text-align:right;padding-right:0}
+.data-table th:not(:first-child){text-align:right;padding-right:0}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:var(--color-surface)}
+.data-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius-md)}
+
+/* ── Trust bar ── */
+.trust-bar{font-size:var(--text-sm);color:var(--color-text-faint);margin-bottom:var(--space-6);padding:var(--space-3) var(--space-4);background:var(--color-surface-offset,var(--color-surface));border-radius:var(--radius-md);border-left:3px solid var(--color-gold)}
+.trust-bar a{color:var(--color-primary);text-decoration:none}
+.trust-bar a:hover{text-decoration:underline}
+
+/* ── Share buttons ── */
+.share-buttons{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin:var(--space-8) 0 var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--color-border)}
+.share-buttons span{font-size:var(--text-sm);font-weight:600;color:var(--color-text-faint);margin-right:var(--space-1)}
+.share-buttons a{display:inline-flex;align-items:center;gap:6px;padding:var(--space-2) var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-full,9999px);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);text-decoration:none;transition:border-color .15s,color .15s,background .15s;background:var(--color-surface)}
+.share-buttons a:hover{border-color:var(--color-primary);color:var(--color-primary);background:var(--color-surface-offset)}
+.share-buttons a svg{flex-shrink:0}
+
+/* ── Related guides grid ── */
+.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4);margin-top:var(--space-6)}
+.related-card{display:flex;flex-direction:column;gap:var(--space-2);background:var(--color-surface-offset,var(--color-surface));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);text-decoration:none;transition:border-color .15s,box-shadow .15s;min-height:140px;color:var(--color-text)}
+.related-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-sm)}
+.related-card:hover .related-card__title{color:var(--color-primary)}
+.related-card__tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright)}
+.related-card__title{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin:var(--space-1) 0}
+.related-card__desc{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.55}
+
+/* ── Prose spacing ── */
+.prose p{margin-bottom:var(--space-4);line-height:1.7}
+.prose li{margin-bottom:var(--space-2);line-height:1.65}
+.prose h2{margin-top:var(--space-10);margin-bottom:var(--space-3)}
+.prose h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}
 </style>
 
 <script type="application/ld+json">
@@ -521,9 +565,11 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 </div>
 
 <div class="hero">
-  <div class="hero-tag">Live Gold Price</div>
+  <div class="hero-left">
+<div class="hero-tag">Live Gold Price</div>
   <h1 class="hero-title">14K Gold Price Per Gram Today</h1>
   <p class="hero-sub">14 karat gold is 58.33% pure gold. Live price updated every 60 seconds from LBMA spot market.</p>
+    </div>
   <div class="price-card">
     <div class="price-label">14K Gold &mdash; Price Per Gram</div>
     <div class="price-value" id="price-gbp" data-nosnippet>&mdash;</div>
@@ -554,7 +600,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <figure itemscope itemtype="https://schema.org/Table">
       <figcaption>14K gold price per gram in GBP and USD — live, updated every 60 seconds</figcaption>
       <!-- STATIC-FIRST: Table structure pre-rendered for SEO; prices are JS-updated -->
-      <table class="data-table" aria-label="14K gold price by weight">
+      <div class="data-table-wrap"><table class="data-table" aria-label="14K gold price by weight">
         <thead><tr><th>Weight</th><th>GBP (live)</th><th>USD (live)</th><th>INR (live)</th></tr></thead>
         <tbody>
           <tr><td>0.5g</td><td id="t-0-5-gbp" data-nosnippet>&mdash;</td><td id="t-0-5-usd" data-nosnippet>&mdash;</td><td id="t-0-5-inr" data-nosnippet>&mdash;</td></tr>
@@ -565,7 +611,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
           <tr><td>20g</td><td id="t-20-gbp" data-nosnippet>&mdash;</td><td id="t-20-usd" data-nosnippet>&mdash;</td><td id="t-20-inr" data-nosnippet>&mdash;</td></tr>
           <tr><td>1 <a href="/how-many-grams-in-troy-ounce">troy oz</a> (31.1g)</td><td id="t-31-gbp" data-nosnippet>&mdash;</td><td id="t-31-usd" data-nosnippet>&mdash;</td><td id="t-31-inr" data-nosnippet>&mdash;</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </figure>
 
     <details>
@@ -577,7 +623,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <figure itemscope itemtype="https://schema.org/Table">
       <figcaption>Gold karat comparison — purity, hallmark, and typical use</figcaption>
       <!-- STATIC-FIRST: Table structure pre-rendered for SEO; prices are JS-updated -->
-      <table class="data-table" aria-label="Gold karat comparison">
+      <div class="data-table-wrap"><table class="data-table" aria-label="Gold karat comparison">
         <thead><tr><th>Karat</th><th>Purity</th><th>Hallmark</th><th>Typical Use</th></tr></thead>
         <tbody>
           <tr><td>9K</td><td>37.5%</td><td>375</td><td>UK everyday jewellery</td></tr>
@@ -586,11 +632,11 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
           <tr><td>22K</td><td>91.67%</td><td>916</td><td>South Asian bridal gold</td></tr>
           <tr><td>24K</td><td>99.9%</td><td>999</td><td>Bullion coins and bars</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </figure>
 
     <h2>14K Purity Table</h2>
-<table class="data-table" aria-label="Karat purity and indicative prices">
+<div class="data-table-wrap"><table class="data-table" aria-label="Karat purity and indicative prices">
 <thead><tr><th>Karat</th><th>Purity</th><th>GBP/gram</th><th>USD/gram</th></tr></thead>
 <tbody>
 <tr><td>24K</td><td>99.9%</td><td>--</td><td>--</td></tr>
@@ -599,7 +645,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 <tr><td>10K</td><td>41.7%</td><td>--</td><td>--</td></tr>
 <tr><td>9K</td><td>37.5%</td><td>--</td><td>--</td></tr>
 </tbody>
-</table>
+</table></div>
 
     
     <h2>What is 14K Gold?</h2>
