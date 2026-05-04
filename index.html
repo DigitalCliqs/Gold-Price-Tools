@@ -211,10 +211,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 /* MAIN LAYOUT */
 .main-wrap{max-width:1200px;margin:0 auto;padding:0 var(--space-4) var(--space-16);display:grid;grid-template-columns:1fr 300px;gap:var(--space-8);align-items:start}
 @media(max-width:1024px){.main-wrap{grid-template-columns:1fr}}
-/* Grid placement for main-wrap children */
-.main-wrap>.karat-section,.main-wrap>#faq{grid-column:1}
-.main-wrap>aside{grid-column:2;grid-row:1/span 99}
-@media(max-width:1024px){.main-wrap>aside{grid-column:1;grid-row:auto}}
 
 /* CALCULATORS */
 .calc-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm)}
@@ -799,7 +795,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </div>
 
     <!-- KARAT PRICE TABLES -->
-    <section id="karat-prices" class="karat-section" aria-label="Gold price per gram by karat">
+    <div class="main-content">
+  <section id="karat-prices" class="karat-section" aria-label="Gold price per gram by karat">
       <h2>Gold Price Per Gram — All Karats</h2>
       <p>Live gold price per gram for 10K, 14K, 18K and 24K gold today, updated every 60 seconds. Prices shown in USD, GBP and EUR.</p>
       <!-- STATIC-FIRST: karat skeletons pre-rendered for SEO; values are JS-updated by design -->
@@ -933,6 +930,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         </details>
       </div>
     </section>
+</div>
 
     <!-- ARTICLES SECTION -->
 
