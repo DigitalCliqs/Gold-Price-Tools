@@ -406,6 +406,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 
 
 /* ── Breadcrumb ── */
+.breadcrumb-wrap{max-width:1200px;margin:0 auto;padding:0 var(--space-4)}
 .breadcrumb{display:flex;align-items:center;gap:var(--space-2);list-style:none;font-size:var(--text-sm);color:var(--color-text-muted);max-width:1200px;margin:0 auto;padding:var(--space-3) var(--space-4)}
 .breadcrumb li+li::before{content:"/";margin-right:var(--space-2);color:var(--color-text-faint)}
 .breadcrumb a{color:var(--color-text-muted);text-decoration:none}
@@ -526,16 +527,16 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 </nav>
 
 <!-- Breadcrumb navigation (WP-57) -->
-<ol class="breadcrumb" aria-label="Breadcrumb">
+<div class="breadcrumb-wrap"><ol class="breadcrumb" aria-label="Breadcrumb">
   <li><a href="/">Home</a></li>
   <li aria-current="page">About</li>
-</ol>
+</ol></div>
 
-<section class="hero">
+<div class="hero">
   <h1>About GoldPriceTools</h1>
   <p>GoldPriceTools is a free, independent precious metals price calculator built for anyone who needs accurate, real-time gold and silver prices — without sign-ups, paywalls, or subscription fees. Whether you are a jeweller valuing scrap gold, an investor checking live spot prices, or simply curious what your gold jewellery is worth, GoldPriceTools gives you the answer in seconds.</p>
   <p style="margin-top:1rem;font-size:.875rem;color:var(--color-text-muted)">GoldPriceTools is operated by <strong>DigitalCliqs</strong>, a UK-based technology company. Our gold price data is sourced directly from LBMA spot market prices via gold-api.com.</p>
-</section>
+</div>
 
 <div class="features">
   <div class="feature-card">
