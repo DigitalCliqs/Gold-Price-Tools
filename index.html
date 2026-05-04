@@ -592,9 +592,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <div class="spot-card-sub">USD per gram</div>
     </div>
     <div class="spot-card">
-      <div class="spot-card-label">Silver per Kilo</div>
-      <div class="spot-card-value" id="spotSilverKg">—</div>
-      <div class="spot-card-sub">USD per kilogram</div>
+      <div class="spot-card-label">Silver .999/gram</div>
+      <div class="spot-card-value" id="spotSilverGram">—</div>
+      <div class="spot-card-sub">USD per gram</div>
     </div>
   </div>
 </section>
@@ -1209,7 +1209,7 @@ function updateAll(gData, sData) {
   setText('spotGoldOz',   fmtUSD(gOz));
   setText('spotSilverOz', fmtUSD(sOz));
   setText('spotGoldGram', fmtUSD(gGram));
-  setText('spotSilverKg', fmtUSD(sOz * 32.1507));
+  setText('spotSilverGram', fmtUSD(sOz / 31.1035));
   if(gChg !== null) { const el = document.getElementById('spotGoldChg');   el.textContent = (gChg > 0 ? '▲' : '▼') + ' ' + Math.abs(gChg) + '% today'; el.className = 'spot-card-change ' + (gChg >= 0 ? 'up' : 'down'); }
   if(sChg !== null) { const el = document.getElementById('spotSilverChg'); el.textContent = (sChg > 0 ? '▲' : '▼') + ' ' + Math.abs(sChg) + '% today'; el.className = 'spot-card-change ' + (sChg >= 0 ? 'up' : 'down'); }
   const td = [['t-xau',fmtUSD(gOz)],['t-xag',fmtUSD(sOz)],['t-24k',fmtUSD(gGram*0.9999)],['t-18k',fmtUSD(gGram*0.75)],['t-14k',fmtUSD(gGram*0.5833)],['t-10k',fmtUSD(gGram*0.4167)],['t-agoz',fmtUSD(sOz)],['t-agkg',fmtUSD(sOz*32.1507)],['t-xau2',fmtUSD(gOz)],['t-xag2',fmtUSD(sOz)],['t-24k2',fmtUSD(gGram*0.9999)],['t-18k2',fmtUSD(gGram*0.75)],['t-14k2',fmtUSD(gGram*0.5833)],['t-10k2',fmtUSD(gGram*0.4167)],['t-agoz2',fmtUSD(sOz)],['t-agkg2',fmtUSD(sOz*32.1507)]];
