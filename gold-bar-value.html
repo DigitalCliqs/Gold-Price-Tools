@@ -471,6 +471,10 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .prose li{margin-bottom:var(--space-2);line-height:1.65}
 .prose h2{margin-top:var(--space-10);margin-bottom:var(--space-3)}
 .prose h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}
+
+/* ── Disclaimer ── */
+.disclaimer-box{margin-top:var(--space-8);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-border);font-size:var(--text-sm);color:var(--color-text-faint);line-height:1.6}
+.disclaimer-box strong{color:var(--color-text-muted)}
 </style>
 
 <script type="application/ld+json">
@@ -602,38 +606,120 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </div>
 </div>
 
+<div class="content">
 
+<p class="data-source">Live gold bar prices sourced from LBMA spot market via gold-api.com. Updated every 60 seconds. <a href="/about">About our data</a></p>
 
+<article class="prose">
 
+  <h2>Gold Bar Sizes &amp; Their Value</h2>
+  <p>Gold bars are produced in a wide range of standard sizes to suit investors of all scales — from small retail buyers to central banks. The calculator above covers all nine standard investment bar sizes. Here is what each weighs and roughly what it is worth at today's spot price:</p>
+
+  <table class="data-table">
+    <thead><tr><th>Bar Size</th><th>Weight (grams)</th><th>Weight (troy oz)</th><th>Typical Buyer</th></tr></thead>
+    <tbody>
+      <tr><td>1 g</td><td>1.000</td><td>0.032</td><td>Retail / gifts</td></tr>
+      <tr><td>5 g</td><td>5.000</td><td>0.161</td><td>Retail</td></tr>
+      <tr><td>10 g</td><td>10.000</td><td>0.322</td><td>Retail</td></tr>
+      <tr><td>1 troy oz</td><td>31.103</td><td>1.000</td><td>Retail / investors</td></tr>
+      <tr><td>100 g</td><td>100.000</td><td>3.215</td><td>Investors</td></tr>
+      <tr><td>250 g</td><td>250.000</td><td>8.038</td><td>Investors</td></tr>
+      <tr><td>1 kg</td><td>1,000.000</td><td>32.151</td><td>Investors / dealers</td></tr>
+      <tr><td>100 troy oz</td><td>3,110.348</td><td>100.000</td><td>Professional / COMEX</td></tr>
+      <tr><td>400 troy oz (Good Delivery)</td><td>12,441.393</td><td>400.000</td><td>Central banks / LBMA</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What Is the LBMA Good Delivery Standard?</h2>
+  <p>The London Bullion Market Association (LBMA) sets the global standard for wholesale gold bars. A Good Delivery bar weighs between 350 and 430 troy ounces (approximately 10.9–13.4 kg) and must be at least 99.5% pure gold. These are the bars that central banks and institutional investors trade, and they are the source of the spot price used in this calculator.</p>
+  <p>For retail investors, the most popular bar sizes are the 1 troy ounce and the 100g bar — both offer a reasonable balance between the premium over spot price and ease of resale. Larger bars carry lower premiums per gram but are less liquid for individual sellers.</p>
+
+  <h2>Spot Price vs What You Pay</h2>
+  <p>The calculator shows the <strong>melt value</strong> — the theoretical value of the pure gold content at the current LBMA spot price. In practice, the price you pay for a gold bar includes a <strong>premium over spot</strong>. This premium covers refining, fabrication, dealer margins, and distribution costs.</p>
+  <ul>
+    <li><strong>Small bars (1g–10g):</strong> Premiums of 5–15% over spot. High fabrication cost relative to gold content.</li>
+    <li><strong>1 troy oz bars:</strong> Premiums of 2–5% over spot. The most liquid retail size.</li>
+    <li><strong>100g–1kg bars:</strong> Premiums of 1–3% over spot. Better value per gram for larger purchases.</li>
+    <li><strong>Good Delivery (400 oz):</strong> Premiums under 0.5%. Institutional market only.</li>
+  </ul>
+  <p>When selling gold bars, most dealers will offer 97–99% of spot for 1oz+ bars in good condition with assay card. Smaller bars may fetch 95–97% of spot due to higher verification costs.</p>
+
+  <h2>Investment Gold Bars in the UK</h2>
+  <p>In the United Kingdom, investment gold bars are exempt from VAT under HMRC's investment gold rules, provided they meet the required purity threshold (99.5% or higher). This makes them significantly more tax-efficient than jewellery or collectible items. However, profits on gold bars are subject to Capital Gains Tax (CGT). UK investors should note that gold sovereign coins and Britannia coins are CGT-exempt as legal tender, making them a tax-efficient alternative for smaller investments.</p>
+
+  <h2>How to Read This Calculator</h2>
+  <ol>
+    <li><strong>Select a bar size</strong> from the dropdown — choose from 1g up to 400oz Good Delivery.</li>
+    <li><strong>Enter a quantity</strong> — calculate the value of one bar or multiple bars at once.</li>
+    <li><strong>Read the live value</strong> — the GBP and USD figures update automatically from the LBMA spot price every 60 seconds.</li>
+    <li><strong>Remember the premium</strong> — the value shown is spot melt value; actual buy/sell prices include a premium or discount to spot.</li>
+  </ol>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-section">
+    <div class="faq-item">
+      <h3>How is a gold bar valued?</h3>
+      <div class="faq-answer"><p>A gold bar's value is calculated as its weight in troy ounces multiplied by the current spot price per troy ounce. For example, a 100g bar contains 3.215 troy ounces. At a spot price of $3,200/oz, its melt value is approximately $10,288. The actual market price includes a small premium above this figure.</p></div>
+    </div>
+    <div class="faq-item">
+      <h3>What is the most popular gold bar size for investors?</h3>
+      <div class="faq-answer"><p>The 1 troy ounce (31.1g) and 100g bar are the most popular investment sizes. The 1oz bar is the global benchmark — easy to buy, sell, and store. The 100g bar offers a slightly lower premium per gram and is widely accepted by dealers, banks, and refineries worldwide.</p></div>
+    </div>
+    <div class="faq-item">
+      <h3>Are gold bars VAT-free in the UK?</h3>
+      <div class="faq-answer"><p>Yes. Investment gold bars that are at least 99.5% pure and weigh more than 1g are exempt from VAT in the UK under HMRC's investment gold provisions. This applies to bars from LBMA-approved refiners. Decorative or jewellery-grade gold items do not qualify for VAT exemption.</p></div>
+    </div>
+    <div class="faq-item">
+      <h3>What is a Good Delivery bar?</h3>
+      <div class="faq-answer"><p>A Good Delivery bar is the LBMA's standard wholesale gold bar, weighing between 350 and 430 troy ounces (roughly 11–13kg) with a minimum fineness of 99.5%. These bars are traded between LBMA-member banks, central banks, and refiners. They are not typically sold to retail investors — the 400oz size in this calculator represents the maximum Good Delivery weight.</p></div>
+    </div>
+    <div class="faq-item">
+      <h3>Where can I buy gold bars in the UK?</h3>
+      <div class="faq-answer"><p>Reputable UK gold bar dealers include The Royal Mint, Hatton Garden Metals, BullionVault, Gold Investments, and Atkinsons Bullion. Always compare premiums over spot before purchasing. Buy from LBMA-accredited or BNTA-member dealers to ensure authenticity and resale value.</p></div>
+    </div>
+    <div class="faq-item">
+      <h3>Does the weight on a gold bar include the assay card?</h3>
+      <div class="faq-answer"><p>No. The stated weight on a gold bar refers only to the gold content. The assay card, packaging, and capsule add negligible weight and have no gold value. Always verify the bar weight matches the certificate and that the serial number on the bar matches the assay card.</p></div>
+    </div>
+  </div>
+
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> Values shown are indicative melt values based on live LBMA spot prices and are for reference only. Actual buy and sell prices from dealers will differ. This is not financial advice. Gold prices can fall as well as rise.
+  </div>
+
+</article>
 
 <div class="share-buttons">
   <span>Share:</span>
-  <a href="https://twitter.com/intent/tweet?url=https://goldpricetools.com/gold-bar-value&text=Gold%20Bar%20Value%20Calculator" target="_blank" rel="noopener" data-platform="twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</a>
-  <a href="https://reddit.com/submit?url=https://goldpricetools.com/gold-bar-value&title=Gold%20Bar%20Value%20Calculator" target="_blank" rel="noopener" data-platform="reddit"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg> Reddit</a>
+  <a href="https://twitter.com/intent/tweet?url=https://goldpricetools.com/gold-bar-value&amp;text=Gold%20Bar%20Value%20Calculator" target="_blank" rel="noopener" data-platform="twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</a>
+  <a href="https://reddit.com/submit?url=https://goldpricetools.com/gold-bar-value&amp;title=Gold%20Bar%20Value%20Calculator" target="_blank" rel="noopener" data-platform="reddit"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg> Reddit</a>
   <a href="https://api.whatsapp.com/send?text=Gold%20Bar%20Value%20Calculator%20https://goldpricetools.com/gold-bar-value" target="_blank" rel="noopener" data-platform="whatsapp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
 </div>
-<h2>Related Gold &amp; Silver Guides</h2>
+
+<h2 style="font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text);margin:var(--space-8) 0 var(--space-4)">Related Gold &amp; Silver Guides</h2>
 <div class="related-guides-grid">
   <a href="/scrap-gold-calculator" class="related-card">
     <span class="related-card__tag">TOOL</span>
     <span class="related-card__title">Scrap Gold Calculator</span>
-    <span class="related-card__desc">Calculate the melt value of your gold jewellery using today's live spot price.</span>
+    <span class="related-card__desc">Calculate the melt value of your gold jewellery using today&rsquo;s live spot price.</span>
   </a>
   <a href="/guides/gold-bar-guide" class="related-card">
     <span class="related-card__tag">GUIDE</span>
     <span class="related-card__title">Gold Bar Guide</span>
-    <span class="related-card__desc">From 1g to 400oz Good Delivery bars — learn about gold bar sizes and premiums.</span>
+    <span class="related-card__desc">From 1g to 400oz Good Delivery bars &mdash; learn about gold bar sizes and premiums.</span>
   </a>
   <a href="/24k-gold-price-per-gram" class="related-card">
     <span class="related-card__tag">LIVE PRICE</span>
     <span class="related-card__title">24K Gold Price Per Gram</span>
-    <span class="related-card__desc">Live 24K (pure) gold price per gram — the benchmark for all karat calculations.</span>
+    <span class="related-card__desc">Live 24K (pure) gold price per gram &mdash; the benchmark for all karat calculations.</span>
   </a>
   <a href="/gold-coins-vs-bars" class="related-card">
     <span class="related-card__tag">GUIDE</span>
     <span class="related-card__title">Gold Coins vs Gold Bars</span>
     <span class="related-card__desc">Compare the pros and cons of coins and bars for investment and storage.</span>
   </a>
+</div>
+
 </div>
 
 <footer>
