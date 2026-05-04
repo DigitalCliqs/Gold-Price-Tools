@@ -1203,4 +1203,9 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/terms"/>
   </url>
 
+  <url>
+    <loc>https://goldpricetools.com/silver-purity-grades</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
