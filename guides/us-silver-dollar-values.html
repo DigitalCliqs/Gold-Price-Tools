@@ -701,29 +701,7 @@ blockquote strong{color:var(--color-text)}
 
   
 
-<script>
-// Price Widget Logic
-const TROY_OZ_TO_GRAM = 31.1034768;
-function fmtUSD(val) { return '$' + val.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
 
-async function fetchPrices() {
-    try {
-        const [gRes, sRes] = await Promise.all([
-            fetch('https://api.gold-api.com/price/XAU'),
-            fetch('https://api.gold-api.com/price/XAG')
-        ]);
-        const gData = await gRes.json();
-        const sData = await sRes.json();
-
-        document.getElementById('spotGoldOz').textContent = fmtUSD(gData.price);
-        document.getElementById('spotSilverOz').textContent = fmtUSD(sData.price);
-    } catch (e) {
-        console.error("Price fetch failed", e);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', fetchPrices);
-</script>
 
 <script>(function(){
   const themeBtn=document.querySelector('[data-theme-toggle]'),root=document.documentElement;
