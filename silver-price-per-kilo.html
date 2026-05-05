@@ -422,6 +422,66 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .faq-answer-summary::after{content:"＋";float:right;color:var(--color-text-faint)}
 .faq-answer-summary::after{content:"－"}
 .faq-answer{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;padding:var(--space-4);border-top:1px solid var(--color-divider)}
+
+/* ═══════════════════════════════════════════════
+   SILVER PER KILO — LAYOUT & COMPONENT FIXES
+   ═══════════════════════════════════════════════ */
+
+/* Hero: fix H1 size override, single-col flow */
+.hero{grid-template-columns:1fr;max-width:860px;padding:var(--space-8) var(--space-4) var(--space-6);align-items:start}
+.hero-title{font-size:clamp(1.75rem,3.5vw,2.75rem)!important;line-height:1.15!important;margin-bottom:var(--space-3)!important}
+
+/* Price tiles */
+.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);margin:var(--space-5) 0}
+.price-tile{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);display:flex;flex-direction:column;gap:var(--space-1);transition:border-color .15s}
+.price-tile:hover{border-color:color-mix(in oklch,var(--color-silver) 40%,var(--color-border))}
+.price-tile-label{font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-faint)}
+.price-tile-value{font-size:var(--text-xl);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;line-height:1.2}
+
+/* Content wrapper */
+.content{max-width:1200px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-16)}
+
+/* Prose reading width (fix 100% override) */
+.prose{max-width:860px!important}
+
+/* Data tables */
+.data-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);margin:var(--space-2) 0 var(--space-8)}
+.data-table thead tr{border-bottom:2px solid var(--color-border)}
+.data-table th{text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding:var(--space-2) var(--space-4) var(--space-2) 0;white-space:nowrap}
+.data-table th:first-child{padding-left:0}
+.data-table td{padding:var(--space-3) var(--space-4) var(--space-3) 0;border-bottom:1px solid var(--color-border);color:var(--color-text-muted);vertical-align:middle;white-space:nowrap}
+.data-table td:first-child{color:var(--color-text);font-weight:600;padding-left:0}
+.data-table tr:last-child td{border-bottom:none}
+.data-table td:nth-child(2),.data-table td:nth-child(3),.data-table td:nth-child(4),.data-table td:nth-child(5){font-variant-numeric:tabular-nums;color:var(--color-text)}
+
+/* Blockquote */
+blockquote{background:color-mix(in oklch,var(--color-silver) 6%,var(--color-surface-offset));border-left:3px solid var(--color-silver);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:var(--space-4) var(--space-5);margin:var(--space-4) 0 var(--space-6);font-size:var(--text-base);color:var(--color-text-muted);max-width:860px}
+blockquote strong{color:var(--color-text)}
+
+/* Snippet answer */
+.snippet-answer{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;background:var(--color-surface-offset);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);margin-bottom:var(--space-6);max-width:860px;border-left:3px solid color-mix(in oklch,var(--color-silver) 40%,var(--color-border))}
+.snippet-answer span{font-weight:600;color:var(--color-text)}
+
+/* FAQ accordion */
+.faq-container{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-2) 0 var(--space-6);max-width:860px}
+.prose details,.faq-container details{border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:0}
+.faq-answer-summary{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5)!important;background:var(--color-surface)!important;user-select:none}
+.faq-answer-summary::after{content:"＋"!important;margin-left:var(--space-3);flex-shrink:0}
+details[open]>.faq-answer-summary{background:var(--color-surface-offset)!important}
+details[open]>.faq-answer-summary::after{content:"－"!important}
+.faq-answer,.prose details p{padding:var(--space-4) var(--space-5)!important;font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;border-top:1px solid var(--color-border);margin:0!important}
+
+/* Related guides container */
+.container{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4) var(--space-16)}
+.container h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-6)}
+
+/* Breadcrumb alignment with content */
+ul.breadcrumb{max-width:1200px;margin:0 auto;padding:var(--space-3) var(--space-4)}
+
+@media(max-width:640px){
+  .price-grid{grid-template-columns:1fr}
+  .hero{padding:var(--space-6) var(--space-4) var(--space-4)}
+}
 </style>
 
 <script type="application/ld+json">
