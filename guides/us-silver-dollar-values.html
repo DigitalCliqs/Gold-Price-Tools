@@ -952,15 +952,23 @@ document.addEventListener('DOMContentLoaded', fetchPrices);
 <script>
 /* Remove stray '>' text nodes injected by third-party scripts */
 (function(){
-  function cleanup(){
+  function removeStray(){
     Array.from(document.body.childNodes).forEach(function(n){
       if(n.nodeType===3 && n.textContent.trim()==='>')n.remove();
     });
   }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',cleanup);}
-  else{cleanup();}
-  setTimeout(cleanup,500);
-  setTimeout(cleanup,1500);
+  removeStray();
+  var obs=new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(function(n){
+        if(n.nodeType===3 && n.textContent.trim()==='>')n.remove();
+      });
+    });
+    removeStray();
+  });
+  obs.observe(document.body,{childList:true,subtree:false});
+  document.addEventListener('DOMContentLoaded',removeStray);
+  window.addEventListener('load',removeStray);
 })();
 </script>
 </body>
