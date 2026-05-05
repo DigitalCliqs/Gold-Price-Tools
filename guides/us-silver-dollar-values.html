@@ -948,5 +948,20 @@ document.addEventListener('DOMContentLoaded', fetchPrices);
     <span>Spot data refreshes every 60 seconds. Prices sourced from LBMA via gold-api.com.</span>
   </div>
 </footer>
+
+<script>
+/* Remove stray '>' text nodes injected by third-party scripts */
+(function(){
+  function cleanup(){
+    Array.from(document.body.childNodes).forEach(function(n){
+      if(n.nodeType===3 && n.textContent.trim()==='>')n.remove();
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',cleanup);}
+  else{cleanup();}
+  setTimeout(cleanup,500);
+  setTimeout(cleanup,1500);
+})();
+</script>
 </body>
 </html>
