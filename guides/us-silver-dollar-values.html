@@ -476,6 +476,24 @@ blockquote strong{color:var(--color-text)}
 /* Also suppress the header-inner container (it adds no layout value
    since site-nav is position:sticky and handles its own layout) */
 .header-inner.container { padding: 0; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER FIX — missing .footer wrapper + logo + nav + desc
+   ═══════════════════════════════════════════════ */
+.footer{background:var(--color-surface);border-top:1px solid var(--color-border)}
+
+/* Footer logo */
+.footer .logo{display:inline-flex;align-items:center;gap:var(--space-2);text-decoration:none}
+.footer .logo-text{font-size:var(--text-sm);font-weight:700;color:var(--color-text)}
+.footer .logo-accent{color:var(--color-primary)}
+
+/* Footer brand description */
+.footer-desc{font-size:var(--text-xs);color:var(--color-text-faint);line-height:1.6;margin-top:var(--space-2);max-width:240px}
+
+/* Footer nav links */
+.footer-nav{display:flex;flex-direction:column;gap:6px;margin-top:0}
+.footer-nav a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;transition:color .12s}
+.footer-nav a:hover{color:var(--color-text)}
 </style>
 </head>
 <body>
