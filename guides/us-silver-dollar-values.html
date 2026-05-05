@@ -464,6 +464,18 @@ blockquote strong{color:var(--color-text)}
 .related-card__desc{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5}
 
 @media(max-width:640px){.related-guides-grid{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════════════
+   GUIDE HEADER FIX — hide duplicate legacy logo
+   ═══════════════════════════════════════════════════ */
+/* The .header-inner wrapper contains a duplicate .logo before the site-nav.
+   The site-nav already contains its own nav-logo — hide the orphan. */
+.header-inner > .logo,
+.header-inner > .logo-text { display: none !important }
+
+/* Also suppress the header-inner container (it adds no layout value
+   since site-nav is position:sticky and handles its own layout) */
+.header-inner.container { padding: 0; }
 </style>
 </head>
 <body>
