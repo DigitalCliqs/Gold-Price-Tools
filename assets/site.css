@@ -4,6 +4,12 @@
  * Addresses: touch targets, table overflow, touch-action, overscroll, landscape.
  */
 
+/* ── 0. Status colour variables (price up/down indicators) ── */
+:root {
+  --color-up: #4ade80;
+  --color-down: #f87171;
+}
+
 /* ── 1. Remove 300ms tap delay on all interactive elements ── */
 a,
 button,
