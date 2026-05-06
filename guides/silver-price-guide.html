@@ -458,6 +458,23 @@ nav .mega-nav__trigger{color:#555551 !important}
 [data-theme="light"] .article-tag{color:#7a5600 !important}
 [data-theme="dark"] .article-tag{color:#f0c040 !important}
 [data-theme="dark"] .breadcrumb a{color:#c8c7c2 !important}
+
+/* WCAG AA: override muted text colour vars for this page */
+:root,[data-theme="light"]{
+  --color-text-muted:#555551;
+  --color-text-faint:#636360;
+  --color-gold-bright:#7a5600;
+}
+[data-theme="dark"]{
+  --color-text-muted:#c8c7c2;
+  --color-text-faint:#b0afa9;
+  --color-gold-bright:#f0c040;
+}
+.article-tag,.article-tag[class]{color:#7a5600 !important}
+[data-theme="dark"] .article-tag{color:#f0c040 !important}
+.nav-logo,.nav-logo span,.nav-logo .logo-accent{color:#5a4100 !important}
+[data-theme="dark"] .nav-logo,[data-theme="dark"] .nav-logo span{color:#f0c040 !important}
+.mega-nav__trigger{color:#555551 !important}
 </style>
 </head>
 <body>
