@@ -421,6 +421,14 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .disclaimer-box strong{color:var(--color-text);font-weight:700}
 .related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4);margin-top:var(--space-4)}
 
+.related-guides-section{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4)}
+.related-guides-section>h2{font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-6)}
+.related-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;transition:border-color .15s,transform .15s}
+.related-card:hover{border-color:var(--color-primary);transform:translateY(-2px)}
+.related-card__tag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--space-2)}
+.related-card__title{font-weight:700;font-size:var(--text-base);color:var(--color-text);margin-bottom:var(--space-2)}
+
+
 /* ── Container layout fix ── */
 main.container{max-width:1200px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-16)}
 main.container h1{font-family:var(--font-display);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.15;margin:var(--space-4) 0 var(--space-6);color:var(--color-text)}
@@ -536,6 +544,17 @@ main.container article{max-width:860px}
   </div>
 
 <main class="container">
+  <nav class="breadcrumb-wrap" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li aria-current="page">Gold Karat Explained</li>
+    </ol>
+  </nav>
+
+  <div class="article-tag">Guide</div>
+
+
   <h1>Gold Karat Explained: What Does 14K, 18K, and 10K Mean?</h1>
 
   <!-- Live Price Widget (Reusing existing logic later) -->
@@ -737,5 +756,35 @@ main.container article{max-width:860px}
     <span>Spot data refreshes every 60 seconds. Prices sourced from LBMA via gold-api.com.</span>
   </div>
 </footer>
+
+<script>
+(function(){
+  const goldEl = document.getElementById('spotGoldOz');
+  const silverEl = document.getElementById('spotSilverOz');
+  if (!goldEl && !silverEl) return;
+  
+  function fmt(n, decimals) {
+    return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  }
+  
+  async function fetchSpot() {
+    try {
+      const res = await fetch('https://data.goldpricetools.com/spot');
+      if (!res.ok) return;
+      const data = await res.json();
+      
+      if (goldEl && data.gold_usd_oz) {
+        goldEl.textContent = '$' + fmt(data.gold_usd_oz, 2);
+      }
+      if (silverEl && data.silver_usd_oz) {
+        silverEl.textContent = '$' + fmt(data.silver_usd_oz, 2);
+      }
+    } catch(e) {}
+  }
+  
+  fetchSpot();
+  setInterval(fetchSpot, 60000);
+})();
+</script>
 </body>
 </html>
