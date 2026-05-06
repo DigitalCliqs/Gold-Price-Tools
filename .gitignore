@@ -4,3 +4,8 @@ submit_pr.py
 submit_helper.py
 issue_body.txt
 *.helper.py
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
