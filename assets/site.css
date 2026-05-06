@@ -1,0 +1,137 @@
+/*
+ * GoldPriceTools — site-wide responsive & accessibility fixes
+ * Applied via <link rel="stylesheet" href="/assets/site.css"> on all pages.
+ * Addresses: touch targets, table overflow, touch-action, overscroll, landscape.
+ */
+
+/* ── 1. Remove 300ms tap delay on all interactive elements ── */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+/* ── 2. Table overflow — prevent horizontal bleed on mobile/tablet ── */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+}
+
+/* ── 3. Touch targets — minimum 44×44px for icon buttons ── */
+.theme-toggle,
+.hamburger {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.hamburger {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chart range buttons — bump tap area on mobile */
+@media (max-width: 768px) {
+  .chart-btn {
+    min-height: 36px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* ── 4. Overscroll — prevent accidental pull-to-refresh in mobile menu ── */
+.mobile-menu {
+  overscroll-behavior: contain;
+}
+
+/* ── 5. Landscape orientation — prevent chart and hero from being too tall ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .chart-wrap {
+    height: 180px !important;
+  }
+
+  .hero {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .spot-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .spot-card {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .spot-card-value {
+    font-size: 1rem;
+  }
+}
+
+/* ── 6. Calc tabs — smooth touch scroll ── */
+.calc-tabs {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── 7. Horizontal scroll guard — catch any overflow at body level ── */
+body {
+  overflow-x: hidden;
+}
+
+/* ── 8. Tablet two-column fix — hero doesn't collapse too early ── */
+@media (min-width: 600px) and (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .spot-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── 9. Main nav trigger — ensure adequate tap height on tablet ── */
+@media (max-width: 900px) {
+  .mega-nav__trigger {
+    min-height: 44px;
+  }
+}
+
+/* ── 10. Footer — stack columns earlier on tablet ── */
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* ── 11. Sidebar — don't stick on tablet (no space) ── */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: static;
+  }
+}
+
+/* ── 12. Scrap table inputs — larger tap area on mobile ── */
+@media (max-width: 600px) {
+  .scrap-table input {
+    min-height: 40px;
+    font-size: 1rem;
+  }
+
+  .form-input,
+  .form-select {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+}
