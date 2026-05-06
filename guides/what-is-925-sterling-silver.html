@@ -432,10 +432,11 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .disclaimer-box{margin-top:var(--space-8);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-border);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
 .disclaimer-box strong{color:var(--color-text-muted)}
 .related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4);margin-top:var(--space-4)}
-</style>
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}.skip-link:focus{position:static;width:auto;height:auto;padding:var(--space-2) var(--space-4);background:var(--color-gold);color:var(--color-bg);font-weight:700;z-index:9999}</style>
 
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="GoldPriceTools Home">
@@ -503,7 +504,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     </div>
   </div>
 </nav>
-<main id="main-content">
+<main id="main-content" role="main" aria-label="Main content">
 </nav>
 
 <div class="breadcrumb-wrap">
