@@ -90,6 +90,19 @@ label {
   cursor: pointer;
 }
 
+/* ── 3d. Chart button active/hover text colour — use token not bare hex ── */
+/*
+ * Every page inline-defines `.chart-btn:hover { color:#0f0e0c }` which is the
+ * raw dark-theme background value. In light mode this makes the active button
+ * text invisible (dark text on a gold background is fine, but the value must
+ * track the actual background token). site.css loads after inline <style>
+ * blocks, so this rule wins and fixes the colour on all pages at once.
+ */
+.chart-btn:hover,
+.chart-btn.active {
+  color: var(--color-bg);
+}
+
 /* ── 4. Overscroll — prevent accidental pull-to-refresh in mobile menu ── */
 .mobile-menu {
   overscroll-behavior: contain;
