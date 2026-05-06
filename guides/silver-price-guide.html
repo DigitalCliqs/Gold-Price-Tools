@@ -441,6 +441,21 @@ main.container article{max-width:860px}
 .related-card__title{font-weight:700;font-size:var(--text-base);color:var(--color-text);margin-bottom:var(--space-2)}
 .related-card__desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.5}
 .related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-4)}
+
+/* WCAG AA contrast fixes - override gold colours */
+.nav-logo[href="/"],
+.nav-logo{color:#5a4100 !important}
+.nav-logo[href="/"] span,
+.nav-logo span,
+.nav-logo .logo-accent,
+.nav-logo strong{color:#5a4100 !important}
+.mega-nav__trigger,
+.mega-nav__trigger[role="menuitem"],
+nav .mega-nav__trigger{color:#555551 !important}
+[data-theme="dark"] .nav-logo,
+[data-theme="dark"] .nav-logo span,
+[data-theme="dark"] .nav-logo .logo-accent{color:#f0d060 !important}
+[data-theme="dark"] .mega-nav__trigger{color:#d4d4cf !important}
 </style>
 </head>
 <body>
