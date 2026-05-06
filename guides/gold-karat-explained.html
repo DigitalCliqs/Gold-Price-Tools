@@ -758,33 +758,26 @@ main.container article{max-width:860px}
 </footer>
 
 <script>
-(function(){
-  const goldEl = document.getElementById('spotGoldOz');
-  const silverEl = document.getElementById('spotSilverOz');
-  if (!goldEl && !silverEl) return;
-  
-  function fmt(n, decimals) {
-    return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-  }
-  
-  async function fetchSpot() {
+// Price Widget Logic
+const TROY_OZ_TO_GRAM = 31.1034768;
+function fmtUSD(val) { return '$' + val.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+async function fetchPrices() {
     try {
-      const res = await fetch('https://data.goldpricetools.com/spot');
-      if (!res.ok) return;
-      const data = await res.json();
-      
-      if (goldEl && data.gold_usd_oz) {
-        goldEl.textContent = '$' + fmt(data.gold_usd_oz, 2);
-      }
-      if (silverEl && data.silver_usd_oz) {
-        silverEl.textContent = '$' + fmt(data.silver_usd_oz, 2);
-      }
+        const [gRes, sRes] = await Promise.all([
+            fetch('https://api.gold-api.com/price/XAU'),
+            fetch('https://api.gold-api.com/price/XAG')
+        ]);
+        const gData = await gRes.json();
+        const sData = await sRes.json();
+        const gEl = document.getElementById('spotGoldOz');
+        const sEl = document.getElementById('spotSilverOz');
+        if (gEl && gData.price) gEl.textContent = fmtUSD(gData.price);
+        if (sEl && sData.price) sEl.textContent = fmtUSD(sData.price);
     } catch(e) {}
-  }
-  
-  fetchSpot();
-  setInterval(fetchSpot, 60000);
-})();
+}
+fetchPrices();
+setInterval(fetchPrices, 60000);
 </script>
 </body>
 </html>
