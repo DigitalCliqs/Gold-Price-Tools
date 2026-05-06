@@ -8,6 +8,13 @@
 :root {
   --color-up: #4ade80;
   --color-down: #f87171;
+
+  /* ── Z-index scale — single source of truth for stacking order ── */
+  --z-ticker-overlay: 2;   /* fade-edge gradients inside .ticker-wrap */
+  --z-nav: 200;            /* sticky site-nav bar */
+  --z-mobile: 199;         /* mobile drawer — slides under nav bar */
+  --z-panel: 300;          /* mega-panel dropdowns — above nav */
+  --z-consent: 99999;      /* Google consent / funding-choices overlay */
 }
 
 /* ── 1. Remove 300ms tap delay on all interactive elements ── */
@@ -50,6 +57,37 @@ label {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
+}
+
+/* ── 3b. Price direction colours — use tokens, not bare hex ── */
+/*
+ * Inline <style> blocks on each page hard-code #4ade80 / #f87171 for up/down
+ * indicators. site.css loads AFTER those blocks, so these rules win via
+ * cascade order and ensure --color-up / --color-down are always the source
+ * of truth. Changing the token propagates everywhere automatically.
+ */
+.ticker-change.up,
+.spot-card-change.up {
+  color: var(--color-up);
+}
+
+.ticker-change.down,
+.spot-card-change.down {
+  color: var(--color-down);
+}
+
+.live-dot {
+  background: var(--color-up);
+}
+
+/* ── 3c. Interactive cursors — pointer on all clickable non-button elements ── */
+/*
+ * .chart-btn uses <button> tags (cursor:pointer inherited from global reset),
+ * but .calc-tab and similar role-button elements need explicit declaration.
+ */
+.chart-btn,
+.calc-tab {
+  cursor: pointer;
 }
 
 /* ── 4. Overscroll — prevent accidental pull-to-refresh in mobile menu ── */
@@ -113,10 +151,18 @@ body {
   }
 }
 
-/* ── 10. Footer — stack columns earlier on tablet ── */
-@media (max-width: 768px) {
+/* ── 10. Footer — compact gap on small mobile ── */
+/*
+ * Each page's inline <style> handles the column breakpoints:
+ *   max-width:900px → 3 cols
+ *   max-width:600px → 2 cols
+ * A 768px override here would win in the cascade (site.css loads after inline
+ * styles) and incorrectly collapse the footer to 2 cols between 601–768px.
+ * This rule is therefore scoped to ≤600px and only tightens the gap — it
+ * does not change column count, avoiding the conflict.
+ */
+@media (max-width: 600px) {
   .footer-inner {
-    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 }
@@ -139,5 +185,17 @@ body {
   .form-select {
     min-height: 44px;
     font-size: 1rem;
+  }
+}
+
+/* ── 13. Reduced motion — also disable smooth scrolling ── */
+/*
+ * Each page's inline <style> resets animation/transition durations, but
+ * html { scroll-behavior: smooth } is not covered by duration resets.
+ * Users who prefer reduced motion should also get instant scroll jumps.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
