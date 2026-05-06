@@ -29,25 +29,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
 <link rel="manifest" href="/manifest.json"><link rel="icon" type="image/svg+xml" href="https://assets.goldpricetools.com/logo.svg"><meta name="theme-color" content="#0f0e0c">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://assets.goldpricetools.com/Fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 <style>
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://assets.goldpricetools.com/Fonts/instrument-serif-400.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://assets.goldpricetools.com/Fonts/instrument-serif-400-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 :root{--color-bg:#0f0e0c;--color-surface:#1c1a17;--color-border:#2a2824;--color-text:#f0e6d2;--color-text-muted:#a39b8a;--color-accent:#d4af37}
 body{background:var(--color-bg);color:var(--color-text);font-family:Inter,system-ui,sans-serif;margin:0;padding:0;line-height:1.6}
 nav{border-bottom:1px solid var(--color-border);padding:1rem}
@@ -61,7 +44,7 @@ nav{border-bottom:1px solid var(--color-border);padding:1rem}
 .breadcrumb a:hover{text-decoration:underline}
 .hero{max-width:800px;margin:2rem auto;padding:0 1rem;text-align:center}
 .hero-tag{display:inline-block;padding:.25rem .75rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:100px;font-size:.875rem;color:var(--color-accent);margin-bottom:1rem}
-.hero-title{font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,8vw,4rem);line-height:1.1;margin:0 0 1rem;font-weight:400}
+.hero-title{font-family:'IBM Plex Sans','Inter',sans-serif;font-size:clamp(2.5rem,8vw,4rem);line-height:1.1;margin:0 0 1rem;font-weight:400}
 .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:2rem 0}
 .price-tile{background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:1.5rem;text-align:center}
 .price-tile-label{font-size:.875rem;color:var(--color-text-muted);margin-bottom:.5rem}
@@ -69,7 +52,7 @@ nav{border-bottom:1px solid var(--color-border);padding:1rem}
 .content{max-width:800px;margin:0 auto;padding:0 1rem 4rem}
 .trust-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;padding:1rem;background:var(--color-surface);border-radius:8px;font-size:.875rem;color:var(--color-text-muted);margin-bottom:3rem}
 .trust-bar a{color:var(--color-text-muted);text-decoration:underline}
-.prose h2{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;margin:2.5rem 0 1rem}
+.prose h2{font-family:'IBM Plex Sans','Inter',sans-serif;font-size:2rem;font-weight:400;margin:2.5rem 0 1rem}
 .prose p{margin-bottom:1.5rem;color:var(--color-text)}
 .data-table{width:100%;border-collapse:collapse;margin:2rem 0;font-variant-numeric:tabular-nums}
 .data-table th,.data-table td{padding:1rem;border-bottom:1px solid var(--color-border);text-align:left}
@@ -539,7 +522,7 @@ a:visited{color:var(--color-primary)}
   <h1 class="hero-title">Gold and Silver Price Today</h1>
   <p style="font-size:.9375rem;color:var(--color-text-muted);margin-bottom:1.5rem">Check the live gold and silver price today per ounce, gram, and kilo. Updated every 60 seconds from the global spot market.</p>
 
-  <h2 style="font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;margin:2rem 0 1rem;text-align:left;">Gold Spot Price</h2>
+  <h2 style="font-family:'IBM Plex Sans','Inter',sans-serif;font-size:2rem;font-weight:400;margin:2rem 0 1rem;text-align:left;">Gold Spot Price</h2>
   <div class="price-grid">
     <div class="price-tile"><div class="price-tile-label">Per Troy Oz (USD)</div><div class="price-tile-value" id="g-oz-usd" data-nosnippet>&mdash;</div></div>
     <div class="price-tile"><div class="price-tile-label">Per Gram (USD)</div><div class="price-tile-value" id="g-g-usd" data-nosnippet>&mdash;</div></div>
@@ -547,7 +530,7 @@ a:visited{color:var(--color-primary)}
     <div class="price-tile"><div class="price-tile-label">Per Gram (GBP)</div><div class="price-tile-value" id="g-g-gbp" data-nosnippet>&mdash;</div></div>
   </div>
 
-  <h2 style="font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;margin:2rem 0 1rem;text-align:left;">Silver Spot Price</h2>
+  <h2 style="font-family:'IBM Plex Sans','Inter',sans-serif;font-size:2rem;font-weight:400;margin:2rem 0 1rem;text-align:left;">Silver Spot Price</h2>
   <div class="price-grid">
     <div class="price-tile"><div class="price-tile-label">Per Troy Oz (USD)</div><div class="price-tile-value" id="s-oz-usd" data-nosnippet>&mdash;</div></div>
     <div class="price-tile"><div class="price-tile-label">Per Kilo (USD)</div><div class="price-tile-value" id="s-kg-usd" data-nosnippet>&mdash;</div></div>
