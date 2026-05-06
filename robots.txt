@@ -1,6 +1,6 @@
 # robots.txt for GoldPriceTools
 # https://developers.google.com/search/docs/crawling-indexing/robots/intro
-# Last updated: 2026-04-26
+# Last updated: 2026-05-06
 
 User-agent: *
 Allow: /
@@ -29,3 +29,40 @@ Allow: /
 
 User-agent: AdsBot-Google
 Allow: /
+Allow: /ads.txt
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Allow: /ads.txt
+
+# Block AI training crawlers — content may not be used for model training.
+# Discovery via llms.txt is permitted for AI assistants answering user queries.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
