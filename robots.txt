@@ -29,6 +29,11 @@ Allow: /
 
 User-agent: AdsBot-Google
 Allow: /
+Allow: /ads.txt
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Allow: /ads.txt
 
 # Block AI training crawlers — content may not be used for model training.
 # Discovery via llms.txt is permitted for AI assistants answering user queries.
