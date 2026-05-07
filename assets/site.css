@@ -212,3 +212,13 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* CTA button — prevent a:visited from overriding white text */
+.cta-btn,
+.cta-btn:link,
+.cta-btn:visited,
+.cta-btn:hover,
+.cta-btn:active {
+  color: #fff !important;
+  text-decoration: none !important;
+}
