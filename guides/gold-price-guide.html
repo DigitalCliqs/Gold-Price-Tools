@@ -393,6 +393,35 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .disclaimer-box{margin-top:var(--space-8);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-border);font-size:var(--text-sm);color:var(--color-text-faint);line-height:1.6}
 .disclaimer-box strong{color:var(--color-text-muted)}
 .related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4);margin-top:var(--space-4)}
+
+/* ── Gold Bar Guide: breadcrumb, byline rule, share, related ── */
+.byline-rule{border:none;border-top:1px solid var(--color-border);margin:var(--space-4) 0 var(--space-5)}
+.share-section{max-width:860px;margin:var(--space-8) auto var(--space-4);padding:var(--space-5) 0;border-top:1px solid var(--color-border)}
+.share-section-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:var(--space-3)}
+.share-buttons{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.share-btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);border:1px solid var(--color-border);border-radius:var(--radius-full);background:var(--color-surface);color:var(--color-text-muted);font-size:var(--text-sm);font-weight:500;text-decoration:none;transition:border-color .15s,color .15s;white-space:nowrap}
+.share-btn:hover{border-color:var(--color-primary);color:var(--color-primary)}
+.related-guides-section{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4)}
+.related-guides-section>h2{font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-6)}
+.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-4)}
+.related-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;transition:border-color .15s,transform .15s}
+.related-card:hover{border-color:var(--color-primary);transform:translateY(-2px)}
+.related-card__tag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--space-2)}
+.related-card__title{font-weight:700;font-size:var(--text-base);color:var(--color-text);margin-bottom:var(--space-2)}
+.related-card__desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.5}
+.disclaimer-box{background:var(--color-surface-alt,#f4f3ef);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65}
+.disclaimer-box strong{color:var(--color-text);font-weight:700}
+
+/* WCAG AA contrast fixes */
+:root,[data-theme="light"]{--color-text-muted:#555551;--color-text-faint:#636360;--color-gold-bright:#7a5600}
+[data-theme="dark"]{--color-text-muted:#c8c7c2;--color-gold-bright:#f0c040}
+.nav-logo span,.logo-accent{color:#5a4100!important}
+[data-theme="dark"] .nav-logo span{color:#f0c040!important}
+.mega-nav__trigger{color:#555551!important}
+
+/* footer brand col fix */
+.footer-brand-col{min-width:180px;max-width:280px}
+.footer-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin-top:var(--space-3);max-width:38ch;white-space:normal;word-break:normal}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -465,9 +494,26 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </div>
 </nav>
 <main class="container">
-  <h1>The Comprehensive Gold Price Guide</h1>
+  <nav class="breadcrumb-wrap" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li aria-current="page">The Comprehensive Gold Price Guide</li>
+    </ol>
+  </nav>
 
-  <!-- Live Price Widget (Reusing existing logic later) -->
+  <div class="article-tag">Guide</div>
+  <h1 class="article-title">The Comprehensive Gold Price Guide</h1>
+  <div class="article-byline">
+    <span>By <a href="/authors/goldpricetools-editorial-team" class="byline-author">GoldPriceTools Editorial Team</a></span>
+    <span class="byline-sep">·</span>
+    <span>Published 1 May 2026</span>
+    <span class="byline-sep">·</span>
+    <span>Updated 2 May 2026</span>
+  </div>
+  <hr class="byline-rule" aria-hidden="true">
+
+  <!-- Live Price Widget -->
   <div class="spot-cards">
     <div class="spot-card">
       <div>Gold Spot (XAU)</div>
@@ -480,9 +526,10 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </div>
 
   <article>
-    <p>Welcome to our comprehensive guide on Pillar. The ultimate gold price pillar guide. Learn how prices are set, factors affecting gold, chart reading, and purity impacts.</p>
+  <div class="prose">
+    <p>Welcome to our comprehensive guide on gold pricing. The ultimate gold price pillar guide. Learn how prices are set, factors affecting gold, chart reading, and purity impacts.</p>
 
-    <h2>Understanding Pillar</h2>
+    <h2>Understanding Gold Pricing</h2>
     <p>Placeholder content covering Gold pricing guide... (To be expanded to 800-1500 words)</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
@@ -562,20 +609,72 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     <p>Read more: <a href="/guides/gold-price-guide">Comprehensive Gold Price Guide</a></p>
 
     <h2>Frequently Asked Questions</h2>
-    <details>
-      <summary>Question 1?</summary>
-      <p>Answer 1.</p>
-    </details>
-    <details>
-      <summary>Question 2?</summary>
-      <p>Answer 2.</p>
-    </details>
-    <details>
-      <summary>Question 3?</summary>
-      <p>Answer 3.</p>
-    </details>
+    <h3>What is the gold spot price?</h3>
+    <p>The gold spot price is the current market price at which gold can be bought or sold for immediate delivery. It is quoted in US dollars per troy ounce and fluctuates continuously during trading hours based on supply and demand across global exchanges.</p>
+    <h3>What factors affect the gold price?</h3>
+    <p>Gold prices are influenced by US dollar strength, central bank demand, inflation expectations, geopolitical risk, and investor sentiment. When the dollar weakens or uncertainty rises, gold typically increases in value as a safe-haven asset.</p>
+    <h3>How do I read a gold price chart?</h3>
+    <p>A gold price chart plots the spot price over time. The vertical axis shows the price per troy ounce, while the horizontal axis shows the time period. Rising trend lines indicate bullish momentum; falling lines indicate bearish pressure. Volume bars at the bottom show trading activity.</p>
+
+  </div>
+
+  <section class="share-section">
+    <div class="share-section-label">Share this guide</div>
+    <div class="share-buttons">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://goldpricetools.com/guides/gold-price-guide&text=The+Comprehensive+Gold+Price+Guide" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Share on X
+      </a>
+      <a class="share-btn" href="https://www.reddit.com/submit?url=https://goldpricetools.com/guides/gold-price-guide&title=The+Comprehensive+Gold+Price+Guide" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+        Reddit
+      </a>
+      <a class="share-btn" href="https://api.whatsapp.com/send?text=The+Comprehensive+Gold+Price+Guide%20https%3A%2F%2Fgoldpricetools.com%2Fguides%2Fgold-price-guide" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </section>
 
   </article>
+
+  <div style="max-width:860px;margin:0 auto var(--space-10);padding:0 var(--space-4)">
+    <div class="disclaimer-box">
+      <strong>Disclaimer:</strong> This content is for informational purposes only and does not constitute financial advice. Gold and silver prices fluctuate and past performance is not an indicator of future results. Always consult a qualified financial adviser before making investment decisions. Prices shown are indicative only and may differ from the price offered by any specific dealer.
+    </div>
+  </div>
+
+  <section class="related-guides-section">
+    <h2>Related Guides</h2>
+    <div class="related-guides-grid">
+      <a class="related-card" href="/guides/gold-price-history">
+        <span class="related-card__tag">GUIDE</span>
+        <div class="related-card__title">Gold Price History</div>
+        <div class="related-card__desc">How gold prices have moved over decades and what key events shaped the market.</div>
+      </a>
+      <a class="related-card" href="/guides/gold-price-prediction-2026">
+        <span class="related-card__tag">GUIDE</span>
+        <div class="related-card__title">Gold Price Prediction 2026</div>
+        <div class="related-card__desc">Expert forecasts and analysis for where the gold price is headed in 2026.</div>
+      </a>
+      <a class="related-card" href="/guides/how-to-read-gold-spot-price">
+        <span class="related-card__tag">GUIDE</span>
+        <div class="related-card__title">How to Read a Gold Spot Price</div>
+        <div class="related-card__desc">Understand bid, ask, spread, and how spot prices are quoted globally.</div>
+      </a>
+      <a class="related-card" href="/guides/gold-purity-guide">
+        <span class="related-card__tag">GUIDE</span>
+        <div class="related-card__title">Gold Purity Guide</div>
+        <div class="related-card__desc">What 999, 916, 750, and 375 hallmarks mean for gold value and quality.</div>
+      </a>
+      <a class="related-card" href="/guides/how-to-invest-in-gold">
+        <span class="related-card__tag">GUIDE</span>
+        <div class="related-card__title">How to Invest in Gold</div>
+        <div class="related-card__desc">Beginner's guide covering ETFs, coins, bars, and digital gold accounts.</div>
+      </a>
+    </div>
+  </section>
+
 </main>
 
   <footer class="footer">
@@ -598,8 +697,6 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
         <li><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a></li>
         <li><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></li>
         <li><a href="/gold-silver-ratio">Gold / Silver Ratio</a></li>
-        <li>
-</li>
       </ul>
     </div>
     <div class="footer-col">
@@ -655,5 +752,37 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     <span>Spot data refreshes every 60 seconds. Prices sourced from LBMA via gold-api.com.</span>
   </div>
 </footer>
+
+<script>
+const TROY_OZ_TO_GRAM = 31.1034768;
+function fmtUSD(val) { return '$' + val.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+async function fetchPrices() {
+  try {
+    const [gRes, sRes] = await Promise.all([
+      fetch('https://api.gold-api.com/price/XAU'),
+      fetch('https://api.gold-api.com/price/XAG')
+    ]);
+    const gData = await gRes.json();
+    const sData = await sRes.json();
+    document.getElementById('spotGoldOz').textContent = fmtUSD(gData.price);
+    document.getElementById('spotSilverOz').textContent = fmtUSD(sData.price);
+  } catch (e) { console.error("Price fetch failed", e); }
+}
+document.addEventListener('DOMContentLoaded', fetchPrices);
+</script>
+
+<script>(function(){
+  const themeBtn=document.querySelector('[data-theme-toggle]'),root=document.documentElement;
+  let theme=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',theme);
+  if(themeBtn){themeBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);themeBtn.setAttribute('aria-label','Switch to '+(theme==='dark'?'light':'dark')+' mode');themeBtn.innerHTML=theme==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';});}
+  const ham=document.getElementById('hamburger'),mob=document.getElementById('mobileMenu');
+  if(ham&&mob){ham.addEventListener('click',function(){const o=mob.classList.toggle('open');ham.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';});document.addEventListener('click',function(e){if(mob.classList.contains('open')&&!mob.contains(e.target)&&!ham.contains(e.target)){mob.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}});}
+  document.querySelectorAll('.mobile-section__toggle').forEach(function(btn){btn.addEventListener('click',function(){const items=this.nextElementSibling;const o=items.classList.toggle('open');this.setAttribute('aria-expanded',o);});});
+  document.querySelectorAll('.mega-nav__trigger[aria-haspopup]').forEach(function(t){t.addEventListener('click',function(e){e.stopPropagation();const p=this.nextElementSibling;if(!p)return;const o=p.classList.toggle('is-open');this.setAttribute('aria-expanded',o);document.querySelectorAll('.mega-panel.is-open').forEach(function(x){if(x!==p){x.classList.remove('is-open');const t2=x.previousElementSibling;if(t2)t2.setAttribute('aria-expanded','false');}});});});
+  document.addEventListener('click',function(e){if(!e.target.closest('.mega-nav__item')){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t)t.setAttribute('aria-expanded','false');});}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t){t.setAttribute('aria-expanded','false');t.focus();}});if(mob&&mob.classList.contains('open')){mob.classList.remove('open');if(ham){ham.setAttribute('aria-expanded','false');ham.focus();}document.body.style.overflow='';}};});
+})();</script>
+
 </body>
 </html>
