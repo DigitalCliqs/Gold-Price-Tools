@@ -5,7 +5,7 @@
 
   <url>
     <loc>https://goldpricetools.com/</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/"/>
@@ -663,6 +663,8 @@
     <priority>0.75</priority>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Gold &amp; Silver Guides | GoldPriceTools</image:title>
+      <image:caption>Free educational guides covering gold buying, selling, testing, pricing and silver valuation from the GoldPriceTools editorial team.</image:caption>
     </image:image>
   </url>
 
@@ -674,7 +676,7 @@
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
       <image:title>Buying &amp; Investing Guides | GoldPriceTools</image:title>
-      <image:caption>Practical guides on how to buy gold and silver, compare coins vs bars, choose the right IRA company, and build a precious metals investment strategy that suits your goals.</image:caption>
+      <image:caption>Practical guides on buying gold and silver: compare coins vs bars, choose the right IRA company, and build a precious metals investment strategy.</image:caption>
     </image:image>
   </url>
 
@@ -686,7 +688,7 @@
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
       <image:title>Deep Dive Guides | GoldPriceTools</image:title>
-      <image:caption>In-depth technical guides on gold karat purity, troy ounce weights, hallmark reading, the gold-silver ratio, and the science behind precious metals pricing and valuation.</image:caption>
+      <image:caption>In-depth technical guides on gold karat purity, troy ounce weights, hallmark reading, the gold-silver ratio, and precious metals valuation science.</image:caption>
     </image:image>
   </url>
 
@@ -923,7 +925,7 @@
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
       <image:title>Market &amp; Prices Guides | GoldPriceTools</image:title>
-      <image:caption>Guides covering gold price history from 1970 to today, 2026 forecasts from major banks, what drives precious metals markets, and how to read the gold spot price correctly.</image:caption>
+      <image:caption>Gold price guides: history from 1970 to today, 2026 bank forecasts, what drives precious metals markets, and how to read the gold spot price correctly.</image:caption>
     </image:image>
   </url>
 
@@ -947,7 +949,7 @@
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
       <image:title>Selling &amp; Testing Guides | GoldPriceTools</image:title>
-      <image:caption>Step-by-step guides on how to test if gold is real, calculate scrap gold value, and sell gold jewellery for the best price. Includes acid test, magnet test and dealer tips.</image:caption>
+      <image:caption>Guides on testing gold at home, calculating scrap gold value, and selling jewellery for the best price. Covers acid test, magnet test and dealer tips.</image:caption>
     </image:image>
   </url>
 
@@ -959,7 +961,7 @@
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
       <image:title>Silver Guides | GoldPriceTools</image:title>
-      <image:caption>Expert silver guides covering live silver prices by purity grade, how to value silver coins and bars, sterling silver explained, and the silver-gold ratio. Updated regularly.</image:caption>
+      <image:caption>Expert silver guides: live silver prices by purity grade, how to value silver coins and bars, sterling silver explained, and the silver-gold ratio.</image:caption>
     </image:image>
   </url>
 
