@@ -536,15 +536,15 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     </div>
   </div>
 </nav>
-<main class="container">
-  <nav class="breadcrumb-wrap" aria-label="Breadcrumb">
-    <ol class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li><a href="/guides/">Guides</a></li>
-      <li aria-current="page">The Comprehensive Gold Price Guide</li>
-    </ol>
-  </nav>
+<div class="breadcrumb-wrap">
+  <ol class="breadcrumb" aria-label="Breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li aria-current="page">The Comprehensive Gold Price Guide</li>
+  </ol>
+</div>
 
+<main class="article-wrap">
   <div class="article-tag">Guide</div>
   <h1 class="article-title">The Comprehensive Gold Price Guide</h1>
   <div class="article-byline">
@@ -557,14 +557,14 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   <hr class="byline-rule" aria-hidden="true">
 
   <!-- Live Price Widget -->
-  <div class="spot-cards">
+  <div class="spot-cards" style="max-width:860px;margin:var(--space-4) 0 var(--space-6)">
     <div class="spot-card">
-      <div>Gold Spot (XAU)</div>
-      <div class="spot-card-value" id="spotGoldOz">—</div>
+      <div class="spot-card-label">Gold Spot (XAU)</div>
+      <div class="spot-card-value gold-val" id="spotGoldOz">—</div>
     </div>
     <div class="spot-card">
-      <div>Silver Spot (XAG)</div>
-      <div class="spot-card-value" id="spotSilverOz">—</div>
+      <div class="spot-card-label">Gold per Gram (24K)</div>
+      <div class="spot-card-value gold-val" id="spotGoldGram">—</div>
     </div>
   </div>
 
@@ -587,7 +587,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
       </div>
     </div>
 
-    <nav class="toc-card" aria-label="Article contents">
+    <div class="toc-card" role="navigation" aria-label="Article contents">
       <div class="toc-card__title">In This Guide</div>
       <ul class="toc-list">
         <li><a href="#live-prices">Live Gold Prices Today (All Currencies)</a></li>
@@ -605,7 +605,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
         <li><a href="#terminology">Key Terminology Glossary</a></li>
         <li><a href="#faq">Frequently Asked Questions</a></li>
       </ul>
-    </nav>
+    </div>
 
     <h2 id="live-prices">Live Gold Prices Today (7 May 2026)</h2>
     <p>Gold is priced globally in US dollars but is widely traded and quoted in local currencies. The tables below show current indicative prices as of 7 May 2026 across major global markets.</p>
@@ -1158,14 +1158,10 @@ const TROY_OZ_TO_GRAM = 31.1034768;
 function fmtUSD(val) { return '$' + val.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
 async function fetchPrices() {
   try {
-    const [gRes, sRes] = await Promise.all([
-      fetch('https://api.gold-api.com/price/XAU'),
-      fetch('https://api.gold-api.com/price/XAG')
-    ]);
+    const gRes = await fetch('https://api.gold-api.com/price/XAU');
     const gData = await gRes.json();
-    const sData = await sRes.json();
     document.getElementById('spotGoldOz').textContent = fmtUSD(gData.price);
-    document.getElementById('spotSilverOz').textContent = fmtUSD(sData.price);
+    document.getElementById('spotGoldGram').textContent = fmtUSD(gData.price / TROY_OZ_TO_GRAM);
   } catch (e) { console.error("Price fetch failed", e); }
 }
 document.addEventListener('DOMContentLoaded', fetchPrices);
