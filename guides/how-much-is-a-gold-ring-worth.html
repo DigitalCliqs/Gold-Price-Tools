@@ -921,6 +921,22 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
 </script>
 
 <script>
+/* Fetch live gold spot price and GBP/USD rate — same pattern as scrap-gold-calculator */
+window._spot=null;
+window._gbpusd=0.79;
+(function(){
+  async function fetchFx(){
+    try{var r=await fetch('https://api.goldpricetoolsworker.io/fx',{cache:'no-store'});if(!r.ok)throw new Error();var d=await r.json();window._gbpusd=d.GBPUSD||0.79;}catch(e){window._gbpusd=0.79;}
+  }
+  async function fetchSpot(){
+    try{var r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});if(!r.ok)throw new Error();var d=await r.json();window._spot=d.price;window.dispatchEvent(new Event('goldprice_updated'));}catch(e){console.warn('Gold price API unavailable',e);}
+  }
+  Promise.all([fetchFx(),fetchSpot()]);
+  setInterval(fetchSpot,60000);
+})();
+</script>
+
+<script>
 (function(){
   /* Ring calculator */
   var TROY=31.1035;
