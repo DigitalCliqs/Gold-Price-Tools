@@ -466,7 +466,7 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
           <div class="rc-placeholder" id="rcPlaceholder">
             <span>Enter your ring weight above<br>to see the live value</span>
           </div>
-          <div id="rcOutput" style="display:none;display:flex;flex-direction:column;gap:var(--space-4)">
+          <div id="rcOutput" style="display:none;flex-direction:column;gap:var(--space-4)">
             <div class="rc-result-primary">
               <div class="rc-result-primary__label">Melt Value (100% of spot)</div>
               <div class="rc-melt-value" id="rcMeltValue">—</div>
@@ -1052,6 +1052,7 @@ window._gbpusd=0.79;
   }
 
   function onPriceReady(){
+    if(!window._spot)return;
     rcStatus.textContent='Live · '+new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
     calc();
   }
@@ -1063,6 +1064,7 @@ window._gbpusd=0.79;
       setTimeout(tryConnect,600);
     }
   }
+  /* Start polling; also listen for the event dispatched by the fetch script */
   tryConnect();
   window.addEventListener('goldprice_updated',onPriceReady);
 })();
