@@ -1,7 +1,8 @@
 # Cloudflare Pages _redirects
 # Clean URL routing — strip .html extension
 /guides/what-is-14k-gold                  /guides/what-is-14k-gold.html              200
-/guides/how-to-calculate-scrap-gold       /guides/how-to-calculate-scrap-gold.html   200
+/guides/how-to-calculate-scrap-gold       /scrap-gold-calculator                     301
+/guides/scrap-gold-guide                  /guides/how-to-sell-gold-jewellery         301
 /guides/troy-ounce-vs-gram-explained      /guides/troy-ounce-vs-gram-explained.html  200
 /guides/gold-purity-guide                 /guides/gold-purity-guide.html             200
 /guides/what-is-925-sterling-silver       /guides/what-is-925-sterling-silver.html   200
