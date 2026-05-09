@@ -1051,8 +1051,27 @@ window._gbpusd=0.79;
     rcPlaceholder.style.display='none';
   }
 
+  var _cdInterval=null;
+  var _cdSecs=60;
+
+  function updateCountdown(){
+    var m=Math.floor(_cdSecs/60);
+    var s=_cdSecs%60;
+    rcStatus.textContent='Live · '+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  }
+
+  function startCountdown(){
+    if(_cdInterval)clearInterval(_cdInterval);
+    _cdSecs=60;
+    updateCountdown();
+    _cdInterval=setInterval(function(){
+      if(_cdSecs>0)_cdSecs--;
+      updateCountdown();
+    },1000);
+  }
+
   function onPriceReady(){
-    rcStatus.textContent='Live · '+new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    startCountdown();
     calc();
   }
 
