@@ -72,18 +72,6 @@
   vignette: {
     new_triggers: false
   }
-}
-function calcScrapSilver() {
-  if (!silverSpotOz) return;
-  const ppg=silverSpotOz/TROY_OZ_TO_GRAM;let totalWeight=0,totalPureOz=0,totalValue=0;
-  document.querySelectorAll('#scrapSilverRows tr').forEach(row=>{
-    const purity=parseFloat(row.dataset.purity),input=row.querySelector('input'),grams=parseFloat(input?.value)||0,value=ppg*purity*grams,valCell=row.querySelector('.scrap-row-val');
-    if(valCell) valCell.textContent=grams>0?fmtUSD(value):'—';
-    totalWeight+=grams;totalPureOz+=(grams*purity)/TROY_OZ_TO_GRAM;totalValue+=value;
-  });
-  setText('scrapSilverTotalWeight',totalWeight.toFixed(3)+' g');
-  setText('scrapSilverPureOz',totalPureOz.toFixed(4)+' oz t');
-  setText('scrapSilverTotalValue',fmtUSD(totalValue));
 });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -576,8 +564,6 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </div>
   </div>
 </nav>
-</nav>
-</div>
 
 <!-- HERO — content first, no ads above the fold -->
 <section class="hero" aria-label="Live gold and silver prices">
@@ -831,12 +817,12 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <p>Live gold price per gram for 10K, 14K, 18K and 24K gold today, updated every 60 seconds. Prices shown in USD, GBP and EUR.</p>
       <!-- STATIC-FIRST: karat skeletons pre-rendered for SEO; values are JS-updated by design -->
       <div class="karat-grid" id="karatGrid" data-built="1">
-        <div class="karat-card" id="kg-24K"><div class="karat-card-header"><span class="karat-card-title" id="karat-24K-heading">24 Karat Gold</span><span class="karat-card-purity">99.99% pure</span></div><table class="karat-table" aria-labelledby="karat-24K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
-        <div class="karat-card" id="kg-22K"><div class="karat-card-header"><span class="karat-card-title" id="karat-22K-heading">22 Karat Gold</span><span class="karat-card-purity">91.67% pure</span></div><table class="karat-table" aria-labelledby="karat-22K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
-        <div class="karat-card" id="kg-18K"><div class="karat-card-header"><span class="karat-card-title" id="karat-18K-heading">18 Karat Gold</span><span class="karat-card-purity">75.00% pure</span></div><table class="karat-table" aria-labelledby="karat-18K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
-        <div class="karat-card" id="kg-14K"><div class="karat-card-header"><span class="karat-card-title" id="karat-14K-heading">14 Karat Gold</span><span class="karat-card-purity">58.33% pure</span></div><table class="karat-table" aria-labelledby="karat-14K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
+        <div class="karat-card" id="kg-24K"><div class="karat-card-header"><span class="karat-card-title" id="karat-24K-heading"><a href="/24k-gold-price-per-gram" style="color:inherit;text-decoration:none">24 Karat Gold</a></span><span class="karat-card-purity">99.99% pure</span></div><table class="karat-table" aria-labelledby="karat-24K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
+        <div class="karat-card" id="kg-22K"><div class="karat-card-header"><span class="karat-card-title" id="karat-22K-heading"><a href="/22k-gold-price-per-gram" style="color:inherit;text-decoration:none">22 Karat Gold</a></span><span class="karat-card-purity">91.67% pure</span></div><table class="karat-table" aria-labelledby="karat-22K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
+        <div class="karat-card" id="kg-18K"><div class="karat-card-header"><span class="karat-card-title" id="karat-18K-heading"><a href="/18k-gold-price-per-gram" style="color:inherit;text-decoration:none">18 Karat Gold</a></span><span class="karat-card-purity">75.00% pure</span></div><table class="karat-table" aria-labelledby="karat-18K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
+        <div class="karat-card" id="kg-14K"><div class="karat-card-header"><span class="karat-card-title" id="karat-14K-heading"><a href="/14k-gold-price-per-gram" style="color:inherit;text-decoration:none">14 Karat Gold</a></span><span class="karat-card-purity">58.33% pure</span></div><table class="karat-table" aria-labelledby="karat-14K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
         <div class="karat-card" id="kg-10K"><div class="karat-card-header"><span class="karat-card-title" id="karat-10K-heading"><a href="/10k-gold-price-per-gram" style="color:inherit;text-decoration:none">10 Karat Gold</a></span><span class="karat-card-purity">41.67% pure</span></div><table class="karat-table" aria-labelledby="karat-10K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
-        <div class="karat-card" id="kg-9K"><div class="karat-card-header"><span class="karat-card-title" id="karat-9K-heading">9 Karat Gold</span><span class="karat-card-purity">37.50% pure</span></div><table class="karat-table" aria-labelledby="karat-9K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
+        <div class="karat-card" id="kg-9K"><div class="karat-card-header"><span class="karat-card-title" id="karat-9K-heading"><a href="/9k-gold-price-per-gram" style="color:inherit;text-decoration:none">9 Karat Gold</a></span><span class="karat-card-purity">37.50% pure</span></div><table class="karat-table" aria-labelledby="karat-9K-heading"><tr><td>Per gram (USD)</td><td class="kv-usd">—</td></tr><tr><td>Per gram (GBP)</td><td class="kv-gbp">—</td></tr><tr><td>Per gram (EUR)</td><td class="kv-eur">—</td></tr><tr><td>Per troy oz</td><td class="kv-oz">—</td></tr><tr><td>Per kilogram</td><td class="kv-kg">—</td></tr></table></div>
       </div>
       <noscript>
         <table class="data-table">
@@ -1413,6 +1399,7 @@ function fireCalcEngaged() {
 ['goldKarat','goldWeight','goldUnit','goldCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcGold(); }));
 ['silverPurity','silverWeight','silverUnit','silverCurrency'].forEach(id=>document.getElementById(id)?.addEventListener('input',() => { fireCalcEngaged(); calcSilver(); }));
 document.querySelectorAll('#scrapRows input').forEach(inp=>inp.addEventListener('input',() => { fireCalcEngaged(); calcScrap(); }));
+document.querySelectorAll('#scrapSilverRows input').forEach(inp=>inp.addEventListener('input',() => { fireCalcEngaged(); calcScrapSilver(); }));
 // Gold Bars removed
 ['convInput','convFrom'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcConverter));
 function setText(id,val){const el=document.getElementById(id);if(el) el.textContent=val;}
