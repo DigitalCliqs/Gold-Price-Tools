@@ -9,3 +9,6 @@ issue_body.txt
 __pycache__/
 *.pyc
 *.pyo
+
+# Node
+node_modules/
