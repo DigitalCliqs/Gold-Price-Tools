@@ -12,3 +12,7 @@ __pycache__/
 
 # Node
 node_modules/
+
+# AI Skills (installed per-machine)
+.agent/
+.agents/
