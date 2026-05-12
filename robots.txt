@@ -1,6 +1,6 @@
 # robots.txt for GoldPriceTools
 # https://developers.google.com/search/docs/crawling-indexing/robots/intro
-# Last updated: 2026-05-06
+# Last updated: 2026-05-12
 
 User-agent: *
 Allow: /
@@ -34,34 +34,68 @@ User-agent: AdsBot-Google-Mobile
 Allow: /
 Allow: /ads.txt
 
-# Block AI training crawlers — content may not be used for model training.
-# Discovery via llms.txt is permitted for AI assistants answering user queries.
-User-agent: GPTBot
-Disallow: /
+# ─────────────────────────────────────────────────
+# AI Search Bots — ALLOWED for citation/discovery
+# These bots power AI search tools that cite sources.
+# Allowing them lets ChatGPT, Perplexity, and Copilot
+# discover and cite GoldPriceTools in AI-generated answers.
+# ─────────────────────────────────────────────────
 
 User-agent: ChatGPT-User
+Allow: /
+# OpenAI's search bot (used when ChatGPT searches the web).
+# Distinct from GPTBot which is used for model training.
+
+User-agent: PerplexityBot
+Allow: /
+# Perplexity always cites sources with clickable links.
+
+# AI context file for LLM assistants
+# See: https://llmstxt.org
+# Location: https://goldpricetools.com/llms.txt
+
+# ─────────────────────────────────────────────────
+# AI Training Crawlers — BLOCKED
+# These crawlers scrape content for model training,
+# not for answering user queries with citations.
+# ─────────────────────────────────────────────────
+
+User-agent: GPTBot
 Disallow: /
+# OpenAI's training crawler (not the search bot).
 
 User-agent: Google-Extended
 Disallow: /
+# Google Gemini model training crawler.
 
 User-agent: CCBot
 Disallow: /
+# Common Crawl — used for training datasets.
 
 User-agent: anthropic-ai
 Disallow: /
+# Anthropic's training crawler.
 
 User-agent: Claude-Web
 Disallow: /
+# Anthropic's web crawler for training.
 
 User-agent: Bytespider
 Disallow: /
+# ByteDance/TikTok training crawler.
 
 User-agent: Diffbot
 Disallow: /
+# Diffbot web scraping crawler.
 
 User-agent: omgili
 Disallow: /
+# Omgili/Webz.io data scraping.
 
 User-agent: FacebookBot
 Disallow: /
+# Meta's training crawler.
+
+User-agent: Applebot-Extended
+Disallow: /
+# Apple's AI training crawler (distinct from Applebot for Siri/Spotlight).
