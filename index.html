@@ -269,7 +269,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bot
 .faq-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-6)}
 .faq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4)}
 .faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5)}
-.faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin-bottom:var(--space-2)}
+.faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin:0 0 var(--space-2) 0}
 .faq-a{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
 .faq-a .highlight{color:var(--color-gold-bright);font-weight:600}
 
@@ -877,42 +877,63 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 
     </section>
 
+    <!-- EDITORIAL SECTION — AdSense content depth -->
+    <section class="faq-section" aria-label="Understanding gold prices">
+      <h2>Understanding Gold Prices: How the Market Works</h2>
+      <div class="prose" style="padding:0;max-width:none">
+        <p>The price of gold that appears on this page is derived from the <strong>international spot price</strong>, which represents the cost of one troy ounce (31.1035 grams) of pure 24-karat gold for immediate settlement on the global commodities market. This benchmark is set through continuous electronic trading on exchanges including the COMEX division of the New York Mercantile Exchange, the Shanghai Gold Exchange, and the London Bullion Market Association (LBMA), whose twice-daily London Gold Fix remains the most widely referenced benchmark for physical gold transactions worldwide.</p>
+
+        <h3>What Drives Gold Price Movements?</h3>
+        <p>Gold prices respond to a complex web of macroeconomic forces. The most significant driver is <strong>real interest rates</strong> &mdash; the difference between nominal interest rates and inflation. When real rates fall (as they do during periods of monetary easing), gold becomes more attractive because the opportunity cost of holding a non-yielding asset decreases. Central bank policy decisions by the Federal Reserve, European Central Bank, and Bank of England therefore have an outsized effect on gold prices. In 2024&ndash;2026, aggressive central bank gold purchases &mdash; particularly by the People&rsquo;s Bank of China, the Reserve Bank of India, and the Central Bank of Turkey &mdash; have added a structural demand floor that did not exist in previous decades.</p>
+        <p>Other factors that influence the gold price include <strong>US dollar strength</strong> (gold is priced in USD, so a weaker dollar makes gold cheaper for non-US buyers), <strong>geopolitical instability</strong> (gold is a traditional safe-haven during conflict and financial crises), <strong>inflation expectations</strong> (gold has historically preserved purchasing power over long periods), and <strong>physical demand</strong> from jewellery fabrication, particularly during Indian wedding season and Chinese New Year.</p>
+
+        <h3>How Karat Purity Affects the Price Per Gram</h3>
+        <p>Not all gold jewellery contains the same amount of pure gold. The <strong>karat system</strong> measures gold purity on a scale of 1 to 24, where 24K represents 99.9% pure gold. Lower karats contain proportionally less gold mixed with alloy metals such as copper, silver, zinc, or palladium, which improve durability and alter colour. To calculate the gold value of any karat, multiply the 24K spot price per gram by the karat&rsquo;s purity fraction: 18K is 75% (18/24), 14K is 58.33% (14/24), 10K is 41.67% (10/24), and 9K is 37.5% (9/24). Our calculators perform this conversion automatically using the live spot price.</p>
+
+        <h3>Scrap Gold and Dealer Premiums</h3>
+        <p>If you are selling gold jewellery to a dealer or pawnbroker, expect to receive between <strong>70% and 90%</strong> of the calculated melt value. The difference covers the dealer&rsquo;s refining costs, assay testing, business overheads, and profit margin. High-street &ldquo;cash for gold&rdquo; shops typically offer the lowest percentage, while specialist bullion dealers and online scrap buyers tend to pay closer to spot. Always compare offers from at least three buyers, and use our <a href="/scrap-gold-calculator" style="color:var(--color-primary);text-decoration:underline">scrap gold calculator</a> to know your item&rsquo;s melt value before negotiating.</p>
+
+        <h3>Gold in the United Kingdom</h3>
+        <p>The UK has a unique relationship with gold. The <strong>Hallmarking Act 1973</strong> requires all gold items above 1 gram sold as gold to carry an official hallmark from one of the four UK Assay Offices (London, Birmingham, Sheffield, Edinburgh). Investment-grade gold coins minted by the Royal Mint &mdash; including Gold Britannia and Gold Sovereign coins &mdash; are exempt from Capital Gains Tax (CGT) under HMRC rules because they are classified as legal tender. This makes UK-minted gold coins one of the most tax-efficient ways to invest in physical gold in Britain. Standard gold bars and non-UK coins, however, are subject to CGT on any gains above the annual exempt amount.</p>
+      </div>
+    </section>
+
     <!-- FAQ / SEO SECTION -->
     <section id="faq" class="faq-section" aria-label="Frequently asked questions">
       <h2>Frequently Asked Questions</h2>
       <div class="faq-grid">
-        <details class="faq-card">
-          <summary class="faq-q">How much is 14K gold per gram today?</summary>
+        <div class="faq-card">
+          <h3 class="faq-q">How much is 14K gold per gram today?</h3>
           <p class="faq-a snippet-answer">14K gold is 58.33% pure gold. The current 14K gold price per gram is <span class="highlight" id="faq-14k">loading...</span>. This updates every 60 seconds based on the live spot price.</p>
-        </details>
-        <details class="faq-card">
-          <summary class="faq-q">What is the 10K gold price per gram?</summary>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-q">What is the 10K gold price per gram?</h3>
           <p class="faq-a snippet-answer">10K gold contains 41.67% pure gold. Today's 10K gold price per gram is <span class="highlight" id="faq-10k">loading...</span>. 10K is the minimum karat sold as gold in the US.</p>
-        </details>
-        <details class="faq-card">
-          <summary class="faq-q">How much is 18K gold per gram?</summary>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-q">How much is 18K gold per gram?</h3>
           <p class="faq-a snippet-answer">18K gold is 75% pure gold, making it the most popular karat in European jewellery. The current 18K gold price per gram is <span class="highlight" id="faq-18k">loading...</span>.</p>
-        </details>
-        <details class="faq-card">
-          <summary class="faq-q">How many grams is 1 troy ounce of gold?</summary>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-q">How many grams is 1 troy ounce of gold?</h3>
           <p class="faq-a snippet-answer">1 troy ounce equals exactly <span class="highlight"><a href="/how-many-grams-in-troy-ounce" style="color:var(--color-primary);text-decoration:underline">31.1035 grams</a></span>. This is the standard unit for all precious metals trading worldwide — different from a regular avoirdupois ounce (28.35g).</p>
-        </details>
-        <details class="faq-card">
-          <summary class="faq-q">What is 925 sterling silver worth today?</summary>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-q">What is 925 sterling silver worth today?</h3>
           <p class="faq-a snippet-answer">925 sterling silver is 92.5% pure silver. The current value of 925 sterling silver per gram is <span class="highlight" id="faq-sterling">loading...</span>, based on the live silver spot price.</p>
-        </details>
-        <details class="faq-card">
-          <summary class="faq-q">How much is a gold bar worth?</summary>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-q">How much is a gold bar worth?</h3>
           <p class="faq-a snippet-answer">A standard 400oz Good Delivery gold bar is currently worth <span class="highlight" id="faq-bar400">loading...</span>. A 1oz gold bar is worth <span class="highlight" id="faq-bar1oz">loading...</span> at the current spot price.</p>
-        </details>
-        <details class="faq-card">
-          <summary class="faq-q">What is 1 gram of gold worth?</summary>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-q">What is 1 gram of gold worth?</h3>
           <p class="faq-a snippet-answer">1 gram of pure 24K gold is worth <span class="highlight" id="faq-1g">loading...</span> today. The price per gram fluctuates with the global spot price, which trades 24 hours a day on international markets.</p>
-        </details>
-        <details class="faq-card">
-          <summary class="faq-q">What is silver price per kilogram?</summary>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-q">What is silver price per kilogram?</h3>
           <p class="faq-a snippet-answer">The current <a href="/silver-price-per-kilo" style="color:var(--color-primary);text-decoration:underline">silver price per kilogram</a> is <span class="highlight" id="faq-agkg">loading...</span>. To convert the troy oz price to per kilo, multiply by 32.1507 (troy oz per kg).</p>
-        </details>
+        </div>
       </div>
     </section>
 </div>
