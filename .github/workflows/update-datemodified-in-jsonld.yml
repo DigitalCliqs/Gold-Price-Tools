@@ -88,7 +88,7 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{
               "host": "goldpricetools.com",
-              "key": "c130c8f5c62afdad5aa9e8e447271b62",
-              "keyLocation": "https://goldpricetools.com/c130c8f5c62afdad5aa9e8e447271b62.txt",
+              "key": "04019625ad6945b08e6de8a91a6b18eb",
+              "keyLocation": "https://goldpricetools.com/04019625ad6945b08e6de8a91a6b18eb.txt",
               "urlList": ["https://goldpricetools.com/sitemap.xml"]
             }' || true

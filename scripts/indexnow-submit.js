@@ -21,7 +21,7 @@ const { execSync } = require('child_process');
 
 // ─── Configuration ───────────────────────────────────────────
 const HOST = 'goldpricetools.com';
-const API_KEY = process.env.INDEXNOW_KEY || 'c130c8f5c62afdad5aa9e8e447271b62';
+const API_KEY = process.env.INDEXNOW_KEY || '04019625ad6945b08e6de8a91a6b18eb';
 const KEY_LOCATION = `https://${HOST}/${API_KEY}.txt`;
 const SITEMAP_PATH = path.join(__dirname, '..', 'sitemap.xml');
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
