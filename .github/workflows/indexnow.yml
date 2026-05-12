@@ -1,0 +1,47 @@
+name: IndexNow — Notify Search Engines
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'scripts/indexnow-submit.js'
+      - '.github/workflows/indexnow.yml'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Submission mode'
+        required: true
+        default: 'changed'
+        type: choice
+        options:
+          - changed
+          - full
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  notify-indexnow:
+    name: Submit URLs to IndexNow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Need previous commit for diff
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Submit changed URLs to IndexNow
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'changed')
+        run: node scripts/indexnow-submit.js --changed
+
+      - name: Submit all URLs to IndexNow
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'full'
+        run: node scripts/indexnow-submit.js
