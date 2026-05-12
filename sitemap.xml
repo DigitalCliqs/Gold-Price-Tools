@@ -450,21 +450,6 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/data/</loc>
-    <lastmod>2026-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/data/"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/data/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/data/"/>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Live Gold &amp; Silver Price Data Feed | GoldPriceTools</image:title>
-      <image:caption>Real-time spot prices for gold and silver bullion across multiple karats and units. Free to use with attribution.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://goldpricetools.com/editorial-standards/</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -628,14 +613,14 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/gold-silver-test-kit-reviews.html</loc>
+    <loc>https://goldpricetools.com/gold-silver-test-kit-reviews</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://goldpricetools.com/gold-silver-test-kit-reviews.html"/>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-silver-test-kit-reviews.html"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-silver-test-kit-reviews.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-silver-test-kit-reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://goldpricetools.com/gold-silver-test-kit-reviews"/>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-silver-test-kit-reviews"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-silver-test-kit-reviews"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-silver-test-kit-reviews"/>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
       <image:title>Best Gold &amp; Silver Testing Kits in 2026 — Reviewed</image:title>
@@ -645,7 +630,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -657,7 +642,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/buying-investing/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -669,7 +654,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/deep-dives/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -696,8 +681,8 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/guides/gold-bar-guide.html</loc>
-    <lastmod>2026-05-08</lastmod>
+    <loc>https://goldpricetools.com/guides/gold-bar-guide</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -724,8 +709,8 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/guides/gold-karat-explained.html</loc>
-    <lastmod>2026-05-08</lastmod>
+    <loc>https://goldpricetools.com/guides/gold-karat-explained</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -736,8 +721,8 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/guides/gold-price-guide.html</loc>
-    <lastmod>2026-05-08</lastmod>
+    <loc>https://goldpricetools.com/guides/gold-price-guide</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -764,7 +749,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/gold-price-prediction-2026</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -899,7 +884,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/indian-gold-silver-prices</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -911,7 +896,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/market-prices/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -923,7 +908,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/selling-testing/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -935,7 +920,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/silver-guides/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -974,7 +959,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/troy-ounce-guide</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
@@ -1001,7 +986,7 @@
 
   <url>
     <loc>https://goldpricetools.com/guides/us-silver-dollar-values</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
