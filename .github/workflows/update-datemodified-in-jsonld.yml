@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GH_PAT }}
 
       - name: Update dateModified in all HTML files
         run: |
@@ -41,11 +43,14 @@ jobs:
 
       - name: Commit and push
         if: steps.check_changes.outputs.changed == 'true'
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/DigitalCliqs/Gold-Price-Tools.git"
           git add -A
-          git commit -m "chore: update dateModified to $(date -u +"%Y-%m-%d")"
+          git commit -m "chore: update dateModified to $(date -u +"%Y-%m-%d") [skip ci]"
 
           MAX_RETRIES=3
           RETRY_COUNT=0
@@ -76,7 +81,14 @@ jobs:
             exit 1
           fi
 
-      - name: Ping IndexNow (Bing)
+      - name: Notify IndexNow of changes
         if: steps.check_changes.outputs.changed == 'true'
         run: |
-          curl -s -X GET "https://api.indexnow.org/indexnow?url=https://goldpricetools.com/sitemap.xml&key=YOUR_INDEXNOW_KEY" || true
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "host": "goldpricetools.com",
+              "key": "c130c8f5c62afdad5aa9e8e447271b62",
+              "keyLocation": "https://goldpricetools.com/c130c8f5c62afdad5aa9e8e447271b62.txt",
+              "urlList": ["https://goldpricetools.com/sitemap.xml"]
+            }' || true
