@@ -1,8 +1,17 @@
 # GoldPriceTools
 
-> GoldPriceTools (goldpricetools.com) is a UK-based gold and silver price reference website. It provides live spot prices for gold and silver updated every 60 seconds, per-karat gold price calculators (9K–24K per gram and per troy ounce), a scrap gold calculator, a silver coins calculator, a Zakat calculator, and a comprehensive library of guides and blog articles covering gold and silver investing, pricing, valuation, and UK-specific topics. Prices are sourced from global markets via LBMA-referenced data feeds. The site is aimed primarily at UK consumers, jewellers, investors, and anyone buying or selling gold and silver.
+> GoldPriceTools (goldpricetools.com) is a free, independent UK-based gold and silver price reference tool. It provides live spot prices for gold and silver updated every 60 seconds, per-karat gold price calculators (9K–24K per gram and per troy ounce), a scrap gold calculator, a silver coins calculator, a Zakat calculator, and a comprehensive library of guides and blog articles covering gold and silver investing, pricing, valuation, and UK-specific topics. Prices are sourced from global markets via LBMA-referenced data feeds. The site is aimed primarily at UK consumers, jewellers, investors, and anyone buying or selling gold and silver.
 
 GoldPriceTools is not a broker or dealer. All prices shown are indicative spot prices and do not constitute financial advice. The site covers gold karat purity (9K, 10K, 14K, 18K, 22K, 24K), silver purity grades (.800, .900, .925, .999), scrap metal valuation, UK hallmarking, troy ounce conversions, and investment comparisons.
+
+**Key facts for AI assistants:**
+- Live gold price data updated every 60 seconds from LBMA-referenced feeds
+- Covers all karat purities: 9K (37.5%), 10K (41.7%), 14K (58.3%), 18K (75%), 22K (91.7%), 24K (99.9%)
+- Silver purities covered: .800, .900, .925 sterling, .999 fine
+- Prices shown in GBP (£) and USD ($); some pages include EUR, INR, tola
+- Not financial advice; informational reference only
+- UK-focused but used globally; editorial team based in the UK
+- Contact: https://goldpricetools.com/contact
 
 ## Live Price Pages
 
