@@ -26,7 +26,6 @@ GoldPriceTools is not a broker or dealer. All prices shown are indicative spot p
 - [24K Gold Price Per Gram](https://goldpricetools.com/24k-gold-price-per-gram): Real-time 24 karat (pure) gold price per gram.
 - [Live Gold & Silver Price Today](https://goldpricetools.com/live-gold-silver-price-today): Live XAU and XAG spot prices with 24-hour chart.
 - [Gold Rates Today](https://goldpricetools.com/gold-rates-today): Today's gold rates across all karats and weights.
-- [Gold and Silver Price Today](https://goldpricetools.com/gold-and-silver-price-today): Combined live gold and silver prices with daily change.
 - [Gold Price Today 10K](https://goldpricetools.com/gold-price-today-10k): Live 10K gold price today per gram in GBP and USD.
 - [Gold Price Today 14K](https://goldpricetools.com/gold-price-today-14k): Live 14K gold price today per gram in GBP and USD.
 - [Gold Price Today 18K](https://goldpricetools.com/gold-price-today-18k): Live 18K gold price today per gram in GBP and USD.
