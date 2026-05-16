@@ -1,6 +1,12 @@
 # robots.txt for GoldPriceTools
 # https://developers.google.com/search/docs/crawling-indexing/robots/intro
-# Last updated: 2026-05-12
+# Last updated: 2026-05-16
+
+# ─────────────────────────────────────────────────
+# LLM / AI Discovery Files
+# See: https://llmstxt.org
+# ─────────────────────────────────────────────────
+# Location: https://goldpricetools.com/llms.txt
 
 User-agent: *
 Allow: /
@@ -36,24 +42,54 @@ Allow: /
 Allow: /ads.txt
 
 # ─────────────────────────────────────────────────
-# AI Search Bots — ALLOWED for citation/discovery
-# These bots power AI search tools that cite sources.
-# Allowing them lets ChatGPT, Perplexity, and Copilot
-# discover and cite GoldPriceTools in AI-generated answers.
+# AI Search & Citation Bots — ALLOWED
+# These bots power AI answers that cite sources.
+# Allowing them enables ChatGPT, Claude, Perplexity,
+# Copilot, Grok, and Gemini to discover and cite
+# GoldPriceTools in AI-generated answers.
 # ─────────────────────────────────────────────────
 
 User-agent: ChatGPT-User
 Allow: /
-# OpenAI's search bot (used when ChatGPT searches the web).
+# OpenAI's browsing/search agent (ChatGPT web search).
 # Distinct from GPTBot which is used for model training.
+
+User-agent: OAI-SearchBot
+Allow: /
+# OpenAI's search indexer — powers ChatGPT search results
+# and citation-based answers in AI Mode.
+
+User-agent: ClaudeBot
+Allow: /
+# Anthropic's web search bot used by Claude when searching
+# the web to answer questions. Distinct from anthropic-ai
+# (training crawler) which is blocked below.
 
 User-agent: PerplexityBot
 Allow: /
-# Perplexity always cites sources with clickable links.
+# Perplexity AI — always cites sources with clickable links.
 
-# AI context file for LLM assistants
-# See: https://llmstxt.org
-# Location: https://goldpricetools.com/llms.txt
+User-agent: Bingbot
+Allow: /
+# Microsoft Bing — powers Microsoft Copilot AI answers
+# and Bing AI Overviews.
+
+User-agent: Applebot
+Allow: /
+# Apple's web crawler for Siri, Spotlight, and Apple
+# Intelligence. Distinct from Applebot-Extended (training).
+
+User-agent: YouBot
+Allow: /
+# You.com AI search — citation-based AI search engine.
+
+User-agent: cohere-ai
+Allow: /
+# Cohere AI search — powers AI-assisted discovery tools.
+
+User-agent: Grokbot
+Allow: /
+# xAI Grok — Elon Musk's AI assistant (xAI).
 
 # ─────────────────────────────────────────────────
 # AI Training Crawlers — BLOCKED
@@ -63,7 +99,7 @@ Allow: /
 
 User-agent: GPTBot
 Disallow: /
-# OpenAI's training crawler (not the search bot).
+# OpenAI's training crawler (not the search/browsing bot).
 
 User-agent: Google-Extended
 Disallow: /
@@ -71,15 +107,15 @@ Disallow: /
 
 User-agent: CCBot
 Disallow: /
-# Common Crawl — used for training datasets.
+# Common Crawl — used to build AI training datasets.
 
 User-agent: anthropic-ai
 Disallow: /
-# Anthropic's training crawler.
+# Anthropic's training data crawler (not ClaudeBot search).
 
 User-agent: Claude-Web
 Disallow: /
-# Anthropic's web crawler for training.
+# Anthropic's legacy training crawler identifier.
 
 User-agent: Bytespider
 Disallow: /
@@ -87,7 +123,7 @@ Disallow: /
 
 User-agent: Diffbot
 Disallow: /
-# Diffbot web scraping crawler.
+# Diffbot bulk web scraping.
 
 User-agent: omgili
 Disallow: /
@@ -95,8 +131,17 @@ Disallow: /
 
 User-agent: FacebookBot
 Disallow: /
-# Meta's training crawler.
+# Meta's AI training crawler.
 
 User-agent: Applebot-Extended
 Disallow: /
-# Apple's AI training crawler (distinct from Applebot for Siri/Spotlight).
+# Apple's AI training crawler (distinct from Applebot
+# which powers Siri/Spotlight search — allowed above).
+
+User-agent: Amazonbot
+Disallow: /
+# Amazon's AI training crawler.
+
+User-agent: meta-externalagent
+Disallow: /
+# Meta's external AI data collection agent.
