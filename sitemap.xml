@@ -598,21 +598,6 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/gold-rates-today</loc>
-    <lastmod>2026-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-rates-today"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-rates-today"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-rates-today"/>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Gold Rates Today — Live Gold Price Per Gram</image:title>
-      <image:caption>Check live gold rates today. Real-time gold price per gram in USD, GBP, EUR and more. Accurate 10K, 14K, 18K, 22K and 24K gold rates updated every 60 seconds.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://goldpricetools.com/gold-silver-ratio</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
