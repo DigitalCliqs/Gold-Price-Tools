@@ -678,19 +678,7 @@
     </image:image>
   </url>
 
-  <url>
-    <loc>https://goldpricetools.com/guides/gold-karat-explained.html</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Gold Karat Explained: 14K, 18K, 10K Meaning &amp; Purity</image:title>
-      <image:caption>Learn what gold karats mean. We explain the difference between 14K, 18K, 10K, and 24K gold, including purity levels and pricing.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
+<url>
     <loc>https://goldpricetools.com/guides/gold-price-guide.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>

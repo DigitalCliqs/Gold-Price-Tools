@@ -46,7 +46,6 @@ GoldPriceTools is not a broker or dealer. All prices shown are indicative spot p
 
 ## Guides — Gold Pricing & Purity
 
-- [Gold Karat Explained](https://goldpricetools.com/guides/gold-karat-explained): What 9K, 10K, 14K, 18K, 22K and 24K mean, purity percentages, UK hallmarks, and per-gram values.
 - [Gold Purity Guide](https://goldpricetools.com/guides/gold-purity-guide): Complete guide to gold purity from 9K to 24K, fineness marks, and practical implications.
 - [What Is 14K Gold?](https://goldpricetools.com/guides/what-is-14k-gold): Everything about 14 karat gold — purity, uses, value, and how to identify it.
 - [Gold Bar Guide](https://goldpricetools.com/guides/gold-bar-guide): Sizes, weights, and valuations of gold bars from 1g to 400oz Good Delivery bars.
