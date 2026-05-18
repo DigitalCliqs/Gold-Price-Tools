@@ -466,9 +466,17 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .cta-box p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0 0 var(--space-4)}
 .cta-btn{display:inline-flex;align-items:center;gap:var(--space-1);padding:var(--space-2) var(--space-5);background:var(--color-primary);color:#fff;border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:600;text-decoration:none;transition:background .15s}
 .cta-btn:hover{background:var(--color-primary-hover);color:#fff}
-.disclaimer-box{margin-top:var(--space-8);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-border);font-size:var(--text-sm);color:var(--color-text-faint);line-height:1.6}
-.disclaimer-box strong{color:var(--color-text-muted)}
-.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4);margin-top:var(--space-4)}
+.disclaimer-box{margin-top:var(--space-8);padding:var(--space-5) var(--space-6);background:var(--color-surface-offset);border:1px solid var(--color-border);border-left:3px solid var(--color-gold-bright);border-radius:var(--radius-lg);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65}
+.disclaimer-box strong{color:var(--color-text);font-weight:700}
+.related-guides-section{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4)}
+.related-guides-section>h2{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-text);margin-bottom:var(--space-6)}
+.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-4)}
+.related-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;transition:border-color var(--transition),transform var(--transition),box-shadow var(--transition)}
+.related-card:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 40%,var(--color-border));transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none}
+.related-card__tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-gold-bright);margin-bottom:var(--space-2)}
+.related-card__title{font-weight:700;font-size:var(--text-base);color:var(--color-text);line-height:1.35;margin-bottom:var(--space-2)}
+.related-card:hover .related-card__title{color:var(--color-gold-bright)}
+.related-card__desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55}
 
 /* ════════════════════════════════════════════════════════
    GOLD PRICE HISTORY ─ EDITORIAL DESIGN SYSTEM
@@ -1609,7 +1617,6 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </script>
 
 </article>
-</main>
 
 <!-- Reading progress bar — JS -->
 <script>
@@ -1633,54 +1640,50 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 </script>
 
 
-<div class="disclaimer-box" role="note" aria-label="Financial disclaimer">
-  <p><strong>Disclaimer:</strong> This content is for informational purposes only and does not constitute financial advice. Gold and silver prices fluctuate and past performance is not an indicator of future results. Always consult a qualified financial adviser before making investment decisions. Prices shown are indicative only and may differ from the price offered by any specific dealer.</p>
+<div style="max-width:900px;margin:0 auto var(--space-10);padding:0 var(--space-4)">
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> This content is for informational purposes only and does not constitute financial advice. Gold and silver prices fluctuate and past performance is not an indicator of future results. Always consult a qualified financial adviser before making investment decisions. Prices shown are indicative only and may differ from the price offered by any specific dealer.
+  </div>
 </div>
 
 
-<!-- Related Guides Section -->
-<section class="related-guides" >
-  <div class="container" >
-    <h2>Related Gold &amp; Silver Guides</h2>
-    <div class="related-guides-grid">
-      <a href="/gold-silver-ratio" class="related-card">
-        <div class="related-card__tag">Live Tool</div>
-        <div class="related-card__title">Gold-Silver Ratio</div>
-        <div class="related-card__desc">Track the live gold-to-silver ratio and understand what it means for your precious metals portfolio.</div>
-      </a>
-      <a href="/guides/gold-vs-silver-investment" class="related-card">
-        <div class="related-card__tag">Guide</div>
-        <div class="related-card__title">Gold vs Silver Investment</div>
-        <div class="related-card__desc">Compare gold and silver as long-term investments — risk profiles, liquidity, and historical returns.</div>
-      </a>
-      <a href="/guides/how-to-invest-in-gold" class="related-card">
-        <div class="related-card__tag">Guide</div>
-        <div class="related-card__title">How to Invest in Gold</div>
-        <div class="related-card__desc">From ETFs to physical bullion — a beginner's guide to investing in gold in the UK.</div>
-      </a>
-      <a href="/14k-gold-price-per-gram" class="related-card">
-        <div class="related-card__tag">Live Price</div>
-        <div class="related-card__title">Gold Price Per Gram Today</div>
-        <div class="related-card__desc">Check today's live gold price per gram in all karats — 9K, 10K, 14K, 18K, 22K and 24K.</div>
-      </a>
-      <a href="/scrap-gold-calculator" class="related-card">
-        <div class="related-card__tag">Tool</div>
-        <div class="related-card__title">Scrap Gold Calculator</div>
-        <div class="related-card__desc">Calculate the melt value of your scrap gold at today's live spot price.</div>
-      </a>
-      <a href="/guides/how-to-sell-gold-jewellery" class="related-card">
-        <div class="related-card__tag">Guide</div>
-        <div class="related-card__title">How to Sell Gold Jewellery</div>
-        <div class="related-card__desc">Get the best price for your gold jewellery — what dealers look for and how to avoid being underpaid.</div>
-      </a>
-      <a href="/guides/gold-price-guide.html" class="related-card">
-        <div class="related-card__tag">Guide</div>
-        <div class="related-card__title">Gold Price Guide 2026</div>
-        <div class="related-card__desc">Comprehensive 2026 guide: live prices, history, expert forecasts and investment strategies.</div>
-      </a>
-    </div>
+<section class="related-guides-section">
+  <h2>Related Guides</h2>
+  <div class="related-guides-grid">
+    <a class="related-card" href="/gold-silver-ratio">
+      <span class="related-card__tag">LIVE TOOL</span>
+      <div class="related-card__title">Gold-Silver Ratio</div>
+      <div class="related-card__desc">Track the live gold-to-silver ratio and understand what it means for your precious metals portfolio.</div>
+    </a>
+    <a class="related-card" href="/guides/gold-price-guide.html">
+      <span class="related-card__tag">GUIDE</span>
+      <div class="related-card__title">Gold Price Guide 2026</div>
+      <div class="related-card__desc">Comprehensive 2026 guide: live prices, history, expert forecasts and investment strategies.</div>
+    </a>
+    <a class="related-card" href="/guides/gold-price-prediction-2026">
+      <span class="related-card__tag">GUIDE</span>
+      <div class="related-card__title">Gold Price Prediction 2026</div>
+      <div class="related-card__desc">Expert forecasts and analysis for where the gold price is headed in 2026.</div>
+    </a>
+    <a class="related-card" href="/guides/what-affects-gold-price">
+      <span class="related-card__tag">GUIDE</span>
+      <div class="related-card__title">What Affects Gold Price</div>
+      <div class="related-card__desc">The economic and geopolitical forces that move gold prices day to day.</div>
+    </a>
+    <a class="related-card" href="/guides/how-to-invest-in-gold">
+      <span class="related-card__tag">GUIDE</span>
+      <div class="related-card__title">How to Invest in Gold</div>
+      <div class="related-card__desc">From ETFs to physical bullion &mdash; a beginner&rsquo;s guide to investing in gold in the UK.</div>
+    </a>
+    <a class="related-card" href="/guides/gold-vs-silver-investment">
+      <span class="related-card__tag">GUIDE</span>
+      <div class="related-card__title">Gold vs Silver Investment</div>
+      <div class="related-card__desc">Compare gold and silver as long-term investments &mdash; risk profiles, liquidity, and historical returns.</div>
+    </a>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="footer-inner">
