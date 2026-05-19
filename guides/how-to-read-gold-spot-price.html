@@ -527,19 +527,24 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 
 /* === BID/ASK SPREAD VISUALIZATION === */
 .spread-vis{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-6) 0;max-width:860px}
-.spread-vis__title{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);text-align:center}
-.spread-vis__scale{position:relative;height:80px;background:linear-gradient(90deg,color-mix(in oklch,#4ade80 18%,var(--color-surface-offset)) 0%,color-mix(in oklch,#4ade80 18%,var(--color-surface-offset)) 42%,color-mix(in oklch,var(--color-gold-bright) 15%,var(--color-surface-offset)) 50%,color-mix(in oklch,#f87171 18%,var(--color-surface-offset)) 58%,color-mix(in oklch,#f87171 18%,var(--color-surface-offset)) 100%);border-radius:var(--radius-md);margin:var(--space-6) 0 var(--space-3)}
-.spread-vis__marker{position:absolute;top:-22px;bottom:-22px;width:2px;display:flex;flex-direction:column;align-items:center}
-.spread-vis__marker-line{flex:1;width:2px;background:currentColor}
-.spread-vis__marker-label{position:absolute;top:-28px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;color:currentColor}
-.spread-vis__marker-price{position:absolute;bottom:-22px;font-size:var(--text-sm);font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-text);white-space:nowrap}
-.spread-vis__marker--bid{left:42%;color:#22c55e;transform:translateX(-50%)}
-.spread-vis__marker--mid{left:50%;color:var(--color-gold-bright);transform:translateX(-50%)}
-.spread-vis__marker--ask{left:58%;color:#ef4444;transform:translateX(-50%)}
-.spread-vis__bracket{position:absolute;top:50%;left:42%;right:42%;height:24px;transform:translateY(-50%);border:2px solid var(--color-gold-bright);border-bottom:none;border-radius:6px 6px 0 0;pointer-events:none}
-.spread-vis__bracket-label{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:var(--color-gold-bright);background:var(--color-surface);padding:2px 8px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
-.spread-vis__legend{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin-top:var(--space-8);padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
-@media(max-width:600px){.spread-vis__legend{grid-template-columns:1fr}}
+.spread-vis__title{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-5);text-align:center}
+.spread-vis__row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-2);text-align:center}
+.spread-vis__col{display:flex;flex-direction:column;align-items:center;gap:4px}
+.spread-vis__col--bid{color:#22c55e}
+.spread-vis__col--mid{color:var(--color-gold-bright)}
+.spread-vis__col--ask{color:#ef4444}
+.spread-vis__cap{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:currentColor}
+.spread-vis__price{font-size:var(--text-base);font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-text);letter-spacing:-.01em}
+.spread-vis__scale{position:relative;height:36px;background:linear-gradient(90deg,color-mix(in oklch,#4ade80 18%,var(--color-surface-offset)) 0%,color-mix(in oklch,#4ade80 18%,var(--color-surface-offset)) 30%,color-mix(in oklch,var(--color-gold-bright) 18%,var(--color-surface-offset)) 50%,color-mix(in oklch,#f87171 18%,var(--color-surface-offset)) 70%,color-mix(in oklch,#f87171 18%,var(--color-surface-offset)) 100%);border-radius:var(--radius-md);margin:var(--space-3) 0;border:1px solid var(--color-divider)}
+.spread-vis__tick{position:absolute;top:-6px;bottom:-6px;width:3px;border-radius:2px;transform:translateX(-50%)}
+.spread-vis__tick--bid{left:16.67%;background:#22c55e;box-shadow:0 0 6px color-mix(in oklch,#22c55e 50%,transparent)}
+.spread-vis__tick--mid{left:50%;background:var(--color-gold-bright);box-shadow:0 0 6px color-mix(in oklch,var(--color-gold-bright) 50%,transparent)}
+.spread-vis__tick--ask{left:83.33%;background:#ef4444;box-shadow:0 0 6px color-mix(in oklch,#ef4444 50%,transparent)}
+.spread-vis__spread-pill{display:flex;justify-content:center;margin-top:var(--space-4)}
+.spread-vis__spread-pill>span{display:inline-flex;align-items:center;gap:var(--space-2);padding:6px 14px;font-size:11px;font-weight:700;color:var(--color-gold-bright);text-transform:uppercase;letter-spacing:.08em;border:1px solid color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border));background:color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface-offset));border-radius:var(--radius-full)}
+.spread-vis__spread-pill svg{width:12px;height:12px}
+.spread-vis__legend{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin-top:var(--space-6);padding-top:var(--space-5);border-top:1px solid var(--color-divider)}
+@media(max-width:600px){.spread-vis__legend{grid-template-columns:1fr}.spread-vis__row{grid-template-columns:repeat(3,1fr);gap:4px}.spread-vis__price{font-size:var(--text-sm)}}
 .spread-vis__legend-item{text-align:center}
 .spread-vis__legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-bottom:var(--space-1)}
 .spread-vis__legend-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
@@ -990,26 +995,31 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 
     <!-- Bid/Ask visualization -->
     <div class="spread-vis">
-      <div class="spread-vis__title">Wholesale Gold Market — Bid, Ask, Spread</div>
-      <div class="spread-vis__scale">
-        <div class="spread-vis__bracket">
-          <span class="spread-vis__bracket-label">Spread: $2.00</span>
+      <div class="spread-vis__title">Wholesale Gold Market — Bid, Ask &amp; Spread</div>
+      <div class="spread-vis__row">
+        <div class="spread-vis__col spread-vis__col--bid">
+          <div class="spread-vis__cap">Bid</div>
+          <div class="spread-vis__price">$4,595.00</div>
         </div>
-        <div class="spread-vis__marker spread-vis__marker--bid">
-          <span class="spread-vis__marker-label">Bid</span>
-          <span class="spread-vis__marker-line"></span>
-          <span class="spread-vis__marker-price">$4,595.00</span>
+        <div class="spread-vis__col spread-vis__col--mid">
+          <div class="spread-vis__cap">Midpoint (Spot)</div>
+          <div class="spread-vis__price">$4,596.00</div>
         </div>
-        <div class="spread-vis__marker spread-vis__marker--mid">
-          <span class="spread-vis__marker-label">Mid (Spot)</span>
-          <span class="spread-vis__marker-line"></span>
-          <span class="spread-vis__marker-price">$4,596.00</span>
+        <div class="spread-vis__col spread-vis__col--ask">
+          <div class="spread-vis__cap">Ask</div>
+          <div class="spread-vis__price">$4,597.00</div>
         </div>
-        <div class="spread-vis__marker spread-vis__marker--ask">
-          <span class="spread-vis__marker-label">Ask</span>
-          <span class="spread-vis__marker-line"></span>
-          <span class="spread-vis__marker-price">$4,597.00</span>
-        </div>
+      </div>
+      <div class="spread-vis__scale" aria-hidden="true">
+        <span class="spread-vis__tick spread-vis__tick--bid"></span>
+        <span class="spread-vis__tick spread-vis__tick--mid"></span>
+        <span class="spread-vis__tick spread-vis__tick--ask"></span>
+      </div>
+      <div class="spread-vis__spread-pill">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 7l-4 5 4 5M17 7l4 5-4 5M3 12h18"/></svg>
+          Spread: $2.00
+        </span>
       </div>
       <div class="spread-vis__legend">
         <div class="spread-vis__legend-item">
