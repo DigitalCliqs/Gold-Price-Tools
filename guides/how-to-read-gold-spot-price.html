@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Read the Gold Spot Price | GoldPriceTools</title>
   <meta name="google-adsense-account" content="ca-pub-8849494330640880">
-<meta name="description" content="Learn how to read and understand the gold spot price: what it means, how it's quoted, and how to convert troy oz prices to per gram for any karat.">
+<meta name="description" content="Master the gold spot price: troy ounce conversions, bid/ask spreads, dealer premiums, LBMA fixing, candlestick charts, and 24-hour trading sessions explained.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://goldpricetools.com/guides/how-to-read-gold-spot-price">
 <link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/how-to-read-gold-spot-price">
@@ -405,9 +405,277 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .disclaimer-box{margin-top:var(--space-8);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-border);font-size:var(--text-sm);color:var(--color-text-faint);line-height:1.6}
 .disclaimer-box strong{color:var(--color-text-muted)}
 .related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4);margin-top:var(--space-4)}
+
+/* ── GUIDE HERO (new) ── */
+.guide-hero{max-width:1200px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-4)}
+.guide-hero__inner{display:grid;grid-template-columns:1.4fr 1fr;gap:var(--space-8);align-items:center}
+@media(max-width:900px){.guide-hero__inner{grid-template-columns:1fr;gap:var(--space-6)}}
+.guide-hero__badge{display:inline-flex;align-items:center;gap:var(--space-2);background:color-mix(in oklch,var(--color-gold-bright) 10%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border));padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:11px;font-weight:700;color:var(--color-gold-bright);margin-bottom:var(--space-4);letter-spacing:.08em;text-transform:uppercase}
+.guide-hero__badge .pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--color-gold-bright);animation:pulse 2s ease-in-out infinite;box-shadow:0 0 8px var(--color-gold-bright)}
+.guide-hero__title{font-family:var(--font-display);font-size:clamp(2rem,1.4rem + 3.5vw,3.25rem);font-weight:700;line-height:1.08;letter-spacing:-.02em;color:var(--color-text);margin:0 0 var(--space-4)}
+.guide-hero__title .gold{background:linear-gradient(135deg,var(--color-gold-bright),#f3c75a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.guide-hero__lead{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:60ch;margin:0 0 var(--space-5)}
+.guide-hero__meta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);font-size:var(--text-xs);color:var(--color-text-muted);padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
+.guide-hero__meta a{color:var(--color-primary);font-weight:600;text-decoration:none}
+.guide-hero__meta a:hover{text-decoration:underline}
+.guide-hero__meta-sep{color:var(--color-text-faint)}
+
+/* Live price card in hero */
+.hero-spot-card{background:linear-gradient(140deg,var(--color-surface-2) 0%,var(--color-surface) 60%);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5);box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.hero-spot-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--color-gold-bright),transparent)}
+.hero-spot-card__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3)}
+.hero-spot-card__title{font-size:11px;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em}
+.hero-spot-card__live{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:#4ade80;text-transform:uppercase;letter-spacing:.06em}
+.hero-spot-card__price{font-family:var(--font-display);font-size:clamp(2.25rem,1.8rem + 2vw,3rem);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.025em;line-height:1;margin-bottom:var(--space-2)}
+.hero-spot-card__unit{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)}
+.hero-spot-card__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
+.hero-spot-card__cell{}
+.hero-spot-card__cell-label{font-size:10px;font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.hero-spot-card__cell-value{font-size:var(--text-base);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums}
+
+/* ── ARTICLE WRAP (override) ── */
+.article-wrap--guide{max-width:1200px;margin:0 auto;padding:var(--space-2) var(--space-4) var(--space-16)}
+
+/* Key stats strip */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);max-width:1100px;margin:var(--space-6) auto}
+@media(max-width:768px){.stat-strip{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.stat-strip{grid-template-columns:1fr}}
+.stat-card{background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold-bright) 20%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-4);text-align:center;transition:transform .15s,border-color .15s}
+.stat-card:hover{transform:translateY(-2px);border-color:var(--color-gold-bright)}
+.stat-card__value{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1}
+.stat-card__label{font-size:11px;font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.07em;margin-top:var(--space-2)}
+
+/* Table of contents */
+.toc-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-8) auto;max-width:860px;box-shadow:var(--shadow-sm)}
+.toc-card__title{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-gold-bright);margin-bottom:var(--space-4)}
+.toc-card__title svg{width:14px;height:14px}
+.toc-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-2)}
+@media(max-width:600px){.toc-list{grid-template-columns:1fr}}
+.toc-list a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);transition:background .15s,color .15s}
+.toc-list a::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--color-gold-bright);flex-shrink:0}
+.toc-list a:hover{color:var(--color-text);background:var(--color-surface-offset)}
+.toc-list .toc-num{font-variant-numeric:tabular-nums;color:var(--color-text-faint);font-weight:600;min-width:1.5em}
+
+/* Callout boxes */
+.callout{border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin:var(--space-6) 0;max-width:860px}
+.callout--gold{background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 20%,var(--color-border));border-left:3px solid var(--color-gold-bright)}
+.callout--teal{background:color-mix(in oklch,var(--color-primary) 6%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-primary) 20%,var(--color-border));border-left:3px solid var(--color-primary)}
+.callout--warn{background:color-mix(in oklch,#f59e0b 6%,var(--color-surface-offset));border:1px solid color-mix(in oklch,#f59e0b 20%,var(--color-border));border-left:3px solid #f59e0b}
+.callout__title{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
+.callout__title svg{width:14px;height:14px;flex-shrink:0}
+.callout--gold .callout__title{color:var(--color-gold-bright)}
+.callout--teal .callout__title{color:var(--color-primary)}
+.callout--warn .callout__title{color:#f59e0b}
+.callout p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin:0 0 var(--space-2)}
+.callout p:last-child{margin-bottom:0}
+.callout strong{color:var(--color-text)}
+.callout code{font-family:'IBM Plex Mono',monospace;background:var(--color-surface-dynamic);padding:2px 7px;border-radius:var(--radius-sm);font-size:.88em;color:var(--color-gold-bright)}
+
+/* Formula highlight */
+.formula-box{background:linear-gradient(180deg,var(--color-surface-2),var(--color-surface));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);margin:var(--space-4) 0;max-width:860px;position:relative;overflow:hidden}
+.formula-box::before{content:'ƒ';position:absolute;right:var(--space-3);top:var(--space-2);font-size:2.5rem;font-family:'Georgia',serif;color:var(--color-gold-bright);opacity:.15;font-style:italic;line-height:1}
+.formula-box__formula{font-family:'IBM Plex Mono','Courier New',monospace;font-size:var(--text-sm);color:var(--color-text);line-height:1.7;margin-bottom:var(--space-3)}
+.formula-box__example{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;padding-top:var(--space-3);border-top:1px dashed var(--color-divider)}
+.formula-box__example strong{color:var(--color-gold-bright);font-variant-numeric:tabular-nums}
+.formula-box__label{display:inline-block;font-size:10px;font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
+
+/* Enhanced prose tables */
+.prose table{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-border);background:var(--color-surface)}
+.prose table thead{background:color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface-offset))}
+.prose table th{color:var(--color-text);font-weight:700;border-bottom:2px solid color-mix(in oklch,var(--color-gold-bright) 25%,var(--color-border));padding:var(--space-3) var(--space-4)!important;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em}
+.prose table tbody tr:nth-child(even){background:var(--color-surface-offset)}
+.prose table td{border-bottom:1px solid var(--color-divider);padding:var(--space-3) var(--space-4)!important;font-variant-numeric:tabular-nums}
+.prose table tr:last-child td{border-bottom:none}
+.prose table td:first-child,.prose table th:first-child{color:var(--color-text);font-weight:600}
+
+/* Section anchor links */
+.prose h2{scroll-margin-top:80px;display:flex;align-items:baseline;gap:var(--space-3);position:relative}
+.prose h2 .h2-num{font-family:var(--font-display);font-size:.7em;color:var(--color-gold-bright);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em;flex-shrink:0}
+.prose h3{scroll-margin-top:80px}
+
+/* === TROY OUNCE COMPARISON === */
+.troy-vis{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin:var(--space-6) 0;max-width:860px}
+@media(max-width:600px){.troy-vis{grid-template-columns:1fr}}
+.troy-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center;position:relative;overflow:hidden}
+.troy-card--troy{border-color:color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border));background:color-mix(in oklch,var(--color-gold-bright) 4%,var(--color-surface))}
+.troy-card__icon{width:48px;height:48px;margin:0 auto var(--space-3);display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--color-surface-offset)}
+.troy-card--troy .troy-card__icon{background:color-mix(in oklch,var(--color-gold-bright) 18%,var(--color-surface));color:var(--color-gold-bright)}
+.troy-card__icon svg{width:24px;height:24px}
+.troy-card__label{font-size:var(--text-xs);font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
+.troy-card__value{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1;margin-bottom:var(--space-2)}
+.troy-card--troy .troy-card__value{color:var(--color-gold-bright)}
+.troy-card__desc{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5}
+.troy-card__diff{display:inline-block;margin-top:var(--space-3);font-size:11px;font-weight:600;color:var(--color-gold-bright);padding:2px 10px;border-radius:var(--radius-full);background:color-mix(in oklch,var(--color-gold-bright) 12%,transparent)}
+
+/* === LIVE CONVERTER === */
+.converter-widget{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;margin:var(--space-6) 0;max-width:860px;box-shadow:var(--shadow-sm)}
+.converter-widget__head{padding:var(--space-4) var(--space-5);background:var(--color-surface-offset);border-bottom:1px solid var(--color-border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)}
+.converter-widget__title{font-size:var(--text-sm);font-weight:700;color:var(--color-text);display:flex;align-items:center;gap:var(--space-2)}
+.converter-widget__title svg{width:18px;height:18px;color:var(--color-gold-bright)}
+.converter-widget__live{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:#4ade80;text-transform:uppercase;letter-spacing:.06em}
+.converter-widget__body{padding:var(--space-5)}
+.converter-widget__input{display:flex;gap:var(--space-3);align-items:end;flex-wrap:wrap;margin-bottom:var(--space-5)}
+.converter-widget__input-group{flex:1;min-width:160px;display:flex;flex-direction:column;gap:var(--space-2)}
+.converter-widget__input-group label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em}
+.converter-widget__input-group input,.converter-widget__input-group select{padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-base);color:var(--color-text);font-variant-numeric:tabular-nums;appearance:none;-webkit-appearance:none;width:100%}
+.converter-widget__input-group input:focus,.converter-widget__input-group select:focus{outline:none;border-color:var(--color-gold-bright);background:var(--color-surface)}
+.converter-widget__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-3)}
+.converter-widget__cell{background:var(--color-surface-offset);border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:var(--space-3);text-align:left}
+.converter-widget__cell-label{font-size:10px;font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.converter-widget__cell-value{font-size:var(--text-base);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.converter-widget__cell-sub{font-size:10px;color:var(--color-text-faint);margin-top:2px}
+
+/* === BID/ASK SPREAD VISUALIZATION === */
+.spread-vis{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-6) 0;max-width:860px}
+.spread-vis__title{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);text-align:center}
+.spread-vis__scale{position:relative;height:80px;background:linear-gradient(90deg,color-mix(in oklch,#4ade80 18%,var(--color-surface-offset)) 0%,color-mix(in oklch,#4ade80 18%,var(--color-surface-offset)) 42%,color-mix(in oklch,var(--color-gold-bright) 15%,var(--color-surface-offset)) 50%,color-mix(in oklch,#f87171 18%,var(--color-surface-offset)) 58%,color-mix(in oklch,#f87171 18%,var(--color-surface-offset)) 100%);border-radius:var(--radius-md);margin:var(--space-6) 0 var(--space-3)}
+.spread-vis__marker{position:absolute;top:-22px;bottom:-22px;width:2px;display:flex;flex-direction:column;align-items:center}
+.spread-vis__marker-line{flex:1;width:2px;background:currentColor}
+.spread-vis__marker-label{position:absolute;top:-28px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;color:currentColor}
+.spread-vis__marker-price{position:absolute;bottom:-22px;font-size:var(--text-sm);font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-text);white-space:nowrap}
+.spread-vis__marker--bid{left:42%;color:#22c55e;transform:translateX(-50%)}
+.spread-vis__marker--mid{left:50%;color:var(--color-gold-bright);transform:translateX(-50%)}
+.spread-vis__marker--ask{left:58%;color:#ef4444;transform:translateX(-50%)}
+.spread-vis__bracket{position:absolute;top:50%;left:42%;right:42%;height:24px;transform:translateY(-50%);border:2px solid var(--color-gold-bright);border-bottom:none;border-radius:6px 6px 0 0;pointer-events:none}
+.spread-vis__bracket-label{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:var(--color-gold-bright);background:var(--color-surface);padding:2px 8px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.spread-vis__legend{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin-top:var(--space-8);padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
+@media(max-width:600px){.spread-vis__legend{grid-template-columns:1fr}}
+.spread-vis__legend-item{text-align:center}
+.spread-vis__legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-bottom:var(--space-1)}
+.spread-vis__legend-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.spread-vis__legend-desc{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5}
+
+/* === CANDLESTICK ANATOMY === */
+.candle-vis{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-6) 0;max-width:860px}
+.candle-vis__title{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-5);text-align:center}
+.candle-vis__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+@media(max-width:560px){.candle-vis__grid{grid-template-columns:1fr}}
+.candle-anatomy{background:var(--color-surface-offset);border:1px solid var(--color-divider);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center;position:relative}
+.candle-anatomy__type{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:2px 10px;border-radius:var(--radius-full);margin-bottom:var(--space-3)}
+.candle-anatomy--bull .candle-anatomy__type{background:color-mix(in oklch,#22c55e 15%,transparent);color:#22c55e}
+.candle-anatomy--bear .candle-anatomy__type{background:color-mix(in oklch,#ef4444 15%,transparent);color:#ef4444}
+.candle-anatomy__svg{display:block;margin:0 auto var(--space-3);max-width:200px;width:100%}
+.candle-anatomy__label{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5;margin-top:var(--space-2)}
+.candle-anatomy__label strong{color:var(--color-text)}
+
+/* === TRADING SESSIONS === */
+.sessions-vis{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-6) 0;max-width:860px}
+.sessions-vis__title{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-2);text-align:center}
+.sessions-vis__sub{font-size:var(--text-xs);color:var(--color-text-muted);text-align:center;margin-bottom:var(--space-5)}
+.sessions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
+@media(max-width:700px){.sessions-grid{grid-template-columns:1fr}}
+.session-card{background:var(--color-surface-offset);border:1px solid var(--color-divider);border-radius:var(--radius-lg);padding:var(--space-4);position:relative;overflow:hidden}
+.session-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.session-card--asia::before{background:linear-gradient(90deg,#f97316,#fb923c)}
+.session-card--london::before{background:linear-gradient(90deg,var(--color-gold-bright),#f3c75a)}
+.session-card--ny::before{background:linear-gradient(90deg,var(--color-primary),#6ab3be)}
+.session-card__num{font-family:var(--font-display);font-size:var(--text-xs);font-weight:700;color:var(--color-text-faint);letter-spacing:.1em}
+.session-card__city{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:var(--space-1) 0 var(--space-2)}
+.session-card__time{display:inline-block;font-size:10px;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:var(--radius-full);background:var(--color-surface);margin-bottom:var(--space-3)}
+.session-card__desc{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6}
+.session-card__desc strong{color:var(--color-text)}
+
+/* === PREMIUM BARS === */
+.premium-vis{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-6) 0;max-width:860px}
+.premium-vis__title{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-1);text-align:center}
+.premium-vis__sub{font-size:var(--text-xs);color:var(--color-text-muted);text-align:center;margin-bottom:var(--space-5)}
+.premium-bar{display:grid;grid-template-columns:140px 1fr 80px;gap:var(--space-3);align-items:center;padding:var(--space-2) 0;border-bottom:1px solid var(--color-divider)}
+.premium-bar:last-child{border-bottom:none}
+@media(max-width:600px){.premium-bar{grid-template-columns:1fr;gap:4px;padding:var(--space-3) 0}}
+.premium-bar__label{font-size:var(--text-sm);color:var(--color-text);font-weight:600}
+.premium-bar__track{position:relative;height:18px;background:var(--color-surface-offset);border-radius:9px;overflow:hidden}
+.premium-bar__fill{position:absolute;top:0;left:0;bottom:0;background:linear-gradient(90deg,#22c55e 0%,var(--color-gold-bright) 50%,#f87171 100%);border-radius:9px;transition:width .6s cubic-bezier(.16,1,.3,1)}
+.premium-bar__value{font-size:var(--text-sm);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;text-align:right}
+@media(max-width:600px){.premium-bar__value{text-align:left}}
+
+/* === MISTAKES LIST === */
+.mistakes-list{display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-5) 0;max-width:860px}
+.mistake-item{display:grid;grid-template-columns:48px 1fr;gap:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);align-items:start}
+.mistake-item__num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:color-mix(in oklch,#ef4444 15%,var(--color-surface-offset));color:#ef4444;font-weight:700;font-size:var(--text-base);font-family:var(--font-display);flex-shrink:0}
+.mistake-item__body strong{display:block;color:var(--color-text);font-weight:700;font-size:var(--text-base);margin-bottom:var(--space-1)}
+.mistake-item__body{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65}
+
+/* === FUTURES vs SPOT COMPARISON === */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin:var(--space-5) 0;max-width:860px}
+@media(max-width:600px){.compare-grid{grid-template-columns:1fr}}
+.compare-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);position:relative}
+.compare-card--spot{border-color:color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border));background:color-mix(in oklch,var(--color-gold-bright) 3%,var(--color-surface))}
+.compare-card--fut{border-color:color-mix(in oklch,var(--color-primary) 30%,var(--color-border));background:color-mix(in oklch,var(--color-primary) 3%,var(--color-surface))}
+.compare-card__head{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
+.compare-card--spot .compare-card__head{color:var(--color-gold-bright)}
+.compare-card--fut .compare-card__head{color:var(--color-primary)}
+.compare-card__title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
+.compare-card__list{list-style:none;padding:0;margin:0}
+.compare-card__list li{padding:var(--space-2) 0;border-bottom:1px solid var(--color-divider);font-size:var(--text-sm);color:var(--color-text-muted);display:flex;align-items:start;gap:var(--space-2)}
+.compare-card__list li:last-child{border-bottom:none}
+.compare-card__list li svg{width:14px;height:14px;flex-shrink:0;margin-top:3px}
+.compare-card--spot .compare-card__list li svg{color:var(--color-gold-bright)}
+.compare-card--fut .compare-card__list li svg{color:var(--color-primary)}
+
+/* === FAQ ACCORDION === */
+.faq-list{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-5) 0;max-width:860px}
+.faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .15s}
+.faq-item[open]{border-color:color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border))}
+.faq-item summary{list-style:none;cursor:pointer;padding:var(--space-4) var(--space-5);display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);font-size:var(--text-base);font-weight:600;color:var(--color-text);transition:background .15s}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::marker{display:none}
+.faq-item summary:hover{background:var(--color-surface-offset)}
+.faq-item summary::after{content:'';width:10px;height:10px;border-right:2px solid var(--color-gold-bright);border-bottom:2px solid var(--color-gold-bright);transform:rotate(45deg);transition:transform .2s;flex-shrink:0;margin-top:-4px}
+.faq-item[open] summary::after{transform:rotate(-135deg);margin-top:4px}
+.faq-item__body{padding:0 var(--space-5) var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;border-top:1px solid var(--color-divider)}
+.faq-item__body p{margin-top:var(--space-3)}
+.faq-item__body p:first-child{margin-top:var(--space-3)}
+.faq-item__body strong{color:var(--color-text)}
+
+/* === STEP CARDS for "how to read chart" === */
+.steps-list{counter-reset:step;display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-5) 0;max-width:860px}
+.step-card{counter-increment:step;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);display:grid;grid-template-columns:44px 1fr;gap:var(--space-4);align-items:start}
+.step-card__num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:color-mix(in oklch,var(--color-gold-bright) 15%,var(--color-surface-offset));color:var(--color-gold-bright);font-family:var(--font-display);font-weight:700;font-size:var(--text-base);flex-shrink:0}
+.step-card__body strong{display:block;color:var(--color-text);font-weight:700;font-size:var(--text-base);margin-bottom:var(--space-1)}
+.step-card__body{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65}
+
+/* === CURRENCY GRID === */
+.currency-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--space-3);margin:var(--space-5) 0;max-width:860px}
+.currency-cell{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);text-align:left}
+.currency-cell__code{display:inline-block;font-size:10px;font-weight:700;color:var(--color-text-faint);letter-spacing:.08em;margin-bottom:4px}
+.currency-cell__value{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.currency-cell__sub{font-size:11px;color:var(--color-text-muted);margin-top:2px}
+
+/* CTA */
+.cta-box{background:linear-gradient(135deg,color-mix(in oklch,var(--color-gold-bright) 10%,var(--color-surface)),color-mix(in oklch,var(--color-gold-bright) 4%,var(--color-surface-offset)));border:1px solid color-mix(in oklch,var(--color-gold-bright) 25%,var(--color-border));border-radius:var(--radius-xl);padding:var(--space-6) var(--space-8);margin:var(--space-8) 0;max-width:860px;display:grid;grid-template-columns:1fr auto;gap:var(--space-4);align-items:center}
+@media(max-width:600px){.cta-box{grid-template-columns:1fr;text-align:center}}
+.cta-box h3{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text);margin:0 0 var(--space-2)}
+.cta-box p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0}
+.cta-btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-6);background:var(--color-gold-bright);color:#0f0e0c!important;border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:700;text-decoration:none!important;transition:transform .15s,box-shadow .15s;white-space:nowrap}
+.cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px color-mix(in oklch,var(--color-gold-bright) 35%,transparent)}
+
+/* Disclaimer */
+.disclaimer-box{max-width:1100px;margin:var(--space-8) auto;padding:var(--space-5) var(--space-6);background:var(--color-surface-offset);border-radius:var(--radius-lg);border-left:3px solid var(--color-text-faint);font-size:var(--text-sm);color:var(--color-text-faint);line-height:1.6}
+.disclaimer-box strong{color:var(--color-text-muted)}
+
+/* Related guides */
+.related-guides-section{max-width:1100px;margin:var(--space-10) auto;padding:0 var(--space-4)}
+.related-guides-section>h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-2);font-weight:700}
+.related-guides-section>.section-desc{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-6)}
+.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-4)}
+.related-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;transition:border-color .15s,transform .15s,box-shadow .15s}
+.related-card:hover{border-color:var(--color-gold-bright);transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none}
+.related-card__tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-gold-bright);margin-bottom:var(--space-2)}
+.related-card__title{font-weight:700;font-size:var(--text-base);color:var(--color-text);margin-bottom:var(--space-2);line-height:1.3}
+.related-card__desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55}
+
+/* Share buttons */
+.share-buttons{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;margin:var(--space-6) 0;max-width:860px}
+.share-buttons>span{font-size:var(--text-xs);font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-right:var(--space-2)}
+.share-buttons a{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-decoration:none;transition:border-color .15s,color .15s}
+.share-buttons a:hover{border-color:var(--color-gold-bright);color:var(--color-gold-bright);text-decoration:none}
+.share-buttons a svg{flex-shrink:0}
+
+/* Sources/footnote refs */
+.prose sup{font-size:10px;color:var(--color-primary);font-weight:600;vertical-align:super;line-height:0;padding:0 1px}
 </style>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the gold spot price?","acceptedAnswer":{"@type":"Answer","text":"The gold spot price is the current market price for immediate delivery of one troy ounce of pure (24K/999) gold, quoted in US dollars. It is determined by continuous trading on global futures exchanges \u2014 primarily COMEX in New York and OTC markets in London \u2014 and changes second by second during trading hours."}},{"@type":"Question","name":"What is the difference between the gold spot price and the price I pay at a dealer?","acceptedAnswer":{"@type":"Answer","text":"The dealer price is the spot price plus a premium. This premium covers the dealer's costs, profit margin, and in some cases government mint charges. For 1 oz Gold Britannias from the Royal Mint, the premium is typically 2\u20134% above spot. For 1 kg gold bars, the premium is around 0.5\u20131% above spot. The bid-ask spread (the difference between the buy and sell price) is also a cost \u2014 typically 0.5\u20132% on coins."}},{"@type":"Question","name":"What time does the gold market open and close?","acceptedAnswer":{"@type":"Answer","text":"The gold spot market trades essentially 24 hours a day from Sunday evening (New York time) through Friday evening, as trading passes between Sydney, Tokyo, London, and New York sessions. The London Bullion Market Association (LBMA) publishes the official Gold Price benchmark twice daily: the AM Fix at approximately 10:30 GMT and the PM Fix at approximately 15:00 GMT. The COMEX gold futures market opens at 18:00 ET Sunday and closes at 17:00 ET Friday."}},{"@type":"Question","name":"Is gold quoted per troy ounce or per gram?","acceptedAnswer":{"@type":"Answer","text":"Internationally, gold is quoted per troy ounce (31.1035 grams). However, jewellers and scrap gold buyers typically quote prices per gram. To convert: divide the spot price per troy ounce by 31.1035 to get the 24K price per gram. Then multiply by the karat purity factor \u2014 0.75 for 18K, 0.5833 for 14K, 0.375 for 9K \u2014 to get the gold content value per gram for each karat."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the gold spot price right now?","acceptedAnswer":{"@type":"Answer","text":"As of May 2026, the gold spot price is approximately $3,200-$4,700 per troy ounce depending on the date, consolidating after the January 2026 all-time high of $5,589.38. For a live reading, BullionVault, Kitco, or GoldPrice.org all publish real-time updates."}},{"@type":"Question","name":"What is the gold price per gram today?","acceptedAnswer":{"@type":"Answer","text":"Divide the current spot price per troy ounce by 31.1035 to get the per-gram price. At $4,600/oz, that is approximately $147.90 per gram of pure (24-karat) gold."}},{"@type":"Question","name":"What is the gold price per kilogram?","acceptedAnswer":{"@type":"Answer","text":"Multiply the spot price per troy ounce by 32.1507. At $4,600/oz, that gives approximately $147,893 per kilogram."}},{"@type":"Question","name":"Why does the physical gold I buy cost more than the spot price?","acceptedAnswer":{"@type":"Answer","text":"Because the spot price is a wholesale benchmark for 400-oz institutional bars traded between professional market participants. Physical retail gold requires refining, minting, packaging, insurance, transport, and dealer margin - all of which are added as a premium over spot. The premium typically ranges from 2-15% depending on the product."}},{"@type":"Question","name":"What is the difference between bid and ask price for gold?","acceptedAnswer":{"@type":"Answer","text":"The bid is what buyers will pay; the ask is what sellers will accept. The spread between them reflects market liquidity and transaction costs. In the wholesale gold market, this spread is typically very narrow ($1-$2). Retail dealers apply a wider effective spread through their buy/sell pricing."}},{"@type":"Question","name":"What is the LBMA Gold Price and why does it matter?","acceptedAnswer":{"@type":"Answer","text":"The LBMA Gold Price is the globally recognised benchmark published twice daily (10:30 AM and 3:00 PM London time) by the London Bullion Market Association through an electronic auction. It is the standard reference for institutional contracts, central bank valuations, mining royalties, and most large physical gold transactions worldwide."}},{"@type":"Question","name":"How do I read a gold price chart?","acceptedAnswer":{"@type":"Answer","text":"Start by looking at the overall trend on a longer time frame (weekly or monthly). Identify support and resistance levels where price has previously reversed. Check whether price is above or below key moving averages (50-day, 200-day). Then zoom in to the daily or shorter time frame to interpret recent candle patterns and short-term momentum. Always interpret technical signals in the context of the macroeconomic environment."}}]}</script>
 <link rel="stylesheet" href="/assets/site.css">
 <!-- Microsoft Clarity -->
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "wpxnx7usjr");</script>
@@ -489,88 +757,603 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </ol>
 </div>
 
-<article class="article-wrap" itemscope itemtype="https://schema.org/Article">
-  <div class="article-tag">Market Guide</div>
-  <h1 class="article-title" itemprop="headline">How to Read the Gold Spot Price</h1>
-  <div class="article-byline">
-    <span>By <a href="/authors/goldpricetools-editorial-team/" itemprop="author">GoldPriceTools Editorial Team</a></span>
-    <span>&middot;</span>
-    <span>Published <time datetime="2026-05-19" itemprop="dateModified">3 May 2026</time></span>
-    <span>&middot;</span>
-    <span>Updated <time datetime="2026-05-19" itemprop="dateModified">3 May 2026</time></span>
+<!-- ── GUIDE HERO ── -->
+<section class="guide-hero" aria-label="Article introduction">
+  <div class="guide-hero__inner">
+    <div>
+      <div class="guide-hero__badge"><span class="pulse-dot" aria-hidden="true"></span> Market Guide • Updated May 2026</div>
+      <h1 class="guide-hero__title">How to Read the <span class="gold">Gold Spot Price</span></h1>
+      <p class="guide-hero__lead">Pull up any financial site and you'll see a single number — the gold price. But what unit is it in? Is it what you would actually pay? What is bid vs. ask? Why does physical gold cost more? This guide walks through everything you need to know to read the spot price correctly.</p>
+      <div class="guide-hero__meta">
+        <span>By <a href="/authors/goldpricetools-editorial-team/">GoldPriceTools Editorial Team</a></span>
+        <span class="guide-hero__meta-sep">&middot;</span>
+        <span>Published <time datetime="2026-05-19">19 May 2026</time></span>
+        <span class="guide-hero__meta-sep">&middot;</span>
+        <span>14 min read</span>
+      </div>
+    </div>
+    <aside class="hero-spot-card" aria-label="Illustrative gold spot price">
+      <div class="hero-spot-card__header">
+        <div class="hero-spot-card__title">Gold Spot (XAU/USD)</div>
+        <div class="hero-spot-card__live"><span class="pulse-dot" aria-hidden="true" style="background:#4ade80;box-shadow:0 0 8px #4ade80"></span> Live</div>
+      </div>
+      <div class="hero-spot-card__price">$4,600<span style="font-size:.5em;color:var(--color-text-muted);font-weight:500">.00</span></div>
+      <div class="hero-spot-card__unit">per troy ounce — 24K pure gold</div>
+      <div class="hero-spot-card__grid">
+        <div class="hero-spot-card__cell">
+          <div class="hero-spot-card__cell-label">Per Gram</div>
+          <div class="hero-spot-card__cell-value">$147.90</div>
+        </div>
+        <div class="hero-spot-card__cell">
+          <div class="hero-spot-card__cell-label">Per Kilo</div>
+          <div class="hero-spot-card__cell-value">$147,893</div>
+        </div>
+        <div class="hero-spot-card__cell">
+          <div class="hero-spot-card__cell-label">Per Tola</div>
+          <div class="hero-spot-card__cell-value">$1,724.78</div>
+        </div>
+        <div class="hero-spot-card__cell">
+          <div class="hero-spot-card__cell-label">Per Tael</div>
+          <div class="hero-spot-card__cell-value">$5,535.50</div>
+        </div>
+      </div>
+    </aside>
   </div>
+</section>
+
+<!-- ── KEY STATS STRIP ── -->
+<section class="stat-strip" role="region" aria-label="Key gold spot price facts">
+  <div class="stat-card">
+    <div class="stat-card__value">31.1035g</div>
+    <div class="stat-card__label">1 Troy Ounce</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__value">2</div>
+    <div class="stat-card__label">LBMA Daily Fixes</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__value">23h</div>
+    <div class="stat-card__label">Daily Trading</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__value">$5,589</div>
+    <div class="stat-card__label">2026 ATH</div>
+  </div>
+</section>
+
+<article class="article-wrap article-wrap--guide" itemscope itemtype="https://schema.org/Article">
+  <meta itemprop="headline" content="How to Read the Gold Spot Price">
+
+  <!-- ── TABLE OF CONTENTS ── -->
+  <nav class="toc-card" role="navigation" aria-label="Article contents">
+    <div class="toc-card__title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
+      In This Guide
+    </div>
+    <ol class="toc-list">
+      <li><a href="#what-is-spot"><span class="toc-num">01</span> What Is the Gold Spot Price?</a></li>
+      <li><a href="#troy-ounce"><span class="toc-num">02</span> The Troy Ounce Explained</a></li>
+      <li><a href="#convert"><span class="toc-num">03</span> Converting to Any Weight Unit</a></li>
+      <li><a href="#bid-ask"><span class="toc-num">04</span> Bid Price, Ask Price &amp; Spread</a></li>
+      <li><a href="#premium"><span class="toc-num">05</span> Spot vs. Physical: The Premium</a></li>
+      <li><a href="#sessions"><span class="toc-num">06</span> The 24-Hour Trading Cycle</a></li>
+      <li><a href="#futures"><span class="toc-num">07</span> Spot vs. Futures Price</a></li>
+      <li><a href="#chart"><span class="toc-num">08</span> How to Read a Gold Chart</a></li>
+      <li><a href="#currencies"><span class="toc-num">09</span> Prices in Other Currencies</a></li>
+      <li><a href="#mistakes"><span class="toc-num">10</span> Common Reading Mistakes</a></li>
+      <li><a href="#faq"><span class="toc-num">11</span> Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
 
   <div class="prose">
-    <p>The gold spot price is the current market price for immediate delivery of one troy ounce of pure (24K) gold, quoted in US dollars. Understanding how to read, convert, and apply the spot price is essential whether you are buying jewellery, selling scrap gold, or making an investment.</p>
+    <p>These aren't complicated questions, but getting them wrong is surprisingly costly — and surprisingly common. This guide covers the spot price end-to-end: what it is, how it is set, how to convert it across weights and currencies, the relationship between spot and physical prices, and how to make sense of a live gold price chart.</p>
 
-    <h2>Step 1: Find the XAU/USD Spot Price</h2>
-    <p>Gold is quoted globally using the ISO currency code <strong>XAU</strong>. The spot price you see on financial data sites (Bloomberg, Reuters, Kitco) is XAU/USD &mdash; the price of one troy ounce of pure gold in US dollars. The LBMA Gold Price, set twice daily in London at 10:30 and 15:00 GMT, is the globally accepted benchmark.</p>
-    <div class="callout">
-      <p><strong>Tip:</strong> Our <a href="/">live calculator</a> shows the real-time XAU/USD and XAU/GBP spot price, refreshed every 60 seconds from market data feeds.</p>
+    <h2 id="what-is-spot"><span class="h2-num">01</span> What Is the Gold Spot Price?</h2>
+    <p>The gold spot price is the current market price for <strong>one troy ounce of 24-karat (pure) gold</strong>, quoted for immediate settlement and delivery. It is the global benchmark — the single number from which every other gold price is derived, whether you are buying a 1-gram gold bar, a 400-troy-ounce institutional ingot, or a gold ETF share.</p>
+    <p>"Spot" refers to the settlement type: a spot trade settles immediately (typically within two business days in gold markets), as opposed to a futures contract, which settles at a specified future date. When you see "gold price" quoted on financial sites, bullion dealer pages, or news tickers, that number is almost always the spot price — the real-time market rate for pure gold right now.</p>
+
+    <div class="callout callout--gold">
+      <div class="callout__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Where Gold Is Now
+      </div>
+      <p>As of mid-May 2026, gold spot is approximately <strong>$3,200&ndash;$4,700 per troy ounce</strong> depending on the day, having consolidated after its all-time high of <strong>$5,589.38</strong> in January 2026.</p>
     </div>
 
-    <h2>Step 2: Convert Troy Ounces to Grams</h2>
-    <p>One troy ounce equals exactly 31.1035 grams. To find the price per gram, divide the spot price by 31.1035:</p>
-    <div class="formula-box">Price per gram (24K) = Spot price (USD/oz) &divide; 31.1035<br>Example: $3,300 &divide; 31.1035 = <strong>$106.10/g</strong></div>
+    <h3>Key Properties of the Spot Price</h3>
+    <ul>
+      <li>Quoted in <strong>US dollars (USD)</strong> globally — all other currency prices are derived by applying the relevant exchange rate</li>
+      <li>Represents <strong>24-karat (100% pure) gold</strong> — no alloys or manufacturing costs included</li>
+      <li>Updates continuously during market hours — typically every few seconds</li>
+      <li><strong>Does not</strong> include dealer premiums — it is the wholesale benchmark, not the retail price</li>
+    </ul>
 
-    <h2>Step 3: Convert to GBP (or Your Currency)</h2>
-    <p>Multiply the USD/gram price by the current GBP/USD exchange rate:</p>
-    <div class="formula-box">Price per gram (GBP) = USD/gram &times; GBP/USD rate<br>Example: $106.10 &times; 0.79 = <strong>&pound;83.82/g</strong></div>
+    <h2 id="troy-ounce"><span class="h2-num">02</span> The Troy Ounce: The Foundation of Every Gold Price</h2>
+    <p>Before you can read a gold price meaningfully, you need to understand the unit it is quoted in — and it is not the ounce you might expect.</p>
 
-    <h2>Step 4: Adjust for Karat Purity</h2>
-    <p>The spot price is always for 24 karat (pure) gold. To find the value of gold at a lower karat, multiply by the purity factor:</p>
-    <table class="data-table" aria-label="Gold karat purity factors">
-      <thead><tr><th>Karat</th><th>Purity</th><th>Multiply 24K price by</th></tr></thead>
+    <h3>Troy Ounce vs. Regular Ounce</h3>
+    <p>Gold has been priced in <strong>troy ounces</strong> since the Middle Ages, a system that became standardised globally when Britain formally adopted it in 1527 and the United States followed in 1828. The troy ounce and the everyday "avoirdupois" ounce used in cooking are not the same:</p>
+
+    <div class="troy-vis">
+      <div class="troy-card troy-card--troy">
+        <div class="troy-card__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.82 8 12 11.82 4.18 8 12 4.18z"/></svg>
+        </div>
+        <div class="troy-card__label">Troy Ounce</div>
+        <div class="troy-card__value">31.1035 g</div>
+        <div class="troy-card__desc">Used globally for gold, silver, platinum and palladium. The standard for all spot pricing.</div>
+        <div class="troy-card__diff">+10% heavier</div>
+      </div>
+      <div class="troy-card">
+        <div class="troy-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>
+        </div>
+        <div class="troy-card__label">Avoirdupois Ounce</div>
+        <div class="troy-card__value">28.3495 g</div>
+        <div class="troy-card__desc">The everyday ounce used in cooking, postage, and general commerce — not used for precious metals.</div>
+      </div>
+    </div>
+
+    <p>The troy ounce is heavier by about 2.75 grams. This seems small but becomes significant when calculating the value of larger quantities. Anyone converting between ounces and grams who accidentally uses the regular 28.35-gram ounce will consistently undervalue their gold.</p>
+
+    <h3>Troy Ounce Conversion Reference</h3>
+    <table>
+      <thead><tr><th>Unit</th><th>In Troy Ounces</th><th>In Grams</th></tr></thead>
       <tbody>
-        <tr><td>24K</td><td>99.9%</td><td>1.000</td></tr>
-        <tr><td>22K</td><td>91.67%</td><td>0.9167</td></tr>
-        <tr><td>18K</td><td>75.0%</td><td>0.750</td></tr>
-        <tr><td>14K</td><td>58.33%</td><td>0.5833</td></tr>
-        <tr><td>9K</td><td>37.5%</td><td>0.375</td></tr>
+        <tr><td>1 troy ounce</td><td>1.000</td><td>31.1035</td></tr>
+        <tr><td>1 gram</td><td>0.032151</td><td>1.000</td></tr>
+        <tr><td>1 kilogram</td><td>32.1507</td><td>1,000</td></tr>
+        <tr><td>1 metric tonne</td><td>32,150.7</td><td>1,000,000</td></tr>
+        <tr><td>1 tola (South Asia)</td><td>0.374878</td><td>11.6638</td></tr>
+        <tr><td>1 tael (East Asia)</td><td>1.203370</td><td>37.429</td></tr>
+        <tr><td>1 baht (Thailand)</td><td>0.474</td><td>15.244</td></tr>
       </tbody>
     </table>
-    <p>Example: At &pound;83.82/g (24K), the 9K gold price per gram = &pound;83.82 &times; 0.375 = <strong>&pound;31.43/g</strong></p>
 
-    <h2>Bid, Ask, and Spread</h2>
-    <p>Like any traded market, gold has a bid (what buyers will pay) and an ask (what sellers want). The difference is the spread, typically $0.50&ndash;$2.00 per troy ounce in the spot market. When you buy physical gold from a dealer, they add a premium of 1&ndash;5% above spot; when you sell, dealers typically pay 85&ndash;95% of spot. Our calculator displays the mid-market spot price.</p>
+    <p>The <strong>tola</strong> is the traditional unit across India, Pakistan, and much of South Asia, where gold markets are enormous and culturally significant. The <strong>tael</strong> is used in Chinese and East Asian markets, while the <strong>baht</strong> is Thailand's traditional gold measurement. All ultimately convert to troy ounces — which is how they connect to the global spot price.</p>
 
-    <h2>Understanding COMEX vs LBMA: Two Key Benchmarks</h2>
-    <p>Gold trading happens around the clock, but the two most influential price benchmarks are set by the <strong>COMEX</strong> (Commodity Exchange, part of CME Group, New York) and the <strong>LBMA</strong> (London Bullion Market Association). COMEX futures contracts drive most of the intraday price movement you see on charts. The LBMA publishes two official "fixings" each business day — the <strong>LBMA Gold Price AM</strong> (10:30 London time) and the <strong>LBMA Gold Price PM</strong> (15:00 London time) — which serve as reference prices for bullion contracts, mining royalties, and fund valuations worldwide.</p>
-    <p>When you see a "spot price" on a website or app, it typically reflects the current COMEX front-month futures contract, adjusted for the cost-of-carry to strip out the time premium. The difference between the COMEX futures price and the true spot price is usually less than $1–2/oz during normal market conditions.</p>
+    <h2 id="convert"><span class="h2-num">03</span> How to Convert the Spot Price to Any Weight Unit</h2>
+    <p>Once you know the spot price per troy ounce, converting to any other weight unit is straightforward arithmetic.</p>
 
-    <h2>Reading an Intraday Gold Price Chart</h2>
-    <p>Most gold price charts use <strong>candlestick</strong> or <strong>line</strong> format. On a candlestick chart, each candle represents a time period (1 min, 5 min, 1 hour, etc.) and shows four data points:</p>
+    <!-- Live converter widget -->
+    <div class="converter-widget" role="region" aria-label="Spot price converter">
+      <div class="converter-widget__head">
+        <div class="converter-widget__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+          Spot Price Converter
+        </div>
+        <div class="converter-widget__live"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px #4ade80"></span> Try it</div>
+      </div>
+      <div class="converter-widget__body">
+        <div class="converter-widget__input">
+          <div class="converter-widget__input-group">
+            <label for="spot-input">Spot price (USD per troy oz)</label>
+            <input id="spot-input" type="number" inputmode="decimal" step="0.01" value="4600" min="0" aria-label="Spot price in USD per troy ounce">
+          </div>
+          <div class="converter-widget__input-group">
+            <label for="karat-input">Karat purity</label>
+            <select id="karat-input" aria-label="Karat purity">
+              <option value="1.0000" selected>24K — 99.9%</option>
+              <option value="0.9167">22K — 91.67%</option>
+              <option value="0.7500">18K — 75.0%</option>
+              <option value="0.5833">14K — 58.33%</option>
+              <option value="0.4167">10K — 41.67%</option>
+              <option value="0.3750">9K — 37.5%</option>
+            </select>
+          </div>
+        </div>
+        <div class="converter-widget__grid" id="convert-grid">
+          <div class="converter-widget__cell"><div class="converter-widget__cell-label">Per Troy Oz</div><div class="converter-widget__cell-value" id="conv-oz">$4,600.00</div><div class="converter-widget__cell-sub">31.1035 g</div></div>
+          <div class="converter-widget__cell"><div class="converter-widget__cell-label">Per Gram</div><div class="converter-widget__cell-value" id="conv-g">$147.90</div><div class="converter-widget__cell-sub">÷ 31.1035</div></div>
+          <div class="converter-widget__cell"><div class="converter-widget__cell-label">Per Kilogram</div><div class="converter-widget__cell-value" id="conv-kg">$147,893</div><div class="converter-widget__cell-sub">× 32.1507</div></div>
+          <div class="converter-widget__cell"><div class="converter-widget__cell-label">Per 10 g</div><div class="converter-widget__cell-value" id="conv-10g">$1,479</div><div class="converter-widget__cell-sub">10 grams</div></div>
+          <div class="converter-widget__cell"><div class="converter-widget__cell-label">Per Tola</div><div class="converter-widget__cell-value" id="conv-tola">$1,724.78</div><div class="converter-widget__cell-sub">11.6638 g</div></div>
+          <div class="converter-widget__cell"><div class="converter-widget__cell-label">Per Tael</div><div class="converter-widget__cell-value" id="conv-tael">$5,535.50</div><div class="converter-widget__cell-sub">37.429 g</div></div>
+          <div class="converter-widget__cell"><div class="converter-widget__cell-label">Per Baht</div><div class="converter-widget__cell-value" id="conv-baht">$2,180.40</div><div class="converter-widget__cell-sub">15.244 g</div></div>
+          <div class="converter-widget__cell"><div class="converter-widget__cell-label">Per 400-oz Bar</div><div class="converter-widget__cell-value" id="conv-bar">$1,840,000</div><div class="converter-widget__cell-sub">Good Delivery</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Price Per Gram</h3>
+    <div class="formula-box">
+      <div class="formula-box__label">Formula</div>
+      <div class="formula-box__formula">Price per gram&nbsp;=&nbsp;Spot price per troy oz&nbsp;÷&nbsp;31.1035</div>
+      <div class="formula-box__example"><strong>Example:</strong> If spot is $4,600/oz → $4,600 ÷ 31.1035 = <strong>$147.90 per gram</strong></div>
+    </div>
+
+    <h3>Price Per Kilogram</h3>
+    <div class="formula-box">
+      <div class="formula-box__label">Formula</div>
+      <div class="formula-box__formula">Price per kilogram&nbsp;=&nbsp;Spot price per troy oz&nbsp;×&nbsp;32.1507</div>
+      <div class="formula-box__example"><strong>Example:</strong> $4,600 × 32.1507 = <strong>$147,893 per kilogram</strong></div>
+    </div>
+
+    <h3>Price Per Tola (South Asian markets)</h3>
+    <div class="formula-box">
+      <div class="formula-box__label">Formula</div>
+      <div class="formula-box__formula">Price per tola&nbsp;=&nbsp;(Spot ÷ 31.1035)&nbsp;×&nbsp;11.6638</div>
+      <div class="formula-box__example"><strong>Example:</strong> ($4,600 ÷ 31.1035) × 11.6638 = $147.90 × 11.6638 = <strong>$1,724.78 per tola</strong></div>
+    </div>
+
+    <h3>Price Per Tael (Chinese/East Asian markets)</h3>
+    <div class="formula-box">
+      <div class="formula-box__label">Formula</div>
+      <div class="formula-box__formula">Price per tael&nbsp;=&nbsp;Spot price per troy oz&nbsp;×&nbsp;1.203370</div>
+      <div class="formula-box__example"><strong>Example:</strong> $4,600 × 1.20337 = <strong>$5,535.50 per tael</strong></div>
+    </div>
+
+    <p>These formulas are exact and universal — they work at any gold price, for any quantity. The key habit is always to start from the spot price per troy ounce and convert from there, rather than working in local units that might introduce conversion errors.</p>
+
+    <h2 id="bid-ask"><span class="h2-num">04</span> Understanding the Bid Price, Ask Price, and Spread</h2>
+    <p>When you look at a live gold price display more carefully, you will typically see two prices, not one: a <strong>bid</strong> price and an <strong>ask</strong> price.</p>
+
+    <!-- Bid/Ask visualization -->
+    <div class="spread-vis">
+      <div class="spread-vis__title">Wholesale Gold Market — Bid, Ask, Spread</div>
+      <div class="spread-vis__scale">
+        <div class="spread-vis__bracket">
+          <span class="spread-vis__bracket-label">Spread: $2.00</span>
+        </div>
+        <div class="spread-vis__marker spread-vis__marker--bid">
+          <span class="spread-vis__marker-label">Bid</span>
+          <span class="spread-vis__marker-line"></span>
+          <span class="spread-vis__marker-price">$4,595.00</span>
+        </div>
+        <div class="spread-vis__marker spread-vis__marker--mid">
+          <span class="spread-vis__marker-label">Mid (Spot)</span>
+          <span class="spread-vis__marker-line"></span>
+          <span class="spread-vis__marker-price">$4,596.00</span>
+        </div>
+        <div class="spread-vis__marker spread-vis__marker--ask">
+          <span class="spread-vis__marker-label">Ask</span>
+          <span class="spread-vis__marker-line"></span>
+          <span class="spread-vis__marker-price">$4,597.00</span>
+        </div>
+      </div>
+      <div class="spread-vis__legend">
+        <div class="spread-vis__legend-item">
+          <span class="spread-vis__legend-dot" style="background:#22c55e"></span>
+          <div class="spread-vis__legend-label" style="color:#22c55e">Bid</div>
+          <div class="spread-vis__legend-desc">Highest price buyers will pay. What you receive if selling.</div>
+        </div>
+        <div class="spread-vis__legend-item">
+          <span class="spread-vis__legend-dot" style="background:var(--color-gold-bright)"></span>
+          <div class="spread-vis__legend-label" style="color:var(--color-gold-bright)">Midpoint</div>
+          <div class="spread-vis__legend-desc">The displayed "spot price" on most websites — between bid and ask.</div>
+        </div>
+        <div class="spread-vis__legend-item">
+          <span class="spread-vis__legend-dot" style="background:#ef4444"></span>
+          <div class="spread-vis__legend-label" style="color:#ef4444">Ask</div>
+          <div class="spread-vis__legend-desc">Lowest price sellers will accept. What you pay if buying.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>What the Spread Tells You</h3>
+    <p>For the wholesale gold spot market, the spread is typically very narrow — often just $0.50 to $2.00 per troy ounce, reflecting extremely high liquidity. A narrow spread signals a liquid, efficiently traded market; a wide spread signals lower liquidity or elevated market stress.</p>
+
+    <div class="callout callout--teal">
+      <div class="callout__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        LBMA Auction Mechanic
+      </div>
+      <p>The LBMA Gold Price benchmark uses an electronic auction administered by ICE Benchmark Administration. The 15 participating institutions submit buy/sell orders, and the platform iterates until supply and demand balance within a <strong>20,000 troy-ounce threshold</strong> — at which point the price is "fixed," published, and becomes the official benchmark for institutional contracts worldwide.</p>
+    </div>
+
+    <p>When you buy from a retail dealer, the spread you encounter will be much wider than the wholesale spot spread — dealers layer their premium on top, which we explain in the next section.</p>
+
+    <h2 id="premium"><span class="h2-num">05</span> Spot Price vs. Physical Gold Price: The Premium Explained</h2>
+    <p>This is where many first-time gold buyers are caught off guard. You check the spot price online — say, $4,600 per troy ounce — then visit a bullion dealer to find a 1-oz gold coin listed at $4,740 or more. You are not being cheated. You are paying the <strong>premium</strong>.</p>
+
+    <h3>What Is the Premium?</h3>
+    <p>The premium is the amount added to the spot price to reflect the real costs of producing and delivering a physical gold product: refining, minting, packaging, insurance, storage, transport, distribution, dealer operating costs, and profit margin.</p>
+
+    <div class="formula-box">
+      <div class="formula-box__label">Equation</div>
+      <div class="formula-box__formula">Physical gold price&nbsp;=&nbsp;Spot price&nbsp;+&nbsp;Premium</div>
+    </div>
+
+    <!-- Premium bars visualization -->
+    <div class="premium-vis">
+      <div class="premium-vis__title">Typical 2026 Premiums Above Spot</div>
+      <div class="premium-vis__sub">Larger bars = lower percentage premium</div>
+      <div class="premium-bar">
+        <div class="premium-bar__label">400-oz Good Delivery bar</div>
+        <div class="premium-bar__track"><div class="premium-bar__fill" style="width:2%"></div></div>
+        <div class="premium-bar__value">0.1–0.5%</div>
+      </div>
+      <div class="premium-bar">
+        <div class="premium-bar__label">1 kg gold bar</div>
+        <div class="premium-bar__track"><div class="premium-bar__fill" style="width:8%"></div></div>
+        <div class="premium-bar__value">1–2%</div>
+      </div>
+      <div class="premium-bar">
+        <div class="premium-bar__label">1 oz bar</div>
+        <div class="premium-bar__track"><div class="premium-bar__fill" style="width:20%"></div></div>
+        <div class="premium-bar__value">2–5%</div>
+      </div>
+      <div class="premium-bar">
+        <div class="premium-bar__label">Britannia / Eagle / Maple coin</div>
+        <div class="premium-bar__track"><div class="premium-bar__fill" style="width:28%"></div></div>
+        <div class="premium-bar__value">3–7%</div>
+      </div>
+      <div class="premium-bar">
+        <div class="premium-bar__label">10 g bar</div>
+        <div class="premium-bar__track"><div class="premium-bar__fill" style="width:32%"></div></div>
+        <div class="premium-bar__value">4–8%</div>
+      </div>
+      <div class="premium-bar">
+        <div class="premium-bar__label">1 g bar</div>
+        <div class="premium-bar__track"><div class="premium-bar__fill" style="width:60%"></div></div>
+        <div class="premium-bar__value">5–15%</div>
+      </div>
+      <div class="premium-bar">
+        <div class="premium-bar__label">Rare / numismatic coin</div>
+        <div class="premium-bar__track"><div class="premium-bar__fill" style="width:90%"></div></div>
+        <div class="premium-bar__value">10–50%+</div>
+      </div>
+    </div>
+
+    <div class="callout callout--gold">
+      <div class="callout__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        The Premium Rule
+      </div>
+      <p>The larger the bar, the lower the premium as a percentage of spot. A 400-oz institutional bar carries almost no premium because the per-unit minting and handling costs are negligible relative to the gold value. A 1-gram bar has a much higher percentage premium because fixed fabrication costs are spread across a tiny amount of gold.</p>
+    </div>
+
+    <h3>Dealer Spread: The Round-Trip Cost</h3>
+    <p>Beyond the purchase premium, there is also the <strong>dealer spread</strong> — the difference between what a dealer charges you when you buy and what they will pay you when you sell back the same product. This is your round-trip cost of getting in and out of physical gold. Popular, liquid products like the 1-oz Britannia or American Eagle have narrower dealer spreads because they are easy to resell; obscure products have wider spreads.</p>
+
+    <h3>Why You Cannot Buy Gold at Spot</h3>
+    <p>It is nearly impossible to purchase retail quantities of physical gold at raw spot price with no premium attached. Even the most competitive online bullion dealers add at least a small premium to cover their costs. The spot price is a wholesale benchmark used by professional market participants trading 400-oz institutional bars — it is the starting point from which retail prices are derived, not the retail price itself.</p>
+
+    <h2 id="sessions"><span class="h2-num">06</span> How Is the Spot Price Set? The 24-Hour Trading Cycle</h2>
+    <p>The gold spot price is not set by a single institution. It emerges from continuous global trading activity across three overlapping sessions that together provide near-round-the-clock liquidity.</p>
+
+    <!-- Trading sessions -->
+    <div class="sessions-vis">
+      <div class="sessions-vis__title">The Three Global Gold Trading Sessions</div>
+      <div class="sessions-vis__sub">Together they keep gold trading roughly 23 hours per weekday</div>
+      <div class="sessions-grid">
+        <div class="session-card session-card--asia">
+          <div class="session-card__num">SESSION 01</div>
+          <div class="session-card__city">Asia</div>
+          <div class="session-card__time">Tokyo · Singapore · Shanghai</div>
+          <div class="session-card__desc">The trading day opens in Asia, where significant <strong>physical demand</strong> — particularly from China and India — sets the early tone. The Shanghai Gold Exchange (SGE) has growing influence on the global price.</div>
+        </div>
+        <div class="session-card session-card--london">
+          <div class="session-card__num">SESSION 02</div>
+          <div class="session-card__city">London (LBMA)</div>
+          <div class="session-card__time">AM Fix 10:30 · PM Fix 15:00</div>
+          <div class="session-card__desc">London still accounts for the majority of professional market activity. The <strong>LBMA</strong> publishes the primary global benchmark prices twice daily through electronic auctions administered by ICE Benchmark Administration.</div>
+        </div>
+        <div class="session-card session-card--ny">
+          <div class="session-card__num">SESSION 03</div>
+          <div class="session-card__city">New York (COMEX)</div>
+          <div class="session-card__time">CME Group · Futures</div>
+          <div class="session-card__desc">COMEX is the world's most important gold <strong>futures</strong> exchange. Enormous volumes trade here — mostly settled in cash. COMEX and London spot track each other very closely thanks to professional arbitrage.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The gold price that appears on your screen throughout the day is a continuous real-time price emerging from whichever of these sessions is active at that moment. The market is effectively open 23 hours a day on weekdays, with a brief gap between the New York close and the Asian open.</p>
+
+    <h2 id="futures"><span class="h2-num">07</span> Gold Spot Price vs. Gold Futures Price</h2>
+    <p>The <strong>futures price</strong> is the agreed price for gold delivery at a specified future date — typically one, three, or six months from now. It is almost always slightly <em>higher</em> than the spot price, a condition called <strong>contango</strong>.</p>
+
+    <div class="formula-box">
+      <div class="formula-box__label">Cost-of-Carry Model</div>
+      <div class="formula-box__formula">Futures price&nbsp;≈&nbsp;Spot price&nbsp;×&nbsp;e<sup>(r × t)</sup>&nbsp;+&nbsp;Storage costs</div>
+      <div class="formula-box__example">Where <strong>r</strong> is the risk-free interest rate and <strong>t</strong> is time to delivery.</div>
+    </div>
+
+    <p>In plain English: the futures price reflects the spot price plus the cost of storing and financing gold for the contract duration. In a normal market, a 3-month futures contract will price gold slightly above today's spot price — the difference is essentially the cost of owning gold for three months.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card compare-card--spot">
+        <div class="compare-card__head">Spot Price</div>
+        <div class="compare-card__title">Immediate Settlement</div>
+        <ul class="compare-card__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Settles within 2 business days</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Real-time wholesale benchmark</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Used by physical bullion dealers</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>No time-value adjustment</li>
+        </ul>
+      </div>
+      <div class="compare-card compare-card--fut">
+        <div class="compare-card__head">Futures Price</div>
+        <div class="compare-card__title">Forward Delivery</div>
+        <ul class="compare-card__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Settles 1, 3 or 6 months ahead</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Slightly above spot (contango)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>COMEX is the main venue</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Most settled in cash, not gold</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>When the futures price falls <em>below</em> the spot price, it is called <strong>backwardation</strong> — a rarer condition that typically signals unusually tight near-term physical supply or extreme demand for immediate delivery.</p>
+
+    <div class="callout callout--warn">
+      <div class="callout__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+        Why It Matters for Investors
+      </div>
+      <p>If you own gold through a futures-linked product, you may experience <strong>"roll costs"</strong> — each time an expiring contract is replaced with a new one, the slight contango premium creates a small drag on returns. Gold ETFs backed by physical metal (like SPDR Gold Trust) avoid this issue because they hold the actual metal.</p>
+    </div>
+
+    <h2 id="chart"><span class="h2-num">08</span> How to Read a Gold Price Chart</h2>
+    <p>A gold price chart is not just a line going up or down — it is a compressed history of market sentiment, carrying patterns and signals that experienced investors use to understand where gold might go next.</p>
+
+    <h3>Line Charts vs. Candlestick Charts</h3>
+    <p>The simplest gold charts show a single <strong>line</strong> connecting closing prices — clean and easy to read, good for spotting long-term trends. More detailed charts use <strong>candlesticks</strong>, where each "candle" shows four data points for the chosen time period: the <strong>open</strong>, <strong>high</strong>, <strong>low</strong>, and <strong>close</strong>.</p>
+
+    <!-- Candlestick anatomy -->
+    <div class="candle-vis">
+      <div class="candle-vis__title">Anatomy of a Candlestick</div>
+      <div class="candle-vis__grid">
+        <div class="candle-anatomy candle-anatomy--bull">
+          <div class="candle-anatomy__type">Bullish Candle</div>
+          <svg class="candle-anatomy__svg" viewBox="0 0 200 200" aria-hidden="true">
+            <text x="80" y="55" font-size="11" fill="#9ca3af" font-family="IBM Plex Sans" text-anchor="end">Close</text>
+            <line x1="85" y1="50" x2="100" y2="50" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+            <text x="80" y="155" font-size="11" fill="#9ca3af" font-family="IBM Plex Sans" text-anchor="end">Open</text>
+            <line x1="85" y1="150" x2="100" y2="150" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="120" y1="10" x2="120" y2="50" stroke="#22c55e" stroke-width="2"/>
+            <text x="138" y="30" font-size="11" fill="#22c55e" font-family="IBM Plex Sans">High</text>
+            <line x1="132" y1="30" x2="120" y2="30" stroke="#22c55e" stroke-width="1" stroke-dasharray="2,2"/>
+            <rect x="100" y="50" width="40" height="100" fill="#22c55e" stroke="#16a34a" stroke-width="2" rx="2"/>
+            <line x1="120" y1="150" x2="120" y2="190" stroke="#22c55e" stroke-width="2"/>
+            <text x="138" y="175" font-size="11" fill="#22c55e" font-family="IBM Plex Sans">Low</text>
+            <line x1="132" y1="175" x2="120" y2="175" stroke="#22c55e" stroke-width="1" stroke-dasharray="2,2"/>
+          </svg>
+          <div class="candle-anatomy__label"><strong>Buyers won.</strong> The close was higher than the open. Body height shows the size of the up-move.</div>
+        </div>
+        <div class="candle-anatomy candle-anatomy--bear">
+          <div class="candle-anatomy__type">Bearish Candle</div>
+          <svg class="candle-anatomy__svg" viewBox="0 0 200 200" aria-hidden="true">
+            <text x="80" y="55" font-size="11" fill="#9ca3af" font-family="IBM Plex Sans" text-anchor="end">Open</text>
+            <line x1="85" y1="50" x2="100" y2="50" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+            <text x="80" y="155" font-size="11" fill="#9ca3af" font-family="IBM Plex Sans" text-anchor="end">Close</text>
+            <line x1="85" y1="150" x2="100" y2="150" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="120" y1="10" x2="120" y2="50" stroke="#ef4444" stroke-width="2"/>
+            <text x="138" y="30" font-size="11" fill="#ef4444" font-family="IBM Plex Sans">High</text>
+            <line x1="132" y1="30" x2="120" y2="30" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2"/>
+            <rect x="100" y="50" width="40" height="100" fill="#ef4444" stroke="#dc2626" stroke-width="2" rx="2"/>
+            <line x1="120" y1="150" x2="120" y2="190" stroke="#ef4444" stroke-width="2"/>
+            <text x="138" y="175" font-size="11" fill="#ef4444" font-family="IBM Plex Sans">Low</text>
+            <line x1="132" y1="175" x2="120" y2="175" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2"/>
+          </svg>
+          <div class="candle-anatomy__label"><strong>Sellers won.</strong> The close was lower than the open. The thin lines above and below are "wicks" showing the extremes reached during the period.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>A long-bodied candle signals strong conviction in one direction; a short-bodied candle with long wicks (called a "doji") signals indecision between buyers and sellers — often a warning that the current trend is losing momentum.</p>
+
+    <h3>Time Frames</h3>
+    <p>Most gold chart platforms let you choose the time period for each candle:</p>
     <ul>
-      <li><strong>Open</strong>: Price at the start of the period</li>
-      <li><strong>High</strong>: Highest price reached during the period</li>
-      <li><strong>Low</strong>: Lowest price reached during the period</li>
-      <li><strong>Close</strong>: Price at the end of the period</li>
+      <li><strong>Intraday (1-minute → 1-hour):</strong> For traders watching gold's day-to-day or hour-by-hour movements</li>
+      <li><strong>Daily:</strong> Each candle covers one trading day — most commonly used by medium-term investors and analysts</li>
+      <li><strong>Weekly / Monthly:</strong> Longer time frames revealing the big structural trends, filtering out daily noise</li>
     </ul>
-    <p>A <strong>green (bullish) candle</strong> means the close was higher than the open. A <strong>red (bearish) candle</strong> means the close was lower. Long "wicks" (the thin lines above and below the candle body) show that the price briefly reached much higher or lower levels before pulling back — a sign of volatility or rejection at key price levels.</p>
+    <p>For long-term investors, the weekly or monthly chart is often more informative than the daily — it shows where gold has been over years and decades without being distracted by short-term volatility.</p>
 
-    <h2>What Moves the Gold Spot Price Intraday?</h2>
-    <p>Key events that cause sharp gold price moves within a single trading day include:</p>
+    <h3>Support and Resistance Levels</h3>
+    <p>Support and resistance are perhaps the most important concepts in reading any chart:</p>
     <ul>
-      <li><strong>US economic data releases</strong> (Non-Farm Payrolls, CPI, PCE, FOMC statements) — released at 13:30 or 14:00 London time</li>
-      <li><strong>Fed Chair speeches and press conferences</strong></li>
-      <li><strong>Geopolitical news</strong> — sudden escalations (sanctions, conflicts, elections) cause safe-haven buying spikes</li>
-      <li><strong>USD strength/weakness</strong> — the DXY (US Dollar Index) moves inversely with gold most of the time</li>
-      <li><strong>LBMA Fix publication</strong> — can cause brief algorithmic reactions if the fix deviates significantly from pre-fix expectations</li>
+      <li><strong>Support</strong> is a price level where gold has previously fallen to and bounced back up — a "floor" where buyers have repeatedly stepped in</li>
+      <li><strong>Resistance</strong> is a price level where gold has previously risen to and reversed — a "ceiling" where sellers have repeatedly emerged</li>
     </ul>
+    <p>Round numbers ($4,000, $4,500, $5,000) often act as psychological support and resistance levels. In early 2026, the <strong>$5,000 level</strong> became a major technical pivot: having been resistance on the way up, it became support once gold broke above it, and then resistance again once gold consolidated below it during the post-peak correction.</p>
 
-    <h2>Spot Price vs What You Actually Pay</h2>
-    <p>The spot price you see is the <em>theoretical wholesale</em> price for 400 troy oz LBMA Good Delivery bars traded between professional counterparties. When buying retail — coins, small bars, jewellery — you will always pay a <strong>premium over spot</strong>:</p>
+    <h3>Moving Averages</h3>
+    <p>A <strong>moving average (MA)</strong> is the average closing price over a specified period, plotted as a smooth line through the raw price data. It filters out day-to-day noise and reveals the underlying trend:</p>
     <ul>
-      <li><strong>Gold Sovereign (Royal Mint)</strong>: spot + 3–5% in normal market conditions</li>
-      <li><strong>1 oz Britannia coin</strong>: spot + 4–7%</li>
-      <li><strong>1 kg gold bar (LBMA-accredited)</strong>: spot + 0.3–1%</li>
-      <li><strong>Gold jewellery (retail)</strong>: melt value + 50–200% fabrication/design premium</li>
+      <li><strong>50-day MA</strong> — short-term trend indicator. Gold trading above its 50-day MA is in a near-term uptrend</li>
+      <li><strong>200-day MA</strong> — the most widely watched long-term trend indicator. Gold above its 200-day MA is in a structural bull market</li>
     </ul>
-    <p>When selling, you will receive <em>below</em> spot — typically 96–99% of spot for investment-grade bullion sold to a reputable dealer, and 70–85% of melt value for jewellery.</p>
+    <p>The <strong>"golden cross"</strong> — when the 50-day MA crosses above the 200-day MA — is a widely-watched bullish signal. The <strong>"death cross"</strong> (50-day MA crossing below the 200-day MA) is the bearish equivalent. An <strong>EMA (Exponential Moving Average)</strong> weights recent prices more heavily, making it more responsive than a simple MA.</p>
 
-    <h2>Internal Links</h2>
-    <p>To convert today's spot price into per-gram values for every karat instantly, use our <a href="/">live gold price calculator</a>. For a detailed breakdown of how gold purity affects value, see our <a href="/guides/gold-purity-guide">gold purity guide</a> and <a href="/14k-gold-price-per-gram">14K gold price per gram page</a>.</p>
-  </div><!-- Social share buttons (WP-34) -->
+    <h3>Step-by-Step: Reading Any Gold Chart</h3>
+    <ol class="steps-list">
+      <li class="step-card"><div class="step-card__num">1</div><div class="step-card__body"><strong>Zoom out first.</strong>Look at the 1-year or 5-year chart before the daily. Understand the big trend — is gold in a long-term uptrend, downtrend, or trading range?</div></li>
+      <li class="step-card"><div class="step-card__num">2</div><div class="step-card__body"><strong>Identify key levels.</strong>Where has price previously reversed? Mark those horizontal levels as support or resistance.</div></li>
+      <li class="step-card"><div class="step-card__num">3</div><div class="step-card__body"><strong>Check the moving averages.</strong>Is gold above or below its 50-day and 200-day MAs? In 2026, the 200-day MA has been consistently below price, confirming the structural uptrend.</div></li>
+      <li class="step-card"><div class="step-card__num">4</div><div class="step-card__body"><strong>Read the most recent candles.</strong>What has sentiment been short-term? Are candles predominantly green (buyers in control) or red (sellers in control)?</div></li>
+      <li class="step-card"><div class="step-card__num">5</div><div class="step-card__body"><strong>Interpret in macro context.</strong>A technical signal means more when it aligns with macro drivers — a weakening dollar, Fed cuts, or central bank buying.</div></li>
+    </ol>
+
+    <h2 id="currencies"><span class="h2-num">09</span> Understanding Gold Prices in Different Currencies</h2>
+    <p>The spot price is set in US dollars, but it is available — and consumed — in every major currency worldwide. Converting is straightforward: take the dollar spot price and divide by the relevant USD exchange rate.</p>
+
+    <div class="formula-box">
+      <div class="formula-box__label">Example</div>
+      <div class="formula-box__formula">If gold = $4,600/oz and EUR/USD = 1.08:&nbsp;&nbsp;Gold in EUR = $4,600 ÷ 1.08 = <strong>€4,259/oz</strong></div>
+    </div>
+
+    <p>Gold prices in other currencies can move even when the dollar price is flat — because the exchange rate itself moves. A falling dollar pushes gold up in dollar terms, but gold may not move much in euros if the euro is strengthening at the same pace.</p>
+
+    <div class="callout callout--teal">
+      <div class="callout__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        For Non-Dollar Investors
+      </div>
+      <p>This creates an important consideration: <strong>do you want exposure to gold, or to gold + dollar movements?</strong> Buying gold priced in your local currency hedges the currency effect; buying dollar-denominated gold also gives you exposure to USD movements.</p>
+    </div>
+
+    <h3>Reference Table — Common Weights at ~$4,600/oz Spot</h3>
+    <table>
+      <thead><tr><th>Weight</th><th>USD Price</th><th>Grams</th></tr></thead>
+      <tbody>
+        <tr><td>1 troy ounce</td><td>~$4,600</td><td>31.1035</td></tr>
+        <tr><td>1 gram</td><td>~$147.90</td><td>1.000</td></tr>
+        <tr><td>10 grams</td><td>~$1,479</td><td>10.000</td></tr>
+        <tr><td>1 tola (South Asia)</td><td>~$1,724</td><td>11.6638</td></tr>
+        <tr><td>100 grams</td><td>~$14,790</td><td>100.000</td></tr>
+        <tr><td>1 tael (East Asia)</td><td>~$5,536</td><td>37.429</td></tr>
+        <tr><td>1 kilogram</td><td>~$147,893</td><td>1,000</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:var(--text-xs);color:var(--color-text-faint);font-style:italic;margin-top:-8px">Based on illustrative spot price of $4,600/troy oz. Actual prices update continuously.</p>
+
+    <h2 id="mistakes"><span class="h2-num">10</span> Common Mistakes When Reading the Gold Spot Price</h2>
+    <ul class="mistakes-list" style="list-style:none;padding:0">
+      <li class="mistake-item"><div class="mistake-item__num">1</div><div class="mistake-item__body"><strong>Confusing troy ounces with regular ounces.</strong>This error systematically undervalues gold by about 10%. Always confirm which unit a price is quoted in before converting.</div></li>
+      <li class="mistake-item"><div class="mistake-item__num">2</div><div class="mistake-item__body"><strong>Treating spot price as the purchase price.</strong>You cannot buy physical gold at the spot price — there is always a premium. The spot price is the starting point, not the invoice total.</div></li>
+      <li class="mistake-item"><div class="mistake-item__num">3</div><div class="mistake-item__body"><strong>Ignoring the bid-ask spread.</strong>When selling gold, you will receive the bid price — less than the "spot" you see on a website. The round-trip cost includes both the entry premium and the bid-ask differential on exit.</div></li>
+      <li class="mistake-item"><div class="mistake-item__num">4</div><div class="mistake-item__body"><strong>Checking a delayed price.</strong>Many free financial websites show spot prices with a 15–20 minute delay. For time-sensitive transactions, always confirm you are looking at a live feed (Kitco, BullionVault, LBMA, or any major dealer with real-time updates).</div></li>
+      <li class="mistake-item"><div class="mistake-item__num">5</div><div class="mistake-item__body"><strong>Assuming a different currency price reflects a different gold value.</strong>Gold is gold anywhere in the world. A £3,410 per troy ounce in sterling and a $4,600 per troy ounce in dollars reflect the same underlying gold at the prevailing exchange rate.</div></li>
+    </ul>
+
+    <div class="cta-box">
+      <div>
+        <h3>Try the Live Calculator</h3>
+        <p>See the current XAU/USD and XAU/GBP spot price, converted to per gram for every karat — automatically refreshed every 60 seconds.</p>
+      </div>
+      <a href="/" class="cta-btn">Open Calculator <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+
+    <h2 id="faq"><span class="h2-num">11</span> Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is the gold spot price right now?</summary>
+        <div class="faq-item__body"><p>As of May 2026, the gold spot price is approximately <strong>$3,200–$4,700 per troy ounce</strong> depending on the date, consolidating after the January 2026 all-time high of <strong>$5,589.38</strong>. For a live reading, BullionVault, Kitco, or GoldPrice.org all publish real-time updates — or use our <a href="/">live calculator</a>.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the gold price per gram today?</summary>
+        <div class="faq-item__body"><p>Divide the current spot price per troy ounce by <strong>31.1035</strong> to get the per-gram price. At $4,600/oz, that is approximately <strong>$147.90 per gram</strong> of pure (24-karat) gold.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the gold price per kilogram?</summary>
+        <div class="faq-item__body"><p>Multiply the spot price per troy ounce by <strong>32.1507</strong>. At $4,600/oz, that gives approximately <strong>$147,893 per kilogram</strong>.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Why does the physical gold I buy cost more than the spot price?</summary>
+        <div class="faq-item__body"><p>Because the spot price is a wholesale benchmark for 400-oz institutional bars traded between professional market participants. Physical retail gold requires refining, minting, packaging, insurance, transport, and dealer margin — all added as a <strong>premium</strong> over spot.</p><p>The premium typically ranges from <strong>2–15%</strong> depending on the product, with larger bars carrying lower percentage premiums than small coins.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the difference between bid and ask price for gold?</summary>
+        <div class="faq-item__body"><p>The <strong>bid</strong> is what buyers will pay; the <strong>ask</strong> is what sellers will accept. The spread between them reflects market liquidity and transaction costs. In the wholesale gold market, this spread is typically very narrow ($1–$2). Retail dealers apply a wider effective spread through their buy/sell pricing.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is the LBMA Gold Price and why does it matter?</summary>
+        <div class="faq-item__body"><p>The LBMA Gold Price is the globally recognised benchmark published twice daily — at <strong>10:30 AM and 3:00 PM London time</strong> — by the London Bullion Market Association through an electronic auction. It is the standard reference for institutional contracts, central bank valuations, mining royalties, and most large physical gold transactions worldwide.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>How do I read a gold price chart?</summary>
+        <div class="faq-item__body"><p>Start by looking at the overall trend on a longer time frame (weekly or monthly). Identify support and resistance levels where price has previously reversed. Check whether price is above or below key moving averages (50-day, 200-day). Then zoom in to the daily or shorter time frame to interpret recent candle patterns and short-term momentum. Always interpret technical signals in the context of the macroeconomic environment.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What time does the gold market open and close?</summary>
+        <div class="faq-item__body"><p>Gold trades essentially <strong>23 hours a day</strong> on weekdays as trading passes between Asian, London, and New York sessions. The COMEX gold futures market opens at 18:00 ET Sunday and closes at 17:00 ET Friday, with a brief daily maintenance gap.</p></div>
+      </details>
+    </div>
+  </div><!-- /.prose -->
+<!-- Social share buttons (WP-34) -->
 <div class="share-buttons">
   <span>Share:</span>
   <a href="https://twitter.com/intent/tweet?url=https://goldpricetools.com/guides/how-to-read-gold-spot-price&text=How+to+Read+the+Gold+Spot+Price" rel="nofollow noreferrer noopener" target="_blank" data-platform="twitter" aria-label="Share on X / Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.258 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg> X</a>
@@ -586,12 +1369,6 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     });
   });
   </script>
-
-  <div class="cta-box">
-    <h3>Live Gold Price Calculator</h3>
-    <p>See the current XAU/USD and XAU/GBP spot price, converted to per gram for every karat automatically.</p>
-    <a href="/" class="cta-btn">Open Calculator &rarr;</a>
-  </div>
 </article>
 
 
@@ -601,41 +1378,50 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 
 
 <!-- Related Guides Section -->
-<section class="related-guides" >
-  <div class="container" >
-    <h2>Related Gold &amp; Silver Guides</h2>
-    <div class="related-guides-grid">
-      <a href="/" class="related-card">
-        <div class="related-card__tag">Live Tool</div>
-        <div class="related-card__title">Gold & Silver Price Calculator</div>
-        <div class="related-card__desc">Live gold and silver price calculator — all karats, in GBP and USD.</div>
-      </a>
-      <a href="/guides/troy-ounce-vs-gram-explained" class="related-card">
-        <div class="related-card__tag">Guide</div>
-        <div class="related-card__title">Troy Ounce vs Gram Explained</div>
-        <div class="related-card__desc">Understand the difference between troy ounces and grams used in gold pricing.</div>
-      </a>
-      <a href="/gold-silver-ratio" class="related-card">
-        <div class="related-card__tag">Live Tool</div>
-        <div class="related-card__title">Gold-Silver Ratio</div>
-        <div class="related-card__desc">Track the live gold-to-silver ratio alongside spot prices.</div>
-      </a>
-      <a href="/guides/gold-price-history" class="related-card">
-        <div class="related-card__tag">Guide</div>
-        <div class="related-card__title">Gold Price History</div>
-        <div class="related-card__desc">Historical gold prices from 1970 — see how today's spot price compares.</div>
-      </a>
-      <a href="/14k-gold-price-per-gram" class="related-card">
-        <div class="related-card__tag">Live Price</div>
-        <div class="related-card__title">14K Gold Price Per Gram</div>
-        <div class="related-card__desc">Convert today's spot price to a 14K gold per-gram rate instantly.</div>
-      </a>
-      <a href="/scrap-gold-calculator" class="related-card">
-        <div class="related-card__tag">Tool</div>
-        <div class="related-card__title">Scrap Gold Calculator</div>
-        <div class="related-card__desc">Apply today's spot price to calculate your gold's actual melt value.</div>
-      </a>
-    </div>
+<section class="related-guides-section" aria-label="Related guides">
+  <h2>Keep Reading</h2>
+  <p class="section-desc">Deeper into the gold market — pricing units, history, and how to actually buy.</p>
+  <div class="related-guides-grid">
+    <a href="/" class="related-card">
+      <div class="related-card__tag">Live Tool</div>
+      <div class="related-card__title">Gold &amp; Silver Calculator</div>
+      <div class="related-card__desc">Live gold and silver price calculator — all karats, in GBP and USD.</div>
+    </a>
+    <a href="/guides/troy-ounce-vs-gram-explained" class="related-card">
+      <div class="related-card__tag">Guide</div>
+      <div class="related-card__title">Troy Ounce vs Gram</div>
+      <div class="related-card__desc">The unit that underpins every gold price — explained.</div>
+    </a>
+    <a href="/guides/gold-price-history" class="related-card">
+      <div class="related-card__tag">Guide</div>
+      <div class="related-card__title">Gold Price History</div>
+      <div class="related-card__desc">Historical gold prices from 1970 — see how today's spot compares.</div>
+    </a>
+    <a href="/guides/what-affects-gold-price" class="related-card">
+      <div class="related-card__tag">Guide</div>
+      <div class="related-card__title">What Affects Gold Price</div>
+      <div class="related-card__desc">The macro and market drivers behind every spot price move.</div>
+    </a>
+    <a href="/gold-silver-ratio" class="related-card">
+      <div class="related-card__tag">Live Tool</div>
+      <div class="related-card__title">Gold-Silver Ratio</div>
+      <div class="related-card__desc">Track the live gold-to-silver ratio alongside spot prices.</div>
+    </a>
+    <a href="/14k-gold-price-per-gram" class="related-card">
+      <div class="related-card__tag">Live Price</div>
+      <div class="related-card__title">14K Gold Per Gram</div>
+      <div class="related-card__desc">Convert today's spot price to a 14K gold per-gram rate instantly.</div>
+    </a>
+    <a href="/scrap-gold-calculator" class="related-card">
+      <div class="related-card__tag">Tool</div>
+      <div class="related-card__title">Scrap Gold Calculator</div>
+      <div class="related-card__desc">Apply today's spot price to calculate your gold's actual melt value.</div>
+    </a>
+    <a href="/guides/gold-price-prediction-2026" class="related-card">
+      <div class="related-card__tag">Guide</div>
+      <div class="related-card__title">Gold Forecast 2026</div>
+      <div class="related-card__desc">Where major banks think gold goes next, with reasoning.</div>
+    </a>
   </div>
 </section>
 
@@ -740,5 +1526,41 @@ window.addEventListener('scroll', () => {
   document.addEventListener('click',function(e){if(!e.target.closest('.mega-nav__item')){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t)t.setAttribute('aria-expanded','false');});}});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t){t.setAttribute('aria-expanded','false');t.focus();}});if(mob&&mob.classList.contains('open')){mob.classList.remove('open');if(ham){ham.setAttribute('aria-expanded','false');ham.focus();}document.body.style.overflow='';}};});
 })();</script>
+<script>
+/* Live spot price converter */
+(function(){
+  const spotInput=document.getElementById('spot-input');
+  const karatInput=document.getElementById('karat-input');
+  if(!spotInput||!karatInput)return;
+  const fmt=(n,d=2)=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const fmtK=(n)=>'$'+Math.round(n).toLocaleString('en-US');
+  const update=()=>{
+    const spot=parseFloat(spotInput.value)||0;
+    const k=parseFloat(karatInput.value)||1;
+    const v=spot*k;
+    const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+    set('conv-oz',fmt(v));
+    set('conv-g',fmt(v/31.1035));
+    set('conv-kg',fmtK(v*32.1507));
+    set('conv-10g',fmt(v*10/31.1035,0));
+    set('conv-tola',fmt((v/31.1035)*11.6638));
+    set('conv-tael',fmt(v*1.20337));
+    set('conv-baht',fmt(v*15.244/31.1035));
+    set('conv-bar',fmtK(v*400));
+  };
+  spotInput.addEventListener('input',update);
+  karatInput.addEventListener('change',update);
+  update();
+})();
+/* FAQ click analytics */
+document.querySelectorAll('.faq-item').forEach(function(item){
+  item.addEventListener('toggle',function(){
+    if(this.open&&typeof gtag==='function'){
+      const q=this.querySelector('summary');
+      gtag('event','faq_open',{faq_question:q?q.textContent.trim().slice(0,100):''});
+    }
+  });
+});
+</script>
 </body>
 </html>
