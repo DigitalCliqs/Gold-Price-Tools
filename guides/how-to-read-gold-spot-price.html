@@ -777,29 +777,29 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
         <span>14 min read</span>
       </div>
     </div>
-    <aside class="hero-spot-card" aria-label="Illustrative gold spot price">
+    <aside class="hero-spot-card" aria-label="Live gold spot price">
       <div class="hero-spot-card__header">
         <div class="hero-spot-card__title">Gold Spot (XAU/USD)</div>
         <div class="hero-spot-card__live"><span class="pulse-dot" aria-hidden="true" style="background:#4ade80;box-shadow:0 0 8px #4ade80"></span> Live</div>
       </div>
-      <div class="hero-spot-card__price">$4,600<span style="font-size:.5em;color:var(--color-text-muted);font-weight:500">.00</span></div>
-      <div class="hero-spot-card__unit">per troy ounce — 24K pure gold</div>
+      <div class="hero-spot-card__price" id="heroSpotOz">$4,600.00</div>
+      <div class="hero-spot-card__unit">per troy ounce — 24K pure gold<span id="heroSpotUpdated" style="display:block;font-size:11px;color:var(--color-text-faint);margin-top:2px"></span></div>
       <div class="hero-spot-card__grid">
         <div class="hero-spot-card__cell">
           <div class="hero-spot-card__cell-label">Per Gram</div>
-          <div class="hero-spot-card__cell-value">$147.90</div>
+          <div class="hero-spot-card__cell-value" id="heroSpotGram">$147.90</div>
         </div>
         <div class="hero-spot-card__cell">
           <div class="hero-spot-card__cell-label">Per Kilo</div>
-          <div class="hero-spot-card__cell-value">$147,893</div>
+          <div class="hero-spot-card__cell-value" id="heroSpotKg">$147,893</div>
         </div>
         <div class="hero-spot-card__cell">
           <div class="hero-spot-card__cell-label">Per Tola</div>
-          <div class="hero-spot-card__cell-value">$1,724.78</div>
+          <div class="hero-spot-card__cell-value" id="heroSpotTola">$1,724.78</div>
         </div>
         <div class="hero-spot-card__cell">
           <div class="hero-spot-card__cell-label">Per Tael</div>
-          <div class="hero-spot-card__cell-value">$5,535.50</div>
+          <div class="hero-spot-card__cell-value" id="heroSpotTael">$5,535.50</div>
         </div>
       </div>
     </aside>
@@ -1537,30 +1537,64 @@ window.addEventListener('scroll', () => {
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t){t.setAttribute('aria-expanded','false');t.focus();}});if(mob&&mob.classList.contains('open')){mob.classList.remove('open');if(ham){ham.setAttribute('aria-expanded','false');ham.focus();}document.body.style.overflow='';}};});
 })();</script>
 <script>
-/* Live spot price converter */
+/* Live spot price + converter for the guide page
+   Same data source as the home page: api.gold-api.com */
 (function(){
-  const spotInput=document.getElementById('spot-input');
-  const karatInput=document.getElementById('karat-input');
-  if(!spotInput||!karatInput)return;
+  const GOLD_API='https://api.gold-api.com/price/XAU';
+  const TROY=31.1035;
   const fmt=(n,d=2)=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
   const fmtK=(n)=>'$'+Math.round(n).toLocaleString('en-US');
-  const update=()=>{
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  const spotInput=document.getElementById('spot-input');
+  const karatInput=document.getElementById('karat-input');
+  const updateConverter=()=>{
+    if(!spotInput||!karatInput)return;
     const spot=parseFloat(spotInput.value)||0;
     const k=parseFloat(karatInput.value)||1;
     const v=spot*k;
-    const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
     set('conv-oz',fmt(v));
-    set('conv-g',fmt(v/31.1035));
+    set('conv-g',fmt(v/TROY));
     set('conv-kg',fmtK(v*32.1507));
-    set('conv-10g',fmt(v*10/31.1035,0));
-    set('conv-tola',fmt((v/31.1035)*11.6638));
+    set('conv-10g',fmt(v*10/TROY,0));
+    set('conv-tola',fmt((v/TROY)*11.6638));
     set('conv-tael',fmt(v*1.20337));
-    set('conv-baht',fmt(v*15.244/31.1035));
+    set('conv-baht',fmt(v*15.244/TROY));
     set('conv-bar',fmtK(v*400));
   };
-  spotInput.addEventListener('input',update);
-  karatInput.addEventListener('change',update);
-  update();
+  const updateHero=(oz)=>{
+    set('heroSpotOz',fmt(oz));
+    set('heroSpotGram',fmt(oz/TROY));
+    set('heroSpotKg',fmtK(oz*32.1507));
+    set('heroSpotTola',fmt((oz/TROY)*11.6638));
+    set('heroSpotTael',fmt(oz*1.20337));
+    const t=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    set('heroSpotUpdated','Updated '+t+' · refreshes every 60s');
+  };
+  const syncConverterToLive=(oz)=>{
+    if(spotInput && spotInput.dataset.userTouched!=='1'){
+      spotInput.value=oz.toFixed(2);
+      updateConverter();
+    }
+  };
+  if(spotInput){
+    spotInput.addEventListener('input',()=>{spotInput.dataset.userTouched='1';updateConverter();});
+  }
+  if(karatInput){karatInput.addEventListener('change',updateConverter);}
+  updateConverter();
+  async function fetchLive(){
+    try{
+      const r=await fetch(GOLD_API,{cache:'no-store'});
+      if(!r.ok)throw new Error('API '+r.status);
+      const d=await r.json();
+      if(!d||typeof d.price!=='number')throw new Error('bad payload');
+      updateHero(d.price);
+      syncConverterToLive(d.price);
+    }catch(e){
+      console.warn('[gold-spot-guide] price fetch failed — keeping defaults:',e.message);
+    }
+  }
+  fetchLive();
+  setInterval(fetchLive,60000);
 })();
 /* FAQ click analytics */
 document.querySelectorAll('.faq-item').forEach(function(item){
