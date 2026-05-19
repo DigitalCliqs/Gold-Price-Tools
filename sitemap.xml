@@ -893,10 +893,13 @@
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/guides/silver-price-guide"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/guides/silver-price-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/guides/silver-price-guide"/>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Silver Price Guide: Spot Price &amp; 925 Sterling Value</image:title>
-      <image:caption>Complete guide to silver prices. Learn about the silver spot price, 925 sterling silver value, and historical trends.</image:caption>
+      <image:title>Silver Price Guide 2026: Spot Price &amp; Sterling Silver Explained</image:title>
+      <image:caption>Silver broke $100 for the first time in history in January 2026, peaking at $121.62. Complete guide to silver spot price, sterling value, drivers and forecasts.</image:caption>
     </image:image>
   </url>
 
