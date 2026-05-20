@@ -426,9 +426,245 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .share-btn:hover{border-color:var(--color-primary);color:var(--color-primary)}
 .related-guides-section{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4)}
 .related-guides-section h2{font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-6)}
+
+/* ============================================================
+   SILVER PRICE PER GRAM — bespoke article design system (spg-)
+   Mobile-first. Builds on existing design tokens.
+   ============================================================ */
+:root{--spg-silver-grad:linear-gradient(100deg,#8b9197 0%,#eef0f2 24%,#b7bcc2 48%,#f6f7f9 68%,#8b9197 100%);--spg-silver-soft:#c7cbd1;--spg-maxw:980px}
+[data-theme="light"]{--spg-silver-grad:linear-gradient(100deg,#6b7280 0%,#aeb4bc 30%,#4b5563 58%,#6b7280 100%);--spg-silver-soft:#5b626b}
+
+.spg-main{max-width:var(--spg-maxw);margin:0 auto}
+.spg-article .article-tag,.spg-article .article-title,.spg-article .article-byline{max-width:var(--spg-maxw);margin-left:auto;margin-right:auto}
+/* allow prose blocks to span the wider article column; paragraphs still cap at 72ch */
+.spg-main .prose{max-width:none}
+.spg-main .prose>p,.spg-main .prose>ul,.spg-main .prose>ol{max-width:74ch}
+.spg-eyebrow{display:block;font-size:var(--text-xs);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-gold-bright);margin:var(--space-10) 0 var(--space-2)}
+
+/* ── metallic display text ── */
+.spg-metal{color:var(--color-silver);background:var(--spg-silver-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto}
+@media(prefers-reduced-motion:no-preference){.spg-metal{animation:spgSheen 6s linear infinite}}
+@keyframes spgSheen{to{background-position:200% center}}
+
+/* ── HERO ── */
+.spg-hero{position:relative;overflow:hidden;border:1px solid var(--color-border);border-radius:var(--radius-xl);background:linear-gradient(180deg,var(--color-surface),var(--color-surface-2));padding:clamp(var(--space-5),4vw,var(--space-8));margin:var(--space-4) 0 var(--space-6);box-shadow:var(--shadow-sm)}
+.spg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(110% 70% at 88% -10%,color-mix(in oklch,var(--color-silver) 22%,transparent),transparent 58%);pointer-events:none}
+.spg-hero::after{content:'';position:absolute;left:0;top:0;width:100%;height:4px;background:var(--spg-silver-grad);background-size:200% auto}
+@media(prefers-reduced-motion:no-preference){.spg-hero::after{animation:spgSheen 6s linear infinite}}
+.spg-hero__inner{position:relative;z-index:1}
+.spg-hero__lead{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:68ch;margin:var(--space-4) 0 var(--space-5)}
+.spg-hero__lead strong{color:var(--color-text)}
+
+/* ── live spot bar ── */
+.spg-spotbar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2) var(--space-4);padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);margin-bottom:var(--space-5);font-size:var(--text-sm)}
+.spg-spotbar__live{display:inline-flex;align-items:center;gap:var(--space-2);font-weight:700;color:var(--color-text);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em}
+.spg-spotbar__spot{display:inline-flex;align-items:baseline;gap:var(--space-2)}
+.spg-spotbar__spot b{font-size:var(--text-lg);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.spg-spotbar__lbl{color:var(--color-text-muted)}
+.spg-spotbar__chg{font-weight:600;font-variant-numeric:tabular-nums}
+.spg-spotbar__chg.up{color:var(--color-up)}.spg-spotbar__chg.down{color:var(--color-down)}
+.spg-spotbar__upd{margin-left:auto;color:var(--color-text-faint);font-size:var(--text-xs)}
+
+/* ── price cards ── */
+.spg-price-grid{display:grid;grid-template-columns:1fr;gap:var(--space-3)}
+@media(min-width:520px){.spg-price-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:880px){.spg-price-grid{grid-template-columns:repeat(4,1fr)}}
+.spg-price-card{position:relative;overflow:hidden;background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-4);box-shadow:var(--shadow-sm);transition:transform var(--transition),border-color var(--transition),box-shadow var(--transition)}
+.spg-price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--spg-silver-grad);background-size:200% auto;opacity:.9}
+.spg-price-card--gold::before{background:linear-gradient(100deg,var(--color-gold),var(--color-gold-bright),var(--color-gold))}
+.spg-price-card:hover{transform:translateY(-3px);border-color:var(--spg-silver-soft);box-shadow:var(--shadow-md)}
+.spg-price-card--gold:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 50%,var(--color-border))}
+.spg-price-card__purity{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-silver);letter-spacing:.04em}
+.spg-price-card--gold .spg-price-card__purity{color:var(--color-gold-bright)}
+.spg-price-card__name{font-size:var(--text-xs);color:var(--color-text-muted);margin:2px 0 var(--space-3);min-height:2.4em;line-height:1.3}
+.spg-price-card__val{font-size:clamp(1.6rem,1.2rem+2vw,2.1rem);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1}
+.spg-price-card__unit{font-size:var(--text-xs);color:var(--color-text-faint);font-weight:500}
+.spg-price-card__oz{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-2);font-variant-numeric:tabular-nums}
+
+/* ── key facts chips ── */
+.spg-facts{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-5)}
+.spg-fact{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:var(--text-xs);color:var(--color-text-muted)}
+.spg-fact b{color:var(--color-text);font-weight:700;font-variant-numeric:tabular-nums}
+.spg-fact svg{flex-shrink:0;color:var(--color-silver)}
+
+/* ── table of contents ── */
+.spg-toc{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);margin:var(--space-6) 0}
+.spg-toc>summary{cursor:pointer;font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-text);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-2)}
+.spg-toc>summary::-webkit-details-marker{display:none}
+.spg-toc>summary svg{transition:transform var(--transition);flex-shrink:0;color:var(--color-text-muted)}
+.spg-toc[open]>summary svg{transform:rotate(180deg)}
+.spg-toc__list{list-style:none;padding:0;margin:var(--space-4) 0 0;display:grid;grid-template-columns:1fr;gap:2px;counter-reset:toc}
+@media(min-width:680px){.spg-toc__list{grid-template-columns:1fr 1fr;column-gap:var(--space-5)}}
+.spg-toc__list a{display:flex;gap:var(--space-3);align-items:baseline;padding:var(--space-2) var(--space-2);border-radius:var(--radius-sm);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;line-height:1.4}
+.spg-toc__list a::before{counter-increment:toc;content:counter(toc,decimal-leading-zero);font-size:var(--text-xs);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;flex-shrink:0}
+.spg-toc__list a:hover{background:var(--color-surface-offset);color:var(--color-text)}
+
+/* ── live calculator (centerpiece) ── */
+.spg-calc{position:relative;background:linear-gradient(180deg,var(--color-surface),var(--color-surface-offset));border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:clamp(var(--space-5),3vw,var(--space-6));margin:var(--space-6) 0;box-shadow:var(--shadow-md)}
+.spg-calc__head{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-5)}
+.spg-calc__icon{flex-shrink:0;width:42px;height:42px;border-radius:var(--radius-md);display:grid;place-items:center;background:color-mix(in oklch,var(--color-silver) 20%,var(--color-surface));border:1px solid var(--color-border);color:var(--color-silver)}
+.spg-calc__title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);line-height:1.2}
+.spg-calc__sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:2px}
+.spg-calc__grid{display:grid;grid-template-columns:1fr;gap:var(--space-4)}
+@media(min-width:620px){.spg-calc__grid{grid-template-columns:1fr 1fr 1fr}}
+.spg-field{display:flex;flex-direction:column;gap:var(--space-2)}
+.spg-field label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.05em}
+.spg-field input,.spg-field select{width:100%;min-height:48px;padding:var(--space-3) var(--space-4);background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-base);color:var(--color-text);-webkit-appearance:none;appearance:none}
+.spg-field input:focus,.spg-field select:focus{outline:none;border-color:var(--color-primary);box-shadow:0 0 0 3px color-mix(in oklch,var(--color-primary) 22%,transparent)}
+.spg-field--select{position:relative}
+.spg-field--select::after{content:'▾';position:absolute;right:var(--space-4);bottom:14px;color:var(--color-text-muted);pointer-events:none;font-size:var(--text-xs)}
+.spg-calc__out{margin-top:var(--space-5);display:grid;grid-template-columns:1fr;gap:var(--space-3)}
+@media(min-width:620px){.spg-calc__out{grid-template-columns:1.3fr 1fr}}
+.spg-calc__melt{background:color-mix(in oklch,var(--color-gold-bright) 9%,var(--color-surface-2));border:1px solid color-mix(in oklch,var(--color-gold-bright) 26%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-5)}
+.spg-calc__melt .lbl{font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted);margin-bottom:var(--space-1)}
+.spg-calc__melt .val{font-size:clamp(2rem,1.4rem+3vw,2.8rem);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1}
+.spg-calc__melt .meta{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-2);line-height:1.5}
+.spg-calc__dealer{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;justify-content:center}
+.spg-calc__dealer .lbl{font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted);margin-bottom:var(--space-1)}
+.spg-calc__dealer .val{font-size:var(--text-lg);font-weight:700;color:var(--color-silver);font-variant-numeric:tabular-nums}
+.spg-calc__dealer .meta{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1)}
+.spg-calc__note{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-4);line-height:1.6}
+
+/* ── formula + steps ── */
+.spg-formula{font-family:'IBM Plex Sans',ui-monospace,monospace;background:var(--color-surface-offset);border:1px solid var(--color-border);border-left:3px solid var(--color-silver);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);margin:var(--space-4) 0;font-size:var(--text-sm);color:var(--color-text);line-height:1.7;overflow-x:auto}
+.spg-formula b{color:var(--color-gold-bright);font-weight:700;font-variant-numeric:tabular-nums}
+.spg-steps{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin:var(--space-5) 0;counter-reset:step}
+@media(min-width:720px){.spg-steps--3{grid-template-columns:repeat(3,1fr)}}
+.spg-step{position:relative;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-5) var(--space-5) var(--space-5)}
+.spg-step__n{counter-increment:step;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:var(--radius-full);background:var(--spg-silver-grad);color:#1a1917;font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-3);font-variant-numeric:tabular-nums}
+.spg-step__n::before{content:counter(step)}
+.spg-step h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-1)}
+.spg-step p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
+
+/* ── showcase tables (horizontal-scroll wrapper) ── */
+.spg-tablewrap{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--color-border);border-radius:var(--radius-lg);margin:var(--space-4) 0 var(--space-6);background:var(--color-surface)}
+.spg-tablewrap::-webkit-scrollbar{height:8px}
+.spg-tablewrap::-webkit-scrollbar-thumb{background:var(--color-border);border-radius:99px}
+table.spg-table{display:table;width:100%;min-width:520px;border-collapse:collapse;font-size:var(--text-sm);margin:0}
+table.spg-table thead th{position:sticky;top:0;text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-muted);background:var(--color-surface-offset);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-border);white-space:nowrap}
+table.spg-table tbody td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);color:var(--color-text-muted);vertical-align:middle;white-space:nowrap}
+table.spg-table tbody tr:last-child td{border-bottom:none}
+table.spg-table tbody tr:hover td{background:var(--color-surface-offset)}
+table.spg-table td:first-child,table.spg-table th:first-child{color:var(--color-text);font-weight:600}
+table.spg-table .num{font-variant-numeric:tabular-nums;text-align:right}
+table.spg-table .pergram{color:var(--color-gold-bright);font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+table.spg-table tbody tr.is-featured td{background:color-mix(in oklch,var(--color-gold-bright) 8%,transparent)}
+.spg-scrollhint{display:none;font-size:var(--text-xs);color:var(--color-text-faint);margin:calc(-1 * var(--space-2)) 0 var(--space-5);text-align:right}
+@media(max-width:560px){.spg-scrollhint{display:block}}
+
+/* ── scenario cards ── */
+.spg-scenarios{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin:var(--space-5) 0}
+@media(min-width:680px){.spg-scenarios{grid-template-columns:repeat(3,1fr)}}
+.spg-scenario{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);border-top:3px solid var(--color-silver)}
+.spg-scenario--ath{border-top-color:var(--color-gold-bright)}
+.spg-scenario--low{border-top-color:var(--color-primary)}
+.spg-scenario__when{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-muted)}
+.spg-scenario__oz{font-size:var(--text-xl);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;margin:var(--space-1) 0 var(--space-3);letter-spacing:-.02em}
+.spg-scenario__row{display:flex;justify-content:space-between;font-size:var(--text-sm);padding:var(--space-1) 0;border-top:1px solid var(--color-divider)}
+.spg-scenario__row span{color:var(--color-text-muted)}
+.spg-scenario__row b{color:var(--color-gold-bright);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ── source link cards ── */
+.spg-sources{display:grid;grid-template-columns:1fr;gap:var(--space-2);margin:var(--space-4) 0 var(--space-6);list-style:none;padding:0}
+@media(min-width:620px){.spg-sources{grid-template-columns:1fr 1fr}}
+.spg-sources li{margin:0}
+.spg-source{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);height:100%}
+.spg-source__name{font-weight:700;color:var(--color-text);font-size:var(--text-sm)}
+.spg-source__desc{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5;margin-top:2px}
+.spg-source svg{flex-shrink:0;margin-top:3px;color:var(--color-silver)}
+
+/* ── callout / key takeaway ── */
+.spg-callout{display:flex;gap:var(--space-3);background:color-mix(in oklch,var(--color-primary) 8%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-primary) 24%,var(--color-border));border-left:3px solid var(--color-primary);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);margin:var(--space-5) 0}
+.spg-callout svg{flex-shrink:0;color:var(--color-primary);margin-top:2px}
+.spg-callout p{margin:0;font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65}
+.spg-callout strong{color:var(--color-text)}
+.spg-callout--gold{background:color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface));border-color:color-mix(in oklch,var(--color-gold-bright) 26%,var(--color-border));border-left-color:var(--color-gold-bright)}
+.spg-callout--gold svg{color:var(--color-gold-bright)}
+
+/* ── gold vs silver compare ── */
+.spg-compare{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin:var(--space-5) 0;align-items:stretch}
+@media(min-width:680px){.spg-compare{grid-template-columns:1fr auto 1fr}}
+.spg-compare__panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5)}
+.spg-compare__panel--gold{border-top:3px solid var(--color-gold-bright)}
+.spg-compare__panel--silver{border-top:3px solid var(--color-silver)}
+.spg-compare__metal{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-3)}
+.spg-compare__panel--gold .spg-compare__metal{color:var(--color-gold-bright)}
+.spg-compare__panel--silver .spg-compare__metal{color:var(--color-silver)}
+.spg-compare__row{display:flex;justify-content:space-between;font-size:var(--text-sm);padding:var(--space-2) 0;border-top:1px solid var(--color-divider)}
+.spg-compare__row span{color:var(--color-text-muted)}
+.spg-compare__row b{color:var(--color-text);font-weight:700;font-variant-numeric:tabular-nums}
+.spg-ratio{display:grid;place-items:center;text-align:center;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-4);min-width:120px}
+.spg-ratio__n{font-family:var(--font-display);font-size:clamp(1.8rem,1.2rem+3vw,2.6rem);font-weight:700;color:var(--color-text);line-height:1;font-variant-numeric:tabular-nums}
+.spg-ratio__lbl{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted);margin-top:var(--space-2)}
+
+/* ── historical SVG chart ── */
+.spg-chart{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:clamp(var(--space-4),3vw,var(--space-6));margin:var(--space-5) 0;box-shadow:var(--shadow-sm)}
+.spg-chart__head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--space-2);margin-bottom:var(--space-4)}
+.spg-chart__title{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text)}
+.spg-chart__legend{font-size:var(--text-xs);color:var(--color-text-muted)}
+.spg-chart__svg{width:100%;height:auto;display:block;overflow:visible}
+.spg-chart__svg .grid{stroke:var(--color-divider);stroke-width:1}
+.spg-chart__svg .axis{fill:var(--color-text-faint);font-size:13px;font-family:var(--font-body)}
+.spg-chart__svg .area{fill:url(#spgGrad)}
+.spg-chart__svg .line{fill:none;stroke:var(--color-silver);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.spg-chart__svg .dot{fill:var(--color-surface);stroke:var(--color-silver);stroke-width:2;transition:r .15s}
+.spg-chart__svg .dot.ath{stroke:var(--color-gold-bright)}
+.spg-chart__pt{cursor:pointer}
+.spg-chart__pt:hover .dot,.spg-chart__pt:focus .dot{r:6}
+.spg-chart__pt:hover .tip,.spg-chart__pt:focus .tip{opacity:1}
+.spg-chart__svg .tip{opacity:0;transition:opacity .15s;pointer-events:none}
+.spg-chart__svg .tip rect{fill:var(--color-text);rx:4}
+.spg-chart__svg .tip text{fill:var(--color-bg);font-size:12px;font-weight:700;font-family:var(--font-body)}
+
+/* ── reasons up/down ── */
+.spg-reasons{display:grid;grid-template-columns:1fr;gap:var(--space-4);margin:var(--space-5) 0}
+@media(min-width:760px){.spg-reasons{grid-template-columns:1fr 1fr}}
+.spg-reason-col{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5)}
+.spg-reason-col h4{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:700;margin-bottom:var(--space-4)}
+.spg-reason-col--up h4{color:var(--color-up)}
+.spg-reason-col--down h4{color:var(--color-down)}
+.spg-reason-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-3)}
+.spg-reason{display:flex;gap:var(--space-3);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
+.spg-reason svg{flex-shrink:0;margin-top:3px}
+.spg-reason-col--up .spg-reason svg{color:var(--color-up)}
+.spg-reason-col--down .spg-reason svg{color:var(--color-down)}
+.spg-reason strong{color:var(--color-text);font-weight:700}
+
+/* ── premium ladder ── */
+.spg-ladder{display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-5) 0}
+.spg-rung{display:grid;grid-template-columns:1fr;gap:var(--space-1)}
+.spg-rung__top{display:flex;justify-content:space-between;align-items:baseline;font-size:var(--text-sm)}
+.spg-rung__name{color:var(--color-text);font-weight:600}
+.spg-rung__pct{color:var(--color-gold-bright);font-weight:700;font-variant-numeric:tabular-nums}
+.spg-rung__bar{height:8px;border-radius:99px;background:var(--color-surface-offset);overflow:hidden}
+.spg-rung__fill{height:100%;border-radius:99px;background:var(--spg-silver-grad);background-size:200% auto}
+
+/* ── how-to summary steps ── */
+.spg-howto{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin:var(--space-5) 0;counter-reset:howto;list-style:none;padding:0}
+@media(min-width:680px){.spg-howto{grid-template-columns:1fr 1fr}}
+.spg-howto li{position:relative;display:flex;gap:var(--space-3);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4)}
+.spg-howto li::before{counter-increment:howto;content:counter(howto);flex-shrink:0;display:grid;place-items:center;width:28px;height:28px;border-radius:var(--radius-full);background:color-mix(in oklch,var(--color-gold-bright) 16%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border));color:var(--color-gold-bright);font-weight:700;font-size:var(--text-sm);font-variant-numeric:tabular-nums}
+.spg-howto li div{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55}
+.spg-howto li strong{color:var(--color-text);font-weight:700}
+
+/* ── FAQ accordion ── */
+.spg-faq{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-5) 0}
+.spg-faq details{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}
+.spg-faq details[open]{border-color:var(--spg-silver-soft)}
+.spg-faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4) var(--space-5);font-size:var(--text-base);font-weight:600;color:var(--color-text)}
+.spg-faq summary::-webkit-details-marker{display:none}
+.spg-faq summary svg{flex-shrink:0;color:var(--color-text-muted);transition:transform var(--transition)}
+.spg-faq details[open] summary svg{transform:rotate(45deg)}
+.spg-faq__a{padding:0 var(--space-5) var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7}
+.spg-faq__a strong{color:var(--color-gold-bright);font-weight:700}
+
+/* ── jump-to-calculator pill ── */
+.spg-jump{display:inline-flex;align-items:center;gap:var(--space-2);margin-top:var(--space-4);padding:var(--space-3) var(--space-5);background:var(--color-primary);color:#fff;border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:700;text-decoration:none;transition:background var(--transition),transform var(--transition)}
+.spg-jump:hover{background:var(--color-primary-hover);color:#fff;text-decoration:none;transform:translateY(-1px)}
+.spg-jump svg{flex-shrink:0}
 </style>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the silver price per gram calculated?","acceptedAnswer":{"@type":"Answer","text":"Divide the silver spot price per troy ounce by 31.1035 (grams per troy ounce). For example, if silver is $74 per troy ounce, the price per gram is $74 \u00f7 31.1035 = $2.38 per gram. For sterling silver (.925), multiply by 0.925 to get the silver content value per gram: $2.38 \u00d7 0.925 = $2.20 per gram."}},{"@type":"Question","name":"Why is silver sold per gram in jewellery but quoted per troy ounce in markets?","acceptedAnswer":{"@type":"Answer","text":"Financial markets quote precious metals in troy ounces because that is the international standard set by the London Bullion Market Association (LBMA). However, jewellers and consumers work with small pieces measured in grams, so they convert the spot price to grams for practical pricing. This difference often causes confusion \u2014 always check whether a quoted price is per gram or per troy ounce."}},{"@type":"Question","name":"Does VAT apply to silver per gram prices in the UK?","acceptedAnswer":{"@type":"Answer","text":"Yes. Unlike investment gold (which is VAT-exempt under UK law), silver is subject to 20% VAT at the point of sale for UK retail buyers. This means the price you actually pay per gram is approximately 20% higher than the spot silver content value. For example, if 999 fine silver is worth \u00a32.38/g based on spot, you would typically pay \u00a32.86/g or more at retail after VAT and dealer premium."}},{"@type":"Question","name":"What is the difference between 999 fine silver and 925 sterling silver per gram?","acceptedAnswer":{"@type":"Answer","text":"999 fine silver (99.9% pure) contains 0.999g of silver per gram \u2014 essentially pure. 925 sterling silver contains 0.925g of silver per gram, with the remainder being alloy (typically copper). At a spot price of $74/oz, 999 fine is worth approximately $2.38/g; 925 sterling is worth approximately $2.20/g. The GoldPriceTools calculator shows live values for both purities."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the silver price per gram today?","acceptedAnswer":{"@type":"Answer","text":"As of 20 May 2026, pure 999 silver is about $2.41 per gram and 925 sterling silver about $2.23 per gram, based on a spot price of $74.96 per troy ounce. These values change continuously \u2014 use a live silver price per gram calculator, or check MeltValue.com, Bullion.com or GoldPriceTools.com."}},{"@type":"Question","name":"What is the 925 sterling silver price per gram today?","acceptedAnswer":{"@type":"Answer","text":"925 sterling silver is worth 92.5% of the pure silver per-gram price. At $74.96 per troy ounce that is $2.23 per gram. At $80 per ounce it would be about $2.38 per gram."}},{"@type":"Question","name":"How do I calculate the silver price per gram?","acceptedAnswer":{"@type":"Answer","text":"Divide the silver spot price per troy ounce by 31.1035 to get the price per gram of 999 pure silver, then multiply by the purity decimal (0.925 for sterling, 0.800 for 800 silver, and so on)."}},{"@type":"Question","name":"What is the scrap silver price per gram?","acceptedAnswer":{"@type":"Answer","text":"Scrap silver is valued at its melt value using the per-gram formula. Dealers typically pay 75\u201390% of the melt value when buying, depending on volume, purity clarity and item type."}},{"@type":"Question","name":"What is the silver price per gram in USD?","acceptedAnswer":{"@type":"Answer","text":"At a spot price of about $74.96 per troy ounce: 999 fine = about $2.41 per gram; 925 sterling = about $2.23; 900 coin silver = about $2.17; 800 silver = about $1.93."}},{"@type":"Question","name":"How much is 1 gram of silver worth?","acceptedAnswer":{"@type":"Answer","text":"About $2.41 for pure 999 fine silver and $2.23 for 925 sterling silver, based on the 20 May 2026 spot price of $74.96 per troy ounce. Use a live silver price per gram calculator for the most current value."}},{"@type":"Question","name":"Why has the silver price dropped from its January 2026 peak?","acceptedAnswer":{"@type":"Answer","text":"Silver hit an all-time nominal high of $121.62 per troy ounce in January 2026, driven by structural supply deficits, industrial demand from solar and EVs, a weak dollar and speculative momentum. The correction to the $74\u2013$79 range reflects profit-taking, a stronger dollar, reduced Federal Reserve rate-cut expectations and partial de-escalation of geopolitical risk."}},{"@type":"Question","name":"What is the silver price per gram in euro?","acceptedAnswer":{"@type":"Answer","text":"Multiply the USD per-gram price by the current USD/EUR rate. At about $2.41 per gram, 999 silver is roughly \u20ac2.22 per gram and 925 sterling about \u20ac2.05 per gram. Live euro prices are available via a currency-enabled silver calculator."}}]}</script>
 <link rel="stylesheet" href="/assets/site.css">
 <!-- Microsoft Clarity -->
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "wpxnx7usjr");</script>
@@ -520,77 +756,571 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </ol>
 </div>
 
-<article class="article-wrap" itemscope itemtype="https://schema.org/Article">
+<article class="article-wrap spg-article" itemscope itemtype="https://schema.org/Article">
+ <div class="spg-main">
   <div class="article-tag">Silver Guide</div>
-  <h1 class="article-title" itemprop="headline">Silver Price Per Gram Explained</h1>
+  <h1 class="article-title" itemprop="headline">Silver Price Per Gram <span class="spg-metal">Explained</span></h1>
   <div class="article-byline">
     <span>By <a href="/authors/goldpricetools-editorial-team/" itemprop="author">GoldPriceTools Editorial Team</a></span>
     <span>&middot;</span>
-    <span>Published <time datetime="2026-05-20" itemprop="dateModified">3 May 2026</time></span>
+    <span>Published <time datetime="2026-04-24" itemprop="datePublished">24 Apr 2026</time></span>
     <span>&middot;</span>
-    <span>Updated <time datetime="2026-05-20" itemprop="dateModified">3 May 2026</time></span>
+    <span>Updated <time datetime="2026-05-20" itemprop="dateModified">20 May 2026</time></span>
+    <span>&middot;</span>
+    <span>9 min read</span>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="spg-hero" aria-label="Silver price per gram at a glance">
+    <div class="spg-hero__inner">
+      <p class="spg-hero__lead">Most silver price data online is quoted in <strong>troy ounces</strong> &mdash; perfect for investors trading bullion, but frustrating if you just want to know what the 50-gram piece of sterling cutlery in your drawer is worth, or the value of a single gram right now. This guide cuts straight to it: the <strong>silver price per gram today</strong>, exactly how to calculate it for any purity, why the price keeps moving, and a complete reference table from fine silver to 800-grade European silverware.</p>
+
+      <div class="spg-spotbar">
+        <span class="spg-spotbar__live"><span class="live-dot" aria-hidden="true"></span> Live spot</span>
+        <span class="spg-spotbar__spot"><span class="spg-spotbar__lbl">Silver (XAG)</span> <b id="spgSpotOz" data-nosnippet>$74.96</b> <span class="spg-spotbar__lbl">/ troy oz</span></span>
+        <span class="spg-spotbar__upd" id="spgUpd">Updating&hellip;</span>
+      </div>
+
+      <div class="spg-price-grid" data-nosnippet>
+        <div class="spg-price-card spg-price-card--gold">
+          <div class="spg-price-card__purity">.999</div>
+          <div class="spg-price-card__name">Fine silver &middot; investment bars</div>
+          <div class="spg-price-card__val"><span data-spg-gram data-purity="0.999" data-nosnippet>$2.41</span> <span class="spg-price-card__unit">/g</span></div>
+          <div class="spg-price-card__oz"><span data-spg-oz data-purity="0.999">$74.89</span> / oz</div>
+        </div>
+        <div class="spg-price-card">
+          <div class="spg-price-card__purity">.925</div>
+          <div class="spg-price-card__name">Sterling silver &middot; jewellery &amp; cutlery</div>
+          <div class="spg-price-card__val"><span data-spg-gram data-purity="0.925" data-nosnippet>$2.23</span> <span class="spg-price-card__unit">/g</span></div>
+          <div class="spg-price-card__oz"><span data-spg-oz data-purity="0.925">$69.34</span> / oz</div>
+        </div>
+        <div class="spg-price-card">
+          <div class="spg-price-card__purity">.900</div>
+          <div class="spg-price-card__name">Coin silver &middot; US pre-1965</div>
+          <div class="spg-price-card__val"><span data-spg-gram data-purity="0.900" data-nosnippet>$2.17</span> <span class="spg-price-card__unit">/g</span></div>
+          <div class="spg-price-card__oz"><span data-spg-oz data-purity="0.900">$67.46</span> / oz</div>
+        </div>
+        <div class="spg-price-card">
+          <div class="spg-price-card__purity">.800</div>
+          <div class="spg-price-card__name">European silver &middot; antique flatware</div>
+          <div class="spg-price-card__val"><span data-spg-gram data-purity="0.800" data-nosnippet>$1.93</span> <span class="spg-price-card__unit">/g</span></div>
+          <div class="spg-price-card__oz"><span data-spg-oz data-purity="0.800">$59.97</span> / oz</div>
+        </div>
+      </div>
+
+      <div class="spg-facts">
+        <span class="spg-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 1 troy oz = <b>31.1035 g</b></span>
+        <span class="spg-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg> Gold-silver ratio <b>~62:1</b></span>
+        <span class="spg-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Melt values &middot; <b>updated live</b></span>
+      </div>
+
+      <a href="#spg-calculator" class="spg-jump">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h2M8 18h2"/></svg>
+        Calculate your silver&rsquo;s value
+      </a>
+    </div>
+  </section>
+
+  <!-- ── TABLE OF CONTENTS ── -->
+  <details class="spg-toc" open>
+    <summary>On this page
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </summary>
+    <ul class="spg-toc__list">
+      <li><a href="#spg-today">Silver price per gram today</a></li>
+      <li><a href="#spg-formula">The core formula</a></li>
+      <li><a href="#spg-calculator">Live per-gram calculator</a></li>
+      <li><a href="#spg-usd">Current price in USD</a></li>
+      <li><a href="#spg-925">925 sterling silver per gram</a></li>
+      <li><a href="#spg-999">999 fine silver per gram</a></li>
+      <li><a href="#spg-scrap">Scrap silver per gram</a></li>
+      <li><a href="#spg-currencies">Price in other currencies</a></li>
+      <li><a href="#spg-800">800 European silver per gram</a></li>
+      <li><a href="#spg-vs-gold">Gold vs silver side-by-side</a></li>
+      <li><a href="#spg-history">Historical price chart</a></li>
+      <li><a href="#spg-why">Why silver moved this way</a></li>
+      <li><a href="#spg-wholesale">Wholesale silver per gram</a></li>
+      <li><a href="#spg-howto">Step-by-step summary</a></li>
+      <li><a href="#spg-faq">FAQ</a></li>
+    </ul>
+  </details>
+
+  <!-- ── SILVER PRICE TODAY ── -->
+  <div class="prose">
+    <h2 id="spg-today">Silver Price Per Gram Today (May 2026)</h2>
+    <p>As of <strong>20 May 2026</strong>, the silver spot price is approximately <strong>$74.96 per troy ounce</strong>, which converts to roughly <strong>$2.41 per gram</strong> for pure 999 fine silver, <strong>$2.23</strong> for 925 sterling, <strong>$2.17</strong> for 900 coin silver and <strong>$1.93</strong> for 800 European silver. These are <strong>melt values</strong> &mdash; the intrinsic metal value based purely on silver content &mdash; and they update continuously with the live spot price.</p>
+  </div>
+
+  <div class="spg-tablewrap">
+    <table class="spg-table" aria-label="Silver price per gram by purity" data-nosnippet>
+      <thead><tr><th scope="col">Purity</th><th scope="col">Description</th><th scope="col" class="num">Per gram</th><th scope="col" class="num">Per troy oz</th></tr></thead>
+      <tbody>
+        <tr class="is-featured"><td>.999</td><td>Fine silver / investment bars</td><td class="pergram"><span data-spg-gram data-purity="0.999">$2.41</span></td><td class="num"><span data-spg-oz data-purity="0.999">$74.89</span></td></tr>
+        <tr><td>.958</td><td>Britannia silver</td><td class="pergram"><span data-spg-gram data-purity="0.958">$2.31</span></td><td class="num"><span data-spg-oz data-purity="0.958">$71.81</span></td></tr>
+        <tr><td>.925</td><td>Sterling silver (jewellery, cutlery)</td><td class="pergram"><span data-spg-gram data-purity="0.925">$2.23</span></td><td class="num"><span data-spg-oz data-purity="0.925">$69.34</span></td></tr>
+        <tr><td>.900</td><td>Coin silver (US pre-1965 dimes, quarters)</td><td class="pergram"><span data-spg-gram data-purity="0.900">$2.17</span></td><td class="num"><span data-spg-oz data-purity="0.900">$67.46</span></td></tr>
+        <tr><td>.800</td><td>European silver (antique flatware)</td><td class="pergram"><span data-spg-gram data-purity="0.800">$1.93</span></td><td class="num"><span data-spg-oz data-purity="0.800">$59.97</span></td></tr>
+        <tr><td>.500</td><td>50% silver (some vintage items)</td><td class="pergram"><span data-spg-gram data-purity="0.500">$1.21</span></td><td class="num"><span data-spg-oz data-purity="0.500">$37.48</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="spg-scrollhint">Swipe table sideways to see all columns &rarr;</p>
+
+  <div class="spg-callout">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    <p><strong>The values above are live.</strong> Per-gram figures are derived from the current XAG spot price divided by 31.1035 grams, then multiplied by each purity. The headline numbers in this guide&rsquo;s worked examples are fixed at the <strong>$74.96/oz</strong> baseline so the maths stays easy to follow.</p>
+  </div>
+
+  <!-- ── CORE FORMULA ── -->
+  <div class="prose">
+    <h2 id="spg-formula">The Core Formula: How to Calculate Silver Price Per Gram</h2>
+    <p>Every silver per-gram calculation follows the same three steps. Once you know them, you never need a website to value silver again.</p>
+  </div>
+
+  <div class="spg-steps spg-steps--3">
+    <div class="spg-step">
+      <div class="spg-step__n" aria-hidden="true"></div>
+      <h4>Get the spot price</h4>
+      <p>Find the current silver spot price per troy ounce in USD (Kitco, BullionVault or APMEX all publish it live).</p>
+    </div>
+    <div class="spg-step">
+      <div class="spg-step__n" aria-hidden="true"></div>
+      <h4>Divide by 31.1035</h4>
+      <p>There are 31.1035 grams in one troy ounce. Dividing gives the price per gram of pure (999) silver.</p>
+    </div>
+    <div class="spg-step">
+      <div class="spg-step__n" aria-hidden="true"></div>
+      <h4>Multiply by purity</h4>
+      <p>Multiply by the item&rsquo;s purity decimal (0.925 for sterling, 0.800 for 800, etc.) for that grade&rsquo;s per-gram price.</p>
+    </div>
+  </div>
+
+  <div class="spg-formula">Price per gram (999) = Spot price per troy oz &divide; 31.1035<br>Price per gram (alloy) = Price per gram (999) &times; Purity decimal</div>
+
+  <div class="prose"><p>Here is the formula worked through at the <strong>$74.96/oz</strong> baseline:</p></div>
+  <div class="spg-tablewrap">
+    <table class="spg-table" aria-label="Worked example at $74.96 per ounce">
+      <thead><tr><th scope="col">Step</th><th scope="col">Calculation</th><th scope="col" class="num">Result</th></tr></thead>
+      <tbody>
+        <tr><td>Pure silver per gram</td><td>$74.96 &divide; 31.1035</td><td class="pergram">$2.410</td></tr>
+        <tr><td>925 sterling per gram</td><td>$2.410 &times; 0.925</td><td class="pergram">$2.229</td></tr>
+        <tr><td>900 coin silver per gram</td><td>$2.410 &times; 0.900</td><td class="pergram">$2.169</td></tr>
+        <tr><td>800 silver per gram</td><td>$2.410 &times; 0.800</td><td class="pergram">$1.928</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── LIVE CALCULATOR ── -->
+  <section class="spg-calc" id="spg-calculator" aria-label="Silver price per gram calculator">
+    <div class="spg-calc__head">
+      <div class="spg-calc__icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>
+      </div>
+      <div>
+        <div class="spg-calc__title">Live Silver Per-Gram Calculator</div>
+        <div class="spg-calc__sub">Enter weight &amp; purity &mdash; melt value tracks the live spot price</div>
+      </div>
+    </div>
+    <div class="spg-calc__grid">
+      <div class="spg-field">
+        <label for="spgWeight">Weight (grams)</label>
+        <input id="spgWeight" type="number" inputmode="decimal" min="0" step="0.01" value="75" aria-describedby="spgMeltMeta">
+      </div>
+      <div class="spg-field spg-field--select">
+        <label for="spgPurity">Silver purity</label>
+        <select id="spgPurity">
+          <option value="0.999">.999 Fine silver</option>
+          <option value="0.958">.958 Britannia</option>
+          <option value="0.925" selected>.925 Sterling</option>
+          <option value="0.900">.900 Coin silver</option>
+          <option value="0.800">.800 European</option>
+          <option value="0.500">.500 50% silver</option>
+        </select>
+      </div>
+      <div class="spg-field spg-field--select">
+        <label for="spgCurrency">Currency</label>
+        <select id="spgCurrency">
+          <option value="USD" selected>USD ($)</option>
+          <option value="EUR">EUR (&euro;)</option>
+          <option value="GBP">GBP (&pound;)</option>
+          <option value="INR">INR (&#8377;)</option>
+          <option value="CAD">CAD (CA$)</option>
+          <option value="AUD">AUD (A$)</option>
+        </select>
+      </div>
+    </div>
+    <div class="spg-calc__out">
+      <div class="spg-calc__melt">
+        <div class="lbl">Melt value</div>
+        <div class="val" id="spgMelt" data-nosnippet>$167.20</div>
+        <div class="meta" id="spgMeltMeta">75 g of .925 Sterling at $2.23/g</div>
+      </div>
+      <div class="spg-calc__dealer">
+        <div class="lbl">Typical dealer offer</div>
+        <div class="val" id="spgDealer" data-nosnippet>$125.40 &ndash; $150.48</div>
+        <div class="meta">75&ndash;90% of melt value</div>
+      </div>
+    </div>
+    <p class="spg-calc__note">Melt value is the intrinsic silver-content value only. Retail jewellery carries fabrication &amp; design premiums above melt; scrap buyers pay a margin below it. The spot price refreshes every 60 seconds.</p>
+  </section>
+
+  <!-- ── CURRENT PRICE IN USD ── -->
+  <div class="prose">
+    <h2 id="spg-usd">What Is the Current Silver Price Per Gram in USD?</h2>
+    <p>The answer changes every few seconds; the method never does. Take the live silver spot price in USD per troy ounce, divide by 31.1035, and you have the pure silver price per gram at that moment. To see how dramatically the per-gram price can move, compare three points from the recent past:</p>
+  </div>
+
+  <div class="spg-scenarios">
+    <div class="spg-scenario spg-scenario--ath">
+      <div class="spg-scenario__when">Jan 2026 &middot; all-time high</div>
+      <div class="spg-scenario__oz">$121.62 <span style="font-size:var(--text-xs);color:var(--color-text-muted);font-weight:500">/oz</span></div>
+      <div class="spg-scenario__row"><span>999 fine</span><b>$3.91/g</b></div>
+      <div class="spg-scenario__row"><span>925 sterling</span><b>$3.61/g</b></div>
+    </div>
+    <div class="spg-scenario">
+      <div class="spg-scenario__when">20 May 2026 &middot; today</div>
+      <div class="spg-scenario__oz">$74.96 <span style="font-size:var(--text-xs);color:var(--color-text-muted);font-weight:500">/oz</span></div>
+      <div class="spg-scenario__row"><span>999 fine</span><b>$2.41/g</b></div>
+      <div class="spg-scenario__row"><span>925 sterling</span><b>$2.23/g</b></div>
+    </div>
+    <div class="spg-scenario spg-scenario--low">
+      <div class="spg-scenario__when">Early 2025</div>
+      <div class="spg-scenario__oz">$30.00 <span style="font-size:var(--text-xs);color:var(--color-text-muted);font-weight:500">/oz</span></div>
+      <div class="spg-scenario__row"><span>999 fine</span><b>$0.96/g</b></div>
+      <div class="spg-scenario__row"><span>925 sterling</span><b>$0.89/g</b></div>
+    </div>
   </div>
 
   <div class="prose">
-    <p>Silver is quoted in troy ounces on global commodity markets, but most buyers and sellers of small amounts of silver &mdash; jewellery, silverware, coins &mdash; think in grams. Converting the spot price to a per-gram figure is straightforward once you understand the formula, and our live calculator does it automatically.</p>
+    <p>One gram of sterling silver more than <strong>quadrupled</strong> in value and then roughly <strong>halved</strong> again within a single 18-month period. Anyone holding silver items or assessing a purchase needs to check the live price on the day &mdash; never a figure from weeks or months ago.</p>
+    <h3>Best sources for the live silver price per gram</h3>
+  </div>
 
-    <h2>How to Convert the Silver Spot Price to Per Gram</h2>
-    <p>The silver spot price is quoted as XAG/USD &mdash; the price per troy ounce of pure silver in US dollars. One troy ounce = 31.1035 grams. To find the price per gram:</p>
-    <div class="formula-box">Silver price per gram (USD) = XAG/USD spot price &divide; 31.1035<br>Example: $33.00 &divide; 31.1035 = <strong>$1.062/g</strong></div>
-    <p>To convert to GBP, multiply by the USD/GBP rate:</p>
-    <div class="formula-box">Price per gram (GBP) = USD/gram &times; GBP/USD rate<br>Example: $1.062 &times; 0.79 = <strong>&pound;0.839/g</strong></div>
+  <ul class="spg-sources">
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-5"/></svg><div><div class="spg-source__name">MeltValue.com</div><div class="spg-source__desc">Live per-gram silver price table by purity, refreshed every few minutes.</div></div></div></li>
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg><div><div class="spg-source__name">Bullion.com</div><div class="spg-source__desc">Live per-gram silver price with a built-in calculator.</div></div></div></li>
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9l7-7 7 7"/></svg><div><div class="spg-source__name">APMEX</div><div class="spg-source__desc">Live silver price per gram with a historical chart.</div></div></div></li>
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><div class="spg-source__name"><a href="/">GoldPriceTools.com</a></div><div class="spg-source__desc">Per-gram prices for 999, 925, 900 and 800 silver, updated every 60 seconds.</div></div></div></li>
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg><div><div class="spg-source__name">GoldAvenue.com</div><div class="spg-source__desc">Live table showing gram, ounce and kilogram prices with intraday high/low.</div></div></div></li>
+  </ul>
 
-    <h2>Silver Purity and Per-Gram Prices</h2>
-    <p>Unlike gold where karat is the purity measure, silver purity is measured in millesimal fineness (parts per 1,000). The most common silver purity levels are:</p>
-    <table class="data-table" aria-label="Silver purity and per-gram prices">
-      <thead><tr><th>Fineness</th><th>Description</th><th>Purity Factor</th><th>Typical Use</th></tr></thead>
+  <!-- ── 925 STERLING ── -->
+  <div class="prose">
+    <h2 id="spg-925">925 Silver Price Per Gram &mdash; Sterling Silver Explained</h2>
+    <p>The <strong>925 silver price per gram</strong> is the one most people actually need, because 925 sterling is the worldwide standard for jewellery, cutlery, decorative items and most silverware.</p>
+    <p><strong>What 925 means:</strong> the hallmark &ldquo;925&rdquo; (or &ldquo;.925&rdquo;) indicates the item is <strong>92.5% pure silver</strong> and 7.5% other metals &mdash; almost always copper. The copper hardens the alloy and makes it practical for everyday use; pure silver is too soft to hold its shape reliably.</p>
+  </div>
+
+  <div class="spg-formula">Sterling (925) price per gram = Spot price per troy oz &divide; 31.1035 &times; 0.925</div>
+
+  <div class="prose"><p>Use this quick reference to read off the 999 and 925 per-gram prices at common spot levels:</p></div>
+  <div class="spg-tablewrap">
+    <table class="spg-table" aria-label="925 sterling silver price per gram at common spot prices">
+      <thead><tr><th scope="col">Spot ($/oz)</th><th scope="col" class="num">999 per gram</th><th scope="col" class="num">925 sterling per gram</th></tr></thead>
       <tbody>
-        <tr><td>999 (Fine Silver)</td><td>99.9% pure</td><td>0.999</td><td>Bullion bars, coins</td></tr>
-        <tr><td>958</td><td>Britannia silver</td><td>0.958</td><td>UK hallmarked items post-1999</td></tr>
-        <tr><td>925 (Sterling)</td><td>92.5% pure</td><td>0.925</td><td>Jewellery, silverware, coins</td></tr>
-        <tr><td>800</td><td>Coin silver</td><td>0.800</td><td>Continental European silverware</td></tr>
+        <tr><td>$50</td><td class="num">$1.608</td><td class="pergram">$1.487</td></tr>
+        <tr><td>$60</td><td class="num">$1.930</td><td class="pergram">$1.785</td></tr>
+        <tr><td>$70</td><td class="num">$2.250</td><td class="pergram">$2.082</td></tr>
+        <tr class="is-featured"><td>$75</td><td class="num">$2.411</td><td class="pergram">$2.230</td></tr>
+        <tr><td>$80</td><td class="num">$2.572</td><td class="pergram">$2.379</td></tr>
+        <tr><td>$90</td><td class="num">$2.894</td><td class="pergram">$2.677</td></tr>
+        <tr><td>$100</td><td class="num">$3.215</td><td class="pergram">$2.974</td></tr>
+        <tr><td>$120</td><td class="num">$3.858</td><td class="pergram">$3.569</td></tr>
       </tbody>
     </table>
-    <p>To find the value of a 925 (sterling) silver item: multiply the 999 price/gram by 0.925. E.g. &pound;0.839/g &times; 0.925 = <strong>&pound;0.776/g</strong> for sterling silver.</p>
+  </div>
 
-    <h2>What Drives the Silver Price?</h2>
-    <ul>
-      <li><strong>Industrial demand (~55% of total):</strong> Solar panels (photovoltaics), electronics, EV charging infrastructure, medical devices</li>
-      <li><strong>Investment demand:</strong> ETFs, physical coins/bars, futures markets</li>
-      <li><strong>Gold price correlation:</strong> Silver tracks gold broadly but with higher volatility (beta ~1.5&ndash;2x gold)</li>
-      <li><strong>US dollar strength:</strong> Silver, like all dollar-denominated commodities, moves inversely with DXY</li>
-      <li><strong>Mining supply:</strong> ~25% of silver is mined as a primary product; 75% comes as a by-product of copper, zinc, and lead mining</li>
-    </ul>
+  <div class="prose">
+    <h3>925 sterling calculator &mdash; how to use it</h3>
+    <p>If you prefer a manual calculation to any online tool, the process for any quantity of 925 sterling is:</p>
+    <ol>
+      <li>Weigh the item accurately (digital scales, ideally to 0.01 g).</li>
+      <li>Check the current silver spot price per troy ounce (live, not cached).</li>
+      <li>Apply the formula: Weight (g) &times; (Spot &divide; 31.1035) &times; 0.925.</li>
+    </ol>
+    <p><strong>Example.</strong> A 75-gram sterling bracelet at $74.96/oz: 75 &times; ($74.96 &divide; 31.1035) &times; 0.925 = 75 &times; $2.229 = <strong>$167.19 melt value</strong>. Dealers buying scrap typically offer 70&ndash;90% of melt; retail jewellers may add significant fabrication and design premiums above it.</p>
+  </div>
 
-    <div class="callout">
-      <p><strong>UK VAT note:</strong> Physical silver purchased in the UK is subject to 20% VAT. This means the purchase price you pay is 20% above spot. When selling, dealers pay based on spot &mdash; this spread makes the buy-sell gap large for physical silver. Consider silver ETCs or ETC products to avoid the VAT issue.</p>
+  <div class="spg-callout spg-callout--gold">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+    <p>Skip the arithmetic &mdash; the <a href="#spg-calculator">live calculator above</a> does this instantly for any weight, purity and currency, using the current spot price.</p>
+  </div>
+
+  <!-- ── 999 FINE ── -->
+  <div class="prose">
+    <h2 id="spg-999">999 Fine Silver Price Per Gram</h2>
+    <p>Fine silver (marked 999, .999, or &ldquo;fine silver&rdquo;) is the purest commercially available silver at 99.9% content. It is used for investment bullion bars, some coins such as the Canadian Silver Maple Leaf, industrial applications and high-purity silverware.</p>
+    <p>Because 999 fine silver has no diluting alloy, its per-gram price equals the spot price per troy ounce divided by 31.1035 &mdash; with no further purity adjustment. At $74.96/oz, one gram of 999 fine silver is worth exactly <strong>$2.41</strong>. Investors holding bullion bars or fine silver coins can use this single-step calculation to check their holdings&rsquo; value at any time.</p>
+  </div>
+
+  <!-- ── SCRAP ── -->
+  <div class="prose">
+    <h2 id="spg-scrap">Scrap Silver Price Per Gram</h2>
+    <p>Scrap silver is silver sold purely for its metal content rather than any collector, antique or aesthetic value &mdash; broken jewellery, worn silverware, damaged coins, industrial offcuts. The <strong>scrap silver price per gram</strong> is not a different number from the melt value above; it is the melt value, minus a dealer margin. Most dealers offer roughly <strong>75&ndash;90% of melt</strong>, with the exact percentage depending on four things:</p>
+  </div>
+
+  <ul class="spg-sources">
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v6H3zM3 9v12h18V9"/></svg><div><div class="spg-source__name">Volume</div><div class="spg-source__desc">Larger quantities attract better rates &mdash; a kilo beats 10 grams.</div></div></div></li>
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><div><div class="spg-source__name">Purity clarity</div><div class="spg-source__desc">Clearly hallmarked items (925, 999, 800) are valued more confidently than unknown grades.</div></div></div></li>
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg><div><div class="spg-source__name">Dealer type</div><div class="spg-source__desc">Specialist bullion dealers usually beat pawn shops and generic cash-for-gold outlets.</div></div></div></li>
+    <li><div class="spg-source"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M7 8V6h10v2"/></svg><div><div class="spg-source__name">Form</div><div class="spg-source__desc">Bars and coins (no refining needed) beat complex jewellery that is costly to refine.</div></div></div></li>
+  </ul>
+
+  <div class="spg-tablewrap">
+    <table class="spg-table" aria-label="Scrap silver melt value and typical dealer offer">
+      <thead><tr><th scope="col">Purity</th><th scope="col" class="num">Melt value /g</th><th scope="col" class="num">Typical dealer offer /g</th></tr></thead>
+      <tbody>
+        <tr><td>999 fine</td><td class="pergram">$2.41</td><td class="num">$1.81 &ndash; $2.17</td></tr>
+        <tr><td>925 sterling</td><td class="pergram">$2.23</td><td class="num">$1.67 &ndash; $2.01</td></tr>
+        <tr><td>900 coin</td><td class="pergram">$2.17</td><td class="num">$1.63 &ndash; $1.95</td></tr>
+        <tr><td>800 European</td><td class="pergram">$1.93</td><td class="num">$1.45 &ndash; $1.74</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose"><p><em>Dealer offer ranges are illustrative; actual offers vary by dealer, volume and location.</em></p></div>
+
+  <!-- ── CURRENCIES ── -->
+  <div class="prose">
+    <h2 id="spg-currencies">Silver Price Per Gram in Different Currencies</h2>
+    <p>The silver spot price is set globally in US dollars, but sellers worldwide want the per-gram value in their local currency. Take the USD per-gram price and multiply by the local-currency-per-USD exchange rate.</p>
+  </div>
+
+  <div class="spg-formula">Local price per gram = USD price per gram &times; (Local currency per 1 USD)</div>
+
+  <div class="spg-tablewrap">
+    <table class="spg-table" aria-label="Silver price per gram in key currencies">
+      <thead><tr><th scope="col">Currency</th><th scope="col" class="num">Approx. rate / USD</th><th scope="col" class="num">999 per gram</th><th scope="col" class="num">925 per gram</th></tr></thead>
+      <tbody>
+        <tr class="is-featured"><td>USD</td><td class="num">&mdash;</td><td class="pergram">$2.41</td><td class="num">$2.23</td></tr>
+        <tr><td>EUR</td><td class="num">0.92</td><td class="pergram">&euro;2.22</td><td class="num">&euro;2.05</td></tr>
+        <tr><td>GBP</td><td class="num">0.79</td><td class="pergram">&pound;1.90</td><td class="num">&pound;1.76</td></tr>
+        <tr><td>INR</td><td class="num">83.5</td><td class="pergram">&#8377;201.19</td><td class="num">&#8377;186.10</td></tr>
+        <tr><td>CAD</td><td class="num">1.36</td><td class="pergram">CA$3.28</td><td class="num">CA$3.03</td></tr>
+        <tr><td>AUD</td><td class="num">1.55</td><td class="pergram">A$3.74</td><td class="num">A$3.46</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p><em>Exchange rates are approximate and change continuously &mdash; the calculator above uses live rates.</em></p>
+    <h3>Silver Price Per Gram in India (INR)</h3>
+    <p>India is one of the world&rsquo;s largest silver-consuming nations, and the silver price in rupees per gram is among the most-searched silver queries globally. The calculation is identical: USD per gram &times; the current USD/INR rate. Indian pricing also reflects an import-duty regime of roughly <strong>10&ndash;15%</strong>, so the domestic rupee price per gram typically runs somewhat higher than the pure currency-converted international price. Benchmarks such as the Multi Commodity Exchange (MCX) publish live rates incorporating these local factors.</p>
+  </div>
+
+  <!-- ── 800 EUROPEAN ── -->
+  <div class="prose">
+    <h2 id="spg-800">800 Silver Price Per Gram &mdash; Continental European Silverware</h2>
+    <p>The <strong>800 silver price per gram</strong> matters most for antique European silverware: many pieces from Germany, Italy, France, the Netherlands and other continental countries are hallmarked 800 rather than 925. 800 silver is 80% pure silver and 20% other metals (typically copper), so its per-gram value is simply 80% of the fine silver price.</p>
+  </div>
+
+  <div class="spg-formula">800 silver per gram = Spot price per troy oz &divide; 31.1035 &times; 0.800<br>At $74.96/oz: $2.410 &times; 0.800 = <b>$1.93 per gram</b></div>
+
+  <div class="prose">
+    <p>A 400-gram antique 800-silver tea service at $74.96/oz would have a melt value of 400 &times; $1.93 = <strong>$772</strong>. Antique or museum-quality pieces may command a significant premium above melt for their craftsmanship; plain or damaged items are typically assessed at or below melt by dealers.</p>
+  </div>
+
+  <!-- ── GOLD VS SILVER ── -->
+  <div class="prose">
+    <h2 id="spg-vs-gold">Gold and Silver Price Per Gram &mdash; Side-by-Side</h2>
+    <p>Here is the per-gram comparison at current May 2026 prices, with gold at approximately $4,670/oz and silver at $74.96/oz:</p>
+  </div>
+
+  <div class="spg-compare">
+    <div class="spg-compare__panel spg-compare__panel--gold">
+      <div class="spg-compare__metal">Gold</div>
+      <div class="spg-compare__row"><span>999 (24K)</span><b>$150.00</b></div>
+      <div class="spg-compare__row"><span>750 (18K)</span><b>$112.50</b></div>
+      <div class="spg-compare__row"><span>585 (14K)</span><b>$87.75</b></div>
+      <div class="spg-compare__row"><span>375 (9K)</span><b>$56.25</b></div>
     </div>
+    <div class="spg-ratio">
+      <div class="spg-ratio__n">62:1</div>
+      <div class="spg-ratio__lbl">Gold-silver ratio</div>
+    </div>
+    <div class="spg-compare__panel spg-compare__panel--silver">
+      <div class="spg-compare__metal">Silver</div>
+      <div class="spg-compare__row"><span>999</span><b>$2.41</b></div>
+      <div class="spg-compare__row"><span>925</span><b>$2.23</b></div>
+      <div class="spg-compare__row"><span>900</span><b>$2.17</b></div>
+      <div class="spg-compare__row"><span>800</span><b>$1.93</b></div>
+    </div>
+  </div>
 
-    <h2>Why Is Silver Quoted Per Troy Ounce but Sold Per Gram?</h2>
-    <p>The global silver market uses <strong>troy ounces</strong> for professional trading on COMEX and the LBMA. This is a historical convention inherited from the medieval Troyes measurement system used at Continental European trade fairs. However, in jewellery and retail scrap markets, small quantities are weighed in <strong>grams</strong> on digital scales, so buyers and sellers work in grams.</p>
-    <p>The conversion is: <strong>1 troy oz = 31.1035 grams</strong>. Divide the quoted spot price (e.g. $33.00/oz) by 31.1035 to get the price per gram of pure silver ($1.061/g). Our calculator above does this in real time.</p>
+  <div class="prose">
+    <p>Gold is roughly <strong>62 times</strong> the price per gram of pure silver at current spot &mdash; the gold-silver ratio. When this ratio is historically wide (above 80), silver is considered cheap relative to gold; when it narrows below 40, gold is relatively cheaper. The ratio has oscillated between 46:1 (January 2026, when both hit records) and 62:1 in the consolidation since.</p>
+  </div>
 
-    <h2>Silver vs Gold: VAT Makes a Critical Difference</h2>
-    <p>A key difference for UK buyers: <strong>gold investment bullion is VAT-exempt</strong> under UK law, but <strong>silver bullion is subject to 20% VAT</strong>. This means the effective cost of buying physical silver in the UK is 20% higher than the spot-derived gram price. The 20% VAT is not recoverable unless you are VAT-registered and using the silver for a business purpose.</p>
-    <p>Silver ETFs traded on the London Stock Exchange (e.g. iShares Physical Silver SSLN, WisdomTree Silver SLVR) do not attract VAT, making them a more tax-efficient route for UK investors seeking silver exposure compared to physical bars or coins.</p>
+  <!-- ── HISTORICAL CHART ── -->
+  <div class="prose">
+    <h2 id="spg-history">Silver Price Per Gram Chart &mdash; Historical Context</h2>
+    <p>Seeing the per-gram price in historical context sets realistic expectations. The chart below tracks 999 fine silver per gram across two and a half decades of milestones; tap or focus any point for detail.</p>
+  </div>
 
-    <h2>How the Silver Spot Price Is Set</h2>
-    <p>The benchmark <strong>LBMA Silver Price</strong> is published once daily at 12:00 noon London time by ICE Benchmark Administration, administered through an electronic auction process. Throughout the rest of the trading day, prices are driven by COMEX (XAG/USD) futures in New York and the Shanghai Futures Exchange (SHFE) in China.</p>
-    <p>The silver price is considerably more volatile than gold — daily moves of 2–4% are common, and intraday swings of 5%+ occur during major economic data releases. This reflects silver's dual role as both a monetary metal (sensitive to monetary policy) and an industrial commodity (sensitive to economic growth expectations).</p>
+  <div class="spg-chart">
+    <div class="spg-chart__head">
+      <span class="spg-chart__title">999 fine silver &mdash; price per gram (USD)</span>
+      <span class="spg-chart__legend">2000 &rarr; May 2026</span>
+    </div>
+    <svg class="spg-chart__svg" viewBox="0 0 720 300" role="img" aria-label="Line chart of 999 fine silver price per gram from 2000 to May 2026, rising from $0.16 to a $3.91 peak in January 2026 then settling at $2.41.">
+      <defs>
+        <linearGradient id="spgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="var(--color-silver)" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="var(--color-silver)" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line class="grid" x1="44" y1="20" x2="704" y2="20"/>
+      <line class="grid" x1="44" y1="82.5" x2="704" y2="82.5"/>
+      <line class="grid" x1="44" y1="145" x2="704" y2="145"/>
+      <line class="grid" x1="44" y1="207.5" x2="704" y2="207.5"/>
+      <line class="grid" x1="44" y1="270" x2="704" y2="270"/>
+      <text class="axis" x="38" y="24" text-anchor="end">$4</text>
+      <text class="axis" x="38" y="86.5" text-anchor="end">$3</text>
+      <text class="axis" x="38" y="149" text-anchor="end">$2</text>
+      <text class="axis" x="38" y="211.5" text-anchor="end">$1</text>
+      <text class="axis" x="38" y="274" text-anchor="end">$0</text>
+      <path class="area" d="M44,259.9 L138.3,230.8 L232.6,173.7 L326.9,242.3 L421.1,245.9 L515.4,211.3 L609.7,25.6 L704,119.4 L704,270 L44,270 Z"/>
+      <path class="line" d="M44,259.9 L138.3,230.8 L232.6,173.7 L326.9,242.3 L421.1,245.9 L515.4,211.3 L609.7,25.6 L704,119.4"/>
+      <text class="axis" x="44" y="288" text-anchor="middle">2000</text>
+      <text class="axis" x="609.7" y="288" text-anchor="middle">Jan &rsquo;26</text>
+      <text class="axis" x="704" y="288" text-anchor="end">now</text>
+      <g class="spg-chart__pt" tabindex="0" role="img" aria-label="January 2000: $0.16 per gram"><circle class="dot" cx="44" cy="259.9" r="3.5"/><g class="tip"><rect x="2" y="225.9" width="92" height="24" rx="4"/><text x="48" y="242.4" text-anchor="middle">2000: $0.16</text></g></g>
+      <g class="spg-chart__pt" tabindex="0" role="img" aria-label="March 2008: $0.63 per gram"><circle class="dot" cx="138.3" cy="230.8" r="3.5"/><g class="tip"><rect x="92.3" y="196.8" width="92" height="24" rx="4"/><text x="138.3" y="213.3" text-anchor="middle">2008: $0.63</text></g></g>
+      <g class="spg-chart__pt" tabindex="0" role="img" aria-label="April 2011: $1.54 per gram"><circle class="dot" cx="232.6" cy="173.7" r="3.5"/><g class="tip"><rect x="186.6" y="139.7" width="92" height="24" rx="4"/><text x="232.6" y="156.2" text-anchor="middle">2011: $1.54</text></g></g>
+      <g class="spg-chart__pt" tabindex="0" role="img" aria-label="December 2015: $0.44 per gram"><circle class="dot" cx="326.9" cy="242.3" r="3.5"/><g class="tip"><rect x="280.9" y="208.3" width="92" height="24" rx="4"/><text x="326.9" y="224.8" text-anchor="middle">2015: $0.44</text></g></g>
+      <g class="spg-chart__pt" tabindex="0" role="img" aria-label="March 2020: $0.39 per gram"><circle class="dot" cx="421.1" cy="245.9" r="3.5"/><g class="tip"><rect x="375.1" y="211.9" width="92" height="24" rx="4"/><text x="421.1" y="228.4" text-anchor="middle">Mar &rsquo;20: $0.39</text></g></g>
+      <g class="spg-chart__pt" tabindex="0" role="img" aria-label="August 2020: $0.94 per gram"><circle class="dot" cx="515.4" cy="211.3" r="3.5"/><g class="tip"><rect x="469.4" y="177.3" width="92" height="24" rx="4"/><text x="515.4" y="193.8" text-anchor="middle">Aug &rsquo;20: $0.94</text></g></g>
+      <g class="spg-chart__pt" tabindex="0" role="img" aria-label="January 2026 all-time high: $3.91 per gram"><circle class="dot ath" cx="609.7" cy="25.6" r="4"/><g class="tip"><rect x="563.7" y="37.6" width="92" height="24" rx="4"/><text x="609.7" y="54.1" text-anchor="middle">Jan &rsquo;26: $3.91</text></g></g>
+      <g class="spg-chart__pt" tabindex="0" role="img" aria-label="May 2026: $2.41 per gram"><circle class="dot" cx="704" cy="119.4" r="3.5"/><g class="tip"><rect x="626" y="85.4" width="92" height="24" rx="4"/><text x="672" y="101.9" text-anchor="middle">May &rsquo;26: $2.41</text></g></g>
+    </svg>
+  </div>
 
-    <h2>Silver Purity and Gram Price</h2>
-    <p>Like gold, the gram price you pay or receive depends on the silver purity of your item. The most common UK standards:</p>
-    <table class="data-table" aria-label="Silver purity and gram price multipliers">
-      <thead><tr><th>Standard</th><th>Purity</th><th>Hallmark</th><th>Multiply spot gram price by</th></tr></thead>
+  <div class="spg-tablewrap">
+    <table class="spg-table" aria-label="999 fine silver price per gram historical milestones">
+      <thead><tr><th scope="col">Date</th><th scope="col" class="num">Spot ($/oz)</th><th scope="col" class="num">999 per gram</th><th scope="col" class="num">925 sterling per gram</th></tr></thead>
       <tbody>
-        <tr><td>Fine Silver</td><td>99.9%</td><td>999</td><td>0.999</td></tr>
-        <tr><td>Britannia</td><td>95.8%</td><td>958</td><td>0.958</td></tr>
-        <tr><td>Sterling</td><td>92.5%</td><td>925</td><td>0.925</td></tr>
-        <tr><td>Coin Silver</td><td>90.0%</td><td>900</td><td>0.900</td></tr>
-        <tr><td>Continental</td><td>80.0%</td><td>800</td><td>0.800</td></tr>
+        <tr><td>January 2000</td><td class="num">$5.00</td><td class="pergram">$0.161</td><td class="num">$0.149</td></tr>
+        <tr><td>March 2008</td><td class="num">$19.50</td><td class="pergram">$0.627</td><td class="num">$0.580</td></tr>
+        <tr><td>April 2011</td><td class="num">$47.94</td><td class="pergram">$1.541</td><td class="num">$1.425</td></tr>
+        <tr><td>December 2015</td><td class="num">$13.82</td><td class="pergram">$0.444</td><td class="num">$0.411</td></tr>
+        <tr><td>March 2020</td><td class="num">$12.00</td><td class="pergram">$0.386</td><td class="num">$0.357</td></tr>
+        <tr><td>August 2020</td><td class="num">$29.24</td><td class="pergram">$0.940</td><td class="num">$0.870</td></tr>
+        <tr class="is-featured"><td>January 2026 (ATH)</td><td class="num">$121.62</td><td class="pergram">$3.910</td><td class="num">$3.617</td></tr>
+        <tr><td>20 May 2026</td><td class="num">$74.96</td><td class="pergram">$2.410</td><td class="num">$2.229</td></tr>
       </tbody>
     </table>
-  </div><section class="share-section">
+  </div>
+  <div class="prose">
+    <ul>
+      <li>The per-gram silver price has risen roughly <strong>15-fold</strong> from its year-2000 low to May 2026.</li>
+      <li>Even after the correction, ~$2.41/g leaves silver close to its second-highest level ever &mdash; only the January 2026 all-time high exceeded it.</li>
+      <li>A gram of sterling worth $0.36 at the COVID-19 low in March 2020 is worth $2.23 today &mdash; a 520% increase in under six years.</li>
+    </ul>
+  </div>
+
+  <!-- ── WHY ── -->
+  <div class="prose">
+    <h2 id="spg-why">Why Is Silver Expensive Right Now? (And Why It Has Fallen From Its Peak)</h2>
+    <p>Silver hit $121.62 in January 2026 and has since corrected to the $75&ndash;$78 range. Two questions follow: why did it get so expensive, and why did it drop?</p>
+  </div>
+
+  <div class="spg-reasons">
+    <div class="spg-reason-col spg-reason-col--up">
+      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg> Why silver surged (2025&ndash;2026)</h4>
+      <ul>
+        <li class="spg-reason"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg><span><strong>Structural supply deficit.</strong> Five straight years of demand (solar, EVs, electronics) outpacing mine and recycled supply.</span></li>
+        <li class="spg-reason"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg><span><strong>Gold&rsquo;s bull market.</strong> Silver amplifies gold&rsquo;s moves; as gold broke $3k, $4k and $5k, silver was pulled higher.</span></li>
+        <li class="spg-reason"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg><span><strong>Industrial demand.</strong> Solar, EV production and AI infrastructure created record industrial silver demand in 2025.</span></li>
+        <li class="spg-reason"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg><span><strong>Weak dollar, low real yields.</strong> A softer USD broadened global buying; low real rates cut the cost of holding silver.</span></li>
+      </ul>
+    </div>
+    <div class="spg-reason-col spg-reason-col--down">
+      <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 17v-6h-6"/></svg> Why it dropped from its peak</h4>
+      <ul>
+        <li class="spg-reason"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span><strong>Speculative overshoot.</strong> The $121.62 peak was driven partly by momentum and short-covering beyond fundamentals.</span></li>
+        <li class="spg-reason"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span><strong>Stronger dollar, fewer cuts.</strong> A firmer USD and reduced Fed rate-cut expectations created headwinds for both metals.</span></li>
+        <li class="spg-reason"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span><strong>Easing geopolitics.</strong> A late-March 2026 de-escalation reduced the safe-haven premium in precious metals.</span></li>
+        <li class="spg-reason"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span><strong>Profit-taking.</strong> A 37% pullback after extraordinary gains is dramatic but within normal historical bounds.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>The structural case for silver &mdash; supply deficits, green-energy demand and an undervaluation versus historical gold-silver ratios &mdash; remains intact, according to most analysts. The correction looks like normalisation after a speculative overshoot rather than a change in the underlying fundamentals.</p>
+  </div>
+
+  <!-- ── WHOLESALE ── -->
+  <div class="prose">
+    <h2 id="spg-wholesale">Wholesale Silver Price Per Gram</h2>
+    <p>The <strong>wholesale silver price per gram</strong> is effectively the spot price itself &mdash; the price at which refiners, major dealers, miners and industrial users transact in the OTC market and on exchanges such as COMEX. Individual retail buyers cannot access true wholesale prices; the gap shows up as the &ldquo;premium&rdquo; dealers add over spot:</p>
+  </div>
+
+  <div class="spg-ladder">
+    <div class="spg-rung"><div class="spg-rung__top"><span class="spg-rung__name">1 kg investment bars</span><span class="spg-rung__pct">2&ndash;4% over spot</span></div><div class="spg-rung__bar"><div class="spg-rung__fill" style="width:13%"></div></div></div>
+    <div class="spg-rung"><div class="spg-rung__top"><span class="spg-rung__name">100-oz bars</span><span class="spg-rung__pct">3&ndash;5% over spot</span></div><div class="spg-rung__bar"><div class="spg-rung__fill" style="width:17%"></div></div></div>
+    <div class="spg-rung"><div class="spg-rung__top"><span class="spg-rung__name">1-oz coins</span><span class="spg-rung__pct">8&ndash;15% over spot</span></div><div class="spg-rung__bar"><div class="spg-rung__fill" style="width:50%"></div></div></div>
+    <div class="spg-rung"><div class="spg-rung__top"><span class="spg-rung__name">Gram bars</span><span class="spg-rung__pct">15&ndash;30% over spot</span></div><div class="spg-rung__bar"><div class="spg-rung__fill" style="width:100%"></div></div></div>
+  </div>
+
+  <div class="prose">
+    <p>For sellers of scrap, dealers pay <strong>below</strong> spot &mdash; typically 75&ndash;90% of melt &mdash; because they must refine the metal and earn a margin. The gap between what buyers pay (spot + premium) and what sellers receive (spot &times; 0.75&ndash;0.90) is the effective wholesale cost of the dealer distribution chain.</p>
+  </div>
+
+  <!-- ── HOW-TO SUMMARY ── -->
+  <div class="prose">
+    <h2 id="spg-howto">How to Calculate Silver Price Per Gram &mdash; Step-by-Step</h2>
+    <p>Whether you are valuing jewellery, old silverware or a bullion purchase, follow these seven steps:</p>
+  </div>
+
+  <ol class="spg-howto">
+    <li><div><strong>Identify the purity.</strong> Look for a hallmark: 999 / fine = 99.9%; 925 / sterling = 92.5%; 900 = 90%; 800 = 80%; 500 = 50%. No hallmark? Have it tested first.</div></li>
+    <li><div><strong>Weigh it accurately.</strong> Use digital scales reading to at least 0.1 g &mdash; jewellers&rsquo; scales to 0.01 g are better.</div></li>
+    <li><div><strong>Get the live spot price.</strong> Check Kitco, BullionVault or MeltValue.com for silver in USD per troy ounce.</div></li>
+    <li><div><strong>Find the pure per-gram price.</strong> Divide the spot price by 31.1035.</div></li>
+    <li><div><strong>Adjust for purity.</strong> Multiply by the purity decimal (0.999, 0.925, 0.900, 0.800&hellip;).</div></li>
+    <li><div><strong>Multiply by weight.</strong> The result is your item&rsquo;s melt value in USD.</div></li>
+    <li><div><strong>Adjust for dealer margin.</strong> If selling, multiply by 0.75&ndash;0.90 for a realistic offer estimate.</div></li>
+  </ol>
+
+  <!-- ── FAQ ── -->
+  <div class="prose">
+    <h2 id="spg-faq">Frequently Asked Questions</h2>
+  </div>
+
+  <div class="spg-faq">
+    <details>
+      <summary>What is the silver price per gram today?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="spg-faq__a">As of 20 May 2026, pure 999 silver is about <strong>$2.41 per gram</strong> and 925 sterling about <strong>$2.23 per gram</strong>, based on a spot price of $74.96/oz. These values change continuously &mdash; use the live calculator above, or check MeltValue.com, Bullion.com or GoldPriceTools.com.</div>
+    </details>
+    <details>
+      <summary>What is the 925 sterling silver price per gram today?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="spg-faq__a">925 sterling is worth 92.5% of the pure per-gram price. At $74.96/oz that is <strong>$2.23 per gram</strong>. At $80/oz it would be about $2.38 per gram.</div>
+    </details>
+    <details>
+      <summary>How do I calculate the silver price per gram?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="spg-faq__a">Divide the spot price per troy ounce by 31.1035 to get the price per gram of 999 pure silver, then multiply by the purity decimal (<strong>0.925</strong> for sterling, 0.800 for 800 silver, and so on).</div>
+    </details>
+    <details>
+      <summary>What is the scrap silver price per gram?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="spg-faq__a">Scrap silver is valued at its melt value using the formula above. Dealers typically pay <strong>75&ndash;90% of melt</strong> when buying, depending on volume, purity clarity and item type.</div>
+    </details>
+    <details>
+      <summary>What is the silver price per gram in USD?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="spg-faq__a">At about $74.96/oz: 999 fine = <strong>~$2.41/g</strong>; 925 sterling = ~$2.23/g; 900 coin silver = ~$2.17/g; 800 silver = ~$1.93/g.</div>
+    </details>
+    <details>
+      <summary>How much is 1 gram of silver worth?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="spg-faq__a">About <strong>$2.41 for pure 999 fine silver</strong> and $2.23 for 925 sterling, based on the 20 May 2026 spot price of $74.96/oz. Use the live calculator for the most current value.</div>
+    </details>
+    <details>
+      <summary>Why has the silver price dropped from its January 2026 peak?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="spg-faq__a">Silver hit an all-time high of <strong>$121.62/oz</strong> in January 2026 on supply deficits, solar/EV demand, a weak dollar and speculative momentum. The correction to the $74&ndash;$79 range reflects profit-taking, a stronger dollar, reduced Fed rate-cut expectations and partial de-escalation of geopolitical risk.</div>
+    </details>
+    <details>
+      <summary>What is the silver price per gram in euro?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <div class="spg-faq__a">Multiply the USD per-gram price by the current USD/EUR rate. At $2.41/g, 999 silver is roughly <strong>&euro;2.22/g</strong> and 925 sterling about &euro;2.05/g. Switch the calculator above to EUR for live euro pricing.</div>
+    </details>
+  </div>
+
+  <section class="share-section">
     <div class="share-section-label">Share this guide</div>
     <div class="share-buttons">
       <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://goldpricetools.com/guides/silver-price-per-gram-explained&text=Silver+Price+Per+Gram+Explained" target="_blank" rel="noopener">
@@ -609,11 +1339,11 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 </section>
 
   <div class="cta-box">
-    <h3>Live Silver Price Per Gram</h3>
-    <p>See today&rsquo;s XAG/GBP and XAG/USD price converted to per gram for sterling and fine silver automatically.</p>
-    <a href="/" class="cta-btn">Open Calculator &rarr;</a>
+    <h3>Value any silver item in seconds</h3>
+    <p>Use the free GoldPriceTools calculator for live per-gram prices across 999, 925, 900 and 800 silver in USD, GBP, EUR, INR, CAD and AUD &mdash; updated every 60 seconds.</p>
+    <a href="#spg-calculator" class="cta-btn">Open the calculator &rarr;</a>
   </div>
-
+ </div>
 </article>
 <section class="related-guides-section">
     <h2>Related Guides</h2>
@@ -757,22 +1487,55 @@ window.addEventListener('scroll', () => {
 })();</script>
 
 <script>
-// Price Widget Logic
-const TROY_OZ_TO_GRAM = 31.1034768;
-function fmtUSD(val) { return '$' + val.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
-async function fetchPrices() {
-    try {
-        const [gRes, sRes] = await Promise.all([
-            fetch('https://api.gold-api.com/price/XAU'),
-            fetch('https://api.gold-api.com/price/XAG')
-        ]);
-        const gData = await gRes.json();
-        const sData = await sRes.json();
-        document.getElementById('spotGoldOz').textContent = fmtUSD(gData.price);
-        document.getElementById('spotSilverOz').textContent = fmtUSD(sData.price);
-    } catch (e) { console.error('Price fetch failed', e); }
-}
-document.addEventListener('DOMContentLoaded', fetchPrices);
+// ── Silver per-gram price engine ──
+(function(){
+  var GRAMS_PER_OZ = 31.1034768;
+  var FALLBACK_SPOT = 74.96;                                  // USD/oz article baseline
+  var fx = {USD:1, EUR:0.92, GBP:0.79, INR:83.5, CAD:1.36, AUD:1.55};
+  var CUR = {USD:{s:'$',d:2},EUR:{s:'€',d:2},GBP:{s:'£',d:2},INR:{s:'₹',d:2},CAD:{s:'CA$',d:2},AUD:{s:'A$',d:2}};
+  var spotUSD = FALLBACK_SPOT;
+
+  function fmt(v, cur){ var c = CUR[cur] || CUR.USD; return c.s + v.toLocaleString('en-US',{minimumFractionDigits:c.d, maximumFractionDigits:c.d}); }
+  function perGram999(){ return spotUSD / GRAMS_PER_OZ; }
+
+  function render(){
+    var pg = perGram999();
+    var hero = document.getElementById('spgSpotOz'); if(hero) hero.textContent = fmt(spotUSD,'USD');
+    var navS = document.getElementById('spotSilverOz'); if(navS) navS.textContent = fmt(spotUSD,'USD');
+    document.querySelectorAll('[data-spg-gram]').forEach(function(el){ el.textContent = fmt(pg*(parseFloat(el.getAttribute('data-purity'))||1),'USD'); });
+    document.querySelectorAll('[data-spg-oz]').forEach(function(el){ el.textContent = fmt(spotUSD*(parseFloat(el.getAttribute('data-purity'))||1),'USD'); });
+    calc();
+  }
+
+  function calc(){
+    var wEl=document.getElementById('spgWeight'), pEl=document.getElementById('spgPurity'), cEl=document.getElementById('spgCurrency');
+    if(!wEl||!pEl) return;
+    var w=parseFloat(wEl.value); if(isNaN(w)||w<0) w=0;
+    var purity=parseFloat(pEl.value)||0;
+    var cur=cEl?cEl.value:'USD', rate=fx[cur]||1;
+    var pgCur=perGram999()*purity*rate, melt=pgCur*w;
+    var meltEl=document.getElementById('spgMelt'); if(meltEl) meltEl.textContent=fmt(melt,cur);
+    var meta=document.getElementById('spgMeltMeta');
+    if(meta){ var pName=pEl.options[pEl.selectedIndex].text; meta.textContent=(w%1===0?w:w.toFixed(2))+' g of '+pName+' at '+fmt(pgCur,cur)+'/g'; }
+    var dealer=document.getElementById('spgDealer'); if(dealer) dealer.textContent=fmt(melt*0.75,cur)+' – '+fmt(melt*0.90,cur);
+  }
+
+  function stamp(){ var u=document.getElementById('spgUpd'); if(u){ u.textContent='Updated '+new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); } }
+
+  function fetchSpot(){
+    fetch('https://api.gold-api.com/price/XAG').then(function(r){return r.json();}).then(function(d){ if(d&&d.price){ spotUSD=d.price; render(); } stamp(); }).catch(function(){ stamp(); });
+    var navG=document.getElementById('spotGoldOz');
+    if(navG){ fetch('https://api.gold-api.com/price/XAU').then(function(r){return r.json();}).then(function(d){ if(d&&d.price) navG.textContent=fmt(d.price,'USD'); }).catch(function(){}); }
+  }
+  function fetchFX(){ fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=EUR,GBP,INR,CAD,AUD').then(function(r){return r.json();}).then(function(d){ if(d&&d.rates){ d.rates.USD=1; fx=d.rates; calc(); } }).catch(function(){}); }
+
+  function init(){
+    render(); stamp(); fetchSpot(); fetchFX();
+    ['spgWeight','spgPurity','spgCurrency'].forEach(function(id){ var el=document.getElementById(id); if(el){ el.addEventListener('input',calc); el.addEventListener('change',calc); } });
+    setInterval(fetchSpot, 60000);
+  }
+  if(document.readyState!=='loading') init(); else document.addEventListener('DOMContentLoaded', init);
+})();
 </script>
 </body>
 </html>
