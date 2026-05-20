@@ -9,6 +9,7 @@
 # Location: https://goldpricetools.com/llms.txt
 
 User-agent: *
+Content-Signal: search=yes,ai-input=yes,ai-train=no
 Allow: /
 Allow: /?q=
 Allow: /chart-data/
@@ -25,7 +26,6 @@ User-agent: Googlebot
 Allow: /
 Allow: /?q=
 Allow: /chart-data/
-Crawl-delay: 0
 
 User-agent: Googlebot-Image
 Allow: /assets/
@@ -59,11 +59,13 @@ Allow: /
 # OpenAI's search indexer — powers ChatGPT search results
 # and citation-based answers in AI Mode.
 
-User-agent: ClaudeBot
+User-agent: Claude-SearchBot
 Allow: /
-# Anthropic's web search bot used by Claude when searching
-# the web to answer questions. Distinct from anthropic-ai
-# (training crawler) which is blocked below.
+# Anthropic's web search bot used by Claude to find sources.
+
+User-agent: Claude-User
+Allow: /
+# Anthropic's user-initiated real-time assistant queries.
 
 User-agent: PerplexityBot
 Allow: /
@@ -109,9 +111,13 @@ User-agent: CCBot
 Disallow: /
 # Common Crawl — used to build AI training datasets.
 
+User-agent: ClaudeBot
+Disallow: /
+# Anthropic's AI training crawler (not search/user bots).
+
 User-agent: anthropic-ai
 Disallow: /
-# Anthropic's training data crawler (not ClaudeBot search).
+# Anthropic's training data crawler (legacy).
 
 User-agent: Claude-Web
 Disallow: /
