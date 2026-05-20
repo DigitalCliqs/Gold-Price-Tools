@@ -66,7 +66,6 @@ GoldPriceTools is not a broker or dealer. All prices shown are indicative spot p
 - [Indian Gold & Silver Prices](https://goldpricetools.com/guides/indian-gold-silver-prices): Gold and silver prices in INR for Indian markets.
 - [Gold vs Silver Investment](https://goldpricetools.com/guides/gold-vs-silver-investment): Comparison of gold and silver as investment assets — risk, return, and storage.
 - [Gold Coins vs Bars](https://goldpricetools.com/gold-coins-vs-bars): Which is better for UK investors — gold coins or gold bars?
-- [How to Sell Gold Jewellery](https://goldpricetools.com/guides/how-to-sell-gold-jewellery): Guide to selling gold jewellery in the UK — dealers, online platforms, and getting the best price.
 - [Where to Sell Gold & Silver](https://goldpricetools.com/where-to-sell-gold-silver): Directory and guide to selling gold and silver in the UK.
 - [How to Store Gold & Silver at Home](https://goldpricetools.com/guides/how-to-store-gold-silver-at-home): Safe storage options and best practices for physical precious metals.
 - [Best Time to Sell Scrap Gold](https://goldpricetools.com/guides/what-is-best-time-to-sell-scrap-gold): How to time the sale of scrap gold using spot prices and market signals.
@@ -78,12 +77,6 @@ GoldPriceTools is not a broker or dealer. All prices shown are indicative spot p
 - [How to Read the Gold Spot Price](https://goldpricetools.com/guides/how-to-read-gold-spot-price): How to interpret live gold spot price quotes and understand bid/ask spread.
 - [How Much Is a Gold Ring Worth?](https://goldpricetools.com/guides/how-much-is-a-gold-ring-worth): How to calculate the scrap and retail value of a gold ring by weight and karat.
 - [How to Test if Gold Is Real](https://goldpricetools.com/guides/how-to-test-if-gold-is-real): Methods for testing gold authenticity — acid tests, magnet test, hallmarks, and electronic testers.
-- [All Guides](https://goldpricetools.com/guides/): Browse all gold and silver educational guides.
-- [Buying & Investing Guides](https://goldpricetools.com/guides/buying-investing/): Guides on buying gold and silver and building a precious metals portfolio.
-- [Selling & Testing Guides](https://goldpricetools.com/guides/selling-testing/): Guides on testing, valuing, and selling gold and silver.
-- [Market & Prices Guides](https://goldpricetools.com/guides/market-prices/): Guides on gold price history, forecasts, and market analysis.
-- [Deep Dive Guides](https://goldpricetools.com/guides/deep-dives/): In-depth technical guides on gold purity, troy ounces, and hallmarks.
-- [Silver Guides](https://goldpricetools.com/guides/silver-guides/): Expert guides on silver pricing, purity grades, and valuation.
 - [Blog Index](https://goldpricetools.com/blog/): All gold and silver blog articles, market analysis, and investment guides.
 - [Gold vs Bitcoin 2026](https://goldpricetools.com/blog/gold-vs-bitcoin-2026): Comparison of gold and Bitcoin as stores of value and investment assets in 2026.
 - [Best UK Gold Dealers 2026](https://goldpricetools.com/blog/best-uk-gold-dealers-2026): Reviews of the best UK gold bullion dealers including Royal Mint, BullionByPost, and Atkinsons.
@@ -97,7 +90,6 @@ GoldPriceTools is not a broker or dealer. All prices shown are indicative spot p
 - [Understanding Gold Karat Purities](https://goldpricetools.com/blog/understanding-gold-karat-purities/): What does 9K, 10K, 14K, 18K, 22K or 24K gold mean? Every common gold karat explained.
 - [About GoldPriceTools](https://goldpricetools.com/about): About the site — mission, data sources, and editorial standards.
 - [Editorial Standards](https://goldpricetools.com/editorial-standards/): How GoldPriceTools researches, writes, fact-checks and corrects content.
-- [Authors & Editorial Team](https://goldpricetools.com/authors/): Meet the GoldPriceTools editorial team.
 - [GoldPriceTools Editorial Team](https://goldpricetools.com/authors/goldpricetools-editorial-team/): Precious-metals content researched and reviewed by an in-house editorial group.
 - [Privacy Policy](https://goldpricetools.com/privacy-policy): Privacy policy covering data collection, cookies, and GDPR compliance.
 - [Terms of Use](https://goldpricetools.com/terms): Terms and conditions for using GoldPriceTools.
