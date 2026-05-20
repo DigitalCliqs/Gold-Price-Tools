@@ -13,6 +13,7 @@ Content-Signal: search=yes,ai-input=yes,ai-train=no
 Allow: /
 Allow: /?q=
 Allow: /chart-data/
+Allow: /ads.txt
 Disallow: /scripts/
 Disallow: /worker/
 Disallow: /workers/
@@ -32,6 +33,10 @@ Allow: /assets/
 
 User-agent: Googlebot-Mobile
 Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+Allow: /ads.txt
 
 User-agent: AdsBot-Google
 Allow: /
