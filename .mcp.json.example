@@ -1,11 +1,23 @@
 {
+  "_comment_1": "Stitch MCP server config. Copy this file to .mcp.json (the real .mcp.json is gitignored so credentials never get committed). NEVER put a real key in THIS file — it is committed to git.",
+  "_comment_2": "DEFAULT = OAuth. Run 'npx @_davideast/stitch-mcp init' and choose OAuth. Credentials are cached locally by the wizard, so no key belongs in this file. Then restart your editor.",
+  "_comment_3": "IMPORTANT: a plain Stitch API key does NOT authenticate — the API returns 401 'API keys are not supported by this API. Expected OAuth2 access token ... that assert a principal.' Use OAuth (default) or system gcloud below.",
   "mcpServers": {
     "stitch": {
       "command": "npx",
-      "args": ["@_davideast/stitch-mcp", "proxy"],
-      "env": {
-        "STITCH_API_KEY": "AQ.Ab8RN6L64v0kPt7J-Hvp-2XleTUtDutc38FeaCRjt0k_dkWvww"
-      }
+      "args": ["@_davideast/stitch-mcp", "proxy"]
+    }
+  },
+  "_fallback_systemGcloud": {
+    "_comment": "FALLBACK A: if you already have gcloud logged in, add this env block to the 'stitch' server above instead of running the init wizard.",
+    "env": {
+      "STITCH_USE_SYSTEM_GCLOUD": "1"
+    }
+  },
+  "_fallback_apiKey": {
+    "_comment": "FALLBACK B: API-key variant. Currently rejected by the Stitch API (see _comment_3); keep only in case Google enables key auth for your endpoint. Put the key in your gitignored .mcp.json, NOT here.",
+    "env": {
+      "STITCH_API_KEY": "REPLACE_WITH_YOUR_STITCH_API_KEY"
     }
   }
 }
