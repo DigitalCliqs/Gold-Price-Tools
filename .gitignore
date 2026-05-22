@@ -16,3 +16,6 @@ node_modules/
 # AI Skills (installed per-machine)
 .agent/
 .agents/
+
+# Stitch MCP — local config holds the real API key (use .mcp.json.example as template)
+.mcp.json
