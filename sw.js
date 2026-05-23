@@ -1,6 +1,6 @@
-// GoldPriceTools Service Worker v2
+// GoldPriceTools Service Worker v3
 // WP-47 PWA: Cache-first for static assets, network-first for live API price data
-const CACHE_NAME = 'goldpricetools-v2';
+const CACHE_NAME = 'goldpricetools-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
