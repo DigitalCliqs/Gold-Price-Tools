@@ -61,7 +61,6 @@ GoldPriceTools is not a broker or dealer. All prices shown are indicative spot p
 - [What Is 14K Gold?](https://goldpricetools.com/guides/what-is-14k-gold): Everything about 14 karat gold — purity, uses, value, and how to identify it.
 - [Gold Bar Guide](https://goldpricetools.com/guides/gold-bar-guide): Sizes, weights, and valuations of gold bars from 1g to 400oz Good Delivery bars.
 - [Troy Ounce Guide](https://goldpricetools.com/guides/troy-ounce-guide): What a troy ounce is, how it differs from a standard ounce, and why it is used for precious metals.
-- [Troy Ounce vs Gram Explained](https://goldpricetools.com/guides/troy-ounce-vs-gram-explained): Comparison of troy ounce and gram measurements for gold and silver.
 - [Gold Filled vs Gold Plated](https://goldpricetools.com/guides/difference-between-gold-filled-and-gold-plated): Differences between gold-filled, gold-plated, and solid gold jewellery.
 - [Indian Gold & Silver Prices](https://goldpricetools.com/guides/indian-gold-silver-prices): Gold and silver prices in INR for Indian markets.
 - [Gold vs Silver Investment](https://goldpricetools.com/guides/gold-vs-silver-investment): Comparison of gold and silver as investment assets — risk, return, and storage.
