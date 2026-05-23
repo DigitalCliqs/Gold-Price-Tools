@@ -847,14 +847,14 @@
     <priority>0.75</priority>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Indian Gold &amp; Silver Prices: Live Rates in INR</image:title>
-      <image:caption>Check live gold and silver prices in India. Get the latest rates in INR (₹) for 24K, 22K, and 18K gold, plus silver per kg.</image:caption>
+      <image:title>Indian Gold &amp; Silver Prices: Live INR Rates, Calculator &amp; 2026 Guide</image:title>
+      <image:caption>Live INR gold &amp; silver rates across every karat and weight unit, how India's price is built from global spot, the May 2026 duty hike, a live calculator &amp; how to invest.</image:caption>
     </image:image>
   </url>
 
   <url>
     <loc>https://goldpricetools.com/guides/market-prices/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <image:image>
