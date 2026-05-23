@@ -3,7 +3,9 @@
 /guides/what-is-14k-gold                  /guides/what-is-14k-gold.html              200
 /guides/how-to-calculate-scrap-gold       /scrap-gold-calculator                     301
 /guides/scrap-gold-guide                  /guides/how-to-sell-gold-jewellery         301
-/guides/troy-ounce-vs-gram-explained      /guides/troy-ounce-vs-gram-explained.html  200
+# troy-ounce-vs-gram-explained merged into the comprehensive troy-ounce-guide
+/guides/troy-ounce-vs-gram-explained.html /guides/troy-ounce-guide                   301
+/guides/troy-ounce-vs-gram-explained      /guides/troy-ounce-guide                   301
 /guides/gold-purity-guide                 /guides/gold-purity-guide.html             200
 /guides/what-is-925-sterling-silver       /guides/what-is-925-sterling-silver.html   200
 /guides/best-time-to-sell-scrap-gold      /guides/best-time-to-sell-scrap-gold.html  200
