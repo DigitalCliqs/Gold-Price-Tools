@@ -564,6 +564,211 @@ details[open] .faq-answer-summary::after{content:"▼"}
 /* Prose lists: proper indent and spacing */
 .prose ul,.prose ol{padding-left:var(--space-5);margin-bottom:var(--space-5)}
 .prose li{margin-bottom:var(--space-3);line-height:1.75}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GOLD/SILVER RATIO — PREMIUM REDESIGN (mobile-first, fluid up to desktop)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Page container */
+.ratio-page{max-width:1100px;margin:0 auto;padding:0 var(--space-4) var(--space-12)}
+
+/* ── HERO ─────────────────────────────────────────────────────────────── */
+.ratio-hero{padding:var(--space-8) 0 var(--space-6);text-align:center}
+@media(min-width:768px){.ratio-hero{padding:var(--space-12) 0 var(--space-8)}}
+.ratio-hero__eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-gold-bright);margin-bottom:var(--space-4);padding:6px 14px;background:color-mix(in oklch,var(--color-gold-bright) 10%,transparent);border:1px solid color-mix(in oklch,var(--color-gold-bright) 28%,transparent);border-radius:var(--radius-full)}
+.ratio-hero__eyebrow .live-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 8px #4ade80}
+.ratio-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5.5vw,3.25rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:var(--color-text);margin-bottom:var(--space-3);text-wrap:balance}
+.ratio-hero h1 .gold{color:var(--color-gold-bright)}
+.ratio-hero h1 .silver{color:var(--color-silver)}
+.ratio-hero__sub{font-size:var(--text-base);color:var(--color-text-muted);max-width:48ch;margin:0 auto var(--space-6);line-height:1.65}
+
+/* ── PRIMARY RATIO CARD ───────────────────────────────────────────────── */
+.ratio-primary{position:relative;background:linear-gradient(180deg,var(--color-surface-2) 0%,var(--color-surface) 100%);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md)}
+.ratio-primary::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,color-mix(in oklch,var(--color-gold-bright) 12%,transparent) 0%,transparent 60%);pointer-events:none}
+.ratio-primary__body{position:relative;z-index:1;padding:var(--space-6) var(--space-5) var(--space-5);text-align:center}
+@media(min-width:640px){.ratio-primary__body{padding:var(--space-8) var(--space-6) var(--space-6)}}
+.ratio-primary__label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--color-text-muted);margin-bottom:var(--space-3)}
+.ratio-primary__number{font-family:var(--font-display);font-size:clamp(4.25rem,15vw,7.5rem);font-weight:300;color:var(--color-gold-bright);line-height:.92;letter-spacing:-.045em;font-variant-numeric:tabular-nums;text-shadow:0 0 30px color-mix(in oklch,var(--color-gold-bright) 35%,transparent);display:inline-flex;align-items:baseline;gap:var(--space-2)}
+.ratio-primary__suffix{font-family:var(--font-display);font-size:.34em;font-weight:400;color:var(--color-text-muted);letter-spacing:-.02em}
+.ratio-primary__unit{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-2);max-width:38ch;margin-left:auto;margin-right:auto}
+.ratio-primary__signal{display:inline-flex;align-items:center;gap:var(--space-2);margin-top:var(--space-4);padding:7px 14px;border-radius:var(--radius-full);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;border:1px solid currentColor}
+.ratio-primary__signal--high{color:#f87171;background:color-mix(in oklch,#f87171 8%,transparent)}
+.ratio-primary__signal--normal{color:#fbbf24;background:color-mix(in oklch,#fbbf24 8%,transparent)}
+.ratio-primary__signal--low{color:#4ade80;background:color-mix(in oklch,#4ade80 8%,transparent)}
+.ratio-primary__signal-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 2s ease-in-out infinite}
+
+/* Spot tiles inside primary card */
+.spot-tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-border);border-top:1px solid var(--color-border)}
+.spot-tile{padding:var(--space-4) var(--space-3);background:var(--color-surface);text-align:center}
+@media(min-width:640px){.spot-tile{padding:var(--space-5) var(--space-4)}}
+.spot-tile__label{display:flex;align-items:center;justify-content:center;gap:var(--space-2);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:var(--space-2)}
+.spot-tile__dot{width:8px;height:8px;border-radius:50%}
+.spot-tile__dot--gold{background:var(--color-gold-bright);box-shadow:0 0 8px color-mix(in oklch,var(--color-gold-bright) 70%,transparent)}
+.spot-tile__dot--silver{background:var(--color-silver);box-shadow:0 0 8px color-mix(in oklch,var(--color-silver) 70%,transparent)}
+.spot-tile__value{font-family:var(--font-display);font-size:clamp(1.25rem,4.5vw,1.75rem);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1}
+.spot-tile__value--gold{color:var(--color-gold-bright)}
+.spot-tile__value--silver{color:var(--color-silver)}
+.spot-tile__sub{font-size:11px;color:var(--color-text-faint);margin-top:var(--space-1);font-variant-numeric:tabular-nums}
+
+/* ── GAUGE ────────────────────────────────────────────────────────────── */
+.gauge-section{margin-top:var(--space-8)}
+.gauge-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6) var(--space-5);box-shadow:var(--shadow-sm)}
+@media(min-width:640px){.gauge-card{padding:var(--space-7) var(--space-6)}}
+.gauge-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-4)}
+.gauge-title{font-size:var(--text-base);font-weight:700;color:var(--color-text);display:flex;align-items:center;gap:var(--space-2)}
+.gauge-title svg{color:var(--color-gold-bright);flex-shrink:0}
+.gauge-meta{font-size:var(--text-xs);color:var(--color-text-muted)}
+.gauge-track-wrap{position:relative;padding:36px 0 56px;margin:0 12px}
+.gauge-track{position:relative;height:10px;background:linear-gradient(90deg,#4ade80 0%,#4ade80 28%,#fbbf24 34%,#fbbf24 58%,#f87171 66%,#f87171 100%);border-radius:var(--radius-full);box-shadow:inset 0 1px 2px oklch(0 0 0/.3)}
+.gauge-marker{position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:var(--color-text);border:3px solid var(--color-surface);box-shadow:0 0 0 2px var(--color-text),0 0 18px color-mix(in oklch,var(--color-gold-bright) 70%,transparent);transform:translate(-50%,-50%);transition:left .9s cubic-bezier(.4,0,.2,1);z-index:3;left:50%}
+.gauge-marker__pulse{position:absolute;inset:-6px;border-radius:50%;background:color-mix(in oklch,var(--color-gold-bright) 45%,transparent);animation:gauge-pulse 2s ease-out infinite;z-index:-1}
+@keyframes gauge-pulse{0%{transform:scale(1);opacity:1}100%{transform:scale(2.5);opacity:0}}
+.gauge-marker__label{position:absolute;left:50%;top:-32px;transform:translateX(-50%);font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-text);background:var(--color-surface-2);padding:3px 9px;border-radius:var(--radius-sm);border:1px solid var(--color-border);white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:var(--shadow-sm)}
+.gauge-marker__label::after{content:'';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%) rotate(45deg);width:6px;height:6px;background:var(--color-surface-2);border-right:1px solid var(--color-border);border-bottom:1px solid var(--color-border)}
+.gauge-ticks{position:absolute;left:0;right:0;top:calc(100% + 10px);height:30px}
+.gauge-tick{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center}
+.gauge-tick::before{content:'';width:1px;height:6px;background:var(--color-border);margin-bottom:3px}
+.gauge-tick__value{font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--color-text-muted);line-height:1}
+.gauge-tick__label{font-size:10px;color:var(--color-text-faint);margin-top:2px;text-align:center;white-space:nowrap;line-height:1}
+.gauge-zones{display:flex;gap:var(--space-3) var(--space-4);margin-top:var(--space-2);padding-top:var(--space-4);border-top:1px solid var(--color-divider);flex-wrap:wrap;justify-content:center}
+.gauge-zone{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);color:var(--color-text-muted)}
+.gauge-zone__chip{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.gauge-zone__chip--low{background:#4ade80}
+.gauge-zone__chip--normal{background:#fbbf24}
+.gauge-zone__chip--high{background:#f87171}
+
+/* ── SIGNAL CARDS ─────────────────────────────────────────────────────── */
+.signal-grid{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin-top:var(--space-4)}
+@media(min-width:640px){.signal-grid{grid-template-columns:repeat(3,1fr)}}
+.signal-card{position:relative;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);overflow:hidden}
+.signal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--color-gold-bright);opacity:.85}
+.signal-card.is-low::before{background:#4ade80}
+.signal-card.is-high::before{background:#f87171}
+.signal-card__icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-sm);background:color-mix(in oklch,var(--color-gold-bright) 14%,transparent);color:var(--color-gold-bright);margin-bottom:var(--space-3)}
+.signal-card.is-low .signal-card__icon{background:color-mix(in oklch,#4ade80 14%,transparent);color:#4ade80}
+.signal-card.is-high .signal-card__icon{background:color-mix(in oklch,#f87171 14%,transparent);color:#f87171}
+.signal-card__label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:var(--space-2)}
+.signal-card__value{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-2);line-height:1.25;letter-spacing:-.01em}
+.signal-card__sub{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
+
+/* ── CALCULATOR ──────────────────────────────────────────────────────── */
+.calc-premium{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm);margin-top:var(--space-4)}
+.calc-premium__header{padding:var(--space-4) var(--space-5);border-bottom:1px solid var(--color-border);background:var(--color-surface-offset);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)}
+.calc-premium__title{font-size:var(--text-base);font-weight:700;color:var(--color-text);display:flex;align-items:center;gap:var(--space-2);margin:0}
+.calc-premium__title svg{color:var(--color-gold-bright);flex-shrink:0}
+.calc-premium__currency{display:flex;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}
+.calc-premium__currency button{padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--color-text-muted);background:transparent;border:none;cursor:pointer;min-height:34px;transition:all var(--transition)}
+.calc-premium__currency button:hover{color:var(--color-text)}
+.calc-premium__currency button.active{background:var(--color-gold-bright);color:#0f0e0c}
+.calc-premium__body{padding:var(--space-5)}
+@media(min-width:640px){.calc-premium__body{padding:var(--space-6)}}
+.calc-pair{display:grid;grid-template-columns:1fr;gap:var(--space-4);position:relative}
+@media(min-width:680px){.calc-pair{grid-template-columns:1fr 40px 1fr;align-items:end;gap:var(--space-3)}}
+.calc-pair__swap{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--color-surface-offset);border:1px solid var(--color-border);color:var(--color-text-muted);margin:0 auto;justify-self:center;align-self:center}
+@media(max-width:679px){.calc-pair__swap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--color-bg);z-index:2}}
+.calc-field{display:flex;flex-direction:column;gap:var(--space-2);min-width:0}
+.calc-field__label{display:flex;align-items:center;gap:var(--space-2);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-muted)}
+.calc-field__dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.calc-field__dot--gold{background:var(--color-gold-bright);box-shadow:0 0 6px color-mix(in oklch,var(--color-gold-bright) 60%,transparent)}
+.calc-field__dot--silver{background:var(--color-silver);box-shadow:0 0 6px color-mix(in oklch,var(--color-silver) 60%,transparent)}
+.calc-field__group{display:flex;align-items:stretch;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;transition:border-color var(--transition),box-shadow var(--transition)}
+.calc-field__group:focus-within{border-color:var(--color-gold-bright);box-shadow:0 0 0 3px color-mix(in oklch,var(--color-gold-bright) 18%,transparent)}
+.calc-field__input{flex:1;padding:var(--space-3) var(--space-4);background:transparent;border:none;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--color-text);min-width:0;width:100%;font-variant-numeric:tabular-nums;letter-spacing:-.01em;min-height:48px}
+.calc-field__input:focus{outline:none}
+.calc-field__unit{display:flex;align-items:center;padding:0 var(--space-4);background:var(--color-surface);border-left:1px solid var(--color-border);font-size:11px;font-weight:700;color:var(--color-text-muted);letter-spacing:.06em}
+.calc-field__value{font-size:11px;color:var(--color-text-faint);font-variant-numeric:tabular-nums;margin-top:var(--space-1)}
+.calc-field__value strong{color:var(--color-text-muted);font-weight:600}
+.calc-presets{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--color-divider)}
+.calc-presets__label{width:100%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-faint);margin-bottom:2px}
+.calc-preset{padding:7px 13px;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);cursor:pointer;transition:all var(--transition);min-height:36px;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums}
+.calc-preset:hover{border-color:var(--color-gold-bright);color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset))}
+
+/* ── HISTORICAL CHART ────────────────────────────────────────────────── */
+.history-section{margin-top:var(--space-10)}
+.history-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-4);box-shadow:var(--shadow-sm)}
+@media(min-width:640px){.history-card{padding:var(--space-6)}}
+.history-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-5)}
+.history-title-wrap{display:flex;align-items:center;gap:var(--space-3);min-width:0}
+.history-title-wrap svg{color:var(--color-gold-bright);flex-shrink:0}
+.history-title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:0}
+.history-title-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:2px;display:block}
+.history-toggle{display:flex;gap:2px;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:3px}
+.history-toggle button{padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--color-text-muted);background:transparent;border:none;border-radius:var(--radius-sm);cursor:pointer;min-height:32px;transition:all var(--transition)}
+.history-toggle button:hover{color:var(--color-text)}
+.history-toggle button.active{background:var(--color-gold-bright);color:#0f0e0c}
+.history-chart-wrap{position:relative;height:260px}
+@media(min-width:640px){.history-chart-wrap{height:340px}}
+.history-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-size:var(--text-sm)}
+.history-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--color-divider)}
+@media(min-width:640px){.history-stats{grid-template-columns:repeat(4,1fr);gap:var(--space-4)}}
+.history-stat{text-align:center;padding:var(--space-2) 0}
+.history-stat__label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-muted);margin-bottom:var(--space-1)}
+.history-stat__value{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.01em;line-height:1.1}
+.history-stat__value.is-low{color:#4ade80}
+.history-stat__value.is-high{color:#f87171}
+
+/* ── SECTION HEADINGS WITH ICON ──────────────────────────────────────── */
+.section-h{display:flex;align-items:center;gap:var(--space-3);margin-top:var(--space-10);margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-divider)}
+.section-h__icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-sm);background:color-mix(in oklch,var(--color-gold-bright) 14%,transparent);color:var(--color-gold-bright);flex-shrink:0}
+.section-h__text{font-size:clamp(1.25rem,2.4vw,1.625rem);font-weight:700;color:var(--color-text);line-height:1.2;margin:0;border:none;padding:0}
+
+/* ── PROSE WITH DROP CAP + PULL QUOTE ────────────────────────────────── */
+.prose-intro{font-size:clamp(1.0625rem,1.7vw,1.1875rem);color:var(--color-text);line-height:1.7;margin-bottom:var(--space-5)}
+.prose-intro::first-letter{font-family:var(--font-display);font-size:3.5em;font-weight:700;float:left;line-height:.85;margin:.08em .12em -.05em -.04em;color:var(--color-gold-bright)}
+.pull-quote{margin:var(--space-8) 0;padding:var(--space-4) var(--space-5) var(--space-4) var(--space-6);border-left:3px solid var(--color-gold-bright);font-family:var(--font-display);font-size:clamp(1.125rem,1.9vw,1.375rem);font-weight:500;color:var(--color-text);line-height:1.5;font-style:italic;letter-spacing:-.01em;background:color-mix(in oklch,var(--color-gold-bright) 4%,transparent);border-radius:0 var(--radius-md) var(--radius-md) 0}
+.pull-quote cite{display:block;margin-top:var(--space-2);font-family:var(--font-body);font-size:var(--text-xs);font-style:normal;font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em}
+
+/* ── TIMELINE ────────────────────────────────────────────────────────── */
+.timeline{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-4)}
+.timeline-item{display:grid;grid-template-columns:1fr auto;grid-template-areas:"period ratio" "bar bar" "context context";gap:var(--space-2) var(--space-3);padding:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);transition:border-color var(--transition),box-shadow var(--transition)}
+@media(min-width:720px){.timeline-item{grid-template-columns:170px 80px 1fr 200px;grid-template-areas:"period ratio context bar";gap:var(--space-5);padding:var(--space-4) var(--space-5);align-items:center}}
+.timeline-item:hover{border-color:var(--color-gold-bright);box-shadow:var(--shadow-sm)}
+.timeline-item__period{grid-area:period;font-size:var(--text-sm);font-weight:700;color:var(--color-text)}
+.timeline-item__ratio{grid-area:ratio;font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-gold-bright);letter-spacing:-.01em;text-align:right}
+@media(min-width:720px){.timeline-item__ratio{text-align:left}}
+.timeline-item__context{grid-area:context;font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.5}
+.timeline-item__bar{grid-area:bar;position:relative;height:6px;background:var(--color-surface-offset);border-radius:var(--radius-full);overflow:hidden;border:1px solid var(--color-divider)}
+.timeline-item__bar-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#4ade80 0%,#fbbf24 50%,#f87171 100%);border-radius:var(--radius-full);min-width:6px}
+
+/* ── CALLOUT (UK Investor) ───────────────────────────────────────────── */
+.callout{position:relative;padding:var(--space-5);background:linear-gradient(135deg,color-mix(in oklch,#3b82f6 10%,var(--color-surface)) 0%,var(--color-surface) 65%);border:1px solid color-mix(in oklch,#3b82f6 28%,var(--color-border));border-radius:var(--radius-lg);margin:var(--space-6) 0;overflow:hidden}
+.callout::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#3b82f6}
+.callout__top{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3)}
+.callout__icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-sm);background:color-mix(in oklch,#3b82f6 22%,transparent);color:#60a5fa;flex-shrink:0}
+.callout__title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:0;line-height:1.3}
+.callout__body{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin:0}
+.callout__body strong{color:var(--color-text);font-weight:700}
+.callout__body p+p{margin-top:var(--space-3)}
+
+/* ── STRATEGY CARDS ──────────────────────────────────────────────────── */
+.strategy-grid{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin-top:var(--space-4)}
+@media(min-width:640px){.strategy-grid{grid-template-columns:1fr 1fr}}
+.strategy-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);transition:border-color var(--transition),box-shadow var(--transition)}
+.strategy-card:hover{border-color:var(--color-gold-bright);box-shadow:var(--shadow-sm)}
+.strategy-card__icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:var(--radius-md);background:color-mix(in oklch,var(--color-gold-bright) 14%,transparent);color:var(--color-gold-bright);margin-bottom:var(--space-3)}
+.strategy-card__title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:0 0 var(--space-2);line-height:1.3}
+.strategy-card__body{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0}
+
+/* ── FAQ ACCORDION ───────────────────────────────────────────────────── */
+.faq-accordion{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-4)}
+.faq-accordion details{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color var(--transition)}
+.faq-accordion details[open]{border-color:var(--color-gold-bright);box-shadow:var(--shadow-sm)}
+.faq-accordion summary{padding:var(--space-4) var(--space-5);cursor:pointer;font-weight:600;font-size:var(--text-sm);color:var(--color-text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);min-height:56px;line-height:1.4}
+.faq-accordion summary::-webkit-details-marker{display:none}
+.faq-accordion summary::after{content:'';width:10px;height:10px;border-right:2px solid var(--color-text-muted);border-bottom:2px solid var(--color-text-muted);transform:rotate(45deg);transition:transform .2s ease;flex-shrink:0;margin-top:-3px}
+.faq-accordion details[open] summary::after{transform:rotate(-135deg);margin-top:3px;border-color:var(--color-gold-bright)}
+.faq-accordion summary:hover{background:var(--color-surface-offset)}
+.faq-accordion .faq-body{padding:0 var(--space-5) var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7}
+.faq-accordion .faq-body p{margin:0}
+.faq-accordion .faq-body strong{color:var(--color-text)}
+
+/* ── REVEAL ON SCROLL ────────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.gauge-marker__pulse,.live-dot,.spot-tile__dot,.ratio-primary__signal-dot{animation:none!important}.gauge-marker{transition:none!important}}
+
+/* Hide redundant nav-only links on tiny screens already covered by mobile menu */
+@media(max-width:380px){.gauge-tick__label{display:none}}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 <!-- Microsoft Clarity -->
@@ -640,147 +845,365 @@ details[open] .faq-answer-summary::after{content:"▼"}
 
 <div class="breadcrumb-wrap"><ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">Gold-Silver Ratio</li></ol></div>
 
-<div class="hero">
-  <div class="hero-tag">Live Market Data</div>
-  <h1 class="hero-title">Gold to Silver Ratio</h1>
-  <p style="font-size:1.0625rem;color:var(--color-text-muted);margin-bottom:1.5rem">Compare the live spot prices of gold and silver. Find out how many ounces of silver it takes to buy one ounce of gold today.</p>
-</div>
-  <div class="calculator-section">
-  <h2>Gold-Silver Ratio Calculator</h2>
-  <p>Calculate the live melt value of US junk silver coins. Enter quantities below.</p>
+<main class="ratio-page">
+  <!-- ═══ HERO ═══ -->
+  <header class="ratio-hero">
+    <span class="ratio-hero__eyebrow"><span class="live-dot" aria-hidden="true"></span>Live Market Data &middot; LBMA Spot</span>
+    <h1>The <span class="gold">Gold</span> to <span class="silver">Silver</span> Ratio</h1>
+    <p class="ratio-hero__sub">How many ounces of silver does it take to buy one ounce of gold right now? Live ratio, historical context and trading signals — updated every 60 seconds.</p>
+  </header>
 
-  <div class="calc-card">
-  <div class="calc-spot-info" >
-    <div>
-      <div style="font-size:0.875rem;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.05em">Gold Spot</div>
-      <div id="gold-spot-display" style="font-family:var(--font-display);font-size:1.75rem;color:var(--color-gold-bright)">$0.00</div>
-    </div>
-    <div>
-      <div style="font-size:0.875rem;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.05em">Silver Spot</div>
-      <div id="silver-spot-display" style="font-family:var(--font-display);font-size:1.75rem;color:var(--color-silver)">$0.00</div>
-    </div>
-  </div>
-
-  <div class="result-box">
-    <div class="result-label">Current Gold-Silver Ratio</div>
-    <div id="ratio-display" class="result-usd" style="font-size:3.5rem">--</div>
-    <div style="font-size:0.875rem;color:var(--color-text-muted);margin-top:0.5rem">Ounces of silver per ounce of gold</div>
-  </div>
-
-  <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
-    <div style="margin-bottom: 1rem; font-weight: 600; color: var(--color-text);">Ratio Calculator</div>
-
-    <div class="coin-row">
-      <div class="coin-info">
-        <div class="coin-name">Gold (oz)</div>
-        <div class="coin-details">Amount of gold</div>
+  <!-- ═══ PRIMARY RATIO CARD ═══ -->
+  <section class="ratio-primary" aria-label="Live gold-silver ratio">
+    <div class="ratio-primary__body">
+      <div class="ratio-primary__label">Current Gold-Silver Ratio</div>
+      <div class="ratio-primary__number" aria-live="polite">
+        <span id="ratio-display">—</span><span class="ratio-primary__suffix">:1</span>
       </div>
-      <div class="coin-input-group">
-        <input type="number" id="input-gold" class="coin-input" value="1" min="0" step="0.1">
+      <p class="ratio-primary__unit">Ounces of silver needed to buy one ounce of gold</p>
+      <div id="ratio-signal" class="ratio-primary__signal ratio-primary__signal--normal" role="status">
+        <span class="ratio-primary__signal-dot" aria-hidden="true"></span>
+        <span id="ratio-signal-text">Calculating…</span>
       </div>
     </div>
-
-    <div class="coin-row">
-      <div class="coin-info">
-        <div class="coin-name" style="color:var(--color-silver)">Silver (oz)</div>
-        <div class="coin-details">Equivalent in silver</div>
+    <div class="spot-tiles">
+      <div class="spot-tile">
+        <div class="spot-tile__label"><span class="spot-tile__dot spot-tile__dot--gold" aria-hidden="true"></span>Gold Spot</div>
+        <div id="gold-spot-display" class="spot-tile__value spot-tile__value--gold">$0.00</div>
+        <div class="spot-tile__sub">per troy ounce &middot; USD</div>
       </div>
-      <div class="coin-input-group">
-        <input type="number" id="input-silver" class="coin-input" value="0" min="0" step="1">
-      </div>
-    </div>
-  </div><!-- /inner-wrapper -->
-  </div><!-- /calc-card -->
-
-  <h2 style="margin-top:var(--space-8)">What Is the Gold/Silver Ratio?</h2>
-    <p>The gold/silver ratio tells you how many ounces of silver are needed to buy one ounce of gold. If gold is $3,300/oz and silver is $33/oz, the ratio is <strong>100:1</strong>. It is one of the oldest benchmarks in precious metals markets, with records dating back to ancient Egypt and Rome, where the ratio was fixed by law at 12:1 or 13:1.</p>
-    <p>Today the ratio floats freely with market prices. The <strong>20th-century average is approximately 47:1</strong>, but the ratio has ranged from as low as 14:1 (1980) to over 120:1 (March 2020 at the height of the COVID-19 panic). A high ratio is often interpreted as silver being undervalued relative to gold.</p>
-
-    <h2>How to Read the Ratio</h2>
-    <p>Investors use the gold/silver ratio in two main ways:</p>
-    <ul>
-      <li><strong>Relative value signal</strong>: When the ratio is historically high (e.g. above 80), silver is considered cheap relative to gold. When it is low (below 50), gold is relatively cheap.</li>
-      <li><strong>Ratio trading</strong>: Some traders buy the "cheap" metal and sell the "expensive" one, aiming to profit when the ratio reverts toward its historical mean.</li>
-    </ul>
-    <p>The ratio is calculated simply: <strong>Ratio = Gold spot price ÷ Silver spot price</strong>. Our live calculator above updates this automatically every 60 seconds.</p>
-
-    <h2>Historical Gold/Silver Ratio Context</h2>
-    <table class="data-table" aria-label="Gold silver ratio historical data">
-      <thead><tr><th>Period / Event</th><th>Approx. Ratio</th><th>Context</th></tr></thead>
-      <tbody>
-        <tr><td>Ancient Rome (fixed)</td><td>12:1</td><td>Legal bimetallic standard</td></tr>
-        <tr><td>19th century average</td><td>~16:1</td><td>Bimetallic currency systems</td></tr>
-        <tr><td>20th century average</td><td>~47:1</td><td>Post-gold-standard float</td></tr>
-        <tr><td>1980 (Hunt Brothers peak)</td><td>~14:1</td><td>Silver bubble</td></tr>
-        <tr><td>2011 (commodity supercycle)</td><td>~32:1</td><td>Silver outperformed gold</td></tr>
-        <tr><td>March 2020 (COVID-19)</td><td>~124:1</td><td>All-time modern high</td></tr>
-        <tr><td>2024–2026 range</td><td>~80–105:1</td><td>Elevated but off extremes</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Why Does the Ratio Matter for UK Investors?</h2>
-    <p>For UK investors, the gold/silver ratio has a practical dimension beyond market timing. Gold bullion is <strong>VAT-exempt</strong> in the UK, whereas silver bullion is subject to <strong>20% VAT</strong>. This means silver needs to outperform gold by more than 20% just to break even on a tax-adjusted basis for UK buyers of physical metals.</p>
-    <p>Silver also tends to be more volatile — it typically rises faster than gold in bull markets and falls harder in bear markets. This amplified performance means the ratio often reaches extremes during market stress (high ratio = silver underperforms) and during commodity booms (low ratio = silver outperforms).</p>
-
-    <h2>Gold/Silver Ratio Trading Strategies</h2>
-    <p>Common approaches used by precious metals investors:</p>
-    <ul>
-      <li><strong>Buy silver when ratio is high</strong>: Accumulate silver (or silver ETFs) when the ratio is above 80–100, expecting reversion toward the mean. Switch back to gold when the ratio normalises.</li>
-      <li><strong>Hold physical gold as the base</strong>: Use gold as the primary store of value and trade a smaller allocation between gold and silver based on ratio signals.</li>
-      <li><strong>ETFs and managed funds</strong>: iShares Physical Silver (SSLN), WisdomTree Silver (SLVR), and Sprott Physical Silver Trust offer UK-accessible silver exposure without VAT complications.</li>
-      <li><strong>Royal Mint silver coins</strong>: UK legal tender silver coins (e.g. Britannia) are CGT-exempt, making them attractive for UK investors despite the VAT on purchase.</li>
-    </ul>
-
-
-  </div>
-  </div><!-- /calculator-section -->
-
-<div class="content">
-  <div class="prose">
-
-
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-container">
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">What is the Gold-Silver Ratio?</h3>
-        <p class="faq-answer">The gold-silver ratio is the amount of silver it takes to purchase one ounce of gold. It is calculated by dividing the current spot price of gold by the current spot price of silver.</p>
-      </div>
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">Why is the Gold-Silver Ratio important?</h3>
-        <p class="faq-answer">Investors use the ratio to evaluate the relative value of gold and silver. A high ratio suggests silver may be undervalued compared to gold, while a low ratio suggests gold may be undervalued.</p>
-      </div>
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">What is a high gold-silver ratio?</h3>
-        <p class="faq-answer">Historically, a gold-silver ratio above 80 is considered high, suggesting silver is relatively cheap compared to gold. The ratio reached an all-time high of around 120 during the March 2020 market crash. In the 20th century, the average ratio was approximately 47:1.</p>
-      </div>
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">How do investors use the gold-silver ratio?</h3>
-        <p class="faq-answer">Investors use the ratio as a switching signal — when the ratio is very high (e.g. above 80), some switch from gold to silver expecting silver to outperform. When the ratio is low (e.g. below 50), they may switch back to gold. This strategy is known as "ratio trading" and is popular among precious metals investors.</p>
-      </div>
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">What is the historical average gold-silver ratio?</h3>
-        <p class="faq-answer">The long-run historical average gold-silver ratio is approximately 60:1 over the past century. The natural abundance ratio in the Earth's crust is about 17.5:1. Since the end of the gold standard, the ratio has generally stayed between 40:1 and 80:1, with notable spikes during financial crises.</p>
-      </div>
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">Does a rising gold-silver ratio mean gold is outperforming silver?</h3>
-        <p class="faq-answer">Yes. A rising gold-silver ratio means gold is appreciating faster than silver (or silver is falling faster than gold). During risk-off periods and financial uncertainty, gold typically outperforms silver, causing the ratio to rise. Silver tends to outperform during industrial expansions and bull markets, pushing the ratio lower.</p>
-      </div>
-    
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">What is the gold/silver ratio today?</h3>
-        <p class="faq-answer">The live gold/silver ratio is shown in our calculator above, updated every 60 seconds. It is calculated by dividing the current gold spot price (USD/oz) by the current silver spot price (USD/oz).</p>
-      </div>
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">Should I buy gold or silver based on the ratio?</h3>
-        <p class="faq-answer">A high ratio (above 80) historically favours silver as the undervalued metal; a low ratio (below 50) historically favours gold. However, ratio trading is speculative and the ratio can remain at extremes for extended periods. UK investors must also account for VAT on silver purchases. This is not financial advice — consult a qualified adviser.</p>
-      </div>
-      <div class="faq-card">
-        <h3 class="faq-answer-summary">Why is the gold/silver ratio so much higher today than in ancient times?</h3>
-        <p class="faq-answer">In ancient times, silver was the primary monetary metal and was relatively scarce. Modern silver mining produces large quantities of silver as a by-product of other mining, increasing supply. Meanwhile, gold's role as the global monetary reserve asset underpins sustained demand, widening the ratio over time.</p>
+      <div class="spot-tile">
+        <div class="spot-tile__label"><span class="spot-tile__dot spot-tile__dot--silver" aria-hidden="true"></span>Silver Spot</div>
+        <div id="silver-spot-display" class="spot-tile__value spot-tile__value--silver">$0.00</div>
+        <div class="spot-tile__sub">per troy ounce &middot; USD</div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
+
+  <!-- ═══ HISTORICAL GAUGE ═══ -->
+  <section class="gauge-section reveal" aria-label="Historical position of current ratio">
+    <div class="gauge-card">
+      <div class="gauge-header">
+        <h2 class="gauge-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          Where Today's Ratio Sits Historically
+        </h2>
+        <span class="gauge-meta">Range: 10 → 130</span>
+      </div>
+      <div class="gauge-track-wrap">
+        <div class="gauge-track" role="img" aria-label="Historical ratio scale from 10 to 130 with color zones">
+          <div id="gauge-marker" class="gauge-marker" style="left:50%">
+            <div class="gauge-marker__pulse" aria-hidden="true"></div>
+            <div id="gauge-marker-label" class="gauge-marker__label">—</div>
+          </div>
+        </div>
+        <div class="gauge-ticks" aria-hidden="true">
+          <div class="gauge-tick" style="left:3.3%"><span class="gauge-tick__value">14</span><span class="gauge-tick__label">1980 low</span></div>
+          <div class="gauge-tick" style="left:30.8%"><span class="gauge-tick__value">47</span><span class="gauge-tick__label">20C avg</span></div>
+          <div class="gauge-tick" style="left:41.6%"><span class="gauge-tick__value">60</span><span class="gauge-tick__label">Long-run</span></div>
+          <div class="gauge-tick" style="left:58.3%"><span class="gauge-tick__value">80</span><span class="gauge-tick__label">High line</span></div>
+          <div class="gauge-tick" style="left:95%"><span class="gauge-tick__value">124</span><span class="gauge-tick__label">2020 peak</span></div>
+        </div>
+      </div>
+      <div class="gauge-zones">
+        <span class="gauge-zone"><span class="gauge-zone__chip gauge-zone__chip--low"></span>Below 50 &mdash; Gold relatively cheap</span>
+        <span class="gauge-zone"><span class="gauge-zone__chip gauge-zone__chip--normal"></span>50&ndash;80 &mdash; Long-run normal band</span>
+        <span class="gauge-zone"><span class="gauge-zone__chip gauge-zone__chip--high"></span>Above 80 &mdash; Silver relatively cheap</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRADING SIGNAL CARDS ═══ -->
+  <section class="signal-grid reveal" aria-label="Trading signals">
+    <div id="signal-card-1" class="signal-card">
+      <div class="signal-card__icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="signal-card__label">Market Signal</div>
+      <div id="signal-1-value" class="signal-card__value">Loading…</div>
+      <p id="signal-1-sub" class="signal-card__sub">Calculating relative value based on live spot prices.</p>
+    </div>
+    <div class="signal-card">
+      <div class="signal-card__icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+      </div>
+      <div class="signal-card__label">Mean Reversion Target</div>
+      <div class="signal-card__value">60<span style="font-size:.6em;color:var(--color-text-muted);font-weight:400">:1</span></div>
+      <p class="signal-card__sub">The long-run historical average over the past century. Ratios often revert toward this mean.</p>
+    </div>
+    <div class="signal-card">
+      <div class="signal-card__icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><polyline points="7 14 12 9 16 13 21 8"/></svg>
+      </div>
+      <div class="signal-card__label">Distance From Mean</div>
+      <div id="signal-3-value" class="signal-card__value">—</div>
+      <p id="signal-3-sub" class="signal-card__sub">How far the current ratio sits from its 60:1 long-run baseline.</p>
+    </div>
+  </section>
+
+  <!-- ═══ CALCULATOR ═══ -->
+  <section class="calc-premium reveal" aria-label="Gold-silver ratio calculator">
+    <div class="calc-premium__header">
+      <h2 class="calc-premium__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/><line x1="8" y1="10" x2="16" y2="10"/></svg>
+        Ratio Calculator
+      </h2>
+      <div id="currency-toggle" class="calc-premium__currency" role="group" aria-label="Currency selector">
+        <button type="button" data-currency="USD" class="active">USD</button>
+        <button type="button" data-currency="GBP">GBP</button>
+        <button type="button" data-currency="EUR">EUR</button>
+      </div>
+    </div>
+    <div class="calc-premium__body">
+      <div class="calc-pair">
+        <div class="calc-field">
+          <label class="calc-field__label" for="input-gold"><span class="calc-field__dot calc-field__dot--gold" aria-hidden="true"></span>Gold (troy oz)</label>
+          <div class="calc-field__group">
+            <input type="number" id="input-gold" class="calc-field__input" value="1" min="0" step="0.1" inputmode="decimal" aria-label="Amount of gold in troy ounces">
+            <span class="calc-field__unit">oz</span>
+          </div>
+          <span class="calc-field__value">≈ <strong id="gold-value-display">$0.00</strong> at spot</span>
+        </div>
+        <button type="button" class="calc-pair__swap" id="calc-swap" aria-label="Swap inputs">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </button>
+        <div class="calc-field">
+          <label class="calc-field__label" for="input-silver"><span class="calc-field__dot calc-field__dot--silver" aria-hidden="true"></span>Silver (troy oz)</label>
+          <div class="calc-field__group">
+            <input type="number" id="input-silver" class="calc-field__input" value="0" min="0" step="1" inputmode="decimal" aria-label="Equivalent amount of silver in troy ounces">
+            <span class="calc-field__unit">oz</span>
+          </div>
+          <span class="calc-field__value">≈ <strong id="silver-value-display">$0.00</strong> at spot</span>
+        </div>
+      </div>
+      <div class="calc-presets" role="group" aria-label="Quick presets">
+        <span class="calc-presets__label">Quick presets</span>
+        <button type="button" class="calc-preset" data-gold="1">1 oz Gold</button>
+        <button type="button" class="calc-preset" data-gold="10">10 oz Gold</button>
+        <button type="button" class="calc-preset" data-gold="100">100 oz Gold</button>
+        <button type="button" class="calc-preset" data-gold="32.15">1 kg Gold</button>
+        <button type="button" class="calc-preset" data-gold="400">400 oz Bar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HISTORICAL CHART ═══ -->
+  <section class="history-section reveal" aria-label="Historical gold-silver ratio chart">
+    <div class="history-card">
+      <div class="history-header">
+        <div class="history-title-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 21H4.6a.6.6 0 0 1-.6-.6V3"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+          <div>
+            <h2 class="history-title">Historical Ratio Trend</h2>
+            <span class="history-title-sub" id="history-range-label">Last 12 months &middot; computed from XAU/XAG spot</span>
+          </div>
+        </div>
+        <div id="history-toggle" class="history-toggle" role="group" aria-label="Time range">
+          <button type="button" data-range="1Y" class="active">1Y</button>
+          <button type="button" data-range="5Y">5Y</button>
+          <button type="button" data-range="10Y">10Y</button>
+        </div>
+      </div>
+      <div class="history-chart-wrap">
+        <canvas id="history-chart" aria-label="Historical gold-silver ratio line chart"></canvas>
+        <div id="history-loader" class="history-loader">Loading historical data…</div>
+      </div>
+      <div class="history-stats">
+        <div class="history-stat"><div class="history-stat__label">Period Low</div><div id="stat-low" class="history-stat__value is-low">—</div></div>
+        <div class="history-stat"><div class="history-stat__label">Period High</div><div id="stat-high" class="history-stat__value is-high">—</div></div>
+        <div class="history-stat"><div class="history-stat__label">Period Average</div><div id="stat-avg" class="history-stat__value">—</div></div>
+        <div class="history-stat"><div class="history-stat__label">Current vs Avg</div><div id="stat-delta" class="history-stat__value">—</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ARTICLE PROSE ═══ -->
+  <article class="content">
+    <div class="prose">
+      <div class="section-h">
+        <span class="section-h__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </span>
+        <h2 class="section-h__text">What Is the Gold/Silver Ratio?</h2>
+      </div>
+      <p class="prose-intro">The gold/silver ratio tells you how many ounces of silver are needed to buy one ounce of gold. If gold trades at $3,300/oz and silver at $33/oz, the ratio is <strong>100:1</strong>. It is one of the oldest benchmarks in precious metals — records date back to ancient Egypt and Rome, where the ratio was fixed by law at 12:1 or 13:1.</p>
+      <p>Today the ratio floats freely with market prices. The <strong>20th-century average is approximately 47:1</strong>, but the ratio has ranged from as low as 14:1 (1980 Hunt Brothers silver peak) to over 120:1 (March 2020 COVID-19 panic). A high ratio is often interpreted as silver being undervalued relative to gold — and vice versa.</p>
+
+      <blockquote class="pull-quote">
+        &ldquo;A ratio above 80 historically meant silver was on sale. Below 50 meant gold was. Mean reversion is rarely fast — but it has been remarkably consistent.&rdquo;
+        <cite>— GoldPriceTools Market Analysis</cite>
+      </blockquote>
+
+      <div class="section-h">
+        <span class="section-h__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </span>
+        <h2 class="section-h__text">How to Read the Ratio</h2>
+      </div>
+      <p>Investors interpret the gold/silver ratio in two practical ways:</p>
+      <ul>
+        <li><strong>Relative value signal</strong> — when the ratio is historically high (above 80), silver is considered cheap relative to gold; when low (below 50), gold is relatively cheap.</li>
+        <li><strong>Ratio trading</strong> — some traders buy the "cheap" metal and sell the "expensive" one, aiming to profit when the ratio reverts toward its historical mean of about 60:1.</li>
+      </ul>
+      <p>The ratio is calculated simply: <strong>Ratio = Gold spot price &divide; Silver spot price</strong>. Our live calculator above updates this automatically every 60 seconds.</p>
+
+      <div class="section-h">
+        <span class="section-h__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </span>
+        <h2 class="section-h__text">Historical Ratio Timeline</h2>
+      </div>
+      <p>The ratio has swung dramatically across history — from bimetallic-standard lows to crisis-driven highs. Each bar below shows where the ratio sat relative to the modern 14&ndash;124 range.</p>
+      <div class="timeline" role="list" aria-label="Historical gold silver ratio events">
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-item__period">Ancient Rome</div>
+          <div class="timeline-item__ratio">12:1</div>
+          <div class="timeline-item__context">Legal bimetallic standard — silver was the primary monetary metal.</div>
+          <div class="timeline-item__bar"><div class="timeline-item__bar-fill" style="width:1.8%"></div></div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-item__period">19th Century avg</div>
+          <div class="timeline-item__ratio">~16:1</div>
+          <div class="timeline-item__context">Bimetallic currency systems dominated global trade.</div>
+          <div class="timeline-item__bar"><div class="timeline-item__bar-fill" style="width:5.4%"></div></div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-item__period">1980 (Hunt peak)</div>
+          <div class="timeline-item__ratio">~14:1</div>
+          <div class="timeline-item__context">Silver bubble — Hunt Brothers cornered the silver market.</div>
+          <div class="timeline-item__bar"><div class="timeline-item__bar-fill" style="width:3.6%"></div></div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-item__period">20th Century avg</div>
+          <div class="timeline-item__ratio">~47:1</div>
+          <div class="timeline-item__context">Post-gold-standard float — silver de-monetised.</div>
+          <div class="timeline-item__bar"><div class="timeline-item__bar-fill" style="width:33.6%"></div></div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-item__period">2011 (supercycle)</div>
+          <div class="timeline-item__ratio">~32:1</div>
+          <div class="timeline-item__context">Commodity supercycle — silver outperformed gold sharply.</div>
+          <div class="timeline-item__bar"><div class="timeline-item__bar-fill" style="width:19.6%"></div></div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-item__period">March 2020</div>
+          <div class="timeline-item__ratio">~124:1</div>
+          <div class="timeline-item__context">COVID-19 panic — all-time modern high. Silver collapsed, gold rallied.</div>
+          <div class="timeline-item__bar"><div class="timeline-item__bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-item__period">2024&ndash;2026 range</div>
+          <div class="timeline-item__ratio">~80&ndash;105</div>
+          <div class="timeline-item__context">Elevated band — silver still historically cheap vs gold.</div>
+          <div class="timeline-item__bar"><div class="timeline-item__bar-fill" style="width:75%"></div></div>
+        </div>
+      </div>
+
+      <div class="section-h">
+        <span class="section-h__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <h2 class="section-h__text">Why the Ratio Matters for UK Investors</h2>
+      </div>
+      <p>For UK investors, the gold/silver ratio has a practical dimension beyond market timing — and the tax code changes everything.</p>
+      <aside class="callout" role="note" aria-label="UK tax context">
+        <div class="callout__top">
+          <span class="callout__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </span>
+          <h3 class="callout__title">UK VAT & CGT — The Hidden Ratio</h3>
+        </div>
+        <div class="callout__body">
+          <p>Gold bullion is <strong>VAT-exempt</strong> in the UK. Silver bullion is subject to <strong>20% VAT</strong>. This means silver needs to outperform gold by more than 20% just to break even on a tax-adjusted basis for UK physical-metal buyers.</p>
+          <p>Silver is also more volatile — typically rising faster than gold in bull markets and falling harder in bear markets. The ratio reaches extremes during market stress (high ratio = silver underperforms) and during commodity booms (low ratio = silver outperforms).</p>
+        </div>
+      </aside>
+
+      <div class="section-h">
+        <span class="section-h__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </span>
+        <h2 class="section-h__text">Common Trading Strategies</h2>
+      </div>
+      <p>Four approaches precious-metals investors use when interpreting the ratio:</p>
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <div class="strategy-card__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+          </div>
+          <h3 class="strategy-card__title">Buy silver when ratio is high</h3>
+          <p class="strategy-card__body">Accumulate silver (or silver ETFs) when the ratio is above 80&ndash;100. Switch back to gold when the ratio normalises toward 60.</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-card__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="strategy-card__title">Hold physical gold as the base</h3>
+          <p class="strategy-card__body">Use gold as the primary store of value and trade a smaller allocation between gold and silver based on ratio signals.</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-card__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v4H7zM7 13h6"/></svg>
+          </div>
+          <h3 class="strategy-card__title">ETFs and managed funds</h3>
+          <p class="strategy-card__body">iShares Physical Silver (SSLN), WisdomTree Silver (SLVR), and Sprott Physical Silver Trust give UK investors silver exposure without VAT complications.</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-card__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <h3 class="strategy-card__title">Royal Mint silver coins</h3>
+          <p class="strategy-card__body">UK legal-tender silver coins (Britannia, Sovereign) are CGT-exempt — attractive for UK investors despite the VAT on purchase.</p>
+        </div>
+      </div>
+
+      <div class="section-h">
+        <span class="section-h__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
+        <h2 class="section-h__text">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-accordion">
+        <details>
+          <summary>What is the Gold-Silver Ratio?</summary>
+          <div class="faq-body"><p>The gold-silver ratio is the amount of silver it takes to purchase one ounce of gold. It is calculated by dividing the current spot price of gold by the current spot price of silver.</p></div>
+        </details>
+        <details>
+          <summary>Why is the Gold-Silver Ratio important?</summary>
+          <div class="faq-body"><p>Investors use the ratio to evaluate the relative value of gold and silver. A high ratio suggests silver may be undervalued compared to gold, while a low ratio suggests gold may be undervalued.</p></div>
+        </details>
+        <details>
+          <summary>What is a high gold-silver ratio?</summary>
+          <div class="faq-body"><p>Historically, a gold-silver ratio above <strong>80</strong> is considered high, suggesting silver is relatively cheap. The ratio reached an all-time high of around <strong>124</strong> during the March 2020 market crash. In the 20th century, the average ratio was approximately 47:1.</p></div>
+        </details>
+        <details>
+          <summary>How do investors use the gold-silver ratio?</summary>
+          <div class="faq-body"><p>Investors use the ratio as a switching signal — when very high (above 80), some switch from gold to silver expecting silver to outperform. When low (below 50), they may switch back to gold. This is known as <strong>ratio trading</strong>.</p></div>
+        </details>
+        <details>
+          <summary>What is the historical average gold-silver ratio?</summary>
+          <div class="faq-body"><p>The long-run historical average is approximately <strong>60:1</strong> over the past century. The natural abundance ratio in the Earth's crust is about 17.5:1. Since the end of the gold standard, the ratio has generally stayed between 40 and 80, with notable spikes during financial crises.</p></div>
+        </details>
+        <details>
+          <summary>Does a rising gold-silver ratio mean gold is outperforming silver?</summary>
+          <div class="faq-body"><p>Yes. A rising ratio means gold is appreciating faster than silver (or silver is falling faster than gold). During risk-off periods gold typically outperforms, raising the ratio. Silver tends to outperform during industrial expansions and bull markets, pushing the ratio lower.</p></div>
+        </details>
+        <details>
+          <summary>What is the gold/silver ratio today?</summary>
+          <div class="faq-body"><p>The live ratio is shown in the primary card above, updated every 60 seconds. It is calculated by dividing the current gold spot price (USD/oz) by the current silver spot price (USD/oz).</p></div>
+        </details>
+        <details>
+          <summary>Should I buy gold or silver based on the ratio?</summary>
+          <div class="faq-body"><p>A high ratio (above 80) historically favours silver as the undervalued metal; a low ratio (below 50) historically favours gold. However, ratio trading is speculative and ratios can remain at extremes for extended periods. UK investors must also account for VAT on silver. <strong>This is not financial advice — consult a qualified adviser.</strong></p></div>
+        </details>
+        <details>
+          <summary>Why is the ratio so much higher today than in ancient times?</summary>
+          <div class="faq-body"><p>In ancient times, silver was the primary monetary metal and was relatively scarce. Modern silver mining produces large quantities as a by-product of other mining, increasing supply. Meanwhile, gold's role as the global monetary reserve asset underpins sustained demand, widening the ratio over time.</p></div>
+        </details>
+      </div>
+    </div>
+  </article>
+</main>
 
 <!-- Related Guides Section -->
 <section class="related-guides" >
@@ -899,60 +1322,328 @@ details[open] .faq-answer-summary::after{content:"▼"}
 </footer>
 
 <script>
-let currentRatio = 0;
+(function(){
+  /* ── State ───────────────────────────────────────────────────────── */
+  const state = {
+    goldUSD: 0,
+    silverUSD: 0,
+    ratio: 0,
+    currency: 'USD',
+    fx: { USD: 1, GBP: 0.79, EUR: 0.92 }, // sensible fallbacks; updated live
+    historyRange: '1Y',
+    chart: null
+  };
 
-async function fetchSpot() {
-  try {
-    const [goldRes, silverRes] = await Promise.all([
-      fetch('https://api.gold-api.com/price/XAU', {cache: 'no-store'}),
-      fetch('https://api.gold-api.com/price/XAG', {cache: 'no-store'})
-    ]);
+  /* ── DOM refs ────────────────────────────────────────────────────── */
+  const $ = id => document.getElementById(id);
+  const goldSpotEl   = $('gold-spot-display');
+  const silverSpotEl = $('silver-spot-display');
+  const ratioEl      = $('ratio-display');
+  const goldInput    = $('input-gold');
+  const silverInput  = $('input-silver');
+  const goldValEl    = $('gold-value-display');
+  const silverValEl  = $('silver-value-display');
+  const signalBadge  = $('ratio-signal');
+  const signalText   = $('ratio-signal-text');
+  const gaugeMarker  = $('gauge-marker');
+  const gaugeLabel   = $('gauge-marker-label');
+  const sig1V = $('signal-1-value'); const sig1S = $('signal-1-sub');
+  const sig3V = $('signal-3-value'); const sig3S = $('signal-3-sub');
 
-    if (!goldRes.ok || !silverRes.ok) throw new Error('API Error');
+  /* ── Helpers ─────────────────────────────────────────────────────── */
+  const CURRENCY_SYMBOL = { USD: '$', GBP: '£', EUR: '€' };
+  const fmtMoney = (v, cur) => {
+    if (!isFinite(v) || v === 0) return CURRENCY_SYMBOL[cur] + '0.00';
+    return CURRENCY_SYMBOL[cur] + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
 
-    const goldData = await goldRes.json();
-    const silverData = await silverRes.json();
+  /* ── Currency / FX ───────────────────────────────────────────────── */
+  async function fetchFX() {
+    try {
+      const r = await fetch('https://api.frankfurter.app/latest?from=USD&to=GBP,EUR', { cache: 'no-store' });
+      if (!r.ok) return;
+      const j = await r.json();
+      if (j && j.rates) {
+        state.fx.GBP = j.rates.GBP || state.fx.GBP;
+        state.fx.EUR = j.rates.EUR || state.fx.EUR;
+        renderSpot();
+        renderCalc();
+      }
+    } catch(e) { /* keep fallbacks */ }
+  }
 
-    const goldSpot = goldData.price;
-    const silverSpot = silverData.price;
+  /* ── Render spot prices ──────────────────────────────────────────── */
+  function renderSpot() {
+    if (!state.goldUSD || !state.silverUSD) return;
+    const cur = state.currency;
+    const fx = state.fx[cur] || 1;
+    goldSpotEl.textContent   = fmtMoney(state.goldUSD * fx, cur);
+    silverSpotEl.textContent = fmtMoney(state.silverUSD * fx, cur);
+    document.querySelectorAll('.spot-tile__sub').forEach((el, i) => {
+      el.textContent = 'per troy ounce · ' + cur;
+    });
+  }
 
-    currentRatio = goldSpot / silverSpot;
+  /* ── Render ratio + signal + gauge ───────────────────────────────── */
+  function renderRatio() {
+    if (!state.ratio) return;
+    ratioEl.textContent = state.ratio.toFixed(2);
 
-    document.getElementById('gold-spot-display').textContent = '$' + goldSpot.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('silver-spot-display').textContent = '$' + silverSpot.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    document.getElementById('ratio-display').textContent = currentRatio.toFixed(2);
+    // Position on gauge (10 → 130 mapped to 0–100%)
+    const pct = clamp(((state.ratio - 10) / 120) * 100, 2, 98);
+    gaugeMarker.style.left = pct + '%';
+    gaugeLabel.textContent = state.ratio.toFixed(1);
 
-    calculateValues();
-
-    if(typeof gtag === 'function') {
-      gtag('event', 'price_view', {metal: 'ratio'});
+    // Signal classification
+    let zone, label, sub1, sub3v, sub3t;
+    if (state.ratio < 50) {
+      zone = 'low'; label = 'Gold Relatively Cheap';
+      sub1 = 'Gold Undervalued';
+      sub3v = '−' + (60 - state.ratio).toFixed(1);
+      sub3t = 'Below the 60:1 long-run mean — gold is historically cheap relative to silver.';
+    } else if (state.ratio < 80) {
+      zone = 'normal'; label = 'Within Normal Band';
+      sub1 = 'Neutral';
+      sub3v = (state.ratio > 60 ? '+' : '') + (state.ratio - 60).toFixed(1);
+      sub3t = 'Ratio sits in the long-run normal band (50–80). No strong relative-value signal.';
+    } else {
+      zone = 'high'; label = 'Silver Relatively Cheap';
+      sub1 = 'Silver Undervalued';
+      sub3v = '+' + (state.ratio - 60).toFixed(1);
+      sub3t = 'Above the 60:1 long-run mean — silver is historically cheap relative to gold.';
     }
-  } catch(e) {
-    console.warn('Price fetch failed', e);
+    signalBadge.className = 'ratio-primary__signal ratio-primary__signal--' + zone;
+    signalText.textContent = label;
+
+    const card1 = $('signal-card-1');
+    card1.classList.remove('is-low','is-high');
+    if (zone === 'low')  card1.classList.add('is-low');
+    if (zone === 'high') card1.classList.add('is-high');
+    sig1V.textContent = sub1;
+    sig1S.textContent = (zone === 'low')
+      ? 'Below the 60:1 long-run mean — historically a setup that has favoured holding gold.'
+      : (zone === 'high')
+        ? 'Above the 80 threshold — historically a setup that has favoured accumulating silver.'
+        : 'In the long-run normal band — no strong directional signal from the ratio alone.';
+    sig3V.textContent = sub3v;
+    sig3S.textContent = sub3t;
   }
-}
 
-function calculateValues() {
-  if (currentRatio === 0) return;
-
-  const goldInput = document.getElementById('input-gold');
-  const silverInput = document.getElementById('input-silver');
-
-  // if this was triggered by gold input changing
-  if (document.activeElement === goldInput || !document.activeElement || document.activeElement === document.body) {
-     const goldOz = parseFloat(goldInput.value) || 0;
-     silverInput.value = (goldOz * currentRatio).toFixed(2);
-  } else if (document.activeElement === silverInput) {
-     const silverOz = parseFloat(silverInput.value) || 0;
-     goldInput.value = (silverOz / currentRatio).toFixed(4);
+  /* ── Calculator ──────────────────────────────────────────────────── */
+  let lastEdited = 'gold';
+  function renderCalc() {
+    if (!state.ratio) return;
+    const cur = state.currency;
+    const fx = state.fx[cur] || 1;
+    const g = parseFloat(goldInput.value) || 0;
+    const s = parseFloat(silverInput.value) || 0;
+    if (lastEdited === 'gold') {
+      silverInput.value = (g * state.ratio).toFixed(2);
+    } else {
+      goldInput.value = (s / state.ratio).toFixed(4);
+    }
+    const gOut = (parseFloat(goldInput.value) || 0) * state.goldUSD * fx;
+    const sOut = (parseFloat(silverInput.value) || 0) * state.silverUSD * fx;
+    goldValEl.textContent   = fmtMoney(gOut, cur);
+    silverValEl.textContent = fmtMoney(sOut, cur);
   }
-}
 
-document.getElementById('input-gold').addEventListener('input', calculateValues);
-document.getElementById('input-silver').addEventListener('input', calculateValues);
+  goldInput.addEventListener('input',   () => { lastEdited = 'gold';   renderCalc(); });
+  silverInput.addEventListener('input', () => { lastEdited = 'silver'; renderCalc(); });
+  $('calc-swap').addEventListener('click', () => {
+    const g = goldInput.value;
+    goldInput.value = (parseFloat(silverInput.value || 0) / 31.1035).toFixed(4); // visual swap
+    silverInput.value = (parseFloat(g) * 31.1035).toFixed(2);
+    lastEdited = 'gold';
+    renderCalc();
+  });
+  document.querySelectorAll('.calc-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      goldInput.value = btn.dataset.gold;
+      lastEdited = 'gold';
+      renderCalc();
+    });
+  });
+  document.querySelectorAll('#currency-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#currency-toggle button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.currency = btn.dataset.currency;
+      renderSpot();
+      renderCalc();
+    });
+  });
 
-fetchSpot();
-setInterval(fetchSpot, 60000);
+  /* ── Live spot fetch ─────────────────────────────────────────────── */
+  async function fetchSpot() {
+    try {
+      const [goldRes, silverRes] = await Promise.all([
+        fetch('https://api.gold-api.com/price/XAU', { cache: 'no-store' }),
+        fetch('https://api.gold-api.com/price/XAG', { cache: 'no-store' })
+      ]);
+      if (!goldRes.ok || !silverRes.ok) throw new Error('API Error');
+      const goldData = await goldRes.json();
+      const silverData = await silverRes.json();
+      state.goldUSD = goldData.price;
+      state.silverUSD = silverData.price;
+      state.ratio = state.goldUSD / state.silverUSD;
+      renderSpot();
+      renderRatio();
+      renderCalc();
+      if (typeof gtag === 'function') gtag('event', 'price_view', { metal: 'ratio' });
+    } catch (e) {
+      console.warn('Price fetch failed', e);
+    }
+  }
+
+  /* ── Historical chart (Chart.js, lazy-loaded) ────────────────────── */
+  let chartJSPromise = null;
+  function loadChartJS() {
+    if (chartJSPromise) return chartJSPromise;
+    chartJSPromise = new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+    return chartJSPromise;
+  }
+
+  async function loadHistory(range) {
+    const loader = $('history-loader');
+    loader.style.display = 'flex';
+    loader.textContent = 'Loading historical data…';
+    try {
+      const [xau, xag] = await Promise.all([
+        fetch(`/chart-data/XAU-${range}.json`).then(r => r.json()),
+        fetch(`/chart-data/XAG-${range}.json`).then(r => r.json())
+      ]);
+      const labels = xau.labels;
+      const ratios = xau.data.map((g, i) => g / xag.data[i]);
+      await loadChartJS();
+      drawChart(labels, ratios);
+      updateStats(ratios);
+      const labelEl = $('history-range-label');
+      labelEl.textContent = ({
+        '1Y': 'Last 12 months · computed from XAU/XAG spot',
+        '5Y': 'Last 5 years · weekly XAU/XAG ratio',
+        '10Y': 'Last 10 years · monthly XAU/XAG ratio'
+      })[range];
+      loader.style.display = 'none';
+    } catch (e) {
+      console.warn('History load failed', e);
+      loader.textContent = 'Historical data unavailable';
+    }
+  }
+
+  function drawChart(labels, data) {
+    const canvas = $('history-chart');
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const gold = '#e8af34';
+    const textMuted = isDark ? '#7a7974' : '#7a7974';
+    const grid = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)';
+    const ctx = canvas.getContext('2d');
+    if (state.chart) state.chart.destroy();
+    state.chart = new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          data,
+          borderColor: gold,
+          borderWidth: 2,
+          fill: true,
+          backgroundColor: function(c) {
+            const g = c.chart.ctx.createLinearGradient(0, 0, 0, 340);
+            g.addColorStop(0, gold + '55');
+            g.addColorStop(1, gold + '00');
+            return g;
+          },
+          pointRadius: 0,
+          pointHitRadius: 14,
+          tension: 0.32
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'rgba(15,14,12,0.92)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            padding: 10,
+            displayColors: false,
+            callbacks: { label: ctx => ' Ratio: ' + ctx.parsed.y.toFixed(2) + ':1' }
+          }
+        },
+        scales: {
+          x: { ticks: { color: textMuted, font: { size: 11 }, maxTicksLimit: 6 }, grid: { color: grid, drawTicks: false } },
+          y: { ticks: { color: textMuted, font: { size: 11 }, callback: v => v.toFixed(0) + ':1' }, grid: { color: grid }, position: 'right' }
+        },
+        interaction: { mode: 'index', intersect: false }
+      }
+    });
+  }
+
+  function updateStats(arr) {
+    const min = Math.min.apply(null, arr);
+    const max = Math.max.apply(null, arr);
+    const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
+    $('stat-low').textContent  = min.toFixed(1);
+    $('stat-high').textContent = max.toFixed(1);
+    $('stat-avg').textContent  = avg.toFixed(1);
+    if (state.ratio) {
+      const delta = state.ratio - avg;
+      const sign = delta >= 0 ? '+' : '';
+      const el = $('stat-delta');
+      el.textContent = sign + delta.toFixed(1);
+      el.className = 'history-stat__value ' + (delta > 5 ? 'is-high' : delta < -5 ? 'is-low' : '');
+    }
+  }
+
+  document.querySelectorAll('#history-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#history-toggle button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.historyRange = btn.dataset.range;
+      loadHistory(state.historyRange);
+    });
+  });
+
+  /* ── Scroll reveal ───────────────────────────────────────────────── */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Lazy-load chart when visible
+    const chartEl = document.querySelector('.history-chart-wrap');
+    if (chartEl) {
+      const chartIO = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          loadHistory(state.historyRange);
+          chartIO.disconnect();
+        }
+      }, { rootMargin: '200px' });
+      chartIO.observe(chartEl);
+    }
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+    loadHistory(state.historyRange);
+  }
+
+  /* ── Init ────────────────────────────────────────────────────────── */
+  fetchSpot();
+  fetchFX();
+  setInterval(fetchSpot, 60000);
+})();
 </script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
