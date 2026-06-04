@@ -51,6 +51,8 @@
 <meta name="theme-color" content="#0f0e0c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.gold-api.com" crossorigin>
+<link rel="preconnect" href="https://api.frankfurter.dev" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 <style>
 
@@ -63,26 +65,22 @@
 .mega-panel__browse-all{display:block;padding:var(--space-3) var(--space-5);border:1px solid var(--color-gold);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:700;color:var(--color-gold);text-decoration:none;transition:background var(--transition),color var(--transition)}
 .mega-panel__browse-all:hover{background:var(--color-gold);color:var(--color-bg)}
 
-
 :root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;--color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-gold:#b07a00;--color-gold-bright:#d19900;--color-silver:#6b7280;--shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'IBM Plex Sans','Inter',sans-serif;--transition:180ms cubic-bezier(0.16,1,0.3,1)}
 [data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-2:#1b1a18;--color-surface-offset:#1d1c1a;--color-surface-offset-2:#222120;--color-surface-dynamic:#2a2927;--color-divider:#252422;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7974;--color-text-faint:#4a4947;--color-text-inverse:#1a1917;--color-primary:#4f98a3;--color-primary-hover:#6ab3be;--color-gold:#b07a00;--color-gold-bright:#e8af34;--color-silver:#9ca3af;--shadow-sm:0 1px 2px oklch(0 0 0/0.3);--shadow-md:0 4px 12px oklch(0 0 0/0.4);--shadow-lg:0 12px 32px oklch(0 0 0/0.5)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
 /* ── Global link reset — enforce brand colours site-wide ── */
 a{color:var(--color-primary);text-decoration:none}
 a:hover{color:var(--color-primary-hover);text-decoration:underline}
 a:visited{color:var(--color-primary)}
-/* ── Card colour reset — cards are content blocks, not bare links ── */
 .article-card,.blog-preview-card,.related-card,.guide-card,.guide-card-link,.post-card,.byline-card{color:var(--color-text)}
 .article-card:hover,.blog-preview-card:hover,.related-card:hover,.guide-card:hover,.post-card:hover{color:var(--color-text)}
-/* Article card inner elements */
 .article-title,.article-card-title{font-weight:700;color:var(--color-text);margin-bottom:.3rem}
 .article-tag,.related-card__tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright)}
 .article-excerpt,.article-card-desc,.related-card__desc{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.55}
-/* Hover: title becomes primary teal */
 .article-card:hover .article-title,.article-card:hover .article-card-title{color:var(--color-primary)}
 .blog-preview-card:hover h3{color:var(--color-primary)}
 .related-card:hover .related-card__title{color:var(--color-primary)}
-
 
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
 body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg)}
@@ -96,190 +94,11 @@ a,button,[role="button"],input,select{transition:color var(--transition),backgro
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
 
-/* TICKER */
-.ticker-wrap{background:var(--color-surface);border-bottom:1px solid var(--color-border);overflow:hidden;height:36px;position:relative}
-.ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;width:60px;height:100%;z-index:2}
-.ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--color-surface),transparent)}
-.ticker-wrap::after{right:0;background:linear-gradient(-90deg,var(--color-surface),transparent)}
-.ticker{display:flex;align-items:center;height:100%;animation:ticker-scroll 40s linear infinite;white-space:nowrap;width:max-content}
-.ticker:hover{animation-play-state:paused}
-@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker-item{display:inline-flex;align-items:center;gap:var(--space-2);padding:0 var(--space-6);font-size:var(--text-xs);font-weight:500}
-.ticker-label{color:var(--color-text-muted)}
-.ticker-value{color:var(--color-text);font-variant-numeric:tabular-nums}
-.ticker-change.up{color:#4ade80}
-.ticker-change.down{color:#f87171}
-.live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 8px #4ade80}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:56px}
-.nav-logo{display:flex;align-items:center;gap:var(--space-2);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);text-decoration:none}
-.nav-links{display:flex;align-items:center;gap:var(--space-1)}
-.nav-links a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:var(--space-2) var(--space-3);border-radius:var(--radius-md)}
-.nav-links a:hover{color:var(--color-text);background:var(--color-surface-offset)}
-.nav-actions{display:flex;align-items:center;gap:var(--space-2)}
-.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-md);color:var(--color-text-muted);border:1px solid var(--color-border)}
-.theme-toggle:hover{color:var(--color-text);background:var(--color-surface-offset)}
-.hamburger{display:none;flex-direction:column;gap:4px;padding:var(--space-2);border-radius:var(--radius-md)}
-.hamburger span{display:block;width:20px;height:2px;background:var(--color-text);border-radius:2px;transition:transform .2s,opacity .2s}
-@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
-
-/* MOBILE MENU */
-.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:var(--space-4);z-index:99}
-.mobile-menu.open{display:flex;flex-direction:column;gap:var(--space-2)}
-.mobile-menu a{font-size:var(--text-base);color:var(--color-text-muted);text-decoration:none;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md)}
-.mobile-menu a:hover{background:var(--color-surface-offset);color:var(--color-text)}
-.mobile-menu .menu-section{font-size:var(--text-xs);font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.08em;padding:var(--space-3) var(--space-4) var(--space-1)}
-
-/* AD SLOTS */
-.ad-slot{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;margin:var(--space-6) auto;max-width:1200px;padding:0 var(--space-4);min-height:100px}
-.ad-slot ins{display:block;width:100%}
-.ad-slot-sidebar{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;min-height:250px}
-.ad-slot-sidebar ins{display:block;width:100%}
-
-/* HERO */
-.hero{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center}
-@media(max-width:768px){.hero{grid-template-columns:1fr;padding:var(--space-8) var(--space-4) var(--space-4)}}
-.hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);background:color-mix(in oklch,var(--color-gold) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold) 25%,var(--color-border));padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;color:var(--color-gold-bright);margin-bottom:var(--space-4);letter-spacing:.05em;text-transform:uppercase}
-.hero h1{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-text);margin-bottom:var(--space-4);line-height:1.15}
-.hero h1 .gold{color:var(--color-gold-bright)}
-.hero h1 .silver{color:var(--color-silver)}
-.hero-desc{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:52ch;margin-bottom:var(--space-6)}
-.spot-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
-.spot-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);box-shadow:var(--shadow-sm)}
-.spot-card-label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-1)}
-.spot-card-value{font-size:var(--text-xl);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.spot-card-value.gold-val{color:var(--color-gold-bright)}
-.spot-card-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1)}
-.spot-card-change{font-size:var(--text-xs);font-weight:600;margin-top:var(--space-1)}
-.spot-card-change.up{color:#4ade80}
-.spot-card-change.down{color:#f87171}
-
-/* MAIN LAYOUT */
-.main-wrap{max-width:1200px;margin:0 auto;padding:0 var(--space-4) var(--space-16);display:grid;grid-template-columns:1fr 300px;gap:var(--space-8);align-items:start}
-@media(max-width:1024px){.main-wrap{grid-template-columns:1fr}}
-
-/* CALCULATORS */
-.calc-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm)}
-.calc-tabs{display:flex;border-bottom:1px solid var(--color-border);background:var(--color-surface-offset);overflow-x:auto;scrollbar-width:none}
-.calc-tabs::-webkit-scrollbar{display:none}
-.calc-tab{flex:1;min-width:max-content;padding:var(--space-3) var(--space-4);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer}
-.calc-tab:hover{color:var(--color-text)}
-.calc-tab.active{color:var(--color-gold-bright);border-bottom-color:var(--color-gold-bright)}
-.calc-panel{display:none;padding:var(--space-6)}
-.calc-panel.active{display:block}
-.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4)}
-@media(max-width:600px){.calc-row{grid-template-columns:1fr}}
-.form-group{display:flex;flex-direction:column;gap:var(--space-2)}
-.form-label{font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted)}
-.form-input,.form-select{width:100%;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-base);color:var(--color-text);-webkit-appearance:none;appearance:none}
-.form-input:focus,.form-select:focus{border-color:var(--color-primary);background:var(--color-surface)}
-.form-select-wrap{position:relative}
-.form-select-wrap::after{content:'▾';position:absolute;right:var(--space-3);top:50%;transform:translateY(-50%);color:var(--color-text-muted);pointer-events:none;font-size:var(--text-xs)}
-.calc-result{background:color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 20%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin-top:var(--space-4)}
-.calc-result-label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
-.calc-result-value{font-size:var(--text-2xl);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.calc-result-meta{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1)}
-.calc-hint{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-3);line-height:1.6;max-width:60ch}
-
-/* SCRAP TABLE */
-.scrap-table{width:100%;border-collapse:collapse;margin-bottom:var(--space-4)}
-.scrap-table th{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em;padding:var(--space-2) var(--space-3);text-align:left;border-bottom:1px solid var(--color-border)}
-.scrap-table td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--color-divider)}
-.scrap-table td:last-child{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums}
-.scrap-table input{width:100%;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-3);font-size:var(--text-sm);color:var(--color-text)}
-.scrap-total{background:var(--color-surface-offset);border-radius:var(--radius-lg);padding:var(--space-4);display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-4)}
-@media(max-width:600px){.scrap-total{grid-template-columns:1fr}}
-.scrap-total-item{text-align:center}
-.scrap-total-label{font-size:var(--text-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-1)}
-.scrap-total-value{font-size:var(--text-lg);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums}
-
-/* KARAT TABLES */
-.karat-section{margin-top:var(--space-8)}
-.karat-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-2)}
-.karat-section p{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4);max-width:60ch}
-.karat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4);margin-bottom:var(--space-8)}
-.karat-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-.karat-card-header{padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border-bottom:1px solid var(--color-border);display:flex;align-items:center;justify-content:space-between}
-.karat-card-title{font-size:var(--text-sm);font-weight:700;color:var(--color-text)}
-.karat-card-purity{font-size:var(--text-xs);color:var(--color-text-muted)}
-.karat-table{width:100%;border-collapse:collapse}
-.karat-table td{padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--color-divider);font-size:var(--text-sm)}
-.karat-table td:first-child{color:var(--color-text-muted)}
-.karat-table td:last-child{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
-.karat-table tr:last-child td{border-bottom:none}
-
-/* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:var(--space-4);position:sticky;top:72px;align-self:start}
-.sidebar-widget{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:var(--shadow-sm)}
-.sidebar-widget h3{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
-.quick-ref-row{display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) 0;border-bottom:1px solid var(--color-divider);font-size:var(--text-sm)}
-.quick-ref-row:last-child{border-bottom:none}
-.quick-ref-label{color:var(--color-text-muted)}
-.quick-ref-value{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums}
-.quick-ref-value.silver-val{color:var(--color-silver)}
-
-/* SIDEBAR NAV LINKS */
-.sidebar-nav{display:flex;flex-direction:column;gap:var(--space-2)}
-.sidebar-nav a{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
-.sidebar-nav a:hover{color:var(--color-gold-bright);border-color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset))}
-.sidebar-nav a span{color:var(--color-text-faint);font-size:var(--text-xs)}
-
-/* CHART */
-.chart-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin-bottom:var(--space-6);box-shadow:var(--shadow-sm)}
-.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4);flex-wrap:wrap;gap:var(--space-3)}
-.chart-title{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text)}
-.chart-controls{display:flex;gap:var(--space-2);flex-wrap:wrap}
-.chart-btn{padding:var(--space-1) var(--space-3);font-size:var(--text-xs);font-weight:600;border-radius:var(--radius-full);border:1px solid var(--color-border);color:var(--color-text-muted)}
-.chart-btn:hover,.chart-btn.active{background:var(--color-gold-bright);color:#0f0e0c;border-color:var(--color-gold-bright)}
-.chart-wrap{position:relative;height:280px}
-.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-size:var(--text-sm)}
-
-/* FAQ / SEO CARDS */
-.faq-section{margin-top:var(--space-8)}
-.faq-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-6)}
-.faq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4)}
-.faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5)}
-.faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin-bottom:var(--space-2)}
-.faq-a{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
-.faq-a .highlight{color:var(--color-gold-bright);font-weight:600}
-
-/* CONVERTER */
-.converter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-3);margin-top:var(--space-4)}
-.converter-item{background:var(--color-surface-offset);border-radius:var(--radius-md);padding:var(--space-3);text-align:center}
-.converter-label{font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-1)}
-.converter-value{font-size:var(--text-base);font-weight:600;color:var(--color-text);font-variant-numeric:tabular-nums}
-
-/* ARTICLES SECTION */
-.articles-section{margin-top:var(--space-10)}
-.articles-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-2)}
-.articles-section .section-desc{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-6);max-width:60ch}
-.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4)}
-.article-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;display:block;transition:border-color var(--transition),box-shadow var(--transition)}
-.article-card:hover{border-color:var(--color-gold-bright);box-shadow:var(--shadow-md)}
-.article-tag{font-size:var(--text-xs);font-weight:700;color:var(--color-gold-bright);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
-.article-title{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4;margin-bottom:var(--space-2)}
-.article-excerpt{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6}
-
-/* FOOTER */
-footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-10) 0}
-.footer-inner{width:100%;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(5,minmax(0,1fr));gap:var(--space-5);padding:0 var(--space-8);align-items:start}
-@media(max-width:900px){.footer-inner{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.footer-inner{grid-template-columns:repeat(2,1fr);gap:var(--space-4)}}
-.footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
-.footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
-.footer-brand-col{min-width:0;overflow:hidden}.footer-col{min-width:0}.footer-brand-col{min-width:0;overflow:hidden}.footer-col{min-width:0}.footer-col ul{list-style:none}
-.footer-col li{margin-bottom:var(--space-2)}
-.footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
-.footer-col a:hover{color:var(--color-text)}
-.footer-bottom{margin:var(--space-6) 0 0;padding:var(--space-4) var(--space-6) 0;border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
-
-#googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
-
-/* MEGA MENU */
-.site-nav{position:sticky;top:0;z-index:200;background:var(--color-surface);border-bottom:1px solid var(--color-border)}
+/* NAV (shared) */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--color-surface);border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:56px;gap:var(--space-2)}
 .nav-logo{display:flex;align-items:center;gap:var(--space-2);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);text-decoration:none;flex-shrink:0}
 .mega-nav{display:flex;align-items:center;list-style:none;margin:0;padding:0;gap:2px;flex:1;justify-content:center}
@@ -332,122 +151,305 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 @media(max-width:900px){.mega-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.nav-logo span{display:none}}
 
+/* BREADCRUMB */
+.breadcrumb-wrap{max-width:1100px;margin:0 auto;padding:var(--space-3) var(--space-4) 0}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:var(--space-1);list-style:none;padding:0;margin:0;font-size:var(--text-xs);color:var(--color-text-faint)}
+.breadcrumb li+li::before{content:"\203A";margin-right:var(--space-1);color:var(--color-text-faint)}
+.breadcrumb a{color:var(--color-text-faint);text-decoration:none}
+.breadcrumb a:hover{color:var(--color-text-muted)}
+.breadcrumb [aria-current="page"]{color:var(--color-text-muted)}
 
-/* BLOG PREVIEW SECTION */
-.blog-preview-section{background:var(--color-surface-offset);border-top:1px solid var(--color-border);padding:var(--space-10) var(--space-4)}
-.blog-preview-inner{max-width:1200px;margin:0 auto}
-.blog-preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6)}
-.blog-preview-title{font-size:var(--text-xl);font-weight:700;color:var(--color-text)}
-.blog-preview-all{font-size:var(--text-sm);font-weight:600;color:var(--color-primary);text-decoration:none}
-.blog-preview-all:hover{color:var(--color-primary-hover)}
-.blog-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
-@media(max-width:900px){.blog-preview-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.blog-preview-grid{grid-template-columns:1fr}}
-.blog-preview-card{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-5);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-decoration:none;transition:box-shadow .15s,border-color .15s}
-.blog-preview-card:hover{border-color:var(--color-primary);box-shadow:0 4px 16px oklch(0 0 0/.08)}
-.blog-preview-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary);padding:2px 8px;background:oklch(from var(--color-primary) l c h / .1);border-radius:99px;align-self:flex-start}
-.blog-preview-card h3{font-size:var(--text-base);font-weight:600;color:var(--color-text);line-height:1.4;margin:0}
-.blog-preview-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
-/* FOOTER */
-.footer-brand-col{max-width:260px}
-.footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr repeat(4,auto);gap:var(--space-8);align-items:start}
-@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}.footer-brand-col{grid-column:1/-1}}
-@media(max-width:600px){.footer-inner{grid-template-columns:1fr 1fr}}
-.footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
-.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
-.footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;transition:color .12s}
-.footer-col a:hover{color:var(--color-text)}
-.footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
-.footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}
+/* ═══════════════════════════════════════════════════════════════════════
+   9K GOLD PAGE — PREMIUM REDESIGN (mobile-first, fluid up to desktop)
+   ═══════════════════════════════════════════════════════════════════════ */
+.k9-page{max-width:1100px;margin:0 auto;padding:0 var(--space-4) var(--space-12)}
 
+/* ── HERO ──────────────────────────────────────────────────────────────── */
+.k9-hero{padding:var(--space-8) 0 var(--space-6);text-align:center}
+@media(min-width:768px){.k9-hero{padding:var(--space-12) 0 var(--space-6)}}
+.k9-hero__eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-gold-bright);margin-bottom:var(--space-4);padding:6px 14px;background:color-mix(in oklch,var(--color-gold-bright) 10%,transparent);border:1px solid color-mix(in oklch,var(--color-gold-bright) 28%,transparent);border-radius:var(--radius-full)}
+.k9-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5.5vw,3.25rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:var(--color-text);margin-bottom:var(--space-3);text-wrap:balance}
+.k9-hero h1 .gold{color:var(--color-gold-bright)}
+.k9-hero__sub{font-size:var(--text-base);color:var(--color-text-muted);max-width:54ch;margin:0 auto var(--space-6);line-height:1.65}
 
-/* ── Article card — unified markup styles ── */
-.article-card-title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:var(--space-1) 0 var(--space-2);line-height:1.3}
-.article-card .article-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-gold-bright);margin-bottom:var(--space-2)}
-.article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
-.article-card:hover .article-card-title{color:var(--color-primary)}
+/* ── PRIMARY PRICE CARD ───────────────────────────────────────────────── */
+.k9-primary{position:relative;background:linear-gradient(180deg,var(--color-surface-2) 0%,var(--color-surface) 100%);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md)}
+.k9-primary::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,color-mix(in oklch,var(--color-gold-bright) 12%,transparent) 0%,transparent 60%);pointer-events:none}
+.k9-primary__body{position:relative;z-index:1;padding:var(--space-6) var(--space-5) var(--space-5);text-align:center}
+@media(min-width:640px){.k9-primary__body{padding:var(--space-8) var(--space-6) var(--space-6)}}
+.k9-primary__label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--color-text-muted);margin-bottom:var(--space-3)}
+.k9-primary__number{font-family:var(--font-display);font-size:clamp(3.5rem,13vw,6.25rem);font-weight:300;color:var(--color-gold-bright);line-height:.95;letter-spacing:-.04em;font-variant-numeric:tabular-nums;text-shadow:0 0 30px color-mix(in oklch,var(--color-gold-bright) 35%,transparent);display:inline-flex;align-items:baseline;gap:var(--space-2)}
+.k9-primary__currency{font-family:var(--font-display);font-size:.42em;font-weight:400;color:var(--color-text-muted);letter-spacing:-.02em}
+.k9-primary__unit{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-2)}
+.k9-primary__secondary{display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-top:var(--space-3);font-size:var(--text-base);color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+.k9-primary__secondary strong{color:var(--color-text);font-weight:600}
+.k9-primary__chips{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-2);margin-top:var(--space-5)}
+.k9-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--radius-full);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--color-border);background:var(--color-surface-offset);color:var(--color-text-muted)}
+.k9-chip--gold{border-color:color-mix(in oklch,var(--color-gold-bright) 38%,transparent);color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 8%,transparent)}
+.k9-chip__dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 6px currentColor}
 
+/* Spot tiles row */
+.k9-spot-tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-border);border-top:1px solid var(--color-border)}
+.k9-spot-tile{padding:var(--space-4) var(--space-3);background:var(--color-surface);text-align:center}
+@media(min-width:640px){.k9-spot-tile{padding:var(--space-5) var(--space-4)}}
+.k9-spot-tile__label{display:flex;align-items:center;justify-content:center;gap:var(--space-2);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:var(--space-2)}
+.k9-spot-tile__dot{width:8px;height:8px;border-radius:50%}
+.k9-spot-tile__dot--24k{background:var(--color-gold-bright);box-shadow:0 0 8px color-mix(in oklch,var(--color-gold-bright) 70%,transparent)}
+.k9-spot-tile__dot--9k{background:#c9962c;box-shadow:0 0 8px color-mix(in oklch,#c9962c 70%,transparent)}
+.k9-spot-tile__value{font-family:var(--font-display);font-size:clamp(1.25rem,4.5vw,1.75rem);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1;color:var(--color-text)}
+.k9-spot-tile__value--gold{color:var(--color-gold-bright)}
+.k9-spot-tile__sub{font-size:11px;color:var(--color-text-faint);margin-top:var(--space-1);font-variant-numeric:tabular-nums}
 
-/* ── Shared layout CSS ── */
-.breadcrumb-wrap{max-width:1200px;margin:0 auto;padding:var(--space-3) var(--space-4)}
-.breadcrumb{display:flex;align-items:center;gap:var(--space-2);list-style:none;font-size:var(--text-sm);color:var(--color-text-muted)}
-.breadcrumb li+li::before{content:"/";margin-right:var(--space-2);color:var(--color-text-faint)}
-.breadcrumb a{color:var(--color-text-muted);text-decoration:none}
-.breadcrumb a:hover{color:var(--color-primary)}
-.breadcrumb li[aria-current="page"]{color:var(--color-text)}
-.hero-tag{display:inline-block;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-gold-bright);margin-bottom:var(--space-3)}
-.hero-title{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-text);margin-bottom:var(--space-4);line-height:1.15}
-.hero-title{font-size:var(--text-xl)}
-.hero-sub{font-size:var(--text-base);color:var(--color-text-muted);max-width:72ch;line-height:1.7;margin-bottom:var(--space-6)}
-.price-card{display:inline-flex;flex-direction:column;gap:var(--space-1);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin-top:var(--space-2)}
-.price-card{width:100%}
-.price-label{font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted)}
-.price-value{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-gold-bright);font-weight:400;line-height:1}
-.price-usd{font-size:var(--text-base);color:var(--color-text-muted)}
-.price-purity{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-1)}
-.prose{max-width:72ch}
-.prose h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin:var(--space-8) 0 var(--space-3);line-height:1.25}
-.prose h3{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin:var(--space-6) 0 var(--space-2)}
-.prose p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-4)}
-.prose ul,.prose ol{padding-left:var(--space-5);margin-bottom:var(--space-4)}
-.prose li{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-1)}
-.prose strong{color:var(--color-text);font-weight:700}
-.prose a{color:var(--color-primary);text-decoration:underline}
-.prose a:hover{color:var(--color-primary-hover)}
-.prose{max-width:100%}
-.content{max-width:1200px;margin:0 auto;padding:0 var(--space-4) var(--space-16)}
-.data-source{font-size:var(--text-sm);color:var(--color-text-faint);margin-bottom:var(--space-6);padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-gold)}
-.faq-answer-summary{font-size:var(--text-base);font-weight:600;color:var(--color-text);padding:var(--space-4);cursor:pointer;list-style:none;background:var(--color-surface-offset);transition:background .15s}
-.faq-answer-summary:hover{background:var(--color-surface-dynamic)}
-.faq-answer-summary::marker,.faq-answer-summary::-webkit-details-marker{display:none}
-.faq-answer-summary::after{content:"＋";float:right;color:var(--color-text-faint)}
-.faq-answer-summary::after{content:"－"}
-.faq-answer{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;padding:var(--space-4);border-top:1px solid var(--color-divider)}
+/* Source bar under price */
+.k9-source{display:flex;align-items:center;justify-content:center;gap:var(--space-3);flex-wrap:wrap;font-size:var(--text-xs);color:var(--color-text-faint);margin:var(--space-4) auto 0;text-align:center;line-height:1.5}
+.k9-source a{color:var(--color-text-muted);text-decoration:underline;text-decoration-color:transparent}
+.k9-source a:hover{text-decoration-color:currentColor;color:var(--color-text)}
+.k9-source__sep{color:var(--color-text-faint)}
 
-/* ── Hero left column ── */
-.hero{grid-template-columns:1fr 1fr}
-.hero-left{display:flex;flex-direction:column;justify-content:flex-start;gap:var(--space-3)}
-.hero-left .hero-title{margin-bottom:0}
-.hero-left .hero-tag{margin-bottom:var(--space-2)}
-@media(max-width:768px){.hero-left{margin-bottom:var(--space-4)}}
+/* ── PURITY VISUALIZATION ─────────────────────────────────────────────── */
+.k9-purity{margin-top:var(--space-8)}
+.k9-purity__card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6) var(--space-5);box-shadow:var(--shadow-sm)}
+@media(min-width:640px){.k9-purity__card{padding:var(--space-8) var(--space-6)}}
+.k9-purity__header{text-align:center;margin-bottom:var(--space-6)}
+.k9-purity__eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--color-text-muted);margin-bottom:var(--space-2)}
+.k9-purity__title{font-family:var(--font-display);font-size:clamp(1.25rem,2.6vw,1.75rem);font-weight:700;color:var(--color-text);margin:0;line-height:1.2}
+.k9-purity__grid{display:grid;grid-template-columns:1fr;gap:var(--space-6);align-items:center}
+@media(min-width:720px){.k9-purity__grid{grid-template-columns:240px 1fr;gap:var(--space-8)}}
+.k9-donut{position:relative;width:200px;height:200px;margin:0 auto}
+@media(min-width:720px){.k9-donut{width:220px;height:220px}}
+.k9-donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+.k9-donut__center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.k9-donut__hallmark{font-family:var(--font-display);font-size:clamp(2.5rem,7vw,3.25rem);font-weight:700;color:var(--color-gold-bright);line-height:.9;letter-spacing:-.02em}
+.k9-donut__pct{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin-top:var(--space-1)}
+.k9-donut__label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-muted);margin-top:2px}
+.k9-purity__breakdown{display:flex;flex-direction:column;gap:var(--space-4)}
+.k9-breakdown-row{display:grid;grid-template-columns:24px 1fr auto;gap:var(--space-3);align-items:center;padding:var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md)}
+.k9-breakdown-swatch{width:18px;height:18px;border-radius:6px;justify-self:start}
+.k9-breakdown-swatch--gold{background:linear-gradient(135deg,#e8af34,#b07a00);box-shadow:0 0 12px color-mix(in oklch,#e8af34 50%,transparent)}
+.k9-breakdown-swatch--alloy{background:linear-gradient(135deg,#9aa0a6,#5f6368)}
+.k9-breakdown-name{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.3}
+.k9-breakdown-sub{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.4;margin-top:2px}
+.k9-breakdown-val{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums}
 
-/* ── Data Table ── */
-.data-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);margin:var(--space-4) 0 var(--space-6)}
-.data-table th{text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding:var(--space-2) var(--space-4) var(--space-2) 0;border-bottom:2px solid var(--color-border)}
-.data-table td{padding:var(--space-3) var(--space-4) var(--space-3) 0;border-bottom:1px solid var(--color-border);color:var(--color-text-muted);vertical-align:middle}
-.data-table td:first-child{color:var(--color-text);font-weight:500}
-.data-table td:not(:first-child){text-align:right;padding-right:0}
-.data-table th:not(:first-child){text-align:right;padding-right:0}
-.data-table tr:last-child td{border-bottom:none}
-.data-table tr:hover td{background:var(--color-surface)}
-.data-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius-md)}
+/* ── SECTION HEADING (icon + text + divider) ──────────────────────────── */
+.k9-section-h{display:flex;align-items:center;gap:var(--space-3);margin-top:var(--space-10);margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-divider)}
+.k9-section-h__icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:var(--radius-sm);background:color-mix(in oklch,var(--color-gold-bright) 14%,transparent);color:var(--color-gold-bright);flex-shrink:0}
+.k9-section-h__text{font-size:clamp(1.25rem,2.4vw,1.625rem);font-weight:700;color:var(--color-text);line-height:1.2;margin:0;border:none;padding:0}
 
-/* ── Trust bar ── */
-.trust-bar{font-size:var(--text-sm);color:var(--color-text-faint);margin-bottom:var(--space-6);padding:var(--space-3) var(--space-4);background:var(--color-surface-offset,var(--color-surface));border-radius:var(--radius-md);border-left:3px solid var(--color-gold)}
-.trust-bar a{color:var(--color-primary);text-decoration:none}
-.trust-bar a:hover{text-decoration:underline}
+/* ── CALCULATOR ───────────────────────────────────────────────────────── */
+.k9-calc{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm);margin-top:var(--space-4)}
+.k9-calc__header{padding:var(--space-4) var(--space-5);border-bottom:1px solid var(--color-border);background:var(--color-surface-offset);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)}
+.k9-calc__title{font-size:var(--text-base);font-weight:700;color:var(--color-text);display:flex;align-items:center;gap:var(--space-2);margin:0}
+.k9-calc__title svg{color:var(--color-gold-bright);flex-shrink:0}
+.k9-currency-toggle{display:flex;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}
+.k9-currency-toggle button{padding:7px 11px;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--color-text-muted);background:transparent;border:none;cursor:pointer;min-height:36px;transition:all var(--transition)}
+.k9-currency-toggle button:hover{color:var(--color-text)}
+.k9-currency-toggle button.active{background:var(--color-gold-bright);color:#0f0e0c}
+.k9-calc__body{padding:var(--space-5)}
+@media(min-width:640px){.k9-calc__body{padding:var(--space-6)}}
+.k9-calc__row{display:grid;grid-template-columns:1fr;gap:var(--space-4)}
+@media(min-width:600px){.k9-calc__row{grid-template-columns:1fr 1fr}}
+.k9-field{display:flex;flex-direction:column;gap:var(--space-2);min-width:0}
+.k9-field__label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-muted)}
+.k9-field__group{display:flex;align-items:stretch;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;transition:border-color var(--transition),box-shadow var(--transition)}
+.k9-field__group:focus-within{border-color:var(--color-gold-bright);box-shadow:0 0 0 3px color-mix(in oklch,var(--color-gold-bright) 18%,transparent)}
+.k9-field__input{flex:1;padding:var(--space-3) var(--space-4);background:transparent;border:none;font-family:var(--font-display);font-size:var(--text-lg);font-weight:600;color:var(--color-text);min-width:0;width:100%;font-variant-numeric:tabular-nums;letter-spacing:-.01em;min-height:48px}
+.k9-field__input:focus{outline:none}
+.k9-field__select{flex:1;padding:0 var(--space-4);background:transparent;border:none;font-family:var(--font-body);font-size:var(--text-base);font-weight:600;color:var(--color-text);min-width:0;width:100%;min-height:48px;appearance:none;-webkit-appearance:none;cursor:pointer}
+.k9-field__select:focus{outline:none}
+.k9-field__suffix{display:flex;align-items:center;padding:0 var(--space-4);background:var(--color-surface);border-left:1px solid var(--color-border);font-size:11px;font-weight:700;color:var(--color-text-muted);letter-spacing:.06em;pointer-events:none}
+.k9-presets{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--color-divider)}
+.k9-presets__label{width:100%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-faint);margin-bottom:2px}
+.k9-preset{padding:7px 13px;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);cursor:pointer;transition:all var(--transition);min-height:36px;display:inline-flex;align-items:center;font-variant-numeric:tabular-nums}
+.k9-preset:hover{border-color:var(--color-gold-bright);color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset))}
 
-/* ── Prose spacing ── */
-.prose p{margin-bottom:var(--space-4);line-height:1.7}
-.prose li{margin-bottom:var(--space-2);line-height:1.65}
-.prose h2{margin-top:var(--space-10);margin-bottom:var(--space-3)}
-.prose h3{margin-top:var(--space-6);margin-bottom:var(--space-2)}
+/* Calc result */
+.k9-calc__result{margin-top:var(--space-5);padding:var(--space-5) var(--space-5);background:linear-gradient(180deg,color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface-offset)) 0%,var(--color-surface-offset) 100%);border:1px solid color-mix(in oklch,var(--color-gold-bright) 22%,var(--color-border));border-radius:var(--radius-lg);text-align:center}
+.k9-calc__result-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:var(--space-2)}
+.k9-calc__result-value{font-family:var(--font-display);font-size:clamp(2rem,6.5vw,3rem);font-weight:300;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-.02em}
+.k9-calc__result-sub{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-2)}
 
-/* ── Related guides grid ── */
-.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4);margin-top:var(--space-6)}
-.related-card{display:flex;flex-direction:column;gap:var(--space-2);background:var(--color-surface-offset,var(--color-surface));border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);text-decoration:none;transition:border-color .15s,box-shadow .15s;min-height:140px;color:var(--color-text)}
-.related-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-sm)}
+/* Buy-rate breakdown inside calculator */
+.k9-buyrates{margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--color-divider)}
+.k9-buyrates__title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-faint);margin-bottom:var(--space-3)}
+.k9-buyrates__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+@media(min-width:640px){.k9-buyrates__grid{grid-template-columns:repeat(4,1fr)}}
+.k9-buyrate{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-3);text-align:center;transition:border-color var(--transition)}
+.k9-buyrate:hover{border-color:var(--color-gold-bright)}
+.k9-buyrate__channel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:var(--space-2);line-height:1.3}
+.k9-buyrate__value{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;line-height:1.1}
+.k9-buyrate__range{font-size:10px;color:var(--color-text-faint);margin-top:3px;font-variant-numeric:tabular-nums}
+
+/* ── WEIGHT TABLE ─────────────────────────────────────────────────────── */
+.k9-table-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm);margin-top:var(--space-4)}
+.k9-table-card__header{padding:var(--space-4) var(--space-5);border-bottom:1px solid var(--color-border);background:var(--color-surface-offset)}
+.k9-table-card__title{font-size:var(--text-base);font-weight:700;color:var(--color-text);display:flex;align-items:center;gap:var(--space-2);margin:0}
+.k9-table-card__title svg{color:var(--color-gold-bright);flex-shrink:0}
+.k9-table-card__sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1)}
+.k9-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.k9-data-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);min-width:480px}
+.k9-data-table th{text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-faint);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);background:var(--color-surface)}
+.k9-data-table th:not(:first-child){text-align:right}
+.k9-data-table td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+.k9-data-table td:first-child{color:var(--color-text);font-weight:600}
+.k9-data-table td:not(:first-child){text-align:right;color:var(--color-gold-bright);font-weight:600}
+.k9-data-table tr:last-child td{border-bottom:none}
+.k9-data-table tr:hover td{background:var(--color-surface-offset)}
+.k9-data-table caption{padding:var(--space-3) var(--space-4);text-align:left;font-size:var(--text-xs);color:var(--color-text-faint);caption-side:bottom}
+.k9-data-table .row-highlight td{background:color-mix(in oklch,var(--color-gold-bright) 5%,transparent)}
+.k9-data-table .row-highlight td:first-child::after{content:" \2605";color:var(--color-gold-bright);font-size:.85em}
+
+/* ── KARAT COMPARISON ─────────────────────────────────────────────────── */
+.k9-karat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--space-3);margin-top:var(--space-4)}
+.k9-karat{position:relative;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);overflow:hidden;transition:border-color var(--transition),box-shadow var(--transition);text-decoration:none;color:inherit;display:block}
+.k9-karat:hover{border-color:var(--color-gold-bright);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.k9-karat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--karat-shade,var(--color-gold-bright));opacity:.7}
+.k9-karat--9k{--karat-shade:#c9962c}
+.k9-karat--10k{--karat-shade:#d6a435}
+.k9-karat--14k{--karat-shade:#e0b144}
+.k9-karat--18k{--karat-shade:#ecbe55}
+.k9-karat--22k{--karat-shade:#f5cc6a}
+.k9-karat--24k{--karat-shade:#f7d77d}
+.k9-karat.is-current{border-color:var(--color-gold-bright);box-shadow:0 0 0 2px color-mix(in oklch,var(--color-gold-bright) 22%,transparent)}
+.k9-karat.is-current::after{content:'YOU ARE HERE';position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;letter-spacing:.08em;padding:3px 7px;border-radius:var(--radius-full);background:var(--color-gold-bright);color:#0f0e0c}
+.k9-karat__title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);letter-spacing:-.01em}
+.k9-karat__hallmark{font-size:var(--text-xs);font-weight:700;color:var(--color-text-muted);letter-spacing:.08em;margin-top:2px}
+.k9-karat__bar{height:5px;background:var(--color-surface-offset);border-radius:var(--radius-full);margin:var(--space-3) 0;position:relative;overflow:hidden}
+.k9-karat__bar-fill{position:absolute;top:0;left:0;bottom:0;background:linear-gradient(90deg,var(--karat-shade,var(--color-gold-bright)) 0%,color-mix(in oklch,var(--karat-shade,var(--color-gold-bright)) 60%,white) 100%);border-radius:var(--radius-full)}
+.k9-karat__pct{font-size:11px;font-weight:600;color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+.k9-karat__price{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-gold-bright);margin-top:var(--space-3);font-variant-numeric:tabular-nums}
+.k9-karat__use{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1);line-height:1.4}
+
+/* ── HISTORICAL CHART ─────────────────────────────────────────────────── */
+.k9-chart-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-4);box-shadow:var(--shadow-sm);margin-top:var(--space-4)}
+@media(min-width:640px){.k9-chart-card{padding:var(--space-6)}}
+.k9-chart-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-5)}
+.k9-chart-title-wrap{display:flex;align-items:center;gap:var(--space-3);min-width:0}
+.k9-chart-title-wrap svg{color:var(--color-gold-bright);flex-shrink:0}
+.k9-chart-title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:0}
+.k9-chart-title-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:2px;display:block}
+.k9-chart-toggle{display:flex;gap:2px;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:3px}
+.k9-chart-toggle button{padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--color-text-muted);background:transparent;border:none;border-radius:var(--radius-sm);cursor:pointer;min-height:32px;transition:all var(--transition)}
+.k9-chart-toggle button:hover{color:var(--color-text)}
+.k9-chart-toggle button.active{background:var(--color-gold-bright);color:#0f0e0c}
+.k9-chart-wrap{position:relative;height:260px}
+@media(min-width:640px){.k9-chart-wrap{height:340px}}
+.k9-chart-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-size:var(--text-sm)}
+.k9-chart-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--color-divider)}
+@media(min-width:640px){.k9-chart-stats{grid-template-columns:repeat(4,1fr);gap:var(--space-4)}}
+.k9-chart-stat{text-align:center;padding:var(--space-2) 0}
+.k9-chart-stat__label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-muted);margin-bottom:var(--space-1)}
+.k9-chart-stat__value{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.01em;line-height:1.1}
+.k9-chart-stat__value.is-low{color:#4ade80}
+.k9-chart-stat__value.is-high{color:#f87171}
+
+/* ── EDITORIAL PROSE ──────────────────────────────────────────────────── */
+.k9-content{margin-top:var(--space-10);max-width:72ch;margin-left:auto;margin-right:auto}
+.k9-prose p{margin-bottom:var(--space-4);color:var(--color-text-muted);line-height:1.78;font-size:var(--text-base)}
+.k9-prose p strong{color:var(--color-text);font-weight:700}
+.k9-prose ul,.k9-prose ol{padding-left:var(--space-5);margin-bottom:var(--space-5);color:var(--color-text-muted);line-height:1.75}
+.k9-prose li{margin-bottom:var(--space-2);line-height:1.7}
+.k9-prose li::marker{color:var(--color-gold)}
+.k9-prose a{color:var(--color-primary);text-decoration:underline;text-decoration-color:transparent}
+.k9-prose a:hover{text-decoration-color:currentColor}
+.k9-prose h3{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-top:var(--space-6);margin-bottom:var(--space-3);line-height:1.3}
+.k9-prose blockquote{margin:var(--space-6) 0;padding:var(--space-4) var(--space-5);background:var(--color-surface-offset);border-left:3px solid var(--color-gold-bright);border-radius:0 var(--radius-md) var(--radius-md) 0;font-style:normal;color:var(--color-text)}
+.k9-prose blockquote strong{color:var(--color-gold-bright)}
+
+.k9-intro{font-size:clamp(1.0625rem,1.7vw,1.1875rem);color:var(--color-text);line-height:1.7;margin-bottom:var(--space-5)}
+.k9-intro::first-letter{font-family:var(--font-display);font-size:3.5em;font-weight:700;float:left;line-height:.85;margin:.08em .12em -.05em -.04em;color:var(--color-gold-bright)}
+
+.k9-pullquote{margin:var(--space-8) 0;padding:var(--space-5) var(--space-5) var(--space-5) var(--space-6);border-left:3px solid var(--color-gold-bright);font-family:var(--font-display);font-size:clamp(1.125rem,1.9vw,1.375rem);font-weight:500;color:var(--color-text);line-height:1.5;letter-spacing:-.01em;background:color-mix(in oklch,var(--color-gold-bright) 4%,transparent);border-radius:0 var(--radius-md) var(--radius-md) 0}
+.k9-pullquote cite{display:block;margin-top:var(--space-2);font-family:var(--font-body);font-size:var(--text-xs);font-style:normal;font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em}
+
+.k9-formula{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);margin:var(--space-5) 0;text-align:center}
+.k9-formula__label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-muted);margin-bottom:var(--space-3)}
+.k9-formula__body{font-family:var(--font-display);font-size:clamp(.95rem,2vw,1.1875rem);color:var(--color-text);font-weight:500;line-height:1.5;letter-spacing:-.005em}
+.k9-formula__body em{color:var(--color-gold-bright);font-style:normal;font-weight:700}
+
+.k9-callout{position:relative;padding:var(--space-5);background:linear-gradient(135deg,color-mix(in oklch,#3b82f6 10%,var(--color-surface)) 0%,var(--color-surface) 65%);border:1px solid color-mix(in oklch,#3b82f6 28%,var(--color-border));border-radius:var(--radius-lg);margin:var(--space-6) 0;overflow:hidden}
+.k9-callout::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#3b82f6}
+.k9-callout__top{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3)}
+.k9-callout__icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-sm);background:color-mix(in oklch,#3b82f6 22%,transparent);color:#60a5fa;flex-shrink:0}
+.k9-callout__title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:0;line-height:1.3}
+.k9-callout__body{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin:0}
+.k9-callout__body strong{color:var(--color-text);font-weight:700}
+.k9-callout__body p+p{margin-top:var(--space-3)}
+
+/* Comparison cards (9K vs 10K) */
+.k9-compare-grid{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin:var(--space-5) 0}
+@media(min-width:560px){.k9-compare-grid{grid-template-columns:1fr 1fr}}
+.k9-compare-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);position:relative;overflow:hidden}
+.k9-compare-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cmp-shade,var(--color-gold-bright))}
+.k9-compare-card--9k{--cmp-shade:#c9962c}
+.k9-compare-card--10k{--cmp-shade:#d6a435}
+.k9-compare-card__head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-2);margin-bottom:var(--space-3)}
+.k9-compare-card__karat{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-text);letter-spacing:-.01em}
+.k9-compare-card__flag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted)}
+.k9-compare-card dl{display:grid;grid-template-columns:auto 1fr;gap:var(--space-2) var(--space-3);margin:0}
+.k9-compare-card dt{font-size:var(--text-xs);font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.06em;line-height:1.4}
+.k9-compare-card dd{font-size:var(--text-sm);color:var(--color-text);font-weight:600;margin:0;line-height:1.4}
+
+/* ── FAQ ACCORDION ────────────────────────────────────────────────────── */
+.k9-faq{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-4)}
+.k9-faq details{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color var(--transition)}
+.k9-faq details[open]{border-color:var(--color-gold-bright);box-shadow:var(--shadow-sm)}
+.k9-faq summary{padding:var(--space-4) var(--space-5);cursor:pointer;font-weight:600;font-size:var(--text-sm);color:var(--color-text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);min-height:56px;line-height:1.4}
+.k9-faq summary::-webkit-details-marker{display:none}
+.k9-faq summary::after{content:'';width:10px;height:10px;border-right:2px solid var(--color-text-muted);border-bottom:2px solid var(--color-text-muted);transform:rotate(45deg);transition:transform .2s ease;flex-shrink:0;margin-top:-3px}
+.k9-faq details[open] summary::after{transform:rotate(-135deg);margin-top:3px;border-color:var(--color-gold-bright)}
+.k9-faq summary:hover{background:var(--color-surface-offset)}
+.k9-faq .faq-body{padding:0 var(--space-5) var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7}
+.k9-faq .faq-body p{margin:0}
+.k9-faq .faq-body strong{color:var(--color-text)}
+
+/* ── DISCLAIMER ───────────────────────────────────────────────────────── */
+.k9-disclaimer{font-size:var(--text-xs);color:var(--color-text-faint);line-height:1.6;margin-top:var(--space-6);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-text-faint)}
+.k9-disclaimer strong{color:var(--color-text-muted)}
+
+/* ── SHARE BUTTONS ────────────────────────────────────────────────────── */
+.k9-share{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin:var(--space-8) auto var(--space-4);padding-top:var(--space-6);border-top:1px solid var(--color-border);max-width:72ch}
+.k9-share span{font-size:var(--text-sm);font-weight:600;color:var(--color-text-faint);margin-right:var(--space-1)}
+.k9-share a{display:inline-flex;align-items:center;gap:6px;padding:var(--space-2) var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);text-decoration:none;transition:border-color .15s,color .15s,background .15s;background:var(--color-surface);min-height:36px}
+.k9-share a:hover{border-color:var(--color-primary);color:var(--color-primary);background:var(--color-surface-offset);text-decoration:none}
+.k9-share a svg{flex-shrink:0}
+
+/* ── REVEAL ON SCROLL ─────────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.live-dot,.k9-chip__dot,.k9-spot-tile__dot{animation:none!important}}
+
+/* ── RELATED GUIDES ───────────────────────────────────────────────────── */
+.related-guides{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-12) var(--space-4)}
+.container{max-width:1100px;margin:0 auto}
+.related-guides .container>h2{font-size:clamp(1.25rem,2vw,1.5rem);font-weight:700;margin-bottom:var(--space-6);color:var(--color-text)}
+.related-guides-grid{display:grid;grid-template-columns:1fr;gap:var(--space-4)}
+@media(min-width:560px){.related-guides-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.related-guides-grid{grid-template-columns:repeat(3,1fr)}}
+.related-card{display:flex;flex-direction:column;gap:var(--space-2);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);text-decoration:none;transition:border-color .15s,box-shadow .15s;min-height:140px;color:var(--color-text)}
+.related-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-sm);text-decoration:none}
 .related-card:hover .related-card__title{color:var(--color-primary)}
 .related-card__tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright)}
 .related-card__title{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin:var(--space-1) 0}
 .related-card__desc{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.55}
 
-/* ── Share buttons ── */
-.share-buttons{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin:var(--space-8) 0 var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--color-border)}
-.share-buttons span{font-size:var(--text-sm);font-weight:600;color:var(--color-text-faint);margin-right:var(--space-1)}
-.share-buttons a{display:inline-flex;align-items:center;gap:6px;padding:var(--space-2) var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-full,9999px);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);text-decoration:none;transition:border-color .15s,color .15s,background .15s;background:var(--color-surface)}
-.share-buttons a:hover{border-color:var(--color-primary);color:var(--color-primary);background:var(--color-surface-offset)}
-.share-buttons a svg{flex-shrink:0}
+/* ── FOOTER (shared) ──────────────────────────────────────────────────── */
+footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-10) 0 0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr repeat(4,auto);gap:var(--space-8);align-items:start}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}.footer-brand-col{grid-column:1/-1}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr 1fr;gap:var(--space-4)}}
+.footer-brand-col{max-width:260px}
+.footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
+.footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
+.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.footer-col li{margin:0}
+.footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;transition:color .12s}
+.footer-col a:hover{color:var(--color-text)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
+.footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}
+
+#googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
+
 </style>
 
 <script type="application/ld+json">
@@ -534,6 +536,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </div>
   </div>
 </nav>
+
 <div class="breadcrumb-wrap">
   <ol class="breadcrumb" aria-label="Breadcrumb">
     <li><a href="/">Home</a></li>
@@ -541,200 +544,546 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </ol>
 </div>
 
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-tag">Live Gold Price</div>
-    <h1 class="hero-title">9K Gold Price Per Gram Today</h1>
-    <p class="hero-sub">9 karat gold is 37.5% pure gold. Live price updated every 60 seconds from LBMA spot market.</p>
-  </div>
-  <div class="price-card">
-    <div class="price-label">9K Gold &mdash; Price Per Gram</div>
-    <div class="price-value" id="price-gbp" data-nosnippet>&mdash;</div>
-    <div class="price-usd" id="price-usd" data-nosnippet></div>
-    <div class="price-purity">9K = 37.5% pure gold (375 hallmark)</div>
-  </div>
-  </div><!-- /hero-left -->
-</div>
+<main class="k9-page">
+  <!-- ═══ HERO ═══ -->
+  <header class="k9-hero">
+    <span class="k9-hero__eyebrow"><span class="live-dot" aria-hidden="true"></span>Live Market Data &middot; LBMA Spot</span>
+    <h1>9K <span class="gold">Gold Price</span><br>Per Gram Today</h1>
+    <p class="k9-hero__sub">9 karat gold is <strong>37.5% pure</strong> &mdash; the UK's minimum legal hallmark, marked <strong>375</strong>. The live melt value updates every 60 seconds from the LBMA spot market.</p>
+  </header>
 
-<div class="content">
-  <div class="trust-bar">Live prices sourced from LBMA spot market via gold-api.com &middot; Updated every 60 seconds &middot; <a href="/about">About our data</a></div>
-
-  <div class="prose">
-    <h2>What is 9K Gold?</h2>
-    <p>9K gold contains 9 parts gold out of 24 &mdash; a purity of <strong>37.5%</strong>. It is the most popular gold alloy for jewellery in the United States and is widely used for engagement rings and wedding bands. The hallmark you will see on European and UK pieces is <strong>375</strong>. On American pieces you will see <strong>9K</strong> or <strong>9KT</strong>.</p>
-
-    <h2 id="q1-9K">How much is a gram of 9k gold worth?</h2>
-<p class="snippet-answer">9K gold is worth approximately <span id="snippet-price" data-nosnippet>[current spot price]</span> per gram today. This value is calculated by multiplying the live 24K spot price by 0.375, which represents the 37.5% gold purity of 9 karat gold. Dealers typically pay less than this melt value.</p>
-
-<h2 id="q2-9K">What is 9k gold?</h2>
-<p class="snippet-answer">9K gold is an alloy containing 14 parts pure gold out of 24, giving it a purity of 37.5%. It is the most popular gold alloy for jewellery in the United States, offering a great balance of durability, beautiful colour, and lasting value.</p>
-
-<h2 id="q3-9K">What does 375 mean on gold?</h2>
-<p class="snippet-answer">The 375 hallmark on gold indicates that the item is made of 9 karat gold. The number represents the gold's purity, showing it contains 375 parts pure gold per 1000, which equals 58.5% (or 37.5% standard). This is the common British hallmark for 9K.</p>
-
-<h2>9K Gold Price Table</h2>
-    <figure itemscope itemtype="https://schema.org/Table">
-      <figcaption>9K gold price per gram in GBP and USD — live, updated every 60 seconds</figcaption>
-      <!-- STATIC-FIRST: Table structure pre-rendered for SEO; prices are JS-updated -->
-      <div class="data-table-wrap"><table class="data-table" aria-label="9K gold price by weight">
-        <thead><tr><th>Weight</th><th>GBP (live)</th><th>USD (live)</th><th>INR (live)</th></tr></thead>
-        <tbody>
-          <tr><td>0.5g</td><td id="t-0-5-gbp" data-nosnippet>&mdash;</td><td id="t-0-5-usd" data-nosnippet>&mdash;</td><td id="t-0-5-inr" data-nosnippet>&mdash;</td></tr>
-          <tr><td>1g</td><td id="t-1-gbp" data-nosnippet>&mdash;</td><td id="t-1-usd" data-nosnippet>&mdash;</td><td id="t-1-inr" data-nosnippet>&mdash;</td></tr>
-          <tr><td>2g</td><td id="t-2-gbp" data-nosnippet>&mdash;</td><td id="t-2-usd" data-nosnippet>&mdash;</td><td id="t-2-inr" data-nosnippet>&mdash;</td></tr>
-          <tr><td>5g</td><td id="t-5-gbp" data-nosnippet>&mdash;</td><td id="t-5-usd" data-nosnippet>&mdash;</td><td id="t-5-inr" data-nosnippet>&mdash;</td></tr>
-          <tr><td>10g</td><td id="t-10-gbp" data-nosnippet>&mdash;</td><td id="t-10-usd" data-nosnippet>&mdash;</td><td id="t-10-inr" data-nosnippet>&mdash;</td></tr>
-          <tr><td>20g</td><td id="t-20-gbp" data-nosnippet>&mdash;</td><td id="t-20-usd" data-nosnippet>&mdash;</td><td id="t-20-inr" data-nosnippet>&mdash;</td></tr>
-          <tr><td>1 <a href="/how-many-grams-in-troy-ounce">troy oz</a> (31.1g)</td><td id="t-31-gbp" data-nosnippet>&mdash;</td><td id="t-31-usd" data-nosnippet>&mdash;</td><td id="t-31-inr" data-nosnippet>&mdash;</td></tr>
-        </tbody>
-      </table></div>
-    </figure>
-
-    <h2>How Is the 9K Gold Price Calculated?</h2>
-    <p>The 9K gold price per gram is derived from the 24K (pure) gold spot price using the formula: <strong>9K price/g = 24K spot price per troy oz &divide; 31.1035 &times; 0.375</strong>. The spot price is set by the London Bullion Market Association (LBMA) twice daily. Our calculator fetches this price in real time and converts it to GBP using the live GBP/USD exchange rate.</p>
-
-    <h2>9K vs Other Karats</h2>
-    <figure itemscope itemtype="https://schema.org/Table">
-      <figcaption>Gold karat comparison — purity, hallmark, and typical use</figcaption>
-      <!-- STATIC-FIRST: Table structure pre-rendered for SEO; prices are JS-updated -->
-      <div class="data-table-wrap"><table class="data-table" aria-label="Gold karat comparison">
-        <thead><tr><th>Karat</th><th>Purity</th><th>Hallmark</th><th>Typical Use</th></tr></thead>
-        <tbody>
-          <tr><td><strong>9K</strong></td><td><strong>37.5%</strong></td><td><strong>375</strong></td><td><strong>UK everyday jewellery</strong></td></tr>
-          <tr><td>14K</td><td>58.33%</td><td>585</td><td>US engagement rings</td></tr>
-          <tr><td>18K</td><td>75.0%</td><td>750</td><td>Fine jewellery, luxury watches</td></tr>
-          <tr><td>22K</td><td>91.67%</td><td>916</td><td>South Asian bridal gold</td></tr>
-          <tr><td>24K</td><td>99.9%</td><td>999</td><td>Bullion coins and bars</td></tr>
-        </tbody>
-      </table></div>
-    </figure>
-
-    <h2>9K Purity Table</h2>
-<div class="data-table-wrap"><table class="data-table" aria-label="Karat purity and indicative prices">
-<thead><tr><th>Karat</th><th>Purity</th><th>GBP/gram</th><th>USD/gram</th></tr></thead>
-<tbody>
-<tr><td>24K</td><td>99.9%</td><td>--</td><td>--</td></tr>
-<tr><td>18K</td><td>75.0%</td><td>--</td><td>--</td></tr>
-<tr><td>9K</td><td>37.5%</td><td>--</td><td>--</td></tr>
-<tr><td>10K</td><td>41.7%</td><td>--</td><td>--</td></tr>
-<tr><td>9K</td><td>37.5%</td><td>--</td><td>--</td></tr>
-</tbody>
-</table></div>
-
-    
-    <h2>What is 9K Gold?</h2>
-    <p>9K gold contains 9 parts pure gold out of 24 parts, giving it a purity of <strong>37.50%</strong>. The hallmark stamp you will find on 9K items is <strong>375</strong>, which represents 37.5 parts per thousand of pure gold. 9K gold is the minimum legal standard for gold in the UK under the Hallmarking Act 1973. Despite its lower purity, it is highly durable and widely used in high-street jewellery.</p>
-    <p>9K gold is commonly used for UK everyday jewellery, entry-level rings and chains. When you buy or sell 9K jewellery, the price you receive is calculated directly from the live gold spot price multiplied by the purity factor of 0.375.</p>
-
-    <h2>How to Calculate the 9K Gold Price Per Gram</h2>
-    <p>The formula for the 9K gold price per gram is straightforward:</p>
-    <blockquote><strong>9K price per gram = (Spot price per troy oz ÷ 31.1035) × 0.375</strong></blockquote>
-    <p>For example, if the gold spot price is $3,300 per troy ounce:</p>
-    <ul>
-      <li>Price per gram of pure gold = $3,300 ÷ 31.1035 = <strong>$106.10</strong></li>
-      <li>9K price per gram = $106.10 × 0.375 = <strong>$39.79</strong></li>
-    </ul>
-    <p>This is the <em>melt value</em> — the intrinsic gold content value. Jewellers, dealers, and pawnbrokers typically pay between 70%–95% of melt value when buying, depending on condition and local market demand. When selling, retailers add a <em>premium</em> of 10%–30% above melt value.</p>
-
-    <h2>The 375 Hallmark Explained</h2>
-    <p>In the UK, all gold items above a certain weight must be independently tested and stamped by one of the four UK Assay Offices (London, Birmingham, Sheffield, or Edinburgh) under the Hallmarking Act 1973. The <strong>375 hallmark</strong> guarantees that the item contains at least 37.50% pure gold. It is illegal under UK law to describe or sell an item as gold if it does not carry an approved hallmark.</p>
-    <p>On older or imported items, you may also see the hallmark written as <strong>.375</strong> or stamped alongside a date letter and assay office mark. When appraising estate jewellery, always check for the 375 stamp before calculating value.</p>
-
-    <h2>Why 9K Gold Dominates the UK High Street</h2>
-    <p>9K gold holds a <strong>unique position in the global jewellery market</strong>. While most countries set their minimum legal gold standard at 10K (US), 14K (much of Europe), or even 18K (France, Italy), the UK’s minimum is 9K — established by the <strong>Hallmarking Act 1973</strong>. This has shaped the entire UK jewellery industry:</p>
-    <ul>
-      <li><strong>Affordability</strong> — 9K gold contains only 37.5% pure gold, making it significantly cheaper than <a href="/14k-gold-price-per-gram">14K</a> (58.3%) or <a href="/18k-gold-price-per-gram">18K</a> (75%). A 9K ring weighing 5g contains just 1.875g of pure gold, compared to 3.75g in an 18K ring of the same weight.</li>
-      <li><strong>Exceptional durability</strong> — With 62.5% of its composition being alloy metals (typically copper, silver, and zinc), 9K gold is the <strong>hardest and most scratch-resistant</strong> gold alloy. It’s ideal for rings, bracelets, and chains that endure daily wear.</li>
-      <li><strong>Market dominance</strong> — Major UK high-street chains including H. Samuel, Ernest Jones, Goldsmiths, and Argos stock predominantly 9K gold in their entry-to-mid-range collections. An estimated 60–70% of gold jewellery sold in UK shops is 9K.</li>
-      <li><strong>Colour difference</strong> — 9K yellow gold has a noticeably lighter, paler yellow compared to 18K or 22K. Some buyers prefer this subtler tone; others find it less “golden.” 9K rose gold and white gold are also popular and maintain excellent colour stability.</li>
-    </ul>
-
-    <h2>9K Gold and the UK Scrap Gold Economy</h2>
-    <p>Because 9K is the most common gold alloy in UK households, it dominates the <strong>scrap gold recycling market</strong>. The economics of selling 9K scrap are different from higher karats:</p>
-    <ul>
-      <li><strong>Lower per-gram value</strong> — At 37.5% purity, a gram of 9K gold is worth roughly half of a gram of <a href="/18k-gold-price-per-gram">18K gold</a>. This means you need more weight to reach the same total value. A typical 9K chain (15–25g) might have a melt value of £225–£375 at current prices.</li>
-      <li><strong>Higher processing margins</strong> — Refiners incur higher costs processing 9K scrap because 62.5% of the material is base metal that must be separated. This is why buy rates for 9K scrap tend to be slightly lower (as a percentage of melt) than for higher karats.</li>
-      <li><strong>Typical UK buy rates for 9K scrap</strong>:</li>
-    </ul>
-    <ul>
-      <li>Online specialist gold buyers: <strong>80–90%</strong> of melt value</li>
-      <li>High-street jewellers: <strong>65–80%</strong> of melt value</li>
-      <li>Pawnbrokers: <strong>45–65%</strong> of melt value</li>
-      <li>Postal gold-buying services: <strong>35–60%</strong> of melt value</li>
-    </ul>
-    <p>Always use our <a href="/scrap-gold-calculator">scrap gold calculator</a> to check the melt value before selling, and get quotes from at least three buyers. The difference between the best and worst offers can be 30%+ on 9K gold.</p>
-
-    <h2>9K vs 10K Gold: UK vs US Standards</h2>
-    <p>9K (375) and <a href="/10k-gold-price-per-gram">10K</a> (417) gold are often compared as they serve similar roles in their respective markets — affordable, durable, entry-level gold jewellery. Here’s how they differ:</p>
-    <ul>
-      <li><strong>Legal status</strong> — 9K is the minimum standard in the UK, Ireland, Australia, and New Zealand. 10K is the minimum in the US and Canada. In France and Italy, neither would legally qualify as "gold" (minimum 18K required).</li>
-      <li><strong>Price difference</strong> — 10K gold contains 41.7% gold vs 9K’s 37.5% — about 11% more gold per gram. This is reflected in the per-gram price.</li>
-      <li><strong>Durability</strong> — Both are excellent for daily wear. 9K is marginally harder due to higher alloy content, but the difference is negligible in practice.</li>
-      <li><strong>Resale</strong> — In the UK, 9K has strong resale because dealers expect it. Selling 10K in the UK can be slightly harder as it’s less common in the domestic market, though any gold buyer will accept it based on weight and purity.</li>
-    </ul>
-
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-card">
-      <h3 class="faq-answer-summary">How do I convert the 9K gold price from troy ounces to grams?</h3>
-      <p class="faq-answer">There are 31.1035 grams in one troy ounce. Divide the spot price (in any currency) by 31.1035 to get the price per gram of pure gold, then multiply by 0.375 to get the 9K price per gram. Our live calculator above does this automatically.</p>
+  <!-- ═══ PRIMARY PRICE CARD ═══ -->
+  <section class="k9-primary" aria-label="Live 9K gold price per gram">
+    <div class="k9-primary__body">
+      <div class="k9-primary__label">9K Gold &mdash; Per Gram</div>
+      <div class="k9-primary__number" aria-live="polite">
+        <span id="price-gbp" data-nosnippet>&mdash;</span>
+      </div>
+      <p class="k9-primary__unit">Live melt value &middot; per gram</p>
+      <div class="k9-primary__secondary">
+        <span>USD</span>
+        <strong id="price-usd" data-nosnippet>&mdash;</strong>
+      </div>
+      <div class="k9-primary__chips">
+        <span class="k9-chip k9-chip--gold"><span class="k9-chip__dot" aria-hidden="true"></span>9K &middot; 37.5% Pure</span>
+        <span class="k9-chip">Hallmark 375</span>
+        <span class="k9-chip" id="last-updated">Updating&hellip;</span>
+      </div>
     </div>
-    <div class="faq-card">
-      <h3 class="faq-answer-summary">What is the difference between 9K gold and gold-filled or gold-plated?</h3>
-      <p class="faq-answer">Solid 9K gold contains 37.50% pure gold throughout the item. Gold-filled has a layer of 9K gold mechanically bonded to a base metal core — it contains far less gold by weight. Gold-plated items have only a thin electroplated layer of gold, typically less than 0.05% of the item's total weight. Only solid 9K gold carries the 375 hallmark and has significant melt value.</p>
+    <div class="k9-spot-tiles" role="group" aria-label="Reference spot prices">
+      <div class="k9-spot-tile">
+        <div class="k9-spot-tile__label"><span class="k9-spot-tile__dot k9-spot-tile__dot--24k" aria-hidden="true"></span>24K Spot</div>
+        <div id="spot-24k-display" class="k9-spot-tile__value k9-spot-tile__value--gold">&mdash;</div>
+        <div class="k9-spot-tile__sub">per troy ounce &middot; USD</div>
+      </div>
+      <div class="k9-spot-tile">
+        <div class="k9-spot-tile__label"><span class="k9-spot-tile__dot k9-spot-tile__dot--9k" aria-hidden="true"></span>9K Conversion</div>
+        <div id="spot-9k-display" class="k9-spot-tile__value">&times;0.375</div>
+        <div class="k9-spot-tile__sub">9 parts gold &divide; 24</div>
+      </div>
     </div>
-    <div class="faq-card">
-      <h3 class="faq-answer-summary">Why does the 9K gold price per gram vary between different websites?</h3>
-      <p class="faq-answer">Small differences between sites reflect the timing of their data feed, the spot price source used (LBMA, COMEX, or OTC), and whether they include the GBP/USD exchange rate at slightly different timestamps. GoldPriceTools fetches live prices from gold-api.com and currency rates from the Frankfurter API, both updated every 60 seconds.</p>
-    </div>
+  </section>
 
-    <div class="disclaimer"><strong>Disclaimer:</strong> Prices shown are indicative melt values only and do not constitute financial advice. Dealer buy prices are typically 70&ndash;90% of melt value. Always verify with your dealer before selling.</div>
+  <p class="k9-source">
+    <span>Prices sourced from LBMA via gold-api.com</span>
+    <span class="k9-source__sep">&middot;</span>
+    <span>FX via Frankfurter</span>
+    <span class="k9-source__sep">&middot;</span>
+    <a href="/about">About our data</a>
+  </p>
+
+  <!-- ═══ PURITY VISUALIZATION ═══ -->
+  <section class="k9-purity reveal" aria-label="9K gold purity breakdown">
+    <div class="k9-purity__card">
+      <div class="k9-purity__header">
+        <div class="k9-purity__eyebrow">Composition</div>
+        <h2 class="k9-purity__title">What's Inside 1 Gram of 9K Gold?</h2>
+      </div>
+      <div class="k9-purity__grid">
+        <div class="k9-donut" role="img" aria-label="9K gold purity ring: 37.5 percent pure gold, 62.5 percent alloy metals">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="var(--color-surface-offset)" stroke-width="14"/>
+            <circle cx="50" cy="50" r="42" fill="none" stroke="url(#k9-grad)" stroke-width="14" stroke-dasharray="98.96 263.89" stroke-dashoffset="0" stroke-linecap="butt"/>
+            <defs>
+              <linearGradient id="k9-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e8af34"/>
+                <stop offset="100%" stop-color="#b07a00"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="k9-donut__center">
+            <div class="k9-donut__hallmark">375</div>
+            <div class="k9-donut__pct">37.5% pure</div>
+            <div class="k9-donut__label">UK Hallmark</div>
+          </div>
+        </div>
+        <div class="k9-purity__breakdown">
+          <div class="k9-breakdown-row">
+            <span class="k9-breakdown-swatch k9-breakdown-swatch--gold" aria-hidden="true"></span>
+            <div>
+              <div class="k9-breakdown-name">Pure gold (Au)</div>
+              <div class="k9-breakdown-sub">9 parts out of 24 &middot; spot-priced</div>
+            </div>
+            <div class="k9-breakdown-val">0.375 g</div>
+          </div>
+          <div class="k9-breakdown-row">
+            <span class="k9-breakdown-swatch k9-breakdown-swatch--alloy" aria-hidden="true"></span>
+            <div>
+              <div class="k9-breakdown-name">Alloy metals</div>
+              <div class="k9-breakdown-sub">Copper, silver, zinc &middot; for durability</div>
+            </div>
+            <div class="k9-breakdown-val">0.625 g</div>
+          </div>
+          <div class="k9-breakdown-row">
+            <span style="width:18px;height:18px;border-radius:6px;background:linear-gradient(135deg,#4ade80,#16a34a);box-shadow:0 0 12px color-mix(in oklch,#4ade80 50%,transparent)" aria-hidden="true"></span>
+            <div>
+              <div class="k9-breakdown-name">Pure gold value</div>
+              <div class="k9-breakdown-sub">Melt value of the gold content only</div>
+            </div>
+            <div class="k9-breakdown-val" id="purity-pure-value">&mdash;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CALCULATOR ═══ -->
+  <div class="k9-section-h" id="calculator">
+    <span class="k9-section-h__icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+    </span>
+    <h2 class="k9-section-h__text">9K Gold Melt Value Calculator</h2>
   </div>
-</div>
+  <section class="k9-calc reveal" aria-label="9K gold melt value calculator">
+    <div class="k9-calc__header">
+      <h3 class="k9-calc__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Enter weight to get instant value
+      </h3>
+      <div id="k9-currency-toggle" class="k9-currency-toggle" role="group" aria-label="Currency selector">
+        <button type="button" data-currency="GBP" class="active">GBP</button>
+        <button type="button" data-currency="USD">USD</button>
+        <button type="button" data-currency="EUR">EUR</button>
+        <button type="button" data-currency="INR">INR</button>
+      </div>
+    </div>
+    <div class="k9-calc__body">
+      <div class="k9-calc__row">
+        <div class="k9-field">
+          <label class="k9-field__label" for="k9-input-weight">Weight</label>
+          <div class="k9-field__group">
+            <input type="number" id="k9-input-weight" class="k9-field__input" value="10" min="0" step="0.1" inputmode="decimal" aria-label="Item weight">
+            <span class="k9-field__suffix" id="k9-unit-suffix">G</span>
+          </div>
+        </div>
+        <div class="k9-field">
+          <label class="k9-field__label" for="k9-input-unit">Unit</label>
+          <div class="k9-field__group">
+            <select id="k9-input-unit" class="k9-field__select" aria-label="Weight unit">
+              <option value="g">Grams (g)</option>
+              <option value="oz">Troy ounce (oz)</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-<div class="content" style="padding-bottom:1.5rem">
-<!-- Social share buttons (WP-34) -->
-<div class="share-buttons">
-  <span>Share:</span>
-  <a href="https://twitter.com/intent/tweet?url=https://goldpricetools.com/9k-gold-price-per-gram&text=9K+Gold+Price+Per+Gram+Today+%28Live%29" rel="nofollow noreferrer noopener" target="_blank" data-platform="twitter" aria-label="Share on X / Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.258 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg> X</a>
-  <a href="https://www.reddit.com/submit?url=https://goldpricetools.com/9k-gold-price-per-gram&title=9K+Gold+Price+Per+Gram+Today+%28Live%29" rel="nofollow noreferrer noopener" target="_blank" data-platform="reddit" aria-label="Share on Reddit"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg> Reddit</a>
-  <a href="https://api.whatsapp.com/send?text=9K+Gold+Price+Per+Gram+Today+%28Live%29%20https%3A%2F%2Fgoldpricetools.com%2F9k-gold-price-per-gram" rel="nofollow noreferrer noopener" target="_blank" data-platform="whatsapp" aria-label="Share on WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
-</div>
-</div>
+      <div class="k9-calc__result" role="status" aria-live="polite">
+        <div class="k9-calc__result-label">Estimated Melt Value</div>
+        <div class="k9-calc__result-value" id="k9-result">&mdash;</div>
+        <div class="k9-calc__result-sub" id="k9-result-sub">Enter weight above to calculate.</div>
+      </div>
 
-<!-- Related Guides Section -->
-<section class="related-guides" >
-  <div class="container" >
+      <div class="k9-presets" role="group" aria-label="Quick weight presets">
+        <span class="k9-presets__label">Quick presets &middot; typical 9K jewellery</span>
+        <button type="button" class="k9-preset" data-w="2">Ring &middot; 2 g</button>
+        <button type="button" class="k9-preset" data-w="5">Light chain &middot; 5 g</button>
+        <button type="button" class="k9-preset" data-w="10">Bracelet &middot; 10 g</button>
+        <button type="button" class="k9-preset" data-w="20">Chain &middot; 20 g</button>
+        <button type="button" class="k9-preset" data-w="50">Necklace &middot; 50 g</button>
+        <button type="button" class="k9-preset" data-w="100">100 g lot</button>
+      </div>
+
+      <div class="k9-buyrates" aria-label="Dealer buy-rate breakdown">
+        <div class="k9-buyrates__title">What dealers typically pay <span style="color:var(--color-text-faint);font-weight:600">(% of melt)</span></div>
+        <div class="k9-buyrates__grid">
+          <div class="k9-buyrate">
+            <div class="k9-buyrate__channel">Online specialist</div>
+            <div class="k9-buyrate__value" id="br-online">&mdash;</div>
+            <div class="k9-buyrate__range">80&ndash;90%</div>
+          </div>
+          <div class="k9-buyrate">
+            <div class="k9-buyrate__channel">High-street jeweller</div>
+            <div class="k9-buyrate__value" id="br-jeweller">&mdash;</div>
+            <div class="k9-buyrate__range">65&ndash;80%</div>
+          </div>
+          <div class="k9-buyrate">
+            <div class="k9-buyrate__channel">Pawnbroker</div>
+            <div class="k9-buyrate__value" id="br-pawn">&mdash;</div>
+            <div class="k9-buyrate__range">45&ndash;65%</div>
+          </div>
+          <div class="k9-buyrate">
+            <div class="k9-buyrate__channel">Postal service</div>
+            <div class="k9-buyrate__value" id="br-postal">&mdash;</div>
+            <div class="k9-buyrate__range">35&ndash;60%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LIVE WEIGHT TABLE ═══ -->
+  <div class="k9-section-h">
+    <span class="k9-section-h__icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+    </span>
+    <h2 class="k9-section-h__text">9K Gold Price by Weight</h2>
+  </div>
+  <section class="k9-table-card reveal" aria-label="9K gold price table">
+    <div class="k9-table-card__header">
+      <h3 class="k9-table-card__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Live values across common weights
+      </h3>
+      <div class="k9-table-card__sub">Updated every 60 seconds &middot; melt value only</div>
+    </div>
+    <div class="k9-table-wrap">
+      <figure itemscope itemtype="https://schema.org/Table" style="margin:0">
+        <table class="k9-data-table" aria-label="9K gold price by weight in multiple currencies">
+          <caption>9K gold price per gram in GBP, USD, EUR, and INR &mdash; live, updated every 60 seconds</caption>
+          <thead><tr><th scope="col">Weight</th><th scope="col">GBP</th><th scope="col">USD</th><th scope="col">EUR</th><th scope="col">INR</th></tr></thead>
+          <tbody>
+            <tr><td>0.5 g</td><td id="t-0-5-gbp" data-nosnippet>&mdash;</td><td id="t-0-5-usd" data-nosnippet>&mdash;</td><td id="t-0-5-eur" data-nosnippet>&mdash;</td><td id="t-0-5-inr" data-nosnippet>&mdash;</td></tr>
+            <tr class="row-highlight"><td>1 g</td><td id="t-1-gbp" data-nosnippet>&mdash;</td><td id="t-1-usd" data-nosnippet>&mdash;</td><td id="t-1-eur" data-nosnippet>&mdash;</td><td id="t-1-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>2 g</td><td id="t-2-gbp" data-nosnippet>&mdash;</td><td id="t-2-usd" data-nosnippet>&mdash;</td><td id="t-2-eur" data-nosnippet>&mdash;</td><td id="t-2-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>5 g</td><td id="t-5-gbp" data-nosnippet>&mdash;</td><td id="t-5-usd" data-nosnippet>&mdash;</td><td id="t-5-eur" data-nosnippet>&mdash;</td><td id="t-5-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>10 g</td><td id="t-10-gbp" data-nosnippet>&mdash;</td><td id="t-10-usd" data-nosnippet>&mdash;</td><td id="t-10-eur" data-nosnippet>&mdash;</td><td id="t-10-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>20 g</td><td id="t-20-gbp" data-nosnippet>&mdash;</td><td id="t-20-usd" data-nosnippet>&mdash;</td><td id="t-20-eur" data-nosnippet>&mdash;</td><td id="t-20-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>1 <a href="/how-many-grams-in-troy-ounce">troy oz</a> (31.1 g)</td><td id="t-31-gbp" data-nosnippet>&mdash;</td><td id="t-31-usd" data-nosnippet>&mdash;</td><td id="t-31-eur" data-nosnippet>&mdash;</td><td id="t-31-inr" data-nosnippet>&mdash;</td></tr>
+          </tbody>
+        </table>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══ KARAT COMPARISON ═══ -->
+  <div class="k9-section-h">
+    <span class="k9-section-h__icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    </span>
+    <h2 class="k9-section-h__text">9K Against Other Karats</h2>
+  </div>
+  <section class="reveal" aria-label="Karat comparison">
+    <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4);max-width:60ch">Each karat is a different gold content. Higher karat = more gold, higher price, lower durability. Live prices below.</p>
+    <div class="k9-karat-grid">
+      <a href="/9k-gold-price-per-gram" class="k9-karat k9-karat--9k is-current" aria-current="page">
+        <div class="k9-karat__title">9K</div>
+        <div class="k9-karat__hallmark">Hallmark 375</div>
+        <div class="k9-karat__bar"><div class="k9-karat__bar-fill" style="width:37.5%"></div></div>
+        <div class="k9-karat__pct">37.5% pure</div>
+        <div class="k9-karat__price" id="karat-9k-price">&mdash;</div>
+        <div class="k9-karat__use">UK everyday jewellery</div>
+      </a>
+      <a href="/10k-gold-price-per-gram" class="k9-karat k9-karat--10k">
+        <div class="k9-karat__title">10K</div>
+        <div class="k9-karat__hallmark">Hallmark 417</div>
+        <div class="k9-karat__bar"><div class="k9-karat__bar-fill" style="width:41.7%"></div></div>
+        <div class="k9-karat__pct">41.7% pure</div>
+        <div class="k9-karat__price" id="karat-10k-price">&mdash;</div>
+        <div class="k9-karat__use">US minimum standard</div>
+      </a>
+      <a href="/14k-gold-price-per-gram" class="k9-karat k9-karat--14k">
+        <div class="k9-karat__title">14K</div>
+        <div class="k9-karat__hallmark">Hallmark 585</div>
+        <div class="k9-karat__bar"><div class="k9-karat__bar-fill" style="width:58.3%"></div></div>
+        <div class="k9-karat__pct">58.3% pure</div>
+        <div class="k9-karat__price" id="karat-14k-price">&mdash;</div>
+        <div class="k9-karat__use">US engagement rings</div>
+      </a>
+      <a href="/18k-gold-price-per-gram" class="k9-karat k9-karat--18k">
+        <div class="k9-karat__title">18K</div>
+        <div class="k9-karat__hallmark">Hallmark 750</div>
+        <div class="k9-karat__bar"><div class="k9-karat__bar-fill" style="width:75%"></div></div>
+        <div class="k9-karat__pct">75% pure</div>
+        <div class="k9-karat__price" id="karat-18k-price">&mdash;</div>
+        <div class="k9-karat__use">Fine jewellery</div>
+      </a>
+      <a href="/22k-gold-price-per-gram" class="k9-karat k9-karat--22k">
+        <div class="k9-karat__title">22K</div>
+        <div class="k9-karat__hallmark">Hallmark 916</div>
+        <div class="k9-karat__bar"><div class="k9-karat__bar-fill" style="width:91.7%"></div></div>
+        <div class="k9-karat__pct">91.7% pure</div>
+        <div class="k9-karat__price" id="karat-22k-price">&mdash;</div>
+        <div class="k9-karat__use">South Asian bridal</div>
+      </a>
+      <a href="/24k-gold-price-per-gram" class="k9-karat k9-karat--24k">
+        <div class="k9-karat__title">24K</div>
+        <div class="k9-karat__hallmark">Hallmark 999</div>
+        <div class="k9-karat__bar"><div class="k9-karat__bar-fill" style="width:99.9%"></div></div>
+        <div class="k9-karat__pct">99.9% pure</div>
+        <div class="k9-karat__price" id="karat-24k-price">&mdash;</div>
+        <div class="k9-karat__use">Bullion bars &amp; coins</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ HISTORICAL CHART ═══ -->
+  <div class="k9-section-h">
+    <span class="k9-section-h__icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H4.6a.6.6 0 0 1-.6-.6V3"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+    </span>
+    <h2 class="k9-section-h__text">9K Price History</h2>
+  </div>
+  <section class="k9-chart-card reveal" aria-label="9K gold price historical chart">
+    <div class="k9-chart-header">
+      <div class="k9-chart-title-wrap">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
+        <div>
+          <h3 class="k9-chart-title">9K Gold &mdash; Per Gram (USD)</h3>
+          <span class="k9-chart-title-sub" id="k9-chart-range-label">Computed from XAU spot &times; 0.375 &divide; 31.1035</span>
+        </div>
+      </div>
+      <div id="k9-chart-toggle" class="k9-chart-toggle" role="group" aria-label="Time range">
+        <button type="button" data-range="1M">1M</button>
+        <button type="button" data-range="3M">3M</button>
+        <button type="button" data-range="1Y" class="active">1Y</button>
+        <button type="button" data-range="5Y">5Y</button>
+        <button type="button" data-range="10Y">10Y</button>
+      </div>
+    </div>
+    <div class="k9-chart-wrap">
+      <canvas id="k9-chart" aria-label="9K gold price per gram historical line chart"></canvas>
+      <div id="k9-chart-loader" class="k9-chart-loader">Loading historical data&hellip;</div>
+    </div>
+    <div class="k9-chart-stats">
+      <div class="k9-chart-stat"><div class="k9-chart-stat__label">Period Low</div><div id="k9-stat-low" class="k9-chart-stat__value is-low">&mdash;</div></div>
+      <div class="k9-chart-stat"><div class="k9-chart-stat__label">Period High</div><div id="k9-stat-high" class="k9-chart-stat__value is-high">&mdash;</div></div>
+      <div class="k9-chart-stat"><div class="k9-chart-stat__label">Period Average</div><div id="k9-stat-avg" class="k9-chart-stat__value">&mdash;</div></div>
+      <div class="k9-chart-stat"><div class="k9-chart-stat__label">Today vs Avg</div><div id="k9-stat-delta" class="k9-chart-stat__value">&mdash;</div></div>
+    </div>
+  </section>
+
+  <!-- ═══ EDITORIAL PROSE ═══ -->
+  <article class="k9-content">
+    <div class="k9-prose">
+
+      <div class="k9-section-h" style="margin-top:var(--space-8)">
+        <span class="k9-section-h__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </span>
+        <h2 class="k9-section-h__text">What Is 9K Gold?</h2>
+      </div>
+
+      <p class="k9-intro">9K gold contains <strong>9 parts pure gold out of 24</strong> &mdash; a purity of <strong>37.5%</strong>. It is the UK's minimum legal gold standard, set by the <strong>Hallmarking Act 1973</strong>, and the dominant gold alloy on British high streets. On UK and European pieces it is stamped <strong>375</strong>; on US pieces, <strong>9K</strong> or <strong>9KT</strong>.</p>
+
+      <p class="snippet-answer">9K gold is worth approximately <span id="snippet-price" data-nosnippet>the live price shown above</span> per gram today. This value is calculated by multiplying the live 24K spot price by 0.375, which represents the 37.5% gold purity of 9 karat gold. Dealers typically pay <strong>65&ndash;90%</strong> of this melt value when buying scrap, depending on the channel.</p>
+
+      <blockquote class="k9-pullquote">
+        &ldquo;The UK is the only major market that legally accepts 9K as gold. Everywhere else, the floor is 10K, 14K or higher.&rdquo;
+        <cite>&mdash; UK Hallmarking Act 1973</cite>
+      </blockquote>
+
+      <div class="k9-section-h">
+        <span class="k9-section-h__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </span>
+        <h2 class="k9-section-h__text">How the 9K Price Is Calculated</h2>
+      </div>
+      <p>9K gold has no spot market of its own &mdash; only pure (24K) gold trades on the LBMA. The per-gram value is derived from the 24K spot price using a simple formula:</p>
+
+      <div class="k9-formula">
+        <div class="k9-formula__label">Formula</div>
+        <div class="k9-formula__body">9K price/g <em>=</em> spot $/oz <em>&divide;</em> 31.1035 <em>&times;</em> 0.375</div>
+      </div>
+
+      <p>The two constants are fixed: <strong>31.1035 g</strong> per troy ounce, <strong>0.375</strong> for 37.5% purity. Only the spot price changes. We fetch it every 60 seconds from <strong>gold-api.com</strong>, then convert to GBP, EUR and INR using live FX from the <strong>Frankfurter</strong> rate API.</p>
+
+      <p>Example at <strong>$3,300/oz spot</strong>:</p>
+      <ul>
+        <li>Pure gold per gram = $3,300 &divide; 31.1035 = <strong>$106.10/g</strong></li>
+        <li>9K per gram = $106.10 &times; 0.375 = <strong>$39.79/g</strong></li>
+        <li>That is the <em>melt value</em>. Dealers pay a percentage of it (see calculator above).</li>
+      </ul>
+
+      <div class="k9-section-h">
+        <span class="k9-section-h__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <h2 class="k9-section-h__text">The 375 Hallmark</h2>
+      </div>
+      <p>In the UK, every gold item above <strong>1 g in weight</strong> must be tested and stamped by one of the four UK Assay Offices &mdash; <strong>London, Birmingham, Sheffield, or Edinburgh</strong> &mdash; before it can legally be sold as gold. The <strong>375</strong> mark guarantees a minimum of 37.5% pure gold. It is illegal to describe an item as gold without an approved hallmark.</p>
+      <p>On older or imported items, you may also see <strong>.375</strong>, stamped alongside a date letter and the assay office mark. When appraising estate or antique jewellery, always confirm the 375 stamp before relying on a value calculation.</p>
+
+      <aside class="k9-callout" role="note" aria-label="UK Hallmarking Act note">
+        <div class="k9-callout__top">
+          <span class="k9-callout__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </span>
+          <h3 class="k9-callout__title">UK-Only Standard</h3>
+        </div>
+        <div class="k9-callout__body">
+          <p>9K is the <strong>lowest fineness</strong> legally accepted as gold in the UK, Ireland, Australia and New Zealand. In the United States and Canada the legal minimum is <strong>10K (417)</strong>. In France and Italy it is <strong>18K (750)</strong>. Anything sold as &ldquo;9K&rdquo; outside the UK family of standards may not legally qualify as gold.</p>
+        </div>
+      </aside>
+
+      <div class="k9-section-h">
+        <span class="k9-section-h__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </span>
+        <h2 class="k9-section-h__text">Why 9K Dominates the UK High Street</h2>
+      </div>
+      <p>9K accounts for an estimated <strong>60&ndash;70%</strong> of gold jewellery sold in UK shops. Four reasons drive that dominance:</p>
+      <ul>
+        <li><strong>Affordability.</strong> At 37.5% purity, a 5 g 9K ring contains 1.875 g of pure gold &mdash; half the gold of an <a href="/18k-gold-price-per-gram">18K</a> ring of the same weight.</li>
+        <li><strong>Durability.</strong> The 62.5% alloy content (typically copper, silver and zinc) makes 9K the <strong>hardest and most scratch-resistant</strong> gold alloy. Ideal for daily-wear rings and chains.</li>
+        <li><strong>High-street stock.</strong> H. Samuel, Ernest Jones, Goldsmiths, Argos and most independents lead with 9K in their entry-to-mid range.</li>
+        <li><strong>Colour.</strong> 9K yellow is paler than 18K or 22K &mdash; some prefer the subtler tone, others find it less &ldquo;golden&rdquo;. Rose and white 9K both hold colour well.</li>
+      </ul>
+
+      <div class="k9-section-h">
+        <span class="k9-section-h__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+        </span>
+        <h2 class="k9-section-h__text">Selling 9K Scrap</h2>
+      </div>
+      <p>9K dominates the UK <strong>scrap gold</strong> market for the same reasons it dominates the high street. But the economics are different from higher karats:</p>
+      <ul>
+        <li><strong>Lower per-gram value.</strong> A gram of 9K is worth roughly half a gram of <a href="/18k-gold-price-per-gram">18K</a>. A typical 15&ndash;25 g 9K chain has a melt value of <strong>&pound;225&ndash;&pound;375</strong> at current prices.</li>
+        <li><strong>Lower buy rates.</strong> Refiners must process more alloy per gram of recovered gold, so they pay a slightly lower percentage of melt for 9K than for 18K or 22K.</li>
+        <li><strong>Wide spread.</strong> The best and worst quotes can differ by <strong>30%+</strong> on the same item. Always get at least three quotes &mdash; use the calculator above to know your floor.</li>
+      </ul>
+      <p>Use our <a href="/scrap-gold-calculator">scrap gold calculator</a> to compute melt across mixed-karat lots, or read our guide on <a href="/guides/how-to-sell-gold-jewellery">how to sell gold jewellery</a> for negotiation tactics.</p>
+
+      <div class="k9-section-h">
+        <span class="k9-section-h__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </span>
+        <h2 class="k9-section-h__text">9K vs 10K &mdash; UK vs US</h2>
+      </div>
+      <p>9K (UK) and <a href="/10k-gold-price-per-gram">10K</a> (US) both serve as entry-level gold. The 4.2 percentage-point gap in purity has practical consequences:</p>
+
+      <div class="k9-compare-grid">
+        <div class="k9-compare-card k9-compare-card--9k">
+          <div class="k9-compare-card__head">
+            <div class="k9-compare-card__karat">9K</div>
+            <div class="k9-compare-card__flag">UK Standard</div>
+          </div>
+          <dl>
+            <dt>Purity</dt><dd>37.5%</dd>
+            <dt>Hallmark</dt><dd>375</dd>
+            <dt>Legal floor</dt><dd>UK, IE, AU, NZ</dd>
+            <dt>Typical use</dt><dd>Everyday jewellery</dd>
+            <dt>Hardness</dt><dd>Hardest gold alloy</dd>
+          </dl>
+        </div>
+        <div class="k9-compare-card k9-compare-card--10k">
+          <div class="k9-compare-card__head">
+            <div class="k9-compare-card__karat">10K</div>
+            <div class="k9-compare-card__flag">US Standard</div>
+          </div>
+          <dl>
+            <dt>Purity</dt><dd>41.7%</dd>
+            <dt>Hallmark</dt><dd>417</dd>
+            <dt>Legal floor</dt><dd>US, Canada</dd>
+            <dt>Typical use</dt><dd>Entry rings &amp; chains</dd>
+            <dt>Hardness</dt><dd>Slightly softer than 9K</dd>
+          </dl>
+        </div>
+      </div>
+
+      <p><strong>Resale in the UK:</strong> 9K resells easily because dealers expect it. 10K is accepted but less common in the UK domestic market &mdash; you'll be paid on weight and purity regardless. In France or Italy, neither would legally qualify as gold.</p>
+
+      <!-- FAQ -->
+      <div class="k9-section-h">
+        <span class="k9-section-h__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
+        <h2 class="k9-section-h__text">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="k9-faq">
+        <details>
+          <summary>What is the 9K gold price per gram today?</summary>
+          <div class="faq-body faq-answer"><p>The live 9K gold price per gram is shown at the top of this page &mdash; calculated by multiplying the current 24K spot price per troy ounce by <strong>0.375</strong> (9K purity) and dividing by <strong>31.1035</strong> (grams per troy ounce). It refreshes every 60 seconds.</p></div>
+        </details>
+        <details>
+          <summary>Is 9K gold real gold?</summary>
+          <div class="faq-body faq-answer"><p>Yes. 9K gold is real gold &mdash; it contains 37.5% pure gold (9 parts gold out of 24), alloyed with copper, silver or zinc for strength and durability. It carries the legal 375 hallmark in the UK.</p></div>
+        </details>
+        <details>
+          <summary>What does the 375 hallmark mean?</summary>
+          <div class="faq-body faq-answer"><p>The <strong>375</strong> hallmark indicates 9K gold with <strong>37.5% purity</strong> (375 parts pure gold per 1000). In the UK, this stamp must be applied by an approved Assay Office under the Hallmarking Act 1973.</p></div>
+        </details>
+        <details>
+          <summary>How do I calculate the melt value of my 9K gold?</summary>
+          <div class="faq-body faq-answer"><p>Melt value = weight in grams &times; (spot price per troy oz &divide; 31.1035) &times; 0.375. Or use the calculator above &mdash; enter the weight and your currency, and it returns the live melt value plus the typical dealer buy-rates as a percentage.</p></div>
+        </details>
+        <details>
+          <summary>What percentage of melt value do dealers actually pay?</summary>
+          <div class="faq-body faq-answer"><p>Online specialist gold buyers typically pay <strong>80&ndash;90%</strong> of melt; high-street jewellers <strong>65&ndash;80%</strong>; pawnbrokers <strong>45&ndash;65%</strong>; postal gold-buying services <strong>35&ndash;60%</strong>. Always get three quotes &mdash; the spread can exceed 30% on the same item.</p></div>
+        </details>
+        <details>
+          <summary>How do I convert from troy ounces to grams?</summary>
+          <div class="faq-body faq-answer"><p>There are <strong>31.1035 grams</strong> in one troy ounce. Divide the per-troy-oz price by 31.1035 to get per-gram pure gold, then multiply by 0.375 for 9K. See our <a href="/how-many-grams-in-troy-ounce">troy ounce converter</a> for instant conversions.</p></div>
+        </details>
+        <details>
+          <summary>What is the difference between 9K solid gold, gold-filled and gold-plated?</summary>
+          <div class="faq-body faq-answer"><p>Solid 9K contains 37.5% pure gold throughout the item. <strong>Gold-filled</strong> bonds a 9K layer to a base-metal core &mdash; contains far less gold by weight. <strong>Gold-plated</strong> has only a thin electroplated gold layer (often &lt;0.05% of total weight) and effectively no melt value. Only solid 9K carries the 375 hallmark.</p></div>
+        </details>
+        <details>
+          <summary>Why do different websites show slightly different 9K prices?</summary>
+          <div class="faq-body faq-answer"><p>Small differences reflect the timing of the data feed, the spot source (LBMA, COMEX or OTC), and which FX rate is applied. GoldPriceTools fetches gold from <strong>gold-api.com</strong> and currency from <strong>Frankfurter</strong>, both every 60 seconds.</p></div>
+        </details>
+      </div>
+
+      <div class="k9-disclaimer"><strong>Disclaimer:</strong> Prices shown are indicative melt values only and do not constitute financial advice. Dealer buy prices are typically 65&ndash;90% of melt value depending on channel and item condition. Always verify with your dealer before selling.</div>
+
+      <!-- Share buttons -->
+      <div class="k9-share">
+        <span>Share:</span>
+        <a href="https://twitter.com/intent/tweet?url=https://goldpricetools.com/9k-gold-price-per-gram&amp;text=9K+Gold+Price+Per+Gram+Today+%28Live%29" rel="nofollow noreferrer noopener" target="_blank" data-platform="twitter" aria-label="Share on X / Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.258 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg> X</a>
+        <a href="https://www.reddit.com/submit?url=https://goldpricetools.com/9k-gold-price-per-gram&amp;title=9K+Gold+Price+Per+Gram+Today+%28Live%29" rel="nofollow noreferrer noopener" target="_blank" data-platform="reddit" aria-label="Share on Reddit"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg> Reddit</a>
+        <a href="https://api.whatsapp.com/send?text=9K+Gold+Price+Per+Gram+Today+%28Live%29%20https%3A%2F%2Fgoldpricetools.com%2F9k-gold-price-per-gram" rel="nofollow noreferrer noopener" target="_blank" data-platform="whatsapp" aria-label="Share on WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
+      </div>
+
+    </div>
+  </article>
+</main>
+
+<!-- Related Guides -->
+<section class="related-guides">
+  <div class="container">
     <h2>Related Gold &amp; Silver Guides</h2>
     <div class="related-guides-grid">
       <a href="/10k-gold-price-per-gram" class="related-card">
         <div class="related-card__tag">Live Price</div>
         <div class="related-card__title">10K Gold Price Per Gram</div>
-        <div class="related-card__desc">Today's 10K gold price — the US equivalent of 9K, both are entry-level jewellery gold.</div>
+        <div class="related-card__desc">Today's 10K gold price &mdash; the US equivalent of 9K, both are entry-level jewellery gold.</div>
       </a>
       <a href="/14k-gold-price-per-gram" class="related-card">
         <div class="related-card__tag">Live Price</div>
         <div class="related-card__title">14K Gold Price Per Gram</div>
-        <div class="related-card__desc">Live 14K gold price per gram — compare with 9K purity and value.</div>
+        <div class="related-card__desc">Live 14K gold price per gram &mdash; compare with 9K purity and value.</div>
       </a>
       <a href="/scrap-gold-calculator" class="related-card">
         <div class="related-card__tag">Tool</div>
         <div class="related-card__title">Scrap Gold Calculator</div>
-        <div class="related-card__desc">Calculate the scrap value of your 9K gold jewellery at today's live price.</div>
+        <div class="related-card__desc">Calculate the scrap value of mixed-karat lots at today's live price.</div>
       </a>
       <a href="/guides/gold-purity-guide" class="related-card">
         <div class="related-card__tag">Guide</div>
         <div class="related-card__title">Gold Purity Guide</div>
-        <div class="related-card__desc">Understanding 9K gold hallmarks (375), its composition, and durability compared to higher karats.</div>
+        <div class="related-card__desc">Hallmarks, karats and finenesses across every common gold alloy.</div>
       </a>
       <a href="/guides/how-to-sell-gold-jewellery" class="related-card">
         <div class="related-card__tag">Guide</div>
         <div class="related-card__title">How to Sell Gold Jewellery</div>
-        <div class="related-card__desc">How to get the best scrap price for 9K gold — what dealers pay and how to compare offers.</div>
+        <div class="related-card__desc">Get the best scrap price for 9K &mdash; what dealers pay and how to compare offers.</div>
       </a>
       <a href="/guides/gold-hallmarks-explained" class="related-card">
         <div class="related-card__tag">Guide</div>
         <div class="related-card__title">Gold Hallmarks Explained</div>
-        <div class="related-card__desc">Understand what hallmarks mean on your 9K gold — 375 fineness and more.</div>
+        <div class="related-card__desc">What the 375 stamp means &mdash; UK Assay Offices, date letters, and more.</div>
       </a>
     </div>
   </div>
@@ -747,7 +1096,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <img src="https://assets.goldpricetools.com/logo.svg" width="24" height="24" alt="GoldPriceTools logo" loading="lazy" onerror="this.style.display='none'">
         <span style="font-weight:700">GoldPriceTools</span>
       </div>
-      <p class="footer-brand">Live gold and silver price calculator. Real-time 9K–24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Prices sourced from global markets via LBMA, updated every 60 seconds.</p>
+      <p class="footer-brand">Live gold and silver price calculator. Real-time 9K&ndash;24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Prices sourced from global markets via LBMA, updated every 60 seconds.</p>
       <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-3)">Prices are indicative and for reference only. Not financial advice.</p>
     </div>
     <div class="footer-col">
@@ -760,7 +1109,6 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <li><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a></li>
         <li><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></li>
         <li><a href="/gold-silver-ratio">Gold / Silver Ratio</a></li>
-        <li></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -818,47 +1166,369 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 </footer>
 
 <script>
-async function fetchFx(){
-  try{
-    const r=await fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=GBP,INR',{cache:'no-store'});
-    if(!r.ok)throw new Error();
-    const d=await r.json();
-    window._gbpusd=d.rates.GBP||0.79;window._usdinr=d.rates.INR||83.5;
-  }catch{window._gbpusd=0.79;}
-}
-async function fetchSpot(){
-  const PURITY=0.375;
-  try{
-    const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});
-    if(!r.ok)throw new Error();
-    const d=await r.json();
-    const spotUSD=d.price;
-    const pgUSD=spotUSD/31.1035*PURITY;
-    const pgGBP=pgUSD*(window._gbpusd||0.79);
-    const pgINR=pgUSD*(window._usdinr||83.5);
-    document.getElementById('price-gbp').textContent='£'+pgGBP.toFixed(2)+'/g';
-    document.getElementById('price-usd').textContent='$'+pgUSD.toFixed(2)+'/g USD';
-    const snippetEl = document.getElementById('snippet-price');
-    if(snippetEl) snippetEl.textContent='£'+pgGBP.toFixed(2)+' ($'+pgUSD.toFixed(2)+' USD)';
-    const weights=[0.5,1,2,5,10,20,31.1035];
-    const ids=['0-5','1','2','5','10','20','31'];
-    weights.forEach((w,i)=>{
-      const g=document.getElementById('t-'+ids[i]+'-gbp');
-      const u=document.getElementById('t-'+ids[i]+'-usd');
-      if(g)g.textContent='£'+(pgGBP*w).toFixed(2);
-      if(u)u.textContent='$'+(pgUSD*w).toFixed(2);
-      const inrEl=document.getElementById('t-'+ids[i]+'-inr');
-      if(inrEl)inrEl.textContent='₹'+(pgINR*w).toFixed(2);
-    });
-    gtag('event','price_view',{metal:'gold',karat:'9K'});
-  }catch(e){
-    console.warn('Price fetch failed',e);
+(function(){
+  /* ── 9K Page state ─────────────────────────────────────────────────── */
+  const PURITY = 0.375;
+  const G_PER_OZ = 31.1035;
+  const G_PER_DWT = 1.55517384;
+  const KARATS = [
+    { id: '9k',  pct: 0.375  },
+    { id: '10k', pct: 0.4167 },
+    { id: '14k', pct: 0.5833 },
+    { id: '18k', pct: 0.7500 },
+    { id: '22k', pct: 0.9167 },
+    { id: '24k', pct: 0.9990 }
+  ];
+  const state = {
+    spotUSD: 0,
+    pgUSD: 0,
+    currency: 'GBP',
+    fx: { USD: 1, GBP: 0.79, EUR: 0.92, INR: 83.5 },
+    historyRange: '1Y',
+    chart: null
+  };
+  const $ = id => document.getElementById(id);
+  const CURRENCY_SYMBOL = { USD:'$', GBP:'£', EUR:'€', INR:'₹' };
+  const fmtMoney = (v, cur) => {
+    if (!isFinite(v)) return CURRENCY_SYMBOL[cur] + '0.00';
+    const opts = (cur === 'INR' && v >= 100)
+      ? { minimumFractionDigits: 0, maximumFractionDigits: 0 }
+      : { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+    return CURRENCY_SYMBOL[cur] + v.toLocaleString('en-US', opts);
+  };
+  const fmtSpot = (v) => '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  /* ── Live FX ──────────────────────────────────────────────────────── */
+  async function fetchFX() {
+    try {
+      const r = await fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=GBP,EUR,INR', { cache: 'no-store' });
+      if (!r.ok) throw new Error();
+      const d = await r.json();
+      if (d && d.rates) {
+        state.fx.GBP = d.rates.GBP || state.fx.GBP;
+        state.fx.EUR = d.rates.EUR || state.fx.EUR;
+        state.fx.INR = d.rates.INR || state.fx.INR;
+      }
+    } catch (e) { /* keep fallbacks */ }
   }
-}
-Promise.all([fetchFx(),fetchSpot()]);
-setInterval(fetchSpot,60000);
+
+  /* ── Live spot ────────────────────────────────────────────────────── */
+  async function fetchSpot() {
+    try {
+      const r = await fetch('https://api.gold-api.com/price/XAU', { cache: 'no-store' });
+      if (!r.ok) throw new Error();
+      const d = await r.json();
+      state.spotUSD = d.price;
+      state.pgUSD = (state.spotUSD / G_PER_OZ) * PURITY;
+      renderAll();
+      if (typeof gtag === 'function') gtag('event', 'price_view', { metal: 'gold', karat: '9K' });
+    } catch (e) {
+      console.warn('Price fetch failed', e);
+    }
+  }
+
+  /* ── Render: hero, spot tiles, snippet ───────────────────────────── */
+  function renderHero() {
+    if (!state.pgUSD) return;
+    const pgGBP = state.pgUSD * state.fx.GBP;
+
+    /* Primary hero shows GBP big + USD secondary (existing IDs preserved) */
+    const heroEl = $('price-gbp');
+    if (heroEl) heroEl.innerHTML = '£' + pgGBP.toFixed(2) + '<span class="k9-primary__currency">/g</span>';
+    const usdEl = $('price-usd');
+    if (usdEl) usdEl.textContent = '$' + state.pgUSD.toFixed(2) + '/g';
+
+    /* Snippet for the SEO answer block */
+    const snippet = $('snippet-price');
+    if (snippet) snippet.textContent = '£' + pgGBP.toFixed(2) + ' ($' + state.pgUSD.toFixed(2) + ' USD)';
+
+    /* Spot tiles */
+    const t24 = $('spot-24k-display');
+    if (t24) t24.textContent = fmtSpot(state.spotUSD);
+
+    /* Last updated chip */
+    const lu = $('last-updated');
+    if (lu) {
+      const now = new Date();
+      const t = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+      lu.textContent = 'Updated ' + t;
+    }
+
+    /* Purity donut "pure value" line — value of the 0.375g pure gold in 1g of 9K */
+    const pure = $('purity-pure-value');
+    if (pure) pure.textContent = fmtMoney(0.375 * (state.spotUSD / G_PER_OZ) * state.fx.GBP, 'GBP');
+  }
+
+  function renderTable() {
+    if (!state.pgUSD) return;
+    const pgGBP = state.pgUSD * state.fx.GBP;
+    const pgEUR = state.pgUSD * state.fx.EUR;
+    const pgINR = state.pgUSD * state.fx.INR;
+    const weights = [0.5, 1, 2, 5, 10, 20, G_PER_OZ];
+    const ids = ['0-5','1','2','5','10','20','31'];
+    weights.forEach((w, i) => {
+      const set = (suffix, val) => {
+        const el = $('t-' + ids[i] + '-' + suffix);
+        if (el) el.textContent = val;
+      };
+      set('gbp', '£' + (pgGBP * w).toFixed(2));
+      set('usd', '$' + (state.pgUSD * w).toFixed(2));
+      set('eur', '€' + (pgEUR * w).toFixed(2));
+      set('inr', '₹' + (pgINR * w).toLocaleString('en-US', { maximumFractionDigits: 0 }));
+    });
+  }
+
+  function renderKarats() {
+    if (!state.spotUSD) return;
+    KARATS.forEach(k => {
+      const el = $('karat-' + k.id + '-price');
+      if (!el) return;
+      const pgUSDk = (state.spotUSD / G_PER_OZ) * k.pct;
+      const pgGBPk = pgUSDk * state.fx.GBP;
+      el.textContent = '£' + pgGBPk.toFixed(2) + '/g';
+    });
+  }
+
+  /* ── Calculator ───────────────────────────────────────────────────── */
+  const weightInput = $('k9-input-weight');
+  const unitSel = $('k9-input-unit');
+  const unitSuffix = $('k9-unit-suffix');
+  const resultEl = $('k9-result');
+  const resultSubEl = $('k9-result-sub');
+
+  function weightInGrams() {
+    const v = parseFloat(weightInput.value) || 0;
+    const u = unitSel.value;
+    if (u === 'oz') return v * G_PER_OZ;
+    if (u === 'dwt') return v * G_PER_DWT;
+    return v;
+  }
+
+  function renderCalc() {
+    if (!state.pgUSD) {
+      resultEl.textContent = '—';
+      resultSubEl.textContent = 'Waiting for live spot price…';
+      return;
+    }
+    const w = weightInGrams();
+    const cur = state.currency;
+    const fx = state.fx[cur] || 1;
+    const meltUSD = w * state.pgUSD;
+    const melt = meltUSD * fx;
+    resultEl.textContent = fmtMoney(melt, cur);
+    const u = unitSel.value;
+    const wDisp = (parseFloat(weightInput.value) || 0).toLocaleString('en-US', { maximumFractionDigits: 3 });
+    const unitName = u === 'oz' ? 'troy oz' : u === 'dwt' ? 'pennyweight' : 'g';
+    resultSubEl.innerHTML = wDisp + ' ' + unitName + ' &times; <strong>9K (37.5%) melt</strong> at live spot';
+
+    /* Buy-rate breakdown — show midpoints of the typical ranges */
+    const setBR = (id, lo, hi) => {
+      const el = $(id);
+      if (!el) return;
+      const mid = melt * ((lo + hi) / 2);
+      el.textContent = fmtMoney(mid, cur);
+    };
+    setBR('br-online',   0.80, 0.90);
+    setBR('br-jeweller', 0.65, 0.80);
+    setBR('br-pawn',     0.45, 0.65);
+    setBR('br-postal',   0.35, 0.60);
+  }
+
+  function syncUnitSuffix() {
+    const u = unitSel.value;
+    unitSuffix.textContent = u === 'oz' ? 'OZ' : u === 'dwt' ? 'DWT' : 'G';
+  }
+
+  weightInput.addEventListener('input', renderCalc);
+  unitSel.addEventListener('change', () => { syncUnitSuffix(); renderCalc(); });
+  document.querySelectorAll('.k9-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      weightInput.value = btn.dataset.w;
+      unitSel.value = 'g';
+      syncUnitSuffix();
+      renderCalc();
+    });
+  });
+  document.querySelectorAll('#k9-currency-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#k9-currency-toggle button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.currency = btn.dataset.currency;
+      renderCalc();
+    });
+  });
+
+  function renderAll() {
+    renderHero();
+    renderTable();
+    renderKarats();
+    renderCalc();
+  }
+
+  /* ── Historical chart (lazy-loaded) ──────────────────────────────── */
+  let chartJSPromise = null;
+  function loadChartJS() {
+    if (chartJSPromise) return chartJSPromise;
+    chartJSPromise = new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+    return chartJSPromise;
+  }
+
+  const RANGE_LABEL = {
+    '1M': 'Last 30 days · daily XAU spot × 0.375 ÷ 31.1035',
+    '3M': 'Last 90 days · weekly XAU spot × 0.375 ÷ 31.1035',
+    '1Y': 'Last 12 months · weekly XAU spot × 0.375 ÷ 31.1035',
+    '5Y': 'Last 5 years · monthly XAU spot × 0.375 ÷ 31.1035',
+    '10Y':'Last 10 years · monthly XAU spot × 0.375 ÷ 31.1035'
+  };
+
+  async function loadHistory(range) {
+    const loader = $('k9-chart-loader');
+    if (loader) { loader.style.display = 'flex'; loader.textContent = 'Loading historical data…'; }
+    try {
+      const r = await fetch('/chart-data/XAU-' + range + '.json');
+      if (!r.ok) throw new Error();
+      const j = await r.json();
+      const labels = j.labels;
+      const data = j.data.map(v => (v / G_PER_OZ) * PURITY); // convert spot/oz to 9K per gram (USD)
+      await loadChartJS();
+      drawChart(labels, data);
+      updateChartStats(data);
+      const lbl = $('k9-chart-range-label');
+      if (lbl) lbl.textContent = RANGE_LABEL[range] || RANGE_LABEL['1Y'];
+      if (loader) loader.style.display = 'none';
+    } catch (e) {
+      console.warn('History load failed', e);
+      if (loader) loader.textContent = 'Historical data unavailable';
+    }
+  }
+
+  function drawChart(labels, data) {
+    const canvas = $('k9-chart');
+    if (!canvas) return;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const gold = '#e8af34';
+    const textMuted = '#7a7974';
+    const grid = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)';
+    if (state.chart) state.chart.destroy();
+    state.chart = new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          data,
+          borderColor: gold,
+          borderWidth: 2,
+          fill: true,
+          backgroundColor: function(c) {
+            const g = c.chart.ctx.createLinearGradient(0, 0, 0, 340);
+            g.addColorStop(0, gold + '55');
+            g.addColorStop(1, gold + '00');
+            return g;
+          },
+          pointRadius: 0,
+          pointHitRadius: 14,
+          tension: 0.32
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'rgba(15,14,12,0.92)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            padding: 10,
+            displayColors: false,
+            callbacks: { label: ctx => ' 9K: $' + ctx.parsed.y.toFixed(2) + '/g' }
+          }
+        },
+        scales: {
+          x: { ticks: { color: textMuted, font: { size: 11 }, maxTicksLimit: 6 }, grid: { color: grid, drawTicks: false } },
+          y: { ticks: { color: textMuted, font: { size: 11 }, callback: v => '$' + v.toFixed(0) }, grid: { color: grid }, position: 'right' }
+        },
+        interaction: { mode: 'index', intersect: false }
+      }
+    });
+  }
+
+  function updateChartStats(arr) {
+    if (!arr.length) return;
+    const min = Math.min.apply(null, arr);
+    const max = Math.max.apply(null, arr);
+    const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
+    const setStat = (id, v) => { const el = $(id); if (el) el.textContent = '$' + v.toFixed(2); };
+    setStat('k9-stat-low',  min);
+    setStat('k9-stat-high', max);
+    setStat('k9-stat-avg',  avg);
+    if (state.pgUSD) {
+      const delta = state.pgUSD - avg;
+      const el = $('k9-stat-delta');
+      if (el) {
+        const sign = delta >= 0 ? '+' : '';
+        el.textContent = sign + '$' + delta.toFixed(2);
+        el.className = 'k9-chart-stat__value ' + (delta > avg*0.05 ? 'is-high' : delta < -avg*0.05 ? 'is-low' : '');
+      }
+    }
+  }
+
+  document.querySelectorAll('#k9-chart-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#k9-chart-toggle button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.historyRange = btn.dataset.range;
+      loadHistory(state.historyRange);
+    });
+  });
+
+  /* ── Scroll reveal ───────────────────────────────────────────────── */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const chartEl = document.querySelector('.k9-chart-wrap');
+    if (chartEl) {
+      const chartIO = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          loadHistory(state.historyRange);
+          chartIO.disconnect();
+        }
+      }, { rootMargin: '200px' });
+      chartIO.observe(chartEl);
+    }
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+    loadHistory(state.historyRange);
+  }
+
+  /* ── Init ─────────────────────────────────────────────────────────── */
+  syncUnitSuffix();
+  fetchFX().then(() => fetchSpot());
+  setInterval(fetchSpot, 60000);
+})();
 </script>
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
+<script>(function(){
+  const themeBtn=document.querySelector('[data-theme-toggle]'),root=document.documentElement;
+  let theme=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',theme);
+  if(themeBtn){themeBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);try{localStorage.setItem('gpt-theme',theme);}catch(e){}themeBtn.setAttribute('aria-label','Switch to '+(theme==='dark'?'light':'dark')+' mode');themeBtn.innerHTML=theme==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';});}
+  const ham=document.getElementById('hamburger'),mob=document.getElementById('mobileMenu');
+  if(ham&&mob){ham.addEventListener('click',function(){const o=mob.classList.toggle('open');ham.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';});document.addEventListener('click',function(e){if(mob.classList.contains('open')&&!mob.contains(e.target)&&!ham.contains(e.target)){mob.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}});}
+  document.querySelectorAll('.mobile-section__toggle').forEach(function(btn){btn.addEventListener('click',function(){const items=this.nextElementSibling;const o=items.classList.toggle('open');this.setAttribute('aria-expanded',o);});});
+  document.querySelectorAll('.mega-nav__trigger[aria-haspopup]').forEach(function(t){t.addEventListener('click',function(e){e.stopPropagation();const p=this.nextElementSibling;if(!p)return;const o=p.classList.toggle('is-open');this.setAttribute('aria-expanded',o);document.querySelectorAll('.mega-panel.is-open').forEach(function(x){if(x!==p){x.classList.remove('is-open');const t2=x.previousElementSibling;if(t2)t2.setAttribute('aria-expanded','false');}});});});
+  document.addEventListener('click',function(e){if(!e.target.closest('.mega-nav__item')){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t)t.setAttribute('aria-expanded','false');});}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t){t.setAttribute('aria-expanded','false');t.focus();}});if(mob&&mob.classList.contains('open')){mob.classList.remove('open');if(ham){ham.setAttribute('aria-expanded','false');ham.focus();}document.body.style.overflow='';}}});
+})();</script>
 <script>
 let _deepReadFired = false;
 window.addEventListener('scroll', () => {
