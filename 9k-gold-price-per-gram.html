@@ -181,8 +181,9 @@ a,button,[role="button"],input,select{transition:color var(--transition),backgro
 .k9-primary__number{font-family:var(--font-display);font-size:clamp(3.5rem,13vw,6.25rem);font-weight:300;color:var(--color-gold-bright);line-height:.95;letter-spacing:-.04em;font-variant-numeric:tabular-nums;text-shadow:0 0 30px color-mix(in oklch,var(--color-gold-bright) 35%,transparent);display:inline-flex;align-items:baseline;gap:var(--space-2)}
 .k9-primary__currency{font-family:var(--font-display);font-size:.42em;font-weight:400;color:var(--color-text-muted);letter-spacing:-.02em}
 .k9-primary__unit{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-2)}
-.k9-primary__secondary{display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-top:var(--space-3);font-size:var(--text-base);color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+.k9-primary__secondary{display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-top:var(--space-3);font-size:var(--text-base);color:var(--color-text-muted);font-variant-numeric:tabular-nums;flex-wrap:wrap}
 .k9-primary__secondary strong{color:var(--color-text);font-weight:600}
+.k9-primary__secondary>span:not([style]){font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-faint);font-weight:700}
 .k9-primary__chips{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-2);margin-top:var(--space-5)}
 .k9-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--radius-full);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--color-border);background:var(--color-surface-offset);color:var(--color-text-muted)}
 .k9-chip--gold{border-color:color-mix(in oklch,var(--color-gold-bright) 38%,transparent);color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 8%,transparent)}
@@ -549,7 +550,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   <header class="k9-hero">
     <span class="k9-hero__eyebrow"><span class="live-dot" aria-hidden="true"></span>Live Market Data &middot; LBMA Spot</span>
     <h1>9K <span class="gold">Gold Price</span><br>Per Gram Today</h1>
-    <p class="k9-hero__sub">9 karat gold is <strong>37.5% pure</strong> &mdash; the UK's minimum legal hallmark, marked <strong>375</strong>. The live melt value updates every 60 seconds from the LBMA spot market.</p>
+    <p class="k9-hero__sub">9 karat gold is <strong>37.5% pure</strong>, marked <strong>375</strong>. Live melt value priced in <strong>USD</strong> (with GBP, EUR &amp; INR conversion), updated every 60 seconds from the LBMA spot market.</p>
   </header>
 
   <!-- ═══ PRIMARY PRICE CARD ═══ -->
@@ -557,12 +558,15 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <div class="k9-primary__body">
       <div class="k9-primary__label">9K Gold &mdash; Per Gram</div>
       <div class="k9-primary__number" aria-live="polite">
-        <span id="price-gbp" data-nosnippet>&mdash;</span>
+        <span id="price-usd" data-nosnippet>&mdash;</span>
       </div>
       <p class="k9-primary__unit">Live melt value &middot; per gram</p>
       <div class="k9-primary__secondary">
-        <span>USD</span>
-        <strong id="price-usd" data-nosnippet>&mdash;</strong>
+        <span>GBP</span>
+        <strong id="price-gbp" data-nosnippet>&mdash;</strong>
+        <span style="opacity:.5">&middot;</span>
+        <span>EUR</span>
+        <strong id="price-eur" data-nosnippet>&mdash;</strong>
       </div>
       <div class="k9-primary__chips">
         <span class="k9-chip k9-chip--gold"><span class="k9-chip__dot" aria-hidden="true"></span>9K &middot; 37.5% Pure</span>
@@ -661,8 +665,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         Enter weight to get instant value
       </h3>
       <div id="k9-currency-toggle" class="k9-currency-toggle" role="group" aria-label="Currency selector">
-        <button type="button" data-currency="GBP" class="active">GBP</button>
-        <button type="button" data-currency="USD">USD</button>
+        <button type="button" data-currency="USD" class="active">USD</button>
+        <button type="button" data-currency="GBP">GBP</button>
         <button type="button" data-currency="EUR">EUR</button>
         <button type="button" data-currency="INR">INR</button>
       </div>
@@ -750,16 +754,16 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <div class="k9-table-wrap">
       <figure itemscope itemtype="https://schema.org/Table" style="margin:0">
         <table class="k9-data-table" aria-label="9K gold price by weight in multiple currencies">
-          <caption>9K gold price per gram in GBP, USD, EUR, and INR &mdash; live, updated every 60 seconds</caption>
-          <thead><tr><th scope="col">Weight</th><th scope="col">GBP</th><th scope="col">USD</th><th scope="col">EUR</th><th scope="col">INR</th></tr></thead>
+          <caption>9K gold price per gram in USD, GBP, EUR, and INR &mdash; live, updated every 60 seconds</caption>
+          <thead><tr><th scope="col">Weight</th><th scope="col">USD</th><th scope="col">GBP</th><th scope="col">EUR</th><th scope="col">INR</th></tr></thead>
           <tbody>
-            <tr><td>0.5 g</td><td id="t-0-5-gbp" data-nosnippet>&mdash;</td><td id="t-0-5-usd" data-nosnippet>&mdash;</td><td id="t-0-5-eur" data-nosnippet>&mdash;</td><td id="t-0-5-inr" data-nosnippet>&mdash;</td></tr>
-            <tr class="row-highlight"><td>1 g</td><td id="t-1-gbp" data-nosnippet>&mdash;</td><td id="t-1-usd" data-nosnippet>&mdash;</td><td id="t-1-eur" data-nosnippet>&mdash;</td><td id="t-1-inr" data-nosnippet>&mdash;</td></tr>
-            <tr><td>2 g</td><td id="t-2-gbp" data-nosnippet>&mdash;</td><td id="t-2-usd" data-nosnippet>&mdash;</td><td id="t-2-eur" data-nosnippet>&mdash;</td><td id="t-2-inr" data-nosnippet>&mdash;</td></tr>
-            <tr><td>5 g</td><td id="t-5-gbp" data-nosnippet>&mdash;</td><td id="t-5-usd" data-nosnippet>&mdash;</td><td id="t-5-eur" data-nosnippet>&mdash;</td><td id="t-5-inr" data-nosnippet>&mdash;</td></tr>
-            <tr><td>10 g</td><td id="t-10-gbp" data-nosnippet>&mdash;</td><td id="t-10-usd" data-nosnippet>&mdash;</td><td id="t-10-eur" data-nosnippet>&mdash;</td><td id="t-10-inr" data-nosnippet>&mdash;</td></tr>
-            <tr><td>20 g</td><td id="t-20-gbp" data-nosnippet>&mdash;</td><td id="t-20-usd" data-nosnippet>&mdash;</td><td id="t-20-eur" data-nosnippet>&mdash;</td><td id="t-20-inr" data-nosnippet>&mdash;</td></tr>
-            <tr><td>1 <a href="/how-many-grams-in-troy-ounce">troy oz</a> (31.1 g)</td><td id="t-31-gbp" data-nosnippet>&mdash;</td><td id="t-31-usd" data-nosnippet>&mdash;</td><td id="t-31-eur" data-nosnippet>&mdash;</td><td id="t-31-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>0.5 g</td><td id="t-0-5-usd" data-nosnippet>&mdash;</td><td id="t-0-5-gbp" data-nosnippet>&mdash;</td><td id="t-0-5-eur" data-nosnippet>&mdash;</td><td id="t-0-5-inr" data-nosnippet>&mdash;</td></tr>
+            <tr class="row-highlight"><td>1 g</td><td id="t-1-usd" data-nosnippet>&mdash;</td><td id="t-1-gbp" data-nosnippet>&mdash;</td><td id="t-1-eur" data-nosnippet>&mdash;</td><td id="t-1-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>2 g</td><td id="t-2-usd" data-nosnippet>&mdash;</td><td id="t-2-gbp" data-nosnippet>&mdash;</td><td id="t-2-eur" data-nosnippet>&mdash;</td><td id="t-2-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>5 g</td><td id="t-5-usd" data-nosnippet>&mdash;</td><td id="t-5-gbp" data-nosnippet>&mdash;</td><td id="t-5-eur" data-nosnippet>&mdash;</td><td id="t-5-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>10 g</td><td id="t-10-usd" data-nosnippet>&mdash;</td><td id="t-10-gbp" data-nosnippet>&mdash;</td><td id="t-10-eur" data-nosnippet>&mdash;</td><td id="t-10-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>20 g</td><td id="t-20-usd" data-nosnippet>&mdash;</td><td id="t-20-gbp" data-nosnippet>&mdash;</td><td id="t-20-eur" data-nosnippet>&mdash;</td><td id="t-20-inr" data-nosnippet>&mdash;</td></tr>
+            <tr><td>1 <a href="/how-many-grams-in-troy-ounce">troy oz</a> (31.1 g)</td><td id="t-31-usd" data-nosnippet>&mdash;</td><td id="t-31-gbp" data-nosnippet>&mdash;</td><td id="t-31-eur" data-nosnippet>&mdash;</td><td id="t-31-inr" data-nosnippet>&mdash;</td></tr>
           </tbody>
         </table>
       </figure>
@@ -876,7 +880,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 
       <p class="k9-intro">9K gold contains <strong>9 parts pure gold out of 24</strong> &mdash; a purity of <strong>37.5%</strong>. It is the UK's minimum legal gold standard, set by the <strong>Hallmarking Act 1973</strong>, and the dominant gold alloy on British high streets. On UK and European pieces it is stamped <strong>375</strong>; on US pieces, <strong>9K</strong> or <strong>9KT</strong>.</p>
 
-      <p class="snippet-answer">9K gold is worth approximately <span id="snippet-price" data-nosnippet>the live price shown above</span> per gram today. This value is calculated by multiplying the live 24K spot price by 0.375, which represents the 37.5% gold purity of 9 karat gold. Dealers typically pay <strong>65&ndash;90%</strong> of this melt value when buying scrap, depending on the channel.</p>
+      <p class="snippet-answer">9K gold is worth approximately <span id="snippet-price" data-nosnippet>the live price shown above</span> per gram today. This value is calculated by multiplying the live 24K spot price by 0.375, which represents the 37.5% gold purity of 9 karat gold. Dealers typically pay <strong>65&ndash;90%</strong> of this melt value when buying scrap, depending on the channel. Prices update every 60 seconds.</p>
 
       <blockquote class="k9-pullquote">
         &ldquo;The UK is the only major market that legally accepts 9K as gold. Everywhere else, the floor is 10K, 14K or higher.&rdquo;
@@ -1182,7 +1186,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   const state = {
     spotUSD: 0,
     pgUSD: 0,
-    currency: 'GBP',
+    currency: 'USD',
     fx: { USD: 1, GBP: 0.79, EUR: 0.92, INR: 83.5 },
     historyRange: '1Y',
     chart: null
@@ -1231,16 +1235,19 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   function renderHero() {
     if (!state.pgUSD) return;
     const pgGBP = state.pgUSD * state.fx.GBP;
+    const pgEUR = state.pgUSD * state.fx.EUR;
 
-    /* Primary hero shows GBP big + USD secondary (existing IDs preserved) */
-    const heroEl = $('price-gbp');
-    if (heroEl) heroEl.innerHTML = '£' + pgGBP.toFixed(2) + '<span class="k9-primary__currency">/g</span>';
-    const usdEl = $('price-usd');
-    if (usdEl) usdEl.textContent = '$' + state.pgUSD.toFixed(2) + '/g';
+    /* Primary hero shows USD big + GBP & EUR secondary (existing IDs preserved) */
+    const heroUsd = $('price-usd');
+    if (heroUsd) heroUsd.innerHTML = '$' + state.pgUSD.toFixed(2) + '<span class="k9-primary__currency">/g</span>';
+    const heroGbp = $('price-gbp');
+    if (heroGbp) heroGbp.textContent = '£' + pgGBP.toFixed(2);
+    const heroEur = $('price-eur');
+    if (heroEur) heroEur.textContent = '€' + pgEUR.toFixed(2);
 
-    /* Snippet for the SEO answer block */
+    /* Snippet for the SEO answer block — USD first */
     const snippet = $('snippet-price');
-    if (snippet) snippet.textContent = '£' + pgGBP.toFixed(2) + ' ($' + state.pgUSD.toFixed(2) + ' USD)';
+    if (snippet) snippet.textContent = '$' + state.pgUSD.toFixed(2) + ' USD (£' + pgGBP.toFixed(2) + ' GBP)';
 
     /* Spot tiles */
     const t24 = $('spot-24k-display');
@@ -1254,9 +1261,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       lu.textContent = 'Updated ' + t;
     }
 
-    /* Purity donut "pure value" line — value of the 0.375g pure gold in 1g of 9K */
+    /* Purity donut "pure value" line — USD value of 0.375g pure gold in 1g of 9K */
     const pure = $('purity-pure-value');
-    if (pure) pure.textContent = fmtMoney(0.375 * (state.spotUSD / G_PER_OZ) * state.fx.GBP, 'GBP');
+    if (pure) pure.textContent = fmtMoney(0.375 * (state.spotUSD / G_PER_OZ), 'USD');
   }
 
   function renderTable() {
@@ -1284,8 +1291,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       const el = $('karat-' + k.id + '-price');
       if (!el) return;
       const pgUSDk = (state.spotUSD / G_PER_OZ) * k.pct;
-      const pgGBPk = pgUSDk * state.fx.GBP;
-      el.textContent = '£' + pgGBPk.toFixed(2) + '/g';
+      el.textContent = '$' + pgUSDk.toFixed(2) + '/g';
     });
   }
 
