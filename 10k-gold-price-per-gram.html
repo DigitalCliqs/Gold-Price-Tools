@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>10K Gold Price Per Gram Today (Live US) — 417 Hallmark Value | GoldPriceTools</title>
   <meta name="google-adsense-account" content="ca-pub-8849494330640880">
-<meta name="description" content="Live 10K gold price per gram in GBP, USD, EUR and INR. 10 karat (417 hallmark) = 41.67% pure gold — the US legal minimum. Calculator + dealer rates. Updated every 60s.">
+<meta name="description" content="Live 10K gold price per gram in USD, GBP, EUR and INR. 10 karat (417 hallmark) = 41.67% pure gold — the US legal minimum. Calculator + dealer rates. Updated every 60s.">
 <meta name="robots" content="index, follow">
 <link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/10k-gold-price-per-gram">
 <link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/10k-gold-price-per-gram">
@@ -18,7 +18,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://goldpricetools.com/"},{"@type":"ListItem","position":2,"name":"10K Gold Price Per Gram","item":"https://goldpricetools.com/10k-gold-price-per-gram"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the 10K gold price per gram today?","acceptedAnswer":{"@type":"Answer","text":"The 10K gold price per gram equals the 24K spot price per troy ounce divided by 31.1035, then multiplied by 0.4167 (10K purity). Our live calculator updates this every 60 seconds."}},{"@type":"Question","name":"Is 10K gold real gold?","acceptedAnswer":{"@type":"Answer","text":"Yes. 10K gold is real gold containing 41.67% pure gold (10 parts out of 24). It is the minimum legal standard for gold jewellery in the United States. The remaining 58.33% is alloy metals, making it harder and more durable than higher-karat gold."}},{"@type":"Question","name":"What is the hallmark for 10K gold?","acceptedAnswer":{"@type":"Answer","text":"10K gold is hallmarked 417 in Europe (41.7% fineness) or 10K / 10KT in the US. The 417 stamp is less common in UK jewellery as 9K (375) is the UK standard minimum."}},{"@type":"Question","name":"What does the 417 hallmark mean?","acceptedAnswer":{"@type":"Answer","text":"The 417 hallmark indicates 10K gold with 41.67% purity. In the UK, this stamp must be applied by an approved Assay Office under the Hallmarking Act 1973."}},{"@type":"Question","name":"How do I calculate the melt value of 10K gold?","acceptedAnswer":{"@type":"Answer","text":"Melt value = weight in grams × (spot price per troy oz ÷ 31.1035) × 0.4167. Use our live calculator above for an instant result."}}]}</script>
 <meta property="og:title" content="10K Gold Price Per Gram Today (Live)">
-<meta property="og:description" content="Real-time 10K gold price per gram in GBP, USD, EUR and INR. 41.67% pure gold — the US legal minimum. Updated every 60 seconds.">
+<meta property="og:description" content="Real-time 10K gold price per gram in USD, GBP, EUR and INR. 41.67% pure gold — the US legal minimum. Updated every 60 seconds.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://goldpricetools.com/10k-gold-price-per-gram">
 <meta property="og:image" content="https://assets.goldpricetools.com/og-image.jpg">
@@ -585,7 +585,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       </div>
       <p class="k10-primary__unit">Live melt value &middot; per gram</p>
       <div class="k10-primary__secondary">
-        <span>USD</span>
+        <span>GBP</span>
         <strong id="price-usd" data-nosnippet>&mdash;</strong>
       </div>
       <div class="k10-primary__chips">
@@ -1317,15 +1317,17 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     if (!state.pgUSD) return;
     const pgGBP = state.pgUSD * state.fx.GBP;
 
-    /* Primary hero shows USD big + GBP secondary (US-first for 10K) */
-    const heroEl = $('price-gbp'); // ID retained for backward compatibility
+    /* Primary hero shows USD big + GBP secondary (US-first for 10K).
+       Legacy IDs (price-gbp/price-usd) preserved so external links keep working;
+       the hero "big number" element keeps the price-gbp id but renders USD. */
+    const heroEl = $('price-gbp');
     if (heroEl) heroEl.innerHTML = '$' + state.pgUSD.toFixed(2) + '<span class="k10-primary__currency">/g</span>';
-    const usdEl = $('price-usd'); // ID retained; now displays GBP secondary
-    if (usdEl) usdEl.textContent = '£' + pgGBP.toFixed(2) + '/g';
+    const gbpEl = $('price-usd');
+    if (gbpEl) gbpEl.textContent = '£' + pgGBP.toFixed(2) + '/g';
 
-    /* Snippet for the SEO answer block */
+    /* Snippet for the SEO answer block — USD primary */
     const snippet = $('snippet-price');
-    if (snippet) snippet.textContent = '$' + state.pgUSD.toFixed(2) + ' (£' + pgGBP.toFixed(2) + ' GBP)';
+    if (snippet) snippet.textContent = '$' + state.pgUSD.toFixed(2) + ' USD (£' + pgGBP.toFixed(2) + ' GBP)';
 
     /* Spot tiles */
     const t24 = $('spot-24k-display');
