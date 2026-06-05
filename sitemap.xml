@@ -66,7 +66,7 @@
 
   <url>
     <loc>https://goldpricetools.com/scrap-gold-calculator</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-06-05</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/scrap-gold-calculator"/>
@@ -74,8 +74,8 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/scrap-gold-calculator"/>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Scrap Gold Calculator — Live Melt Value</image:title>
-      <image:caption>Free scrap gold calculator. Enter weight and karat to find the live melt value of your gold jewellery in GBP and USD.</image:caption>
+      <image:title>Scrap Gold Calculator — Live USD Melt Value</image:title>
+      <image:caption>Free scrap gold calculator. Enter weight and karat to find the live melt value of your gold jewellery in USD (primary), GBP, EUR and INR.</image:caption>
     </image:image>
   </url>
 
