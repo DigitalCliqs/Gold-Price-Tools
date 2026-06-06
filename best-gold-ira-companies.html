@@ -144,7 +144,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .breadcrumb li[aria-current="page"]{color:var(--color-text)}
 .article-wrap{max-width:1200px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-16)}
 .article-tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-gold-bright);margin-bottom:var(--space-3)}
-article.article-wrap .article-title,h1.article-title{font-family:var(--font-display)!important;font-size:clamp(1.75rem,3.5vw,2.75rem)!important;font-weight:700!important;line-height:1.15!important;margin:var(--space-2) 0 var(--space-5)!important;color:var(--color-text)!important}
+article.article-wrap .article-title,article .article-title,h1.article-title{font-family:var(--font-display)!important;font-size:clamp(1.75rem,3.5vw,2.75rem)!important;font-weight:700!important;line-height:1.15!important;margin:var(--space-2) 0 var(--space-5)!important;color:var(--color-text)!important}
 .article-byline{font-size:var(--text-sm);color:var(--color-text-muted);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin-bottom:var(--space-6);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-border)}
 .article-byline a{color:var(--color-primary);text-decoration:none;font-weight:500}
 .article-byline a:hover{text-decoration:underline}
@@ -249,6 +249,118 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
 .suitability-box ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-2)}
 .suitability-box li{display:flex;align-items:flex-start;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.5}
 .suitability-box li svg{flex-shrink:0;margin-top:2px}
+
+/* ── LIVE SPOT BAR ── */
+.ira-spot-bar{background:color-mix(in oklch,var(--color-gold-bright) 7%,var(--color-surface));border-bottom:1px solid color-mix(in oklch,var(--color-gold-bright) 18%,var(--color-border));padding:var(--space-2) var(--space-4)}
+.ira-spot-bar__inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-3) var(--space-5);font-size:var(--text-xs)}
+.ira-spot-pulse{display:flex;align-items:center;gap:6px;font-weight:600;color:var(--color-text)}
+.ira-spot-val{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums}
+.ira-spot-change{font-size:var(--text-xs);font-weight:600;padding:1px 6px;border-radius:var(--radius-full)}
+.ira-spot-change.up{color:#16a34a;background:color-mix(in oklch,#4ade80 12%,var(--color-surface))}
+.ira-spot-change.down{color:#dc2626;background:color-mix(in oklch,#f87171 12%,var(--color-surface))}
+[data-theme="dark"] .ira-spot-change.up{color:#4ade80}
+[data-theme="dark"] .ira-spot-change.down{color:#f87171}
+.ira-spot-note{color:var(--color-text-muted);font-size:var(--text-xs)}
+.ira-spot-time{color:var(--color-text-faint);font-size:var(--text-xs);margin-left:auto}
+@media(max-width:600px){.ira-spot-time{display:none}}
+
+/* ── COMPANY JUMP BAR ── */
+.company-jump-bar{position:sticky;top:56px;z-index:190;background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:0 var(--space-4);transform:translateY(-100%);transition:transform .25s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.company-jump-bar.visible{transform:translateY(0);pointer-events:auto}
+.company-jump-bar__inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;height:44px}
+.company-jump-bar__inner::-webkit-scrollbar{display:none}
+.company-jump-bar__label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding-right:var(--space-3);border-right:1px solid var(--color-border);margin-right:var(--space-2);white-space:nowrap;flex-shrink:0}
+.company-jump-bar a{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-decoration:none;padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);white-space:nowrap;flex-shrink:0;transition:color .12s,background .12s;touch-action:manipulation}
+.company-jump-bar a:hover{color:var(--color-gold-bright);background:var(--color-surface-offset)}
+.company-jump-bar a.active{color:var(--color-gold-bright)}
+
+/* ── TWO-COLUMN ARTICLE LAYOUT ── */
+.article-outer{max-width:1200px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-16)}
+.article-layout{display:grid;grid-template-columns:minmax(0,1fr) 256px;gap:var(--space-8);align-items:start}
+@media(max-width:1080px){.article-layout{grid-template-columns:1fr}}
+.article-main{min-width:0}
+.article-sidebar{position:sticky;top:calc(56px + var(--space-4))}
+@media(max-width:1080px){.article-sidebar{display:none}}
+
+/* ── TABLE OF CONTENTS ── */
+.toc-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);margin-bottom:var(--space-4)}
+.toc-card__heading{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-faint);margin-bottom:var(--space-3)}
+.toc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1px}
+.toc-list a{display:block;font-size:var(--text-xs);color:var(--color-text-muted);text-decoration:none;padding:5px var(--space-2);border-radius:var(--radius-sm);line-height:1.4;border-left:2px solid transparent;transition:color .12s,background .12s,border-color .12s}
+.toc-list a:hover{color:var(--color-text);background:var(--color-surface-offset);border-left-color:var(--color-border)}
+.toc-list a.toc-active{color:var(--color-gold-bright);border-left-color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface))}
+.toc-list .toc-company{padding-left:var(--space-4)}
+.toc-divider{height:1px;background:var(--color-divider);margin:var(--space-2) 0}
+
+/* ── MOBILE TOC TOGGLE ── */
+.toc-mobile{margin-bottom:var(--space-5);display:none}
+@media(max-width:1080px){.toc-mobile{display:block}}
+.toc-mobile-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);font-size:var(--text-sm);font-weight:600;color:var(--color-text);cursor:pointer;transition:background .12s;touch-action:manipulation}
+.toc-mobile-btn:hover{background:var(--color-surface-offset)}
+.toc-mobile-btn svg{transition:transform .2s;flex-shrink:0;color:var(--color-text-muted)}
+.toc-mobile-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.toc-mobile-panel{display:none;border:1px solid var(--color-border);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);background:var(--color-surface);padding:var(--space-3) var(--space-4) var(--space-4)}
+.toc-mobile-panel.open{display:block}
+.toc-mobile-panel .toc-list a{font-size:var(--text-sm);padding:var(--space-2) var(--space-2)}
+
+/* ── SPOT MINI CARD (sidebar) ── */
+.spot-mini-card{background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold-bright) 20%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-4);margin-bottom:var(--space-4);text-align:center}
+.spot-mini-card__label{font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted);margin-bottom:var(--space-1)}
+.spot-mini-card__val{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;line-height:1.1}
+.spot-mini-card__sub{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-1)}
+
+/* ── ENHANCED COMPANY CARDS ── */
+.company-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-8) 0;transition:box-shadow .2s,transform .2s;scroll-margin-top:calc(56px + 44px + var(--space-4))}
+.company-card:hover{box-shadow:var(--shadow-lg)}
+.company-card--t1{border-top:3px solid var(--color-gold-bright)}
+.company-card--t2{border-top:3px solid var(--color-silver)}
+.company-card--t3{border-top:3px solid color-mix(in oklch,#cd7c2e 60%,var(--color-border))}
+.company-card--t4{border-top:3px solid var(--color-border)}
+.company-card__header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-4);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-border)}
+.company-card__rank-wrap{display:flex;align-items:flex-start;gap:var(--space-3);flex:1;min-width:0}
+.rank-medal{width:44px;height:44px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;font-weight:700;flex-shrink:0;line-height:1}
+.rank-medal--gold{background:linear-gradient(135deg,#e8af34,#f5d07a,#b07a00);color:#1a1000;box-shadow:0 2px 8px color-mix(in oklch,#e8af34 40%,transparent)}
+.rank-medal--silver{background:linear-gradient(135deg,#9ca3af,#d1d5db,#6b7280);color:#1a1a1a;box-shadow:0 2px 8px color-mix(in oklch,#9ca3af 35%,transparent)}
+.rank-medal--bronze{background:linear-gradient(135deg,#cd7c2e,#e0a060,#a05a1a);color:#1a0a00;box-shadow:0 2px 8px color-mix(in oklch,#cd7c2e 35%,transparent)}
+.rank-medal--neutral{background:var(--color-surface-offset);border:1px solid var(--color-border);color:var(--color-text-muted)}
+.company-card__name{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:2px}
+.company-card__tagline{font-size:var(--text-sm);color:var(--color-primary);font-weight:500}
+.company-card__meta{display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2);flex-shrink:0}
+.company-score{display:flex;align-items:center;gap:var(--space-1);font-size:var(--text-sm);font-weight:700;color:var(--color-gold-bright)}
+.company-score__stars{display:flex;gap:1px}
+.company-score__num{font-family:var(--font-display);font-size:var(--text-sm)}
+.star-full{color:var(--color-gold-bright)}
+.star-half{color:var(--color-gold-bright);opacity:.6}
+
+/* Quick stats strip */
+.company-quick-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:var(--space-2);margin-bottom:var(--space-5);padding:var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-lg)}
+.qs-item{text-align:center}
+.qs-label{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);margin-bottom:3px}
+.qs-value{display:block;font-size:var(--text-sm);font-weight:700;color:var(--color-text);font-family:var(--font-display);font-variant-numeric:tabular-nums}
+@media(max-width:600px){.company-quick-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* Company card CTA */
+.company-card__cta{margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--color-border);display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap}
+.company-card__cta-note{font-size:var(--text-xs);color:var(--color-text-faint)}
+
+/* ── SCROLL FADE-IN ── */
+@media(prefers-reduced-motion:no-preference){
+.fade-in-up{opacity:0;transform:translateY(18px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+.fade-in-up.visible{opacity:1;transform:translateY(0)}
+}
+
+/* ── ENHANCED COMPARISON TABLE ── */
+.comparison-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:var(--space-4) 0 var(--space-6);border-radius:var(--radius-lg);border:1px solid var(--color-border)}
+.comparison-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);min-width:600px}
+.comparison-table th{text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding:var(--space-3) var(--space-4);border-bottom:2px solid var(--color-border);background:var(--color-surface-offset);white-space:nowrap}
+.comparison-table td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);color:var(--color-text-muted);vertical-align:middle}
+.comparison-table tr:last-child td{border-bottom:none}
+.comparison-table td:first-child{color:var(--color-text);font-weight:600;white-space:nowrap}
+.comparison-table .ct-top{background:color-mix(in oklch,var(--color-gold-bright) 4%,var(--color-surface))}
+.comparison-table .ct-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:2px 6px;border-radius:var(--radius-full);background:color-mix(in oklch,var(--color-gold-bright) 12%,var(--color-surface));color:var(--color-gold-bright);border:1px solid color-mix(in oklch,var(--color-gold-bright) 25%,var(--color-border))}
+
+/* ── SECTION HEADING IDs for TOC ── */
+h2[id]{scroll-margin-top:calc(56px + 44px + var(--space-4))}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 <!-- Microsoft Clarity -->
@@ -329,7 +441,38 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
   </ol>
 </div>
 
-<article class="article-wrap" itemscope itemtype="https://schema.org/Article">
+<!-- Live Gold Spot Bar -->
+<div class="ira-spot-bar" id="iraSpotBar">
+  <div class="ira-spot-bar__inner">
+    <span class="ira-spot-pulse">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span>Gold Spot</span>
+    </span>
+    <span class="ira-spot-val" id="iraSpotVal">—</span>
+    <span class="ira-spot-change" id="iraSpotChange"></span>
+    <span class="ira-spot-note">/ troy oz USD &middot; IRA values track this price</span>
+    <span class="ira-spot-time" id="iraSpotTime"></span>
+  </div>
+</div>
+
+<!-- Company Jump Bar (appears on scroll) -->
+<div class="company-jump-bar" id="companyJumpBar" aria-label="Jump to company review">
+  <div class="company-jump-bar__inner">
+    <span class="company-jump-bar__label">Jump to</span>
+    <a href="#augusta">#1 Augusta</a>
+    <a href="#goldco">#2 Goldco</a>
+    <a href="#american-hartford">#3 Am. Hartford</a>
+    <a href="#birch-gold">#4 Birch Gold</a>
+    <a href="#noble-gold">#5 Noble Gold</a>
+    <a href="#itrustcapital">#6 iTrustCapital</a>
+    <a href="#comparison-table" style="margin-left:auto;color:var(--color-text-faint)">Compare All &darr;</a>
+  </div>
+</div>
+
+<article itemscope itemtype="https://schema.org/Article">
+<div class="article-outer">
+
+  <!-- Header (outside grid so it spans full width) -->
   <div class="article-tag">Gold IRA</div>
   <h1 class="article-title" itemprop="headline">Best Gold IRA Companies in 2026 &mdash; Reviewed &amp; Compared</h1>
   <div class="article-byline">
@@ -340,9 +483,43 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
     <span>15 min read</span>
   </div>
 
-  <div class="prose">
+  <!-- Mobile TOC toggle -->
+  <div class="toc-mobile">
+    <button class="toc-mobile-btn" id="tocMobileBtn" aria-expanded="false" aria-controls="tocMobilePanel">
+      <span>Jump to Section</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="toc-mobile-panel" id="tocMobilePanel">
+      <ul class="toc-list">
+        <li><a href="#exec-summary">Quick Summary</a></li>
+        <li><a href="#what-is-gold-ira">What Is a Gold IRA?</a></li>
+        <li><a href="#contribution-limits">2026 Contribution Limits</a></li>
+        <li><a href="#evaluation">How We Evaluated</a></li>
+        <li><a href="#company-reviews">Full Company Reviews</a></li>
+        <li class="toc-company"><a href="#augusta">#1 Augusta Precious Metals</a></li>
+        <li class="toc-company"><a href="#goldco">#2 Goldco</a></li>
+        <li class="toc-company"><a href="#american-hartford">#3 American Hartford Gold</a></li>
+        <li class="toc-company"><a href="#birch-gold">#4 Birch Gold Group</a></li>
+        <li class="toc-company"><a href="#noble-gold">#5 Noble Gold Investments</a></li>
+        <li class="toc-company"><a href="#itrustcapital">#6 iTrustCapital</a></li>
+        <li><a href="#comparison-table">Comparison Table</a></li>
+        <li><a href="#real-costs">What It Actually Costs</a></li>
+        <li><a href="#depositories">IRS-Approved Depositories</a></li>
+        <li><a href="#red-flags">Red Flags to Avoid</a></li>
+        <li><a href="#is-it-worth-it">Is a Gold IRA Worth It?</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
 
-    <div class="exec-summary">
+  <!-- Two-column layout -->
+  <div class="article-layout">
+
+    <!-- Main content -->
+    <div class="article-main">
+      <div class="prose">
+
+    <div class="exec-summary" id="exec-summary">
       <p class="exec-summary-intro">The gold IRA market is crowded, competitive, and &mdash; if you are not careful &mdash; expensive. Dozens of companies compete for your retirement savings, and not all of them deserve the consideration they aggressively market for. This guide reviews the six genuine standouts, explains how a gold IRA works, what the 2026 rules say, and what to watch out for before committing any money.</p>
       <div class="exec-summary-stats">
         <div class="exec-stat"><div class="exec-stat-label">Companies Reviewed</div><div class="exec-stat-value">6</div></div>
@@ -352,14 +529,14 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       </div>
     </div>
 
-    <h2>What Is a Gold IRA &mdash; And Why Does It Matter in 2026?</h2>
+    <h2 id="what-is-gold-ira">What Is a Gold IRA &mdash; And Why Does It Matter in 2026?</h2>
     <p>A Gold IRA is a self-directed Individual Retirement Account (SDIRA) that holds physical precious metals &mdash; gold, silver, platinum, and palladium &mdash; instead of, or alongside, conventional paper assets like stocks and mutual funds. Like a standard IRA, it offers significant tax advantages: contributions to a Traditional Gold IRA may be tax-deductible, and gains grow tax-deferred until withdrawal. A Roth Gold IRA offers tax-free growth and tax-free withdrawals in retirement.<sup>1</sup></p>
     <p>Because physical gold cannot be held in a standard brokerage account, a gold IRA requires three parties: a <strong>specialist gold IRA company</strong> (which guides you through setup and metals selection), an <strong>IRS-approved custodian</strong> (which holds the account legally and manages paperwork), and an <strong>IRS-approved depository</strong> (which physically stores your metals). Every reputable gold IRA company manages these relationships on your behalf.<sup>2</sup></p>
     <div class="info-callout">
       <p><strong>Why 2026 matters:</strong> With gold having risen over 80% in the past two years and touching an all-time high of $5,589.38 in January 2026, investor interest in gold IRA rollovers has surged to levels not seen since the post-2008 financial crisis period. For retirement savers, a gold IRA offers something no ETF or mining stock can replicate: the ability to hold physical, allocated gold within a tax-advantaged retirement wrapper, legally protected under US retirement account law.</p>
     </div>
 
-    <h2>2026 Gold IRA Contribution Limits and Rules</h2>
+    <h2 id="contribution-limits">2026 Gold IRA Contribution Limits and Rules</h2>
     <p>These ground rules are non-negotiable &mdash; misunderstanding them can trigger costly tax penalties.</p>
     <h3>Annual Contribution Limits for 2026</h3>
     <div style="overflow-x:auto">
@@ -385,7 +562,7 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       <p>Any company that tells you otherwise is either mistaken or misleading you.</p>
     </div>
 
-    <h2>How We Evaluated Gold IRA Companies</h2>
+    <h2 id="evaluation">How We Evaluated Gold IRA Companies</h2>
     <p>The reviews below are based on the following criteria, cross-referenced across independent rating sources including CNBC, Forbes, Fortune, Money.com, Investopedia, Yahoo Finance, the BBB, BCA, and Trustpilot:</p>
     <ul>
       <li><strong>Fee transparency</strong> &mdash; Are all fees clearly disclosed upfront, or buried in fine print?</li>
@@ -397,27 +574,45 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       <li><strong>Customer experience</strong> &mdash; Quality and responsiveness of account specialists</li>
     </ul>
 
-    <h2>The Best Gold IRA Companies in 2026: Full Reviews</h2>
+    <h2 id="company-reviews">The Best Gold IRA Companies in 2026: Full Reviews</h2>
 
     <!-- #1 Augusta Precious Metals -->
-    <div class="company-card" id="augusta">
+    <div class="company-card company-card--t1 fade-in-up" id="augusta">
       <div class="company-card__header">
-        <div style="display:flex;align-items:flex-start;gap:var(--space-4)">
-          <div class="company-card__rank">#1</div>
+        <div class="company-card__rank-wrap">
+          <div class="rank-medal rank-medal--gold" aria-label="Rank 1">#1</div>
           <div>
             <div class="company-card__name">Augusta Precious Metals</div>
             <div class="company-card__tagline">Best for Education, Transparency &amp; High-Net-Worth Investors</div>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2)">
+        <div class="company-card__meta">
+          <div class="company-score" aria-label="Editor score 4.9 out of 5">
+            <span class="company-score__stars" aria-hidden="true">
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span class="company-score__num">4.9</span>
+          </div>
           <span class="rating-badge rating-badge--bbb">BBB A+</span>
           <span class="rating-badge rating-badge--bca">BCA AAA</span>
         </div>
       </div>
-      <p>Founded in 2012, Augusta is the gold standard (pun intended) for investor education. Their one-on-one web conference with a Harvard-trained economist is a genuine differentiator — it demystifies gold IRAs, explains the risks honestly, and lets you make a truly informed decision. No high-pressure sales tactics. No cold-call follow-ups.</p>
-      <p>Augusta's fees are competitive at roughly <strong>$200–$280/year</strong> for storage and admin, but the $50,000 minimum is a real barrier for newer investors. If you can clear that threshold, few companies match Augusta on transparency.</p>
-      <p><strong>What we liked:</strong> The educational focus means most clients arrive with realistic expectations. Augusta's lifetime buyback guarantee (at current wholesale prices) removes the exit anxiety many gold IRA holders feel. Complaints are almost nonexistent for a company this size.</p>
-      <p><strong>What to watch:</strong> The $50,000 minimum excludes many first-time buyers. And while the buyback guarantee is genuine, "wholesale price" means you're not getting spot price — understand that before you commit.</p>
+      <div class="company-quick-stats">
+        <div class="qs-item"><span class="qs-label">Min. Investment</span><span class="qs-value">$50,000</span></div>
+        <div class="qs-item"><span class="qs-label">Annual Fees</span><span class="qs-value">$200–$280</span></div>
+        <div class="qs-item"><span class="qs-label">Founded</span><span class="qs-value">2012</span></div>
+        <div class="qs-item"><span class="qs-label">Storage Type</span><span class="qs-value">Segregated</span></div>
+      </div>
+      <div class="company-card__body">
+        <p>Founded in 2012, Augusta is the gold standard for investor education. Their one-on-one web conference with a Harvard-trained economist is a genuine differentiator — it demystifies gold IRAs, explains the risks honestly, and lets you make a truly informed decision. No high-pressure sales tactics. No cold-call follow-ups.</p>
+        <p>Augusta's fees are competitive at roughly <strong>$200–$280/year</strong> for storage and admin, but the $50,000 minimum is a real barrier for newer investors. If you can clear that threshold, few companies match Augusta on transparency.</p>
+        <p><strong>What we liked:</strong> The educational focus means most clients arrive with realistic expectations. Augusta's lifetime buyback guarantee (at current wholesale prices) removes the exit anxiety many gold IRA holders feel. Complaints are almost nonexistent for a company this size.</p>
+        <p><strong>What to watch:</strong> The $50,000 minimum excludes many first-time buyers. The buyback guarantee is genuine, but "wholesale price" means you're not getting spot — understand that before you commit.</p>
+      </div>
       <table class="company-card__table">
         <tbody>
           <tr><td>Founded</td><td>2012</td></tr>
@@ -428,27 +623,49 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
           <tr><td>Standout Feature</td><td>Lifetime buyback guarantee; economist web conference</td></tr>
         </tbody>
       </table>
+      <div class="company-card__cta">
+        <a href="/" class="cta-btn">Check Live Gold Price</a>
+        <span class="company-card__cta-note">Gold IRA value moves with the spot price above</span>
+      </div>
     </div>
 
     <!-- #2 Goldco -->
-    <div class="company-card" id="goldco">
+    <div class="company-card company-card--t1 fade-in-up" id="goldco">
       <div class="company-card__header">
-        <div style="display:flex;align-items:flex-start;gap:var(--space-4)">
-          <div class="company-card__rank">#2</div>
+        <div class="company-card__rank-wrap">
+          <div class="rank-medal rank-medal--silver" aria-label="Rank 2">#2</div>
           <div>
             <div class="company-card__name">Goldco</div>
             <div class="company-card__tagline">Best for 401(k) Rollovers &amp; Customer Support</div>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2)">
+        <div class="company-card__meta">
+          <div class="company-score" aria-label="Editor score 4.8 out of 5">
+            <span class="company-score__stars" aria-hidden="true">
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-half" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span class="company-score__num">4.8</span>
+          </div>
           <span class="rating-badge rating-badge--bbb">BBB A+</span>
           <span class="rating-badge rating-badge--bca">BCA AAA</span>
         </div>
       </div>
-      <p>Goldco has been helping Americans roll workplace retirement accounts into precious metals IRAs since 2006. They've processed thousands of rollovers and have the process down to a science — most clients complete the transfer within 10–14 business days. Their dedicated rollover specialists walk you through every step, which is especially valuable if this is your first alternative asset IRA.</p>
-      <p>Their current promotional offer — up to <strong>10% back in free silver</strong> on qualifying purchases — is one of the more generous in the industry. Annual fees run approximately <strong>$200–$250/year</strong> with a recommended minimum of $25,000 (lower accounts are accepted but may not be cost-effective).</p>
-      <p><strong>What we liked:</strong> Goldco's customer service response times are consistently fast (same-day callbacks are the norm, not the exception). Their educational resources — videos, guides, a dedicated IRA specialist — are comprehensive without being overwhelming.</p>
-      <p><strong>What to watch:</strong> The free silver promotion has terms — confirm the qualifying threshold before assuming it applies to your account size. Fee transparency could be better upfront; always request a written fee schedule before signing.</p>
+      <div class="company-quick-stats">
+        <div class="qs-item"><span class="qs-label">Min. Investment</span><span class="qs-value">~$25,000</span></div>
+        <div class="qs-item"><span class="qs-label">Annual Fees</span><span class="qs-value">$200–$250</span></div>
+        <div class="qs-item"><span class="qs-label">Founded</span><span class="qs-value">2006</span></div>
+        <div class="qs-item"><span class="qs-label">Promo</span><span class="qs-value">10% Free Silver</span></div>
+      </div>
+      <div class="company-card__body">
+        <p>Goldco has been helping Americans roll workplace retirement accounts into precious metals IRAs since 2006. They've processed thousands of rollovers and have the process down to a science — most clients complete the transfer within 10–14 business days. Their dedicated rollover specialists walk you through every step, which is especially valuable if this is your first alternative asset IRA.</p>
+        <p>Their current promotional offer — up to <strong>10% back in free silver</strong> on qualifying purchases — is one of the more generous in the industry. Annual fees run approximately <strong>$200–$250/year</strong> with a recommended minimum of $25,000 (lower accounts are accepted but may not be cost-effective).</p>
+        <p><strong>What we liked:</strong> Goldco's customer service response times are consistently fast (same-day callbacks are the norm, not the exception). Their educational resources — videos, guides, a dedicated IRA specialist — are comprehensive without being overwhelming.</p>
+        <p><strong>What to watch:</strong> The free silver promotion has terms — confirm the qualifying threshold before assuming it applies to your account size. Fee transparency could be better upfront; always request a written fee schedule before signing.</p>
+      </div>
       <table class="company-card__table">
         <tbody>
           <tr><td>Founded</td><td>2006</td></tr>
@@ -462,24 +679,42 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
     </div>
 
     <!-- #3 American Hartford Gold -->
-    <div class="company-card" id="american-hartford">
+    <div class="company-card company-card--t2 fade-in-up" id="american-hartford">
       <div class="company-card__header">
-        <div style="display:flex;align-items:flex-start;gap:var(--space-4)">
-          <div class="company-card__rank">#3</div>
+        <div class="company-card__rank-wrap">
+          <div class="rank-medal rank-medal--bronze" aria-label="Rank 3">#3</div>
           <div>
             <div class="company-card__name">American Hartford Gold</div>
             <div class="company-card__tagline">Best for Low Fees &amp; Accessibility</div>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2)">
+        <div class="company-card__meta">
+          <div class="company-score" aria-label="Editor score 4.7 out of 5">
+            <span class="company-score__stars" aria-hidden="true">
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-half" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span class="company-score__num">4.7</span>
+          </div>
           <span class="rating-badge rating-badge--bbb">BBB A+</span>
           <span class="rating-badge rating-badge--bca">BCA AA</span>
         </div>
       </div>
-      <p>American Hartford Gold stands out for its low entry point ($10,000 minimum) and streamlined fee structure. Annual storage and admin fees range from <strong>$75–$125/year</strong> depending on account size — among the lowest of any IRA specialist on this list. That matters over a 10–20 year investment horizon where fees compound against your returns.</p>
-      <p>Founded in 2015, AHG has grown rapidly and earned strong customer reviews across Google, Trustpilot, and Consumer Affairs. Their buyback program is simple and clearly documented — another plus for investors who want to know their exit options before they enter.</p>
-      <p><strong>What we liked:</strong> The low minimum and fees make AHG genuinely accessible to retirement savers who aren't starting with a large rollover. The company is transparent about its fee schedule, which is rarer than it should be in this industry.</p>
-      <p><strong>What to watch:</strong> There is a $230 application fee at account opening. BCA rating (AA vs. AAA for competitors) is still strong but worth noting. Fewer custodian options than some rivals.</p>
+      <div class="company-quick-stats">
+        <div class="qs-item"><span class="qs-label">Min. Investment</span><span class="qs-value">$10,000</span></div>
+        <div class="qs-item"><span class="qs-label">Annual Fees</span><span class="qs-value">$75–$125</span></div>
+        <div class="qs-item"><span class="qs-label">Founded</span><span class="qs-value">2015</span></div>
+        <div class="qs-item"><span class="qs-label">Setup Fee</span><span class="qs-value">$230</span></div>
+      </div>
+      <div class="company-card__body">
+        <p>American Hartford Gold stands out for its low entry point ($10,000 minimum) and streamlined fee structure. Annual storage and admin fees range from <strong>$75–$125/year</strong> depending on account size — among the lowest of any IRA specialist on this list. That matters over a 10–20 year investment horizon where fees compound against your returns.</p>
+        <p>Founded in 2015, AHG has grown rapidly and earned strong customer reviews across Google, Trustpilot, and Consumer Affairs. Their buyback program is simple and clearly documented — another plus for investors who want to know their exit options before they enter.</p>
+        <p><strong>What we liked:</strong> The low minimum and fees make AHG genuinely accessible to retirement savers who aren't starting with a large rollover. The company is transparent about its fee schedule, which is rarer than it should be in this industry.</p>
+        <p><strong>What to watch:</strong> There is a $230 application fee at account opening. BCA rating (AA vs. AAA for competitors) is still strong but worth noting. Fewer custodian options than some rivals.</p>
+      </div>
       <table class="company-card__table">
         <tbody>
           <tr><td>Founded</td><td>2015</td></tr>
@@ -492,24 +727,42 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
     </div>
 
     <!-- #4 Birch Gold Group -->
-    <div class="company-card" id="birch-gold">
+    <div class="company-card company-card--t2 fade-in-up" id="birch-gold">
       <div class="company-card__header">
-        <div style="display:flex;align-items:flex-start;gap:var(--space-4)">
-          <div class="company-card__rank">#4</div>
+        <div class="company-card__rank-wrap">
+          <div class="rank-medal rank-medal--neutral" aria-label="Rank 4">#4</div>
           <div>
             <div class="company-card__name">Birch Gold Group</div>
             <div class="company-card__tagline">Best for Experienced Investors, Product Range &amp; Large Rollovers</div>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2)">
+        <div class="company-card__meta">
+          <div class="company-score" aria-label="Editor score 4.7 out of 5">
+            <span class="company-score__stars" aria-hidden="true">
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-half" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span class="company-score__num">4.7</span>
+          </div>
           <span class="rating-badge rating-badge--bbb">BBB A+</span>
           <span class="rating-badge rating-badge--bca">BCA AAA</span>
         </div>
       </div>
-      <p>Birch Gold Group is one of the oldest companies on this list, founded in 2003. That two-decade track record matters — they've navigated the 2008 financial crisis, the 2011 gold spike, and the post-pandemic surge, and they're still here. Experience counts in an industry that has seen plenty of fly-by-night operators.</p>
-      <p>Birch offers the widest product selection: IRS-approved gold, silver, platinum, and palladium bars and coins. Annual fees run <strong>~$200–$300/year</strong>, but year-one fees are waived for qualifying transfers — a meaningful saving if you're rolling over a large account. They work with both Equity Trust and STRATA Trust as custodians, giving clients more flexibility.</p>
-      <p><strong>What we liked:</strong> Birch's representatives are knowledgeable rather than salesy. They're one of the few companies that actively discusses risk alongside opportunity — refreshing in a sector prone to gold-maximalism. Their metals selection is the broadest of any company reviewed here.</p>
-      <p><strong>What to watch:</strong> First-year fee waiver terms vary — confirm the qualifying transfer size. Annual fees at the higher end of the range for smaller accounts. Not the strongest choice for investors who want hand-holding through the process.</p>
+      <div class="company-quick-stats">
+        <div class="qs-item"><span class="qs-label">Min. Investment</span><span class="qs-value">$10,000</span></div>
+        <div class="qs-item"><span class="qs-label">Annual Fees</span><span class="qs-value">$200–$300</span></div>
+        <div class="qs-item"><span class="qs-label">Founded</span><span class="qs-value">2003</span></div>
+        <div class="qs-item"><span class="qs-label">Yr 1 Fees</span><span class="qs-value">Waived</span></div>
+      </div>
+      <div class="company-card__body">
+        <p>Birch Gold Group is one of the oldest companies on this list, founded in 2003. That two-decade track record matters — they've navigated the 2008 financial crisis, the 2011 gold spike, and the post-pandemic surge, and they're still here. Experience counts in an industry that has seen plenty of fly-by-night operators.</p>
+        <p>Birch offers the widest product selection: IRS-approved gold, silver, platinum, and palladium bars and coins. Annual fees run <strong>~$200–$300/year</strong>, but year-one fees are waived for qualifying transfers — a meaningful saving if you're rolling over a large account. They work with both Equity Trust and STRATA Trust as custodians, giving clients more flexibility.</p>
+        <p><strong>What we liked:</strong> Birch's representatives are knowledgeable rather than salesy. They're one of the few companies that actively discusses risk alongside opportunity — refreshing in a sector prone to gold-maximalism. Their metals selection is the broadest of any company reviewed here.</p>
+        <p><strong>What to watch:</strong> First-year fee waiver terms vary — confirm the qualifying transfer size. Annual fees at the higher end of the range for smaller accounts. Not the strongest choice for investors who want hand-holding through the process.</p>
+      </div>
       <table class="company-card__table">
         <tbody>
           <tr><td>Founded</td><td>2003</td></tr>
@@ -522,24 +775,42 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
     </div>
 
     <!-- #5 Noble Gold Investments -->
-    <div class="company-card" id="noble-gold">
+    <div class="company-card company-card--t4 fade-in-up" id="noble-gold">
       <div class="company-card__header">
-        <div style="display:flex;align-items:flex-start;gap:var(--space-4)">
-          <div class="company-card__rank">#5</div>
+        <div class="company-card__rank-wrap">
+          <div class="rank-medal rank-medal--neutral" aria-label="Rank 5">#5</div>
           <div>
             <div class="company-card__name">Noble Gold Investments</div>
             <div class="company-card__tagline">Best for Segregated Storage &amp; Smaller Investors</div>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2)">
+        <div class="company-card__meta">
+          <div class="company-score" aria-label="Editor score 4.6 out of 5">
+            <span class="company-score__stars" aria-hidden="true">
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-half" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span class="company-score__num">4.6</span>
+          </div>
           <span class="rating-badge rating-badge--bbb">BBB A+</span>
           <span class="rating-badge rating-badge--ca">Consumer Affairs 5/5</span>
         </div>
       </div>
-      <p>Noble Gold was founded in 2017, making it the newest established firm on this list — but they've built a strong reputation quickly, particularly among smaller investors and those who want segregated storage without paying a premium for it. At <strong>~$230/year flat</strong>, their fee includes segregated storage as standard (not an upgrade), which is genuinely unusual.</p>
-      <p>Noble stores metals at the Delaware Depository and, uniquely, at their own Texas-based depository — one of the few IRA companies with a proprietary facility. Their "Royal Survival Pack" — a collection of IRS-approved coins delivered to your door — is a popular option for investors who want some physical metals outside their IRA as well.</p>
-      <p><strong>What we liked:</strong> Segregated storage included by default is a significant differentiator. The Texas depository option appeals to investors who want metals stored domestically and close to them. The $10,000 minimum makes Noble genuinely accessible.</p>
-      <p><strong>What to watch:</strong> Noble is younger than most competitors, so the long-term track record is still developing. Their product range, while solid, is narrower than Birch Gold's. The flat fee structure is straightforward but may not be the cheapest for very large accounts.</p>
+      <div class="company-quick-stats">
+        <div class="qs-item"><span class="qs-label">Min. Investment</span><span class="qs-value">$10,000</span></div>
+        <div class="qs-item"><span class="qs-label">Annual Fees</span><span class="qs-value">~$230 Flat</span></div>
+        <div class="qs-item"><span class="qs-label">Founded</span><span class="qs-value">2017</span></div>
+        <div class="qs-item"><span class="qs-label">Storage</span><span class="qs-value">Segregated Std</span></div>
+      </div>
+      <div class="company-card__body">
+        <p>Noble Gold was founded in 2017, making it the newest established firm on this list — but they've built a strong reputation quickly, particularly among smaller investors and those who want segregated storage without paying a premium for it. At <strong>~$230/year flat</strong>, their fee includes segregated storage as standard (not an upgrade), which is genuinely unusual.</p>
+        <p>Noble stores metals at the Delaware Depository and, uniquely, at their own Texas-based depository — one of the few IRA companies with a proprietary facility. Their "Royal Survival Pack" — a collection of IRS-approved coins delivered to your door — is a popular option for investors who want some physical metals outside their IRA as well.</p>
+        <p><strong>What we liked:</strong> Segregated storage included by default is a significant differentiator. The Texas depository option appeals to investors who want metals stored domestically and close to them. The $10,000 minimum makes Noble genuinely accessible.</p>
+        <p><strong>What to watch:</strong> Noble is younger than most competitors, so the long-term track record is still developing. Their product range, while solid, is narrower than Birch Gold's. The flat fee structure is straightforward but may not be the cheapest for very large accounts.</p>
+      </div>
       <table class="company-card__table">
         <tbody>
           <tr><td>Founded</td><td>2017</td></tr>
@@ -552,23 +823,41 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
     </div>
 
     <!-- #6 iTrustCapital -->
-    <div class="company-card" id="itrustcapital">
+    <div class="company-card company-card--t4 fade-in-up" id="itrustcapital">
       <div class="company-card__header">
-        <div style="display:flex;align-items:flex-start;gap:var(--space-4)">
-          <div class="company-card__rank">#6</div>
+        <div class="company-card__rank-wrap">
+          <div class="rank-medal rank-medal--neutral" aria-label="Rank 6">#6</div>
           <div>
             <div class="company-card__name">iTrustCapital</div>
             <div class="company-card__tagline">Best for Self-Directed Investors &amp; Low-Cost Access</div>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-2)">
+        <div class="company-card__meta">
+          <div class="company-score" aria-label="Editor score 4.5 out of 5">
+            <span class="company-score__stars" aria-hidden="true">
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-full" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg class="star-half" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span class="company-score__num">4.5</span>
+          </div>
           <span class="rating-badge rating-badge--bbb">BBB A+</span>
         </div>
       </div>
-      <p>iTrustCapital is a fundamentally different kind of gold IRA provider. Founded in 2018, it's a technology-first platform that lets you trade gold, silver, and cryptocurrencies within a single IRA via a real-time online interface. If you want to buy gold at 11pm on a Sunday without calling a representative, this is your platform.</p>
-      <p>The cost structure is equally disruptive: <strong>no annual fees</strong>, no storage fees, no account maintenance charges. Instead, iTrustCapital charges <strong>$50 over spot per ounce of gold</strong> traded — a transaction-based model that rewards buy-and-hold investors. The $1,000 minimum is the lowest on this list by a wide margin.</p>
-      <p><strong>What we liked:</strong> The platform is genuinely modern — real-time pricing, 24/7 trading, clean UI. For self-directed investors comfortable making their own allocation decisions, iTrustCapital offers rare cost efficiency. The crypto + metals combo appeals to investors who want broad alternative asset exposure in a single tax-advantaged account.</p>
-      <p><strong>What to watch:</strong> There's no dedicated IRA specialist to hold your hand through the process. The $50/oz premium is simple to understand but can be meaningful at scale — run the math for your expected transaction volume. Crypto within an IRA is a separate risk category; don't let the metals offering obscure that.</p>
+      <div class="company-quick-stats">
+        <div class="qs-item"><span class="qs-label">Min. Investment</span><span class="qs-value">$1,000</span></div>
+        <div class="qs-item"><span class="qs-label">Annual Fees</span><span class="qs-value">$0</span></div>
+        <div class="qs-item"><span class="qs-label">Founded</span><span class="qs-value">2018</span></div>
+        <div class="qs-item"><span class="qs-label">Trading Fee</span><span class="qs-value">$50/oz</span></div>
+      </div>
+      <div class="company-card__body">
+        <p>iTrustCapital is a fundamentally different kind of gold IRA provider. Founded in 2018, it's a technology-first platform that lets you trade gold, silver, and cryptocurrencies within a single IRA via a real-time online interface. If you want to buy gold at 11pm on a Sunday without calling a representative, this is your platform.</p>
+        <p>The cost structure is equally disruptive: <strong>no annual fees</strong>, no storage fees, no account maintenance charges. Instead, iTrustCapital charges <strong>$50 over spot per ounce of gold</strong> traded — a transaction-based model that rewards buy-and-hold investors. The $1,000 minimum is the lowest on this list by a wide margin.</p>
+        <p><strong>What we liked:</strong> The platform is genuinely modern — real-time pricing, 24/7 trading, clean UI. For self-directed investors comfortable making their own allocation decisions, iTrustCapital offers rare cost efficiency. The crypto + metals combo appeals to investors who want broad alternative asset exposure in a single tax-advantaged account.</p>
+        <p><strong>What to watch:</strong> There's no dedicated IRA specialist to hold your hand through the process. The $50/oz premium is simple to understand but can be meaningful at scale — run the math for your expected transaction volume. Crypto within an IRA is a separate risk category; don't let the metals offering obscure that.</p>
+      </div>
       <table class="company-card__table">
         <tbody>
           <tr><td>Founded</td><td>2018</td></tr>
@@ -580,22 +869,22 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       </table>
     </div>
 
-    <h2>Full Comparison Table: Top Gold IRA Companies 2026</h2>
-    <div style="overflow-x:auto">
-      <table>
-        <thead><tr><th>Company</th><th>Min. Investment</th><th>Annual Fees</th><th>BBB Rating</th><th>Best Known For</th></tr></thead>
+    <h2 id="comparison-table">Full Comparison Table: Top Gold IRA Companies 2026</h2>
+    <div class="comparison-wrap">
+      <table class="comparison-table">
+        <thead><tr><th>Company</th><th>Min. Investment</th><th>Annual Fees (USD)</th><th>BBB</th><th>Score</th><th>Best Known For</th></tr></thead>
         <tbody>
-          <tr><td><strong>Augusta Precious Metals</strong></td><td>$50,000</td><td>~$200&ndash;$280</td><td>A+</td><td>Education, transparency, high-net-worth</td></tr>
-          <tr><td><strong>Goldco</strong></td><td>~$25,000</td><td>~$200&ndash;$250</td><td>A+</td><td>401(k) rollovers, customer support</td></tr>
-          <tr><td><strong>American Hartford Gold</strong></td><td>$10,000</td><td>$75&ndash;$125</td><td>A+</td><td>Low fees, flexibility, accessibility</td></tr>
-          <tr><td><strong>Birch Gold Group</strong></td><td>$10,000</td><td>~$200&ndash;$300 (yr 1 waived)</td><td>A+</td><td>Product range, experienced investors</td></tr>
-          <tr><td><strong>Noble Gold Investments</strong></td><td>$10,000</td><td>~$230</td><td>A+</td><td>Segregated storage as default</td></tr>
-          <tr><td><strong>iTrustCapital</strong></td><td>$1,000</td><td>$0 (transaction fees apply)</td><td>N/A</td><td>Self-directed, crypto + metals</td></tr>
+          <tr class="ct-top"><td><strong>Augusta Precious Metals</strong> <span class="ct-badge">#1</span></td><td>$50,000</td><td>~$200&ndash;$280</td><td>A+</td><td>4.9</td><td>Education, transparency, high-net-worth</td></tr>
+          <tr class="ct-top"><td><strong>Goldco</strong> <span class="ct-badge">#2</span></td><td>~$25,000</td><td>~$200&ndash;$250</td><td>A+</td><td>4.8</td><td>401(k) rollovers, customer support</td></tr>
+          <tr><td><strong>American Hartford Gold</strong></td><td>$10,000</td><td>$75&ndash;$125</td><td>A+</td><td>4.7</td><td>Low fees, flexibility, accessibility</td></tr>
+          <tr><td><strong>Birch Gold Group</strong></td><td>$10,000</td><td>~$200&ndash;$300 (yr 1 waived)</td><td>A+</td><td>4.7</td><td>Product range, experienced investors</td></tr>
+          <tr><td><strong>Noble Gold Investments</strong></td><td>$10,000</td><td>~$230 flat</td><td>A+</td><td>4.6</td><td>Segregated storage as default</td></tr>
+          <tr><td><strong>iTrustCapital</strong></td><td>$1,000</td><td>$0 + $50/oz trade fee</td><td>A+</td><td>4.5</td><td>Self-directed, crypto + metals, 24/7</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h2>What a Gold IRA Actually Costs: The Full Picture</h2>
+    <h2 id="real-costs">What a Gold IRA Actually Costs: The Full Picture</h2>
     <p>One of the most significant criticisms of the gold IRA industry is that total annual costs are often understated in marketing materials. Here is a realistic breakdown:</p>
     <p><strong>Setup costs (one-time):</strong> IRA account setup $0&ndash;$50; wire transfer fee $25&ndash;$30; dealer premium on metals purchased 3&ndash;8% above spot price.</p>
     <p><strong>Ongoing annual costs:</strong> Custodian administration fee $75&ndash;$150/year; storage fee $100&ndash;$275/year (segregated vs. non-segregated). <strong>Total typical annual cost: $200&ndash;$600 per year</strong>, excluding dealer markups.</p>
@@ -607,7 +896,7 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       <div class="stat-pill"><span class="stat-pill-value">0.6%</span><span class="stat-pill-label">Effective fee on $50k account</span></div>
     </div>
 
-    <h2>IRS-Approved Depositories: Where Your Gold Is Stored</h2>
+    <h2 id="depositories">IRS-Approved Depositories: Where Your Gold Is Stored</h2>
     <p>All physical gold in a gold IRA must be stored at an IRS-approved depository. The most widely used facilities in 2026 are:</p>
     <ul>
       <li><strong>Delaware Depository Service Company (DDSC)</strong> &mdash; Based in Wilmington, Delaware. The most widely used by gold IRA companies, with full insurance and both segregated and non-segregated storage.</li>
@@ -619,7 +908,7 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       <p><strong>Segregated vs. non-segregated storage:</strong> Segregated storage means your specific bars or coins are physically separated from other clients&rsquo; holdings, tagged with your account details. Non-segregated (commingled) storage means you are entitled to an equivalent quantity but not the specific bars or coins you originally purchased. Segregated storage typically costs $50&ndash;$100 per year more &mdash; particularly worthwhile for larger holdings.</p>
     </div>
 
-    <h2>Red Flags: What to Watch Out For</h2>
+    <h2 id="red-flags">Red Flags: What to Watch Out For</h2>
     <div class="warning-callout">
       <p><strong>Warning signs that should prompt you to walk away:</strong></p>
       <ul>
@@ -632,7 +921,7 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       </ul>
     </div>
 
-    <h2>Is a Gold IRA Worth It in 2026?</h2>
+    <h2 id="is-it-worth-it">Is a Gold IRA Worth It in 2026?</h2>
     <p>The answer is genuinely nuanced. The unique value proposition is narrow but real: <strong>tax-advantaged growth or tax-free withdrawals on physical gold</strong>. For investors who understand that specific proposition and are making a long-term commitment, it is a legitimate and valuable structure.</p>
     <div class="suitability-grid">
       <div class="suitability-box suitability-box--yes">
@@ -661,36 +950,36 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       <a href="/" class="cta-btn">View Live Gold Prices</a>
     </div>
 
-    <h2>Frequently Asked Questions</h2>
+    <h2 id="faq">Frequently Asked Questions</h2>
     <div class="faq-accordion">
-      <div class="faq-item">
-        <h3>What is the best gold IRA company in 2026?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
+      <details class="faq-item">
+        <summary>What is the best gold IRA company in 2026?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="faq-body"><p>Augusta Precious Metals, Goldco, and American Hartford Gold consistently rank at the top of independent reviews in 2026. Augusta excels for high-net-worth investors wanting education and transparency; Goldco is strongest for 401(k) rollovers and customer support; American Hartford Gold is best for lower minimums and cost efficiency.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>What is the minimum investment for a gold IRA?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
+      </details>
+      <details class="faq-item">
+        <summary>What is the minimum investment for a gold IRA?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="faq-body"><p>Minimums range from $1,000 at iTrustCapital to $50,000 at Augusta Precious Metals. Most mainstream gold IRA companies &mdash; Goldco, Birch Gold, American Hartford Gold, Noble Gold &mdash; operate in the $10,000&ndash;$25,000 range.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>How much does a gold IRA cost per year?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Total annual costs typically run $200&ndash;$600 per year, covering custodian administration fees and depository storage. Dealer premiums on metals at purchase add a one-time cost of 3&ndash;8% above spot price.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>What gold can I hold in an IRA?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
+      </details>
+      <details class="faq-item">
+        <summary>How much does a gold IRA cost per year?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-body"><p>Total annual costs typically run $200&ndash;$600 per year (USD), covering custodian administration fees and depository storage. Dealer premiums on metals at purchase add a one-time cost of 3&ndash;8% above the USD spot price.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What gold can I hold in an IRA?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="faq-body"><p>IRS rules require a minimum fineness of .995 (99.5%). Eligible products include American Gold Eagles, American Gold Buffalos, Canadian Maple Leafs, Austrian Philharmonics, and gold bars from LBMA-approved refiners including PAMP Suisse, Valcambi, and the Perth Mint.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>What are the 2026 Gold IRA contribution limits?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>For 2026, the IRA contribution limit is <strong>$7,500 per year</strong> ($8,600 for those aged 50 or older). Rollovers from existing 401(k)s and IRAs are not subject to annual contribution limits &mdash; this is why most gold IRA companies focus their marketing on the rollover market.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Can I store IRA gold at home?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
+      </details>
+      <details class="faq-item">
+        <summary>What are the 2026 Gold IRA contribution limits?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-body"><p>For 2026, the IRA contribution limit is <strong>$7,500 per year USD</strong> ($8,600 for those aged 50 or older). Rollovers from existing 401(k)s and IRAs are not subject to annual contribution limits &mdash; this is why most gold IRA companies focus their marketing on the rollover market.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I store IRA gold at home?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="faq-body"><p>No. The IRS requires all IRA gold to be held at an IRS-approved third-party depository. Storing IRA gold at home is treated as a distribution, triggering immediate income tax and potentially a 10% early withdrawal penalty if you are under 59&frac12;.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Is a gold IRA safe?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
+      </details>
+      <details class="faq-item">
+        <summary>Is a gold IRA safe?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="faq-body"><p>A gold IRA at a reputable company with an IRS-approved custodian and insured depository is a well-regulated, legally protected structure. The metals are held in allocated, insured storage. The primary risks are gold&rsquo;s price volatility and the relatively high fee structure compared to passive ETFs.</p></div>
-      </div>
+      </details>
     </div>
 
     <div class="share-buttons" aria-label="Share this article">
@@ -712,7 +1001,49 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       </a>
     </div>
 
-  </div><!-- /.prose -->
+    </div><!-- /.prose -->
+    </div><!-- /.article-main -->
+
+    <!-- Sticky Desktop Sidebar -->
+    <aside class="article-sidebar" aria-label="Page navigation and live data">
+      <!-- Live spot mini card -->
+      <div class="spot-mini-card">
+        <div class="spot-mini-card__label">
+          <span class="live-dot" aria-hidden="true" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--color-up);margin-right:5px;vertical-align:middle;animation:livePulse 2s ease-in-out infinite"></span>
+          Gold Spot Price (USD)
+        </div>
+        <div class="spot-mini-card__val" id="sidebarSpotVal">—</div>
+        <div class="spot-mini-card__sub" id="sidebarSpotChange">per troy oz &middot; live</div>
+      </div>
+
+      <!-- Table of contents -->
+      <div class="toc-card">
+        <div class="toc-card__heading">In This Guide</div>
+        <ul class="toc-list" id="desktopToc">
+          <li><a href="#exec-summary">Quick Summary</a></li>
+          <li><a href="#what-is-gold-ira">What Is a Gold IRA?</a></li>
+          <li><a href="#contribution-limits">2026 Contribution Limits</a></li>
+          <li><a href="#evaluation">How We Evaluated</a></li>
+          <li><a href="#company-reviews">Full Company Reviews</a></li>
+          <li class="toc-company"><a href="#augusta">#1 Augusta</a></li>
+          <li class="toc-company"><a href="#goldco">#2 Goldco</a></li>
+          <li class="toc-company"><a href="#american-hartford">#3 Am. Hartford</a></li>
+          <li class="toc-company"><a href="#birch-gold">#4 Birch Gold</a></li>
+          <li class="toc-company"><a href="#noble-gold">#5 Noble Gold</a></li>
+          <li class="toc-company"><a href="#itrustcapital">#6 iTrustCapital</a></li>
+          <div class="toc-divider"></div>
+          <li><a href="#comparison-table">Comparison Table</a></li>
+          <li><a href="#real-costs">What It Actually Costs</a></li>
+          <li><a href="#depositories">IRS Depositories</a></li>
+          <li><a href="#red-flags">Red Flags</a></li>
+          <li><a href="#is-it-worth-it">Is It Worth It?</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div><!-- /.article-layout -->
+</div><!-- /.article-outer -->
 </article>
 
 <div style="max-width:860px;margin:0 auto var(--space-10);padding:0 var(--space-4)">
@@ -781,6 +1112,138 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
 
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 <script>let _deepReadFired=false;window.addEventListener('scroll',()=>{if(_deepReadFired)return;const st=window.scrollY||document.documentElement.scrollTop;const sh=document.documentElement.scrollHeight-document.documentElement.clientHeight;if(sh>0&&(st/sh)>0.75){gtag('event','guide_deep_read');_deepReadFired=true;}},{passive:true});</script>
+<script>
+/* ── LIVE GOLD SPOT PRICE (60s refresh, USD primary) ── */
+(function(){
+  'use strict';
+  const REFRESH=60000;
+  const fmtUSD=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2});
+  let prevPrice=null;
+  async function fetchSpot(){
+    try{
+      const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});
+      if(!r.ok)return;
+      const d=await r.json();
+      const price=d.price;
+      const change=d.change||0;
+      const changePct=d.change_pct||0;
+      const priceStr=fmtUSD.format(price);
+      const sign=change>=0?'+':'';
+      const changeStr=sign+fmtUSD.format(change)+' ('+sign+changePct.toFixed(2)+'%)';
+      const upDown=change>=0?'up':'down';
+      const now=new Date();
+      const timeStr=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',timeZoneName:'short'});
+
+      /* Spot bar */
+      const sv=document.getElementById('iraSpotVal');
+      const sc=document.getElementById('iraSpotChange');
+      const st=document.getElementById('iraSpotTime');
+      if(sv)sv.textContent=priceStr+' USD';
+      if(sc){sc.textContent=changeStr;sc.className='ira-spot-change '+upDown;}
+      if(st)st.textContent='Updated '+timeStr;
+
+      /* Sidebar mini card */
+      const ssv=document.getElementById('sidebarSpotVal');
+      const ssc=document.getElementById('sidebarSpotChange');
+      if(ssv)ssv.textContent=priceStr;
+      if(ssc){ssc.textContent=changeStr+' today';ssc.style.color=change>=0?'var(--color-up)':'var(--color-down)';}
+
+      prevPrice=price;
+    }catch(e){}
+  }
+  fetchSpot();
+  setInterval(fetchSpot,REFRESH);
+})();
+
+/* ── COMPANY JUMP BAR (show after scrolling past hero) ── */
+(function(){
+  const bar=document.getElementById('companyJumpBar');
+  const sentinel=document.getElementById('company-reviews');
+  if(!bar||!sentinel)return;
+  const obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      bar.classList.toggle('visible',!e.isIntersecting);
+    });
+  },{rootMargin:'-60px 0px 0px 0px'});
+  obs.observe(sentinel);
+
+  /* Highlight active company in jump bar */
+  const companies=['augusta','goldco','american-hartford','birch-gold','noble-gold','itrustcapital'];
+  const links=bar.querySelectorAll('a[href^="#"]');
+  const cardObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){l.classList.remove('active');});
+        const active=bar.querySelector('a[href="#'+e.target.id+'"]');
+        if(active)active.classList.add('active');
+      }
+    });
+  },{rootMargin:'-100px 0px -60% 0px'});
+  companies.forEach(function(id){
+    const el=document.getElementById(id);
+    if(el)cardObs.observe(el);
+  });
+})();
+
+/* ── MOBILE TOC TOGGLE ── */
+(function(){
+  const btn=document.getElementById('tocMobileBtn');
+  const panel=document.getElementById('tocMobilePanel');
+  if(!btn||!panel)return;
+  btn.addEventListener('click',function(){
+    const open=panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+  /* Close on link click */
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      panel.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    });
+  });
+})();
+
+/* ── DESKTOP TOC ACTIVE HIGHLIGHT ── */
+(function(){
+  const toc=document.getElementById('desktopToc');
+  if(!toc)return;
+  const headings=document.querySelectorAll('h2[id],h3[id],.company-card[id]');
+  const tocLinks=toc.querySelectorAll('a');
+  const obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        tocLinks.forEach(function(l){l.classList.remove('toc-active');});
+        const active=toc.querySelector('a[href="#'+e.target.id+'"]');
+        if(active)active.classList.add('toc-active');
+      }
+    });
+  },{rootMargin:'-100px 0px -55% 0px'});
+  headings.forEach(function(h){obs.observe(h);});
+})();
+
+/* ── SCROLL FADE-IN ANIMATION ── */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const els=document.querySelectorAll('.fade-in-up');
+  if(!els.length)return;
+  const obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    });
+  },{rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(el){obs.observe(el);});
+})();
+
+/* ── LIVE DOT PULSE KEYFRAME ── */
+(function(){
+  if(!document.querySelector('style[data-live-pulse]')){
+    const s=document.createElement('style');
+    s.setAttribute('data-live-pulse','');
+    s.textContent='@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(0.8)}}';
+    document.head.appendChild(s);
+  }
+})();
+</script>
 <script>(function(){
   const themeBtn=document.querySelector('[data-theme-toggle]'),root=document.documentElement;
   let theme=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
