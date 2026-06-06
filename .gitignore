@@ -19,3 +19,10 @@ node_modules/
 
 # Stitch MCP — local config holds the real API key (use .mcp.json.example as template)
 .mcp.json
+
+# Google API credentials (sensitive - never commit)
+client_secret*.json
+gsc_token.json
+
+# MCP server binaries (downloaded per-machine)
+tools/psi-mcp/
