@@ -1023,13 +1023,16 @@
 
   <url>
     <loc>https://goldpricetools.com/silver-purity-grades</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/silver-purity-grades"/>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/silver-purity-grades"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/silver-purity-grades"/>
     <image:image>
       <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Silver Purity Grades &amp; Live Prices | GoldPriceTools</image:title>
-      <image:caption>Live prices for all silver purities: .999, .925, .900 and .800. Per gram, per oz, per kilo. Updated every 60 seconds.</image:caption>
+      <image:title>Silver Purity Grades: .999, .925, .900, .800 Live USD Prices</image:title>
+      <image:caption>Live silver purity prices in USD per gram, troy ounce and kilo for all four grades. Universal purity calculator, hallmark identification and heritage guide. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
 
