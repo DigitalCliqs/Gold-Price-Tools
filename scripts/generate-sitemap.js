@@ -143,6 +143,9 @@ for (const file of htmlFiles) {
   // Skip redirect stubs (meta refresh)
   if (/<meta[^>]+http-equiv=["']refresh["']/i.test(content)) continue;
 
+  // Skip noindex pages
+  if (/<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(content)) continue;
+
   const canonical = extractCanonical(content);
   if (!canonical) continue;
   if (seen.has(canonical)) continue;
