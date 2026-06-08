@@ -31,17 +31,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZPLL52C3K8');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
-<!-- Auto Ads config: vignette new triggers disabled, overlays off -->
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({
-  google_ad_client: "ca-pub-8849494330640880",
-  enable_page_level_ads: true,
-  overlays: {bottom: false},
-  vignette: {
-    new_triggers: false
-  }
-});
-</script>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" type="image/svg+xml" href="https://assets.goldpricetools.com/logo.svg">
 <meta name="theme-color" content="#0f0e0c">
@@ -1622,7 +1611,7 @@ window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   if (scrollHeight > 0 && (scrollTop / scrollHeight) > 0.75) {
-    gtag('event', 'guide_deep_read');
+    if (typeof gtag === 'function') gtag('event', 'guide_deep_read');
     _deepReadFired = true;
   }
 }, { passive: true });

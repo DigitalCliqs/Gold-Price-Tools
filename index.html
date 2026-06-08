@@ -63,17 +63,6 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZPLL52C3K8');</script>
 <!-- AdSense publisher script loaded async in head -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
-<!-- Auto Ads config: vignette new triggers disabled, overlays off -->
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({
-  google_ad_client: "ca-pub-8849494330640880",
-  enable_page_level_ads: true,
-  overlays: {bottom: false},
-  vignette: {
-    new_triggers: false
-  }
-});
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://assets.goldpricetools.com">
   <link rel="dns-prefetch" href="https://api.metals.live">
@@ -1122,8 +1111,8 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <ul>
         <li><a href="/guides/how-to-invest-in-gold">How to Invest in Gold</a></li>
         <li><a href="/guides/gold-purity-guide">Gold Purity Guide</a></li>
-        <li><a href="/guides/gold-bar-guide.html">Gold Bar Guide</a></li>
-        <li><a href="/guides/gold-price-guide.html">Gold Price Guide 2026</a></li>
+        <li><a href="/guides/gold-bar-guide">Gold Bar Guide</a></li>
+        <li><a href="/guides/gold-price-guide">Gold Price Guide 2026</a></li>
         <li><a href="/guides/how-to-sell-gold-jewellery">Sell Gold Jewellery</a></li>
         <li><a href="/guides/how-to-test-if-gold-is-real">Test if Gold Is Real</a></li>
         <li><a href="/guides/gold-hallmarks-explained">Gold Hallmarks Explained</a></li>
@@ -1405,7 +1394,7 @@ let _scrapIntentFired = false;
 document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll('a[href*="/scrap-gold-calculator"]').forEach(a => { a.addEventListener('click', fireScrapIntent); }); });
 function fireScrapIntent() {
   if (!_scrapIntentFired) {
-    gtag("event", "scrap_seller_intent");
+    if (typeof gtag === 'function') gtag("event", "scrap_seller_intent");
     _scrapIntentFired = true;
   }
 }
@@ -1413,7 +1402,7 @@ function fireScrapIntent() {
 let _calcEngagedFired = false;
 function fireCalcEngaged() {
   if (!_calcEngagedFired) {
-    gtag("event", "calculator_engaged");
+    if (typeof gtag === 'function') gtag("event", "calculator_engaged");
     _calcEngagedFired = true;
   }
 }

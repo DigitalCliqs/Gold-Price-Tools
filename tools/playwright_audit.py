@@ -67,7 +67,7 @@ def full_audit(url, label="page"):
         # ── CSS PROPERTY CHECKS ────────────────────────────────────────────
         print(f"\n[CSS CHECKS]:")
         css_checks = [
-            ('footer-inner grid', 'footer .footer-inner', 'display', 'grid'),
+            ('footer-inner grid', 'footer .footer-inner, footer .gp-footer__inner', 'display', 'grid'),
             ('nav sticky',        '.site-nav',            'position', 'sticky'),
         ]
         for name, sel, prop, expected in css_checks:
@@ -124,7 +124,7 @@ def full_audit(url, label="page"):
         for l in internal_links[:5]: print(f"  {l}")
 
         # ── FULL-PAGE SCREENSHOT in 400px STRIPS ──────────────────────────
-        out_dir = f"/tmp/audit_{label}"
+        out_dir = os.path.join("tmp", f"audit_{label}")
         os.makedirs(out_dir, exist_ok=True)
         page.screenshot(path=f"{out_dir}/desktop_full.png", full_page=True)
         img = Image.open(f"{out_dir}/desktop_full.png")
@@ -161,5 +161,5 @@ def full_audit(url, label="page"):
 
 if __name__ == '__main__':
     url = sys.argv[1] if len(sys.argv) > 1 else 'https://goldpricetools.com'
-    label = url.replace('https://','').replace('/','_').replace('.','_')
+    label = url.replace('https://','').replace('http://','').replace(':','_').replace('/','_').replace('.','_')
     full_audit(url, label)

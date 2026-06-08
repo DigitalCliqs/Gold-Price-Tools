@@ -645,7 +645,7 @@ async function fetchSpot(){
       if(g)g.textContent='£'+(pgGBP*w).toFixed(2);
       if(u)u.textContent='$'+(pgUSD*w).toFixed(2);
     });
-    gtag('event','price_view',{metal:'gold',page:'gold-price-today-14k'});
+    if (typeof gtag === 'function') gtag('event','price_view',{metal:'gold',page:'gold-price-today-14k'});
   }catch(e){
     console.warn('Price fetch failed',e);
   }

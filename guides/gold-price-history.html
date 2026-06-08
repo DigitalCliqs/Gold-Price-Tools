@@ -104,17 +104,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZPLL52C3K8');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
-<!-- Auto Ads config: vignette new triggers disabled, overlays off -->
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({
-  google_ad_client: "ca-pub-8849494330640880",
-  enable_page_level_ads: true,
-  overlays: {bottom: false},
-  vignette: {
-    new_triggers: false
-  }
-});
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
@@ -1655,7 +1644,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
       <div class="related-card__title">Gold-Silver Ratio</div>
       <div class="related-card__desc">Track the live gold-to-silver ratio and understand what it means for your precious metals portfolio.</div>
     </a>
-    <a class="related-card" href="/guides/gold-price-guide.html">
+    <a class="related-card" href="/guides/gold-price-guide">
       <span class="related-card__tag">GUIDE</span>
       <div class="related-card__title">Gold Price Guide 2026</div>
       <div class="related-card__desc">Comprehensive 2026 guide: live prices, history, expert forecasts and investment strategies.</div>
@@ -1769,7 +1758,7 @@ window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   if (scrollHeight > 0 && (scrollTop / scrollHeight) > 0.75) {
-    gtag('event', 'guide_deep_read');
+    if (typeof gtag === 'function') gtag('event', 'guide_deep_read');
     _deepReadFired = true;
   }
 }, { passive: true });
