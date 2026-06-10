@@ -36,6 +36,8 @@
 }
 </script>
 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Live US Silver Coin Melt Values & Silver Spot Price","description":"Live melt values for US 90%, 40% and 35% silver coins (dimes, quarters, half dollars, Morgan/Peace & Eisenhower dollars, war nickels) derived from the silver spot price in USD (primary), with GBP and EUR conversions. Spot sourced from the LBMA market via gold-api.com and refreshed every 60 seconds.","url":"https://goldpricetools.com/silver-coins-calculator","keywords":["silver coin calculator","junk silver","silver melt value","XAG/USD","silver spot price","US silver coins"],"license":"https://goldpricetools.com/terms","isAccessibleForFree":true,"creator":{"@type":"Organization","name":"GoldPriceTools","url":"https://goldpricetools.com"},"distribution":[{"@type":"DataDownload","encodingFormat":"JSON","contentUrl":"https://goldpricetools.com/chart-data/XAG-1Y.json"},{"@type":"DataDownload","encodingFormat":"JSON","contentUrl":"https://goldpricetools.com/chart-data/XAG-10Y.json"}],"variableMeasured":"Silver spot price per troy ounce (XAG/USD) and derived US silver coin melt values"}</script>
+
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are US silver coins worth?","acceptedAnswer":{"@type":"Answer","text":"The worth of US silver coins depends on their silver content and the current spot price. For example, a pre-1965 90% silver quarter contains 0.18084 troy ounces of silver. You can use our calculator to find the exact live melt value based on today's silver price."}},{"@type":"Question","name":"How much silver is in a silver dollar?","acceptedAnswer":{"@type":"Answer","text":"Morgan and Peace silver dollars minted before 1936 are 90% silver and contain 0.77344 troy ounces of pure silver. Eisenhower silver dollars (1971-1973) are 40% silver and contain 0.3161 troy ounces."}},{"@type":"Question","name":"Which quarters are silver?","acceptedAnswer":{"@type":"Answer","text":"US Washington and Standing Liberty quarters minted in 1964 or earlier are 90% silver. They contain 0.18084 troy ounces of silver and their melt value fluctuates with the live spot price."}},{"@type":"Question","name":"What is junk silver?","acceptedAnswer":{"@type":"Answer","text":"Junk silver refers to old US silver coins that hold no numismatic (collector) value above their bullion content. People invest in them purely for their silver melt value. Common examples are pre-1965 dimes, quarters, and half dollars."}}]}</script>
 
 <meta property="og:title" content="US Silver Coin Melt Value Calculator — Live Junk Silver Prices">
@@ -454,38 +456,132 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .container{max-width:1200px;margin:0 auto;padding:0 var(--space-4)}
 
 /* ═══════════════════════════════════════════════════
-   SILVER COINS CALCULATOR — missing component CSS
+   SILVER COINS CALCULATOR — 2026 redesign
+   Silver-accented identity layered on the site tokens.
+   Mobile-first; scales fluidly to any viewport.
    ═══════════════════════════════════════════════════ */
 
-/* Calc card (hero right column) */
-.calc-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)}
+/* ── Hero shell ── */
+.sc-hero{max-width:1200px;margin:0 auto;padding:var(--space-8) var(--space-4) var(--space-6);display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:var(--space-8);align-items:start}
+@media(max-width:880px){.sc-hero{grid-template-columns:1fr;padding:var(--space-6) var(--space-4) var(--space-2);gap:var(--space-5)}}
+.sc-hero__intro{display:flex;flex-direction:column}
+.sc-eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);align-self:flex-start;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-silver);background:color-mix(in oklch,var(--color-silver) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-silver) 28%,var(--color-border));padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-4)}
+.sc-eyebrow .live-dot{width:7px;height:7px}
+.sc-hero h1{font-family:var(--font-display);font-size:var(--text-2xl);line-height:1.1;letter-spacing:-.02em;color:var(--color-text);margin-bottom:var(--space-3)}
+.sc-hero h1 .accent{background:linear-gradient(92deg,#c9ced6,#9097a0 55%,#71777f);-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme="light"] .sc-hero h1 .accent{background:none;color:var(--color-silver);-webkit-text-fill-color:var(--color-silver)}
+.sc-lead{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:50ch;margin-bottom:var(--space-5)}
 
-/* Spot price bar */
-.calc-spot-info{font-size:var(--text-sm);color:var(--color-text-muted);background:var(--color-surface-offset);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);margin-bottom:var(--space-2)}
-.calc-spot-info strong{color:var(--color-gold-bright);font-size:var(--text-base);font-weight:700}
+/* ── Live spot panel ── */
+.spot-panel{background:linear-gradient(158deg,var(--color-surface),var(--color-surface-offset));border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5);box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+.spot-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0,color-mix(in oklch,var(--color-silver) 16%,transparent),transparent 58%);pointer-events:none}
+.spot-panel>*{position:relative}
+.spot-panel__head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-3)}
+.spot-panel__label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted)}
+.spot-panel__live{display:inline-flex;align-items:center;gap:6px;font-size:var(--text-xs);font-weight:700;color:var(--color-up);text-transform:uppercase;letter-spacing:.06em}
+.spot-panel__main{display:flex;align-items:baseline;gap:var(--space-2);flex-wrap:wrap}
+.spot-panel__price{font-family:var(--font-display);font-size:clamp(2rem,1.4rem+3vw,2.875rem);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1}
+.spot-panel__unit{font-size:var(--text-sm);color:var(--color-text-muted)}
+.spot-panel__chg{font-size:var(--text-sm);font-weight:700;font-variant-numeric:tabular-nums;margin-left:var(--space-1)}
+.spot-panel__chg.up{color:var(--color-up)}.spot-panel__chg.down{color:var(--color-down)}
+.spot-panel__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-2);margin-top:var(--space-4)}
+.spot-chip{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3)}
+.spot-chip__k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-faint);margin-bottom:3px}
+.spot-chip__v{font-size:var(--text-sm);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums}
+.spot-panel__foot{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2) var(--space-4);margin-top:var(--space-4);padding-top:var(--space-3);border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-muted);flex-wrap:wrap}
+.spot-panel__fx{font-variant-numeric:tabular-nums;font-weight:600;color:var(--color-text-muted)}
+.spot-panel__refresh{display:inline-flex;align-items:center;gap:6px}
+.spot-panel__refresh .live-dot{width:6px;height:6px}
 
-/* Individual coin rows */
-#coin-list{display:flex;flex-direction:column;gap:0}
-.coin-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--space-4);padding:var(--space-3) 0;border-bottom:1px solid var(--color-border)}
-.coin-row:last-child{border-bottom:none}
-.coin-info{display:flex;flex-direction:column;gap:2px}
-.coin-name{font-size:var(--text-sm);font-weight:600;color:var(--color-text)}
-.coin-details{font-size:var(--text-xs);color:var(--color-text-faint)}
-.coin-input-group{display:flex;align-items:center;gap:var(--space-3)}
-.coin-input{width:72px;padding:var(--space-2) var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);color:var(--color-text);font-size:var(--text-sm);text-align:center;-moz-appearance:textfield}
-.coin-input::-webkit-inner-spin-button,.coin-input::-webkit-outer-spin-button{-webkit-appearance:none}
-.coin-input:focus{outline:2px solid var(--color-primary);outline-offset:1px;border-color:var(--color-primary)}
-.coin-value{font-size:var(--text-sm);font-variant-numeric:tabular-nums;color:var(--color-text-muted);min-width:52px;text-align:right;font-weight:500}
+/* ── Calculator card ── */
+.calc-pro{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-md);overflow:hidden;scroll-margin-top:var(--space-16)}
+.calc-pro__head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4) var(--space-5);border-bottom:1px solid var(--color-border);background:var(--color-surface-offset)}
+.calc-pro__title{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:700;color:var(--color-text)}
+.calc-pro__title svg{color:var(--color-silver)}
+.calc-pro__clear{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);border:1px solid var(--color-border);border-radius:var(--radius-full);padding:7px 14px;background:var(--color-surface);min-height:34px}
+.calc-pro__clear:hover{color:var(--color-text);border-color:var(--color-silver);background:var(--color-surface-dynamic)}
+.calc-pro__body{padding:var(--space-3) var(--space-4) var(--space-4)}
+
+/* Roll quick-add chips */
+.roll-presets{display:flex;flex-wrap:wrap;gap:var(--space-2);padding-bottom:var(--space-3);margin-bottom:var(--space-1);border-bottom:1px dashed var(--color-border)}
+.roll-chip{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);padding:7px 13px;min-height:34px;white-space:nowrap}
+.roll-chip:hover{color:var(--color-silver);border-color:color-mix(in oklch,var(--color-silver) 45%,var(--color-border));background:color-mix(in oklch,var(--color-silver) 8%,var(--color-surface-offset))}
+
+/* Coin rows */
+#coin-list{display:flex;flex-direction:column}
+.coin{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-1);border-bottom:1px solid var(--color-divider)}
+.coin:last-child{border-bottom:none}
+.coin__medal{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#f6f7f9,#d2d6dc 42%,#9aa0a9 72%,#6b7280);box-shadow:inset 0 1px 2px rgba(255,255,255,.65),inset 0 -2px 4px rgba(0,0,0,.28),0 1px 2px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,0,0,.18);position:relative;flex-shrink:0}
+.coin__medal::after{content:"";position:absolute;inset:4px;border-radius:50%;border:1px dashed rgba(45,50,60,.4)}
+.coin__denom{position:relative;z-index:1;font-size:11px;font-weight:800;color:#363b43;letter-spacing:-.03em}
+.coin__info{min-width:0}
+.coin__name{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.25}
+.coin__purity{font-size:10px;font-weight:700;letter-spacing:.03em;color:var(--color-silver);border:1px solid color-mix(in oklch,var(--color-silver) 38%,var(--color-border));border-radius:var(--radius-full);padding:1px 7px}
+.coin__meta{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:3px}
+.coin__line{font-size:var(--text-sm);font-weight:700;color:var(--color-silver);font-variant-numeric:tabular-nums;margin-top:4px}
+.coin__line.zero{color:var(--color-text-faint);font-weight:600}
+
+/* Stepper */
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface-offset);overflow:hidden}
+.stepper button{width:40px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-size:1.25rem;line-height:1;font-weight:600}
+.stepper button:hover{background:var(--color-surface-dynamic);color:var(--color-text)}
+.stepper button:active{background:color-mix(in oklch,var(--color-silver) 18%,var(--color-surface-dynamic))}
+.stepper input{width:52px;height:44px;border:none;border-left:1px solid var(--color-border);border-right:1px solid var(--color-border);background:transparent;color:var(--color-text);text-align:center;font-size:var(--text-sm);font-weight:700;font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+.stepper input::-webkit-inner-spin-button,.stepper input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.stepper input:focus{outline:2px solid var(--color-primary);outline-offset:-2px}
 
 /* Total melt value */
-.result-box{background:color-mix(in oklch,var(--color-gold) 8%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold) 25%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);margin-top:var(--space-2);text-align:center}
-.result-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-faint);margin-bottom:var(--space-2)}
-.result-usd{font-size:var(--text-2xl);font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-gold-bright);line-height:1}
+.melt{background:linear-gradient(155deg,color-mix(in oklch,var(--color-silver) 15%,var(--color-surface-offset)),var(--color-surface-offset) 62%);border-top:1px solid var(--color-border);padding:var(--space-5)}
+.melt__top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-3)}
+.melt__label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:var(--space-1)}
+.melt__value{font-family:var(--font-display);font-size:clamp(2rem,1.3rem+3.4vw,2.75rem);font-weight:700;line-height:1;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.melt__value.is-bump{animation:meltBump .3s cubic-bezier(.16,1,.3,1)}
+@keyframes meltBump{0%{transform:scale(1)}45%{transform:scale(1.035)}100%{transform:scale(1)}}
+.melt__conv{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-2);font-variant-numeric:tabular-nums}
+.melt__badge{display:inline-flex;align-items:center;gap:6px;font-size:var(--text-xs);font-weight:700;color:var(--color-silver);border:1px solid color-mix(in oklch,var(--color-silver) 35%,var(--color-border));border-radius:var(--radius-full);padding:5px 11px;white-space:nowrap;flex-shrink:0}
+.melt__badge .live-dot{width:6px;height:6px}
+.melt__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-2);margin-top:var(--space-4)}
+.melt__stat{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-2);text-align:center}
+.melt__stat b{display:block;font-size:var(--text-base);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums}
+.melt__stat small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--color-text-faint);margin-top:3px}
 
-/* Responsive: stack hero on mobile */
-@media(max-width:768px){
-  .calc-card{padding:var(--space-4)}
-  .coin-input{width:60px}
+/* Dealer payout note */
+.calc-note{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6;margin-top:var(--space-3);padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-silver)}
+.calc-note a{color:var(--color-primary)}
+
+/* ── Silver price chart ── */
+.chart-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:2px}
+.ag-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-2);margin-top:var(--space-5)}
+@media(max-width:520px){.ag-stats{grid-template-columns:repeat(2,1fr)}}
+.ag-stat{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3);text-align:center}
+.ag-stat__k{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-faint);margin-bottom:4px}
+.ag-stat__v{display:block;font-size:var(--text-base);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums}
+.ag-stat__v.live{color:var(--color-silver)}
+
+/* Live melt cell in reference table */
+.data-table td.melt-cell{color:var(--color-silver);font-weight:700;font-variant-numeric:tabular-nums}
+.data-table th.melt-col,.data-table td.melt-cell{text-align:right;padding-right:0}
+.live-inline{color:var(--color-silver);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ── FAQ accordion ── */
+.faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-2)}
+.faq-item{border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;background:var(--color-surface)}
+.faq-item[open]{border-color:color-mix(in oklch,var(--color-silver) 35%,var(--color-border))}
+.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);font-size:var(--text-base);font-weight:600;color:var(--color-text);padding:var(--space-4) var(--space-5);cursor:pointer;list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{background:var(--color-surface-offset)}
+.faq-item summary::after{content:"";width:11px;height:11px;border-right:2px solid var(--color-text-muted);border-bottom:2px solid var(--color-text-muted);transform:rotate(45deg);transition:transform var(--transition);flex-shrink:0;margin-top:-4px}
+.faq-item[open] summary::after{transform:rotate(-135deg);margin-top:2px}
+.faq-item .faq-body{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;padding:0 var(--space-5) var(--space-4)}
+
+/* ── Responsive ── */
+@media(max-width:520px){
+  .calc-pro__body{padding:var(--space-2) var(--space-3) var(--space-3)}
+  .coin{gap:var(--space-2);padding:var(--space-3) 0}
+  .coin__medal{width:38px;height:38px}
+  .stepper input{width:46px}
+  .stepper button{width:38px}
+  .melt__stat b{font-size:var(--text-sm)}
 }
 </style>
 <link rel="stylesheet" href="/assets/site.css">
@@ -586,85 +682,154 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </div>
   </div>
 </nav>
-</div>
 
 
 <div class="breadcrumb-wrap"><ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">US Silver Coins Calculator</li></ol></div>
 
-<div class="hero">
-  <div class="hero-left">
-<div class="hero-tag">Live Prices</div>
-  <h1 class="hero-title">US Silver Coin Melt Value Calculator</h1>
-  <p style="font-size:.9375rem;color:var(--color-text-muted);margin-bottom:1.5rem">Calculate the live melt value of US junk silver coins. Enter quantities below.</p>
+<main id="top">
+<section class="sc-hero">
+  <div class="sc-hero__intro">
+    <span class="sc-eyebrow"><span class="live-dot"></span> Live Silver &middot; USD Spot</span>
+    <h1>US <span class="accent">Silver Coin</span> Melt Value Calculator</h1>
+    <p class="sc-lead">Instantly value pre&#8209;1965 &ldquo;junk silver&rdquo; &mdash; dimes, quarters, half dollars, Morgan &amp; Peace dollars and war nickels &mdash; against the live silver spot price. Priced in USD, with GBP &amp; EUR conversions.</p>
 
-    </div>
-  <div class="calc-card">
-    <div class="calc-spot-info">
-      Live Silver Spot Price: <strong id="spot-price-display">$---.--</strong> / troy oz
-    </div>
-
-    <div id="coin-list">
-      <!-- Generated by JS -->
-    </div>
-
-    <div class="result-box">
-      <div class="result-label">Total Melt Value</div>
-      <div class="result-usd" id="total-val-usd" data-nosnippet>$0.00</div>
+    <div class="spot-panel" aria-label="Live silver spot price">
+      <div class="spot-panel__head">
+        <span class="spot-panel__label">Silver Spot &middot; XAG/USD</span>
+        <span class="spot-panel__live"><span class="live-dot"></span> Live</span>
+      </div>
+      <div class="spot-panel__main">
+        <span class="spot-panel__price" id="spot-oz" data-nosnippet>$--.--</span>
+        <span class="spot-panel__unit">per troy oz</span>
+        <span class="spot-panel__chg" id="spot-chg" data-nosnippet></span>
+      </div>
+      <div class="spot-panel__grid">
+        <div class="spot-chip"><div class="spot-chip__k">Per Gram</div><div class="spot-chip__v" id="spot-gram" data-nosnippet>$--</div></div>
+        <div class="spot-chip"><div class="spot-chip__k">Per Kilo</div><div class="spot-chip__v" id="spot-kilo" data-nosnippet>$--</div></div>
+        <div class="spot-chip"><div class="spot-chip__k">Gold : Silver</div><div class="spot-chip__v" id="spot-ratio" data-nosnippet>--</div></div>
+      </div>
+      <div class="spot-panel__foot">
+        <span class="spot-panel__fx" id="spot-fx">&asymp; &pound;-- &middot; &euro;-- /oz</span>
+        <span class="spot-panel__refresh"><span class="live-dot"></span> Updated <span id="spot-updated">just now</span> &middot; next in <span id="spot-countdown">60s</span></span>
+      </div>
     </div>
   </div>
+
+  <div class="calc-pro" id="calc">
+    <div class="calc-pro__head">
+      <span class="calc-pro__title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
+        Your Silver Coins
+      </span>
+      <button type="button" class="calc-pro__clear" id="clear-all">Clear all</button>
+    </div>
+    <div class="calc-pro__body">
+      <div class="roll-presets" role="group" aria-label="Quick-add a standard coin roll">
+        <button type="button" class="roll-chip" data-roll="dime90" data-add="50">+ Roll of Dimes (50)</button>
+        <button type="button" class="roll-chip" data-roll="quarter90" data-add="40">+ Roll of Quarters (40)</button>
+        <button type="button" class="roll-chip" data-roll="half90" data-add="20">+ Roll of Halves (20)</button>
+      </div>
+      <div id="coin-list"><!-- coin rows injected by JS --></div>
+    </div>
+    <div class="melt">
+      <div class="melt__top">
+        <div>
+          <div class="melt__label">Total Melt Value</div>
+          <div class="melt__value" id="melt-usd" data-nosnippet>$0.00</div>
+          <div class="melt__conv" id="melt-conv" data-nosnippet>&asymp; &pound;0.00 &middot; &euro;0.00</div>
+        </div>
+        <span class="melt__badge"><span class="live-dot"></span> Live spot</span>
+      </div>
+      <div class="melt__stats">
+        <div class="melt__stat"><b id="melt-oz">0.000</b><small>troy oz silver</small></div>
+        <div class="melt__stat"><b id="melt-coins">0</b><small>coins</small></div>
+        <div class="melt__stat"><b id="melt-face">$0.00</b><small>face value</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content" style="padding-bottom:0">
+  <div class="trust-bar">Live silver spot from the LBMA market via gold&#8209;api.com &middot; <strong>USD primary</strong>, GBP &amp; EUR conversions &middot; Refreshes every 60 seconds &middot; <a href="/about">About our data</a></div>
 </div>
 
+<section class="content" style="padding-bottom:0">
+  <div class="chart-section ag-chart">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Silver Price History</div>
+        <div class="chart-sub" id="ag-range-label">Last 30 days &middot; USD per troy ounce</div>
+      </div>
+      <div class="chart-controls" id="ag-toggle" role="group" aria-label="Chart time range">
+        <button type="button" class="chart-btn active" data-range="1M">1M</button>
+        <button type="button" class="chart-btn" data-range="3M">3M</button>
+        <button type="button" class="chart-btn" data-range="1Y">1Y</button>
+        <button type="button" class="chart-btn" data-range="5Y">5Y</button>
+        <button type="button" class="chart-btn" data-range="10Y">10Y</button>
+      </div>
+    </div>
+    <div class="chart-wrap"><canvas id="ag-chart" aria-label="Silver spot price history line chart"></canvas><div class="chart-loading" id="ag-loader">Loading historical data&hellip;</div></div>
+    <div class="ag-stats">
+      <div class="ag-stat"><span class="ag-stat__k">Period Low</span><span class="ag-stat__v" id="ag-low">&mdash;</span></div>
+      <div class="ag-stat"><span class="ag-stat__k">Period High</span><span class="ag-stat__v" id="ag-high">&mdash;</span></div>
+      <div class="ag-stat"><span class="ag-stat__k">Average</span><span class="ag-stat__v" id="ag-avg">&mdash;</span></div>
+      <div class="ag-stat"><span class="ag-stat__k">Live Spot</span><span class="ag-stat__v live" id="ag-now" data-nosnippet>&mdash;</span></div>
+    </div>
+  </div>
+</section>
+
 <div class="content">
-  <div class="trust-bar">Live silver price sourced from spot market &middot; Updated every 60 seconds &middot; <a href="/about">About our data</a></div>
-
   <div class="prose">
-    <h2>Silver Coin Reference Table</h2>
-    <p>This table details the silver content used to calculate the melt value of standard US silver coins, often referred to as "junk silver" when traded for their bullion value.</p>
+    <h2>Silver Coin Melt Value Reference</h2>
+    <p>This table details the silver content used to calculate the melt value of standard US silver coins, often referred to as "junk silver" when traded for their bullion value. The <strong>Melt Value</strong> column updates live with the silver spot price above.</p>
 
-    <div class="data-table-wrap"><table class="data-table" aria-label="US Silver Coin Weights and Purities">
-      <thead><tr><th>Coin Type</th><th>Dates</th><th>Silver %</th><th>Silver Content (Troy Oz)</th></tr></thead>
+    <div class="data-table-wrap"><table class="data-table" aria-label="US Silver Coin Weights, Purities and Live Melt Values">
+      <thead><tr><th>Coin Type</th><th>Dates</th><th>Silver %</th><th>Silver Content (Troy Oz)</th><th class="melt-col">Melt Value (USD)</th></tr></thead>
       <tbody>
-        <tr><td>Dime (Roosevelt/Barber/Mercury)</td><td>Pre-1965</td><td>90%</td><td>0.07234 oz</td></tr>
-        <tr><td>Quarter (Washington/Standing Liberty)</td><td>Pre-1965</td><td>90%</td><td>0.18084 oz</td></tr>
-        <tr><td>Half Dollar (Walking Liberty/Franklin/Kennedy)</td><td>Pre-1965</td><td>90%</td><td>0.36169 oz</td></tr>
-        <tr><td>Kennedy Half Dollar</td><td>1965-1970</td><td>40%</td><td>0.14792 oz</td></tr>
-        <tr><td>Morgan / Peace Dollar</td><td>Pre-1936</td><td>90%</td><td>0.77344 oz</td></tr>
-        <tr><td>Eisenhower Dollar</td><td>1971-1973</td><td>40%</td><td>0.31610 oz</td></tr>
-        <tr><td>War Nickel</td><td>1942-1945</td><td>35%</td><td>0.05626 oz</td></tr>
+        <tr><td>Dime (Roosevelt/Barber/Mercury)</td><td>Pre-1965</td><td>90%</td><td>0.07234 oz</td><td class="melt-cell" id="ref-dime90" data-nosnippet>&mdash;</td></tr>
+        <tr><td>Quarter (Washington/Standing Liberty)</td><td>Pre-1965</td><td>90%</td><td>0.18084 oz</td><td class="melt-cell" id="ref-quarter90" data-nosnippet>&mdash;</td></tr>
+        <tr><td>Half Dollar (Walking Liberty/Franklin/Kennedy)</td><td>Pre-1965</td><td>90%</td><td>0.36169 oz</td><td class="melt-cell" id="ref-half90" data-nosnippet>&mdash;</td></tr>
+        <tr><td>Kennedy Half Dollar</td><td>1965-1970</td><td>40%</td><td>0.14792 oz</td><td class="melt-cell" id="ref-half40" data-nosnippet>&mdash;</td></tr>
+        <tr><td>Morgan / Peace Dollar</td><td>Pre-1936</td><td>90%</td><td>0.77344 oz</td><td class="melt-cell" id="ref-dollar90" data-nosnippet>&mdash;</td></tr>
+        <tr><td>Eisenhower Dollar</td><td>1971-1973</td><td>40%</td><td>0.31610 oz</td><td class="melt-cell" id="ref-dollar40" data-nosnippet>&mdash;</td></tr>
+        <tr><td>War Nickel</td><td>1942-1945</td><td>35%</td><td>0.05626 oz</td><td class="melt-cell" id="ref-nickel35" data-nosnippet>&mdash;</td></tr>
       </tbody>
     </table></div>
 
+    <p class="calc-note" style="margin-top:var(--space-2)"><strong>Dealer payouts vs. melt:</strong> Bullion dealers typically pay <strong>85&ndash;95% of melt value</strong> for recognised junk silver, with bulk &ldquo;$1,000 face&rdquo; bags trading closest to spot. The figures above are pure silver melt values &mdash; your sale price depends on the buyer's premium. <a href="/where-to-sell-gold-silver">Compare where to sell &rarr;</a></p>
+
     <h2 id="how-much-are-silver-quarters-worth">How Much Are Silver Quarters Worth?</h2>
     <p class="snippet-answer">The worth of a silver quarter is directly tied to the live spot price of silver. US Washington and Standing Liberty quarters minted in 1964 and earlier are composed of 90% silver and 10% copper. Because of this high silver content, they hold intrinsic value far above their 25-cent face value.</p>
-    <p>A standard 90% silver quarter contains exactly <strong>0.18084 troy ounces</strong> of pure silver. To calculate its melt value, you simply multiply this weight by the current silver spot price. For example, if silver is trading at $30 per troy ounce, a single silver quarter is worth approximately $5.42 in silver content ($30 × 0.18084).</p>
+    <p>A standard 90% silver quarter contains exactly <strong>0.18084 troy ounces</strong> of pure silver. To calculate its melt value, you simply multiply this weight by the current silver spot price. For example, if silver is trading at $30 per troy ounce, a single silver quarter is worth approximately $5.42 in silver content ($30 × 0.18084). At today's live spot of <span class="live-inline" id="live-spot-q" data-nosnippet>$--</span>/oz, one 90% silver quarter is worth about <span class="live-inline" id="live-quarter" data-nosnippet>$--</span>.</p>
     <p>These pre-1965 quarters are commonly referred to as "junk silver," a term used by investors to describe circulated silver coins with no significant numismatic or collector value beyond their bullion content. They are a popular way to invest in physical silver because they are highly recognizable, fractional, and easy to trade. If you are looking to sell, you can use our <a href="/scrap-gold-calculator">scrap calculator</a> or check the <a href="/silver-price-per-kilo">silver price per kilo</a> to understand the broader market rates before approaching a dealer.</p>
 
     <h2 id="how-much-silver-is-in-a-silver-dollar">How Much Silver Is in a Silver Dollar?</h2>
     <p class="snippet-answer">The amount of silver in a US silver dollar depends entirely on the year it was minted and the specific coin type. The most famous silver dollars—the Morgan Dollar (minted 1878–1904, and 1921) and the Peace Dollar (minted 1921–1935)—are composed of 90% silver.</p>
-    <p>These classic 90% silver dollars contain exactly <strong>0.77344 troy ounces</strong> of pure silver. Because they contain over three-quarters of an ounce of silver, their melt value is significant and fluctuates daily with the global silver spot price.</p>
+    <p>These classic 90% silver dollars contain exactly <strong>0.77344 troy ounces</strong> of pure silver. Because they contain over three-quarters of an ounce of silver, their melt value is significant and fluctuates daily with the global silver spot price. At the current spot price, a single Morgan or Peace dollar holds about <span class="live-inline" id="live-dollar" data-nosnippet>$--</span> in silver.</p>
     <p>It is important to distinguish these from later issues. The Eisenhower Dollar, minted from 1971 to 1978, was primarily struck in copper-nickel for circulation. However, special collector versions minted from 1971 to 1973 (and some 1976 Bicentennial issues) were struck in 40% silver, containing 0.3161 troy ounces of silver. When buying or selling silver dollars for their melt value, always verify the date and mint mark to confirm the silver content.</p>
 
     <h2>Frequently Asked Questions</h2>
-    <div class="faq-container">
-      <div class="faq-card">
-        <h3>What are US silver coins worth?</h3>
-        <p class="faq-answer">The worth of US silver coins depends on their silver content and the current spot price. For example, a pre-1965 90% silver quarter contains 0.18084 troy ounces of silver. You can use our calculator to find the exact live melt value based on today's silver price.</p>
-      </div>
-      <div class="faq-card">
-        <h3>How much silver is in a silver dollar?</h3>
-        <p class="faq-answer">Morgan and Peace silver dollars minted before 1936 are 90% silver and contain 0.77344 troy ounces of pure silver. Eisenhower silver dollars (1971-1973) are 40% silver and contain 0.3161 troy ounces.</p>
-      </div>
-      <div class="faq-card">
-        <h3>Which quarters are silver?</h3>
-        <p class="faq-answer">US Washington and Standing Liberty quarters minted in 1964 or earlier are 90% silver. They contain 0.18084 troy ounces of silver and their melt value fluctuates with the live spot price.</p>
-      </div>
-      <div class="faq-card">
-        <h3>What is junk silver?</h3>
-        <p class="faq-answer">Junk silver refers to old US silver coins that hold no numismatic (collector) value above their bullion content. People invest in them purely for their silver melt value. Common examples are pre-1965 dimes, quarters, and half dollars.</p>
-      </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What are US silver coins worth?</summary>
+        <div class="faq-body faq-answer">The worth of US silver coins depends on their silver content and the current spot price. For example, a pre-1965 90% silver quarter contains 0.18084 troy ounces of silver. You can use our calculator to find the exact live melt value based on today's silver price.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How much silver is in a silver dollar?</summary>
+        <div class="faq-body faq-answer">Morgan and Peace silver dollars minted before 1936 are 90% silver and contain 0.77344 troy ounces of pure silver. Eisenhower silver dollars (1971-1973) are 40% silver and contain 0.3161 troy ounces.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Which quarters are silver?</summary>
+        <div class="faq-body faq-answer">US Washington and Standing Liberty quarters minted in 1964 or earlier are 90% silver. They contain 0.18084 troy ounces of silver and their melt value fluctuates with the live spot price.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What is junk silver?</summary>
+        <div class="faq-body faq-answer">Junk silver refers to old US silver coins that hold no numismatic (collector) value above their bullion content. People invest in them purely for their silver melt value. Common examples are pre-1965 dimes, quarters, and half dollars.</div>
+      </details>
     </div>
   </div>
 </div>
+</main>
 
 <div class="content" style="padding-bottom:0">
   <div class="share-buttons">
@@ -699,7 +864,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <span class="related-card__title">US Silver Dollar Values</span>
     <span class="related-card__desc">Discover the prices and melt values of historic US silver dollars.</span>
   </a>
-</div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="footer-inner">
@@ -779,83 +946,236 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 </footer>
 
 <script>
-const coins = [
-  { id: 'dime90', name: 'Dime (Pre-1965)', desc: '90% Silver', troyOz: 0.07234 },
-  { id: 'quarter90', name: 'Quarter (Pre-1965)', desc: '90% Silver', troyOz: 0.18084 },
-  { id: 'half90', name: 'Half Dollar (Pre-1965)', desc: '90% Silver', troyOz: 0.36169 },
-  { id: 'half40', name: 'Half Dollar (1965-1970)', desc: '40% Silver', troyOz: 0.14792 },
-  { id: 'dollar90', name: 'Morgan / Peace Dollar', desc: '90% Silver (Pre-1936)', troyOz: 0.77344 },
-  { id: 'dollar40', name: 'Eisenhower Dollar', desc: '40% Silver (1971-1973)', troyOz: 0.31610 },
-  { id: 'nickel35', name: 'War Nickel', desc: '35% Silver (1942-1945)', troyOz: 0.05626 }
-];
-
-window._spotUSD = 0;
-
-function initCalc() {
-  const container = document.getElementById('coin-list');
-  container.innerHTML = coins.map(coin => `
-    <div class="coin-row">
-      <div class="coin-info">
-        <div class="coin-name">${coin.name}</div>
-        <div class="coin-details">${coin.desc} &middot; ${coin.troyOz} oz</div>
-      </div>
-      <div class="coin-input-group">
-        <input type="number" min="0" step="1" class="coin-input" id="qty-${coin.id}" placeholder="Qty" oninput="calcValues()">
-        <div class="coin-value" id="val-${coin.id}">$0.00</div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function calcValues() {
-  let totalUSD = 0;
-  if (!window._spotUSD) return;
-
-  coins.forEach(coin => {
-    const qtyInput = document.getElementById(`qty-${coin.id}`);
-    const qty = parseInt(qtyInput.value) || 0;
-    const valueUSD = qty * coin.troyOz * window._spotUSD;
-    totalUSD += valueUSD;
-
-    document.getElementById(`val-${coin.id}`).textContent = '$' + valueUSD.toFixed(2);
-  });
-
-  document.getElementById('total-val-usd').textContent = '$' + totalUSD.toFixed(2);
-}
-
-async function fetchSpot() {
-  try {
-    const r = await fetch('https://api.gold-api.com/price/XAG', {cache: 'no-store'});
-    if (!r.ok) throw new Error();
-    const d = await r.json();
-    window._spotUSD = d.price;
-    document.getElementById('spot-price-display').textContent = '$' + window._spotUSD.toFixed(2);
-    calcValues();
-  } catch (e) {
-    console.warn('Silver API failed', e);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  initCalc();
-  fetchSpot();
-  setInterval(fetchSpot, 60000);
-});
-
+/* ─────────────────────────────────────────────────────────────
+   Silver Coin Calculator — live price engine (USD primary)
+   Shared data sources across goldpricetools.com:
+     • Silver spot: https://api.gold-api.com/price/XAG  (LBMA, USD/oz)
+     • Gold spot:   https://api.gold-api.com/price/XAU  (ticker + ratio)
+     • FX rates:    https://api.frankfurter.dev/v1/latest?from=USD&to=GBP,EUR
+   Refresh: 60s — DO NOT change (keeps cross-page consistency).
+   Constants: 31.1035 g/troy-oz · 32.1507 troy-oz/kg (matches index.html).
+   ───────────────────────────────────────────────────────────── */
 (function(){
-  const t = document.querySelector('[data-theme-toggle]'), r = document.documentElement;
-  let d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
-  r.setAttribute('data-theme', d);
-  if(t) t.addEventListener('click', () => {
-    d = d === 'dark' ? 'light' : 'dark';
-    r.setAttribute('data-theme', d);
-    t.setAttribute('aria-label', 'Switch to ' + (d==='dark'?'light':'dark') + ' mode');
-    t.innerHTML = d === 'dark'
-      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  'use strict';
+  const API='https://api.gold-api.com/price';
+  const FX='https://api.frankfurter.dev/v1/latest?from=USD&to=GBP,EUR';
+  const G_PER_OZ=31.1035, OZ_PER_KG=32.1507, REFRESH_MS=60000;
+
+  /* troyOz = PURE silver content (coin purity already applied) */
+  const COINS=[
+    {id:'dime90',    name:'Silver Dime',           sub:'Roosevelt · Barber · Mercury',         era:'Pre-1965',  purity:'90%', denom:'10¢', face:0.10, troyOz:0.07234},
+    {id:'quarter90', name:'Silver Quarter',        sub:'Washington · Standing Liberty',        era:'Pre-1965',  purity:'90%', denom:'25¢', face:0.25, troyOz:0.18084},
+    {id:'half90',    name:'Silver Half Dollar',    sub:'Walking Liberty · Franklin · Kennedy', era:'Pre-1965',  purity:'90%', denom:'50¢', face:0.50, troyOz:0.36169},
+    {id:'half40',    name:'40% Half Dollar',       sub:'Kennedy clad',                         era:'1965–1970', purity:'40%', denom:'50¢', face:0.50, troyOz:0.14792},
+    {id:'dollar90',  name:'Morgan / Peace Dollar', sub:'90% silver dollar',                    era:'Pre-1936',  purity:'90%', denom:'$1',  face:1.00, troyOz:0.77344},
+    {id:'dollar40',  name:'Eisenhower Dollar',     sub:'40% silver clad',                      era:'1971–1973', purity:'40%', denom:'$1',  face:1.00, troyOz:0.31610},
+    {id:'nickel35',  name:'War Nickel',            sub:'Jefferson',                            era:'1942–1945', purity:'35%', denom:'5¢',  face:0.05, troyOz:0.05626}
+  ];
+
+  window._spotUSD=0;                  // silver USD/oz (shared global)
+  let goldUSD=0, agPrev=null;
+  let gbp=0.79, eur=0.92;
+  let lastFetchTs=0, countdownTimer=null;
+
+  const $=id=>document.getElementById(id);
+  const fmtUSD=v=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmtGBP=v=>'£'+v.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmtEUR=v=>'€'+v.toLocaleString('en-IE',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmtInt=v=>v.toLocaleString('en-US');
+
+  /* ── Build coin rows ── */
+  function initCalc(){
+    const c=$('coin-list'); if(!c) return;
+    c.innerHTML=COINS.map(coin=>`
+      <div class="coin" data-coin="${coin.id}">
+        <div class="coin__medal" aria-hidden="true"><span class="coin__denom">${coin.denom}</span></div>
+        <div class="coin__info">
+          <div class="coin__name">${coin.name} <span class="coin__purity">${coin.purity}</span></div>
+          <div class="coin__meta">${coin.sub} · ${coin.era} · ${coin.troyOz} oz</div>
+          <div class="coin__line zero" id="line-${coin.id}">$0.00</div>
+        </div>
+        <div class="stepper" role="group" aria-label="${coin.name} quantity">
+          <button type="button" data-step="-1" data-coin="${coin.id}" aria-label="Decrease ${coin.name} quantity">&minus;</button>
+          <input type="number" inputmode="numeric" min="0" step="1" value="0" id="qty-${coin.id}" aria-label="${coin.name} quantity">
+          <button type="button" data-step="1" data-coin="${coin.id}" aria-label="Increase ${coin.name} quantity">+</button>
+        </div>
+      </div>`).join('');
+  }
+
+  const getQty=id=>{const el=$('qty-'+id);const v=el?parseInt(el.value,10):0;return (isNaN(v)||v<0)?0:v;};
+  const setQty=(id,v)=>{const el=$('qty-'+id);if(el)el.value=Math.max(0,v|0);};
+
+  /* ── Core calculation (USD primary) ── */
+  function calc(){
+    const spot=window._spotUSD;
+    let totalOz=0, coins=0, face=0;
+    COINS.forEach(coin=>{
+      const qty=getQty(coin.id);
+      coins+=qty; face+=qty*coin.face;
+      const oz=qty*coin.troyOz; totalOz+=oz;
+      const lineEl=$('line-'+coin.id);
+      if(lineEl){ lineEl.textContent=spot?fmtUSD(oz*spot):'$0.00'; lineEl.classList.toggle('zero',qty===0||!spot); }
+    });
+    const totalUSD=totalOz*spot;
+    const meltEl=$('melt-usd');
+    if(meltEl){
+      meltEl.textContent=fmtUSD(totalUSD);
+      if(totalUSD>0){ meltEl.classList.remove('is-bump'); void meltEl.offsetWidth; meltEl.classList.add('is-bump'); }
+    }
+    if($('melt-conv')) $('melt-conv').textContent='≈ '+fmtGBP(totalUSD*gbp)+' · '+fmtEUR(totalUSD*eur);
+    if($('melt-oz'))   $('melt-oz').textContent=totalOz.toLocaleString('en-US',{minimumFractionDigits:3,maximumFractionDigits:3});
+    if($('melt-coins'))$('melt-coins').textContent=fmtInt(coins);
+    if($('melt-face')) $('melt-face').textContent=fmtUSD(face);
+    if(spot){
+      COINS.forEach(coin=>{const el=$('ref-'+coin.id);if(el)el.textContent=fmtUSD(coin.troyOz*spot);});
+      if($('live-spot-q'))  $('live-spot-q').textContent=fmtUSD(spot);
+      if($('live-quarter')) $('live-quarter').textContent=fmtUSD(0.18084*spot);
+      if($('live-dollar'))  $('live-dollar').textContent=fmtUSD(0.77344*spot);
+    }
+  }
+
+  /* ── Spot panel render ── */
+  function renderSpot(){
+    const spot=window._spotUSD; if(!spot) return;
+    if($('spot-oz'))   $('spot-oz').textContent=fmtUSD(spot);
+    if($('spot-gram')) $('spot-gram').textContent=fmtUSD(spot/G_PER_OZ);
+    if($('spot-kilo')) $('spot-kilo').textContent=fmtUSD(spot*OZ_PER_KG);
+    if($('ag-now'))    $('ag-now').textContent=fmtUSD(spot)+' /oz';
+    if($('spot-fx'))   $('spot-fx').textContent='≈ '+fmtGBP(spot*gbp)+' · '+fmtEUR(spot*eur)+' /oz';
+    if(goldUSD && $('spot-ratio')) $('spot-ratio').textContent=(goldUSD/spot).toFixed(1)+':1';
+    const chgEl=$('spot-chg');
+    if(chgEl && agPrev){
+      const pct=(spot-agPrev)/agPrev*100;
+      chgEl.textContent=(pct>=0?'▲ ':'▼ ')+Math.abs(pct).toFixed(2)+'%';
+      chgEl.className='spot-panel__chg '+(pct>=0?'up':'down');
+    }
+  }
+
+  /* ── Top ticker (ids shared with index.html) ── */
+  function renderTicker(){
+    const sOz=window._spotUSD, gOz=goldUSD, gGram=gOz/G_PER_OZ, map=[];
+    if(gOz) map.push(
+      ['t-xau',fmtUSD(gOz)],['t-xau2',fmtUSD(gOz)],
+      ['t-24k',fmtUSD(gGram*0.9999)],['t-24k2',fmtUSD(gGram*0.9999)],
+      ['t-18k',fmtUSD(gGram*0.75)],['t-18k2',fmtUSD(gGram*0.75)],
+      ['t-14k',fmtUSD(gGram*0.5833)],['t-14k2',fmtUSD(gGram*0.5833)],
+      ['t-10k',fmtUSD(gGram*0.4167)],['t-10k2',fmtUSD(gGram*0.4167)]);
+    if(sOz) map.push(
+      ['t-xag',fmtUSD(sOz)],['t-xag2',fmtUSD(sOz)],
+      ['t-agoz',fmtUSD(sOz)],['t-agoz2',fmtUSD(sOz)],
+      ['t-agkg',fmtUSD(sOz*OZ_PER_KG)],['t-agkg2',fmtUSD(sOz*OZ_PER_KG)]);
+    map.forEach(([id,v])=>{const el=$(id);if(el)el.textContent=v;});
+  }
+
+  /* ── Refresh countdown ── */
+  function startCountdown(){
+    if(countdownTimer) clearInterval(countdownTimer);
+    const cEl=$('spot-countdown'), uEl=$('spot-updated');
+    countdownTimer=setInterval(()=>{
+      const el=Math.floor((Date.now()-lastFetchTs)/1000), rem=Math.max(0,60-el);
+      if(cEl) cEl.textContent=rem+'s';
+      if(uEl) uEl.textContent= el<10?'just now': el<60?el+'s ago': Math.floor(el/60)+'m ago';
+    },1000);
+  }
+
+  /* ── Data fetchers ── */
+  async function fetchFx(){
+    try{
+      const r=await fetch(FX,{cache:'no-store'}); if(!r.ok) throw new Error('FX '+r.status);
+      const d=await r.json(); gbp=d.rates.GBP||gbp; eur=d.rates.EUR||eur;
+    }catch(e){ console.warn('FX fallback used',e); }
+  }
+  async function fetchPrices(){
+    const [agR,auR]=await Promise.allSettled([
+      fetch(API+'/XAG',{cache:'no-store'}).then(r=>r.json()),
+      fetch(API+'/XAU',{cache:'no-store'}).then(r=>r.json())
+    ]);
+    if(agR.status==='fulfilled'&&agR.value&&agR.value.price){ window._spotUSD=agR.value.price; agPrev=agR.value.prev_close_price||agPrev; }
+    if(auR.status==='fulfilled'&&auR.value&&auR.value.price){ goldUSD=auR.value.price; }
+    if(!window._spotUSD){ console.warn('Silver spot unavailable'); return; }
+    lastFetchTs=Date.now();
+    renderTicker(); renderSpot(); calc(); startCountdown();
+    if(typeof gtag==='function') gtag('event','price_view',{metal:'silver',page:'silver-coins-calculator'});
+  }
+
+  /* ── Interactions ── */
+  function bind(){
+    const list=$('coin-list');
+    if(list){
+      list.addEventListener('click',e=>{
+        const b=e.target.closest('button[data-step]'); if(!b) return;
+        const id=b.dataset.coin; setQty(id,getQty(id)+parseInt(b.dataset.step,10)); calc();
+      });
+      list.addEventListener('input',e=>{ if(e.target.matches('input[id^="qty-"]')) calc(); });
+    }
+    document.querySelectorAll('.roll-chip').forEach(chip=>{
+      chip.addEventListener('click',()=>{ const id=chip.dataset.roll; setQty(id,getQty(id)+parseInt(chip.dataset.add,10)); calc(); const el=$('qty-'+id); if(el) el.focus(); });
+    });
+    const clr=$('clear-all');
+    if(clr) clr.addEventListener('click',()=>{ COINS.forEach(c=>setQty(c.id,0)); calc(); });
+  }
+
+  /* ── Silver price chart (lazy Chart.js, local /chart-data) ── */
+  let chartPromise=null, agChart=null, chartLoaded=false;
+  function loadChartJS(){
+    if(chartPromise) return chartPromise;
+    chartPromise=new Promise((res,rej)=>{ const s=document.createElement('script'); s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js'; s.onload=res; s.onerror=rej; document.head.appendChild(s); });
+    return chartPromise;
+  }
+  const RANGE_LABEL={'1M':'Last 30 days','3M':'Last 3 months','1Y':'Last 12 months','5Y':'Last 5 years','10Y':'Last 10 years'};
+  async function loadHistory(range){
+    const loader=$('ag-loader'); if(loader){ loader.style.display='flex'; loader.textContent='Loading historical data…'; }
+    try{
+      const data=await fetch('/chart-data/XAG-'+range+'.json').then(r=>r.json());
+      await loadChartJS();
+      drawChart(data.labels,data.data); stats(data.data);
+      if($('ag-range-label')) $('ag-range-label').textContent=(RANGE_LABEL[range]||'')+' · USD per troy ounce';
+      if(loader) loader.style.display='none';
+    }catch(e){ console.warn('Silver history load failed',e); if(loader) loader.textContent='Historical data unavailable'; }
+  }
+  function drawChart(labels,data){
+    const cv=$('ag-chart'); if(!cv||typeof Chart==='undefined') return;
+    const dark=document.documentElement.getAttribute('data-theme')==='dark';
+    const line='#9ca3af', txt='#7a7974', grid=dark?'rgba(255,255,255,.05)':'rgba(0,0,0,.06)';
+    if(agChart) agChart.destroy();
+    agChart=new Chart(cv,{type:'line',data:{labels,datasets:[{data,borderColor:line,borderWidth:2,fill:true,
+      backgroundColor:c=>{const g=c.chart.ctx.createLinearGradient(0,0,0,300);g.addColorStop(0,line+'55');g.addColorStop(1,line+'00');return g;},
+      pointRadius:0,pointHitRadius:14,tension:0.3}]},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(15,14,12,.92)',titleColor:'#fff',bodyColor:'#fff',padding:10,displayColors:false,callbacks:{label:c=>' '+fmtUSD(c.parsed.y)+' /oz'}}},
+        scales:{x:{ticks:{color:txt,font:{size:11},maxTicksLimit:6},grid:{color:grid,drawTicks:false}},
+          y:{position:'right',ticks:{color:txt,font:{size:11},callback:v=>'$'+v},grid:{color:grid}}},
+        interaction:{mode:'index',intersect:false}}});
+    chartLoaded=true;
+  }
+  function stats(arr){
+    if(!arr||!arr.length) return;
+    const min=Math.min.apply(null,arr), max=Math.max.apply(null,arr), avg=arr.reduce((a,b)=>a+b,0)/arr.length;
+    if($('ag-low'))  $('ag-low').textContent=fmtUSD(min);
+    if($('ag-high')) $('ag-high').textContent=fmtUSD(max);
+    if($('ag-avg'))  $('ag-avg').textContent=fmtUSD(avg);
+  }
+  function bindChart(){
+    const tg=$('ag-toggle'); if(!tg) return;
+    tg.addEventListener('click',e=>{ const b=e.target.closest('button[data-range]'); if(!b) return;
+      tg.querySelectorAll('button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); loadHistory(b.dataset.range); });
+    const sec=document.querySelector('.ag-chart');
+    if('IntersectionObserver' in window && sec){
+      const io=new IntersectionObserver((ents,obs)=>{ ents.forEach(en=>{ if(en.isIntersecting){ loadHistory('1M'); obs.disconnect(); } }); },{rootMargin:'200px'});
+      io.observe(sec);
+    } else { loadHistory('1M'); }
+  }
+  /* Redraw chart grid to match theme (deferred so theme attr is updated first) */
+  const themeBtn=document.querySelector('[data-theme-toggle]');
+  if(themeBtn) themeBtn.addEventListener('click',()=>{ if(chartLoaded&&agChart){ const l=agChart.data.labels, d=agChart.data.datasets[0].data; setTimeout(()=>drawChart(l,d),0); } });
+
+  /* ── Init ── */
+  document.addEventListener('DOMContentLoaded',()=>{
+    initCalc(); bind(); bindChart();
+    Promise.all([fetchFx(),fetchPrices()]).catch(e=>console.warn('init',e));
+    setInterval(fetchPrices,REFRESH_MS);
   });
 })();
-
 </script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
