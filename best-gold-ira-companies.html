@@ -37,6 +37,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPLL52C3K8"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZPLL52C3K8');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://api.gold-api.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
@@ -360,6 +361,85 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
 
 /* ── SECTION HEADING IDs for TOC ── */
 h2[id]{scroll-margin-top:calc(56px + 44px + var(--space-4))}
+
+/* ════════════════════════════════════════════════════════════════
+   REDESIGN 2026 — PREMIUM EDITORIAL LAYER (mobile-first, USD primary)
+   ════════════════════════════════════════════════════════════════ */
+
+/* Live pulse dot — used in spot bar + hero (site.css sets the colour) */
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--color-up);flex-shrink:0}
+@media(prefers-reduced-motion:no-preference){.live-dot{animation:livePulse 2s ease-in-out infinite}}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.78)}}
+
+/* Skeleton shimmer for pending live values */
+.live-pending{color:transparent!important;border-radius:var(--radius-sm);background:linear-gradient(100deg,var(--color-surface-offset) 30%,var(--color-surface-dynamic) 50%,var(--color-surface-offset) 70%);background-size:220% 100%;box-shadow:inset 0 0 0 1px var(--color-border)}
+@media(prefers-reduced-motion:no-preference){.live-pending{animation:liveShimmer 1.4s ease-in-out infinite}}
+@keyframes liveShimmer{0%{background-position:170% 0}100%{background-position:-70% 0}}
+
+/* ── PREMIUM HERO ── */
+.ira-hero{position:relative;overflow:hidden;border:1px solid color-mix(in oklch,var(--color-gold-bright) 22%,var(--color-border));border-radius:var(--radius-xl);padding:clamp(var(--space-5),4.5vw,var(--space-10));margin-bottom:var(--space-8);background:radial-gradient(135% 145% at 100% 0%,color-mix(in oklch,var(--color-gold-bright) 13%,transparent) 0%,transparent 55%),radial-gradient(120% 130% at 0% 100%,color-mix(in oklch,var(--color-primary) 9%,transparent) 0%,transparent 52%),var(--color-surface)}
+.ira-hero::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--color-gold-bright),transparent);opacity:.7}
+.ira-hero__grid{display:grid;grid-template-columns:1fr;gap:var(--space-6);align-items:center}
+@media(min-width:860px){.ira-hero__grid{grid-template-columns:minmax(0,1.55fr) minmax(258px,1fr);gap:var(--space-8)}}
+.ira-hero__eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-gold-bright);margin-bottom:var(--space-3)}
+.ira-hero__eyebrow::before{content:"";width:18px;height:1px;background:var(--color-gold-bright)}
+.ira-hero .ira-hero__title{font-family:var(--font-display)!important;font-size:clamp(1.9rem,1.1rem + 3.4vw,3rem)!important;font-weight:700!important;line-height:1.1!important;color:var(--color-text)!important;margin:0 0 var(--space-4)!important}
+.ira-hero__dek{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.6;max-width:54ch;margin:0 0 var(--space-5)}
+.ira-hero__byline{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
+.ira-hero__byline a{color:var(--color-primary);font-weight:500}
+.ira-hero__byline a:hover{text-decoration:underline}
+.ira-hero__trust{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);align-items:center}
+.ira-trust-item{display:inline-flex;align-items:center;gap:6px;font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);padding:6px var(--space-3)}
+.ira-trust-item svg{color:var(--color-gold-bright);flex-shrink:0}
+.ira-trust-item strong{color:var(--color-text);font-weight:700}
+.ira-hero__chip{display:inline-flex;align-items:center;gap:6px;font-size:var(--text-xs);font-weight:600;color:var(--color-text);background:color-mix(in oklch,var(--color-gold-bright) 10%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold-bright) 28%,var(--color-border));border-radius:var(--radius-full);padding:6px var(--space-3)}
+.ira-hero__chip-val{font-family:var(--font-display);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;min-width:5ch}
+.ira-hero__chip-unit{color:var(--color-text-faint)}
+
+/* Editor's pick spotlight (hero right column) */
+.ira-hero__pick{position:relative;background:var(--color-surface-2);border:1px solid color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:var(--shadow-md)}
+.ira-hero__pick-eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#1a1000;background:linear-gradient(135deg,#e8af34,#f5d07a,#b07a00);padding:4px var(--space-2);border-radius:var(--radius-full);margin-bottom:var(--space-3)}
+.ira-hero__pick-name{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-1)}
+.ira-hero__pick-score{display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-2);font-family:var(--font-display);font-weight:700;color:var(--color-gold-bright);font-size:var(--text-sm)}
+.ira-hero__pick-score .company-score__stars{display:flex;gap:1px}
+.ira-hero__pick-why{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0 0 var(--space-4);max-width:none}
+.ira-hero__pick-cta{display:inline-flex;align-items:center;gap:4px;font-size:var(--text-sm);font-weight:700;color:var(--color-primary);text-decoration:none}
+.ira-hero__pick-cta:hover{color:var(--color-primary-hover);gap:8px}
+
+/* ── EDITOR'S CHOICE RIBBON on #1 card ── */
+.company-card--featured{border:1px solid color-mix(in oklch,var(--color-gold-bright) 36%,var(--color-border));box-shadow:0 0 0 1px color-mix(in oklch,var(--color-gold-bright) 14%,transparent),var(--shadow-md)}
+.editors-choice-ribbon{display:inline-flex;align-items:center;gap:6px;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#1a1000;background:linear-gradient(135deg,#e8af34,#f5d07a,#b07a00);padding:5px var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-4);box-shadow:0 2px 10px color-mix(in oklch,#e8af34 35%,transparent)}
+.editors-choice-ribbon svg{flex-shrink:0}
+
+/* ── EDITOR SCORE METER (full-width, top of each company card) ── */
+.score-meter{display:flex;align-items:center;gap:var(--space-3);margin:0 0 var(--space-5)}
+.score-meter__label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-faint);white-space:nowrap}
+.score-meter__track{position:relative;flex:1;height:7px;border-radius:var(--radius-full);background:var(--color-surface-offset-2);overflow:hidden;min-width:60px}
+.score-meter__fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--color-gold),var(--color-gold-bright))}
+@media(prefers-reduced-motion:no-preference){.score-meter__fill{transition:width .9s cubic-bezier(.16,1,.3,1)}}
+.score-meter__num{font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);font-variant-numeric:tabular-nums;min-width:4ch;text-align:right}
+
+/* ── PROS / CONS callouts (progressive enhancement of review prose) ── */
+.company-card__body .card-pro,.company-card__body .card-con{position:relative;padding:var(--space-3) var(--space-4) var(--space-3) calc(var(--space-6) + var(--space-2));border-radius:var(--radius-md);margin-bottom:var(--space-3);font-size:var(--text-sm);line-height:1.6;max-width:none}
+.company-card__body .card-pro{background:color-mix(in oklch,var(--color-primary) 6%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-primary) 16%,var(--color-border))}
+.company-card__body .card-con{background:color-mix(in oklch,#f59e0b 7%,var(--color-surface));border:1px solid color-mix(in oklch,#f59e0b 20%,var(--color-border))}
+.card-pc-icon{position:absolute;left:var(--space-3);top:calc(var(--space-3) + 3px)}
+.card-pro .card-pc-icon{color:var(--color-primary)}
+.card-con .card-pc-icon{color:#d97706}
+[data-theme="dark"] .card-con .card-pc-icon{color:#f59e0b}
+
+/* ── COMPARISON TABLE inline score bars ── */
+.ct-score{display:flex;align-items:center;gap:var(--space-2);min-width:112px}
+.ct-score__num{font-family:var(--font-display);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums}
+.ct-score__bar{position:relative;flex:1;height:5px;border-radius:var(--radius-full);background:var(--color-surface-offset-2);overflow:hidden;min-width:42px}
+.ct-score__bar i{position:absolute;inset:0 auto 0 0;border-radius:inherit;background:linear-gradient(90deg,var(--color-gold),var(--color-gold-bright))}
+
+/* ── SECTION HEADING ACCENT ── */
+.prose>h2{position:relative}
+.prose>h2::after{content:"";display:block;width:42px;height:3px;border-radius:2px;margin-top:var(--space-2);background:linear-gradient(90deg,var(--color-gold-bright),transparent)}
+
+/* ── Company card hover glow ── */
+.company-card:hover{box-shadow:var(--shadow-lg),0 0 0 1px color-mix(in oklch,var(--color-gold-bright) 26%,transparent)}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 <!-- Microsoft Clarity -->
@@ -471,16 +551,52 @@ h2[id]{scroll-margin-top:calc(56px + 44px + var(--space-4))}
 <article itemscope itemtype="https://schema.org/Article">
 <div class="article-outer">
 
-  <!-- Header (outside grid so it spans full width) -->
-  <div class="article-tag">Gold IRA</div>
-  <h1 class="article-title" itemprop="headline">Best Gold IRA Companies in 2026 &mdash; Reviewed &amp; Compared</h1>
-  <div class="article-byline">
-    <span>By <a href="/authors/goldpricetools-editorial-team/" itemprop="author">GoldPriceTools Editorial Team</a></span>
-    <span>&middot;</span>
-    <span>Updated <time datetime="2026-05-07T08:00:00Z" itemprop="dateModified">7 May 2026</time></span>
-    <span>&middot;</span>
-    <span>15 min read</span>
-  </div>
+  <!-- Premium editorial hero (full width, outside grid) -->
+  <header class="ira-hero">
+    <div class="ira-hero__grid">
+      <div class="ira-hero__lead">
+        <div class="ira-hero__eyebrow">Gold IRA &middot; 2026 Edition</div>
+        <h1 class="article-title ira-hero__title" itemprop="headline">Best Gold IRA Companies in 2026 &mdash; Reviewed &amp; Compared</h1>
+        <p class="ira-hero__dek">Six genuine standouts, ranked on fees, minimums, storage and independent ratings &mdash; with the 2026 IRS rules and red flags explained. All figures in USD.</p>
+        <div class="ira-hero__byline">
+          <span>By <a href="/authors/goldpricetools-editorial-team/" itemprop="author">GoldPriceTools Editorial Team</a></span>
+          <span>&middot;</span>
+          <span>Updated <time datetime="2026-05-07T08:00:00Z" itemprop="dateModified">7 May 2026</time></span>
+          <span>&middot;</span>
+          <span>15 min read</span>
+        </div>
+        <div class="ira-hero__trust">
+          <span class="ira-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><span><strong>6</strong> companies analyzed</span></span>
+          <span class="ira-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg><span><strong>9</strong> independent sources</span></span>
+          <span class="ira-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Updated <strong>May 2026</strong></span></span>
+          <span class="ira-hero__chip">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>Live Gold Spot</span>
+            <span class="ira-hero__chip-val live-pending" id="heroSpotVal" aria-live="polite">$0,000.00</span>
+            <span class="ira-hero__chip-unit">/oz USD</span>
+          </span>
+        </div>
+      </div>
+      <aside class="ira-hero__pick" aria-label="Editor's choice">
+        <span class="ira-hero__pick-eyebrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>Editor&rsquo;s Choice</span>
+        <div class="ira-hero__pick-name">Augusta Precious Metals</div>
+        <div class="ira-hero__pick-score">
+          <span class="company-score__stars" aria-hidden="true">
+            <svg class="star-full" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-full" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-full" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-full" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-full" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </span>
+          <span>4.9 / 5</span>
+        </div>
+        <p class="ira-hero__pick-why">Best for education, transparency &amp; high-net-worth investors. A+ BBB, lifetime buyback guarantee, no pressure sales.</p>
+        <a href="#augusta" class="ira-hero__pick-cta">Read the full review
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </aside>
+    </div>
+  </header>
 
   <!-- Mobile TOC toggle -->
   <div class="toc-mobile">
@@ -524,7 +640,8 @@ h2[id]{scroll-margin-top:calc(56px + 44px + var(--space-4))}
         <div class="exec-stat"><div class="exec-stat-label">Companies Reviewed</div><div class="exec-stat-value">6</div></div>
         <div class="exec-stat"><div class="exec-stat-label">Lowest Minimum</div><div class="exec-stat-value">$1,000</div></div>
         <div class="exec-stat"><div class="exec-stat-label">Top BBB Rating</div><div class="exec-stat-value">A+</div></div>
-        <div class="exec-stat"><div class="exec-stat-label">Gold ATH 2026</div><div class="exec-stat-value">$5,589/oz</div></div>
+        <div class="exec-stat"><div class="exec-stat-label">Live Gold Spot (USD)</div><div class="exec-stat-value live-pending" id="execSpotVal" aria-live="polite">$0,000.00</div></div>
+        <div class="exec-stat"><div class="exec-stat-label">2026 Gold ATH</div><div class="exec-stat-value">$5,589/oz</div></div>
       </div>
     </div>
 
@@ -576,7 +693,8 @@ h2[id]{scroll-margin-top:calc(56px + 44px + var(--space-4))}
     <h2 id="company-reviews">The Best Gold IRA Companies in 2026: Full Reviews</h2>
 
     <!-- #1 Augusta Precious Metals -->
-    <div class="company-card company-card--t1 fade-in-up" id="augusta">
+    <div class="company-card company-card--t1 company-card--featured fade-in-up" id="augusta">
+      <span class="editors-choice-ribbon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>Editor&rsquo;s Choice 2026</span>
       <div class="company-card__header">
         <div class="company-card__rank-wrap">
           <div class="rank-medal rank-medal--gold" aria-label="Rank 1">#1</div>
@@ -1112,46 +1230,127 @@ h2[id]{scroll-margin-top:calc(56px + 44px + var(--space-4))}
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 <script>let _deepReadFired=false;window.addEventListener('scroll',()=>{if(_deepReadFired)return;const st=window.scrollY||document.documentElement.scrollTop;const sh=document.documentElement.scrollHeight-document.documentElement.clientHeight;if(sh>0&&(st/sh)>0.75){if (typeof gtag === 'function') gtag('event','guide_deep_read');_deepReadFired=true;}},{passive:true});</script>
 <script>
-/* ── LIVE GOLD SPOT PRICE (60s refresh, USD primary) ── */
+/* ── LIVE GOLD SPOT PRICE (60s refresh, USD primary) ──
+   Source + change calc match the rest of the site (index.html): gold-api.com
+   XAU spot in USD/oz, daily change derived from prev_close_price. */
 (function(){
   'use strict';
   const REFRESH=60000;
   const fmtUSD=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2});
-  let prevPrice=null;
+  const unpend=el=>{if(el)el.classList.remove('live-pending');};
+
+  function render(price,prevClose){
+    if(typeof price!=='number'||!isFinite(price))return;
+    const priceStr=fmtUSD.format(price);
+    const hasChg=(typeof prevClose==='number'&&prevClose>0);
+    const change=hasChg?(price-prevClose):0;
+    const pct=hasChg?(change/prevClose*100):0;
+    const up=change>=0;
+    const upDown=up?'up':'down';
+    const arrow=up?'▲':'▼';
+    const changeStr=hasChg?(arrow+' '+fmtUSD.format(Math.abs(change))+' ('+Math.abs(pct).toFixed(2)+'%)'):'';
+    const now=new Date();
+    const timeStr=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',timeZoneName:'short'});
+
+    /* Top spot bar */
+    const sv=document.getElementById('iraSpotVal');
+    const sc=document.getElementById('iraSpotChange');
+    const st=document.getElementById('iraSpotTime');
+    if(sv){sv.textContent=priceStr+' USD';unpend(sv);}
+    if(sc){sc.textContent=changeStr;sc.className='ira-spot-change '+upDown;}
+    if(st)st.textContent='Updated '+timeStr;
+
+    /* Sidebar mini card */
+    const ssv=document.getElementById('sidebarSpotVal');
+    const ssc=document.getElementById('sidebarSpotChange');
+    if(ssv){ssv.textContent=priceStr;unpend(ssv);}
+    if(ssc){ssc.textContent=hasChg?(changeStr+' today'):'per troy oz · live';ssc.style.color=up?'var(--color-up)':'var(--color-down)';}
+
+    /* Hero trust chip + exec-summary stat */
+    const hv=document.getElementById('heroSpotVal');
+    if(hv){hv.textContent=priceStr;unpend(hv);}
+    const es=document.getElementById('execSpotVal');
+    if(es){es.textContent=priceStr;unpend(es);}
+  }
+
   async function fetchSpot(){
     try{
       const r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});
       if(!r.ok)return;
       const d=await r.json();
-      const price=d.price;
-      const change=d.change||0;
-      const changePct=d.change_pct||0;
-      const priceStr=fmtUSD.format(price);
-      const sign=change>=0?'+':'';
-      const changeStr=sign+fmtUSD.format(change)+' ('+sign+changePct.toFixed(2)+'%)';
-      const upDown=change>=0?'up':'down';
-      const now=new Date();
-      const timeStr=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',timeZoneName:'short'});
-
-      /* Spot bar */
-      const sv=document.getElementById('iraSpotVal');
-      const sc=document.getElementById('iraSpotChange');
-      const st=document.getElementById('iraSpotTime');
-      if(sv)sv.textContent=priceStr+' USD';
-      if(sc){sc.textContent=changeStr;sc.className='ira-spot-change '+upDown;}
-      if(st)st.textContent='Updated '+timeStr;
-
-      /* Sidebar mini card */
-      const ssv=document.getElementById('sidebarSpotVal');
-      const ssc=document.getElementById('sidebarSpotChange');
-      if(ssv)ssv.textContent=priceStr;
-      if(ssc){ssc.textContent=changeStr+' today';ssc.style.color=change>=0?'var(--color-up)':'var(--color-down)';}
-
-      prevPrice=price;
-    }catch(e){}
+      render(d.price,d.prev_close_price);
+    }catch(e){/* keep last good values; skeleton remains until first success */}
   }
   fetchSpot();
   setInterval(fetchSpot,REFRESH);
+  /* Graceful fallback: if no successful fetch within 6s, stop the skeleton */
+  setTimeout(function(){
+    ['heroSpotVal','execSpotVal','sidebarSpotVal','iraSpotVal'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el&&el.classList.contains('live-pending')){el.classList.remove('live-pending');el.textContent='—';}
+    });
+  },6000);
+})();
+
+/* ── EDITOR SCORE METERS + PROS/CONS + COMPARISON BARS (progressive) ── */
+(function(){
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* Full-width editor score meter at the top of each company card */
+  const meters=[];
+  document.querySelectorAll('.company-card').forEach(card=>{
+    const numEl=card.querySelector('.company-score__num');
+    const header=card.querySelector('.company-card__header');
+    if(!numEl||!header)return;
+    const score=parseFloat(numEl.textContent);
+    if(isNaN(score))return;
+    const pct=Math.max(0,Math.min(100,score/5*100));
+    const m=document.createElement('div');
+    m.className='score-meter';
+    m.innerHTML='<span class="score-meter__label">Editor Score</span>'
+      +'<span class="score-meter__track"><span class="score-meter__fill"></span></span>'
+      +'<span class="score-meter__num">'+score.toFixed(1)+'/5</span>';
+    header.insertAdjacentElement('afterend',m);
+    const fill=m.querySelector('.score-meter__fill');
+    if(reduce){fill.style.width=pct+'%';}else{meters.push({fill,pct});}
+  });
+  /* Animate meters in when scrolled into view */
+  if(meters.length){
+    const mo=new IntersectionObserver((entries,obs)=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting)return;
+        const hit=meters.find(x=>x.fill===e.target);
+        if(hit)requestAnimationFrame(()=>{hit.fill.style.width=hit.pct+'%';});
+        obs.unobserve(e.target);
+      });
+    },{rootMargin:'0px 0px -10% 0px'});
+    meters.forEach(x=>mo.observe(x.fill));
+  }
+
+  /* Turn "What we liked / What to watch" prose into pro/con callouts */
+  const icoPro='<svg class="card-pc-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="2 8 6 12 14 4"/></svg>';
+  const icoCon='<svg class="card-pc-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg>';
+  document.querySelectorAll('.company-card__body > p').forEach(p=>{
+    const s=p.querySelector('strong');
+    if(!s)return;
+    const t=s.textContent.trim().toLowerCase();
+    if(t.indexOf('what we liked')===0){p.classList.add('card-pro');p.insertAdjacentHTML('afterbegin',icoPro);}
+    else if(t.indexOf('what to watch')===0){p.classList.add('card-con');p.insertAdjacentHTML('afterbegin',icoCon);}
+  });
+
+  /* Inline score bars in the comparison table (Score column) */
+  const ctable=document.querySelector('.comparison-table');
+  if(ctable){
+    ctable.querySelectorAll('tbody tr').forEach(tr=>{
+      const cell=tr.querySelectorAll('td')[4];
+      if(!cell)return;
+      const score=parseFloat(cell.textContent);
+      if(isNaN(score))return;
+      const pct=Math.max(0,Math.min(100,score/5*100));
+      cell.innerHTML='<span class="ct-score"><span class="ct-score__num">'+score.toFixed(1)
+        +'</span><span class="ct-score__bar"><i style="width:'+pct+'%"></i></span></span>';
+    });
+  }
 })();
 
 /* ── COMPANY JUMP BAR (show after scrolling past hero) ── */
