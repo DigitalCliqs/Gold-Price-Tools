@@ -39,39 +39,29 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.gold-api.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300..700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-.mega-panel__category-link{display:block;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1px solid var(--color-border);text-decoration:none;color:var(--color-text);transition:border-color var(--transition),background var(--transition)}
-.mega-panel__category-link:hover{border-color:var(--color-gold-bright);background:var(--color-surface-offset);color:var(--color-text)}
-.mega-panel__cat-title{display:block;font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:2px}
-.mega-panel__cat-desc{display:block;font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.4}
-.mega-panel__col--browse{display:flex;align-items:center;justify-content:center}
-.mega-panel__browse-all{display:block;padding:var(--space-3) var(--space-5);border:1px solid var(--color-gold);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:700;color:var(--color-gold);text-decoration:none;transition:background var(--transition),color var(--transition)}
-.mega-panel__browse-all:hover{background:var(--color-gold);color:var(--color-bg)}
-:root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;--color-surface-alt:#f4f3ef;--color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-gold:#b07a00;--color-gold-bright:#d19900;--color-silver:#6b7280;--shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'IBM Plex Sans','Inter',sans-serif;--transition:180ms cubic-bezier(0.16,1,0.3,1)}
-[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-2:#1b1a18;--color-surface-offset:#1d1c1a;--color-surface-offset-2:#222120;--color-surface-dynamic:#2a2927;--color-divider:#252422;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#7a7974;--color-text-faint:#4a4947;--color-text-inverse:#1a1917;--color-primary:#4f98a3;--color-primary-hover:#6ab3be;--color-gold:#b07a00;--color-gold-bright:#e8af34;--color-silver:#9ca3af;--shadow-sm:0 1px 2px oklch(0 0 0/0.3);--shadow-md:0 4px 12px oklch(0 0 0/0.4);--shadow-lg:0 12px 32px oklch(0 0 0/0.5)}
+/* ── DESIGN TOKENS ── kept compatible with site-wide variables ── */
+:root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;--color-surface-alt:#f4f3ef;--color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#5c5b56;--color-text-faint:#8b8a85;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-gold:#b07a00;--color-gold-bright:#c8830a;--color-silver:#6b7280;--color-rose:#b85850;--color-emerald:#0a8060;--shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);--shadow-glow:0 0 0 1px oklch(0.7 0.15 80/0.2),0 8px 24px oklch(0.7 0.15 80/0.12);--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-2xl:1.5rem;--radius-full:9999px;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--text-3xl:clamp(2.5rem,1.6rem + 3.5vw,4.5rem);--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'IBM Plex Sans','Inter',sans-serif;--font-editorial:'Playfair Display','Georgia',serif;--transition:180ms cubic-bezier(0.16,1,0.3,1);--transition-slow:320ms cubic-bezier(0.16,1,0.3,1)}
+[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-2:#1b1a18;--color-surface-offset:#1d1c1a;--color-surface-offset-2:#222120;--color-surface-dynamic:#2a2927;--color-divider:#252422;--color-border:#333230;--color-text:#e8e6e1;--color-text-muted:#a3a09a;--color-text-faint:#6c6a65;--color-text-inverse:#1a1917;--color-primary:#4f98a3;--color-primary-hover:#6ab3be;--color-gold:#d19900;--color-gold-bright:#f0c14b;--color-silver:#c0c4cb;--color-rose:#e88a82;--color-emerald:#5fc59f;--shadow-sm:0 1px 2px oklch(0 0 0/0.3);--shadow-md:0 4px 12px oklch(0 0 0/0.4);--shadow-lg:0 12px 32px oklch(0 0 0/0.5);--shadow-glow:0 0 0 1px oklch(0.78 0.16 80/0.25),0 8px 32px oklch(0.78 0.16 80/0.15)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 a{color:var(--color-primary);text-decoration:none}
 a:hover{color:var(--color-primary-hover);text-decoration:underline}
 a:visited{color:var(--color-primary)}
-.article-card,.blog-preview-card,.related-card,.guide-card,.guide-card-link,.post-card,.byline-card{color:var(--color-text)}
-.article-card:hover,.blog-preview-card:hover,.related-card:hover,.guide-card:hover,.post-card:hover{color:var(--color-text)}
-.article-title,.article-card-title{font-weight:700;color:var(--color-text);margin-bottom:.3rem}
-.article-tag,.related-card__tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright)}
-.article-excerpt,.article-card-desc,.related-card__desc{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.55}
-.related-card:hover .related-card__title{color:var(--color-primary)}
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:84px}
 body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg)}
 img,svg{display:block;max-width:100%;height:auto}
 button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
-h1,h2,h3,h4{text-wrap:balance;line-height:1.2}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.15}
 p,li{text-wrap:pretty;max-width:72ch}
 a,button,[role="button"],input,select{transition:color var(--transition),background var(--transition),border-color var(--transition),box-shadow var(--transition)}
 :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
-.site-nav{position:sticky;top:0;z-index:200;background:var(--color-surface);border-bottom:1px solid var(--color-border)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:56px;gap:var(--space-2)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
+/* ── NAV (preserved from site standard) ── */
+.site-nav{position:sticky;top:0;z-index:200;background:color-mix(in oklch,var(--color-surface) 92%,transparent);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--color-border)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:60px;gap:var(--space-2)}
 .nav-logo{display:flex;align-items:center;gap:var(--space-2);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);text-decoration:none;flex-shrink:0}
 .mega-nav{display:flex;align-items:center;list-style:none;margin:0;padding:0;gap:2px;flex:1;justify-content:center}
 .mega-nav__item{position:relative}
@@ -93,132 +83,339 @@ a,button,[role="button"],input,select{transition:color var(--transition),backgro
 .mega-panel__view-all{margin-top:var(--space-2);font-weight:600!important;color:var(--color-primary)!important}
 .mega-panel__view-all:hover{color:var(--color-primary-hover)!important}
 .mega-panel__col+.mega-panel__col{border-left:1px solid var(--color-divider);padding-left:var(--space-4)}
+.mega-panel__category-link{display:block;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);border:1px solid var(--color-border);text-decoration:none;color:var(--color-text);transition:border-color var(--transition),background var(--transition)}
+.mega-panel__category-link:hover{border-color:var(--color-gold-bright);background:var(--color-surface-offset);color:var(--color-text)}
+.mega-panel__cat-title{display:block;font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:2px}
+.mega-panel__cat-desc{display:block;font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.4}
+.mega-panel__col--browse{display:flex;align-items:center;justify-content:center}
+.mega-panel__browse-all{display:block;padding:var(--space-3) var(--space-5);border:1px solid var(--color-gold);border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:700;color:var(--color-gold);text-decoration:none;transition:background var(--transition),color var(--transition)}
+.mega-panel__browse-all:hover{background:var(--color-gold);color:var(--color-bg)}
 .nav-actions{display:flex;align-items:center;gap:var(--space-2);flex-shrink:0}
-.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-md);color:var(--color-text-muted);border:1px solid var(--color-border);background:none;cursor:pointer}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--radius-md);color:var(--color-text-muted);border:1px solid var(--color-border);background:none;cursor:pointer}
 .theme-toggle:hover{color:var(--color-text);background:var(--color-surface-offset)}
-.hamburger{display:none;flex-direction:column;gap:4px;padding:var(--space-2);border-radius:var(--radius-md);background:none;border:none;cursor:pointer}
+.hamburger{display:none;flex-direction:column;gap:4px;padding:var(--space-2);border-radius:var(--radius-md);background:none;border:none;cursor:pointer;align-items:center;justify-content:center;min-width:44px;min-height:44px}
 .hamburger span{display:block;width:20px;height:2px;background:var(--color-text);border-radius:2px;transition:transform .22s cubic-bezier(.4,0,.2,1),opacity .22s}
 .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--color-surface);z-index:199;overflow-y:auto;-webkit-overflow-scrolling:touch;border-top:1px solid var(--color-border);transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:var(--color-surface);z-index:199;overflow-y:auto;-webkit-overflow-scrolling:touch;border-top:1px solid var(--color-border);transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
 .mobile-menu.open{display:block;transform:translateX(0)}
 .mobile-menu__inner{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-1)}
 .mobile-section{border-radius:var(--radius-md);overflow:hidden}
-.mobile-section__toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;font-size:var(--text-sm);font-weight:600;color:var(--color-text);background:none;border:none;cursor:pointer;border-radius:var(--radius-md);transition:background .12s}
+.mobile-section__toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px;font-size:var(--text-sm);font-weight:600;color:var(--color-text);background:none;border:none;cursor:pointer;border-radius:var(--radius-md);transition:background .12s;min-height:44px}
 .mobile-section__toggle:hover{background:var(--color-surface-offset)}
 .mobile-section__toggle svg{transition:transform .2s;flex-shrink:0}
 .mobile-section__toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
 .mobile-section__toggle[aria-expanded="true"]{background:var(--color-surface-offset);border-radius:var(--radius-md) var(--radius-md) 0 0}
 .mobile-section__items{display:none;flex-direction:column;background:var(--color-surface-offset);border-radius:0 0 var(--radius-md) var(--radius-md);padding:4px 8px 8px}
 .mobile-section__items.open{display:flex}
-.mobile-section__items a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:8px 10px;border-radius:var(--radius-sm);transition:color .12s,background .12s}
+.mobile-section__items a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:10px;border-radius:var(--radius-sm);transition:color .12s,background .12s;min-height:40px;display:flex;align-items:center}
 .mobile-section__items a:hover{color:var(--color-text);background:var(--color-surface-dynamic)}
 .mobile-view-all{font-weight:600!important;color:var(--color-primary)!important;margin-top:4px}
 .mobile-section--flat{display:flex;flex-direction:column;padding:8px 4px;border-top:1px solid var(--color-divider);margin-top:var(--space-2)}
-.mobile-section--flat a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:8px 10px;border-radius:var(--radius-md)}
+.mobile-section--flat a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:12px 10px;border-radius:var(--radius-md);min-height:44px;display:flex;align-items:center}
 .mobile-section--flat a:hover{background:var(--color-surface-offset);color:var(--color-text)}
-@media(max-width:900px){.mega-nav{display:none}.hamburger{display:flex}}
+@media(max-width:960px){.mega-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.nav-logo span{display:none}}
 .ad-slot{min-height:0!important;margin:var(--space-2) 0}
 .ad-slot:not(:has(ins[data-ad-status])){border:none!important;background:none!important;padding:0!important;min-height:0!important;margin:0!important}
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress{position:fixed;top:60px;left:0;right:0;height:2px;background:transparent;z-index:198;pointer-events:none}
+.scroll-progress__fill{height:100%;width:0;background:linear-gradient(90deg,var(--color-gold-bright),var(--color-gold),var(--color-rose));transition:width 80ms linear;box-shadow:0 0 8px color-mix(in oklch,var(--color-gold-bright) 60%,transparent)}
+/* ── BREADCRUMB ── */
+.breadcrumb-wrap{max-width:1280px;margin:0 auto;padding:var(--space-3) var(--space-4)}
+.breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-1);list-style:none;padding:0;margin:0;font-size:var(--text-sm);color:var(--color-text-muted)}
+.breadcrumb li+li::before{content:"/";margin:0 var(--space-1);color:var(--color-text-faint)}
+.breadcrumb a{color:var(--color-text-muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--color-primary)}
+.breadcrumb li[aria-current="page"]{color:var(--color-text)}
+/* ── ARTICLE LAYOUT ── */
+.article-shell{max-width:1280px;margin:0 auto;padding:0 var(--space-4) var(--space-16);position:relative}
+@media(min-width:1024px){.article-shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:var(--space-10);align-items:flex-start;padding:0 var(--space-6) var(--space-16)}}
+/* ── HERO ── */
+.hero-wrap{margin:0 0 var(--space-6);grid-column:1/-1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;background:color-mix(in oklch,var(--color-gold-bright) 10%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 22%,var(--color-border));border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-gold-bright)}
+.hero-tag::before{content:"";display:block;width:6px;height:6px;border-radius:50%;background:var(--color-gold-bright);box-shadow:0 0 8px var(--color-gold-bright)}
+.hero-title{font-family:var(--font-editorial);font-size:var(--text-3xl);font-weight:600;line-height:1.05;letter-spacing:-0.02em;color:var(--color-text);margin:var(--space-4) 0 var(--space-3);max-width:18ch}
+.hero-title em{font-style:italic;color:var(--color-gold-bright);font-weight:500}
+.hero-sub{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.6;max-width:62ch;margin-bottom:var(--space-5)}
+.hero-byline{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);font-size:var(--text-sm);color:var(--color-text-faint);margin-bottom:var(--space-6)}
+.hero-byline a{color:var(--color-text-muted);font-weight:500;text-decoration:none}
+.hero-byline a:hover{color:var(--color-primary)}
+.hero-byline-dot{width:3px;height:3px;border-radius:50%;background:var(--color-text-faint)}
+/* ── BENTO HERO GRID ── */
+.bento-hero{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin-top:var(--space-6)}
+@media(min-width:560px){.bento-hero{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.bento-hero{grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(140px,auto)}}
+.bento-cell{position:relative;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5);overflow:hidden;transition:border-color var(--transition),transform var(--transition),box-shadow var(--transition)}
+.bento-cell:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 35%,var(--color-border));transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.bento-cell__label{display:flex;align-items:center;gap:8px;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:var(--space-2)}
+.bento-cell__value{font-family:var(--font-editorial);font-size:clamp(1.75rem,1rem + 2.5vw,2.5rem);font-weight:600;color:var(--color-text);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
+.bento-cell__value-em{color:var(--color-gold-bright)}
+.bento-cell__caption{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-2);line-height:1.5}
+/* live spot price hero card */
+.bento-spot{grid-column:1/-1;background:linear-gradient(135deg,color-mix(in oklch,var(--color-gold-bright) 10%,var(--color-surface)),color-mix(in oklch,var(--color-rose) 6%,var(--color-surface)));border:1px solid color-mix(in oklch,var(--color-gold-bright) 25%,var(--color-border));display:flex;flex-direction:column;justify-content:space-between;min-height:160px}
+@media(min-width:960px){.bento-spot{grid-column:1/4;grid-row:span 2;padding:var(--space-6)}}
+.bento-spot__head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-3)}
+.bento-spot__title{font-family:var(--font-display);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-muted)}
+.bento-spot__live{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;background:color-mix(in oklch,var(--color-emerald) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-emerald) 28%,var(--color-border));border-radius:var(--radius-full);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-emerald)}
+.bento-spot__live-dot{width:6px;height:6px;border-radius:50%;background:var(--color-emerald);animation:livePulse 1.8s infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.85)}}
+.bento-spot__price{font-family:var(--font-editorial);font-size:clamp(2.25rem,1.4rem + 3.5vw,3.75rem);font-weight:600;color:var(--color-text);line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;margin:var(--space-4) 0 var(--space-2)}
+.bento-spot__delta{display:inline-flex;align-items:center;gap:6px;font-size:var(--text-sm);font-weight:600;font-variant-numeric:tabular-nums}
+.bento-spot__delta--up{color:var(--color-emerald)}
+.bento-spot__delta--down{color:var(--color-rose)}
+.bento-spot__meta{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-3);display:flex;flex-wrap:wrap;gap:var(--space-3)}
+/* stat cells */
+@media(min-width:960px){.bento-plated{grid-column:4/5}.bento-vermeil{grid-column:5/6}.bento-filled{grid-column:6/7}.bento-solid{grid-column:4/7;grid-row:2}}
+.bento-plated::before,.bento-vermeil::before,.bento-filled::before,.bento-solid::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radius-xl) var(--radius-xl) 0 0}
+.bento-plated::before{background:linear-gradient(90deg,#c0c4cb,#94999f)}
+.bento-vermeil::before{background:linear-gradient(90deg,#d4d8df,#b08350)}
+.bento-filled::before{background:linear-gradient(90deg,#d4a574,#b07a00)}
+.bento-solid::before{background:linear-gradient(90deg,#f0c14b,#d19900,#b07a00)}
+.bento-solid{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);background:color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface))}
+.bento-solid .bento-cell__value{font-size:clamp(2rem,1.2rem + 2.8vw,3rem)}
+/* mini-cross-section badge inside cells */
+.cross-mini{flex-shrink:0;display:flex;flex-direction:column;align-items:stretch;width:34px;height:54px;border:1px solid var(--color-border);border-radius:var(--radius-sm);overflow:hidden;background:var(--color-surface-offset)}
+.cross-mini__layer{display:block}
+.cross-mini--plated .cross-mini__layer:first-child{background:linear-gradient(180deg,#f0c14b,#d19900);height:6%}
+.cross-mini--plated .cross-mini__layer:nth-child(2){background:linear-gradient(180deg,#a07050,#7a5a40);flex:1}
+.cross-mini--filled .cross-mini__layer:first-child{background:linear-gradient(180deg,#f0c14b,#d19900);height:18%}
+.cross-mini--filled .cross-mini__layer:nth-child(2){background:linear-gradient(180deg,#a07050,#7a5a40);flex:1}
+.cross-mini--vermeil .cross-mini__layer:first-child{background:linear-gradient(180deg,#f0c14b,#d19900);height:10%}
+.cross-mini--vermeil .cross-mini__layer:nth-child(2){background:linear-gradient(180deg,#d4d8df,#a3a8af);flex:1}
+.cross-mini--solid .cross-mini__layer{background:linear-gradient(180deg,#f0c14b,#d19900,#b07a00);flex:1}
+/* ── SIDEBAR TOC ── */
+.toc{display:none}
+@media(min-width:1024px){.toc{display:block;position:sticky;top:84px;align-self:flex-start;max-height:calc(100dvh - 100px);overflow-y:auto;padding:var(--space-4) var(--space-3) var(--space-4) 0;border-right:1px solid var(--color-divider);scrollbar-width:thin;scrollbar-color:var(--color-border) transparent}}
+.toc__label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-faint);margin-bottom:var(--space-3);padding-left:var(--space-3)}
+.toc__list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1px}
+.toc__list a{display:block;padding:8px 12px;font-size:13px;font-weight:500;color:var(--color-text-muted);text-decoration:none;border-left:2px solid transparent;border-radius:0 var(--radius-sm) var(--radius-sm) 0;transition:color var(--transition),border-color var(--transition),background var(--transition);line-height:1.35}
+.toc__list a:hover{color:var(--color-text);background:var(--color-surface-offset);border-left-color:var(--color-border)}
+.toc__list a.is-active{color:var(--color-gold-bright);border-left-color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset));font-weight:600}
+/* Mobile floating TOC */
+.toc-fab{position:fixed;bottom:20px;right:20px;width:52px;height:52px;border-radius:50%;background:var(--color-text);color:var(--color-bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:150;box-shadow:var(--shadow-lg);transition:transform var(--transition)}
+.toc-fab:hover{transform:translateY(-2px)}
+@media(min-width:1024px){.toc-fab{display:none}}
+.toc-sheet{position:fixed;inset:0;background:color-mix(in oklch,var(--color-bg) 80%,transparent);backdrop-filter:blur(8px);z-index:201;display:none;align-items:flex-end;justify-content:center}
+.toc-sheet.is-open{display:flex;animation:fadeIn .2s ease-out}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.toc-sheet__panel{width:100%;max-width:560px;max-height:80dvh;background:var(--color-surface);border-radius:var(--radius-xl) var(--radius-xl) 0 0;padding:var(--space-5) var(--space-4) var(--space-6);overflow-y:auto;animation:slideUp .25s cubic-bezier(.16,1,.3,1)}
+@keyframes slideUp{from{transform:translateY(40px)}to{transform:translateY(0)}}
+.toc-sheet__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-border)}
+.toc-sheet__title{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text)}
+.toc-sheet__close{width:36px;height:36px;border-radius:50%;background:var(--color-surface-offset);display:flex;align-items:center;justify-content:center}
+.toc-sheet__list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
+.toc-sheet__list a{display:block;padding:12px 14px;font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);text-decoration:none;border-radius:var(--radius-md);min-height:44px;display:flex;align-items:center}
+.toc-sheet__list a:hover{color:var(--color-text);background:var(--color-surface-offset)}
+/* ── PROSE ── */
+.prose-main{min-width:0;grid-column:2}
+@media(max-width:1023px){.prose-main{grid-column:1}}
+.prose{max-width:760px}
+.prose h2{font-family:var(--font-editorial);font-size:clamp(1.5rem,1.1rem + 1.5vw,2.25rem);font-weight:600;color:var(--color-text);margin:var(--space-12) 0 var(--space-3);line-height:1.15;letter-spacing:-0.015em;scroll-margin-top:90px}
+.prose h2 .h2-num{display:inline-block;font-family:var(--font-display);font-size:0.4em;font-weight:700;color:var(--color-gold-bright);vertical-align:super;margin-right:8px;letter-spacing:.06em}
+.prose h3{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin:var(--space-8) 0 var(--space-2)}
+.prose h4{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:var(--space-5) 0 var(--space-2)}
+.prose p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-4)}
+.prose p.prose-lede{font-family:var(--font-editorial);font-size:clamp(1.125rem,0.9rem + 1vw,1.375rem);font-weight:500;color:var(--color-text);line-height:1.5;letter-spacing:-0.01em;margin-bottom:var(--space-5)}
+.prose p.prose-lede::first-letter{font-family:var(--font-editorial);font-size:3em;float:left;line-height:0.85;padding:6px 12px 0 0;color:var(--color-gold-bright);font-weight:600}
+.prose ul,.prose ol{padding-left:var(--space-5);margin-bottom:var(--space-4)}
+.prose li{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-2)}
+.prose strong{color:var(--color-text);font-weight:600}
+.prose a{color:var(--color-primary);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:color-mix(in oklch,var(--color-primary) 40%,transparent)}
+.prose a:hover{color:var(--color-primary-hover);text-decoration-color:currentColor}
+.prose sup{font-size:.7em;vertical-align:super;color:var(--color-text-faint)}
+.hmark{display:inline-flex;align-items:center;padding:2px 8px;background:color-mix(in oklch,var(--color-gold-bright) 12%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 25%,var(--color-border));border-radius:var(--radius-sm);font-size:var(--text-xs);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:.04em;font-family:var(--font-display)}/* ── DIAGRAM PANELS (cross-section visualisations) ── */
+.diagram-panel{display:grid;grid-template-columns:1fr;gap:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5);margin:var(--space-6) 0}
+@media(min-width:640px){.diagram-panel{grid-template-columns:140px 1fr;gap:var(--space-6);padding:var(--space-6)}}
+.diagram-cross{width:100%;max-width:160px;margin:0 auto;display:flex;flex-direction:column;border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;background:var(--color-surface-offset);position:relative}
+@media(min-width:640px){.diagram-cross{margin:0;height:200px}}
+@media(max-width:639px){.diagram-cross{flex-direction:row;height:48px}}
+.diagram-cross__layer{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(0,0,0,.55);text-shadow:0 1px 0 rgba(255,255,255,.4);position:relative}
+@media(max-width:639px){.diagram-cross__layer{flex-direction:column;writing-mode:vertical-rl}.diagram-cross__layer{writing-mode:initial}}
+.diagram-cross--plated .diagram-cross__layer:first-child{background:linear-gradient(180deg,#f0c14b,#d19900);height:5%}
+.diagram-cross--plated .diagram-cross__layer:nth-child(2){background:repeating-linear-gradient(45deg,#a07050,#a07050 6px,#8d6244 6px,#8d6244 12px);flex:1;color:rgba(255,255,255,.85);text-shadow:0 1px 0 rgba(0,0,0,.3)}
+.diagram-cross--filled .diagram-cross__layer:first-child{background:linear-gradient(180deg,#f0c14b,#d19900,#b07a00);height:22%}
+.diagram-cross--filled .diagram-cross__layer:nth-child(2){background:repeating-linear-gradient(45deg,#a07050,#a07050 6px,#8d6244 6px,#8d6244 12px);flex:1;color:rgba(255,255,255,.85);text-shadow:0 1px 0 rgba(0,0,0,.3)}
+.diagram-cross--vermeil .diagram-cross__layer:first-child{background:linear-gradient(180deg,#f0c14b,#d19900);height:8%}
+.diagram-cross--vermeil .diagram-cross__layer:nth-child(2){background:linear-gradient(135deg,#e3e6eb,#b8bdc6);flex:1}
+.diagram-cross--solid .diagram-cross__layer{background:linear-gradient(180deg,#f0c14b 0%,#d19900 50%,#b07a00 100%);flex:1}
+.diagram-content h3{margin-top:0!important;font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-2)}
+.diagram-content__meta{display:flex;flex-wrap:wrap;gap:var(--space-2);margin:var(--space-3) 0 var(--space-2)}
+.diagram-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:11px;font-weight:600;color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+.diagram-chip__dot{width:6px;height:6px;border-radius:50%}
+.diagram-chip__dot--gold{background:var(--color-gold-bright)}
+.diagram-chip__dot--silver{background:var(--color-silver)}
+.diagram-chip__dot--brass{background:#b08350}
+.diagram-content p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0}
+/* ── TABLE / COMPARISON ── */
+.compare-wrap{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-4);margin:var(--space-6) 0;overflow:hidden}
+@media(min-width:768px){.compare-wrap{padding:var(--space-5)}}
+.compare-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-3);margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-divider);flex-wrap:wrap}
+.compare-head h3{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:0!important}
+.compare-head__caption{font-size:11px;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.compare-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);display:none}
+@media(min-width:768px){.compare-table{display:table}}
+.compare-table th{text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding:var(--space-3) var(--space-3) var(--space-2) 0;border-bottom:2px solid var(--color-border);vertical-align:bottom}
+.compare-table th:first-child{width:24%}
+.compare-table th.compare-th-solid{color:var(--color-gold-bright)}
+.compare-table td{padding:var(--space-3) var(--space-3) var(--space-3) 0;border-bottom:1px solid var(--color-divider);color:var(--color-text-muted);vertical-align:middle;line-height:1.5}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table td:first-child{color:var(--color-text);font-weight:600}
+.compare-table td.is-best{color:var(--color-text);font-weight:600}
+.compare-table td .check{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:color-mix(in oklch,var(--color-emerald) 14%,transparent);color:var(--color-emerald);font-weight:700}
+.compare-table td .cross{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:color-mix(in oklch,var(--color-rose) 14%,transparent);color:var(--color-rose);font-weight:700}
+.compare-rating{display:inline-flex;gap:2px;align-items:center}
+.compare-rating__dot{width:6px;height:6px;border-radius:50%;background:var(--color-border)}
+.compare-rating__dot.is-on{background:var(--color-gold-bright)}
+/* Mobile card view */
+.compare-cards{display:flex;flex-direction:column;gap:var(--space-3)}
+@media(min-width:768px){.compare-cards{display:none}}
+.compare-card{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4)}
+.compare-card__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-divider)}
+.compare-card__name{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text)}
+.compare-card__name--solid{color:var(--color-gold-bright)}
+.compare-card__rating{display:inline-flex;gap:3px}
+.compare-card__rating .compare-rating__dot{width:7px;height:7px}
+.compare-card__rows{display:flex;flex-direction:column;gap:var(--space-2)}
+.compare-card__row{display:flex;justify-content:space-between;gap:var(--space-2);font-size:var(--text-sm)}
+.compare-card__row dt{color:var(--color-text-muted);font-weight:500}
+.compare-card__row dd{color:var(--color-text);font-weight:600;text-align:right;max-width:60%}
+/* ── EXECUTIVE / INTRO / CALLOUTS ── */
+.exec-summary{background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold-bright) 18%,var(--color-border));border-left:3px solid var(--color-gold-bright);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin:var(--space-6) 0}
+.exec-summary p{font-size:var(--text-base);color:var(--color-text);line-height:1.7;margin-bottom:0;max-width:none}
+.exec-summary strong{color:var(--color-gold-bright)}
+.info-callout{background:color-mix(in oklch,var(--color-primary) 7%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-primary) 18%,var(--color-border));border-left:3px solid var(--color-primary);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin:var(--space-6) 0}
+.info-callout::before{content:"i";display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--color-primary);color:#fff;font-family:var(--font-editorial);font-style:italic;font-weight:700;font-size:13px;margin-right:8px;float:left}
+.info-callout p{margin:0;font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;max-width:none}
+.info-callout p+p{margin-top:var(--space-3);clear:both}
+.info-callout strong{color:var(--color-text)}
+.warning-callout{background:color-mix(in oklch,var(--color-rose) 7%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-rose) 20%,var(--color-border));border-left:3px solid var(--color-rose);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin:var(--space-6) 0}
+.warning-callout::before{content:"!";display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--color-rose);color:#fff;font-weight:700;font-size:13px;margin-right:8px;float:left}
+.warning-callout p{margin:0;font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;max-width:none}
+.warning-callout p+p{margin-top:var(--space-3);clear:both}
+.warning-callout strong{color:var(--color-text)}
+/* ── KEY TAKEAWAY pull-quote ── */
+.pull-quote{font-family:var(--font-editorial);font-size:clamp(1.25rem,1rem + 1.5vw,1.875rem);font-weight:500;color:var(--color-text);line-height:1.3;letter-spacing:-0.015em;border-left:3px solid var(--color-gold-bright);padding:var(--space-2) 0 var(--space-2) var(--space-5);margin:var(--space-8) 0;max-width:60ch;font-style:italic}
+.pull-quote::before{content:"\201C";font-size:1.5em;color:var(--color-gold-bright);line-height:1;margin-right:4px;display:inline-block;transform:translateY(8px);font-style:normal}
+/* ── STEP LIST ── */
+.step-list{list-style:none;padding:0;margin:var(--space-6) 0;display:flex;flex-direction:column;gap:var(--space-3)}
+.step-block{display:flex;align-items:flex-start;gap:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);transition:border-color var(--transition),box-shadow var(--transition)}
+.step-block:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border));box-shadow:var(--shadow-sm)}
+.step-number{flex-shrink:0;width:38px;height:38px;border-radius:var(--radius-full);background:color-mix(in oklch,var(--color-gold-bright) 12%,var(--color-surface-offset));color:var(--color-gold-bright);font-weight:700;font-size:var(--text-base);display:flex;align-items:center;justify-content:center;font-family:var(--font-editorial);border:1px solid color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border))}
+.step-content{flex:1;min-width:0}
+.step-content strong{display:block;font-size:var(--text-base);font-weight:700;color:var(--color-text);margin-bottom:4px}
+.step-content p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0;max-width:none}
+/* ── FAQ ── */
+.faq-section{margin:var(--space-10) 0}
+.faq-accordion{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-4) 0}
+details.faq-item{border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;background:var(--color-surface);transition:border-color var(--transition)}
+details.faq-item:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 25%,var(--color-border))}
+details.faq-item[open]{border-color:color-mix(in oklch,var(--color-gold-bright) 35%,var(--color-border))}
+details.faq-item summary{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5);font-family:var(--font-display);font-size:var(--text-base);font-weight:600;color:var(--color-text);cursor:pointer;list-style:none;gap:var(--space-3);transition:background .15s;min-height:56px}
+details.faq-item summary::-webkit-details-marker,details.faq-item summary::marker{display:none}
+details.faq-item summary:hover{background:var(--color-surface-offset)}
+.faq-chevron{flex-shrink:0;transition:transform .2s;color:var(--color-gold-bright);width:18px;height:18px}
+details.faq-item[open] .faq-chevron{transform:rotate(180deg)}
+details.faq-item[open]>summary{background:var(--color-surface-offset);border-bottom:1px solid var(--color-border)}
+.faq-body{padding:var(--space-4) var(--space-5) var(--space-5);font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75}
+.faq-body p{margin:0;max-width:none;font-size:var(--text-sm);line-height:1.7}
+.faq-body p+p{margin-top:var(--space-3)}
+.faq-body strong{color:var(--color-text);font-weight:600}
+/* ── LIVE CALCULATOR ── */
+.gf-calc{position:relative;background:linear-gradient(160deg,color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface)),var(--color-surface) 60%);border:1px solid color-mix(in oklch,var(--color-gold-bright) 22%,var(--color-border));border-radius:var(--radius-2xl);padding:var(--space-5);margin:var(--space-8) 0;overflow:hidden}
+@media(min-width:640px){.gf-calc{padding:var(--space-6) var(--space-6)}}
+.gf-calc::after{content:"";position:absolute;top:-40%;right:-20%;width:60%;height:120%;background:radial-gradient(ellipse,color-mix(in oklch,var(--color-gold-bright) 14%,transparent),transparent 70%);pointer-events:none;z-index:0}
+.gf-calc>*{position:relative;z-index:1}
+.gf-calc__head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-3);margin-bottom:var(--space-5);flex-wrap:wrap}
+.gf-calc__title-block{flex:1;min-width:200px}
+.gf-calc__eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-gold-bright);margin-bottom:6px}
+.gf-calc__title{font-family:var(--font-editorial);font-size:clamp(1.25rem,1rem + 1vw,1.625rem);font-weight:600;color:var(--color-text);line-height:1.2;letter-spacing:-0.015em;margin:0}
+.gf-calc__sub{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:6px;line-height:1.55;max-width:50ch}
+.gf-calc__live{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;background:color-mix(in oklch,var(--color-emerald) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-emerald) 28%,var(--color-border));border-radius:var(--radius-full);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-emerald);white-space:nowrap}
+.gf-calc__live-dot{width:6px;height:6px;border-radius:50%;background:var(--color-emerald);animation:livePulse 1.8s infinite}
+.gf-calc__live--idle{color:var(--color-text-muted);background:var(--color-surface-offset);border-color:var(--color-border)}
+.gf-calc__live--idle .gf-calc__live-dot{background:var(--color-text-faint);animation:none}
+.gf-calc__live--error{color:var(--color-rose);background:color-mix(in oklch,var(--color-rose) 10%,var(--color-surface));border-color:color-mix(in oklch,var(--color-rose) 30%,var(--color-border))}
+.gf-calc__live--error .gf-calc__live-dot{background:var(--color-rose);animation:none}
+.gf-calc__grid{display:grid;grid-template-columns:1fr;gap:var(--space-5)}
+@media(min-width:768px){.gf-calc__grid{grid-template-columns:1fr 1fr;gap:var(--space-6)}}
+.gf-calc__controls{display:flex;flex-direction:column;gap:var(--space-4)}
+.gf-field{display:flex;flex-direction:column;gap:var(--space-2)}
+.gf-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted)}
+.gf-unit-toggle{display:flex;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}
+.gf-unit-btn{flex:1;padding:10px var(--space-3);font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted);border:none;background:none;cursor:pointer;transition:background var(--transition),color var(--transition);text-align:center;min-height:44px}
+.gf-unit-btn.is-active{background:var(--color-gold-bright);color:#1a1410}
+.gf-input{width:100%;padding:12px var(--space-3);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);font-family:var(--font-editorial);font-size:var(--text-lg);font-weight:500;color:var(--color-text);outline:none;font-variant-numeric:tabular-nums;min-height:48px;transition:border-color var(--transition),box-shadow var(--transition)}
+.gf-input:focus{border-color:var(--color-gold-bright);box-shadow:0 0 0 3px color-mix(in oklch,var(--color-gold-bright) 18%,transparent)}
+.gf-karat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.gf-karat-btn{padding:10px 6px;font-size:var(--text-xs);font-weight:700;color:var(--color-text-muted);border:1px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-surface);cursor:pointer;text-align:center;transition:background var(--transition),border-color var(--transition),color var(--transition);min-height:44px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);letter-spacing:.04em}
+.gf-karat-btn:hover{border-color:var(--color-gold-bright);color:var(--color-gold-bright)}
+.gf-karat-btn.is-active{background:color-mix(in oklch,var(--color-gold-bright) 14%,var(--color-surface-offset));border-color:var(--color-gold-bright);color:var(--color-gold-bright)}
+.gf-select{width:100%;padding:12px var(--space-3);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-sm);color:var(--color-text);outline:none;cursor:pointer;min-height:44px}
+.gf-select:focus{border-color:var(--color-gold-bright)}
+.gf-frac-row{display:flex;gap:var(--space-2);align-items:flex-end}
+.gf-frac-row .gf-field{flex:1;min-width:0}
+.gf-frac-presets{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.gf-frac-chip{padding:5px 10px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-full);font-size:11px;font-weight:600;color:var(--color-text-muted);cursor:pointer;transition:background var(--transition),color var(--transition),border-color var(--transition)}
+.gf-frac-chip:hover{border-color:var(--color-gold-bright);color:var(--color-gold-bright)}
+.gf-frac-chip.is-active{background:var(--color-gold-bright);color:#1a1410;border-color:var(--color-gold-bright)}
+.gf-calc__result{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-4)}
+.gf-result-primary{background:color-mix(in oklch,var(--color-gold-bright) 10%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 24%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-5);text-align:center}
+.gf-result-primary__label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:8px}
+.gf-result-primary__value{font-family:var(--font-editorial);font-size:clamp(1.875rem,1.2rem + 2.5vw,2.625rem);font-weight:600;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-0.02em}
+.gf-result-primary__note{font-size:11px;color:var(--color-text-faint);margin-top:8px}
+.gf-result-offer{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4);text-align:center}
+.gf-result-offer__label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:4px}
+.gf-result-offer__value{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums}
+.gf-stats{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)}
+.gf-stat{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3);text-align:left}
+.gf-stat__label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);margin-bottom:4px}
+.gf-stat__value{font-size:var(--text-sm);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;font-family:var(--font-display)}
+.gf-placeholder{display:flex;align-items:center;justify-content:center;flex:1;min-height:200px;color:var(--color-text-faint);font-size:var(--text-sm);text-align:center;padding:var(--space-6);background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-lg)}
+.gf-spot-line{font-size:11px;color:var(--color-text-faint);text-align:center;padding-top:var(--space-3);border-top:1px solid var(--color-divider);font-variant-numeric:tabular-nums}
+.gf-spot-line strong{color:var(--color-text-muted);font-family:var(--font-display)}
+/* ── CTA BOX ── */
+.cta-box{background:linear-gradient(135deg,color-mix(in oklch,var(--color-primary) 12%,var(--color-surface)),color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface)));border:1px solid color-mix(in oklch,var(--color-primary) 25%,var(--color-border));border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-8) 0}
+.cta-box h3{font-family:var(--font-editorial);font-size:var(--text-lg);font-weight:600;color:var(--color-text);margin:0 0 var(--space-2)!important}
+.cta-box p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0 0 var(--space-4);max-width:none}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px var(--space-5);background:var(--color-primary);color:#fff!important;border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:600;text-decoration:none!important;transition:background var(--transition),transform var(--transition);min-height:44px}
+.cta-btn:hover,.cta-btn:visited{background:var(--color-primary-hover);color:#fff!important;text-decoration:none!important;transform:translateY(-1px)}
+.cta-btn svg{transition:transform var(--transition)}
+.cta-btn:hover svg{transform:translateX(3px)}
+/* ── DISCLAIMER & RELATED ── */
+.disclaimer-box{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:var(--space-8) 0}
+.disclaimer-box strong{color:var(--color-text);font-weight:600}
+.related-section{max-width:1280px;margin:0 auto var(--space-10);padding:0 var(--space-4)}
+@media(min-width:1024px){.related-section{padding:0 var(--space-6)}}
+.related-section__head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--space-5);flex-wrap:wrap;gap:var(--space-3)}
+.related-section__head h2{font-family:var(--font-editorial);font-size:var(--text-xl);font-weight:600;color:var(--color-text);margin:0;letter-spacing:-0.015em}
+.related-section__head p{font-size:var(--text-sm);color:var(--color-text-muted)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-4)}
+.related-card{display:flex;flex-direction:column;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition);min-height:160px}
+.related-card:hover{border-color:var(--color-gold-bright);box-shadow:var(--shadow-md);color:var(--color-text);transform:translateY(-2px)}
+.related-card__tag{display:inline-flex;align-items:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-gold-bright);margin-bottom:var(--space-3)}
+.related-card__title{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text);line-height:1.3;margin-bottom:var(--space-2)}
+.related-card:hover .related-card__title{color:var(--color-primary)}
+.related-card__desc{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6;margin-top:auto}
+/* ── FOOTER ── */
 footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-10) 0}
-.footer-inner{width:100%;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(5,minmax(0,1fr));gap:var(--space-5);padding:0 var(--space-8);align-items:start}
+.footer-inner{width:100%;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(5,minmax(0,1fr));gap:var(--space-5);padding:0 var(--space-8);align-items:start;max-width:1280px;margin:0 auto}
 @media(max-width:900px){.footer-inner{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.footer-inner{grid-template-columns:repeat(2,1fr);gap:var(--space-4)}}
 .footer-brand-col{max-width:260px}
 .footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
 .footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
 .footer-col{min-width:0}
-.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
 .footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;transition:color .12s}
 .footer-col a:hover{color:var(--color-text)}
-.footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
+.footer-bottom{max-width:1280px;margin:0 auto;padding:var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
 .footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}
-.breadcrumb-wrap{max-width:1200px;margin:0 auto;padding:var(--space-3) var(--space-4)}
-.breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-1);list-style:none;padding:0;margin:0;font-size:var(--text-sm);color:var(--color-text-muted)}
-.breadcrumb li+li::before{content:"/";margin:0 var(--space-1);color:var(--color-text-faint)}
-.breadcrumb a{color:var(--color-text-muted);text-decoration:none}
-.breadcrumb a:hover{color:var(--color-primary)}
-.breadcrumb li[aria-current="page"]{color:var(--color-text)}
-.article-wrap{max-width:1200px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-16)}
-.article-tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-gold-bright);margin-bottom:var(--space-3)}
-article.article-wrap .article-title,h1.article-title{font-family:var(--font-display)!important;font-size:clamp(1.75rem,3.5vw,2.75rem)!important;font-weight:700!important;line-height:1.15!important;margin:var(--space-2) 0 var(--space-5)!important;color:var(--color-text)!important}
-.article-byline{font-size:var(--text-sm);color:var(--color-text-muted);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin-bottom:var(--space-6);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-border)}
-.article-byline a{color:var(--color-primary);text-decoration:none;font-weight:500}
-.article-byline a:hover{text-decoration:underline}
-.prose{max-width:860px}
-.prose h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin:var(--space-8) 0 var(--space-3);line-height:1.25}
-.prose h3{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin:var(--space-6) 0 var(--space-2)}
-.prose h4{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:var(--space-5) 0 var(--space-2)}
-.prose p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75;margin-bottom:var(--space-4)}
-.prose ul,.prose ol{padding-left:var(--space-5);margin-bottom:var(--space-4)}
-.prose li{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-2)}
-.prose strong{color:var(--color-text);font-weight:700}
-.prose a{color:var(--color-primary);text-decoration:underline}
-.prose a:hover{color:var(--color-primary-hover)}
-.prose sup{font-size:.7em;vertical-align:super;color:var(--color-text-faint)}
-.prose table{width:100%;border-collapse:collapse;font-size:var(--text-sm);margin:var(--space-4) 0 var(--space-6)}
-.prose table th{text-align:left;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-faint);padding:var(--space-2) var(--space-3) var(--space-2) 0;border-bottom:2px solid var(--color-border)}
-.prose table td{padding:var(--space-3) var(--space-3) var(--space-3) 0;border-bottom:1px solid var(--color-border);color:var(--color-text-muted);vertical-align:middle}
-.prose table tr:last-child td{border-bottom:none}
-.prose table td:first-child,.prose table th:first-child{padding-left:0;color:var(--color-text)}
-.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:var(--space-4) 0 var(--space-6)}
-.table-scroll table{margin:0;min-width:640px}
-.cta-box{background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 18%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-6);margin:var(--space-8) 0}
-.cta-box h3{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text);margin:0 0 var(--space-2)}
-.cta-box p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0 0 var(--space-4)}
-.cta-btn{display:inline-flex;align-items:center;gap:var(--space-1);padding:var(--space-2) var(--space-5);background:var(--color-primary);color:#fff!important;border-radius:var(--radius-md);font-size:var(--text-sm);font-weight:600;text-decoration:none;transition:background .15s}
-.cta-btn:hover,.cta-btn:visited{background:var(--color-primary-hover);color:#fff!important;text-decoration:none}
-.disclaimer-box{background:var(--color-surface-alt,#f4f3ef);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:var(--space-8) 0}
-.disclaimer-box strong{color:var(--color-text);font-weight:700}
-.related-guides-section{max-width:860px;margin:0 auto var(--space-10);padding:0 var(--space-4)}
-.related-guides-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-4)}
-.related-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-4)}
-.related-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;transition:border-color var(--transition),box-shadow var(--transition)}
-.related-card:hover{border-color:var(--color-gold-bright);box-shadow:var(--shadow-md);color:var(--color-text)}
-.related-card__tag{display:block;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright);margin-bottom:var(--space-2)}
-.related-card__title{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4;margin-bottom:var(--space-2)}
-.related-card:hover .related-card__title{color:var(--color-primary)}
-.related-card__desc{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6}
-.exec-summary{background:color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold-bright) 20%,var(--color-border));border-left:3px solid var(--color-gold-bright);border-radius:var(--radius-lg);padding:var(--space-6);margin:var(--space-6) 0}
-.exec-summary-intro{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-5)}
-.exec-summary-intro strong{color:var(--color-text)}
-.exec-summary-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-4)}
-.exec-stat{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4)}
-.exec-stat-label{font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted)}
-.exec-stat-value{font-size:var(--text-lg);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;margin-top:var(--space-1);line-height:1.2}
-.info-callout{background:color-mix(in oklch,var(--color-primary) 8%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-primary) 20%,var(--color-border));border-left:3px solid var(--color-primary);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin:var(--space-6) 0}
-.info-callout p{margin:0;font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;max-width:none}
-.info-callout p+p{margin-top:var(--space-3)}
-.info-callout strong{color:var(--color-text)}
-.info-callout ul{padding-left:var(--space-5);margin:var(--space-3) 0 0}
-.info-callout li{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin-bottom:var(--space-2)}
-.warning-callout{background:color-mix(in oklch,#f59e0b 8%,var(--color-surface));border:1px solid color-mix(in oklch,#f59e0b 25%,var(--color-border));border-left:3px solid #f59e0b;border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin:var(--space-6) 0}
-.warning-callout p{margin:0;font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;max-width:none}
-.warning-callout p+p{margin-top:var(--space-3)}
-.warning-callout strong{color:var(--color-text)}
-.warning-callout ul{padding-left:var(--space-5);margin:var(--space-3) 0 0}
-.warning-callout li{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin-bottom:var(--space-2)}
-.faq-accordion{margin:var(--space-4) 0}
-details.faq-item{border:1px solid var(--color-border);border-radius:var(--radius-lg);margin-bottom:var(--space-2);overflow:hidden;background:var(--color-surface)}
-details.faq-item summary{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5);font-size:var(--text-base);font-weight:600;color:var(--color-text);cursor:pointer;list-style:none;gap:var(--space-3);transition:background .15s}
-details.faq-item summary::-webkit-details-marker{display:none}
-details.faq-item summary:hover{background:var(--color-surface-offset)}
-.faq-chevron{flex-shrink:0;transition:transform .2s;color:var(--color-text-muted)}
-details.faq-item[open] .faq-chevron{transform:rotate(180deg)}
-details.faq-item[open]>summary{background:var(--color-surface-offset);border-bottom:1px solid var(--color-border)}
-.faq-body{padding:var(--space-4) var(--space-5);font-size:var(--text-base);color:var(--color-text-muted);line-height:1.75}
-.faq-body p{margin:0;max-width:none}
-.faq-body p+p{margin-top:var(--space-3)}
-.faq-body strong{color:var(--color-text)}
-.step-list{list-style:none;padding:0;margin:var(--space-6) 0;display:flex;flex-direction:column;gap:var(--space-4)}
-.step-block{display:flex;align-items:flex-start;gap:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5)}
-.step-number{flex-shrink:0;width:36px;height:36px;border-radius:var(--radius-full);background:var(--color-primary);color:#fff;font-weight:700;font-size:var(--text-sm);display:flex;align-items:center;justify-content:center;font-family:var(--font-display)}
-.step-content{flex:1;min-width:0}
-.step-content strong{display:block;font-size:var(--text-base);font-weight:700;color:var(--color-text);margin-bottom:var(--space-2)}
-.step-content p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin:0;max-width:none}
-.hmark{display:inline-flex;align-items:center;padding:2px 8px;background:color-mix(in oklch,var(--color-gold-bright) 12%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 25%,var(--color-border));border-radius:var(--radius-sm);font-size:var(--text-xs);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:.04em;font-family:var(--font-display)}
+/* ── REVEAL on scroll micro-motion ── */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity 520ms cubic-bezier(0.16,1,0.3,1),transform 520ms cubic-bezier(0.16,1,0.3,1)}
+.reveal.is-in{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 <!-- Microsoft Clarity -->
@@ -273,8 +470,8 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
     </ul>
     <div class="nav-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-        <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
@@ -282,6 +479,8 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
     </div>
   </div>
 </nav>
+
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__fill" id="scrollProgressFill"></div></div>
 
 <div id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
   <div class="mobile-menu__inner">
@@ -315,408 +514,738 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
   </nav>
 </div>
 
-<article class="article-wrap">
-  <div class="article-tag">Guide</div>
-  <h1 class="article-title">Gold Filled vs Gold Plated vs Solid Gold — The Complete Guide (2026)</h1>
-  <div class="article-byline">
-    <span>By <a href="/authors/goldpricetools-editorial-team/">GoldPriceTools Editorial Team</a></span>
-    <span>&middot;</span>
-    <time datetime="2026-06-12">8 May 2026</time>
-    <span>&middot;</span>
-    <span>18 min read</span>
+<div class="article-shell">
+  <aside class="toc" aria-label="Article sections">
+    <div class="toc__label">In this guide</div>
+    <ol class="toc__list" id="tocList">
+      <li><a href="#gold-plated">Gold Plated</a></li>
+      <li><a href="#gold-filled">Gold Filled</a></li>
+      <li><a href="#gold-vermeil">Gold Vermeil</a></li>
+      <li><a href="#solid-gold">Solid Gold</a></li>
+      <li><a href="#comparison">Side by Side</a></li>
+      <li><a href="#calculator">Live Scrap Calculator</a></li>
+      <li><a href="#tarnish">Tarnishing</a></li>
+      <li><a href="#turns-green">Green Skin Staining</a></li>
+      <li><a href="#water">Water Exposure</a></li>
+      <li><a href="#gold-filled-tarnish">Does Filled Tarnish?</a></li>
+      <li><a href="#is-gold-plated-real">Is Plated Real Gold?</a></li>
+      <li><a href="#magnet-test">The Magnet Test</a></li>
+      <li><a href="#scrap-value">Scrap Value</a></li>
+      <li><a href="#olympic-medals">Olympic Medals</a></li>
+      <li><a href="#clean-plated">Cleaning Plated</a></li>
+      <li><a href="#clean-filled">Cleaning Filled</a></li>
+      <li><a href="#which-to-buy">Which to Buy</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </aside>
+
+  <main class="prose-main">
+    <header class="hero-wrap">
+      <span class="hero-tag">In-depth Guide &middot; 2026 Edition</span>
+      <h1 class="hero-title">Gold Filled, Gold Plated &amp; <em>Solid Gold</em> — what every buyer needs to know</h1>
+      <p class="hero-sub">Four tiers, one shimmering surface. Use this guide to tell which is which, what each is actually worth in today's market, and which is the right buy for the way you live.</p>
+      <div class="hero-byline">
+        <span>By <a href="/authors/goldpricetools-editorial-team/">GoldPriceTools Editorial Team</a></span>
+        <span class="hero-byline-dot"></span>
+        <time datetime="2026-06-12">Updated 12 June 2026</time>
+        <span class="hero-byline-dot"></span>
+        <span>18 min read</span>
+      </div>
+
+      <div class="bento-hero">
+        <div class="bento-cell bento-spot reveal">
+          <div class="bento-spot__head">
+            <div>
+              <div class="bento-spot__title">Live Gold Spot &middot; USD / troy oz</div>
+            </div>
+            <span class="gf-calc__live" id="heroLive">
+              <span class="gf-calc__live-dot"></span>
+              <span id="heroLiveText">Connecting</span>
+            </span>
+          </div>
+          <div class="bento-spot__price" id="heroSpotPrice">$&mdash;,&mdash;&mdash;&mdash;</div>
+          <div>
+            <span class="bento-spot__delta bento-spot__delta--up" id="heroSpotDelta" hidden>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 15l7-7 7 7"/></svg>
+              <span id="heroSpotDeltaText">&mdash;</span>
+            </span>
+          </div>
+          <div class="bento-spot__meta">
+            <span>Per gram (24K) <strong id="heroSpotPerGram" style="color:var(--color-text)">$—</strong></span>
+            <span>Updated <span id="heroSpotUpdated">just now</span></span>
+          </div>
+        </div>
+        <div class="bento-cell bento-plated reveal" style="display:flex;align-items:center;gap:var(--space-3)">
+          <div class="cross-mini cross-mini--plated" aria-hidden="true"><span class="cross-mini__layer"></span><span class="cross-mini__layer"></span></div>
+          <div style="flex:1">
+            <div class="bento-cell__label">Gold Plated</div>
+            <div class="bento-cell__value">&lt;<span class="bento-cell__value-em">1%</span></div>
+            <div class="bento-cell__caption">Gold by weight &middot; flash layer, base metal core</div>
+          </div>
+        </div>
+        <div class="bento-cell bento-vermeil reveal" style="display:flex;align-items:center;gap:var(--space-3)">
+          <div class="cross-mini cross-mini--vermeil" aria-hidden="true"><span class="cross-mini__layer"></span><span class="cross-mini__layer"></span></div>
+          <div style="flex:1">
+            <div class="bento-cell__label">Gold Vermeil</div>
+            <div class="bento-cell__value"><span class="bento-cell__value-em">2.5</span>&micro;</div>
+            <div class="bento-cell__caption">Minimum thickness &middot; sterling silver base</div>
+          </div>
+        </div>
+        <div class="bento-cell bento-filled reveal" style="display:flex;align-items:center;gap:var(--space-3)">
+          <div class="cross-mini cross-mini--filled" aria-hidden="true"><span class="cross-mini__layer"></span><span class="cross-mini__layer"></span></div>
+          <div style="flex:1">
+            <div class="bento-cell__label">Gold Filled</div>
+            <div class="bento-cell__value"><span class="bento-cell__value-em">5%</span>+</div>
+            <div class="bento-cell__caption">Bonded gold layer &middot; brass core, "1/20"</div>
+          </div>
+        </div>
+        <div class="bento-cell bento-solid reveal">
+          <div>
+            <div class="bento-cell__label" style="color:var(--color-gold-bright)">Solid Gold</div>
+            <div class="bento-cell__value"><span class="bento-cell__value-em">37.5&ndash;99.9%</span></div>
+            <div class="bento-cell__caption">Gold alloy throughout &middot; from 9K to 24K</div>
+          </div>
+          <div class="cross-mini cross-mini--solid" style="width:42px;height:78px" aria-hidden="true"><span class="cross-mini__layer"></span></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="prose">
+      <p class="prose-lede reveal">If you have ever stood in a jewellery shop — or scrolled through page after page of gold jewellery online — you have almost certainly seen the terms "gold plated," "gold filled," and "solid gold" used as if they mean more or less the same thing. They do not.</p>
+      <p class="reveal">The differences between them are not just technical footnotes. They affect how long your jewellery will last, what it is actually worth, whether it will turn your skin green, how you should care for it, and whether it makes sense to buy it at all for a given purpose. A gold plated ring that costs $30 and a solid gold ring that costs $750 might look identical on your finger on the day you buy them. Three months later, they will look very different — and not in the gold plated ring's favour.</p>
+
+      <div class="exec-summary reveal">
+        <p>This guide explains <strong>everything</strong>: what each term actually means, what is inside each type of jewellery, how they compare in durability and value, where gold vermeil fits in, and answers to the questions people genuinely ask when they are trying to figure out what they are buying — with a <strong>live USD calculator</strong> for instant scrap valuations.</p>
+      </div>
+
+      <h2 id="gold-plated" class="reveal"><span class="h2-num">01</span>What Does "Gold Plated" Mean?</h2>
+
+      <div class="diagram-panel reveal">
+        <div class="diagram-cross diagram-cross--plated" aria-hidden="true">
+          <span class="diagram-cross__layer">Au</span>
+          <span class="diagram-cross__layer">Brass / Copper core</span>
+        </div>
+        <div class="diagram-content">
+          <h3>Thin gold over base metal</h3>
+          <div class="diagram-content__meta">
+            <span class="diagram-chip"><span class="diagram-chip__dot diagram-chip__dot--gold"></span>0.5&ndash;2 &micro;m gold</span>
+            <span class="diagram-chip"><span class="diagram-chip__dot diagram-chip__dot--brass"></span>Brass / Cu / SS core</span>
+            <span class="diagram-chip">Electroplated</span>
+          </div>
+          <p>An electrical current deposits a microscopically thin gold layer onto the surface of a base-metal piece. Looks like gold, behaves like base metal underneath.</p>
+        </div>
+      </div>
+
+      <p>Gold plated jewellery is made by coating a base metal — typically brass, copper, or occasionally stainless steel — with an extremely thin layer of gold through a process called <strong>electroplating</strong>, sometimes called electro gold plating. The process involves submerging the base metal piece in a solution containing dissolved gold ions and passing an electrical current through it. This causes gold particles to bond to the surface of the metal, depositing a thin gold layer over the entire piece. The result looks exactly like gold. For a while, at least.</p>
+      <p>The critical thing to understand about gold plated jewellery is that <strong>there is no legal minimum thickness for the gold layer in most countries</strong>. A piece can be labelled "gold plated" whether the gold layer is 0.5 microns thick or 5 microns thick — a difference that will translate directly into how many months or years it looks presentable. Some manufacturers use "flash plating" — essentially the thinnest coating that can legally be called plating — while others use heavier deposits that last considerably longer. Without knowing the specific thickness, you are guessing.</p>
+
+      <h3>What "Gold Plated" Actually Means in Practice</h3>
+      <p>In practical terms, gold plated means:</p>
+      <ul>
+        <li>The gold layer is <strong>real gold</strong> — typically <span class="hmark">10K</span>, <span class="hmark">14K</span>, or <span class="hmark">18K</span> — but it is present in an almost negligible quantity. The piece contains less than 1% gold by weight in most cases</li>
+        <li>The core is a <strong>base metal</strong> with no gold value. The most common base metals are brass (copper and zinc) and copper; stainless steel is increasingly used for its rust resistance</li>
+        <li>The piece will <strong>wear over time</strong> as the gold layer thins and eventually disappears through friction, exposure to moisture, and contact with skin oils and chemicals</li>
+        <li>When the plating wears away in high-contact areas — the inside of a ring band, the back of a pendant — the base metal is exposed</li>
+      </ul>
+
+      <div class="info-callout reveal">
+        <p><strong>How long does gold plated jewellery last?</strong> The average lifespan of gold plated jewellery with proper care is six months to two years. Flash-plated pieces can start showing wear within weeks of daily use. Heavier commercial plating at 1&ndash;2 microns typically lasts six months to a year with everyday wear. At 2+ microns, you are approaching the territory of gold vermeil, which can last considerably longer.</p>
+      </div>
+
+      <h3>Gold Plated on Silver and Other Base Metals</h3>
+      <p>When gold plated jewellery uses <strong>sterling silver (925)</strong> as its base instead of brass or copper, the resulting piece is generally more durable, more skin-friendly, and more valuable — because even when the gold layer eventually wears away, the underlying silver is itself a precious metal. This specific combination has its own name: <strong>gold vermeil</strong>.</p>
+      <p>Gold plated on brass or copper is the most common and least expensive variety. Gold plated on stainless steel sits somewhere in the middle — stainless steel is highly resistant to rust and corrosion, so gold plated stainless steel will not rust when the plating wears, making it a more durable base than brass.</p>
+
+      <h2 id="gold-filled" class="reveal"><span class="h2-num">02</span>What Does "Gold Filled" Mean?</h2>
+
+      <div class="diagram-panel reveal">
+        <div class="diagram-cross diagram-cross--filled" aria-hidden="true">
+          <span class="diagram-cross__layer">Au &middot; 5%+</span>
+          <span class="diagram-cross__layer">Brass core</span>
+        </div>
+        <div class="diagram-content">
+          <h3>Thick gold mechanically bonded to brass</h3>
+          <div class="diagram-content__meta">
+            <span class="diagram-chip"><span class="diagram-chip__dot diagram-chip__dot--gold"></span>~50&micro;m+ gold</span>
+            <span class="diagram-chip"><span class="diagram-chip__dot diagram-chip__dot--brass"></span>Brass core</span>
+            <span class="diagram-chip">Heat &amp; pressure bonded</span>
+            <span class="diagram-chip">Marked "1/20 14K GF"</span>
+          </div>
+          <p>Gold sheet is fused under heat and pressure to a brass core — a bond that does not chip or peel like plating. Roughly 100&times; thicker than electroplating.</p>
+        </div>
+      </div>
+
+      <p>Gold filled is fundamentally different from gold plated, despite the fact that both involve applying gold over a base metal. The difference is in the method, the quantity of gold involved, and the resulting durability.</p>
+      <p>Gold filled jewellery is made by <strong>bonding a solid layer of gold to the outside of a base metal core</strong> — almost always brass — through a process involving heat and mechanical pressure rather than electroplating. The gold layer is physically fused to the base, creating a bond that does not simply plate the surface but becomes part of the material structure itself.</p>
+      <p>Under US standards (the most widely used reference), the gold layer in gold filled jewellery must constitute at least <strong>1/20th (5%) of the item's total weight</strong> — hence the "1/20" marking you sometimes see on gold filled pieces. This is typically written as "1/20 14K GF" or "1/20 12K GF," indicating the proportion of gold and its karat. The resulting gold layer is roughly <strong>100 times thicker than standard gold plating</strong> — which is why gold filled jewellery behaves so differently in terms of durability.</p>
+
+      <h3>What Gold Filled Actually Means for Wear</h3>
+      <p>Because the gold layer is bonded through pressure rather than deposited electrochemically, it does not simply "wear off" in the way that plating does. The gold in a gold filled piece will not chip, peel, or flake under normal conditions. It is tarnish-resistant in a way that gold plated jewellery cannot match — and for many people, gold filled represents an excellent middle ground between the cost of solid gold and the fragility of plating.</p>
+      <p>Gold filled pieces can be worn daily, are generally safe to get wet briefly, and will typically look good for several years before showing visible wear. That said, gold filled is not solid gold. The gold layer, while substantial by comparison with plating, is still a surface layer. Gold filled jewellery does not have the same longevity as solid gold, and it has minimal resale or scrap value.</p>
+
+      <h2 id="gold-vermeil" class="reveal"><span class="h2-num">03</span>What Is Gold Vermeil?</h2>
+
+      <div class="diagram-panel reveal">
+        <div class="diagram-cross diagram-cross--vermeil" aria-hidden="true">
+          <span class="diagram-cross__layer">Au 2.5&micro;m</span>
+          <span class="diagram-cross__layer">Sterling silver 925</span>
+        </div>
+        <div class="diagram-content">
+          <h3>Regulated plating on sterling silver</h3>
+          <div class="diagram-content__meta">
+            <span class="diagram-chip"><span class="diagram-chip__dot diagram-chip__dot--gold"></span>Min 2.5&micro;m, 10K+</span>
+            <span class="diagram-chip"><span class="diagram-chip__dot diagram-chip__dot--silver"></span>Sterling silver core</span>
+            <span class="diagram-chip">FTC-defined standard</span>
+          </div>
+          <p>The only plating tier with a legally-defined thickness in the US. The silver base gives vermeil precious-metal value even after the gold wears.</p>
+        </div>
+      </div>
+
+      <p>Gold vermeil sits between gold plated and gold filled in quality — and specifically, it is a distinct product that many people confuse with ordinary gold plating. They are not the same.</p>
+      <p>Under US Federal Trade Commission regulations, a piece can only legally be described as "vermeil" if it meets all three of the following criteria:</p>
+      <ol>
+        <li><strong>Base metal:</strong> Sterling silver (92.5% pure silver, marked 925) — not brass, not copper, not any other base metal</li>
+        <li><strong>Gold purity:</strong> The gold layer must be at least <span class="hmark">10K</span> — though most quality vermeil uses <span class="hmark">14K</span> or <span class="hmark">18K</span> for better colour and durability</li>
+        <li><strong>Thickness:</strong> The gold layer must be at least <strong>2.5 microns</strong> thick — five times the thickness of standard flash plating</li>
+      </ol>
+      <p>Gold vermeil vs gold plated, then, is really a question of baseline quality assurance. Ordinary gold plated jewellery has no minimum thickness requirement; vermeil has a defined standard enforced by US consumer protection law. Gold vermeil vs gold filled comes down to the base metal: vermeil uses sterling silver, gold filled uses brass — and the gold layer in gold filled is typically thicker and more durable than even high-quality vermeil, though vermeil's silver base gives it a precious metal foundation that brass-core gold filled cannot match.</p>
+
+      <div class="info-callout reveal">
+        <p><strong>Why the silver base matters:</strong> The sterling silver base in gold vermeil matters for several reasons. Silver is a precious metal, so even when the gold layer eventually wears, the underlying piece retains some intrinsic value. Silver is also far less likely to cause skin reactions than brass or copper, making vermeil a reasonable choice for people with metal sensitivities who cannot afford solid gold.</p>
+      </div>
+
+      <h2 id="solid-gold" class="reveal"><span class="h2-num">04</span>What Is Solid Gold?</h2>
+
+      <div class="diagram-panel reveal">
+        <div class="diagram-cross diagram-cross--solid" aria-hidden="true">
+          <span class="diagram-cross__layer">Gold alloy throughout</span>
+        </div>
+        <div class="diagram-content">
+          <h3>Gold alloy from surface to core</h3>
+          <div class="diagram-content__meta">
+            <span class="diagram-chip"><span class="diagram-chip__dot diagram-chip__dot--gold"></span>37.5&ndash;99.9% gold</span>
+            <span class="diagram-chip">Hallmark-eligible</span>
+            <span class="diagram-chip">Retains scrap value</span>
+          </div>
+          <p>The same alloy throughout the entire piece — no base metal, no plating, no wear-through. The only tier that holds intrinsic financial value.</p>
+        </div>
+      </div>
+
+      <p>Solid gold means the entire piece — not just the surface — is made from a gold alloy. There is no base metal beneath a layer of gold. There is no core. The same material runs throughout the whole piece, from surface to centre.</p>
+      <p>It is worth clarifying immediately: "solid gold" does not mean pure gold. Pure 24-karat gold is extremely soft — soft enough to be scratched with a fingernail — and is rarely used for jewellery because it simply is not durable enough for daily wear. Solid gold jewellery is almost always alloyed with other metals to improve hardness and durability. Common alloys include copper (which gives yellow and rose gold their warm tones), silver, zinc, and palladium (used in white gold).</p>
+      <p>The karat system tells you what proportion of the alloy is gold:</p>
+      <ul>
+        <li><span class="hmark">24K</span> &mdash; 99.9% gold (pure gold, rarely used for wearable jewellery)</li>
+        <li><span class="hmark">22K</span> &mdash; 91.6% gold (common in Middle Eastern and South Asian jewellery)</li>
+        <li><span class="hmark">18K</span> &mdash; 75% gold (the standard for fine European jewellery)</li>
+        <li><span class="hmark">14K</span> &mdash; 58.5% gold (very common in US and Eastern European fine jewellery)</li>
+        <li><span class="hmark">9K</span> &mdash; 37.5% gold (the most common standard for everyday fine jewellery in the UK)</li>
+      </ul>
+
+      <p class="pull-quote reveal">Solid gold is the only tier that never tarnishes the way plated or filled pieces do — and the only one that retains intrinsic financial value across decades.</p>
+
+      <h2 id="comparison" class="reveal"><span class="h2-num">05</span>The Four Types Side by Side</h2>
+      <p>Here is how gold plated, gold vermeil, gold filled, and solid gold compare across the metrics that matter most to buyers.</p>
+
+      <div class="compare-wrap reveal">
+        <div class="compare-head">
+          <h3>Plated vs Vermeil vs Filled vs Solid</h3>
+          <span class="compare-head__caption">Higher rating = better</span>
+        </div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Gold Plated</th>
+              <th>Gold Vermeil</th>
+              <th>Gold Filled</th>
+              <th class="compare-th-solid">Solid Gold</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Base metal</td>
+              <td>Brass, copper, stainless steel</td>
+              <td>Sterling silver (925)</td>
+              <td>Brass</td>
+              <td class="is-best">None &mdash; gold alloy throughout</td>
+            </tr>
+            <tr>
+              <td>Gold content</td>
+              <td>&lt;1% by weight</td>
+              <td>&lt;1% but regulated</td>
+              <td>~5% by weight</td>
+              <td class="is-best">37.5&ndash;99.9% throughout</td>
+            </tr>
+            <tr>
+              <td>Gold layer thickness</td>
+              <td>0.5&ndash;2 &micro;m; unregulated</td>
+              <td>Min 2.5 &micro;m</td>
+              <td>~50+ &micro;m</td>
+              <td class="is-best">N/A &mdash; all gold</td>
+            </tr>
+            <tr>
+              <td>Durability</td>
+              <td><span class="compare-rating"><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span></span></td>
+              <td><span class="compare-rating"><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span></span></td>
+              <td><span class="compare-rating"><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot"></span></span></td>
+              <td><span class="compare-rating"><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span></span></td>
+            </tr>
+            <tr>
+              <td>Tarnish resistance</td>
+              <td>Low</td>
+              <td>Moderate</td>
+              <td>Good</td>
+              <td class="is-best">Excellent</td>
+            </tr>
+            <tr>
+              <td>Skin reactions</td>
+              <td>Possible (Cu / brass)</td>
+              <td>Low (Ag base)</td>
+              <td>Low (thick Au)</td>
+              <td class="is-best">Unlikely (esp. 18K+)</td>
+            </tr>
+            <tr>
+              <td>Scrap value</td>
+              <td><span class="cross">&times;</span></td>
+              <td><span class="cross">&times;</span></td>
+              <td><span class="cross">&times;</span></td>
+              <td class="is-best"><span class="check">&check;</span></td>
+            </tr>
+            <tr>
+              <td>Hallmark-eligible (UK)</td>
+              <td><span class="cross">&times;</span></td>
+              <td><span class="cross">&times;</span></td>
+              <td><span class="cross">&times;</span></td>
+              <td class="is-best"><span class="check">&check;</span></td>
+            </tr>
+            <tr>
+              <td>Typical lifespan</td>
+              <td>Months to 2 years</td>
+              <td>1&ndash;3 years</td>
+              <td>Several years</td>
+              <td class="is-best">Lifetime</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="compare-cards" aria-label="Comparison cards (mobile)">
+          <article class="compare-card">
+            <div class="compare-card__head">
+              <span class="compare-card__name">Gold Plated</span>
+              <span class="compare-card__rating compare-rating"><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span></span>
+            </div>
+            <dl class="compare-card__rows">
+              <div class="compare-card__row"><dt>Base metal</dt><dd>Brass / Cu / SS</dd></div>
+              <div class="compare-card__row"><dt>Gold content</dt><dd>&lt;1% by weight</dd></div>
+              <div class="compare-card__row"><dt>Layer thickness</dt><dd>0.5&ndash;2 &micro;m</dd></div>
+              <div class="compare-card__row"><dt>Tarnish resistance</dt><dd>Low</dd></div>
+              <div class="compare-card__row"><dt>Scrap value</dt><dd>Negligible</dd></div>
+              <div class="compare-card__row"><dt>Typical lifespan</dt><dd>Months &ndash; 2 yrs</dd></div>
+            </dl>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card__head">
+              <span class="compare-card__name">Gold Vermeil</span>
+              <span class="compare-card__rating compare-rating"><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span><span class="compare-rating__dot"></span></span>
+            </div>
+            <dl class="compare-card__rows">
+              <div class="compare-card__row"><dt>Base metal</dt><dd>Sterling silver 925</dd></div>
+              <div class="compare-card__row"><dt>Gold content</dt><dd>&lt;1% (regulated)</dd></div>
+              <div class="compare-card__row"><dt>Layer thickness</dt><dd>Min 2.5 &micro;m</dd></div>
+              <div class="compare-card__row"><dt>Tarnish resistance</dt><dd>Moderate</dd></div>
+              <div class="compare-card__row"><dt>Scrap value</dt><dd>Very low</dd></div>
+              <div class="compare-card__row"><dt>Typical lifespan</dt><dd>1&ndash;3 yrs</dd></div>
+            </dl>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card__head">
+              <span class="compare-card__name">Gold Filled</span>
+              <span class="compare-card__rating compare-rating"><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot"></span></span>
+            </div>
+            <dl class="compare-card__rows">
+              <div class="compare-card__row"><dt>Base metal</dt><dd>Brass</dd></div>
+              <div class="compare-card__row"><dt>Gold content</dt><dd>~5% by weight</dd></div>
+              <div class="compare-card__row"><dt>Layer thickness</dt><dd>~50+ &micro;m</dd></div>
+              <div class="compare-card__row"><dt>Tarnish resistance</dt><dd>Good</dd></div>
+              <div class="compare-card__row"><dt>Scrap value</dt><dd>Low but real</dd></div>
+              <div class="compare-card__row"><dt>Typical lifespan</dt><dd>Several years</dd></div>
+            </dl>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card__head">
+              <span class="compare-card__name compare-card__name--solid">Solid Gold</span>
+              <span class="compare-card__rating compare-rating"><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span><span class="compare-rating__dot is-on"></span></span>
+            </div>
+            <dl class="compare-card__rows">
+              <div class="compare-card__row"><dt>Base metal</dt><dd>None &mdash; alloy throughout</dd></div>
+              <div class="compare-card__row"><dt>Gold content</dt><dd>37.5&ndash;99.9%</dd></div>
+              <div class="compare-card__row"><dt>Layer thickness</dt><dd>N/A &mdash; all gold</dd></div>
+              <div class="compare-card__row"><dt>Tarnish resistance</dt><dd>Excellent</dd></div>
+              <div class="compare-card__row"><dt>Scrap value</dt><dd>Yes &mdash; significant</dd></div>
+              <div class="compare-card__row"><dt>Typical lifespan</dt><dd>Lifetime</dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+
+      <h2 id="calculator" class="reveal"><span class="h2-num">06</span>Live Gold Filled Scrap Value Calculator</h2>
+      <p>The figure your gold filled jewellery is actually worth as scrap depends on three live variables: its <strong>weight</strong>, its <strong>karat</strong>, and the <strong>current spot price</strong> of pure gold. The calculator below pulls the live USD spot price from our market feed every 60 seconds and gives you both the theoretical melt value and a realistic buyer offer range.</p>
+
+      <div class="gf-calc reveal" id="gfCalc">
+        <div class="gf-calc__head">
+          <div class="gf-calc__title-block">
+            <div class="gf-calc__eyebrow">Live Tool &middot; Updates every 60 seconds</div>
+            <h3 class="gf-calc__title">Gold Filled Melt &amp; Offer Calculator</h3>
+            <p class="gf-calc__sub">Enter your piece's total weight and karat. We multiply by the gold fraction, apply the live spot price, and show the realistic refiner offer.</p>
+          </div>
+          <span class="gf-calc__live gf-calc__live--idle" id="gfLive">
+            <span class="gf-calc__live-dot"></span>
+            <span id="gfLiveText">Connecting</span>
+          </span>
+        </div>
+
+        <div class="gf-calc__grid">
+          <div class="gf-calc__controls">
+            <div class="gf-field">
+              <label class="gf-label" for="gfWeight">Total weight</label>
+              <div class="gf-unit-toggle" role="group" aria-label="Weight unit">
+                <button type="button" class="gf-unit-btn is-active" data-unit="g">Grams (g)</button>
+                <button type="button" class="gf-unit-btn" data-unit="oz">Troy oz</button>
+              </div>
+              <input class="gf-input" type="number" id="gfWeight" placeholder="e.g. 20" min="0" step="0.1" inputmode="decimal" aria-label="Total weight">
+            </div>
+
+            <div class="gf-field">
+              <span class="gf-label">Karat of the gold layer</span>
+              <div class="gf-karat-grid" role="group" aria-label="Karat selector">
+                <button type="button" class="gf-karat-btn" data-karat="9K" data-purity="0.375">9K</button>
+                <button type="button" class="gf-karat-btn" data-karat="10K" data-purity="0.4167">10K</button>
+                <button type="button" class="gf-karat-btn" data-karat="12K" data-purity="0.5">12K</button>
+                <button type="button" class="gf-karat-btn is-active" data-karat="14K" data-purity="0.5833">14K</button>
+                <button type="button" class="gf-karat-btn" data-karat="18K" data-purity="0.75">18K</button>
+                <button type="button" class="gf-karat-btn" data-karat="22K" data-purity="0.9167">22K</button>
+                <button type="button" class="gf-karat-btn" data-karat="24K" data-purity="0.999">24K</button>
+              </div>
+            </div>
+
+            <div class="gf-field">
+              <span class="gf-label">Gold fraction (weight ratio)</span>
+              <div class="gf-frac-presets" role="group" aria-label="Gold fraction presets">
+                <button type="button" class="gf-frac-chip is-active" data-frac="0.05">1/20 standard</button>
+                <button type="button" class="gf-frac-chip" data-frac="0.0833">1/12 heavy</button>
+                <button type="button" class="gf-frac-chip" data-frac="0.1">1/10 premium</button>
+              </div>
+            </div>
+
+            <div class="gf-field">
+              <label class="gf-label" for="gfCurrency">Display currency</label>
+              <select class="gf-select" id="gfCurrency">
+                <option value="USD" selected>USD &middot; US Dollar (primary)</option>
+                <option value="EUR">EUR &middot; Euro</option>
+                <option value="GBP">GBP &middot; British Pound</option>
+                <option value="CAD">CAD &middot; Canadian Dollar</option>
+                <option value="AUD">AUD &middot; Australian Dollar</option>
+                <option value="INR">INR &middot; Indian Rupee</option>
+                <option value="AED">AED &middot; UAE Dirham</option>
+                <option value="JPY">JPY &middot; Japanese Yen</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="gf-calc__result">
+            <div id="gfPlaceholder" class="gf-placeholder">Enter a weight to see the live melt value and realistic offer range.</div>
+            <div id="gfOutput" style="display:none;flex-direction:column;gap:var(--space-4)">
+              <div class="gf-result-primary">
+                <div class="gf-result-primary__label">Theoretical melt value</div>
+                <div class="gf-result-primary__value" id="gfMeltValue">$0.00</div>
+                <div class="gf-result-primary__note">Pure-gold content &times; live spot price</div>
+              </div>
+              <div class="gf-result-offer">
+                <div class="gf-result-offer__label">Realistic buyer offer (after refining)</div>
+                <div class="gf-result-offer__value" id="gfOfferValue">$0 &ndash; $0</div>
+              </div>
+              <div class="gf-stats">
+                <div class="gf-stat">
+                  <div class="gf-stat__label">Fine gold content</div>
+                  <div class="gf-stat__value" id="gfPureGrams">0 g</div>
+                </div>
+                <div class="gf-stat">
+                  <div class="gf-stat__label">Price / gram pure gold</div>
+                  <div class="gf-stat__value" id="gfPricePerGram">$0.00</div>
+                </div>
+              </div>
+              <div class="gf-spot-line">Live spot: <strong id="gfSpotLine">—</strong> &middot; updated <span id="gfUpdated">—</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="tarnish" class="reveal"><span class="h2-num">07</span>Does Gold Plated Jewellery Tarnish?</h2>
+      <p>This is one of the most searched questions about gold plated jewellery, and the answer is yes — gold plated jewellery absolutely can tarnish. But the process is more nuanced than a simple yes or no.</p>
+      <p>The gold itself does not tarnish — pure gold is chemically inert and will not react with oxygen, moisture, or most common substances. The problem is that gold plated jewellery is not pure gold. It is a very thin layer of gold over a reactive base metal. When that layer wears thin or is compromised — through scratches, exposure to chemicals, or simple friction over time — the base metal beneath begins to react with air and moisture. The result is tarnish, dullness, or discolouration.</p>
+      <p>The rate at which gold plated jewellery tarnishes is affected by:</p>
+      <ul>
+        <li><strong>How thick the gold layer is</strong> — thicker plating tarnishes more slowly because it takes longer to wear through to the base metal</li>
+        <li><strong>What the base metal is</strong> — brass and copper tarnish more readily than stainless steel</li>
+        <li><strong>How you wear and store it</strong> — daily exposure to sweat, water, perfumes, and chemicals accelerates wear</li>
+        <li><strong>Your skin chemistry</strong> — people with naturally more acidic skin, or who sweat heavily, will find gold plated jewellery tarnishes faster on them than on others</li>
+      </ul>
+      <p>Gold filled jewellery also tarnishes eventually, but much more slowly — because the gold layer is far thicker and more robustly bonded. For practical purposes, well-maintained gold filled pieces can go years without showing signs of tarnish.</p>
+
+      <h2 id="turns-green" class="reveal"><span class="h2-num">08</span>Will Gold Plated Jewellery Turn Green?</h2>
+      <p>Directly related to tarnishing is the green skin staining that many people experience with gold plated jewellery. The question "will gold plated jewellery turn green?" is really asking: will it turn my skin green? And the answer is: it depends on the base metal, and eventually, yes — if the plating wears away.</p>
+      <p>The green colour is not caused by gold at all. It is caused by the <strong>oxidation of copper</strong> in the base metal or alloy beneath the gold layer. When copper reacts with oxygen, moisture, and the natural acids on your skin, it forms copper chloride and related compounds — which are greenish in colour and transfer to skin. This is the same chemistry that turns bronze statues green over time — most famously the Statue of Liberty.</p>
+      <p>Most common gold plated jewellery uses brass (a copper-zinc alloy) or copper as its base metal. While the gold layer is intact, there is no direct contact between copper and skin. Once the plating wears — particularly on high-friction areas like the inside of a ring band — copper exposure begins, and with it, the possibility of green skin discolouration.</p>
+
+      <div class="info-callout reveal">
+        <p><strong>Can real gold turn green?</strong> Technically, yes — though it is unusual and mostly misunderstood. Even 14-karat solid gold contains 41.5% other metals, which typically includes copper. Under specific conditions — prolonged contact with sweat on acidic skin, or exposure to certain chemicals — even a solid gold ring can leave a faint greenish mark on the finger. This does not mean the piece is fake; it means the copper in the alloy has reacted with your skin chemistry. At higher karats (<span class="hmark">18K</span> and above), the copper content is lower and this is much less likely to occur.</p>
+      </div>
+
+      <h2 id="water" class="reveal"><span class="h2-num">09</span>Can Gold Plated Jewellery Get Wet?</h2>
+      <p>Short answer: occasionally and carefully, yes. As a habit, no.</p>
+      <p>Water itself is not immediately destructive to gold plating, but regular, repeated exposure to moisture accelerates the breakdown of the gold layer significantly. The chemistry involved is that water facilitates oxidation of the base metal, and the dissolved minerals in tap water can leave deposits that dull the surface and work their way into micro-scratches in the plating.</p>
+      <p>Swimming pool water is particularly damaging because of chlorine. Chlorine actively attacks and corrodes metal surfaces, breaking down gold plating at a much faster rate than fresh water alone. Sea water has a similar effect due to its salt and mineral content.</p>
+
+      <div class="warning-callout reveal">
+        <p><strong>The practical rule:</strong> Remove gold plated jewellery before showering, swimming, exercising (sweat has similar corrosive effects to water exposure), or washing up. If you get caught in the rain or your jewellery gets splashed, dry it immediately with a soft cloth rather than leaving it wet.</p>
+        <p>Gold filled jewellery is considerably more water-resistant because the gold layer is so much thicker — but the same principles apply for long-term care. Habitual water exposure will eventually degrade even well-made gold filled pieces.</p>
+      </div>
+
+      <h2 id="gold-filled-tarnish" class="reveal"><span class="h2-num">10</span>Does Gold Filled Jewellery Tarnish?</h2>
+      <p>Gold filled jewellery is significantly more tarnish-resistant than gold plated pieces, but it is not completely tarnish-proof. Because the gold layer constitutes 5% of the total weight and is mechanically bonded rather than deposited, it resists the thinning that causes standard gold plating to degrade.</p>
+      <p>Under normal conditions — wearing gold filled jewellery daily, cleaning it occasionally, storing it properly — it can go years without showing visible tarnish or discolouration. With neglect or exposure to harsh chemicals, it will eventually tarnish, but even tarnished gold filled pieces can often be cleaned back to their original appearance in a way that is not possible with worn-through plating.</p>
+
+      <h2 id="is-gold-plated-real" class="reveal"><span class="h2-num">11</span>Is Gold Plated Real Gold?</h2>
+      <p>This question comes up constantly, and it deserves a direct answer: yes and no.</p>
+      <p>The gold used for gold plating is <strong>real gold</strong> — it is genuine <span class="hmark">10K</span>, <span class="hmark">14K</span>, or <span class="hmark">18K</span> gold deposited on the surface of the piece. The gold atoms bonded to the surface are the same gold atoms that would be in solid gold. From a chemical standpoint, the surface of a gold plated piece is real gold.</p>
+      <p>However, gold plated jewellery is <strong>not "real gold jewellery"</strong> in the way that term is commonly understood. The piece is fundamentally a base metal object with a gold coating. It cannot carry a UK gold hallmark. It has no meaningful gold content by weight. It does not hold value as gold. For all practical and legal purposes, gold plated jewellery is not classified as gold jewellery under UK and most international consumer protection regulations.</p>
+      <p>The distinction matters because it affects everything from how you care for the piece to what you can expect when you sell it. Selling gold plated jewellery as gold — whether deliberately or through careless marketing — is a consumer protection violation in most countries.</p>
+
+      <h2 id="magnet-test" class="reveal"><span class="h2-num">12</span>Will Real Gold Stick to a Magnet?</h2>
+      <p>This is a popular quick test for gold authenticity, and the basic principle is sound: <strong>real gold is not magnetic</strong>.</p>
+      <p>Pure 24-karat gold is diamagnetic — meaning it actually has a very slight repulsion to magnetic fields, though this is far too subtle to feel or see without laboratory equipment. The practical result is that solid gold does not stick to a magnet. If you hold a neodymium magnet (the strong kind) to a piece of supposed solid gold and it strongly attracts, the piece is very unlikely to be solid gold.</p>
+      <p>However, the test has limitations that are worth understanding:</p>
+      <ul>
+        <li><strong>White gold sometimes contains nickel</strong> as a whitening agent. Nickel is magnetic, which means some white gold pieces will show a slight magnetic response even when they are genuine</li>
+        <li><strong>Clasps, springs, and watch components</strong> inside an otherwise solid gold piece may contain trace ferrous metals, causing a magnetic response that does not indicate the main body is fake</li>
+        <li><strong>Non-gold fakes can also be non-magnetic</strong> — a base metal like copper or stainless steel is not magnetic either, so passing the magnet test does not confirm gold</li>
+      </ul>
+      <p>The magnet test is a useful first screen. Strong magnetic attraction is a red flag. But it should never be relied upon as definitive proof in either direction — acid testing or an XRF scanner (used by professional buyers) are needed for certainty.</p>
+
+      <h2 id="scrap-value" class="reveal"><span class="h2-num">13</span>How Much Is Gold Plated Worth?</h2>
+      <p>This is where the financial reality of each type becomes stark.</p>
+      <p><strong>Gold plated jewellery is worth essentially nothing as scrap gold.</strong> The gold layer is so thin — typically less than 0.5 microns for standard plating — that the actual quantity of gold in a gold plated piece is negligible. A typical gold plated necklace might contain 0.003–0.05 grams of gold at most. At current gold prices, that is worth pennies. No scrap gold buyer will offer meaningful money for gold plated pieces. The value of a gold plated piece is entirely as jewellery — its visual appeal and brand association — not its metal content.</p>
+      <p><strong>Gold filled jewellery has some scrap value but less than you might expect.</strong> The gold filled calculation works as follows: take the total weight of the piece, multiply by 5% (the minimum gold fraction), then multiply by the purity fraction of the gold used (typically <span class="hmark">14K</span> = 0.585) to get the fine gold content. For a 20-gram gold filled piece marked "1/20 14K GF":</p>
+      <ul>
+        <li>Total weight: 20 grams</li>
+        <li>Gold fraction: 20 &times; 5% = 1 gram of 14K gold</li>
+        <li>Fine gold content: 1 &times; (14/24) = 0.583 grams of pure gold</li>
+        <li>At current spot prices, this equates to roughly <strong>$90 theoretical melt value</strong></li>
+        <li>After refining costs and buyer margin: approximately <strong>$40–$60 in practice</strong></li>
+      </ul>
+      <p>The refining of gold filled scrap is more complex than solid gold because the gold layer must be chemically separated from the brass core. This means buyers pay a significantly lower percentage of melt value for gold filled than for solid gold. For small quantities of gold filled scrap, the economics often do not work in the seller's favour.</p>
+
+      <div class="cta-box reveal">
+        <h3>Calculate the Melt Value of Your Solid Gold</h3>
+        <p>Once you know your piece is solid gold and you know its karat, use our free Scrap Gold Calculator for an instant live-price valuation in USD.</p>
+        <a href="/scrap-gold-calculator" class="cta-btn">Open Scrap Gold Calculator <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <p><strong>Solid gold has real, substantial scrap value.</strong> A <span class="hmark">9K</span> gold ring weighing 4 grams contains 1.5g of pure gold — worth approximately $200+ at current spot prices, and a good buyer will pay around 85–90% of that. The value scales directly with weight and purity. Use our <a href="/scrap-gold-calculator">scrap gold calculator</a> to find out what your solid gold is worth today.</p>
+
+      <h2 id="olympic-medals" class="reveal"><span class="h2-num">14</span>Are Olympic Gold Medals Solid Gold?</h2>
+      <p>This is one of those questions that sounds like it should have an obvious answer — and the answer surprises almost everyone.</p>
+      <p class="pull-quote reveal">Olympic gold medals are not solid gold. They have not been solid gold since 1912.</p>
+      <p>Under International Olympic Committee rules, first-place medals must be made of at least 92.5% silver, plated with a minimum of six grams of gold. The 2026 Milan-Cortina Winter Olympic gold medals, for example, contain just over 500 grams of sterling silver and approximately 6 grams of pure gold on the surface — making them, technically, gold plated silver.</p>
+      <p>At current metal prices, the intrinsic metal value of a 2026 Olympic gold medal is estimated at approximately <strong>$2,300&ndash;$2,500</strong> — more than double its Paris 2024 equivalent, thanks to the extraordinary rise in both gold and silver prices over the past two years. The medal itself, of course, has enormous non-financial value. But as a piece of metal? It is an extremely high-quality, very heavy example of gold plated silver — which puts it, ironically, in the same basic category as a gold plated ring from a high street retailer.</p>
+
+      <h2 id="clean-plated" class="reveal"><span class="h2-num">15</span>How to Clean Gold Plated Jewellery</h2>
+      <p>Gold plated jewellery requires gentle handling — aggressive cleaning will strip the plating faster than almost any other form of wear.</p>
+      <ol class="step-list">
+        <li class="step-block reveal">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Use warm water and mild dish soap</strong>
+            <p>This is the safest and most effective everyday cleaning method. Let the piece soak for two to three minutes, then gently wipe with a soft cloth or a very soft toothbrush on any textured areas.</p>
+          </div>
+        </li>
+        <li class="step-block reveal">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Never use abrasive cleaners</strong>
+            <p>Avoid baking soda, rough cloths, and toothpaste despite what some guides suggest — most toothpastes contain abrasive particles that will visibly scratch soft gold plating. Abrasives strip the plating faster than normal wear.</p>
+          </div>
+        </li>
+        <li class="step-block reveal">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Never use ultrasonic cleaners</strong>
+            <p>The vibrations can damage the gold layer and loosen any stones. Ultrasonic cleaners are safe for solid gold but actively harmful for plated pieces.</p>
+          </div>
+        </li>
+        <li class="step-block reveal">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Dry thoroughly immediately after cleaning</strong>
+            <p>Water left to sit is the enemy of gold plating. Pat dry with a lint-free cloth and allow to air dry completely before storing.</p>
+          </div>
+        </li>
+        <li class="step-block reveal">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <strong>Put jewellery on last, take it off first</strong>
+            <p>This minimises exposure to perfume, hairspray, and cosmetics, which are among the most common causes of premature plating degradation. Apply all products before putting jewellery on.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 id="clean-filled" class="reveal"><span class="h2-num">16</span>How to Clean Gold Filled Jewellery</h2>
+      <p>Gold filled jewellery can be cleaned more confidently than gold plated pieces because the gold layer is substantially thicker, but it still benefits from a gentle approach.</p>
+      <ol class="step-list">
+        <li class="step-block reveal">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Prepare a warm soapy soak</strong>
+            <p>Fill a small bowl with warm (not hot) water and add a few drops of mild dish soap. Place the piece in the bowl and let it soak for 10&ndash;15 minutes.</p>
+          </div>
+        </li>
+        <li class="step-block reveal">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Gently scrub textured areas</strong>
+            <p>Use a soft-bristled toothbrush — old soft toothbrushes work perfectly for this. Pay attention to settings, chain links, and engraved areas where dirt accumulates.</p>
+          </div>
+        </li>
+        <li class="step-block reveal">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Rinse thoroughly</strong>
+            <p>Rinse under clean warm water to remove all soap residue. Soap left in crevices will dull the surface over time.</p>
+          </div>
+        </li>
+        <li class="step-block reveal">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Pat dry and air dry completely</strong>
+            <p>Pat dry with a lint-free cloth and allow to air dry completely before storing. Store in a sealed bag or jewellery box away from humidity.</p>
+          </div>
+        </li>
+        <li class="step-block reveal">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <strong>For stubborn tarnish: baking soda paste</strong>
+            <p>A baking soda paste (equal parts baking soda and water) applied with a soft cloth and rinsed thoroughly can remove stubborn tarnish from gold filled pieces. Unlike with gold plated jewellery, gold filled pieces are robust enough to handle this mild abrasive treatment — though it should still be done gently and not used routinely.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h2 id="which-to-buy" class="reveal"><span class="h2-num">17</span>Which Should You Buy?</h2>
+      <p>The honest answer depends entirely on what you need the piece to do.</p>
+      <p><strong>Gold plated</strong> makes sense for: fashion jewellery you will wear seasonally or occasionally, pieces that follow current trends (because they will likely be retired before they wear out), and situations where budget is the primary constraint. Going into it knowing the piece has a limited lifespan — likely one to two years of regular wear — removes the disappointment of discovering that reality later.</p>
+      <p><strong>Gold filled</strong> is the sweet spot for: everyday jewellery that needs to hold up to regular wear without the cost of solid gold. It is the best option if you want consistent gold appearance over several years, are sensitive to base metals, and cannot or do not want to spend solid gold prices. It is genuinely good jewellery for daily use, especially in chains, bracelets, and earrings.</p>
+      <p><strong>Gold vermeil</strong> occupies a similar space to gold filled for most buyers, with the advantage of a sterling silver base. If you want the option of the underlying silver showing as the piece ages — or if you have particular sensitivities to brass — vermeil is the better choice over standard gold filled.</p>
+      <p><strong>Solid gold</strong> is the right choice for: pieces you intend to wear every day indefinitely — wedding and engagement rings most obviously — anything with sentimental or heirloom value, and any piece you regard as a financial asset. Solid gold costs more upfront, but the cost per year of use, spread over a decade or a lifetime, is often lower than repeatedly replacing gold plated pieces. And unlike plated or filled jewellery, a solid gold ring can be melted, remade, or sold at any time for close to its material value.</p>
+
+      <section class="faq-section">
+        <h2 id="faq" class="reveal"><span class="h2-num">18</span>Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+          <details class="faq-item reveal">
+            <summary>What does gold filled mean?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Gold filled means a solid layer of gold — at least 5% of the item's total weight — has been mechanically bonded to a brass base metal through heat and pressure. It is not solid gold, but it contains far more gold than gold plated jewellery and is significantly more durable. Pieces are typically marked "1/20 14K GF" or similar, indicating the gold proportion and karat.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>What does gold plated mean?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Gold plated means a very thin layer of real gold has been deposited on the surface of a base metal (usually brass, copper, or stainless steel) through an electroplating process. The gold is real but present in a negligible quantity — less than 1% of the piece's total weight. There is no legal minimum thickness requirement in most countries.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Is gold plated real gold?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>The gold used in gold plating is chemically real gold. However, a gold plated piece is not <strong>real gold jewellery</strong> in any practical sense — it contains almost no gold by weight, holds no gold value, and cannot be hallmarked under UK law. Once the plating wears, the underlying base metal is exposed.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Does gold filled tarnish?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Gold filled jewellery is tarnish-resistant for years under normal conditions, but it is not completely immune. The thick mechanically-bonded gold layer resists the degradation that causes standard gold plating to tarnish quickly, but exposure to harsh chemicals, habitual water contact, or lack of maintenance will eventually affect its appearance. Even tarnished gold filled pieces can often be cleaned back to their original look.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Will gold plated rings tarnish?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Yes, over time. The gold layer on a plated ring is extremely thin and will wear away through daily friction — particularly on the inner surface of the band — revealing the base metal. Once the base metal is exposed, tarnishing, discolouration, and potential skin staining will follow. This is not a manufacturing defect; it is an inherent characteristic of gold plated jewellery.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Will gold plated jewellery turn green?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>It can, yes. Once the gold plating wears away and the copper or brass base metal is exposed to skin acids, sweat, and moisture, the copper in the alloy oxidises and forms green-coloured compounds that transfer to skin. This is not harmful, but it is a reliable sign that the plating has worn through. The green is from copper oxidation — the same chemistry that turns the Statue of Liberty green.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Can real gold turn green?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Technically yes, though it is uncommon. Lower-karat gold alloys (<strong>9K</strong> and <strong>14K</strong> especially) contain copper, which can cause greenish marks on some people's skin under conditions of prolonged contact and acidic skin chemistry. This is not a sign of fake gold — it is the copper alloy content reacting with skin. At <strong>18K</strong> and above, the copper content is lower and this is much less likely to occur.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>How much is gold filled worth as scrap?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Very little relative to its weight. A 20-gram piece of 14K gold filled contains roughly 0.58 grams of fine gold — worth approximately $40&ndash;$60 at current prices after refining costs are deducted. Gold filled scrap is worth something, but far less per gram than solid gold scrap because the gold layer must be chemically separated from the brass core, adding refining complexity and cost. Use our live calculator above for an instant USD figure.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>What is the difference between gold vermeil and gold plated?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Gold vermeil uses a <strong>sterling silver base</strong> and requires a minimum gold thickness of <strong>2.5 microns</strong> at 10K or above, enforced by US Federal Trade Commission law. Standard gold plated jewellery has no minimum thickness requirement and uses cheaper base metals (brass, copper, stainless steel). Vermeil is a regulated quality tier; "gold plated" is not. This is why vermeil generally lasts longer and is worth slightly more when the gold layer eventually wears.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Will real gold stick to a magnet?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Real gold is not magnetic. If a neodymium magnet strongly attracts a piece of supposed solid gold, the piece is very unlikely to be solid gold. However, the test has limits: white gold with nickel can show a slight magnetic response even when genuine; clasps and watch components may contain ferrous metals; and non-gold fakes like copper or stainless steel are also non-magnetic. Strong attraction is a red flag, but passing the magnet test does not confirm gold. Acid testing or XRF scanning provides certainty.</p></div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Can 14K gold tarnish?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="faq-body"><p>Yes, in theory. 14-karat gold is 58.5% gold and 41.5% other metals, which may include copper. Under prolonged exposure to harsh chemicals or highly acidic conditions, 14K gold can develop a slight dull surface patina. However, this is rare with normal wear and is entirely different from the tarnishing of plated or filled pieces — the metal itself has not degraded, and a polish will restore its appearance entirely.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <div class="disclaimer-box reveal">
+        <strong>Editorial note:</strong> All prices and standards referenced are current as of 2026 and update live where indicated. Regulations regarding the use of terms like "vermeil" may differ between countries. Live spot prices in USD are sourced from gold-api.com and refresh every 60 seconds. This article is for informational purposes only and does not constitute financial or purchasing advice.
+      </div>
+
+    </div><!-- /prose -->
+  </main>
+</div><!-- /article-shell -->
+
+<button class="toc-fab" id="tocFab" aria-label="Open table of contents" aria-controls="tocSheet" aria-expanded="false">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13M3 12h13M3 18h13"/><circle cx="20" cy="6" r="1.4" fill="currentColor"/><circle cx="20" cy="12" r="1.4" fill="currentColor"/><circle cx="20" cy="18" r="1.4" fill="currentColor"/></svg>
+</button>
+
+<div class="toc-sheet" id="tocSheet" role="dialog" aria-modal="true" aria-label="Article sections">
+  <div class="toc-sheet__panel">
+    <div class="toc-sheet__head">
+      <span class="toc-sheet__title">In this guide</span>
+      <button class="toc-sheet__close" id="tocSheetClose" aria-label="Close sections menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <ol class="toc-sheet__list">
+      <li><a href="#gold-plated">01 &middot; Gold Plated</a></li>
+      <li><a href="#gold-filled">02 &middot; Gold Filled</a></li>
+      <li><a href="#gold-vermeil">03 &middot; Gold Vermeil</a></li>
+      <li><a href="#solid-gold">04 &middot; Solid Gold</a></li>
+      <li><a href="#comparison">05 &middot; Side by Side</a></li>
+      <li><a href="#calculator">06 &middot; Live Calculator</a></li>
+      <li><a href="#tarnish">07 &middot; Tarnishing</a></li>
+      <li><a href="#turns-green">08 &middot; Green Skin Staining</a></li>
+      <li><a href="#water">09 &middot; Water Exposure</a></li>
+      <li><a href="#gold-filled-tarnish">10 &middot; Does Filled Tarnish?</a></li>
+      <li><a href="#is-gold-plated-real">11 &middot; Is Plated Real Gold?</a></li>
+      <li><a href="#magnet-test">12 &middot; The Magnet Test</a></li>
+      <li><a href="#scrap-value">13 &middot; Scrap Value</a></li>
+      <li><a href="#olympic-medals">14 &middot; Olympic Medals</a></li>
+      <li><a href="#clean-plated">15 &middot; Cleaning Plated</a></li>
+      <li><a href="#clean-filled">16 &middot; Cleaning Filled</a></li>
+      <li><a href="#which-to-buy">17 &middot; Which to Buy</a></li>
+      <li><a href="#faq">18 &middot; FAQ</a></li>
+    </ol>
   </div>
+</div>
 
-  <div class="prose">
-
-    <p>If you have ever stood in a jewellery shop — or scrolled through page after page of gold jewellery online — you have almost certainly seen the terms "gold plated," "gold filled," and "solid gold" used as if they mean more or less the same thing. They do not.</p>
-    <p>The differences between them are not just technical footnotes. They affect how long your jewellery will last, what it is actually worth, whether it will turn your skin green, how you should care for it, and whether it makes sense to buy it at all for a given purpose. A gold plated ring that costs £25 and a solid gold ring that costs £600 might look identical on your finger on the day you buy them. Three months later, they will look very different — and not in the gold plated ring's favour.</p>
-
-    <div class="exec-summary">
-      <p class="exec-summary-intro">This guide explains everything: what each term actually means, what is inside each type of jewellery, how they compare in durability and value, where gold vermeil fits in, and answers to the questions people genuinely ask when they are trying to figure out what they are buying.</p>
-      <div class="exec-summary-stats">
-        <div class="exec-stat">
-          <div class="exec-stat-label">Gold plated gold content</div>
-          <div class="exec-stat-value">&lt;1% by weight</div>
-        </div>
-        <div class="exec-stat">
-          <div class="exec-stat-label">Gold filled min. content</div>
-          <div class="exec-stat-value">5% by weight</div>
-        </div>
-        <div class="exec-stat">
-          <div class="exec-stat-label">Vermeil min. thickness</div>
-          <div class="exec-stat-value">2.5 microns</div>
-        </div>
-        <div class="exec-stat">
-          <div class="exec-stat-label">Avg plating lifespan</div>
-          <div class="exec-stat-value">6 mo &ndash; 2 yr</div>
-        </div>
-      </div>
-    </div>
-
-    <h2 id="gold-plated">What Does "Gold Plated" Mean?</h2>
-    <p>Gold plated jewellery is made by coating a base metal — typically brass, copper, or occasionally stainless steel — with an extremely thin layer of gold through a process called <strong>electroplating</strong>, sometimes called electro gold plating. The process involves submerging the base metal piece in a solution containing dissolved gold ions and passing an electrical current through it. This causes gold particles to bond to the surface of the metal, depositing a thin gold layer over the entire piece. The result looks exactly like gold. For a while, at least.</p>
-    <p>The critical thing to understand about gold plated jewellery is that <strong>there is no legal minimum thickness for the gold layer in most countries</strong>. A piece can be labelled "gold plated" whether the gold layer is 0.5 microns thick or 5 microns thick — a difference that will translate directly into how many months or years it looks presentable. Some manufacturers use "flash plating" — essentially the thinnest coating that can legally be called plating — while others use heavier deposits that last considerably longer. Without knowing the specific thickness, you are guessing.</p>
-
-    <h3>What "Gold Plated" Actually Means in Practice</h3>
-    <p>In practical terms, gold plated means:</p>
-    <ul>
-      <li>The gold layer is <strong>real gold</strong> — typically <span class="hmark">10K</span>, <span class="hmark">14K</span>, or <span class="hmark">18K</span> — but it is present in an almost negligible quantity. The piece contains less than 1% gold by weight in most cases</li>
-      <li>The core is a <strong>base metal</strong> with no gold value. The most common base metals are brass (copper and zinc) and copper; stainless steel is increasingly used for its rust resistance</li>
-      <li>The piece will <strong>wear over time</strong> as the gold layer thins and eventually disappears through friction, exposure to moisture, and contact with skin oils and chemicals</li>
-      <li>When the plating wears away in high-contact areas — the inside of a ring band, the back of a pendant — the base metal is exposed</li>
-    </ul>
-
-    <div class="info-callout">
-      <p><strong>How long does gold plated jewellery last?</strong> The average lifespan of gold plated jewellery with proper care is six months to two years. Flash-plated pieces can start showing wear within weeks of daily use. Heavier commercial plating at 1–2 microns typically lasts six months to a year with everyday wear. At 2+ microns, you are approaching the territory of gold vermeil, which can last considerably longer.</p>
-    </div>
-
-    <h3>Gold Plated on Silver and Other Base Metals</h3>
-    <p>When gold plated jewellery uses <strong>sterling silver (925)</strong> as its base instead of brass or copper, the resulting piece is generally more durable, more skin-friendly, and more valuable — because even when the gold layer eventually wears away, the underlying silver is itself a precious metal. This specific combination has its own name: <strong>gold vermeil</strong>.</p>
-    <p>Gold plated on brass or copper is the most common and least expensive variety. Gold plated on stainless steel sits somewhere in the middle — stainless steel is highly resistant to rust and corrosion, so gold plated stainless steel will not rust when the plating wears, making it a more durable base than brass.</p>
-
-    <h2 id="gold-filled">What Does "Gold Filled" Mean?</h2>
-    <p>Gold filled is fundamentally different from gold plated, despite the fact that both involve applying gold over a base metal. The difference is in the method, the quantity of gold involved, and the resulting durability.</p>
-    <p>Gold filled jewellery is made by <strong>bonding a solid layer of gold to the outside of a base metal core</strong> — almost always brass — through a process involving heat and mechanical pressure rather than electroplating. The gold layer is physically fused to the base, creating a bond that does not simply plate the surface but becomes part of the material structure itself.</p>
-    <p>Under US standards (the most widely used reference), the gold layer in gold filled jewellery must constitute at least <strong>1/20th (5%) of the item's total weight</strong> — hence the "1/20" marking you sometimes see on gold filled pieces. This is typically written as "1/20 14K GF" or "1/20 12K GF," indicating the proportion of gold and its karat. The resulting gold layer is roughly <strong>100 times thicker than standard gold plating</strong> — which is why gold filled jewellery behaves so differently in terms of durability.</p>
-
-    <h3>What Gold Filled Actually Means for Wear</h3>
-    <p>Because the gold layer is bonded through pressure rather than deposited electrochemically, it does not simply "wear off" in the way that plating does. The gold in a gold filled piece will not chip, peel, or flake under normal conditions. It is tarnish-resistant in a way that gold plated jewellery cannot match — and for many people, gold filled represents an excellent middle ground between the cost of solid gold and the fragility of plating.</p>
-    <p>Gold filled pieces can be worn daily, are generally safe to get wet briefly, and will typically look good for several years before showing visible wear. That said, gold filled is not solid gold. The gold layer, while substantial by comparison with plating, is still a surface layer. Gold filled jewellery does not have the same longevity as solid gold, and it has minimal resale or scrap value.</p>
-
-    <h2 id="gold-vermeil">What Is Gold Vermeil? (And How Does It Fit In?)</h2>
-    <p>Gold vermeil sits between gold plated and gold filled in quality — and specifically, it is a distinct product that many people confuse with ordinary gold plating. They are not the same.</p>
-    <p>Under US Federal Trade Commission regulations, a piece can only legally be described as "vermeil" if it meets all three of the following criteria:</p>
-    <ol>
-      <li><strong>Base metal:</strong> Sterling silver (92.5% pure silver, marked 925) — not brass, not copper, not any other base metal</li>
-      <li><strong>Gold purity:</strong> The gold layer must be at least <span class="hmark">10K</span> — though most quality vermeil uses <span class="hmark">14K</span> or <span class="hmark">18K</span> for better colour and durability</li>
-      <li><strong>Thickness:</strong> The gold layer must be at least <strong>2.5 microns</strong> thick — five times the thickness of standard flash plating</li>
-    </ol>
-    <p>Gold vermeil vs gold plated, then, is really a question of baseline quality assurance. Ordinary gold plated jewellery has no minimum thickness requirement; vermeil has a defined standard enforced by US consumer protection law. Gold vermeil vs gold filled comes down to the base metal: vermeil uses sterling silver, gold filled uses brass — and the gold layer in gold filled is typically thicker and more durable than even high-quality vermeil, though vermeil's silver base gives it a precious metal foundation that brass-core gold filled cannot match.</p>
-
-    <div class="info-callout">
-      <p><strong>Why the silver base matters:</strong> The sterling silver base in gold vermeil matters for several reasons. Silver is a precious metal, so even when the gold layer eventually wears, the underlying piece retains some intrinsic value. Silver is also far less likely to cause skin reactions than brass or copper, making vermeil a reasonable choice for people with metal sensitivities who cannot afford solid gold.</p>
-    </div>
-
-    <h2 id="solid-gold">What Is Solid Gold?</h2>
-    <p>Solid gold means the entire piece — not just the surface — is made from a gold alloy. There is no base metal beneath a layer of gold. There is no core. The same material runs throughout the whole piece, from surface to centre.</p>
-    <p>It is worth clarifying immediately: "solid gold" does not mean pure gold. Pure 24-karat gold is extremely soft — soft enough to be scratched with a fingernail — and is rarely used for jewellery because it simply is not durable enough for daily wear. Solid gold jewellery is almost always alloyed with other metals to improve hardness and durability. Common alloys include copper (which gives yellow and rose gold their warm tones), silver, zinc, and palladium (used in white gold).</p>
-    <p>The karat system tells you what proportion of the alloy is gold:</p>
-    <ul>
-      <li><span class="hmark">24K</span> — 99.9% gold (pure gold, rarely used for wearable jewellery)</li>
-      <li><span class="hmark">22K</span> — 91.6% gold (common in Middle Eastern and South Asian jewellery)</li>
-      <li><span class="hmark">18K</span> — 75% gold (the standard for fine European jewellery)</li>
-      <li><span class="hmark">14K</span> — 58.5% gold (very common in US and Eastern European fine jewellery)</li>
-      <li><span class="hmark">9K</span> — 37.5% gold (the most common standard for everyday fine jewellery in the UK)</li>
-    </ul>
-    <p>Solid gold is the only type of gold jewellery that never tarnishes in the way plated or filled pieces do, retains intrinsic financial value, lasts indefinitely with proper care, and can be resized, repaired, and refinished without concern about exposing a base metal layer.</p>
-
-    <h2 id="comparison">The Four Types Side by Side</h2>
-    <p>Here is how gold plated, gold vermeil, gold filled, and solid gold compare across the metrics that matter most to buyers:</p>
-
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Gold Plated</th>
-            <th>Gold Vermeil</th>
-            <th>Gold Filled</th>
-            <th>Solid Gold</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Base metal</strong></td>
-            <td>Brass, copper, stainless steel</td>
-            <td>Sterling silver (925)</td>
-            <td>Brass</td>
-            <td>None — gold alloy throughout</td>
-          </tr>
-          <tr>
-            <td><strong>Gold content</strong></td>
-            <td>Less than 1% by weight</td>
-            <td>Less than 1% but regulated</td>
-            <td>~5% by weight</td>
-            <td>37.5–99.9% throughout</td>
-          </tr>
-          <tr>
-            <td><strong>Gold layer thickness</strong></td>
-            <td>0.5–2 microns; unregulated</td>
-            <td>Min. 2.5 microns</td>
-            <td>~50+ microns (much thicker)</td>
-            <td>N/A — all gold</td>
-          </tr>
-          <tr>
-            <td><strong>Durability</strong></td>
-            <td>Low; fades in months</td>
-            <td>Moderate; fades in 1–3 years</td>
-            <td>Good; years of daily wear</td>
-            <td>Excellent; lifetime</td>
-          </tr>
-          <tr>
-            <td><strong>Tarnish resistance</strong></td>
-            <td>Low</td>
-            <td>Moderate</td>
-            <td>Good</td>
-            <td>Excellent</td>
-          </tr>
-          <tr>
-            <td><strong>Skin reactions</strong></td>
-            <td>Possible (copper/brass base)</td>
-            <td>Low (silver base)</td>
-            <td>Low (thick gold layer)</td>
-            <td>Unlikely (esp. 18K+)</td>
-          </tr>
-          <tr>
-            <td><strong>Scrap/resale value</strong></td>
-            <td>Negligible</td>
-            <td>Very low</td>
-            <td>Very low</td>
-            <td>Yes — significant</td>
-          </tr>
-          <tr>
-            <td><strong>Hallmark eligible (UK)</strong></td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <td><strong>Typical lifespan</strong></td>
-            <td>Months to 2 years</td>
-            <td>1–3 years</td>
-            <td>Several years</td>
-            <td>Lifetime</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 id="tarnish">Does Gold Plated Jewellery Tarnish?</h2>
-    <p>This is one of the most searched questions about gold plated jewellery, and the answer is yes — gold plated jewellery absolutely can tarnish. But the process is more nuanced than a simple yes or no.</p>
-    <p>The gold itself does not tarnish — pure gold is chemically inert and will not react with oxygen, moisture, or most common substances. The problem is that gold plated jewellery is not pure gold. It is a very thin layer of gold over a reactive base metal. When that layer wears thin or is compromised — through scratches, exposure to chemicals, or simple friction over time — the base metal beneath begins to react with air and moisture. The result is tarnish, dullness, or discolouration.</p>
-    <p>The rate at which gold plated jewellery tarnishes is affected by:</p>
-    <ul>
-      <li><strong>How thick the gold layer is</strong> — thicker plating tarnishes more slowly because it takes longer to wear through to the base metal</li>
-      <li><strong>What the base metal is</strong> — brass and copper tarnish more readily than stainless steel</li>
-      <li><strong>How you wear and store it</strong> — daily exposure to sweat, water, perfumes, and chemicals accelerates wear</li>
-      <li><strong>Your skin chemistry</strong> — people with naturally more acidic skin, or who sweat heavily, will find gold plated jewellery tarnishes faster on them than on others</li>
-    </ul>
-    <p>Gold filled jewellery also tarnishes eventually, but much more slowly — because the gold layer is far thicker and more robustly bonded. For practical purposes, well-maintained gold filled pieces can go years without showing signs of tarnish.</p>
-
-    <h2 id="turns-green">Will Gold Plated Jewellery Turn Green?</h2>
-    <p>Directly related to tarnishing is the green skin staining that many people experience with gold plated jewellery. The question "will gold plated jewellery turn green?" is really asking: will it turn my skin green? And the answer is: it depends on the base metal, and eventually, yes — if the plating wears away.</p>
-    <p>The green colour is not caused by gold at all. It is caused by the <strong>oxidation of copper</strong> in the base metal or alloy beneath the gold layer. When copper reacts with oxygen, moisture, and the natural acids on your skin, it forms copper chloride and related compounds — which are greenish in colour and transfer to skin. This is the same chemistry that turns bronze statues green over time — most famously the Statue of Liberty.</p>
-    <p>Most common gold plated jewellery uses brass (a copper-zinc alloy) or copper as its base metal. While the gold layer is intact, there is no direct contact between copper and skin. Once the plating wears — particularly on high-friction areas like the inside of a ring band — copper exposure begins, and with it, the possibility of green skin discolouration.</p>
-
-    <div class="info-callout">
-      <p><strong>Can real gold turn green?</strong> Technically, yes — though it is unusual and mostly misunderstood. Even 14-karat solid gold contains 41.5% other metals, which typically includes copper. Under specific conditions — prolonged contact with sweat on acidic skin, or exposure to certain chemicals — even a solid gold ring can leave a faint greenish mark on the finger. This does not mean the piece is fake; it means the copper in the alloy has reacted with your skin chemistry. At higher karats (<span class="hmark">18K</span> and above), the copper content is lower and this is much less likely to occur.</p>
-    </div>
-
-    <h2 id="water">Can Gold Plated Jewellery Get Wet?</h2>
-    <p>Short answer: occasionally and carefully, yes. As a habit, no.</p>
-    <p>Water itself is not immediately destructive to gold plating, but regular, repeated exposure to moisture accelerates the breakdown of the gold layer significantly. The chemistry involved is that water facilitates oxidation of the base metal, and the dissolved minerals in tap water can leave deposits that dull the surface and work their way into micro-scratches in the plating.</p>
-    <p>Swimming pool water is particularly damaging because of chlorine. Chlorine actively attacks and corrodes metal surfaces, breaking down gold plating at a much faster rate than fresh water alone. Sea water has a similar effect due to its salt and mineral content.</p>
-
-    <div class="warning-callout">
-      <p><strong>The practical rule:</strong> Remove gold plated jewellery before showering, swimming, exercising (sweat has similar corrosive effects to water exposure), or washing up. If you get caught in the rain or your jewellery gets splashed, dry it immediately with a soft cloth rather than leaving it wet.</p>
-      <p>Gold filled jewellery is considerably more water-resistant because the gold layer is so much thicker — but the same principles apply for long-term care. Habitual water exposure will eventually degrade even well-made gold filled pieces.</p>
-    </div>
-
-    <h2 id="gold-filled-tarnish">Does Gold Filled Jewellery Tarnish?</h2>
-    <p>Gold filled jewellery is significantly more tarnish-resistant than gold plated pieces, but it is not completely tarnish-proof. Because the gold layer constitutes 5% of the total weight and is mechanically bonded rather than deposited, it resists the thinning that causes standard gold plating to degrade.</p>
-    <p>Under normal conditions — wearing gold filled jewellery daily, cleaning it occasionally, storing it properly — it can go years without showing visible tarnish or discolouration. With neglect or exposure to harsh chemicals, it will eventually tarnish, but even tarnished gold filled pieces can often be cleaned back to their original appearance in a way that is not possible with worn-through plating.</p>
-
-    <h2 id="is-gold-plated-real">Is Gold Plated Real Gold?</h2>
-    <p>This question comes up constantly, and it deserves a direct answer: yes and no.</p>
-    <p>The gold used for gold plating is <strong>real gold</strong> — it is genuine <span class="hmark">10K</span>, <span class="hmark">14K</span>, or <span class="hmark">18K</span> gold deposited on the surface of the piece. The gold atoms bonded to the surface are the same gold atoms that would be in solid gold. From a chemical standpoint, the surface of a gold plated piece is real gold.</p>
-    <p>However, gold plated jewellery is <strong>not "real gold jewellery"</strong> in the way that term is commonly understood. The piece is fundamentally a base metal object with a gold coating. It cannot carry a UK gold hallmark. It has no meaningful gold content by weight. It does not hold value as gold. For all practical and legal purposes, gold plated jewellery is not classified as gold jewellery under UK and most international consumer protection regulations.</p>
-    <p>The distinction matters because it affects everything from how you care for the piece to what you can expect when you sell it. Selling gold plated jewellery as gold — whether deliberately or through careless marketing — is a consumer protection violation in most countries.</p>
-
-    <h2 id="magnet-test">Will Real Gold Stick to a Magnet?</h2>
-    <p>This is a popular quick test for gold authenticity, and the basic principle is sound: <strong>real gold is not magnetic</strong>.</p>
-    <p>Pure 24-karat gold is diamagnetic — meaning it actually has a very slight repulsion to magnetic fields, though this is far too subtle to feel or see without laboratory equipment. The practical result is that solid gold does not stick to a magnet. If you hold a neodymium magnet (the strong kind) to a piece of supposed solid gold and it strongly attracts, the piece is very unlikely to be solid gold.</p>
-    <p>However, the test has limitations that are worth understanding:</p>
-    <ul>
-      <li><strong>White gold sometimes contains nickel</strong> as a whitening agent. Nickel is magnetic, which means some white gold pieces will show a slight magnetic response even when they are genuine</li>
-      <li><strong>Clasps, springs, and watch components</strong> inside an otherwise solid gold piece may contain trace ferrous metals, causing a magnetic response that does not indicate the main body is fake</li>
-      <li><strong>Non-gold fakes can also be non-magnetic</strong> — a base metal like copper or stainless steel is not magnetic either, so passing the magnet test does not confirm gold</li>
-    </ul>
-    <p>The magnet test is a useful first screen. Strong magnetic attraction is a red flag. But it should never be relied upon as definitive proof in either direction — acid testing or an XRF scanner (used by professional buyers) are needed for certainty.</p>
-
-    <h2 id="scrap-value">How Much Is Gold Plated Worth? (And the Gold Filled Calculator)</h2>
-    <p>This is where the financial reality of each type becomes stark.</p>
-    <p><strong>Gold plated jewellery is worth essentially nothing as scrap gold.</strong> The gold layer is so thin — typically less than 0.5 microns for standard plating — that the actual quantity of gold in a gold plated piece is negligible. A typical gold plated necklace might contain 0.003–0.05 grams of gold at most. At current gold prices (May 2026), that is worth pennies. No scrap gold buyer will offer meaningful money for gold plated pieces. The value of a gold plated piece is entirely as jewellery — its visual appeal and brand association — not its metal content.</p>
-    <p><strong>Gold filled jewellery has some scrap value but less than you might expect.</strong> The gold filled calculator works as follows: take the total weight of the piece, multiply by 5% (the minimum gold fraction), then multiply by the purity fraction of the gold used (typically <span class="hmark">14K</span> = 0.585) to get the fine gold content. For a 20-gram gold filled piece marked "1/20 14K GF":</p>
-    <ul>
-      <li>Total weight: 20 grams</li>
-      <li>Gold fraction: 20 × 5% = 1 gram of 14K gold</li>
-      <li>Fine gold content: 1 × (14/24) = 0.583 grams of pure gold</li>
-      <li>At ~$152/gram for pure gold (May 2026): roughly $89 theoretical melt value</li>
-      <li>After refining costs and buyer margin: perhaps $40–$60 in practice</li>
-    </ul>
-    <p>The refining of gold filled scrap is more complex than solid gold because the gold layer must be chemically separated from the brass core. This means buyers pay a significantly lower percentage of melt value for gold filled than for solid gold. For small quantities of gold filled scrap, the economics often do not work in the seller's favour.</p>
-
-    <div class="cta-box">
-      <h3>Calculate the Melt Value of Your Gold</h3>
-      <p>Once you know whether your piece is solid gold and what karat it is, use our free calculator to find out exactly what it's worth at today's live spot price.</p>
-      <a href="/scrap-gold-calculator" class="cta-btn">Scrap Gold Calculator &rarr;</a>
-    </div>
-
-    <p><strong>Solid gold has real, substantial scrap value.</strong> A <span class="hmark">9K</span> gold ring weighing 4 grams is worth approximately $228 at current spot prices — and a good buyer will pay around 85–90% of that. The value scales directly with weight and purity. Use our <a href="/scrap-gold-calculator">scrap gold calculator</a> to find out what your solid gold is worth today.</p>
-
-    <h2 id="olympic-medals">Are Olympic Gold Medals Solid Gold?</h2>
-    <p>This is one of those questions that sounds like it should have an obvious answer — and the answer surprises almost everyone.</p>
-    <p><strong>Olympic gold medals are not solid gold. They have not been solid gold since 1912.</strong></p>
-    <p>Under International Olympic Committee rules, first-place medals must be made of at least 92.5% silver, plated with a minimum of six grams of gold. The 2026 Milan-Cortina Winter Olympic gold medals, for example, contain just over 500 grams of sterling silver and approximately 6 grams of pure gold on the surface — making them, technically, gold plated silver.</p>
-    <p>At current metal prices, the intrinsic metal value of a 2026 Olympic gold medal is estimated at approximately $2,300–$2,500 — more than double its Paris 2024 equivalent, thanks to the extraordinary rise in both gold and silver prices over the past two years. The medal itself, of course, has enormous non-financial value. But as a piece of metal? It is an extremely high-quality, very heavy example of gold plated silver — which puts it, ironically, in the same basic category as a gold plated ring from a high street retailer.</p>
-
-    <h2 id="clean-plated">How to Clean Gold Plated Jewellery</h2>
-    <p>Gold plated jewellery requires gentle handling — aggressive cleaning will strip the plating faster than almost any other form of wear.</p>
-    <ol class="step-list">
-      <li class="step-block">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <strong>Use warm water and mild dish soap</strong>
-          <p>This is the safest and most effective everyday cleaning method. Let the piece soak for two to three minutes, then gently wipe with a soft cloth or a very soft toothbrush on any textured areas.</p>
-        </div>
-      </li>
-      <li class="step-block">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <strong>Never use abrasive cleaners</strong>
-          <p>Avoid baking soda, rough cloths, and toothpaste despite what some guides suggest — most toothpastes contain abrasive particles that will visibly scratch soft gold plating. Abrasives strip the plating faster than normal wear.</p>
-        </div>
-      </li>
-      <li class="step-block">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <strong>Never use ultrasonic cleaners</strong>
-          <p>The vibrations can damage the gold layer and loosen any stones. Ultrasonic cleaners are safe for solid gold but actively harmful for plated pieces.</p>
-        </div>
-      </li>
-      <li class="step-block">
-        <div class="step-number">4</div>
-        <div class="step-content">
-          <strong>Dry thoroughly immediately after cleaning</strong>
-          <p>Water left to sit is the enemy of gold plating. Pat dry with a lint-free cloth and allow to air dry completely before storing.</p>
-        </div>
-      </li>
-      <li class="step-block">
-        <div class="step-number">5</div>
-        <div class="step-content">
-          <strong>Put jewellery on last, take it off first</strong>
-          <p>This minimises exposure to perfume, hairspray, and cosmetics, which are among the most common causes of premature plating degradation. Apply all products before putting jewellery on.</p>
-        </div>
-      </li>
-    </ol>
-
-    <h2 id="clean-filled">How to Clean Gold Filled Jewellery</h2>
-    <p>Gold filled jewellery can be cleaned more confidently than gold plated pieces because the gold layer is substantially thicker, but it still benefits from a gentle approach.</p>
-    <ol class="step-list">
-      <li class="step-block">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <strong>Prepare a warm soapy soak</strong>
-          <p>Fill a small bowl with warm (not hot) water and add a few drops of mild dish soap. Place the piece in the bowl and let it soak for 10–15 minutes.</p>
-        </div>
-      </li>
-      <li class="step-block">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <strong>Gently scrub textured areas</strong>
-          <p>Use a soft-bristled toothbrush — old soft toothbrushes work perfectly for this. Pay attention to settings, chain links, and engraved areas where dirt accumulates.</p>
-        </div>
-      </li>
-      <li class="step-block">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <strong>Rinse thoroughly</strong>
-          <p>Rinse under clean warm water to remove all soap residue. Soap left in crevices will dull the surface over time.</p>
-        </div>
-      </li>
-      <li class="step-block">
-        <div class="step-number">4</div>
-        <div class="step-content">
-          <strong>Pat dry and air dry completely</strong>
-          <p>Pat dry with a lint-free cloth and allow to air dry completely before storing. Store in a sealed bag or jewellery box away from humidity.</p>
-        </div>
-      </li>
-      <li class="step-block">
-        <div class="step-number">5</div>
-        <div class="step-content">
-          <strong>For stubborn tarnish: baking soda paste</strong>
-          <p>A baking soda paste (equal parts baking soda and water) applied with a soft cloth and rinsed thoroughly can remove stubborn tarnish from gold filled pieces. Unlike with gold plated jewellery, gold filled pieces are robust enough to handle this mild abrasive treatment — though it should still be done gently and not used routinely.</p>
-        </div>
-      </li>
-    </ol>
-
-    <h2 id="which-to-buy">Which Should You Buy?</h2>
-    <p>The honest answer depends entirely on what you need the piece to do.</p>
-    <p><strong>Gold plated</strong> makes sense for: fashion jewellery you will wear seasonally or occasionally, pieces that follow current trends (because they will likely be retired before they wear out), and situations where budget is the primary constraint. Going into it knowing the piece has a limited lifespan — likely one to two years of regular wear — removes the disappointment of discovering that reality later.</p>
-    <p><strong>Gold filled</strong> is the sweet spot for: everyday jewellery that needs to hold up to regular wear without the cost of solid gold. It is the best option if you want consistent gold appearance over several years, are sensitive to base metals, and cannot or do not want to spend solid gold prices. It is genuinely good jewellery for daily use, especially in chains, bracelets, and earrings.</p>
-    <p><strong>Gold vermeil</strong> occupies a similar space to gold filled for most buyers, with the advantage of a sterling silver base. If you want the option of the underlying silver showing as the piece ages — or if you have particular sensitivities to brass — vermeil is the better choice over standard gold filled.</p>
-    <p><strong>Solid gold</strong> is the right choice for: pieces you intend to wear every day indefinitely — wedding and engagement rings most obviously — anything with sentimental or heirloom value, and any piece you regard as a financial asset. Solid gold costs more upfront, but the cost per year of use, spread over a decade or a lifetime, is often lower than repeatedly replacing gold plated pieces. And unlike plated or filled jewellery, a solid gold ring can be melted, remade, or sold at any time for close to its material value.</p>
-
-    <h2 id="faq">Frequently Asked Questions</h2>
-    <div class="faq-accordion">
-      <div class="faq-item">
-        <h3>What does gold filled mean?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Gold filled means a solid layer of gold — at least 5% of the item's total weight — has been mechanically bonded to a brass base metal through heat and pressure. It is not solid gold, but it contains far more gold than gold plated jewellery and is significantly more durable. Pieces are typically marked "1/20 14K GF" or similar, indicating the gold proportion and karat.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>What does gold plated mean?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Gold plated means a very thin layer of real gold has been deposited on the surface of a base metal (usually brass, copper, or stainless steel) through an electroplating process. The gold is real but present in a negligible quantity — less than 1% of the piece's total weight. There is no legal minimum thickness requirement in most countries.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Is gold plated real gold?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>The gold used in gold plating is chemically real gold. However, a gold plated piece is not <strong>real gold jewellery</strong> in any practical sense — it contains almost no gold by weight, holds no gold value, and cannot be hallmarked under UK law. Once the plating wears, the underlying base metal is exposed.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Does gold filled tarnish?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Gold filled jewellery is tarnish-resistant for years under normal conditions, but it is not completely immune. The thick mechanically-bonded gold layer resists the degradation that causes standard gold plating to tarnish quickly, but exposure to harsh chemicals, habitual water contact, or lack of maintenance will eventually affect its appearance. Even tarnished gold filled pieces can often be cleaned back to their original look.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Will gold plated rings tarnish?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Yes, over time. The gold layer on a plated ring is extremely thin and will wear away through daily friction — particularly on the inner surface of the band — revealing the base metal. Once the base metal is exposed, tarnishing, discolouration, and potential skin staining will follow. This is not a manufacturing defect; it is an inherent characteristic of gold plated jewellery.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Will gold plated jewellery turn green?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>It can, yes. Once the gold plating wears away and the copper or brass base metal is exposed to skin acids, sweat, and moisture, the copper in the alloy oxidises and forms green-coloured compounds that transfer to skin. This is not harmful, but it is a reliable sign that the plating has worn through. The green is from copper oxidation — the same chemistry that turns the Statue of Liberty green.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Can real gold turn green?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Technically yes, though it is uncommon. Lower-karat gold alloys (<strong>9K</strong> and <strong>14K</strong> especially) contain copper, which can cause greenish marks on some people's skin under conditions of prolonged contact and acidic skin chemistry. This is not a sign of fake gold — it is the copper alloy content reacting with skin. At <strong>18K</strong> and above, the copper content is lower and this is much less likely to occur.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>How much is gold filled worth as scrap?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Very little relative to its weight. A 20-gram piece of 14K gold filled contains roughly 0.58 grams of fine gold — worth approximately $40–$60 at current prices after refining costs are deducted. Gold filled scrap is worth something, but far less per gram than solid gold scrap because the gold layer must be chemically separated from the brass core, adding refining complexity and cost.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>What is the difference between gold vermeil and gold plated?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Gold vermeil uses a <strong>sterling silver base</strong> and requires a minimum gold thickness of <strong>2.5 microns</strong> at 10K or above, enforced by US Federal Trade Commission law. Standard gold plated jewellery has no minimum thickness requirement and uses cheaper base metals (brass, copper, stainless steel). Vermeil is a regulated quality tier; "gold plated" is not. This is why vermeil generally lasts longer and is worth slightly more when the gold layer eventually wears.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Will real gold stick to a magnet?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Real gold is not magnetic. If a neodymium magnet strongly attracts a piece of supposed solid gold, the piece is very unlikely to be solid gold. However, the test has limits: white gold with nickel can show a slight magnetic response even when genuine; clasps and watch components may contain ferrous metals; and non-gold fakes like copper or stainless steel are also non-magnetic. Strong attraction is a red flag, but passing the magnet test does not confirm gold. Acid testing or XRF scanning provides certainty.</p></div>
-      </div>
-      <div class="faq-item">
-        <h3>Can 14K gold tarnish?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></h3>
-        <div class="faq-body"><p>Yes, in theory. 14-karat gold is 58.5% gold and 41.5% other metals, which may include copper. Under prolonged exposure to harsh chemicals or highly acidic conditions, 14K gold can develop a slight dull surface patina. However, this is rare with normal wear and is entirely different from the tarnishing of plated or filled pieces — the metal itself has not degraded, and a polish will restore its appearance entirely.</p></div>
-      </div>
-    </div>
-
-  </div><!-- /prose -->
-
-  <div class="disclaimer-box">
-    <strong>Editorial note:</strong> All prices and standards referenced are current as of May 2026. Regulations regarding the use of terms like "vermeil" may differ between countries. This article is for informational purposes only and does not constitute financial or purchasing advice.
+<section class="related-section">
+  <div class="related-section__head">
+    <h2>Related Gold &amp; Silver Guides</h2>
+    <p>Hand-picked reading next.</p>
   </div>
-
-</article>
-
-<section class="related-guides-section">
-  <h2>Related Gold &amp; Silver Guides</h2>
-  <div class="related-guides-grid">
+  <div class="related-grid">
     <a href="/guides/gold-hallmarks-explained" class="related-card">
       <span class="related-card__tag">Guide</span>
       <div class="related-card__title">Gold Hallmarks Explained</div>
@@ -733,9 +1262,9 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
       <div class="related-card__desc">Acid tests, magnet tests and electronic testers — which works best for verifying gold purity.</div>
     </a>
     <a href="/scrap-gold-calculator" class="related-card">
-      <span class="related-card__tag">Tool</span>
+      <span class="related-card__tag">Live Tool</span>
       <div class="related-card__title">Scrap Gold Calculator</div>
-      <div class="related-card__desc">Enter your gold's karat and weight to find its live melt value at today's spot price.</div>
+      <div class="related-card__desc">Enter your gold's karat and weight to find its live melt value at today's spot price in USD.</div>
     </a>
     <a href="/guides/how-to-sell-gold-jewellery" class="related-card">
       <span class="related-card__tag">Guide</span>
@@ -757,15 +1286,15 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
         <img src="https://assets.goldpricetools.com/logo.svg" width="28" height="28" alt="GoldPriceTools logo" loading="lazy" onerror="this.style.display='none'">
         <span style="font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright)">GoldPriceTools</span>
       </a>
-      <p class="footer-brand">Live gold and silver prices. Real-time 9K–24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Updated every 60 seconds.</p>
+      <p class="footer-brand">Live gold and silver prices. Real-time 9K&ndash;24K gold per gram, scrap gold calculator, silver per troy oz and kilo. Updated every 60 seconds.</p>
     </div>
     <div class="footer-col">
       <h4>Gold Prices</h4>
       <ul>
-        <li></li>
-        <li></li>
+        <li><a href="/9k-gold-price-per-gram">9K Gold Per Gram</a></li>
+        <li><a href="/14k-gold-price-per-gram">14K Gold Per Gram</a></li>
+        <li><a href="/18k-gold-price-per-gram">18K Gold Per Gram</a></li>
         <li><a href="/gold-silver-ratio">Gold / Silver Ratio</a></li>
-        
       </ul>
     </div>
     <div class="footer-col">
@@ -810,11 +1339,12 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 GoldPriceTools. All rights reserved.</span>
-    <span>Prices sourced via LBMA. Not financial advice.</span>
+    <span>Prices sourced via LBMA &middot; gold-api.com. Not financial advice.</span>
   </div>
 </footer>
 
 <script>
+/* Theme + nav + mobile menu (same pattern as rest of site) */
 (function(){
   var toggle=document.getElementById('themeToggle');
   var sun=document.getElementById('iconSun');
@@ -847,5 +1377,313 @@ details.faq-item[open]>summary{background:var(--color-surface-offset);border-bot
   });
 })();
 </script>
+
+<script>
+/* Scroll progress, reveal-on-scroll, TOC active state, mobile TOC sheet */
+(function(){
+  var fill=document.getElementById('scrollProgressFill');
+  function updateProgress(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var pct=max>0?(h.scrollTop/max)*100:0;
+    if(fill)fill.style.width=pct+'%';
+  }
+  window.addEventListener('scroll',updateProgress,{passive:true});
+  window.addEventListener('resize',updateProgress);
+  updateProgress();
+
+  /* Reveal */
+  var reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduced){
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('is-in');});
+  } else if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('is-in');});
+  }
+
+  /* TOC active link */
+  var tocLinks=document.querySelectorAll('#tocList a');
+  var headings=Array.prototype.map.call(tocLinks,function(a){
+    var id=a.getAttribute('href').slice(1);
+    return {a:a,el:document.getElementById(id)};
+  }).filter(function(o){return o.el;});
+  function syncToc(){
+    var y=window.scrollY+120;
+    var current=null;
+    headings.forEach(function(o){
+      if(o.el.offsetTop<=y)current=o.a;
+    });
+    tocLinks.forEach(function(a){a.classList.remove('is-active');});
+    if(current)current.classList.add('is-active');
+  }
+  window.addEventListener('scroll',syncToc,{passive:true});
+  syncToc();
+
+  /* Mobile TOC sheet */
+  var fab=document.getElementById('tocFab');
+  var sheet=document.getElementById('tocSheet');
+  var closeBtn=document.getElementById('tocSheetClose');
+  function openSheet(){sheet.classList.add('is-open');fab.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function closeSheet(){sheet.classList.remove('is-open');fab.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(fab)fab.addEventListener('click',openSheet);
+  if(closeBtn)closeBtn.addEventListener('click',closeSheet);
+  if(sheet)sheet.addEventListener('click',function(e){if(e.target===sheet)closeSheet();});
+  document.querySelectorAll('.toc-sheet__list a').forEach(function(a){
+    a.addEventListener('click',closeSheet);
+  });
+})();
+</script>
+
+<script>
+/* ── LIVE PRICE FEED + USD CALCULATOR ──
+   Endpoint: api.gold-api.com/price/XAU (USD per troy oz, no API key)
+   FX:       api.goldpricetoolsworker.io/fx (GBP/USD basis)
+   Refresh:  60 seconds
+   Primary currency: USD $
+*/
+window._spot=null;
+window._spotPrev=null;
+window._spotTs=null;
+window._fx={USD:1};
+(function(){
+  /* Approximate baseline rates (overridden by live FX where available) */
+  var FALLBACK_FX={USD:1,EUR:0.92,GBP:0.79,CAD:1.38,AUD:1.55,INR:83.5,AED:3.673,JPY:153.8};
+  Object.keys(FALLBACK_FX).forEach(function(k){window._fx[k]=FALLBACK_FX[k];});
+
+  async function fetchFx(){
+    try{
+      var r=await fetch('https://api.goldpricetoolsworker.io/fx',{cache:'no-store'});
+      if(!r.ok)throw new Error('fx '+r.status);
+      var d=await r.json();
+      /* Worker returns rates relative to USD as the base — keep USD=1 and merge */
+      if(d&&typeof d==='object'){
+        if(d.GBPUSD)window._fx.GBP=d.GBPUSD;
+        if(d.EURUSD)window._fx.EUR=d.EURUSD;
+        if(d.USDEUR)window._fx.EUR=d.USDEUR;
+        if(d.USDGBP)window._fx.GBP=d.USDGBP;
+        ['EUR','GBP','CAD','AUD','INR','AED','JPY'].forEach(function(k){
+          if(d[k])window._fx[k]=d[k];
+        });
+      }
+    }catch(e){/* keep fallback */}
+  }
+
+  async function fetchSpot(){
+    try{
+      var r=await fetch('https://api.gold-api.com/price/XAU',{cache:'no-store'});
+      if(!r.ok)throw new Error('spot '+r.status);
+      var d=await r.json();
+      if(d&&typeof d.price==='number'){
+        window._spotPrev=window._spot;
+        window._spot=d.price;
+        if(typeof d.prev_close_price==='number')window._spotPrev=d.prev_close_price;
+        window._spotTs=Date.now();
+        window.dispatchEvent(new Event('goldprice_updated'));
+      } else {
+        window.dispatchEvent(new Event('goldprice_error'));
+      }
+    }catch(e){
+      window.dispatchEvent(new Event('goldprice_error'));
+    }
+  }
+
+  fetchFx();
+  fetchSpot();
+  setInterval(fetchSpot,60000);
+  setInterval(fetchFx,15*60*1000);
+})();
+</script>
+
+<script>
+/* ── HERO live spot card binding ── */
+(function(){
+  var TROY=31.1035;
+  var priceEl=document.getElementById('heroSpotPrice');
+  var deltaEl=document.getElementById('heroSpotDelta');
+  var deltaText=document.getElementById('heroSpotDeltaText');
+  var gramEl=document.getElementById('heroSpotPerGram');
+  var updatedEl=document.getElementById('heroSpotUpdated');
+  var liveBadge=document.getElementById('heroLive');
+  var liveText=document.getElementById('heroLiveText');
+
+  function fmtUSD(v,d){return '$'+v.toLocaleString('en-US',{minimumFractionDigits:d!=null?d:2,maximumFractionDigits:d!=null?d:2});}
+  function fmtRel(ts){
+    if(!ts)return 'just now';
+    var s=Math.floor((Date.now()-ts)/1000);
+    if(s<5)return 'just now';
+    if(s<60)return s+'s ago';
+    if(s<3600)return Math.floor(s/60)+'m ago';
+    return Math.floor(s/3600)+'h ago';
+  }
+  function render(){
+    if(!window._spot)return;
+    priceEl.textContent=fmtUSD(window._spot,2);
+    var gram=window._spot/TROY;
+    gramEl.textContent=fmtUSD(gram,2);
+    if(window._spotPrev&&window._spotPrev!==window._spot){
+      var diff=window._spot-window._spotPrev;
+      var pct=(diff/window._spotPrev)*100;
+      deltaEl.hidden=false;
+      deltaEl.classList.remove('bento-spot__delta--up','bento-spot__delta--down');
+      deltaEl.classList.add(diff>=0?'bento-spot__delta--up':'bento-spot__delta--down');
+      var arrow=deltaEl.querySelector('svg');
+      if(arrow)arrow.style.transform=diff>=0?'rotate(0deg)':'rotate(180deg)';
+      var sign=diff>=0?'+':'';
+      deltaText.textContent=sign+fmtUSD(Math.abs(diff),2)+' ('+sign+pct.toFixed(2)+'%) vs prev close';
+    }
+    updatedEl.textContent=fmtRel(window._spotTs);
+    liveBadge.classList.remove('gf-calc__live--idle','gf-calc__live--error');
+    liveText.textContent='Live';
+  }
+  function errored(){
+    liveBadge.classList.add('gf-calc__live--error');
+    liveBadge.classList.remove('gf-calc__live--idle');
+    liveText.textContent='Reconnecting';
+  }
+  window.addEventListener('goldprice_updated',render);
+  window.addEventListener('goldprice_error',errored);
+  setInterval(function(){if(window._spotTs)updatedEl.textContent=fmtRel(window._spotTs);},5000);
+})();
+</script>
+
+<script>
+/* ── GOLD FILLED CALCULATOR ── USD primary ── */
+(function(){
+  var TROY=31.1035;
+  var CURR={
+    USD:{sym:'$',code:'USD',locale:'en-US',decimals:2},
+    EUR:{sym:'€',code:'EUR',locale:'en-GB',decimals:2},
+    GBP:{sym:'£',code:'GBP',locale:'en-GB',decimals:2},
+    CAD:{sym:'C$',code:'CAD',locale:'en-CA',decimals:2},
+    AUD:{sym:'A$',code:'AUD',locale:'en-AU',decimals:2},
+    INR:{sym:'₹',code:'INR',locale:'en-IN',decimals:0},
+    AED:{sym:'د.إ ',code:'AED',locale:'en-AE',decimals:2},
+    JPY:{sym:'¥',code:'JPY',locale:'ja-JP',decimals:0}
+  };
+  var unit='g';
+  var karat='14K';
+  var purity=0.5833;
+  var frac=0.05;
+
+  var weightEl=document.getElementById('gfWeight');
+  var currSel=document.getElementById('gfCurrency');
+  var placeholder=document.getElementById('gfPlaceholder');
+  var output=document.getElementById('gfOutput');
+  var meltEl=document.getElementById('gfMeltValue');
+  var offerEl=document.getElementById('gfOfferValue');
+  var pureGramsEl=document.getElementById('gfPureGrams');
+  var pricePerGramEl=document.getElementById('gfPricePerGram');
+  var spotLineEl=document.getElementById('gfSpotLine');
+  var updatedEl=document.getElementById('gfUpdated');
+  var liveBadge=document.getElementById('gfLive');
+  var liveText=document.getElementById('gfLiveText');
+
+  document.querySelectorAll('.gf-unit-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.gf-unit-btn').forEach(function(x){x.classList.remove('is-active');});
+      this.classList.add('is-active');
+      unit=this.dataset.unit;
+      calc();
+    });
+  });
+  document.querySelectorAll('.gf-karat-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.gf-karat-btn').forEach(function(x){x.classList.remove('is-active');});
+      this.classList.add('is-active');
+      karat=this.dataset.karat;
+      purity=parseFloat(this.dataset.purity);
+      calc();
+    });
+  });
+  document.querySelectorAll('.gf-frac-chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      document.querySelectorAll('.gf-frac-chip').forEach(function(x){x.classList.remove('is-active');});
+      this.classList.add('is-active');
+      frac=parseFloat(this.dataset.frac);
+      calc();
+    });
+  });
+  if(currSel)currSel.addEventListener('change',calc);
+  if(weightEl)weightEl.addEventListener('input',calc);
+
+  function fmt(c,v){
+    var info=CURR[c]||CURR.USD;
+    var n=Math.max(0,v).toLocaleString(info.locale,{minimumFractionDigits:info.decimals,maximumFractionDigits:info.decimals});
+    return info.sym+n;
+  }
+  function fmtRel(ts){
+    if(!ts)return '—';
+    var s=Math.floor((Date.now()-ts)/1000);
+    if(s<5)return 'just now';
+    if(s<60)return s+'s ago';
+    if(s<3600)return Math.floor(s/60)+'m ago';
+    return Math.floor(s/3600)+'h ago';
+  }
+
+  function calc(){
+    if(!window._spot){
+      placeholder.style.display='flex';
+      placeholder.textContent='Waiting for live spot price…';
+      output.style.display='none';
+      return;
+    }
+    var raw=parseFloat(weightEl.value);
+    if(!isFinite(raw)||raw<=0){
+      placeholder.style.display='flex';
+      placeholder.textContent='Enter a weight to see the live melt value and realistic offer range.';
+      output.style.display='none';
+      return;
+    }
+    placeholder.style.display='none';
+    output.style.display='flex';
+
+    var weightG=unit==='oz'?raw*TROY:raw;
+    var goldLayerG=weightG*frac;
+    var fineGoldG=goldLayerG*purity;
+
+    var spotUsdPerOz=window._spot;
+    var spotUsdPerGram=spotUsdPerOz/TROY;
+    var meltUsd=fineGoldG*spotUsdPerGram;
+
+    var c=currSel.value;
+    var fxRate=(window._fx&&window._fx[c])?window._fx[c]:1;
+    var meltLocal=meltUsd*fxRate;
+    var pricePerGramLocal=spotUsdPerGram*fxRate;
+
+    /* Realistic offer 45-65% of melt for gold filled scrap */
+    var offerLow=meltLocal*0.45;
+    var offerHigh=meltLocal*0.65;
+
+    meltEl.textContent=fmt(c,meltLocal);
+    offerEl.textContent=fmt(c,offerLow)+' – '+fmt(c,offerHigh);
+    pureGramsEl.textContent=fineGoldG.toFixed(3)+' g';
+    pricePerGramEl.textContent=fmt(c,pricePerGramLocal);
+    spotLineEl.textContent='$'+spotUsdPerOz.toFixed(2)+' / oz';
+    updatedEl.textContent=fmtRel(window._spotTs);
+
+    liveBadge.classList.remove('gf-calc__live--idle','gf-calc__live--error');
+    liveText.textContent='Live';
+  }
+
+  window.addEventListener('goldprice_updated',function(){
+    liveBadge.classList.remove('gf-calc__live--idle','gf-calc__live--error');
+    liveText.textContent='Live';
+    calc();
+  });
+  window.addEventListener('goldprice_error',function(){
+    liveBadge.classList.remove('gf-calc__live--idle');
+    liveBadge.classList.add('gf-calc__live--error');
+    liveText.textContent='Reconnecting';
+  });
+  setInterval(function(){if(window._spotTs&&output.style.display==='flex')updatedEl.textContent=fmtRel(window._spotTs);},5000);
+})();
+</script>
+
 </body>
 </html>
