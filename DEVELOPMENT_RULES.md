@@ -61,3 +61,15 @@ Key capabilities:
 ## Rule 10 - Audit Script Location
 tools/playwright_audit.py is always up to date in this repo.
 Run it. Read all output. Fix everything. Run it again.
+
+## Rule 11 - Playwright in Claude Code web sessions
+The web sandbox blocks Playwright's browser CDN, so `playwright install` cannot
+download Chromium. tools/setup-playwright.sh fetches the matching Chrome for
+Testing build from the reachable storage.googleapis.com mirror into Playwright's
+browsers dir (idempotent). It runs automatically via .claude/hooks/session-start.sh
+(async, background), and tools/playwright_audit.py self-heals by invoking it if
+the browser is still missing. To run the audit against local edits before
+deploy, serve the repo (e.g. `python3 -m http.server 8099`) and point the audit
+at `http://127.0.0.1:8099/<page>.html`. If you ever need it by hand:
+`bash tools/setup-playwright.sh`. An optional Playwright MCP server (interactive
+browser tools) can reuse the same browser — see .mcp.json.example.
