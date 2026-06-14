@@ -16,3 +16,10 @@ set -uo pipefail
 echo '{"async": true, "asyncTimeout": 300000}'
 
 bash "${CLAUDE_PROJECT_DIR:-.}/scripts/stitch-web-setup.sh"
+
+# Make Playwright usable for tools/playwright_audit.py. The web sandbox blocks
+# Playwright's browser CDN, so this fetches the matching Chrome for Testing build
+# from the reachable storage.googleapis.com mirror into Playwright's browsers
+# dir. Runs in the background (async hook above) and is idempotent — a fast
+# no-op once the browser is present.
+bash "${CLAUDE_PROJECT_DIR:-.}/tools/setup-playwright.sh" || true

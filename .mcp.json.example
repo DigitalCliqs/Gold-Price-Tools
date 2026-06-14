@@ -2,10 +2,17 @@
   "_comment_1": "Stitch MCP server config. Copy this file to .mcp.json (the real .mcp.json is gitignored so credentials never get committed). NEVER put a real key in THIS file — it is committed to git.",
   "_comment_2": "DEFAULT = OAuth. Run 'npx @_davideast/stitch-mcp init' and choose OAuth. Credentials are cached locally by the wizard, so no key belongs in this file. Then restart your editor.",
   "_comment_3": "IMPORTANT: a plain Stitch API key does NOT authenticate — the API returns 401 'API keys are not supported by this API. Expected OAuth2 access token ... that assert a principal.' Use OAuth (default) or system gcloud below.",
+  "_comment_playwright": "OPTIONAL: Playwright MCP gives interactive browser tools (navigate/snapshot/screenshot). It needs a Chromium binary, which the web sandbox cannot download from Playwright's CDN — so it reuses the Chrome for Testing build that .claude/hooks/session-start.sh fetches via tools/setup-playwright.sh, pinned through the stable '/opt/pw-browsers/chrome-latest' symlink. Copy the 'playwright' block below into mcpServers in your .mcp.json to enable it. The mandated repo audit remains tools/playwright_audit.py.",
   "mcpServers": {
     "stitch": {
       "command": "npx",
       "args": ["@_davideast/stitch-mcp", "proxy"]
+    }
+  },
+  "_optional_playwrightServer": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest", "--headless", "--no-sandbox", "--browser", "chromium", "--executable-path", "/opt/pw-browsers/chrome-latest"]
     }
   },
   "_fallback_systemGcloud": {
