@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
   <script>
-(function(){var r=document.documentElement;var s=localStorage.getItem('gpt-theme');var t=s||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');r.setAttribute('data-theme',t);})();
+(function(){var r=document.documentElement;var s=localStorage.getItem('gpt-theme');var t=s||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');r.setAttribute('data-theme',t);r.classList.add('js');})();
 </script>
     <meta name="cf-no-email-obfuscation">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,8 +42,8 @@
 .mega-panel__browse-all:hover{background:var(--color-gold);color:var(--color-bg)}
 
 
-:root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;--color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#5c5b56;--color-text-faint:#bab9b4;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-gold:#b07a00;--color-gold-bright:#d19900;--color-silver:#6b7280;--shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'IBM Plex Sans','Inter',sans-serif;--transition:180ms cubic-bezier(0.16,1,0.3,1)}
-[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-2:#1b1a18;--color-surface-offset:#1d1c1a;--color-surface-offset-2:#222120;--color-surface-dynamic:#2a2927;--color-divider:#252422;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#5c5b56;--color-text-faint:#4a4947;--color-text-inverse:#1a1917;--color-primary:#4f98a3;--color-primary-hover:#6ab3be;--color-gold:#b07a00;--color-gold-bright:#e8af34;--color-silver:#9ca3af;--shadow-sm:0 1px 2px oklch(0 0 0/0.3);--shadow-md:0 4px 12px oklch(0 0 0/0.4);--shadow-lg:0 12px 32px oklch(0 0 0/0.5)}
+:root,[data-theme="light"]{--color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#f3f0ec;--color-surface-offset-2:#edeae5;--color-surface-dynamic:#e6e4df;--color-divider:#dcd9d5;--color-border:#d4d1ca;--color-text:#28251d;--color-text-muted:#5c5b56;--color-text-faint:#bab9b4;--color-text-inverse:#f9f8f4;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-gold:#b07a00;--color-gold-bright:#d19900;--color-silver:#6b7280;--color-silver-bright:#8b95a5;--color-up:#15803d;--color-down:#b91c1c;--shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);--shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);--shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--font-body:'Inter','Helvetica Neue',sans-serif;--font-display:'IBM Plex Sans','Inter',sans-serif;--transition:180ms cubic-bezier(0.16,1,0.3,1)}
+[data-theme="dark"]{--color-bg:#0f0e0c;--color-surface:#161513;--color-surface-2:#1b1a18;--color-surface-offset:#1d1c1a;--color-surface-offset-2:#222120;--color-surface-dynamic:#2a2927;--color-divider:#252422;--color-border:#333230;--color-text:#d4d3d0;--color-text-muted:#5c5b56;--color-text-faint:#4a4947;--color-text-inverse:#1a1917;--color-primary:#4f98a3;--color-primary-hover:#6ab3be;--color-gold:#b07a00;--color-gold-bright:#e8af34;--color-silver:#9ca3af;--color-silver-bright:#aab4c4;--color-up:#4ade80;--color-down:#f87171;--shadow-sm:0 1px 2px oklch(0 0 0/0.3);--shadow-md:0 4px 12px oklch(0 0 0/0.4);--shadow-lg:0 12px 32px oklch(0 0 0/0.5)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 /* ── Global link reset — enforce brand colours site-wide ── */
 a{color:var(--color-primary);text-decoration:none}
@@ -478,13 +478,7 @@ blockquote strong{color:var(--color-text)}
 .sd-byline a{color:var(--color-primary);font-weight:600}
 .sd-byline__dot{width:3px;height:3px;border-radius:50%;background:var(--color-text-faint)}
 
-/* live spot bar */
-.sd-spotbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-2) var(--space-4);background:linear-gradient(135deg,color-mix(in oklch,var(--color-gold) 13%,var(--color-surface)),var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold) 26%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5)}
-.sd-spotbar__main{display:flex;align-items:baseline;gap:var(--space-2);flex-wrap:wrap}
-.sd-spotbar__label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted)}
-.sd-spotbar__value{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums}
-.sd-spotbar__unit{font-size:var(--text-sm);color:var(--color-text-muted)}
-.sd-spotbar__note{font-size:var(--text-xs);color:var(--color-text-muted)}
+/* live status dot (live spot band eyebrow) */
 .sd-livedot{width:8px;height:8px;border-radius:50%;background:#16a34a;align-self:center;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:sdpulse 2.4s infinite}
 [data-theme="dark"] .sd-livedot{background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.5)}
 @keyframes sdpulse{70%{box-shadow:0 0 0 7px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
@@ -692,10 +686,59 @@ blockquote strong{color:var(--color-text)}
   .sd-toc{order:2;position:sticky;top:76px;margin:0;max-height:calc(100vh - 100px);overflow:auto}
 }
 
+/* ── ENHANCED LIVE SILVER BAND (hero centrepiece) ── */
+.sd-liveband{background:linear-gradient(135deg,color-mix(in oklch,var(--color-gold) 14%,var(--color-surface)),var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold) 26%,var(--color-border));border-radius:var(--radius-xl);padding:var(--space-5);box-shadow:var(--shadow-sm)}
+.sd-liveband__top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-4) var(--space-5)}
+.sd-liveband__headline{min-width:0}
+.sd-liveband__eyebrow{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:var(--space-2)}
+.sd-liveband__price{font-family:var(--font-display);font-size:clamp(2.25rem,7vw,3rem);font-weight:700;line-height:1;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.sd-liveband__price-unit{font-size:.38em;font-weight:600;color:var(--color-text-muted);margin-left:.25em;letter-spacing:0}
+.sd-liveband__change{display:inline-flex;align-items:center;gap:6px;margin-top:var(--space-2);font-size:var(--text-sm);font-weight:600;font-variant-numeric:tabular-nums;min-height:22px}
+.sd-liveband__change .arw{font-size:.85em}
+.sd-liveband__change.up{color:var(--color-up)}
+.sd-liveband__change.down{color:var(--color-down)}
+.sd-liveband__change.flat{color:var(--color-text-muted)}
+.sd-liveband__change-sub{color:var(--color-text-faint);font-weight:500}
+.sd-liveband__ath{flex:1;min-width:210px;max-width:360px}
+.sd-liveband__ath-row{display:flex;justify-content:space-between;gap:var(--space-2);font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:6px}
+.sd-liveband__ath-track{height:7px;border-radius:99px;background:var(--color-surface-offset-2);overflow:hidden}
+.sd-liveband__ath-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--color-silver),var(--color-gold-bright));width:0;transition:width .8s cubic-bezier(.16,1,.3,1)}
+.sd-liveband__ath-note{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:6px;line-height:1.4}
+.sd-liveband__tiles{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-top:var(--space-4)}
+@media(min-width:600px){.sd-liveband__tiles{grid-template-columns:repeat(4,1fr)}}
+.sd-tile{background:color-mix(in oklch,var(--color-surface-offset) 70%,transparent);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3)}
+.sd-tile__k{font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:4px;line-height:1.3}
+.sd-tile__v{font-size:var(--text-lg);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;line-height:1.1}
+.sd-tile__v small{font-size:var(--text-xs);font-weight:500;color:var(--color-text-muted)}
+.sd-liveband__foot{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-1) var(--space-2);margin-top:var(--space-4);padding-top:var(--space-3);border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-muted)}
+.sd-liveband__foot a{color:var(--color-primary);font-weight:600}
+
+/* ── LIVE PRICE CHART (lazy Chart.js) ── */
+.sd-chartcard{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5);margin:var(--space-4) 0 var(--space-5);box-shadow:var(--shadow-sm)}
+.sd-chartcard__head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-2) var(--space-3);margin-bottom:var(--space-1)}
+.sd-chartcard__titlewrap{display:flex;align-items:baseline;gap:var(--space-2);flex-wrap:wrap;min-width:0}
+.sd-chartcard__title{font-size:var(--text-base);font-weight:700;color:var(--color-text)}
+.sd-chartcard__delta{font-size:var(--text-sm);font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-text-muted)}
+.sd-chartcard__delta.up{color:var(--color-up)}
+.sd-chartcard__delta.down{color:var(--color-down)}
+.sd-chartcard__controls{display:flex;gap:6px;flex-wrap:wrap}
+.sd-chartbtn{padding:9px 17px;min-height:44px;font-size:var(--text-xs);font-weight:700;border-radius:var(--radius-full);border:1px solid var(--color-border);color:var(--color-text-muted);background:var(--color-surface);cursor:pointer}
+.sd-chartbtn:hover{color:var(--color-text);border-color:var(--color-silver)}
+.sd-chartbtn.active{background:var(--color-gold-bright);color:#0f0e0c;border-color:var(--color-gold-bright)}
+.sd-chartcard__sub{font-size:var(--text-xs);color:var(--color-text-muted);margin:0 0 var(--space-3)}
+.sd-chartwrap{position:relative;height:300px}
+@media(max-width:560px){.sd-chartwrap{height:240px}}
+.sd-chartloading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-size:var(--text-sm)}
+
+/* ── REVEAL ON SCROLL — gated behind html.js so content is fully visible without JS ── */
+html.js .sd-reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+html.js .sd-reveal.is-in{opacity:1;transform:none}
+
 @media(prefers-reduced-motion:reduce){
-  .sd-bar__fill{transition:none}
+  .sd-bar__fill,.sd-liveband__ath-fill{transition:none}
   .sd-livedot{animation:none}
   .reading-progress,.sd-totop{transition:none}
+  html.js .sd-reveal{opacity:1;transform:none;transition:none}
 }
 </style>
 <link rel="stylesheet" href="/assets/site.css">
@@ -788,18 +831,36 @@ blockquote strong{color:var(--color-text)}
     <div class="sd-byline">
       <span>By <a href="/authors/goldpricetools-editorial-team/">GoldPriceTools Editorial Team</a></span>
       <span class="sd-byline__dot" aria-hidden="true"></span>
-      <span>Updated <time datetime="2026-06-14">21 May 2026</time></span>
+      <span>Updated <time datetime="2026-06-14">14 June 2026</time></span>
       <span class="sd-byline__dot" aria-hidden="true"></span>
       <span>14 min read</span>
     </div>
-    <div class="sd-spotbar">
-      <div class="sd-spotbar__main">
-        <span class="sd-livedot" aria-hidden="true"></span>
-        <span class="sd-spotbar__label">Live silver spot</span>
-        <span class="sd-spotbar__value" id="sdSpot" data-spot>$76.21</span>
-        <span class="sd-spotbar__unit">/ troy oz</span>
+    <div class="sd-liveband" aria-label="Live silver spot price and derived US dollar values">
+      <div class="sd-liveband__top">
+        <div class="sd-liveband__headline">
+          <div class="sd-liveband__eyebrow"><span class="sd-livedot" aria-hidden="true"></span> Live silver spot &middot; USD</div>
+          <div class="sd-liveband__price" id="sdLivePrice">$75.00<span class="sd-liveband__price-unit">/oz</span></div>
+          <div class="sd-liveband__change flat" id="sdLiveChange" aria-live="polite"><span class="arw">&middot;</span> Fetching live market data&hellip;</div>
+        </div>
+        <div class="sd-liveband__ath">
+          <div class="sd-liveband__ath-row"><span>Progress to all-time high</span><span>$121.62 &middot; 29 Jan 2026</span></div>
+          <div class="sd-liveband__ath-track"><div class="sd-liveband__ath-fill" id="sdLiveAthFill" style="width:61.7%"></div></div>
+          <div class="sd-liveband__ath-note" id="sdLiveAthNote"><strong>38.3% below</strong> the all-time high</div>
+        </div>
       </div>
-      <div class="sd-spotbar__note">Melt values below update automatically. <a href="/us-silver-dollar-values">Open the calculator →</a></div>
+      <div class="sd-liveband__tiles">
+        <div class="sd-tile"><div class="sd-tile__k">Per gram &middot; 999</div><div class="sd-tile__v" id="sdLiveGram">$2.41</div></div>
+        <div class="sd-tile"><div class="sd-tile__k">Per kilo &middot; 999</div><div class="sd-tile__v" id="sdLiveKilo">$2,411</div></div>
+        <div class="sd-tile"><div class="sd-tile__k">Sterling /g &middot; 925</div><div class="sd-tile__v" id="sdLiveSterling">$2.23</div></div>
+        <div class="sd-tile"><div class="sd-tile__k">Gold : silver ratio</div><div class="sd-tile__v" id="sdLiveGsr">63:1</div></div>
+      </div>
+      <div class="sd-liveband__foot">
+        <span id="sdLiveUpdated">Connecting to live feed&hellip;</span>
+        <span aria-hidden="true">&middot;</span>
+        <span>refreshes every 60s &middot; spot via gold-api.com</span>
+        <span aria-hidden="true">&middot;</span>
+        <a href="/us-silver-dollar-values">Open the silver dollar calculator &rarr;</a>
+      </div>
     </div>
   </header>
 
@@ -815,6 +876,7 @@ blockquote strong{color:var(--color-text)}
         <nav>
           <a href="#history">History overview</a>
           <a href="#melt-value">Melt value &amp; live prices</a>
+          <a href="#chart">Silver price chart</a>
           <a href="#morgan">Morgan dollar</a>
           <a href="#peace">Peace dollar</a>
           <a href="#eisenhower">Eisenhower dollar</a>
@@ -832,7 +894,7 @@ blockquote strong{color:var(--color-text)}
 
     <div class="sd-content">
 
-      <section class="sd-section" id="history">
+      <section class="sd-section sd-reveal" id="history">
         <h2>US silver dollar history at a glance</h2>
         <p>The United States has issued silver dollar coins almost continuously since 1794. Eleven major series span nearly 250 years — from the first Flowing Hair dollar to today's American Silver Eagle. The timeline below shows each series, when it was minted, its silver content, and whether it actually contains silver.</p>
         <div class="sd-timeline">
@@ -851,50 +913,71 @@ blockquote strong{color:var(--color-text)}
         <p>The single most important thing to know: not every coin marketed as a "US silver dollar" contains silver. The Eisenhower dollar is only silver if it carries the "S" mint mark, and the Susan B. Anthony dollar contains none at all.</p>
       </section>
 
-      <section class="sd-section" id="melt-value">
+      <section class="sd-section sd-reveal" id="melt-value">
         <h2>Melt value — the foundation of all pricing</h2>
         <p>Every silver dollar has a <strong>melt value</strong>: the worth of the actual silver it contains, regardless of age or condition. Melt value sets a floor — in a working market no genuine silver coin should sell for less, because a dealer could always melt it for profit.</p>
         <div class="sd-formula">
           <div class="sd-formula__label">The universal melt-value formula</div>
           <div class="sd-formula__eq"><span class="t1">Melt value</span><span class="op">=</span><span class="t2">silver weight (troy oz)</span><span class="op">×</span><span class="t2">silver spot ($/oz)</span></div>
         </div>
-        <p>At the live silver price of <span class="sd-live" data-spot>$76.21</span>/oz, here is the silver content and melt value of the main US silver dollar types. <strong>These figures update automatically</strong> with the market.</p>
+        <p>At the live silver price of <span class="sd-live" data-spot>$75.00</span>/oz, here is the silver content and melt value of the main US silver dollar types. <strong>These figures update automatically</strong> with the market.</p>
         <div class="sd-melt-grid">
-          <div class="sd-meltcard"><div class="sd-meltcard__name">Morgan / Peace Dollar</div><div class="sd-meltcard__asw">0.7734 oz · 90% silver</div><div class="sd-purity"><span style="width:90%"></span></div><div class="sd-meltcard__val"><span data-asw="0.7734">$58.96</span><small>melt value at spot</small></div></div>
-          <div class="sd-meltcard"><div class="sd-meltcard__name">Trade Dollar</div><div class="sd-meltcard__asw">0.7876 oz · 90% silver</div><div class="sd-purity"><span style="width:90%"></span></div><div class="sd-meltcard__val"><span data-asw="0.7876">$60.04</span><small>melt value at spot</small></div></div>
-          <div class="sd-meltcard"><div class="sd-meltcard__name">Eisenhower (40%)</div><div class="sd-meltcard__asw">0.3161 oz · 40% silver</div><div class="sd-purity"><span style="width:40%"></span></div><div class="sd-meltcard__val"><span data-asw="0.3161">$24.10</span><small>S-mint, 1971–1976</small></div></div>
-          <div class="sd-meltcard"><div class="sd-meltcard__name">American Silver Eagle</div><div class="sd-meltcard__asw">1.0000 oz · 99.9% silver</div><div class="sd-purity"><span style="width:100%"></span></div><div class="sd-meltcard__val"><span data-asw="1.0">$76.21</span><small>melt value at spot</small></div></div>
-          <div class="sd-meltcard"><div class="sd-meltcard__name">Modern Morgan / Peace</div><div class="sd-meltcard__asw">0.8594 oz · 99.9% silver</div><div class="sd-purity"><span style="width:100%"></span></div><div class="sd-meltcard__val"><span data-asw="0.8594">$65.50</span><small>2021–2023 reissues</small></div></div>
+          <div class="sd-meltcard"><div class="sd-meltcard__name">Morgan / Peace Dollar</div><div class="sd-meltcard__asw">0.7734 oz · 90% silver</div><div class="sd-purity"><span style="width:90%"></span></div><div class="sd-meltcard__val"><span data-asw="0.77344">$58.01</span><small>melt value at spot</small></div></div>
+          <div class="sd-meltcard"><div class="sd-meltcard__name">Trade Dollar</div><div class="sd-meltcard__asw">0.7876 oz · 90% silver</div><div class="sd-purity"><span style="width:90%"></span></div><div class="sd-meltcard__val"><span data-asw="0.7876">$59.07</span><small>melt value at spot</small></div></div>
+          <div class="sd-meltcard"><div class="sd-meltcard__name">Eisenhower (40%)</div><div class="sd-meltcard__asw">0.3161 oz · 40% silver</div><div class="sd-purity"><span style="width:40%"></span></div><div class="sd-meltcard__val"><span data-asw="0.31610">$23.71</span><small>S-mint, 1971–1976</small></div></div>
+          <div class="sd-meltcard"><div class="sd-meltcard__name">American Silver Eagle</div><div class="sd-meltcard__asw">1.0000 oz · 99.9% silver</div><div class="sd-purity"><span style="width:100%"></span></div><div class="sd-meltcard__val"><span data-asw="1.0">$75.00</span><small>melt value at spot</small></div></div>
+          <div class="sd-meltcard"><div class="sd-meltcard__name">Modern Morgan / Peace</div><div class="sd-meltcard__asw">0.8594 oz · 99.9% silver</div><div class="sd-purity"><span style="width:100%"></span></div><div class="sd-meltcard__val"><span data-asw="0.8594">$64.46</span><small>2021–2023 reissues</small></div></div>
           <div class="sd-meltcard" style="justify-content:center;background:var(--color-surface-offset)"><div class="sd-meltcard__name">Eisenhower (clad)</div><div class="sd-meltcard__asw">P &amp; D mints · 0% silver</div><div class="sd-purity"><span style="width:0%"></span></div><div class="sd-meltcard__val" style="color:var(--color-text-muted)">$0.00<small>no silver content</small></div></div>
         </div>
 
         <h3>Melt value compared</h3>
         <p>Because silver content varies, melt values differ widely even though all of these are "silver dollars". The Silver Eagle holds a full troy ounce; a 40% Eisenhower holds barely a third.</p>
-        <div class="sd-bars" role="img" aria-label="Melt value comparison: Silver Eagle $76.21, Modern Morgan/Peace $65.50, Trade dollar $60.04, Morgan or Peace $58.96, 40% Eisenhower $24.10 at the current silver price">
-          <div class="sd-bar" data-oz="1.0"><span class="sd-bar__label">Silver Eagle</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:100%"></div><span class="sd-bar__val">$76.21</span></div></div>
-          <div class="sd-bar" data-oz="0.8594"><span class="sd-bar__label">Modern Morgan/Peace</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:85.9%"></div><span class="sd-bar__val">$65.50</span></div></div>
-          <div class="sd-bar" data-oz="0.7876"><span class="sd-bar__label">Trade dollar</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:78.8%"></div><span class="sd-bar__val">$60.04</span></div></div>
-          <div class="sd-bar" data-oz="0.7734"><span class="sd-bar__label">Morgan / Peace</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:77.3%"></div><span class="sd-bar__val">$58.96</span></div></div>
-          <div class="sd-bar" data-oz="0.3161"><span class="sd-bar__label">Eisenhower 40%</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:31.6%"></div><span class="sd-bar__val">$24.10</span></div></div>
+        <div class="sd-bars" role="img" aria-label="Melt value comparison at an indicative $75/oz silver price: Silver Eagle $75.00, Modern Morgan/Peace $64.46, Trade dollar $59.07, Morgan or Peace $58.01, 40% Eisenhower $23.71. Figures update with the live silver price.">
+          <div class="sd-bar" data-oz="1.0"><span class="sd-bar__label">Silver Eagle</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:100%"></div><span class="sd-bar__val">$75.00</span></div></div>
+          <div class="sd-bar" data-oz="0.8594"><span class="sd-bar__label">Modern Morgan/Peace</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:85.9%"></div><span class="sd-bar__val">$64.46</span></div></div>
+          <div class="sd-bar" data-oz="0.7876"><span class="sd-bar__label">Trade dollar</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:78.8%"></div><span class="sd-bar__val">$59.07</span></div></div>
+          <div class="sd-bar" data-oz="0.77344"><span class="sd-bar__label">Morgan / Peace</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:77.3%"></div><span class="sd-bar__val">$58.01</span></div></div>
+          <div class="sd-bar" data-oz="0.3161"><span class="sd-bar__label">Eisenhower 40%</span><div class="sd-bar__track"><div class="sd-bar__fill" style="width:31.6%"></div><span class="sd-bar__val">$23.71</span></div></div>
+        </div>
+
+        <h3 id="chart">Silver price &mdash; recent history</h3>
+        <p>Melt values rise and fall in lock-step with the silver spot price. Here is how silver (USD per troy ounce) has actually moved, so you can read today's level in context.</p>
+        <div class="sd-chartcard">
+          <div class="sd-chartcard__head">
+            <div class="sd-chartcard__titlewrap">
+              <span class="sd-chartcard__title">Silver spot &middot; USD / oz</span>
+              <span class="sd-chartcard__delta" id="sdChartDelta" aria-live="polite">&nbsp;</span>
+            </div>
+            <div class="sd-chartcard__controls" role="group" aria-label="Chart time range">
+              <button type="button" class="sd-chartbtn" data-range="1Y">1Y</button>
+              <button type="button" class="sd-chartbtn active" data-range="5Y">5Y</button>
+              <button type="button" class="sd-chartbtn" data-range="10Y">10Y</button>
+            </div>
+          </div>
+          <p class="sd-chartcard__sub" id="sdChartRangeLabel">Last 5 years &middot; weekly close</p>
+          <div class="sd-chartwrap">
+            <canvas id="sdChart" role="img" aria-label="Line chart of the silver spot price in US dollars per troy ounce over the selected period. A full year-by-year value table appears later on this page."></canvas>
+            <div class="sd-chartloading" id="sdChartLoading">Loading price history&hellip;</div>
+          </div>
         </div>
 
         <h3>Try a silver-price scenario</h3>
         <p>Silver prices move daily. Drag the slider to see how melt value changes. Every $10/oz move in silver shifts a Morgan's melt value by about $7.73.</p>
         <div class="sd-scenario">
-          <div class="sd-scenario__head"><span class="sd-scenario__title">If silver were…</span><span class="sd-scenario__price" id="sdScenarioPrice">$76 / oz</span></div>
+          <div class="sd-scenario__head"><span class="sd-scenario__title">If silver were…</span><span class="sd-scenario__price" id="sdScenarioPrice">$75 / oz</span></div>
           <label class="sr-only" for="sdScenario">Silver price per troy ounce</label>
-          <input type="range" id="sdScenario" min="20" max="160" step="1" value="76">
+          <input type="range" id="sdScenario" min="20" max="160" step="1" value="75">
           <div class="sd-scenario__scale"><span>$20</span><span>$160</span></div>
           <div class="sd-scenario__out">
-            <div class="sd-scenario__item"><b id="sdScMorgan">$58.78</b><span>Morgan / Peace melt</span></div>
-            <div class="sd-scenario__item"><b id="sdScTrade">$59.86</b><span>Trade dollar melt</span></div>
-            <div class="sd-scenario__item"><b id="sdScAse">$76.00</b><span>Silver Eagle melt</span></div>
+            <div class="sd-scenario__item"><b id="sdScMorgan">$58.01</b><span>Morgan / Peace melt</span></div>
+            <div class="sd-scenario__item"><b id="sdScTrade">$59.07</b><span>Trade dollar melt</span></div>
+            <div class="sd-scenario__item"><b id="sdScAse">$75.00</b><span>Silver Eagle melt</span></div>
           </div>
         </div>
         <p>Remember: melt value is the floor. A collectible coin's market price can run far above it — that extra is the numismatic premium covered in each section below.</p>
       </section>
 
-      <section class="sd-section" id="morgan">
+      <section class="sd-section sd-reveal" id="morgan">
         <h2>The Morgan dollar (1878–1904, 1921)</h2>
         <p>The Morgan dollar is the most popular US silver coin in history. Named after US Mint engraver George T. Morgan, it was struck from 1878 to 1904, then revived for one final year in 1921 before the Peace dollar replaced it.</p>
         <div class="sd-specs">
@@ -903,7 +986,7 @@ blockquote strong{color:var(--color-text)}
             <div class="sd-specs__cell"><div class="sd-specs__k">Weight</div><div class="sd-specs__v">26.73 g</div></div>
             <div class="sd-specs__cell"><div class="sd-specs__k">Silver (ASW)</div><div class="sd-specs__v">0.7734 oz</div></div>
             <div class="sd-specs__cell"><div class="sd-specs__k">Diameter</div><div class="sd-specs__v">38.1 mm</div></div>
-            <div class="sd-specs__cell"><div class="sd-specs__k">Live melt</div><div class="sd-specs__v" data-asw="0.7734">$58.96</div></div>
+            <div class="sd-specs__cell"><div class="sd-specs__k">Live melt</div><div class="sd-specs__v" data-asw="0.77344">$58.01</div></div>
           </div>
         </div>
         <h3>What drives Morgan dollar value</h3>
@@ -956,7 +1039,7 @@ blockquote strong{color:var(--color-text)}
         </div>
       </section>
 
-      <section class="sd-section" id="peace">
+      <section class="sd-section sd-reveal" id="peace">
         <h2>The Peace dollar (1921–1935)</h2>
         <p>Introduced in 1921 to mark the end of World War I — "Peace" is inscribed on the reverse as a deliberate statement — the Peace dollar shares the Morgan's 90% silver, 0.7734 oz composition but a distinctly different look, with Liberty facing right rather than left. Melt values are therefore identical to the Morgan's.</p>
         <div class="sd-specs">
@@ -965,10 +1048,10 @@ blockquote strong{color:var(--color-text)}
             <div class="sd-specs__cell"><div class="sd-specs__k">Weight</div><div class="sd-specs__v">26.73 g</div></div>
             <div class="sd-specs__cell"><div class="sd-specs__k">Silver (ASW)</div><div class="sd-specs__v">0.7734 oz</div></div>
             <div class="sd-specs__cell"><div class="sd-specs__k">Mints</div><div class="sd-specs__v">P · D · S</div></div>
-            <div class="sd-specs__cell"><div class="sd-specs__k">Live melt</div><div class="sd-specs__v" data-asw="0.7734">$58.96</div></div>
+            <div class="sd-specs__cell"><div class="sd-specs__k">Live melt</div><div class="sd-specs__v" data-asw="0.77344">$58.01</div></div>
           </div>
         </div>
-        <p>Common dates (1922, 1923, 1925) in circulated grades trade at or just above melt — about <span class="sd-live" data-asw="0.7734">$58.96</span> to $65 at current prices.</p>
+        <p>Common dates (1922, 1923, 1925) in circulated grades trade at or just above melt — about <span class="sd-live" data-asw="0.77344">$58.01</span> to $65 at current prices.</p>
         <div class="sd-tablewrap" tabindex="0" role="region" aria-label="Peace dollar value chart">
           <table class="sd-table">
             <caption>Approximate retail values — Peace dollar</caption>
@@ -992,7 +1075,7 @@ blockquote strong{color:var(--color-text)}
         <p>The 1922 is the most common Peace dollar — over 51 million struck at Philadelphia alone — and the 1923 Philadelphia issue had one of the highest mintages in the series (30+ million). Both trade near the melt floor: about <strong>$58–$75 circulated</strong> and <strong>$85–$175 uncirculated</strong>.</p>
       </section>
 
-      <section class="sd-section" id="eisenhower">
+      <section class="sd-section sd-reveal" id="eisenhower">
         <h2>The Eisenhower dollar (1971–1978) — mostly not silver</h2>
         <p>The Eisenhower ("Ike") dollar causes huge confusion because it exists in both silver and non-silver versions — and most examples contain no silver at all.</p>
         <div class="sd-callout sd-callout--rule">
@@ -1009,7 +1092,7 @@ blockquote strong{color:var(--color-text)}
             </tbody>
           </table>
         </div>
-        <p>The S-mint silver Ikes are 40% silver (versus 90% for Morgan and Peace) and weigh 24.59 g (vs 22.68 g for the clad version). At <span data-spot>$76.21</span>/oz their melt value is about <span class="sd-live" data-asw="0.3161">$24.10</span>.</p>
+        <p>The S-mint silver Ikes are 40% silver (versus 90% for Morgan and Peace) and weigh 24.59 g (vs 22.68 g for the clad version). At <span data-spot>$75.00</span>/oz their melt value is about <span class="sd-live" data-asw="0.31610">$23.71</span>.</p>
         <h3>Specific year values</h3>
         <ul>
           <li><strong>1971:</strong> most are clad (no silver) — only the 1971-S is silver. A circulated 1971-S ≈ $10–$20; a proof ≈ $15–$30. The standard clad 1971 is worth $1–$5.</li>
@@ -1020,7 +1103,7 @@ blockquote strong{color:var(--color-text)}
         </ul>
       </section>
 
-      <section class="sd-section" id="sba">
+      <section class="sd-section sd-reveal" id="sba">
         <h2>The Susan B. Anthony dollar (1979–1981, 1999) — not silver</h2>
         <div class="sd-callout sd-callout--warn">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
@@ -1038,7 +1121,7 @@ blockquote strong{color:var(--color-text)}
         </div>
       </section>
 
-      <section class="sd-section" id="silver-eagle">
+      <section class="sd-section sd-reveal" id="silver-eagle">
         <h2>The American Silver Eagle (1986–present)</h2>
         <p>The American Silver Eagle is the US Mint's flagship bullion coin and the best-selling silver coin in the world. Unlike the older dollars, it is made for investors rather than for circulation, issued as legal tender under the Liberty Coin Act.</p>
         <div class="sd-specs">
@@ -1047,10 +1130,10 @@ blockquote strong{color:var(--color-text)}
             <div class="sd-specs__cell"><div class="sd-specs__k">Weight</div><div class="sd-specs__v">31.10 g</div></div>
             <div class="sd-specs__cell"><div class="sd-specs__k">Silver (ASW)</div><div class="sd-specs__v">1.0000 oz</div></div>
             <div class="sd-specs__cell"><div class="sd-specs__k">Face value</div><div class="sd-specs__v">$1</div></div>
-            <div class="sd-specs__cell"><div class="sd-specs__k">Live melt</div><div class="sd-specs__v" data-asw="1.0">$76.21</div></div>
+            <div class="sd-specs__cell"><div class="sd-specs__k">Live melt</div><div class="sd-specs__v" data-asw="1.0">$75.00</div></div>
           </div>
         </div>
-        <p>At a silver spot near <span data-spot>$76.21</span>/oz, a 2026 Silver Eagle trades around <strong>$92–$97 in bullion condition</strong> at major dealers like APMEX. The premium over spot covers the Mint's manufacturing costs, dealer margins and the coin's legal-tender status.</p>
+        <p>At a silver spot near <span data-spot>$75.00</span>/oz, a 2026 Silver Eagle trades around <strong>$92–$97 in bullion condition</strong> at major dealers like APMEX. The premium over spot covers the Mint's manufacturing costs, dealer margins and the coin's legal-tender status.</p>
         <div class="sd-tablewrap" tabindex="0" role="region" aria-label="Silver Eagle retail values">
           <table class="sd-table">
             <caption>Silver Eagle retail (bullion) values — APMEX, May 2026</caption>
@@ -1067,9 +1150,9 @@ blockquote strong{color:var(--color-text)}
         <p>A Silver Eagle's value tracks spot closely. If silver returns to $100+/oz, melt alone is $100 and retail prices likely reach $115–$130 or more.</p>
       </section>
 
-      <section class="sd-section" id="modern">
+      <section class="sd-section sd-reveal" id="modern">
         <h2>2021 modern Morgan &amp; Peace reissues</h2>
-        <p>In 2021 the US Mint reissued both designs in <strong>99.9% fine silver</strong> — higher purity than the 90% classics. These were sold as collectibles and each contains 0.8594 troy oz of silver (live melt about <span class="sd-live" data-asw="0.8594">$65.50</span>).</p>
+        <p>In 2021 the US Mint reissued both designs in <strong>99.9% fine silver</strong> — higher purity than the 90% classics. These were sold as collectibles and each contains 0.8594 troy oz of silver (live melt about <span class="sd-live" data-asw="0.8594">$64.46</span>).</p>
         <ul>
           <li><strong>2021 Morgan</strong> — five mint-mark versions (P, D, S, O, CC). Original issue price was $85–$95; market values now run ~$85–$200+, with the CC and O mint marks carrying the highest collector premiums.</li>
           <li><strong>2021 Peace</strong> — a Philadelphia-only issue; current market values roughly $90–$150 depending on condition and certification.</li>
@@ -1077,7 +1160,7 @@ blockquote strong{color:var(--color-text)}
         </ul>
       </section>
 
-      <section class="sd-section" id="first-dollar">
+      <section class="sd-section sd-reveal" id="first-dollar">
         <h2>The first US silver dollar: 1794 Flowing Hair</h2>
         <p>The Flowing Hair dollar is widely considered the <strong>first dollar coin ever struck by the United States federal government</strong>, with the first examples produced on 15 October 1794. Only about 1,758 were made in 1794, making genuine examples extraordinarily rare.</p>
         <div class="sd-callout sd-callout--gold">
@@ -1087,7 +1170,7 @@ blockquote strong{color:var(--color-text)}
         <p>Production continued into 1795 (about 160,295 coins) before the Draped Bust design took over. 1795 examples are far more available than 1794 specimens and typically trade in the $1,500–$15,000+ range depending on condition.</p>
       </section>
 
-      <section class="sd-section" id="year-by-year">
+      <section class="sd-section sd-reveal" id="year-by-year">
         <h2>Year-by-year quick reference</h2>
         <p>Many people search for a specific year. This consolidated table covers the most-searched dates — what the coin is, whether it's silver, and an approximate value. Key-date specimens can be worth many times these figures.</p>
         <div class="sd-tablewrap" tabindex="0" role="region" aria-label="Year-by-year US silver dollar reference table">
@@ -1136,18 +1219,18 @@ blockquote strong{color:var(--color-text)}
         <p style="font-size:var(--text-xs);color:var(--color-text-muted)">Values are approximate. Always verify with a current price guide or certified dealer before buying or selling.</p>
       </section>
 
-      <section class="sd-section" id="how-to-value">
+      <section class="sd-section sd-reveal" id="how-to-value">
         <h2>How to value your silver dollars, step by step</h2>
         <div class="sd-steps">
           <div class="sd-step"><div class="sd-step__num" aria-hidden="true"></div><div class="sd-step__body"><p class="sd-step__title">Identify the coin type and year</p><p>Look at the obverse (front). Is it Liberty with flowing hair, a profile bust, a seated Liberty, a Morgan or Peace Liberty, Eisenhower, Susan B. Anthony, or the Walking Liberty of the Eagle? Match it to the series above.</p></div></div>
           <div class="sd-step"><div class="sd-step__num" aria-hidden="true"></div><div class="sd-step__body"><p class="sd-step__title">Find the mint mark</p><ul><li>Morgan &amp; Peace: reverse, below the eagle</li><li>Eisenhower: obverse, below the neck</li><li>Susan B. Anthony: obverse, to the left of the portrait</li><li>Silver Eagle: edge or no mark (Philadelphia)</li></ul></div></div>
           <div class="sd-step"><div class="sd-step__num" aria-hidden="true"></div><div class="sd-step__body"><p class="sd-step__title">Confirm it is actually silver</p><p>An Eisenhower with no "S" mint mark contains zero silver. Check the edge: a silver coin shows a solid silver-grey edge, while a clad coin shows a visible copper-coloured stripe.</p></div></div>
-          <div class="sd-step"><div class="sd-step__num" aria-hidden="true"></div><div class="sd-step__body"><p class="sd-step__title">Calculate the melt value</p><p>Silver weight × current spot price. For a Morgan or Peace dollar that's 0.7734 × spot — at <span data-spot>$76.21</span>/oz, about <span class="sd-live" data-asw="0.7734">$58.96</span>. This is the absolute floor for any non-collectible coin.</p></div></div>
+          <div class="sd-step"><div class="sd-step__num" aria-hidden="true"></div><div class="sd-step__body"><p class="sd-step__title">Calculate the melt value</p><p>Silver weight × current spot price. For a Morgan or Peace dollar that's 0.7734 × spot — at <span data-spot>$75.00</span>/oz, about <span class="sd-live" data-asw="0.77344">$58.01</span>. This is the absolute floor for any non-collectible coin.</p></div></div>
           <div class="sd-step"><div class="sd-step__num" aria-hidden="true"></div><div class="sd-step__body"><p class="sd-step__title">Look up the numismatic value</p><p>Use <a href="https://www.pcgs.com/prices" rel="nofollow noopener" target="_blank">PCGS</a>, <a href="https://www.ngccoin.com" rel="nofollow noopener" target="_blank">NGC</a> or a bullion dealer's coin guide for your exact date, mint mark and grade. If it's worth significantly more than melt, consider professional grading before you sell.</p></div></div>
         </div>
       </section>
 
-      <section class="sd-section" id="buy-sell">
+      <section class="sd-section sd-reveal" id="buy-sell">
         <h2>Where to buy and sell US silver dollars</h2>
         <div class="sd-cols">
           <div class="sd-col">
@@ -1182,12 +1265,12 @@ blockquote strong{color:var(--color-text)}
         </div>
       </section>
 
-      <section class="sd-section" id="faq">
+      <section class="sd-section sd-reveal" id="faq">
         <h2>Frequently asked questions</h2>
         <div class="sd-faq">
           <details><summary>How much is a US silver dollar worth?</summary><div class="sd-faq__a">It depends entirely on which dollar. Common Morgan and Peace dollars are worth about $58–$75 at current silver prices thanks to their 0.7734 oz of silver. Key-date Morgans (1893-S, 1895, 1889-CC) can be worth thousands. Eisenhower and SBA dollars may be worth only their $1 face value if they contain no silver.</div></details>
           <details><summary>How much does a US silver dollar weigh?</summary><div class="sd-faq__a">Morgan and Peace dollars weigh <strong>26.73 grams</strong>. Silver (40%) Eisenhower dollars weigh <strong>24.59 grams</strong>, and American Silver Eagles weigh <strong>31.10 grams</strong> (one troy ounce).</div></details>
-          <details><summary>What is a Morgan silver dollar worth today?</summary><div class="sd-faq__a">At a silver spot near <span data-spot>$76.21</span>/oz, a common-date circulated Morgan dollar is worth roughly <strong>$58–$80</strong> depending on condition. Key dates and high-grade examples can be worth dramatically more.</div></details>
+          <details><summary>What is a Morgan silver dollar worth today?</summary><div class="sd-faq__a">At a silver spot near <span data-spot>$75.00</span>/oz, a common-date circulated Morgan dollar is worth roughly <strong>$58–$80</strong> depending on condition. Key dates and high-grade examples can be worth dramatically more.</div></details>
           <details><summary>What is a 1921 Morgan silver dollar worth?</summary><div class="sd-faq__a">About <strong>$60–$80</strong> in average circulated condition at current silver prices, with a small premium in lower uncirculated grades. The 1921 is the most common Morgan date and holds little numismatic premium in circulated grades.</div></details>
           <details><summary>How much is a 1922 or 1923 Peace dollar worth?</summary><div class="sd-faq__a">About <strong>$58–$75</strong> for a circulated example — essentially the melt value of its 0.7734 oz of silver. Uncirculated coins in MS-63 or better start around $85–$175.</div></details>
           <details><summary>Are 1972 silver dollars worth anything?</summary><div class="sd-faq__a">The 1972-S silver Eisenhower dollar (40% silver) is worth about <strong>$15–$30</strong>. The 1972-P Type 2 reverse clad dollar can be worth $25–$200+ in mint state as a variety. The common 1972 clad dollar has minimal value above face.</div></details>
@@ -1349,60 +1432,188 @@ blockquote strong{color:var(--color-text)}
 </footer>
 
 <script>
-/* Live silver price -> melt-value calculations + price scenario slider */
+/* ════════════════════════════════════════════════════════════════
+   LIVE DATA LAYER — silver spot band · melt values · price chart
+   USD ($) primary · unified XAU+XAG fetch · refreshes every 60s
+   Canonical live-price config, identical to the site-wide standard.
+   ════════════════════════════════════════════════════════════════ */
 (function(){
-  var REF_SPOT = 76.21;
-  var ASW = { morgan:0.7734, trade:0.7876, ase:1.0 };
-  function usd(v){ return '$' + v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  'use strict';
+  var GOLD_API_BASE   = 'https://api.gold-api.com/price';
+  var TROY_OZ_TO_GRAM = 31.1035;
+  var GRAM_PER_KILO   = 1000;
+  var STERLING_PURITY = 0.925;
+  var SILVER_ATH      = 121.62;                          // 29 Jan 2026 intraday all-time high
+  var FALLBACK_SILVER = 75.0, FALLBACK_GOLD = 4692;      // site-wide static fallback
+  var ASW = { morgan:0.77344, trade:0.7876, ase:1.0 };   // matches the silver coin calculator
+  var silverOz = null, goldOz = null;
 
-  function renderSpot(spot){
+  function $(id){ return document.getElementById(id); }
+  function usd(v){ return '$' + v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function usd0(v){ return '$' + v.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}); }
+  function setText(id,t){ var el = $(id); if(el) el.textContent = t; }
+
+  // Update every inline melt figure (data-spot / data-asw) and the comparison bars
+  function renderInline(spot){
     document.querySelectorAll('[data-spot]').forEach(function(el){ el.textContent = usd(spot); });
     document.querySelectorAll('[data-asw]').forEach(function(el){
       var oz = parseFloat(el.getAttribute('data-asw'));
       if(!isNaN(oz)) el.textContent = usd(oz * spot);
     });
-    var max = 1.0 * spot;
     document.querySelectorAll('.sd-bar[data-oz]').forEach(function(bar){
       var oz = parseFloat(bar.getAttribute('data-oz'));
-      var v = oz * spot;
-      var fill = bar.querySelector('.sd-bar__fill');
-      var val = bar.querySelector('.sd-bar__val');
-      if(fill) fill.style.width = Math.max(2, (v / max) * 100) + '%';
+      var v = oz * spot, fill = bar.querySelector('.sd-bar__fill'), val = bar.querySelector('.sd-bar__val');
+      if(fill) fill.style.width = Math.max(2, (v / (1.0 * spot)) * 100) + '%';
       if(val) val.textContent = usd(v);
     });
   }
 
-  function initScenario(){
-    var s = document.getElementById('sdScenario');
-    if(!s) return;
-    function upd(){
-      var p = parseFloat(s.value);
-      var price = document.getElementById('sdScenarioPrice');
-      var m = document.getElementById('sdScMorgan');
-      var t = document.getElementById('sdScTrade');
-      var a = document.getElementById('sdScAse');
-      if(price) price.textContent = '$' + p + ' / oz';
-      if(m) m.textContent = usd(ASW.morgan * p);
-      if(t) t.textContent = usd(ASW.trade * p);
-      if(a) a.textContent = usd(ASW.ase * p);
+  function setLive(sOz, gOz, sPrev){
+    silverOz = sOz; goldOz = gOz;
+    var gram = sOz / TROY_OZ_TO_GRAM, kilo = gram * GRAM_PER_KILO, sterling = gram * STERLING_PURITY;
+    var ratio = (gOz && sOz) ? gOz / sOz : null;
+
+    renderInline(sOz);
+
+    var pEl = $('sdLivePrice');
+    if(pEl) pEl.innerHTML = usd(sOz) + '<span class="sd-liveband__price-unit">/oz</span>';
+
+    var chgEl = $('sdLiveChange');
+    if(chgEl){
+      if(sPrev){
+        var pct = (sOz - sPrev) / sPrev * 100, diff = sOz - sPrev, up = pct >= 0;
+        chgEl.className = 'sd-liveband__change ' + (Math.abs(pct) < 0.005 ? 'flat' : (up ? 'up' : 'down'));
+        chgEl.innerHTML = '<span class="arw">' + (up ? '▲' : '▼') + '</span> ' + Math.abs(pct).toFixed(2) +
+          '% <span class="sd-liveband__change-sub">(' + (up ? '+' : '−') + usd(Math.abs(diff)) + ' today)</span>';
+      } else {
+        chgEl.className = 'sd-liveband__change flat';
+        chgEl.innerHTML = '<span class="arw">·</span> Live spot price';
+      }
     }
-    s.addEventListener('input', upd);
-    upd();
+
+    setText('sdLiveGram', usd(gram));
+    setText('sdLiveKilo', usd0(kilo));
+    setText('sdLiveSterling', usd(sterling));
+    setText('sdLiveGsr', ratio ? Math.round(ratio) + ':1' : '—');
+
+    var fill = $('sdLiveAthFill'), note = $('sdLiveAthNote');
+    if(fill) fill.style.width = Math.max(2, Math.min(100, sOz / SILVER_ATH * 100)) + '%';
+    if(note) note.innerHTML = (sOz >= SILVER_ATH)
+      ? '<strong>New all-time-high territory</strong> — above the Jan 2026 record'
+      : '<strong>' + ((SILVER_ATH - sOz) / SILVER_ATH * 100).toFixed(1) + '% below</strong> the all-time high';
+
+    // keep the scenario slider anchored to the live price until the user drags it
+    var sc = $('sdScenario');
+    if(sc && !sc._touched){ sc.value = Math.round(sOz); updateScenario(); }
   }
 
-  renderSpot(REF_SPOT);
-  initScenario();
+  function updateScenario(){
+    var s = $('sdScenario'); if(!s) return;
+    var p = parseFloat(s.value);
+    setText('sdScenarioPrice', '$' + p + ' / oz');
+    setText('sdScMorgan', usd(ASW.morgan * p));
+    setText('sdScTrade',  usd(ASW.trade  * p));
+    setText('sdScAse',    usd(ASW.ase    * p));
+  }
+  (function(){
+    var s = $('sdScenario'); if(!s) return;
+    s.addEventListener('input', function(){ s._touched = true; updateScenario(); });
+    updateScenario();
+  })();
 
-  fetch('https://api.gold-api.com/price/XAG')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if(d && d.price){
-        renderSpot(d.price);
-        var s = document.getElementById('sdScenario');
-        if(s){ s.value = Math.round(d.price); s.dispatchEvent(new Event('input')); }
-      }
-    })
-    .catch(function(){ /* keep reference values on failure */ });
+  function fetchPrices(){
+    Promise.all([
+      fetch(GOLD_API_BASE + '/XAG').then(function(r){ if(!r.ok) throw 0; return r.json(); }),
+      fetch(GOLD_API_BASE + '/XAU').then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    ]).then(function(res){
+      var s = res[0], g = res[1];
+      if(!s.price || !g.price) throw 0;
+      setLive(s.price, g.price, s.prev_close_price);
+      setText('sdLiveUpdated', 'Updated ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' local time');
+    }).catch(function(){
+      setLive(silverOz || FALLBACK_SILVER, goldOz || FALLBACK_GOLD, null);
+      setText('sdLiveUpdated', 'Live feed unavailable — showing indicative price');
+    });
+  }
+  fetchPrices();
+  setInterval(fetchPrices, 60000);
+
+  /* ── Live silver price chart (Chart.js, lazy-loaded; data from /chart-data/XAG-*.json) ── */
+  var chart = null, chartLoaded = false, currentRange = '5Y', cache = {};
+  var RANGE_LABEL = { '1Y':'Last 12 months · weekly close', '5Y':'Last 5 years · weekly close', '10Y':'Last 10 years · monthly close' };
+
+  function loadChartJS(cb){
+    if(chartLoaded || typeof Chart !== 'undefined'){ chartLoaded = true; cb(); return; }
+    var sc = document.createElement('script');
+    sc.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+    sc.onload = function(){ chartLoaded = true; cb(); };
+    sc.onerror = function(){ var l = $('sdChartLoading'); if(l) l.textContent = 'Chart unavailable'; };
+    document.head.appendChild(sc);
+  }
+  function fetchHistory(range){
+    if(cache[range]) return Promise.resolve(cache[range]);
+    return fetch('/chart-data/XAG-' + range + '.json').then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){ if(j.labels && j.data && j.data.length){ cache[range] = j; return j; } throw 0; });
+  }
+  function buildChart(range){
+    var loading = $('sdChartLoading');
+    if(loading){ loading.style.display = 'flex'; }
+    fetchHistory(range).then(function(h){
+      if(loading) loading.style.display = 'none';
+      if(typeof Chart === 'undefined') return;
+      var cs = getComputedStyle(document.documentElement);
+      var line   = (cs.getPropertyValue('--color-silver-bright').trim() || '#aab4c4');
+      var muted  = cs.getPropertyValue('--color-text-muted').trim();
+      var border = cs.getPropertyValue('--color-border').trim();
+      var labels = h.labels.map(function(s){ return new Date(s).toLocaleDateString('en-US',{month:'short',year:'2-digit'}); });
+      var data = h.data, first = data[0], last = data[data.length-1], dpct = (last-first)/first*100, up = dpct >= 0;
+      var dEl = $('sdChartDelta');
+      if(dEl){ dEl.textContent = (up?'+':'') + dpct.toFixed(1) + '% over period'; dEl.className = 'sd-chartcard__delta ' + (up?'up':'down'); }
+      setText('sdChartRangeLabel', RANGE_LABEL[range] || '');
+      if(chart) chart.destroy();
+      chart = new Chart($('sdChart'), {
+        type:'line',
+        data:{ labels:labels, datasets:[{ data:data, borderColor:line, borderWidth:2, fill:true,
+          backgroundColor:function(ctx){ var g = ctx.chart.ctx.createLinearGradient(0,0,0,320); g.addColorStop(0, line+'40'); g.addColorStop(1, line+'00'); return g; } }] },
+        options:{ responsive:true, maintainAspectRatio:false, animation:{duration:600},
+          plugins:{ legend:{display:false}, tooltip:{ mode:'index', intersect:false, backgroundColor:'rgba(0,0,0,0.85)', titleColor:'#fff', bodyColor:'#fff', padding:10,
+            callbacks:{ label:function(c){ return ' $' + c.parsed.y.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' /oz'; } } } },
+          scales:{ x:{ ticks:{color:muted, font:{size:11}, maxTicksLimit:8}, grid:{color:border+'40'} },
+                   y:{ ticks:{color:muted, font:{size:11}, callback:function(v){ return '$'+v.toLocaleString(); }}, grid:{color:border+'40'}, position:'right' } },
+          elements:{ point:{radius:0, hitRadius:12}, line:{tension:0.3} } }
+      });
+    }).catch(function(){ if(loading){ loading.style.display='flex'; loading.textContent = 'Price history unavailable'; } });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.sd-chartbtn'), function(btn){
+    btn.addEventListener('click', function(){
+      currentRange = btn.getAttribute('data-range');
+      Array.prototype.forEach.call(document.querySelectorAll('.sd-chartbtn'), function(b){ b.classList.toggle('active', b === btn); });
+      loadChartJS(function(){ buildChart(currentRange); });
+    });
+  });
+  (function(){
+    var el = $('sdChart'); if(!el) return;
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(en){ if(en[0].isIntersecting){ loadChartJS(function(){ buildChart(currentRange); }); io.disconnect(); } }, {rootMargin:'250px'});
+      io.observe(el);
+    } else { loadChartJS(function(){ buildChart(currentRange); }); }
+  })();
+
+  /* ── Reveal-on-scroll (progressive enhancement; visible without JS / under reduced motion) ── */
+  (function(){
+    var els = Array.prototype.slice.call(document.querySelectorAll('.sd-reveal'));
+    if(!els.length) return;
+    function revealAll(){ els.forEach(function(el){ el.classList.add('is-in'); }); }
+    if(!('IntersectionObserver' in window)){ revealAll(); return; }
+    var io = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); obs.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+    els.forEach(function(el){ io.observe(el); });
+    window.addEventListener('load', function(){ setTimeout(function(){
+      els.forEach(function(el){ if(el.getBoundingClientRect().top < window.innerHeight){ el.classList.add('is-in'); } });
+    }, 100); });
+    setTimeout(revealAll, 3000);
+  })();
 })();
 
 /* Reading progress, table-of-contents scroll-spy, back-to-top */
