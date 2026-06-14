@@ -61,7 +61,7 @@
       "name": "What is the historical gold-to-silver ratio?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The long-term historical average is approximately 55–65:1. It peaked at a record 124:1 during the COVID-19 panic in March 2020 and compressed to approximately 55:1 by May 2026 as silver recovered strongly."
+        "text": "The long-term historical average is approximately 55–65:1. It peaked at a record 124:1 during the COVID-19 panic in March 2020 and compressed back toward its long-run average by 2026 as silver recovered strongly."
       }
     },
     {
@@ -706,6 +706,92 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .share-buttons a{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--color-border);border-radius:99px;background:var(--color-surface);color:var(--color-text-muted);font-size:13px;font-weight:500;text-decoration:none;transition:border-color var(--transition),color var(--transition);min-height:36px}
 .share-buttons a:hover{border-color:var(--color-gold-bright);color:var(--color-gold-bright);text-decoration:none}
 .share-buttons a svg{flex-shrink:0}
+
+/* ════════════════════════════════════════════════════════
+   LIVE DATA LAYER ─ redesign addition
+   Live spot band · historical chart · scroll UX
+   Mobile-first · USD is the primary currency
+   ════════════════════════════════════════════════════════ */
+
+/* ── Live spot price band (hero centrepiece) ── */
+.gph-live{position:relative;margin:var(--space-6) 0 var(--space-2);padding:var(--space-5);background:linear-gradient(150deg,color-mix(in oklch,var(--color-gold-bright) 11%,var(--color-surface)) 0%,var(--color-surface) 62%);border:1px solid color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border));border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md)}
+.gph-live::before{content:'';position:absolute;top:-70px;right:-70px;width:220px;height:220px;background:radial-gradient(circle,color-mix(in oklch,var(--color-gold-bright) 22%,transparent),transparent 70%);pointer-events:none}
+.gph-live-head{display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-4);position:relative;z-index:1;flex-wrap:wrap}
+.gph-live-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-gold-bright)}
+.gph-live-pulse{width:8px;height:8px;border-radius:50%;background:var(--color-up);box-shadow:0 0 0 0 color-mix(in oklch,var(--color-up) 65%,transparent);animation:gph-ping 2s ease-out infinite}
+@keyframes gph-ping{0%{box-shadow:0 0 0 0 color-mix(in oklch,var(--color-up) 55%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media(prefers-reduced-motion:reduce){.gph-live-pulse{animation:none}}
+.gph-live-usd{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-faint);border:1px solid var(--color-border);padding:3px 9px;border-radius:99px}
+.gph-live-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:var(--space-5)}
+@media(min-width:700px){.gph-live-grid{grid-template-columns:1.15fr 1fr;align-items:center;gap:var(--space-6)}}
+.gph-live-pricewrap{min-width:0}
+.gph-live-price{font-family:var(--font-display);font-size:clamp(2.4rem,9vw,3.5rem);font-weight:700;line-height:1;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.02em;text-shadow:0 0 32px color-mix(in oklch,var(--color-gold-bright) 24%,transparent);min-height:1em}
+.gph-live-price-unit{font-size:14px;font-weight:500;color:var(--color-text-muted);margin-left:7px;letter-spacing:0;white-space:nowrap}
+.gph-live-change{display:inline-flex;align-items:center;gap:7px;margin-top:var(--space-3);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;min-height:20px}
+.gph-live-change .arw{font-size:12px}
+.gph-live-change.up{color:var(--color-up)}
+.gph-live-change.down{color:var(--color-down)}
+.gph-live-change.flat{color:var(--color-text-muted)}
+.gph-live-change-sub{color:var(--color-text-faint);font-weight:500}
+.gph-live-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-2)}
+.gph-live-stat{background:color-mix(in oklch,var(--color-surface-offset) 70%,transparent);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3)}
+.gph-live-stat-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-faint);margin:0 0 5px;line-height:1.3}
+.gph-live-stat-value{font-family:var(--font-display);font-size:clamp(14px,3.4vw,17px);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-.01em}
+.gph-live-stat-value.silver{color:var(--color-silver)}
+.gph-live-foot{position:relative;z-index:1;margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
+.gph-live-ath-row{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3);flex-wrap:wrap;margin-bottom:8px}
+.gph-live-ath-label{font-size:12px;color:var(--color-text-muted);line-height:1.4}
+.gph-live-ath-label strong{color:var(--color-text);font-weight:700}
+.gph-live-ath-tag{font-size:11px;font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;white-space:nowrap}
+.gph-live-ath-track{position:relative;height:7px;background:var(--color-surface-offset-2);border:1px solid var(--color-border);border-radius:99px;overflow:hidden}
+.gph-live-ath-fill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,var(--color-gold) 0%,var(--color-gold-bright) 100%);border-radius:99px;transition:width .8s cubic-bezier(.16,1,.3,1)}
+@media(prefers-reduced-motion:reduce){.gph-live-ath-fill{transition:none}}
+.gph-live-updated{display:flex;align-items:center;gap:6px;margin-top:var(--space-3);font-size:11px;color:var(--color-text-faint)}
+.gph-live-updated svg{flex-shrink:0;opacity:.7}
+
+/* ── Historical chart card ── */
+.gph-chartcard{position:relative;margin:0 0 var(--space-2);padding:var(--space-5);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}
+.gph-chart-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-4)}
+.gph-chart-titlewrap{min-width:0}
+.gph-chart-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-gold-bright);margin:0 0 4px}
+.gph-chart-title{font-family:var(--font-display);font-size:clamp(1.15rem,2vw,1.5rem);font-weight:700;color:var(--color-text);line-height:1.2;margin:0}
+.gph-chart-ranges{display:flex;gap:6px;flex-wrap:wrap}
+.gph-chart-btn{padding:7px 15px;font-size:12px;font-weight:600;border-radius:99px;border:1px solid var(--color-border);color:var(--color-text-muted);background:none;cursor:pointer;min-height:38px;font-variant-numeric:tabular-nums;transition:color var(--transition),background var(--transition),border-color var(--transition)}
+.gph-chart-btn:hover{color:var(--color-text);border-color:var(--color-gold-bright)}
+.gph-chart-btn.active{background:var(--color-gold-bright);color:#0f0e0c;border-color:var(--color-gold-bright)}
+.gph-chart-wrap{position:relative;height:340px}
+@media(max-width:600px){.gph-chart-wrap{height:260px}}
+.gph-chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-size:14px;gap:8px}
+.gph-chart-spinner{width:16px;height:16px;border:2px solid var(--color-border);border-top-color:var(--color-gold-bright);border-radius:50%;animation:gph-spin .7s linear infinite}
+@keyframes gph-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.gph-chart-spinner{animation-duration:1.4s}}
+.gph-chart-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);font-size:11px;color:var(--color-text-faint)}
+.gph-chart-meta .gph-chart-delta{font-weight:700;font-variant-numeric:tabular-nums}
+.gph-chart-delta.up{color:var(--color-up)}
+.gph-chart-delta.down{color:var(--color-down)}
+
+/* ── Live GSR readout ── */
+.gph-ratio-live{display:flex;align-items:baseline;gap:8px;margin:0 0 var(--space-4);padding:var(--space-3) var(--space-4);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset));border:1px solid var(--color-border);border-radius:var(--radius-md);flex-wrap:wrap}
+.gph-ratio-live-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-faint)}
+.gph-ratio-live-value{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.gph-ratio-live-sub{font-size:11px;color:var(--color-text-muted)}
+.gph-ratio-marker.is-live{z-index:2}
+.gph-ratio-marker.is-live .v{background:var(--color-gold-bright);color:#0f0e0c;border-color:var(--color-gold-bright)}
+.gph-ratio-marker.is-live{background:var(--color-gold-bright)}
+
+/* ── Live CTA inline price ── */
+.gph-cta-live{display:inline-flex;align-items:baseline;gap:8px;margin:0 0 var(--space-4);font-variant-numeric:tabular-nums}
+.gph-cta-live-price{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--color-gold-bright);letter-spacing:-.02em;min-width:3ch}
+.gph-cta-live-meta{font-size:12px;color:var(--color-text-muted)}
+
+/* ── Scroll-spy active TOC ── */
+.gph-toc-list a.is-active{color:var(--color-gold-bright);background:var(--color-surface-offset)}
+.gph-toc-list a.is-active .gph-toc-num{color:var(--color-gold-bright)}
+
+/* ── Reveal-on-scroll (progressive enhancement; no-JS keeps content visible) ── */
+.gph-js .gph-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.gph-js .gph-reveal.is-in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.gph-js .gph-reveal{opacity:1;transform:none;transition:none}}
 </style>
 
 <link rel="stylesheet" href="/assets/site.css">
@@ -713,6 +799,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "wpxnx7usjr");</script>
 </head>
 <body>
+<script>document.documentElement.classList.add('gph-js');</script>
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="GoldPriceTools Home">
@@ -811,6 +898,47 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
         <span>15 min read</span>
       </div>
 
+      <!-- ── LIVE GOLD SPOT BAND ── connects the history to right now -->
+      <div class="gph-live" role="region" aria-label="Live gold spot price">
+        <div class="gph-live-head">
+          <span class="gph-live-badge"><span class="gph-live-pulse" aria-hidden="true"></span>Live Gold Spot Price</span>
+          <span class="gph-live-usd">USD · per troy oz</span>
+        </div>
+        <div class="gph-live-grid">
+          <div class="gph-live-pricewrap">
+            <div class="gph-live-price" id="gphlPrice" aria-live="polite">$&mdash;<span class="gph-live-price-unit">/oz</span></div>
+            <div class="gph-live-change flat" id="gphlChange" aria-live="polite"><span class="arw">&middot;</span> Fetching live market data&hellip;</div>
+          </div>
+          <div class="gph-live-stats">
+            <div class="gph-live-stat">
+              <p class="gph-live-stat-label">Per Gram 24K</p>
+              <div class="gph-live-stat-value" id="gphlGram">$&mdash;</div>
+            </div>
+            <div class="gph-live-stat">
+              <p class="gph-live-stat-label">Silver / oz</p>
+              <div class="gph-live-stat-value silver" id="gphlSilver">$&mdash;</div>
+            </div>
+            <div class="gph-live-stat">
+              <p class="gph-live-stat-label">Gold:Silver</p>
+              <div class="gph-live-stat-value" id="gphlGsr">&mdash;</div>
+            </div>
+          </div>
+        </div>
+        <div class="gph-live-foot">
+          <div class="gph-live-ath-row">
+            <span class="gph-live-ath-label" id="gphlAth">Tracking distance from the all-time high&hellip;</span>
+            <span class="gph-live-ath-tag">ATH $5,589.38 &middot; 28 Jan 2026</span>
+          </div>
+          <div class="gph-live-ath-track" role="img" aria-label="Current price relative to all-time high">
+            <div class="gph-live-ath-fill" id="gphlAthFill"></div>
+          </div>
+          <p class="gph-live-updated">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="gphlUpdated">Connecting to live feed&hellip;</span> &middot; refreshes every 60s &middot; LBMA spot via gold-api.com
+          </p>
+        </div>
+      </div>
+
       <!-- Hero stat cards -->
       <div class="gph-hero-stats" aria-label="Key statistics">
         <div class="gph-stat-card">
@@ -876,6 +1004,32 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     </div>
   </header>
 
+  <!-- ── LIVE HISTORICAL CHART ── -->
+  <section class="gph-section gph-section--lede gph-reveal" id="price-chart" aria-label="Gold price chart">
+    <div class="gph-chartcard">
+      <div class="gph-chart-head">
+        <div class="gph-chart-titlewrap">
+          <p class="gph-chart-eyebrow">Live &amp; Historical</p>
+          <h2 class="gph-chart-title">Gold Price Chart &mdash; USD per Troy Ounce</h2>
+        </div>
+        <div class="gph-chart-ranges" role="group" aria-label="Chart time range">
+          <button class="gph-chart-btn" data-range="1Y" type="button">1Y</button>
+          <button class="gph-chart-btn active" data-range="5Y" type="button">5Y</button>
+          <button class="gph-chart-btn" data-range="10Y" type="button">10Y</button>
+        </div>
+      </div>
+      <div class="gph-chart-wrap">
+        <canvas id="gphChart" aria-label="Gold price history line chart" role="img"></canvas>
+        <div class="gph-chart-loading" id="gphChartLoading"><span class="gph-chart-spinner" aria-hidden="true"></span> Loading price history&hellip;</div>
+      </div>
+      <div class="gph-chart-meta">
+        <span id="gphChartRangeLabel">Last 5 years &middot; weekly close</span>
+        <span>Change over period: <span class="gph-chart-delta" id="gphChartDelta">&mdash;</span></span>
+      </div>
+    </div>
+    <p class="gph-p" style="margin-top:var(--space-4)">The chart above tracks gold's live and recent market price in US dollars. For the full century of milestones &mdash; from the $35 Bretton Woods peg to the $5,589 record &mdash; see the <a href="#milestone-table">milestone table</a> and the era-by-era history below.</p>
+  </section>
+
   <!-- ── 1. GOLD STANDARD ── -->
   <section class="gph-section gph-section--lede" id="gold-standard">
     <div class="gph-section-head">
@@ -891,7 +1045,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 2. NIXON SHOCK ── -->
-  <section class="gph-section" id="nixon-shock">
+  <section class="gph-section gph-reveal" id="nixon-shock">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">02</div>
       <div class="gph-section-head-text">
@@ -912,7 +1066,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 3. 1970s BULL ── -->
-  <section class="gph-section" id="bull-1970s">
+  <section class="gph-section gph-reveal" id="bull-1970s">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">03</div>
       <div class="gph-section-head-text">
@@ -943,7 +1097,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 4. 1980 PEAK ── -->
-  <section class="gph-section" id="peak-1980">
+  <section class="gph-section gph-reveal" id="peak-1980">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">04</div>
       <div class="gph-section-head-text">
@@ -966,7 +1120,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 5. 1980-1999 BEAR ── -->
-  <section class="gph-section" id="bear-1980-1999">
+  <section class="gph-section gph-reveal" id="bear-1980-1999">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">05</div>
       <div class="gph-section-head-text">
@@ -994,7 +1148,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 6. 2000-2011 BULL ── -->
-  <section class="gph-section" id="bull-2000-2011">
+  <section class="gph-section gph-reveal" id="bull-2000-2011">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">06</div>
       <div class="gph-section-head-text">
@@ -1018,7 +1172,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 7. 2011-2015 BEAR ── -->
-  <section class="gph-section" id="bear-2011-2015">
+  <section class="gph-section gph-reveal" id="bear-2011-2015">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">07</div>
       <div class="gph-section-head-text">
@@ -1032,7 +1186,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 8. 2016-2019 RECOVERY ── -->
-  <section class="gph-section" id="recovery-2016-2019">
+  <section class="gph-section gph-reveal" id="recovery-2016-2019">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">08</div>
       <div class="gph-section-head-text">
@@ -1069,7 +1223,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 9. COVID 2020 ── -->
-  <section class="gph-section" id="covid-2020">
+  <section class="gph-section gph-reveal" id="covid-2020">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">09</div>
       <div class="gph-section-head-text">
@@ -1091,7 +1245,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 10. RECORD ERA 2024-2026 ── -->
-  <section class="gph-section" id="record-era">
+  <section class="gph-section gph-reveal" id="record-era">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">10</div>
       <div class="gph-section-head-text">
@@ -1142,11 +1296,11 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     </div>
 
     <p class="gph-p">The drivers of 2025&ndash;2026: escalating geopolitical tensions (particularly US-China trade conflict), central bank buying at record levels, de-dollarisation pressure, persistent inflation concerns, and weakening confidence in fiat currencies &mdash; a constellation of forces that mirrors, in updated form, the dynamics of the 1970s.</p>
-    <p class="gph-p"><strong>May 2026:</strong> Gold consolidated below the January high, trading in the $3,200&ndash;$3,500 range as markets processed the extraordinary gains of the prior 12 months.</p>
+    <p class="gph-p"><strong>Spring 2026:</strong> After the January record, gold consolidated below the $5,589 peak &mdash; trading broadly in the <strong>$4,300&ndash;$4,750</strong> range as markets absorbed the extraordinary 2025&ndash;2026 gains. See the <a href="#price-chart">live price band and chart above</a> for exactly where gold is trading right now.</p>
   </section>
 
   <!-- ── 11. MILESTONE TABLE ── -->
-  <section class="gph-section" id="milestone-table">
+  <section class="gph-section gph-reveal" id="milestone-table">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">11</div>
       <div class="gph-section-head-text">
@@ -1192,7 +1346,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 12. BEAR MARKETS ── -->
-  <section class="gph-section" id="bear-markets">
+  <section class="gph-section gph-reveal" id="bear-markets">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">12</div>
       <div class="gph-section-head-text">
@@ -1254,7 +1408,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 13. GOLD-SILVER RATIO ── -->
-  <section class="gph-section" id="gsr">
+  <section class="gph-section gph-reveal" id="gsr">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">13</div>
       <div class="gph-section-head-text">
@@ -1267,11 +1421,16 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     <div class="gph-ratio-gauge">
       <div class="gph-ratio-title">Historical GSR Scale &middot; Where We Stand</div>
       <p class="gph-ratio-desc">The long-term historical average sits at approximately <strong>55&ndash;65:1</strong>. When the ratio moves significantly above this range, silver is historically undervalued relative to gold.</p>
+      <div class="gph-ratio-live" aria-label="Live gold to silver ratio">
+        <span class="gph-ratio-live-label">Live Ratio Now</span>
+        <span class="gph-ratio-live-value" id="gphlGsrLive" aria-live="polite">&mdash;:1</span>
+        <span class="gph-ratio-live-sub" id="gphlGsrLiveSub">computed from live gold &amp; silver spot</span>
+      </div>
       <div class="gph-ratio-bar-wrap">
         <div class="gph-ratio-bar" aria-hidden="true"></div>
         <div class="gph-ratio-marker" style="left:8%"><span class="v">17</span><span class="l">1980</span></div>
         <div class="gph-ratio-marker" style="left:20%"><span class="v">32</span><span class="l">2011</span></div>
-        <div class="gph-ratio-marker" style="left:46%"><span class="v">55</span><span class="l">May 2026</span></div>
+        <div class="gph-ratio-marker is-live" id="gphlGsrMarker" style="left:49%"><span class="v" id="gphlGsrMarkerV">62</span><span class="l">Today</span></div>
         <div class="gph-ratio-marker" style="left:68%"><span class="v">83</span><span class="l">Oct 2025</span></div>
         <div class="gph-ratio-marker" style="left:97%"><span class="v">124</span><span class="l">Mar 2020</span></div>
       </div>
@@ -1295,17 +1454,17 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
             <tr><td class="year">2021</td><td class="price">~62:1</td><td>Post-COVID recovery compression</td></tr>
             <tr><td class="year">October 2025</td><td class="price">~83:1</td><td>Silver lagging gold's 2025 rally</td></tr>
             <tr><td class="year">January 2026</td><td class="price">~60:1</td><td>Silver catching up to gold's gains</td></tr>
-            <tr><td class="year">May 2026</td><td class="price">~55:1</td><td>Rapid compression as silver surges</td></tr>
+            <tr class="peak"><td class="year">Today (live)</td><td class="price" id="gphlGsrRow">~62:1</td><td>Live gold-to-silver ratio &mdash; updates every 60 seconds</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <p class="gph-p">The March 2020 peak of 124:1 was the highest ratio ever recorded in modern markets &mdash; reflecting the extreme panic conditions of the early pandemic, when gold held up far better than silver as investors sought liquidity. The subsequent compression from 124 to 55 represents one of the most powerful silver moves in decades.</p>
+    <p class="gph-p">The March 2020 peak of 124:1 was the highest ratio ever recorded in modern markets &mdash; reflecting the extreme panic conditions of the early pandemic, when gold held up far better than silver as investors sought liquidity. The subsequent compression from 124 to around 60 represents one of the most powerful silver moves in decades. The live ratio above shows where it stands today.</p>
   </section>
 
   <!-- ── 14. RETURNS ANALYSIS ── -->
-  <section class="gph-section" id="returns">
+  <section class="gph-section gph-reveal" id="returns">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">14</div>
       <div class="gph-section-head-text">
@@ -1366,7 +1525,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 15. INFLATION-ADJUSTED ── -->
-  <section class="gph-section" id="inflation">
+  <section class="gph-section gph-reveal" id="inflation">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">15</div>
       <div class="gph-section-head-text">
@@ -1423,7 +1582,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </section>
 
   <!-- ── 16. DAILY DRIVERS ── -->
-  <section class="gph-section" id="drivers">
+  <section class="gph-section gph-reveal" id="drivers">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">16</div>
       <div class="gph-section-head-text">
@@ -1477,6 +1636,10 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   <div class="gph-cta">
     <div class="gph-cta-inner">
       <h3>Track Today's Gold Price Live</h3>
+      <div class="gph-cta-live">
+        <span class="gph-cta-live-price" id="gphlCtaPrice" aria-live="polite">$&mdash;</span>
+        <span class="gph-cta-live-meta">live spot &middot; USD per troy oz <span id="gphlCtaChange"></span></span>
+      </div>
       <p>The all-time high may be $5,589, but where is gold trading right now? See the current spot price and calculate the value of any karat or weight &mdash; updated every 60 seconds.</p>
       <a href="/" class="gph-cta-btn">Open Live Gold Calculator
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1485,7 +1648,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
   </div>
 
   <!-- ── 17. FAQ ── -->
-  <section class="gph-section" id="faq">
+  <section class="gph-section gph-reveal" id="faq">
     <div class="gph-section-head">
       <div class="gph-era-num" aria-hidden="true">17</div>
       <div class="gph-section-head-text">
@@ -1539,7 +1702,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
           </div>
         </summary>
         <div class="gph-faq-a">
-          <p>The long-term historical average is approximately <strong>55&ndash;65:1</strong>. It peaked at a record 124:1 during the COVID-19 panic in March 2020 and compressed to approximately 55:1 by May 2026 as silver recovered strongly.</p>
+          <p>The long-term historical average is approximately <strong>55&ndash;65:1</strong>. It peaked at a record 124:1 during the COVID-19 panic in March 2020 and compressed back toward its long-run average by 2026 as silver recovered strongly. The live ratio on this page shows the current figure, updated every 60 seconds.</p>
         </div>
       </details>
 
@@ -1775,5 +1938,186 @@ window.addEventListener('scroll', () => {
   document.addEventListener('click',function(e){if(!e.target.closest('.mega-nav__item')){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t)t.setAttribute('aria-expanded','false');});}});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t){t.setAttribute('aria-expanded','false');t.focus();}});if(mob&&mob.classList.contains('open')){mob.classList.remove('open');if(ham){ham.setAttribute('aria-expanded','false');ham.focus();}document.body.style.overflow='';}};});
 })();</script>
+<!-- ── LIVE DATA + CHART + SCROLL UX (redesign) ── -->
+<script>
+(function(){
+  'use strict';
+  // Canonical live-price config — identical to the site-wide implementation
+  var GOLD_API_BASE = 'https://api.gold-api.com/price';
+  var TROY_OZ_TO_GRAM = 31.1035;
+  var ATH = 5589.38;                       // 28 Jan 2026 intraday all-time high
+  var FALLBACK_GOLD = 4692, FALLBACK_SILVER = 75.0;  // site-wide static fallback
+  var goldOz = null, silverOz = null;
+
+  function $(id){ return document.getElementById(id); }
+  function fmtUSD(v){ return '$' + v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+
+  function setLive(gOz, sOz, gPrev, sPrev){
+    goldOz = gOz; silverOz = sOz;
+    var gGram = gOz / TROY_OZ_TO_GRAM;
+    var ratio = sOz ? gOz / sOz : null;
+
+    var pEl = $('gphlPrice');
+    if(pEl) pEl.innerHTML = fmtUSD(gOz) + '<span class="gph-live-price-unit">/oz</span>';
+
+    var chgEl = $('gphlChange');
+    if(chgEl){
+      if(gPrev){
+        var pct = (gOz - gPrev) / gPrev * 100, diff = gOz - gPrev, up = pct >= 0;
+        chgEl.className = 'gph-live-change ' + (Math.abs(pct) < 0.005 ? 'flat' : (up ? 'up' : 'down'));
+        chgEl.innerHTML = '<span class="arw">' + (up ? '▲' : '▼') + '</span> ' + Math.abs(pct).toFixed(2) +
+          '% <span class="gph-live-change-sub">(' + (up ? '+' : '−') + fmtUSD(Math.abs(diff)) + ' today)</span>';
+      } else {
+        chgEl.className = 'gph-live-change flat';
+        chgEl.innerHTML = '<span class="arw">·</span> Live spot price';
+      }
+    }
+
+    if($('gphlGram'))   $('gphlGram').textContent   = fmtUSD(gGram);
+    if($('gphlSilver')) $('gphlSilver').textContent = fmtUSD(sOz);
+    if($('gphlGsr'))    $('gphlGsr').textContent    = ratio ? Math.round(ratio) + ':1' : '—';
+
+    var athEl = $('gphlAth'), fillEl = $('gphlAthFill');
+    if(athEl){
+      athEl.innerHTML = (gOz >= ATH)
+        ? '<strong>New all-time-high territory</strong> &mdash; above the Jan 2026 record'
+        : '<strong>' + ((ATH - gOz) / ATH * 100).toFixed(1) + '% below</strong> the all-time high';
+    }
+    if(fillEl) fillEl.style.width = Math.max(2, Math.min(100, gOz / ATH * 100)) + '%';
+
+    if($('gphlUpdated')){
+      $('gphlUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'}) + ' local time';
+    }
+
+    if(ratio){
+      if($('gphlGsrLive'))    $('gphlGsrLive').textContent    = ratio.toFixed(1) + ':1';
+      if($('gphlGsrLiveSub')) $('gphlGsrLiveSub').textContent = 'gold ' + fmtUSD(gOz) + ' · silver ' + fmtUSD(sOz);
+      if($('gphlGsrRow'))     $('gphlGsrRow').textContent     = '~' + Math.round(ratio) + ':1';
+      var mk = $('gphlGsrMarker'), mkv = $('gphlGsrMarkerV');
+      if(mk)  mk.style.left = Math.max(2, Math.min(98, ratio / 125 * 100)) + '%';
+      if(mkv) mkv.textContent = Math.round(ratio);
+    }
+
+    if($('gphlCtaPrice')) $('gphlCtaPrice').textContent = fmtUSD(gOz);
+    if($('gphlCtaChange') && gPrev){
+      var p2 = (gOz - gPrev) / gPrev * 100, u2 = p2 >= 0;
+      $('gphlCtaChange').innerHTML = '· <span style="color:var(--color-' + (u2 ? 'up' : 'down') + ');font-weight:700">' + (u2 ? '▲' : '▼') + ' ' + Math.abs(p2).toFixed(2) + '%</span>';
+    }
+  }
+
+  function fetchPrices(){
+    Promise.all([
+      fetch(GOLD_API_BASE + '/XAU').then(function(r){ if(!r.ok) throw 0; return r.json(); }),
+      fetch(GOLD_API_BASE + '/XAG').then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    ]).then(function(res){
+      var g = res[0], s = res[1];
+      if(!g.price || !s.price) throw 0;
+      setLive(g.price, s.price, g.prev_close_price, s.prev_close_price);
+    }).catch(function(){
+      setLive(goldOz || FALLBACK_GOLD, silverOz || FALLBACK_SILVER, null, null);
+      if($('gphlUpdated')) $('gphlUpdated').textContent = 'Live feed unavailable — showing indicative price';
+    });
+  }
+  fetchPrices();
+  setInterval(fetchPrices, 60000);
+
+  // ── Historical chart (Chart.js lazy-loaded; data from /chart-data) ──
+  var chart = null, chartLoaded = false, currentRange = '5Y', chartCache = {};
+  var RANGE_LABEL = { '1Y':'Last 12 months · weekly close', '5Y':'Last 5 years · weekly close', '10Y':'Last 10 years · monthly close' };
+
+  function loadChartJS(cb){
+    if(chartLoaded || typeof Chart !== 'undefined'){ chartLoaded = true; cb(); return; }
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+    s.onload = function(){ chartLoaded = true; cb(); };
+    s.onerror = function(){ var l = $('gphChartLoading'); if(l){ l.innerHTML = 'Chart unavailable'; } };
+    document.head.appendChild(s);
+  }
+  function fetchHistory(range){
+    if(chartCache[range]) return Promise.resolve(chartCache[range]);
+    return fetch('/chart-data/XAU-' + range + '.json').then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){ if(j.labels && j.data && j.data.length){ chartCache[range] = j; return j; } throw 0; });
+  }
+  function buildChart(range){
+    var loading = $('gphChartLoading');
+    if(loading) loading.style.display = 'flex';
+    fetchHistory(range).then(function(h){
+      if(loading) loading.style.display = 'none';
+      if(typeof Chart === 'undefined') return;
+      var cs = getComputedStyle(document.documentElement);
+      var gold = cs.getPropertyValue('--color-gold-bright').trim() || '#e8af34';
+      var muted = cs.getPropertyValue('--color-text-muted').trim();
+      var border = cs.getPropertyValue('--color-border').trim();
+      var labels = h.labels.map(function(s){ return new Date(s).toLocaleDateString('en-US', {month:'short', year:'2-digit'}); });
+      var data = h.data;
+      var first = data[0], last = data[data.length - 1], dpct = (last - first) / first * 100, up = dpct >= 0;
+      var dEl = $('gphChartDelta');
+      if(dEl){ dEl.textContent = (up ? '+' : '') + dpct.toFixed(1) + '%'; dEl.className = 'gph-chart-delta ' + (up ? 'up' : 'down'); }
+      if($('gphChartRangeLabel')) $('gphChartRangeLabel').textContent = RANGE_LABEL[range] || '';
+      if(chart) chart.destroy();
+      chart = new Chart($('gphChart'), {
+        type:'line',
+        data:{ labels:labels, datasets:[{ data:data, borderColor:gold, borderWidth:2, fill:true,
+          backgroundColor:function(ctx){ var g = ctx.chart.ctx.createLinearGradient(0,0,0,340); g.addColorStop(0, gold + '33'); g.addColorStop(1, gold + '00'); return g; } }] },
+        options:{ responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false}, tooltip:{ mode:'index', intersect:false, backgroundColor:'rgba(0,0,0,0.85)', titleColor:'#fff', bodyColor:'#fff', padding:10,
+            callbacks:{ label:function(c){ return ' $' + c.parsed.y.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); } } } },
+          scales:{ x:{ ticks:{color:muted, font:{size:11}, maxTicksLimit:8}, grid:{color:border + '40'} },
+                   y:{ ticks:{color:muted, font:{size:11}, callback:function(v){ return '$' + v.toLocaleString(); }}, grid:{color:border + '40'}, position:'right' } },
+          elements:{ point:{radius:0, hitRadius:12}, line:{tension:0.3} } }
+      });
+    }).catch(function(){ if(loading){ loading.style.display = 'flex'; loading.innerHTML = 'Price history unavailable'; } });
+  }
+  function initChart(){ loadChartJS(function(){ buildChart(currentRange); }); }
+  Array.prototype.forEach.call(document.querySelectorAll('.gph-chart-btn'), function(btn){
+    btn.addEventListener('click', function(){
+      currentRange = btn.getAttribute('data-range');
+      Array.prototype.forEach.call(document.querySelectorAll('.gph-chart-btn'), function(b){ b.classList.toggle('active', b === btn); });
+      loadChartJS(function(){ buildChart(currentRange); });
+    });
+  });
+  (function(){
+    var el = $('gphChart');
+    if(!el) return;
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(en){ if(en[0].isIntersecting){ initChart(); io.disconnect(); } }, {rootMargin:'250px'});
+      io.observe(el);
+    } else { initChart(); }
+  })();
+
+  // ── Scroll-spy: highlight active table-of-contents link ──
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.gph-toc-list a'));
+    if(!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function(a){ var id = a.getAttribute('href').slice(1), s = document.getElementById(id); if(s) map[id] = a; });
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){ a.classList.remove('is-active'); });
+          if(map[e.target.id]) map[e.target.id].classList.add('is-active');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(map).forEach(function(id){ spy.observe(document.getElementById(id)); });
+  })();
+
+  // ── Reveal-on-scroll (progressive enhancement with safety nets) ──
+  (function(){
+    var els = Array.prototype.slice.call(document.querySelectorAll('.gph-reveal'));
+    if(!els.length) return;
+    function revealAll(){ els.forEach(function(el){ el.classList.add('is-in'); }); }
+    if(!('IntersectionObserver' in window)){ revealAll(); return; }
+    var io = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); obs.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.05});
+    els.forEach(function(el){ io.observe(el); });
+    window.addEventListener('load', function(){ setTimeout(function(){
+      els.forEach(function(el){ if(el.getBoundingClientRect().top < window.innerHeight){ el.classList.add('is-in'); } });
+    }, 100); });
+    setTimeout(revealAll, 3000);
+  })();
+})();
+</script>
 </body>
 </html>
