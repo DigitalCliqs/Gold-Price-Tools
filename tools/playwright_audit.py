@@ -5,7 +5,30 @@ Usage: python3 playwright_audit.py <url>
 """
 from playwright.sync_api import sync_playwright, expect
 from PIL import Image
-import sys, time, json, random, os
+import sys, time, json, random, os, subprocess
+
+def _launch_chromium(p):
+    """Launch Chromium, self-healing the browser binary if it is missing.
+
+    In Claude Code web sessions the Playwright browser CDN is blocked, so the
+    browser may be absent (or the async SessionStart bootstrap may not have
+    finished yet). On the 'Executable doesn't exist' error we run
+    tools/setup-playwright.sh (fetches Chrome for Testing from the reachable
+    GCS mirror) and retry once. On a normal machine this never triggers.
+    """
+    args = ['--no-sandbox', '--disable-dev-shm-usage']
+    try:
+        return p.chromium.launch(args=args)
+    except Exception as e:
+        msg = str(e)
+        if "Executable doesn't exist" not in msg and "playwright install" not in msg:
+            raise
+        setup = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'setup-playwright.sh')
+        if not os.path.exists(setup):
+            raise
+        print("[audit] Chromium missing — bootstrapping from GCS mirror via setup-playwright.sh …")
+        subprocess.run(['bash', setup], check=False)
+        return p.chromium.launch(args=args)
 
 def full_audit(url, label="page"):
     print(f"\n{'═'*70}")
@@ -14,7 +37,7 @@ def full_audit(url, label="page"):
 
     with sync_playwright() as p:
         # ── DESKTOP AUDIT ─────────────────────────────────────────────────
-        browser = p.chromium.launch(args=['--no-sandbox','--disable-dev-shm-usage'])
+        browser = _launch_chromium(p)
 
         # Capture console errors + network failures
         ctx = browser.new_context()
