@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Gold & Silver Testing Kits in 2026 — Reviewed | GoldPriceTools</title>
   <meta name="google-adsense-account" content="ca-pub-8849494330640880">
-<meta name="description" content="Best gold & silver testing kits for home use in 2026. Compare acid test kits and electronic testers to verify precious metals accurately.">>
+<meta name="description" content="Best gold & silver testing kits for home use in 2026. Compare acid test kits and electronic testers to verify precious metals accurately.">
 <meta name="keywords" content="gold calculator, silver calculator, scrap gold calculator, 14k gold price per gram, 10k gold price per gram, 18k gold price per gram, gold price today, scrap silver calculator, silver price per kilo, live gold silver price">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://goldpricetools.com/gold-silver-test-kit-reviews">
@@ -20,7 +20,7 @@
 <link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-silver-test-kit-reviews">
 <!-- Open Graph -->
 <meta property="og:title" content="Best Gold & Silver Testing Kits in 2026 — Reviewed">
-<meta property="og:description" content="Best gold & silver testing kits for home use in 2026. Compare acid test kits and electronic testers to verify precious metals accurately.">>
+<meta property="og:description" content="Best gold & silver testing kits for home use in 2026. Compare acid test kits and electronic testers to verify precious metals accurately.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://goldpricetools.com/gold-silver-test-kit-reviews">
 <meta property="og:image" content="https://assets.goldpricetools.com/og-image.jpg">
@@ -586,10 +586,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 @media(min-width:768px){.tk-article{padding:var(--space-8) var(--space-5) var(--space-16)}}
 .tk-article ::selection{background:color-mix(in oklch,var(--color-gold) 35%,transparent);color:var(--color-text)}
 
-/* reveal-on-scroll — visible by default (no-JS safe); JS adds hidden state only when motion allowed */
-.tk-reveal.is-armed{opacity:0;transform:translateY(20px)}
-.tk-reveal.is-armed.is-in{opacity:1;transform:none;transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
-@media(prefers-reduced-motion:reduce){.tk-reveal.is-armed{opacity:1;transform:none}}
+/* (reveal-on-scroll removed — all content is visible by default for robustness/SEO) */
 
 /* ---------- BREADCRUMB ---------- */
 .tk-crumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;list-style:none;font-size:var(--text-xs);color:var(--color-text-faint);margin-bottom:var(--space-5);padding:0}
@@ -878,7 +875,6 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </div>
   </div>
 </nav>
-</div>
 
 
 <main class="content-wrapper tk-article">
@@ -1607,19 +1603,6 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     },{rootMargin:'-45% 0px -50% 0px',threshold:0});
     sections.forEach(function(s){spy.observe(s);});
     tocLinks.forEach(function(a){a.addEventListener('click',function(){var self=a;setTimeout(function(){self.scrollIntoView({inline:'center',block:'nearest'});},120);});});
-  }
-
-  /* ---------- reveal on scroll (only when motion allowed) ---------- */
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var reveals=[].slice.call(document.querySelectorAll('.tk-reveal'));
-  if(!reduce && 'IntersectionObserver' in window && reveals.length){
-    reveals.forEach(function(el){el.classList.add('is-armed');});
-    var rio=new IntersectionObserver(function(entries,obs){
-      entries.forEach(function(en){
-        if(en.isIntersecting){en.target.classList.add('is-in');obs.unobserve(en.target);}
-      });
-    },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
-    reveals.forEach(function(el){rio.observe(el);});
   }
 })();
 </script>
