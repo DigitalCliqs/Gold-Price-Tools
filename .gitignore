@@ -26,3 +26,6 @@ gsc_token.json
 
 # MCP server binaries (downloaded per-machine)
 tools/psi-mcp/
+
+# Playwright audit output (regenerable screenshots/strips)
+tmp/
