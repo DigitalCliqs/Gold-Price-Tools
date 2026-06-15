@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gold &amp; Silver Blog — Market Insights &amp; Guides | GoldPriceTools</title>
   <meta name="google-adsense-account" content="ca-pub-8849494330640880">
-<meta name="description" content="Gold and silver market analysis, price guides, and precious metals education from the GoldPriceTools editorial team. Updated regularly.">
+<meta name="description" content="Gold and silver market analysis, price guides, and precious metals education from the GoldPriceTools editorial team. Live USD spot prices, updated every 60 seconds.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://goldpricetools.com/blog/">
 <link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/blog/">
@@ -28,8 +28,9 @@
 <meta name="twitter:title" content="Gold &amp; Silver Blog — Market Insights &amp; Guides">
 <meta name="twitter:description" content="Gold and silver market analysis, price guides, and precious metals education from GoldPriceTools.">
 <meta name="twitter:image" content="https://assets.goldpricetools.com/og-image.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Gold & Silver Blog","url":"https://goldpricetools.com/blog/","description":"Gold and silver market analysis, price guides, and precious metals education from the GoldPriceTools editorial team.","dateModified":"2026-06-14T06:00:00Z","publisher":{"@type":"Organization","name":"GoldPriceTools","url":"https://goldpricetools.com","logo":{"@type":"ImageObject","url":"https://assets.goldpricetools.com/logo.svg"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Gold & Silver Blog","url":"https://goldpricetools.com/blog/","description":"Gold and silver market analysis, price guides, and precious metals education from the GoldPriceTools editorial team.","dateModified":"2026-06-15T06:00:00Z","publisher":{"@type":"Organization","name":"GoldPriceTools","url":"https://goldpricetools.com","logo":{"@type":"ImageObject","url":"https://assets.goldpricetools.com/logo.svg"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://goldpricetools.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://goldpricetools.com/blog/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"GoldPriceTools Blog Articles","itemListElement":[{"@type":"ListItem","position":1,"url":"https://goldpricetools.com/blog/is-gold-overpriced-2026","name":"Is Gold Overpriced in 2026? Five Valuation Frameworks"},{"@type":"ListItem","position":2,"url":"https://goldpricetools.com/blog/2026-04-29-gold-silver-price-outlook","name":"Gold & Silver Price Outlook — Week of 29 April 2026"},{"@type":"ListItem","position":3,"url":"https://goldpricetools.com/blog/gold-etf-vs-physical-gold-uk","name":"Gold ETFs vs Physical Gold for UK Investors"},{"@type":"ListItem","position":4,"url":"https://goldpricetools.com/blog/gold-vs-bitcoin-2026","name":"Gold vs Bitcoin in 2026"},{"@type":"ListItem","position":5,"url":"https://goldpricetools.com/blog/best-uk-gold-dealers-2026","name":"Best UK Gold Dealers in 2026"},{"@type":"ListItem","position":6,"url":"https://goldpricetools.com/blog/uk-gold-cgt-guide","name":"UK Gold Capital Gains Tax Guide"},{"@type":"ListItem","position":7,"url":"https://goldpricetools.com/blog/silver-coins-for-investors-uk","name":"Silver Coins for UK Investors"},{"@type":"ListItem","position":8,"url":"https://goldpricetools.com/blog/how-to-buy-gold-royal-mint","name":"How to Buy Gold from the Royal Mint"},{"@type":"ListItem","position":9,"url":"https://goldpricetools.com/blog/gold-in-a-sipp-uk","name":"Gold in a SIPP: What UK Savers Need to Know"},{"@type":"ListItem","position":10,"url":"https://goldpricetools.com/blog/understanding-gold-karat-purities/","name":"Understanding Gold Karat Purities: 9K to 24K Explained"}]}</script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -42,6 +43,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849494330640880" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.gold-api.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 <style>
 
@@ -62,30 +64,18 @@
 a{color:var(--color-primary);text-decoration:none}
 a:hover{color:var(--color-primary-hover);text-decoration:underline}
 a:visited{color:var(--color-primary)}
-/* ── Card colour reset — cards are content blocks, not bare links ── */
-.article-card,.blog-preview-card,.related-card,.guide-card,.guide-card-link,.post-card,.byline-card{color:var(--color-text)}
-.article-card:hover,.blog-preview-card:hover,.related-card:hover,.guide-card:hover,.post-card:hover{color:var(--color-text)}
-/* Article card inner elements */
-.article-title,.article-card-title{font-weight:700;color:var(--color-text);margin-bottom:.3rem}
-.article-tag,.related-card__tag{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-gold-bright)}
-.article-excerpt,.article-card-desc,.related-card__desc{color:var(--color-text-muted);font-size:var(--text-sm);line-height:1.55}
-/* Hover: title becomes primary teal */
-.article-card:hover .article-title,.article-card:hover .article-card-title{color:var(--color-primary)}
-.blog-preview-card:hover h3{color:var(--color-primary)}
-.related-card:hover .related-card__title{color:var(--color-primary)}
 
-
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
-body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg)}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;scroll-padding-top:calc(56px + var(--space-4))}
+body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);overflow-x:hidden}
 img,svg{display:block;max-width:100%;height:auto}
 button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
 input,select{font:inherit;color:inherit}
 h1,h2,h3,h4{text-wrap:balance;line-height:1.2}
-p,li{text-wrap:pretty;max-width:72ch}
+p{text-wrap:pretty}
 a,button,[role="button"],input,select{transition:color var(--transition),background var(--transition),border-color var(--transition),box-shadow var(--transition)}
 :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}html{scroll-behavior:auto}}
 
 /* TICKER */
 .ticker-wrap{background:var(--color-surface);border-bottom:1px solid var(--color-border);overflow:hidden;height:36px;position:relative}
@@ -98,179 +88,11 @@ a,button,[role="button"],input,select{transition:color var(--transition),backgro
 .ticker-item{display:inline-flex;align-items:center;gap:var(--space-2);padding:0 var(--space-6);font-size:var(--text-xs);font-weight:500}
 .ticker-label{color:var(--color-text-muted)}
 .ticker-value{color:var(--color-text);font-variant-numeric:tabular-nums}
-.ticker-change.up{color:#4ade80}
-.ticker-change.down{color:#f87171}
 .live-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:56px}
-.nav-logo{display:flex;align-items:center;gap:var(--space-2);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);text-decoration:none}
-.nav-links{display:flex;align-items:center;gap:var(--space-1)}
-.nav-links a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:var(--space-2) var(--space-3);border-radius:var(--radius-md)}
-.nav-links a:hover{color:var(--color-text);background:var(--color-surface-offset)}
-.nav-actions{display:flex;align-items:center;gap:var(--space-2)}
-.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-md);color:var(--color-text-muted);border:1px solid var(--color-border)}
-.theme-toggle:hover{color:var(--color-text);background:var(--color-surface-offset)}
-.hamburger{display:none;flex-direction:column;gap:4px;padding:var(--space-2);border-radius:var(--radius-md)}
-.hamburger span{display:block;width:20px;height:2px;background:var(--color-text);border-radius:2px;transition:transform .2s,opacity .2s}
-@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
-
-/* MOBILE MENU */
-.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:var(--space-4);z-index:99}
-.mobile-menu.open{display:flex;flex-direction:column;gap:var(--space-2)}
-.mobile-menu a{font-size:var(--text-base);color:var(--color-text-muted);text-decoration:none;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md)}
-.mobile-menu a:hover{background:var(--color-surface-offset);color:var(--color-text)}
-.mobile-menu .menu-section{font-size:var(--text-xs);font-weight:700;color:var(--color-text-faint);text-transform:uppercase;letter-spacing:.08em;padding:var(--space-3) var(--space-4) var(--space-1)}
-
-/* AD SLOTS */
-.ad-slot{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;margin:var(--space-6) auto;max-width:1200px;padding:0 var(--space-4);min-height:100px}
-.ad-slot ins{display:block;width:100%}
-.ad-slot-sidebar{background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:var(--radius-md);display:block;width:100%;overflow:hidden;min-height:250px}
-.ad-slot-sidebar ins{display:block;width:100%}
-
-/* HERO */
-.hero{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center}
-@media(max-width:768px){.hero{grid-template-columns:1fr;padding:var(--space-8) var(--space-4) var(--space-4)}}
-.hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);background:color-mix(in oklch,var(--color-gold) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold) 25%,var(--color-border));padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;color:var(--color-gold-bright);margin-bottom:var(--space-4);letter-spacing:.05em;text-transform:uppercase}
-.hero h1{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-text);margin-bottom:var(--space-4);line-height:1.15}
-.hero h1 .gold{color:var(--color-gold-bright)}
-.hero h1 .silver{color:var(--color-silver)}
-.hero-desc{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:52ch;margin-bottom:var(--space-6)}
-.spot-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
-.spot-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);box-shadow:var(--shadow-sm)}
-.spot-card-label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-1)}
-.spot-card-value{font-size:var(--text-xl);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.spot-card-value.gold-val{color:var(--color-gold-bright)}
-.spot-card-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1)}
-.spot-card-change{font-size:var(--text-xs);font-weight:600;margin-top:var(--space-1)}
-.spot-card-change.up{color:#4ade80}
-.spot-card-change.down{color:#f87171}
-
-/* MAIN LAYOUT */
-.main-wrap{max-width:1200px;margin:0 auto;padding:0 var(--space-4) var(--space-16);display:grid;grid-template-columns:1fr 300px;gap:var(--space-8);align-items:start}
-@media(max-width:1024px){.main-wrap{grid-template-columns:1fr}}
-
-/* CALCULATORS */
-.calc-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm)}
-.calc-tabs{display:flex;border-bottom:1px solid var(--color-border);background:var(--color-surface-offset);overflow-x:auto;scrollbar-width:none}
-.calc-tabs::-webkit-scrollbar{display:none}
-.calc-tab{flex:1;min-width:max-content;padding:var(--space-3) var(--space-4);font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer}
-.calc-tab:hover{color:var(--color-text)}
-.calc-tab.active{color:var(--color-gold-bright);border-bottom-color:var(--color-gold-bright)}
-.calc-panel{display:none;padding:var(--space-6)}
-.calc-panel.active{display:block}
-.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4)}
-@media(max-width:600px){.calc-row{grid-template-columns:1fr}}
-.form-group{display:flex;flex-direction:column;gap:var(--space-2)}
-.form-label{font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted)}
-.form-input,.form-select{width:100%;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-base);color:var(--color-text);-webkit-appearance:none;appearance:none}
-.form-input:focus,.form-select:focus{border-color:var(--color-primary);background:var(--color-surface)}
-.form-select-wrap{position:relative}
-.form-select-wrap::after{content:'▾';position:absolute;right:var(--space-3);top:50%;transform:translateY(-50%);color:var(--color-text-muted);pointer-events:none;font-size:var(--text-xs)}
-.calc-result{background:color-mix(in oklch,var(--color-gold-bright) 8%,var(--color-surface-offset));border:1px solid color-mix(in oklch,var(--color-gold-bright) 20%,var(--color-border));border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);margin-top:var(--space-4)}
-.calc-result-label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
-.calc-result-value{font-size:var(--text-2xl);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.calc-result-meta{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1)}
-.calc-hint{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-3);line-height:1.6;max-width:60ch}
-
-/* SCRAP TABLE */
-.scrap-table{width:100%;border-collapse:collapse;margin-bottom:var(--space-4)}
-.scrap-table th{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em;padding:var(--space-2) var(--space-3);text-align:left;border-bottom:1px solid var(--color-border)}
-.scrap-table td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--color-divider)}
-.scrap-table td:last-child{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums}
-.scrap-table input{width:100%;background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-3);font-size:var(--text-sm);color:var(--color-text)}
-.scrap-total{background:var(--color-surface-offset);border-radius:var(--radius-lg);padding:var(--space-4);display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-4)}
-@media(max-width:600px){.scrap-total{grid-template-columns:1fr}}
-.scrap-total-item{text-align:center}
-.scrap-total-label{font-size:var(--text-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-1)}
-.scrap-total-value{font-size:var(--text-lg);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums}
-
-/* KARAT TABLES */
-.karat-section{margin-top:var(--space-8)}
-.karat-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-2)}
-.karat-section p{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4);max-width:60ch}
-.karat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4);margin-bottom:var(--space-8)}
-.karat-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-.karat-card-header{padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border-bottom:1px solid var(--color-border);display:flex;align-items:center;justify-content:space-between}
-.karat-card-title{font-size:var(--text-sm);font-weight:700;color:var(--color-text)}
-.karat-card-purity{font-size:var(--text-xs);color:var(--color-text-muted)}
-.karat-table{width:100%;border-collapse:collapse}
-.karat-table td{padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--color-divider);font-size:var(--text-sm)}
-.karat-table td:first-child{color:var(--color-text-muted)}
-.karat-table td:last-child{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
-.karat-table tr:last-child td{border-bottom:none}
-
-/* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:var(--space-4);position:sticky;top:72px;align-self:start}
-.sidebar-widget{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:var(--shadow-sm)}
-.sidebar-widget h3{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
-.quick-ref-row{display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) 0;border-bottom:1px solid var(--color-divider);font-size:var(--text-sm)}
-.quick-ref-row:last-child{border-bottom:none}
-.quick-ref-label{color:var(--color-text-muted)}
-.quick-ref-value{color:var(--color-gold-bright);font-weight:600;font-variant-numeric:tabular-nums}
-.quick-ref-value.silver-val{color:var(--color-silver)}
-
-/* SIDEBAR NAV LINKS */
-.sidebar-nav{display:flex;flex-direction:column;gap:var(--space-2)}
-.sidebar-nav a{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
-.sidebar-nav a:hover{color:var(--color-gold-bright);border-color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 6%,var(--color-surface-offset))}
-.sidebar-nav a span{color:var(--color-text-faint);font-size:var(--text-xs)}
-
-/* CHART */
-.chart-section{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);margin-bottom:var(--space-6);box-shadow:var(--shadow-sm)}
-.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4);flex-wrap:wrap;gap:var(--space-3)}
-.chart-title{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text)}
-.chart-controls{display:flex;gap:var(--space-2);flex-wrap:wrap}
-.chart-btn{padding:var(--space-1) var(--space-3);font-size:var(--text-xs);font-weight:600;border-radius:var(--radius-full);border:1px solid var(--color-border);color:var(--color-text-muted)}
-.chart-btn:hover,.chart-btn.active{background:var(--color-gold-bright);color:#0f0e0c;border-color:var(--color-gold-bright)}
-.chart-wrap{position:relative;height:280px}
-.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-size:var(--text-sm)}
-
-/* FAQ / SEO CARDS */
-.faq-section{margin-top:var(--space-8)}
-.faq-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-6)}
-.faq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4)}
-.faq-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5)}
-.faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);margin-bottom:var(--space-2)}
-.faq-a{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
-.faq-a .highlight{color:var(--color-gold-bright);font-weight:600}
-
-/* CONVERTER */
-.converter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-3);margin-top:var(--space-4)}
-.converter-item{background:var(--color-surface-offset);border-radius:var(--radius-md);padding:var(--space-3);text-align:center}
-.converter-label{font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-1)}
-.converter-value{font-size:var(--text-base);font-weight:600;color:var(--color-text);font-variant-numeric:tabular-nums}
-
-/* ARTICLES SECTION */
-.articles-section{margin-top:var(--space-10)}
-.articles-section h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-2)}
-.articles-section .section-desc{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-6);max-width:60ch}
-.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4)}
-.article-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;display:block;transition:border-color var(--transition),box-shadow var(--transition)}
-.article-card:hover{border-color:var(--color-gold-bright);box-shadow:var(--shadow-md)}
-.article-tag{font-size:var(--text-xs);font-weight:700;color:var(--color-gold-bright);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2)}
-.article-title{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4;margin-bottom:var(--space-2)}
-.article-excerpt{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.6}
-
-/* FOOTER */
-footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-10) 0}
-.footer-inner{width:100%;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(5,minmax(0,1fr));gap:var(--space-5);padding:0 var(--space-8);align-items:start}
-@media(max-width:900px){.footer-inner{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.footer-inner{grid-template-columns:repeat(2,1fr);gap:var(--space-4)}}
-.footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
-.footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
-.footer-brand-col{min-width:0;overflow:hidden}.footer-col{min-width:0}.footer-brand-col{min-width:0;overflow:hidden}.footer-col{min-width:0}.footer-col ul{list-style:none}
-.footer-col li{margin-bottom:var(--space-2)}
-.footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none}
-.footer-col a:hover{color:var(--color-text)}
-.footer-bottom{margin:var(--space-6) 0 0;padding:var(--space-4) var(--space-6) 0;border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
-
-#googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
-
-/* MEGA MENU */
-.site-nav{position:sticky;top:0;z-index:200;background:var(--color-surface);border-bottom:1px solid var(--color-border)}
+/* MEGA MENU / NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--color-surface);border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 var(--space-4);display:flex;align-items:center;justify-content:space-between;height:56px;gap:var(--space-2)}
 .nav-logo{display:flex;align-items:center;gap:var(--space-2);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);text-decoration:none;flex-shrink:0}
 .mega-nav{display:flex;align-items:center;list-style:none;margin:0;padding:0;gap:2px;flex:1;justify-content:center}
@@ -294,14 +116,14 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .mega-panel__view-all:hover{color:var(--color-primary-hover)!important}
 .mega-panel__col+.mega-panel__col{border-left:1px solid var(--color-divider);padding-left:var(--space-4)}
 .nav-actions{display:flex;align-items:center;gap:var(--space-2);flex-shrink:0}
-.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-md);color:var(--color-text-muted);border:1px solid var(--color-border);background:none;cursor:pointer}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--radius-md);color:var(--color-text-muted);border:1px solid var(--color-border);background:none;cursor:pointer}
 .theme-toggle:hover{color:var(--color-text);background:var(--color-surface-offset)}
-.hamburger{display:none;flex-direction:column;gap:4px;padding:var(--space-2);border-radius:var(--radius-md);background:none;border:none;cursor:pointer}
+.hamburger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:44px;height:44px;border-radius:var(--radius-md);background:none;border:none;cursor:pointer}
 .hamburger span{display:block;width:20px;height:2px;background:var(--color-text);border-radius:2px;transition:transform .22s cubic-bezier(.4,0,.2,1),opacity .22s}
 .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--color-surface);z-index:199;overflow-y:auto;-webkit-overflow-scrolling:touch;border-top:1px solid var(--color-border);transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--color-surface);z-index:199;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;border-top:1px solid var(--color-border);transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
 .mobile-menu.open{display:block;transform:translateX(0)}
 .mobile-menu__inner{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-1)}
 .mobile-section{border-radius:var(--radius-md);overflow:hidden}
@@ -320,30 +142,135 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .mobile-section--flat a:hover{background:var(--color-surface-offset);color:var(--color-text)}
 .mobile-menu__search{margin-top:var(--space-4);padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
 .mobile-menu__search input{width:100%;padding:10px 14px;border-radius:var(--radius-md);border:1px solid var(--color-border);background:var(--color-bg);color:var(--color-text);font-size:var(--text-sm)}
-@media(max-width:900px){.mega-nav{display:none}.hamburger{display:flex}}
+@media(max-width:900px){.mega-nav{display:none}.hamburger{display:flex}.mega-nav__trigger{min-height:44px}}
 @media(max-width:768px){.nav-logo span{display:none}}
 
+/* BREADCRUMB */
+.breadcrumb-wrap{max-width:1200px;margin:0 auto;padding:var(--space-3) var(--space-4)}
+.breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-1);list-style:none;padding:0;margin:0;font-size:var(--text-sm);color:var(--color-text-muted)}
+.breadcrumb li+li::before{content:"/";margin:0 var(--space-1);color:var(--color-text-faint)}
+.breadcrumb a{color:var(--color-text-muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--color-primary)}
+.breadcrumb li[aria-current="page"]{color:var(--color-text)}
 
-/* BLOG PREVIEW SECTION */
-.blog-preview-section{background:var(--color-surface-offset);border-top:1px solid var(--color-border);padding:var(--space-10) var(--space-4)}
-.blog-preview-inner{max-width:1200px;margin:0 auto}
-.blog-preview-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6)}
-.blog-preview-title{font-size:var(--text-xl);font-weight:700;color:var(--color-text)}
-.blog-preview-all{font-size:var(--text-sm);font-weight:600;color:var(--color-primary);text-decoration:none}
-.blog-preview-all:hover{color:var(--color-primary-hover)}
-.blog-preview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
-@media(max-width:900px){.blog-preview-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.blog-preview-grid{grid-template-columns:1fr}}
-.blog-preview-card{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-5);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-decoration:none;transition:box-shadow .15s,border-color .15s}
-.blog-preview-card:hover{border-color:var(--color-primary);box-shadow:0 4px 16px oklch(0 0 0/.08)}
-.blog-preview-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary);padding:2px 8px;background:oklch(from var(--color-primary) l c h / .1);border-radius:99px;align-self:flex-start}
-.blog-preview-card h3{font-size:var(--text-base);font-weight:600;color:var(--color-text);line-height:1.4;margin:0}
-.blog-preview-card p{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
+/* ===================== BLOG LISTING (redesign) ===================== */
+.blog-main{max-width:1200px;margin:0 auto;padding:0 var(--space-4) var(--space-16)}
+
+/* Masthead */
+.blog-masthead{padding:var(--space-6) 0 var(--space-6);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-8)}
+.blog-eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);background:color-mix(in oklch,var(--color-gold) 12%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold) 25%,var(--color-border));padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:700;color:var(--color-gold-bright);letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--space-4)}
+.blog-masthead h1{font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-text);line-height:1.08;margin-bottom:var(--space-4);max-width:20ch}
+.blog-masthead h1 .accent{color:var(--color-gold-bright)}
+.blog-lede{font-size:clamp(1.0625rem,1rem + 0.4vw,1.25rem);color:var(--color-text-muted);line-height:1.6;max-width:62ch;font-weight:300}
+
+/* Live USD market strip */
+.market-strip{margin-top:var(--space-6)}
+.market-strip__head{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3);flex-wrap:wrap}
+.market-strip__live{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-muted)}
+.market-strip__meta{font-size:var(--text-xs);color:var(--color-text-faint);margin-left:auto}
+.market-strip__meta b{color:var(--color-text-muted);font-weight:600;font-variant-numeric:tabular-nums}
+.mkt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3)}
+.mkt-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);box-shadow:var(--shadow-sm);transition:border-color var(--transition),box-shadow var(--transition)}
+.mkt-card:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 40%,var(--color-border));box-shadow:0 0 16px color-mix(in oklch,var(--color-gold-bright) 12%,transparent)}
+.mkt-card__label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-2)}
+.mkt-card__value{font-size:var(--text-xl);font-weight:700;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em;min-height:1.35em}
+.mkt-card__value.gold{color:var(--color-gold-bright)}
+.mkt-card__value.silver{color:var(--color-silver)}
+.mkt-card__sub{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-1)}
+.mkt-card__chg{font-size:var(--text-xs);font-weight:600;margin-top:var(--space-1);min-height:1.1em}
+.mkt-card__chg.up{color:#4ade80}
+.mkt-card__chg.down{color:#f87171}
+
+/* Featured */
+.section-eyebrow{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-faint);margin-bottom:var(--space-4);display:flex;align-items:center;gap:var(--space-3)}
+.section-eyebrow::after{content:"";flex:1;height:1px;background:var(--color-divider)}
+.blog-featured{margin-bottom:var(--space-12)}
+.featured-card{position:relative;display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm);color:var(--color-text);transition:border-color var(--transition),box-shadow var(--transition)}
+.featured-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--color-gold),var(--color-gold-bright),transparent);z-index:1}
+.featured-card:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 45%,var(--color-border));box-shadow:var(--shadow-lg);color:var(--color-text)}
+.featured-card__inner{display:grid;grid-template-columns:1fr;gap:var(--space-6);padding:var(--space-6)}
+.featured-tag{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-gold-bright)}
+.featured-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--color-gold-bright)}
+.featured-card__title{font-family:var(--font-display);font-size:clamp(1.5rem,1.1rem + 2vw,2.25rem);font-weight:700;color:var(--color-text);line-height:1.14;margin:var(--space-3) 0}
+.featured-card:hover .featured-card__title{color:var(--color-primary)}
+.featured-card__excerpt{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;max-width:64ch;margin-bottom:var(--space-5)}
+.featured-card__foot{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-faint)}
+.featured-card__foot .dot{color:var(--color-text-faint)}
+.featured-card__more{margin-left:auto;display:inline-flex;align-items:center;gap:var(--space-1);color:var(--color-primary);font-weight:700}
+.featured-card:hover .featured-card__more{color:var(--color-primary-hover)}
+.featured-card__aside{display:flex;flex-direction:column;gap:var(--space-3)}
+.fstat{display:flex;flex-direction:column;gap:2px;padding:var(--space-4);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-lg)}
+.fstat__label{font-size:var(--text-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em}
+.fstat__value{font-size:var(--text-lg);font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums;min-height:1.3em}
+@media(min-width:900px){.featured-card__inner{grid-template-columns:1.6fr 1fr;align-items:center;padding:var(--space-8)}.featured-card__aside{border-left:1px solid var(--color-divider);padding-left:var(--space-6)}}
+
+/* Toolbar: filter chips + search */
+.blog-toolbar{position:sticky;top:56px;z-index:50;background:color-mix(in oklch,var(--color-bg) 86%,transparent);backdrop-filter:blur(10px);padding:var(--space-3) 0;margin-bottom:var(--space-5);border-bottom:1px solid var(--color-divider)}
+.blog-toolbar__inner{display:flex;flex-direction:column;gap:var(--space-3)}
+.filter-chips{display:flex;gap:var(--space-2);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.filter-chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;display:inline-flex;align-items:center;padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);border:1px solid var(--color-border);background:var(--color-surface);color:var(--color-text-muted);font-size:var(--text-sm);font-weight:600;white-space:nowrap;cursor:pointer;min-height:40px;transition:color var(--transition),background var(--transition),border-color var(--transition)}
+.chip:hover{color:var(--color-text);border-color:var(--color-gold-bright)}
+.chip[aria-pressed="true"]{background:var(--color-gold-bright);border-color:var(--color-gold-bright);color:#0f0e0c}
+.blog-search{position:relative;flex:0 0 auto}
+.blog-search input{width:100%;padding:var(--space-3) var(--space-4) var(--space-3) var(--space-10);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);color:var(--color-text);font-size:var(--text-base);min-height:44px}
+.blog-search input::placeholder{color:var(--color-text-faint)}
+.blog-search input:focus{border-color:var(--color-primary);outline:none}
+.blog-search svg{position:absolute;left:var(--space-3);top:50%;transform:translateY(-50%);color:var(--color-text-muted);pointer-events:none}
+@media(min-width:768px){.blog-toolbar__inner{flex-direction:row;align-items:center;justify-content:space-between}.blog-search{width:280px}.filter-chips{flex-wrap:wrap;overflow:visible}}
+
+.blog-count{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)}
+.blog-count b{color:var(--color-text);font-weight:700}
+
+/* Article grid (bento, responsive) */
+.blog-grid{display:grid;grid-template-columns:1fr;gap:var(--space-4)}
+@media(min-width:640px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.blog-grid{grid-template-columns:repeat(3,1fr)}}
+.bpost{display:flex;flex-direction:column;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;color:var(--color-text);box-shadow:var(--shadow-sm);transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition)}
+.bpost:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 45%,var(--color-border));box-shadow:var(--shadow-md);color:var(--color-text)}
+.bpost__top{display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-3)}
+.bpost__tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-gold-bright);background:color-mix(in oklch,var(--color-gold-bright) 12%,transparent);padding:3px var(--space-2);border-radius:var(--radius-full)}
+.bpost__date{margin-left:auto;font-size:var(--text-xs);color:var(--color-text-faint);font-variant-numeric:tabular-nums}
+.bpost__title{font-family:var(--font-display);font-size:clamp(1.05rem,0.98rem + 0.4vw,1.2rem);font-weight:700;color:var(--color-text);line-height:1.3;margin-bottom:var(--space-2)}
+.bpost:hover .bpost__title{color:var(--color-primary)}
+.bpost__excerpt{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:var(--space-4)}
+.bpost__foot{display:flex;align-items:center;gap:var(--space-2);margin-top:auto;padding-top:var(--space-3);border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-faint)}
+.bpost__read{font-variant-numeric:tabular-nums}
+.bpost__more{margin-left:auto;display:inline-flex;align-items:center;gap:4px;color:var(--color-primary);font-weight:600}
+.bpost:hover .bpost__more{color:var(--color-primary-hover)}
+
+/* Empty state */
+.blog-empty{display:none;text-align:center;padding:var(--space-12) var(--space-4);color:var(--color-text-muted)}
+.blog-empty.show{display:block}
+.blog-empty svg{margin:0 auto var(--space-4);color:var(--color-text-faint)}
+.blog-empty h3{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-text);margin-bottom:var(--space-2)}
+.blog-clear{margin-top:var(--space-4);padding:var(--space-2) var(--space-5);border:1px solid var(--color-gold-bright);border-radius:var(--radius-full);color:var(--color-gold-bright);font-weight:600;font-size:var(--text-sm);cursor:pointer;background:none;min-height:40px}
+.blog-clear:hover{background:var(--color-gold-bright);color:#0f0e0c}
+
+/* CTA band */
+.blog-cta{margin-top:var(--space-16);background:color-mix(in oklch,var(--color-gold-bright) 7%,var(--color-surface));border:1px solid color-mix(in oklch,var(--color-gold-bright) 20%,var(--color-border));border-radius:var(--radius-xl);padding:var(--space-10) var(--space-6);text-align:center}
+.blog-cta h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin-bottom:var(--space-3)}
+.blog-cta p{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.6;max-width:56ch;margin:0 auto var(--space-6)}
+.blog-cta__btns{display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center}
+.btn-gold{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-6);background:var(--color-gold-bright);color:#0f0e0c;border-radius:var(--radius-md);font-weight:700;font-size:var(--text-sm);text-decoration:none;min-height:44px;transition:background var(--transition)}
+.btn-gold:hover{background:var(--color-gold);color:#0f0e0c;text-decoration:none}
+.btn-ghost{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-6);background:none;border:1px solid var(--color-border);color:var(--color-text);border-radius:var(--radius-md);font-weight:600;font-size:var(--text-sm);text-decoration:none;min-height:44px;transition:border-color var(--transition),color var(--transition)}
+.btn-ghost:hover{border-color:var(--color-gold-bright);color:var(--color-text);text-decoration:none}
+
+/* Reveal-on-scroll (motion-safe) */
+@media(prefers-reduced-motion:no-preference){
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+}
+
 /* FOOTER */
-.footer-brand-col{max-width:260px}
+footer{background:var(--color-surface);border-top:1px solid var(--color-border);padding:var(--space-10) 0}
+.footer-brand-col{max-width:260px;min-width:0;overflow:hidden}
 .footer-inner{max-width:1200px;margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-6);display:grid;grid-template-columns:1fr repeat(4,auto);gap:var(--space-8);align-items:start}
-@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}.footer-brand-col{grid-column:1/-1}}
-@media(max-width:600px){.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}.footer-brand-col{grid-column:1/-1}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr 1fr;gap:1.5rem}}
+.footer-brand{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-top:var(--space-3);max-width:40ch}
+.footer-col{min-width:0}
 .footer-col h4{font-size:var(--text-sm);font-weight:700;color:var(--color-text);margin-bottom:var(--space-3)}
 .footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
 .footer-col a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;transition:color .12s}
@@ -351,13 +278,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .footer-bottom{max-width:1200px;margin:0 auto;padding:var(--space-4) var(--space-4);border-top:1px solid var(--color-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)}
 .footer-bottom span{font-size:var(--text-xs);color:var(--color-text-faint)}
 
-
-/* ── Article card — unified markup styles ── */
-.article-card-title{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:var(--space-1) 0 var(--space-2);line-height:1.3}
-.article-card .article-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-gold-bright);margin-bottom:var(--space-2)}
-.article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
-.article-card:hover .article-card-title{color:var(--color-primary)}
-
+#googlefc{position:fixed!important;inset:auto 0 0 0;z-index:99999!important}
 </style>
 
 <link rel="stylesheet" href="/assets/site.css">
@@ -366,9 +287,9 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 </head>
 <body>
 
-<div class="ticker-wrap" aria-label="Live precious metals prices">
+<div class="ticker-wrap" aria-label="Live precious metals prices in US dollars">
   <div class="ticker" id="tickerTrack">
-    <span class="ticker-item"><span class="live-dot"></span><span class="ticker-label">LIVE</span></span>
+    <span class="ticker-item"><span class="live-dot"></span><span class="ticker-label">LIVE · USD</span></span>
     <span class="ticker-item"><span class="ticker-label">Gold (XAU/oz)</span> <span class="ticker-value" id="t-xau">—</span></span>
     <span class="ticker-item"><span class="ticker-label">Silver (XAG/oz)</span> <span class="ticker-value" id="t-xag">—</span></span>
     <span class="ticker-item"><span class="ticker-label">24K/g</span> <span class="ticker-value" id="t-24k">—</span></span>
@@ -376,7 +297,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <span class="ticker-item"><span class="ticker-label">14K/g</span> <span class="ticker-value" id="t-14k">—</span></span>
     <span class="ticker-item"><span class="ticker-label">10K/g</span> <span class="ticker-value" id="t-10k">—</span></span>
     <span class="ticker-item"><span class="ticker-label">Silver/kg</span> <span class="ticker-value" id="t-agkg">—</span></span>
-    <span class="ticker-item"><span class="live-dot"></span><span class="ticker-label">LIVE</span></span>
+    <span class="ticker-item"><span class="live-dot"></span><span class="ticker-label">LIVE · USD</span></span>
     <span class="ticker-item"><span class="ticker-label">Gold (XAU/oz)</span> <span class="ticker-value" id="t-xau2">—</span></span>
     <span class="ticker-item"><span class="ticker-label">Silver (XAG/oz)</span> <span class="ticker-value" id="t-xag2">—</span></span>
     <span class="ticker-item"><span class="ticker-label">24K/g</span> <span class="ticker-value" id="t-24k2">—</span></span>
@@ -384,95 +305,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <span class="ticker-item"><span class="ticker-label">14K/g</span> <span class="ticker-value" id="t-14k2">—</span></span>
     <span class="ticker-item"><span class="ticker-label">10K/g</span> <span class="ticker-value" id="t-10k2">—</span></span>
     <span class="ticker-item"><span class="ticker-label">Silver/kg</span> <span class="ticker-value" id="t-agkg2">—</span></span>
-
   </div>
-
-  
-    <a href="/blog/uk-gold-cgt-guide" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-05-03">3 May 2026</time>
-        <span class="post-tag">Tax & Law</span>
-      </div>
-      <div class="post-title">UK Gold Capital Gains Tax Guide: Are Gold Coins Really Tax-Free?</div>
-      <p class="post-excerpt">Gold Sovereigns and Britannia coins are completely CGT-exempt in the UK under TCGA 1992. This guide explains exactly which gold qualifies, how to calculate your liability on other gold, and the £3,000 annual exemption every UK investor should know.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-
-    <a href="/blog/gold-etf-vs-physical-gold-uk" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-05-03">3 May 2026</time>
-        <span class="post-tag">Investing</span>
-      </div>
-      <div class="post-title">Gold ETFs vs Physical Gold for UK Investors: Which Is Right for You?</div>
-      <p class="post-excerpt">iShares IGLN charges just 0.12% per year and can sit inside your ISA tax-free. Physical gold means no counterparty risk but requires storage. This guide compares the two approaches across cost, CGT, accessibility, and liquidity.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-
-    <a href="/blog/how-to-buy-gold-royal-mint" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-05-03">3 May 2026</time>
-        <span class="post-tag">Guide</span>
-      </div>
-      <div class="post-title">How to Buy Gold from the Royal Mint: Step-by-Step for UK Buyers</div>
-      <p class="post-excerpt">The Royal Mint is the UK's safest gold buying option — but premiums vary significantly by product. This step-by-step guide covers product selection, the Vault storage option (0.5% p.a.), DigiGold, and what to expect at checkout.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-
-    <a href="/blog/is-gold-overpriced-2026" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-05-03">3 May 2026</time>
-        <span class="post-tag">Analysis</span>
-      </div>
-      <div class="post-title">Is Gold Overpriced in 2026? 5 Valuation Frameworks Explained</div>
-      <p class="post-excerpt">Gold hit £127/g in January 2026 before correcting. Is it still overvalued? We apply five independent valuation frameworks — real yield analysis, M2 money supply ratio, inflation-adjusted price, gold-silver ratio, and GBP purchasing power — to find out.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-
-    <a href="/blog/silver-coins-for-investors-uk" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-05-03">3 May 2026</time>
-        <span class="post-tag">Silver</span>
-      </div>
-      <div class="post-title">Silver Coins for UK Investors: Junk Silver, Britannias, and the VAT Trap</div>
-      <p class="post-excerpt">Silver coins are the most accessible entry point for UK precious metals investors — but the 20% VAT trap catches most beginners. This guide covers pre-decimal sterling silver, junk silver, Silver Britannias, and how to buy legally VAT-free.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-
-    <a href="/blog/best-uk-gold-dealers-2026" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-05-03">3 May 2026</time>
-        <span class="post-tag">Reviews</span>
-      </div>
-      <div class="post-title">Best UK Gold Dealers in 2026: Royal Mint vs BullionByPost vs Chards vs BullionVault</div>
-      <p class="post-excerpt">We compare the UK's top five gold dealers across premiums, storage costs, buyback rates, BNTA membership, and customer trust signals. Find out which is best for coins, bars, and storage gold.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-
-    <a href="/blog/gold-in-a-sipp-uk" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-05-03">3 May 2026</time>
-        <span class="post-tag">Pensions</span>
-      </div>
-      <div class="post-title">Gold in a SIPP: What UK Savers Need to Know Before Investing</div>
-      <p class="post-excerpt">HMRC permits physical gold in a SIPP — but only bars of 99.5%+ purity from approved refiners, held at approved depositories. This guide explains the rules, approved options, tax treatment, and how to compare a SIPP vs ISA for gold exposure.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-
-    <a href="/blog/gold-vs-bitcoin-2026" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-05-03">3 May 2026</time>
-        <span class="post-tag">Investing</span>
-      </div>
-      <div class="post-title">Gold vs Bitcoin in 2026: Store of Value Comparison for UK Investors</div>
-      <p class="post-excerpt">Gold is up 80% since 2025; Bitcoin is down 14% YTD in 2026. We compare volatility, CGT treatment, correlation to equities, custody risk, and long-run store-of-value credentials to help UK investors decide how much of each belongs in a portfolio.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-<div style="display:flex;justify-content:center;margin-top:3rem;gap:1rem;">
-    <span style="padding:.5rem 1rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:.5rem;color:var(--color-text-muted);opacity:0.5;cursor:not-allowed">Previous</span>
-    <span style="padding:.5rem 1rem;background:var(--color-surface);border:1px solid var(--color-gold-bright);border-radius:.5rem;color:var(--color-gold-bright)">1</span>
-    <span style="padding:.5rem 1rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:.5rem;color:var(--color-text-muted);opacity:0.5;cursor:not-allowed">Next</span>
-  </div>
-
 </div>
 
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
@@ -550,46 +383,189 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </ol>
 </div>
 
-<div class="page-wrap">
-  <header class="page-header">
-    <div class="page-tag">GoldPriceTools</div>
-    <h1 class="page-title">Gold &amp; Silver Market Commentary &mdash; Weekly Updates</h1>
-    <p class="page-desc">Market analysis, price guides, and precious metals education from the GoldPriceTools editorial team.</p>
+<main class="blog-main">
+
+  <!-- Masthead + live USD market strip -->
+  <header class="blog-masthead">
+    <span class="blog-eyebrow">GoldPriceTools Journal</span>
+    <h1>Gold &amp; Silver <span class="accent">Market Commentary</span> &amp; Guides</h1>
+    <p class="blog-lede">Independent analysis, buying and selling guides, and precious-metals education from our editorial team — anchored to live US-dollar spot prices, refreshed every 60&nbsp;seconds.</p>
+
+    <section class="market-strip" aria-label="Live precious metals prices in US dollars">
+      <div class="market-strip__head">
+        <span class="market-strip__live"><span class="live-dot"></span> Live market · USD</span>
+        <span class="market-strip__meta">Updated <b id="mkt-updated">—</b> · LBMA spot via gold-api.com</span>
+      </div>
+      <div class="mkt-grid">
+        <div class="mkt-card">
+          <div class="mkt-card__label">Gold spot (XAU)</div>
+          <div class="mkt-card__value gold" id="mkt-gold">—</div>
+          <div class="mkt-card__sub">USD per troy ounce</div>
+          <div class="mkt-card__chg" id="mkt-gold-chg"></div>
+        </div>
+        <div class="mkt-card">
+          <div class="mkt-card__label">Silver spot (XAG)</div>
+          <div class="mkt-card__value silver" id="mkt-silver">—</div>
+          <div class="mkt-card__sub">USD per troy ounce</div>
+          <div class="mkt-card__chg" id="mkt-silver-chg"></div>
+        </div>
+        <div class="mkt-card">
+          <div class="mkt-card__label">24K gold / gram</div>
+          <div class="mkt-card__value gold" id="mkt-gold-g">—</div>
+          <div class="mkt-card__sub">USD per gram, 99.99%</div>
+        </div>
+        <div class="mkt-card">
+          <div class="mkt-card__label">Gold-to-silver ratio</div>
+          <div class="mkt-card__value" id="mkt-ratio">—</div>
+          <div class="mkt-card__sub">Ounces of silver per ounce of gold</div>
+        </div>
+      </div>
+    </section>
   </header>
 
-  <div class="post-grid">
-
-    <a href="/blog/2026-04-29-gold-silver-price-outlook" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-04-29">29 April 2026</time>
-        <span class="post-tag">Market Update</span>
+  <!-- Featured article -->
+  <section class="blog-featured reveal" aria-labelledby="featured-heading">
+    <h2 class="section-eyebrow" id="featured-heading">Featured analysis</h2>
+    <a href="/blog/is-gold-overpriced-2026" class="featured-card">
+      <div class="featured-card__inner">
+        <div class="featured-card__body">
+          <span class="featured-tag">Analysis</span>
+          <h3 class="featured-card__title">Is Gold Overpriced in 2026? Five Valuation Frameworks, Tested</h3>
+          <p class="featured-card__excerpt">Gold spiked to roughly $5,589 per ounce in January 2026 before correcting toward $4,500. Is it still overvalued? We stress-test the rally against five independent frameworks — real interest rates, the inflation-adjusted price, the M2 money-supply ratio, the Dow-to-gold ratio, and the gold-to-silver ratio — to see what the data actually says.</p>
+          <div class="featured-card__foot">
+            <time datetime="2026-05-03">3 May 2026</time>
+            <span class="dot">·</span>
+            <span>14 min read</span>
+            <span class="featured-card__more">Read analysis <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="featured-card__aside" aria-hidden="true">
+          <div class="fstat">
+            <span class="fstat__label">Jan 2026 high</span>
+            <span class="fstat__value">$5,589</span>
+          </div>
+          <div class="fstat">
+            <span class="fstat__label">Gold spot now</span>
+            <span class="fstat__value" id="feat-spot">—</span>
+          </div>
+          <div class="fstat">
+            <span class="fstat__label">Gold · silver ratio</span>
+            <span class="fstat__value" id="feat-ratio">—</span>
+          </div>
+        </div>
       </div>
-      <div class="post-title">Gold &amp; Silver Price Outlook &mdash; Week of 29 April 2026</div>
-      <p class="post-excerpt">Gold prices faced resistance near historical highs this week, while silver tested key support levels. This weekly market update breaks down what moved the precious metals markets, technical levels to watch, and the current gold-silver ratio outlook.</p>
-      <span class="post-read-more">Read article &rarr;</span>
     </a>
+  </section>
 
-
-    <a href="/blog/understanding-gold-karat-purities/" class="post-card">
-      <div class="post-meta">
-        <time class="post-date" datetime="2026-04-30">30 April 2026</time>
-        <span class="post-tag">Education</span>
+  <!-- Filter + search toolbar -->
+  <div class="blog-toolbar reveal">
+    <div class="blog-toolbar__inner">
+      <div class="filter-chips" role="group" aria-label="Filter articles by category">
+        <button class="chip" data-filter="all" aria-pressed="true">All articles</button>
+        <button class="chip" data-filter="analysis" aria-pressed="false">Analysis</button>
+        <button class="chip" data-filter="investing" aria-pressed="false">Investing</button>
+        <button class="chip" data-filter="buying" aria-pressed="false">Buying &amp; Selling</button>
+        <button class="chip" data-filter="silver" aria-pressed="false">Silver</button>
+        <button class="chip" data-filter="tax" aria-pressed="false">Tax &amp; Pensions</button>
+        <button class="chip" data-filter="education" aria-pressed="false">Education</button>
       </div>
-      <div class="post-title">Understanding Gold Karat Purities: 9K, 10K, 14K, 18K, 22K and 24K Explained</div>
-      <p class="post-excerpt">Gold is sold in a range of purities from 9 karat to 24 karat. Each karat tells you exactly how much pure gold an item contains &mdash; and directly determines its melt value. This guide explains every common karat, the hallmarks to look for, and how to calculate what each is worth at today&rsquo;s live spot price.</p>
-      <span class="post-read-more">Read article &rarr;</span>
-    </a>
-
-
+      <div class="blog-search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <label class="sr-only" for="blogSearch">Search articles</label>
+        <input type="search" id="blogSearch" placeholder="Search articles…" autocomplete="off">
+      </div>
+    </div>
   </div>
 
-  <div style="display:flex;justify-content:center;margin-top:3rem;gap:1rem;">
-    <span style="padding:.5rem 1rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:.5rem;color:var(--color-text-muted);opacity:0.5;cursor:not-allowed">Previous</span>
-    <span style="padding:.5rem 1rem;background:var(--color-surface);border:1px solid var(--color-gold-bright);border-radius:.5rem;color:var(--color-gold-bright)">1</span>
-    <span style="padding:.5rem 1rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:.5rem;color:var(--color-text-muted);opacity:0.5;cursor:not-allowed">Next</span>
+  <p class="blog-count" id="blogCount" aria-live="polite">Showing <b>9</b> of 9 articles</p>
+
+  <!-- Article grid -->
+  <section class="blog-grid" id="blogGrid" aria-label="All blog articles">
+
+    <a href="/blog/2026-04-29-gold-silver-price-outlook" class="bpost reveal" data-category="analysis" data-search="gold silver price outlook week market update commentary technical levels ratio resistance support">
+      <div class="bpost__top"><span class="bpost__tag">Market Update</span><time class="bpost__date" datetime="2026-04-29">29 Apr 2026</time></div>
+      <h3 class="bpost__title">Gold &amp; Silver Price Outlook — Week of 29 April 2026</h3>
+      <p class="bpost__excerpt">Gold met resistance near its all-time high this week while silver tested key support. Our weekly market commentary breaks down the moves, the technical levels to watch, and where the gold-to-silver ratio sits now.</p>
+      <div class="bpost__foot"><span>Market commentary</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+    <a href="/blog/gold-etf-vs-physical-gold-uk" class="bpost reveal" data-category="investing" data-search="gold etf vs physical bullion ishares sgln isa cgt liquidity counterparty storage investing">
+      <div class="bpost__top"><span class="bpost__tag">Investing</span><time class="bpost__date" datetime="2026-06-03">3 Jun 2026</time></div>
+      <h3 class="bpost__title">Gold ETFs vs Physical Gold for UK Investors</h3>
+      <p class="bpost__excerpt">Low-cost ETFs like iShares Physical Gold charge around 0.12% a year and can sit inside an ISA; physical gold carries no counterparty risk but needs storage. We compare both across cost, tax, accessibility and liquidity.</p>
+      <div class="bpost__foot"><span class="bpost__read">18 min read</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+    <a href="/blog/gold-vs-bitcoin-2026" class="bpost reveal" data-category="investing" data-search="gold vs bitcoin store of value volatility returns market cap correlation custody portfolio allocation investing crypto">
+      <div class="bpost__top"><span class="bpost__tag">Investing</span><time class="bpost__date" datetime="2026-05-24">24 May 2026</time></div>
+      <h3 class="bpost__title">Gold vs Bitcoin in 2026: Store of Value Compared</h3>
+      <p class="bpost__excerpt">Two very different stores of value. We compare gold and Bitcoin on ten-year returns, volatility, market cap, correlation to equities and custody risk — and how much of each might belong in a long-term portfolio.</p>
+      <div class="bpost__foot"><span class="bpost__read">16 min read</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+    <a href="/blog/best-uk-gold-dealers-2026" class="bpost reveal" data-category="buying" data-search="best uk gold dealers reviews royal mint bullionbypost atkinsons chards bullionvault premiums storage buyback accreditation buying">
+      <div class="bpost__top"><span class="bpost__tag">Reviews</span><time class="bpost__date" datetime="2026-05-27">27 May 2026</time></div>
+      <h3 class="bpost__title">Best UK Gold Dealers in 2026: Reviewed &amp; Ranked</h3>
+      <p class="bpost__excerpt">We rank the leading UK bullion dealers — Royal Mint, BullionByPost, Atkinsons, Chards, BullionVault and more — on premiums, storage costs, buyback spreads, dealer accreditation and trust signals.</p>
+      <div class="bpost__foot"><span>Dealer comparison</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+    <a href="/blog/uk-gold-cgt-guide" class="bpost reveal" data-category="tax" data-search="uk gold capital gains tax cgt sovereign britannia legal tender exempt hmrc allowance isa sipp tax law">
+      <div class="bpost__top"><span class="bpost__tag">Tax &amp; Law</span><time class="bpost__date" datetime="2026-05-03">3 May 2026</time></div>
+      <h3 class="bpost__title">UK Gold Capital Gains Tax Guide: Which Coins Are Tax-Free?</h3>
+      <p class="bpost__excerpt">Gold Sovereigns and Britannias are legal tender and completely CGT-exempt in the UK. This guide explains which gold qualifies, how HMRC taxes everything else, and how to use the annual allowance, ISAs and SIPPs.</p>
+      <div class="bpost__foot"><span class="bpost__read">16 min read</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+    <a href="/blog/silver-coins-for-investors-uk" class="bpost reveal" data-category="silver" data-search="silver coins uk investors junk silver pre-decimal sterling britannia maple leaf vat melt value silver">
+      <div class="bpost__top"><span class="bpost__tag">Silver</span><time class="bpost__date" datetime="2026-05-03">3 May 2026</time></div>
+      <h3 class="bpost__title">Silver Coins for UK Investors: Junk Silver to Britannias</h3>
+      <p class="bpost__excerpt">Silver coins are the most accessible entry point into precious metals — but VAT catches many beginners. We cover pre-decimal "junk" silver, CGT-exempt Britannias, Canadian Maple Leafs, and how to calculate melt value.</p>
+      <div class="bpost__foot"><span>Silver guide</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+    <a href="/blog/how-to-buy-gold-royal-mint" class="bpost reveal" data-category="buying" data-search="how to buy gold royal mint sovereign britannia digigold premiums vault storage account setup buying guide">
+      <div class="bpost__top"><span class="bpost__tag">Guide</span><time class="bpost__date" datetime="2026-05-03">3 May 2026</time></div>
+      <h3 class="bpost__title">How to Buy Gold from the Royal Mint: Step by Step</h3>
+      <p class="bpost__excerpt">A step-by-step walkthrough of buying gold from the Royal Mint — account setup, the product range from Sovereigns to DigiGold, how premiums stack up, and the vault storage option.</p>
+      <div class="bpost__foot"><span>Buying guide</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+    <a href="/blog/gold-in-a-sipp-uk" class="bpost reveal" data-category="tax" data-search="gold in a sipp uk pension hmrc investment grade bars purity approved depository contribution limits tax pensions">
+      <div class="bpost__top"><span class="bpost__tag">Pensions</span><time class="bpost__date" datetime="2026-05-03">3 May 2026</time></div>
+      <h3 class="bpost__title">Gold in a SIPP: What UK Savers Need to Know</h3>
+      <p class="bpost__excerpt">HMRC allows physical gold inside a SIPP — but only investment-grade bars of 99.5%+ purity from approved refiners, held at approved depositories. Here are the rules, the eligible options and the tax treatment.</p>
+      <div class="bpost__foot"><span>Pensions guide</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+    <a href="/blog/understanding-gold-karat-purities/" class="bpost reveal" data-category="education" data-search="understanding gold karat purities 9k 10k 14k 18k 22k 24k hallmark purity percentage melt value education">
+      <div class="bpost__top"><span class="bpost__tag">Education</span><time class="bpost__date" datetime="2026-04-30">30 Apr 2026</time></div>
+      <h3 class="bpost__title">Understanding Gold Karat Purities: 9K to 24K Explained</h3>
+      <p class="bpost__excerpt">From 9-karat to 24-karat, each purity tells you exactly how much pure gold an item contains — and what it's worth at today's live USD spot price. A clear guide to every common karat, its hallmark, and its melt value.</p>
+      <div class="bpost__foot"><span>Education</span><span class="bpost__more">Read <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </a>
+
+  </section>
+
+  <!-- Empty state -->
+  <div class="blog-empty" id="blogEmpty">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <h3>No articles match your search</h3>
+    <p>Try a different keyword or category.</p>
+    <button class="blog-clear" id="blogClear">Clear filters</button>
   </div>
 
-</div>
+  <!-- Tools CTA -->
+  <section class="blog-cta reveal" aria-labelledby="cta-heading">
+    <h2 id="cta-heading">Put the numbers to work</h2>
+    <p>Every article is backed by the same live USD spot data that powers our free calculators. Value your gold or silver in seconds.</p>
+    <div class="blog-cta__btns">
+      <a href="/scrap-gold-calculator" class="btn-gold">Scrap Gold Calculator <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="/guides/" class="btn-ghost">Browse all guides</a>
+    </div>
+  </section>
+
+</main>
 
 <footer>
   <div class="footer-inner">
@@ -611,7 +587,6 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
         <li><a href="/22k-gold-price-per-gram">22K Gold Per Gram</a></li>
         <li><a href="/24k-gold-price-per-gram">24K Gold Per Gram</a></li>
         <li><a href="/gold-silver-ratio">Gold / Silver Ratio</a></li>
-        <li></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -669,21 +644,128 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 </footer>
 
 <script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
+
+<!-- Live USD price data (matches site-wide source & constants) -->
 <script>
-const TROY=31.1035,API='https://api.gold-api.com/price';
-function fmt(v){return '$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
-function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
-async function loadTicker(){
-  try{
-    const[gr,sr]=await Promise.all([fetch(API+'/XAU',{cache:'no-store'}),fetch(API+'/XAG',{cache:'no-store'})]);
-    const[g,s]=await Promise.all([gr.json(),sr.json()]);
-    const gG=g.price/TROY;
-    [['t-xau',fmt(g.price)],['t-xag',fmt(s.price)],['t-24k',fmt(gG*.9999)],['t-18k',fmt(gG*.75)],['t-14k',fmt(gG*.5833)],['t-10k',fmt(gG*.4167)],['t-agkg',fmt(s.price*32.1507)],
-     ['t-xau2',fmt(g.price)],['t-xag2',fmt(s.price)],['t-24k2',fmt(gG*.9999)],['t-18k2',fmt(gG*.75)],['t-14k2',fmt(gG*.5833)],['t-10k2',fmt(gG*.4167)],['t-agkg2',fmt(s.price*32.1507)]]
-    .forEach(([id,v])=>set(id,v));
-  }catch(e){}
+const TROY = 31.1035, API = 'https://api.gold-api.com/price';
+let goldOz = null, silverOz = null;
+function fmtUSD(v){ return '$' + Number(v).toLocaleString('en-US',{minimumFractionDigits:2, maximumFractionDigits:2}); }
+function setText(id,v){ const e = document.getElementById(id); if(e) e.textContent = v; }
+function applyChange(id, oz, prev){
+  const e = document.getElementById(id);
+  if(!e) return;
+  if(prev){
+    const chg = (oz - prev) / prev * 100;
+    e.textContent = (chg >= 0 ? '▲ ' : '▼ ') + Math.abs(chg).toFixed(2) + '% today';
+    e.className = 'mkt-card__chg ' + (chg >= 0 ? 'up' : 'down');
+  } else { e.textContent = ''; }
 }
-loadTicker();setInterval(loadTicker,60000);
+function render(g, s){
+  const gOz = g.price, sOz = s.price, gG = gOz / TROY;
+  const ratio = (gOz / sOz).toFixed(1) + ':1';
+  // Market strip (USD)
+  setText('mkt-gold', fmtUSD(gOz));
+  setText('mkt-silver', fmtUSD(sOz));
+  setText('mkt-gold-g', fmtUSD(gG * 0.9999));
+  setText('mkt-ratio', ratio);
+  applyChange('mkt-gold-chg', gOz, g.prev_close_price);
+  applyChange('mkt-silver-chg', sOz, s.prev_close_price);
+  // Featured aside (USD)
+  setText('feat-spot', fmtUSD(gOz));
+  setText('feat-ratio', ratio);
+  // Ticker (USD, both loops)
+  [['t-xau',gOz],['t-xag',sOz],['t-24k',gG*0.9999],['t-18k',gG*0.75],['t-14k',gG*0.5833],['t-10k',gG*0.4167],['t-agkg',sOz*32.1507],
+   ['t-xau2',gOz],['t-xag2',sOz],['t-24k2',gG*0.9999],['t-18k2',gG*0.75],['t-14k2',gG*0.5833],['t-10k2',gG*0.4167],['t-agkg2',sOz*32.1507]]
+   .forEach(function(p){ setText(p[0], fmtUSD(p[1])); });
+  // Last updated — visitor's local time
+  setText('mkt-updated', new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'}));
+}
+async function loadPrices(){
+  try{
+    const [gr, sr] = await Promise.all([fetch(API+'/XAU',{cache:'no-store'}), fetch(API+'/XAG',{cache:'no-store'})]);
+    if(!gr.ok || !sr.ok) throw new Error('API response error');
+    const [g, s] = await Promise.all([gr.json(), sr.json()]);
+    if(!g.price || !s.price) throw new Error('Missing price fields');
+    goldOz = g.price; silverOz = s.price;
+    render(g, s);
+  }catch(err){
+    console.warn('Price fetch failed — using fallback:', err.message);
+    goldOz = goldOz || 4692; silverOz = silverOz || 75;
+    render({price:goldOz}, {price:silverOz});
+  }
+}
+loadPrices();
+setInterval(loadPrices, 60000);
 </script>
+
+<!-- Category filter + search -->
+<script>(function(){
+  const chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  const cards = Array.prototype.slice.call(document.querySelectorAll('.bpost'));
+  const search = document.getElementById('blogSearch');
+  const empty = document.getElementById('blogEmpty');
+  const countEl = document.getElementById('blogCount');
+  const clearBtn = document.getElementById('blogClear');
+  let activeCat = 'all';
+  function apply(){
+    const q = (search.value || '').trim().toLowerCase();
+    let shown = 0;
+    cards.forEach(function(c){
+      const catOk = activeCat === 'all' || c.getAttribute('data-category') === activeCat;
+      const txt = (c.getAttribute('data-search') || '') + ' ' + c.textContent.toLowerCase();
+      const qOk = !q || txt.indexOf(q) !== -1;
+      const vis = catOk && qOk;
+      c.style.display = vis ? '' : 'none';
+      if(vis) shown++;
+    });
+    countEl.innerHTML = 'Showing <b>' + shown + '</b> of ' + cards.length + ' articles';
+    empty.classList.toggle('show', shown === 0);
+  }
+  chips.forEach(function(ch){
+    ch.addEventListener('click', function(){
+      chips.forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      ch.setAttribute('aria-pressed','true');
+      activeCat = ch.getAttribute('data-filter');
+      apply();
+    });
+  });
+  search.addEventListener('input', apply);
+  if(clearBtn) clearBtn.addEventListener('click', function(){
+    search.value = '';
+    chips.forEach(function(x){ x.setAttribute('aria-pressed', x.getAttribute('data-filter') === 'all' ? 'true' : 'false'); });
+    activeCat = 'all';
+    apply();
+    search.focus();
+  });
+  apply();
+})();</script>
+
+<!-- Reveal-on-scroll -->
+<script>(function(){
+  const els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window) || !matchMedia('(prefers-reduced-motion: no-preference)').matches){
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  const obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, {threshold: 0.08, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();</script>
+
+<!-- Nav: theme toggle, mobile menu, mega-nav -->
+<script>(function(){
+  const themeBtn=document.querySelector('[data-theme-toggle]'),root=document.documentElement;
+  let theme=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',theme);
+  if(themeBtn){themeBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);try{localStorage.setItem('gpt-theme',theme);}catch(e){}themeBtn.setAttribute('aria-label','Switch to '+(theme==='dark'?'light':'dark')+' mode');themeBtn.innerHTML=theme==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';});}
+  const ham=document.getElementById('hamburger'),mob=document.getElementById('mobileMenu');
+  if(ham&&mob){ham.addEventListener('click',function(){const o=mob.classList.toggle('open');ham.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';});document.addEventListener('click',function(e){if(mob.classList.contains('open')&&!mob.contains(e.target)&&!ham.contains(e.target)){mob.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}});}
+  document.querySelectorAll('.mobile-section__toggle').forEach(function(btn){btn.addEventListener('click',function(){const items=this.nextElementSibling;const o=items.classList.toggle('open');this.setAttribute('aria-expanded',o);});});
+  document.querySelectorAll('.mega-nav__trigger[aria-haspopup]').forEach(function(t){t.addEventListener('click',function(e){e.stopPropagation();const p=this.nextElementSibling;if(!p)return;const o=p.classList.toggle('is-open');this.setAttribute('aria-expanded',o);document.querySelectorAll('.mega-panel.is-open').forEach(function(x){if(x!==p){x.classList.remove('is-open');const t2=x.previousElementSibling;if(t2)t2.setAttribute('aria-expanded','false');}});});});
+  document.addEventListener('click',function(e){if(!e.target.closest('.mega-nav__item')){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t)t.setAttribute('aria-expanded','false');});}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.mega-panel.is-open').forEach(function(p){p.classList.remove('is-open');const t=p.previousElementSibling;if(t){t.setAttribute('aria-expanded','false');t.focus();}});if(mob&&mob.classList.contains('open')){mob.classList.remove('open');if(ham){ham.setAttribute('aria-expanded','false');ham.focus();}document.body.style.overflow='';}}});
+})();</script>
+
 </body>
 </html>
