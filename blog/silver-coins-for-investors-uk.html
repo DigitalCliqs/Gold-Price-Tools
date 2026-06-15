@@ -29,7 +29,7 @@
   "headline": "Silver Coins for UK Investors: Junk Silver, Britannias, and Maple Leafs Compared",
   "description": "A UK investor's guide to silver coins in 2026 — junk silver, pre-decimal sterling, Silver Britannias (CGT-exempt), Canadian Maple Leafs, and how to calculate silver coin melt value.",
   "datePublished": "2026-05-03T08:00:00Z",
-  "dateModified": "2026-05-07T08:00:00Z",
+  "dateModified": "2026-06-15T08:00:00Z",
   "author": {
     "@type": "Organization",
     "name": "GoldPriceTools Editorial Team",
@@ -94,6 +94,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Investment gold (coins and bars of ≥99.5% purity) is VAT-exempt in the UK under EU-inherited legislation. Silver, platinum and palladium do not benefit from this exemption — standard 20% VAT applies. This significantly increases the effective cost of buying silver coins or bars, and makes silver ETCs (which don't attract VAT) more cost-effective for pure investment exposure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate the melt value of a silver coin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply the coin's pure silver weight in troy ounces by the current silver spot price in USD per troy ounce. For sterling (.925) coins, multiply total weight in grams by 0.925, then divide by 31.1035 to get pure troy ounces. For 90% US junk silver, multiply face value by 0.715 to get troy ounces of silver. Then multiply by current spot. Our live calculator on this page does this automatically using LBMA spot prices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the silver premium and how much should I pay over spot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The silver premium is the dealer's mark-up above the live spot price. Typical retail premiums in 2026: silver bars 5–10%, generic rounds 8–12%, Maple Leafs and Philharmonics 8–15%, Silver Britannias and American Eagles 15–25%, and proof or limited-mintage coins 25–60%. Smaller coin sizes (1/2 oz, 1/4 oz) carry materially higher per-ounce premiums. Always compare quoted price to the live spot for the day before buying."
       }
     }
   ]
@@ -420,6 +436,329 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .article-card p,.article-card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
 .article-card:hover .article-card-title{color:var(--color-primary)}
 
+/* ════════════════════════════════════════════════════════════════
+   SILVER COINS UK INVESTORS — EDITORIAL ARTICLE DESIGN
+   Prefix: sci- (Silver Coins Investors)
+   Mobile-first · dark/light adaptive · USD primary · token-driven
+═════════════════════════════════════════════════════════════════ */
+:root{
+  --sci-silver:#cfd3da;
+  --sci-silver-deep:#9ca3af;
+  --sci-silver-ink:#6b7280;
+  --sci-gold:var(--color-gold-bright);
+  --sci-gold-deep:#b07a00;
+  --sci-gold-ink:#7a5600;
+  --sci-teal:var(--color-primary);
+  --sci-teal-ink:#0c4e54;
+  --sci-emerald:#16a34a;
+  --sci-amber:#d97706;
+  --sci-crimson:#b91c1c;
+  --sci-maxw:1180px;
+  --sci-read:760px;
+}
+[data-theme="dark"]{--sci-gold-ink:#e8af34;--sci-teal-ink:#6ab3be;--sci-silver-ink:#9ca3af}
+.sci-hide{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+
+/* READING PROGRESS BAR */
+#sci-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:250;background:linear-gradient(90deg,var(--sci-gold),var(--sci-silver),var(--sci-teal));box-shadow:0 0 12px color-mix(in oklch,var(--sci-silver) 50%,transparent);transition:width .12s linear;pointer-events:none}
+@media(prefers-reduced-motion:reduce){#sci-progress{transition:none}}
+
+/* REVEAL ANIMATIONS */
+html.sci-js .sci-reveal{opacity:0;transform:translateY(14px)}
+html.sci-js .sci-reveal.is-in{opacity:1;transform:none;transition:opacity .6s ease-out,transform .7s cubic-bezier(.16,1,.3,1)}
+@media(prefers-reduced-motion:reduce){html.sci-js .sci-reveal{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.sci-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--color-border);isolation:isolate}
+.sci-hero__bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.sci-hero__bg::before,.sci-hero__bg::after{content:"";position:absolute;width:62%;top:-25%;bottom:-25%;filter:blur(14px);opacity:.9}
+.sci-hero__bg::before{left:-8%;background:radial-gradient(60% 60% at 30% 30%,color-mix(in oklch,var(--sci-silver) 28%,transparent),transparent 70%)}
+.sci-hero__bg::after{right:-8%;background:radial-gradient(60% 60% at 70% 70%,color-mix(in oklch,var(--sci-gold) 18%,transparent),transparent 70%)}
+[data-theme="light"] .sci-hero__bg::before{background:radial-gradient(60% 60% at 30% 30%,color-mix(in oklch,var(--sci-silver) 36%,transparent),transparent 70%)}
+[data-theme="light"] .sci-hero__bg::after{background:radial-gradient(60% 60% at 70% 70%,color-mix(in oklch,var(--sci-gold) 14%,transparent),transparent 70%)}
+.sci-hero__grid{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--color-border) 1px,transparent 1px),linear-gradient(90deg,var(--color-border) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(circle at 50% 25%,#000,transparent 75%);mask-image:radial-gradient(circle at 50% 25%,#000,transparent 75%);opacity:.10}
+.sci-hero__inner{max-width:var(--sci-maxw);margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-8);text-align:center;position:relative}
+.sci-kicker{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--sci-gold-ink);margin-bottom:var(--space-5)}
+.sci-kicker::before,.sci-kicker::after{content:"";width:24px;height:1px;background:currentColor;opacity:.5}
+.sci-kicker__dot{width:6px;height:6px;border-radius:50%;background:var(--sci-gold);box-shadow:0 0 8px var(--sci-gold);animation:pulse 2s ease-in-out infinite}
+.sci-hero h1{font-family:var(--font-display);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:var(--color-text);font-size:clamp(2.1rem,1rem + 6vw,4.5rem);margin:0 auto var(--space-5);max-width:18ch;text-wrap:balance}
+.sci-hero h1 .sci-accent-silver{background:linear-gradient(135deg,var(--sci-silver) 0%,var(--sci-silver-deep) 50%,var(--sci-silver) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.sci-hero h1 .sci-accent-gold{color:var(--sci-gold-ink);white-space:nowrap;position:relative}
+.sci-hero h1 .sci-accent-gold::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.10em;background:linear-gradient(90deg,transparent,var(--sci-gold) 30%,var(--sci-gold) 70%,transparent);opacity:.5}
+.sci-hero__lead{font-size:clamp(1rem,.96rem + .35vw,1.2rem);color:var(--color-text-muted);line-height:1.7;max-width:62ch;margin:0 auto var(--space-6)}
+.sci-byline{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-2) var(--space-3);font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-8)}
+.sci-byline a{color:var(--color-primary);font-weight:600;text-decoration:none}
+.sci-byline a:hover{text-decoration:underline}
+.sci-byline .dot{width:3px;height:3px;border-radius:50%;background:var(--color-text-faint)}
+
+/* HERO LIVE SPOT PANEL */
+.sci-spot{max-width:560px;margin:0 auto var(--space-6);background:color-mix(in oklch,var(--color-surface) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-5) var(--space-6);box-shadow:var(--shadow-md);text-align:left;position:relative;overflow:hidden}
+.sci-spot::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--sci-silver) 0%,var(--sci-gold) 100%)}
+.sci-spot__head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-3);flex-wrap:wrap}
+.sci-spot__label{font-size:var(--text-xs);font-weight:700;letter-spacing:.12em;color:var(--color-text-muted);text-transform:uppercase}
+.sci-spot__live{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--sci-emerald);text-transform:uppercase;letter-spacing:.08em}
+.sci-spot__live .live-dot{background:var(--sci-emerald)}
+.sci-spot__main{display:flex;align-items:baseline;gap:var(--space-3);flex-wrap:wrap}
+.sci-spot__big{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,1.5rem + 2.5vw,3rem);color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1}
+.sci-spot__unit{font-size:var(--text-sm);color:var(--color-text-muted);font-weight:600}
+.sci-spot__fx{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-2);font-variant-numeric:tabular-nums}
+.sci-spot__fx strong{color:var(--color-text);font-weight:700}
+.sci-spot__meta{display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-muted);flex-wrap:wrap;gap:var(--space-2)}
+.sci-spot__meta strong{color:var(--color-text);font-weight:700}
+
+/* HERO STAT CHIPS */
+.sci-hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);max-width:840px;margin:0 auto}
+@media(min-width:760px){.sci-hero-stats{grid-template-columns:repeat(4,1fr)}}
+.sci-hstat{background:color-mix(in oklch,var(--color-surface) 80%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);text-align:left;position:relative;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.sci-hstat:hover{border-color:color-mix(in oklch,var(--sci-gold) 40%,var(--color-border));transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.sci-hstat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--sci-gold))}
+.sci-hstat--silver{--c:var(--sci-silver-deep)}
+.sci-hstat--gold{--c:var(--sci-gold)}
+.sci-hstat--teal{--c:var(--sci-teal)}
+.sci-hstat--amber{--c:var(--sci-amber)}
+.sci-hstat__k{font-size:10px;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-1);display:flex;align-items:center;gap:6px}
+.sci-hstat__k svg{flex-shrink:0;color:var(--c,var(--sci-gold));width:14px;height:14px}
+.sci-hstat__v{font-size:clamp(1.15rem,1rem + 1vw,1.55rem);font-weight:800;color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1;font-family:var(--font-display)}
+.sci-hstat__s{font-size:var(--text-xs);margin-top:4px;font-weight:500;color:var(--color-text-muted)}
+
+/* ── ARTICLE SHELL + STICKY TOC ──────────────────────────── */
+.sci-shell{max-width:var(--sci-maxw);margin:0 auto;padding:var(--space-8) var(--space-4) var(--space-16)}
+.sci-layout{display:block}
+.sci-main{min-width:0;max-width:var(--sci-read);margin:0 auto;width:100%}
+.sci-main>*{margin-left:auto;margin-right:auto}
+@media(min-width:1080px){
+  .sci-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;grid-template-areas:"main toc";gap:var(--space-10);align-items:start}
+  .sci-main{grid-area:main;max-width:none;margin:0}
+  .sci-toc{grid-area:toc;position:sticky;top:84px}
+}
+
+/* TOC */
+.sci-toc{margin:0 0 var(--space-6)}
+.sci-toc__box{border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface);overflow:hidden}
+.sci-toc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted)}
+.sci-toc summary::-webkit-details-marker{display:none}
+.sci-toc summary svg{transition:transform .2s}
+.sci-toc[open] summary svg{transform:rotate(180deg)}
+.sci-toc nav{display:flex;flex-direction:column;padding:var(--space-2);border-top:1px solid var(--color-divider)}
+.sci-toc a{font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;padding:7px 10px;border-radius:var(--radius-sm);border-left:2px solid transparent;line-height:1.35;transition:color .15s,background .15s,border-color .15s}
+.sci-toc a:hover{color:var(--color-text);background:var(--color-surface-offset)}
+.sci-toc a.is-active{color:var(--sci-gold-ink);border-left-color:var(--sci-gold);background:color-mix(in oklch,var(--sci-gold) 8%,transparent);font-weight:600}
+@media(min-width:1080px){.sci-toc summary svg{display:none}.sci-toc nav{border-top:none}}
+
+/* ── PROSE ───────────────────────────────────────────────── */
+.sci-prose{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.78}
+.sci-prose p{margin:0 0 var(--space-5);text-wrap:pretty}
+.sci-prose p.sci-lead{font-size:clamp(1.08rem,1rem + .5vw,1.3rem);color:var(--color-text);line-height:1.7}
+.sci-prose p.sci-lead::first-letter{float:left;font-family:var(--font-display);font-weight:800;font-size:3.4em;line-height:.78;padding:.06em .12em .02em 0;color:var(--sci-gold);background:linear-gradient(135deg,var(--sci-gold),var(--sci-silver));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sci-prose strong{color:var(--color-text);font-weight:700}
+.sci-prose em{font-style:italic}
+.sci-prose a{color:var(--color-primary);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.sci-prose a:hover{color:var(--color-primary-hover);text-decoration-thickness:2px}
+.sci-prose ul{list-style:none;padding:0;margin:0 0 var(--space-5)}
+.sci-prose ul li{position:relative;padding-left:var(--space-6);margin-bottom:var(--space-3);line-height:1.7}
+.sci-prose ul li::before{content:"";position:absolute;left:6px;top:.65em;width:7px;height:7px;border-radius:2px;transform:rotate(45deg);background:var(--sci-gold)}
+
+/* SECTION HEADERS */
+.sci-sec{scroll-margin-top:84px;margin-top:var(--space-12)}
+.sci-sec__kick{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-faint);margin-bottom:var(--space-2);display:flex;align-items:center;gap:8px}
+.sci-sec__kick::before{content:"";width:22px;height:2px;border-radius:1px;background:var(--sci-gold)}
+.sci-sec h2{font-family:var(--font-display);font-weight:800;letter-spacing:-.01em;color:var(--color-text);font-size:clamp(1.55rem,1.15rem + 1.8vw,2.3rem);line-height:1.16;margin:0 0 var(--space-3)}
+.sci-sec h3{font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin:var(--space-6) 0 var(--space-2);font-family:var(--font-display)}
+
+/* ── FEATURE GRID (Why silver coins) ─────────────────────── */
+.sci-feat{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin:var(--space-6) 0}
+@media(min-width:560px){.sci-feat{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.sci-feat{grid-template-columns:repeat(3,1fr)}}
+.sci-feat__item{border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);background:var(--color-surface);position:relative;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.sci-feat__item:hover{border-color:color-mix(in oklch,var(--sci-gold) 40%,var(--color-border));transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.sci-feat__icon{width:42px;height:42px;border-radius:var(--radius-md);background:color-mix(in oklch,var(--sci-gold) 14%,var(--color-surface));color:var(--sci-gold);display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-3)}
+.sci-feat__t{font-family:var(--font-display);font-weight:700;color:var(--color-text);font-size:var(--text-base);margin-bottom:var(--space-2)}
+.sci-feat__d{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
+
+/* ── COIN SHOWCASE CARDS ─────────────────────────────────── */
+.sci-coins{display:grid;grid-template-columns:1fr;gap:var(--space-5);margin:var(--space-6) 0}
+@media(min-width:760px){.sci-coins{grid-template-columns:repeat(2,1fr);gap:var(--space-6)}}
+.sci-coin{position:relative;border:1px solid var(--color-border);border-radius:var(--radius-xl);background:var(--color-surface);overflow:hidden;box-shadow:var(--shadow-sm);transition:border-color .2s,transform .2s,box-shadow .2s;display:flex;flex-direction:column;scroll-margin-top:84px}
+.sci-coin:hover{border-color:color-mix(in oklch,var(--sci-gold) 40%,var(--color-border));transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.sci-coin--feat{border-color:color-mix(in oklch,var(--sci-gold) 50%,var(--color-border));box-shadow:0 8px 32px color-mix(in oklch,var(--sci-gold) 10%,transparent),var(--shadow-md)}
+.sci-coin__top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4) var(--space-5);background:linear-gradient(135deg,color-mix(in oklch,var(--sci-silver) 8%,var(--color-surface-offset)),var(--color-surface-offset) 70%);border-bottom:1px solid var(--color-border);flex-wrap:wrap}
+.sci-coin--feat .sci-coin__top{background:linear-gradient(135deg,color-mix(in oklch,var(--sci-gold) 14%,var(--color-surface-offset)),color-mix(in oklch,var(--sci-gold) 3%,var(--color-surface-offset)) 80%)}
+.sci-coin__rank{display:flex;align-items:center;gap:var(--space-3)}
+.sci-coin__num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.7rem,1.3rem + 1.5vw,2.3rem);color:var(--color-text-faint);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.sci-coin--feat .sci-coin__num{background:linear-gradient(135deg,var(--sci-gold),var(--sci-gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sci-coin__pill-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.sci-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:var(--radius-full);font-size:11px;font-weight:700;letter-spacing:.04em;line-height:1;white-space:nowrap;border:1px solid transparent}
+.sci-pill svg{width:11px;height:11px;flex-shrink:0}
+.sci-pill--cgt{background:color-mix(in oklch,var(--sci-emerald) 14%,transparent);color:#0f6c34;border-color:color-mix(in oklch,var(--sci-emerald) 35%,transparent)}
+[data-theme="dark"] .sci-pill--cgt{color:#5cd699}
+.sci-pill--no-cgt{background:color-mix(in oklch,#94a3b8 14%,transparent);color:#475569;border-color:color-mix(in oklch,#94a3b8 30%,transparent)}
+[data-theme="dark"] .sci-pill--no-cgt{color:#94a3b8;border-color:color-mix(in oklch,#94a3b8 25%,transparent)}
+.sci-pill--editor{background:color-mix(in oklch,var(--sci-gold) 14%,transparent);color:var(--sci-gold-ink);border-color:color-mix(in oklch,var(--sci-gold) 35%,transparent)}
+.sci-pill--purity{background:color-mix(in oklch,var(--sci-silver) 14%,transparent);color:var(--sci-silver-ink);border-color:color-mix(in oklch,var(--sci-silver) 35%,transparent)}
+[data-theme="dark"] .sci-pill--purity{color:#cfd3da}
+
+.sci-coin__body{padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);flex:1}
+@media(min-width:640px){.sci-coin__body{padding:var(--space-6)}}
+.sci-coin__title{font-family:var(--font-display);font-weight:800;color:var(--color-text);font-size:clamp(1.25rem,1.05rem + .7vw,1.55rem);line-height:1.2;letter-spacing:-.01em;margin:0}
+.sci-coin__sub{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:6px;margin-top:-2px}
+.sci-coin__sub::before{content:"";width:14px;height:1px;background:var(--sci-gold);display:inline-block}
+.sci-coin__desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0}
+.sci-coin__desc strong{color:var(--color-text);font-weight:700}
+
+.sci-coin__stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);padding:var(--space-3);background:var(--color-surface-offset);border-radius:var(--radius-md);border:1px solid var(--color-divider)}
+.sci-cstat{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sci-cstat__l{font-size:10px;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em}
+.sci-cstat__v{font-family:var(--font-display);font-weight:700;font-size:var(--text-base);color:var(--color-text);font-variant-numeric:tabular-nums;letter-spacing:-.01em;line-height:1.2}
+.sci-cstat__v.is-live{color:var(--sci-gold-ink)}
+.sci-cstat__s{font-size:10px;color:var(--color-text-faint);font-weight:500}
+
+.sci-coin__meta{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider);font-size:var(--text-xs);color:var(--color-text-muted);flex-wrap:wrap}
+.sci-coin__meta-item{display:flex;align-items:center;gap:6px}
+.sci-coin__meta-item svg{width:14px;height:14px;color:var(--sci-gold);flex-shrink:0}
+
+/* ── CGT SPOTLIGHT ──────────────────────────────────────── */
+.sci-cgt{margin:var(--space-10) 0;padding:var(--space-6) var(--space-5);border-radius:var(--radius-xl);position:relative;overflow:hidden;border:1px solid color-mix(in oklch,var(--sci-gold) 30%,var(--color-border));background:linear-gradient(135deg,color-mix(in oklch,var(--sci-gold) 12%,var(--color-surface)),var(--color-surface) 50%,color-mix(in oklch,var(--sci-teal) 8%,var(--color-surface)));scroll-margin-top:84px}
+@media(min-width:640px){.sci-cgt{padding:var(--space-8)}}
+.sci-cgt__icon{width:48px;height:48px;border-radius:var(--radius-md);background:color-mix(in oklch,var(--sci-gold) 18%,transparent);color:var(--sci-gold);display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-4)}
+.sci-cgt h2{font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,1.1rem + 1.2vw,2rem);color:var(--color-text);margin:0 0 var(--space-2);line-height:1.2}
+.sci-cgt__lead{font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;margin:0 0 var(--space-5);max-width:62ch}
+.sci-cgt__lead strong{color:var(--color-text)}
+.sci-cgt-grid{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin:var(--space-5) 0}
+@media(min-width:640px){.sci-cgt-grid{grid-template-columns:repeat(2,1fr)}}
+.sci-cgt-card{padding:var(--space-4);border-radius:var(--radius-md);border:1px solid color-mix(in oklch,var(--sci-gold) 25%,var(--color-border));background:color-mix(in oklch,var(--color-bg) 60%,transparent)}
+.sci-cgt-card__t{font-family:var(--font-display);font-weight:700;color:var(--color-text);font-size:var(--text-sm);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.sci-cgt-card__t svg{width:16px;height:16px;flex-shrink:0}
+.sci-cgt-card--yes .sci-cgt-card__t svg{color:var(--sci-emerald)}
+.sci-cgt-card--no .sci-cgt-card__t svg{color:var(--sci-silver-deep)}
+.sci-cgt-card__d{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
+.sci-cgt-card__d strong{color:var(--color-text)}
+
+/* ── VAT CALLOUT ──────────────────────────────────────── */
+.sci-vat{margin:var(--space-8) 0;padding:var(--space-5) var(--space-5);border-radius:var(--radius-lg);border:1px solid color-mix(in oklch,var(--sci-amber) 30%,var(--color-border));background:color-mix(in oklch,var(--sci-amber) 6%,var(--color-surface));display:grid;grid-template-columns:auto 1fr;gap:var(--space-4);align-items:start;scroll-margin-top:84px}
+.sci-vat__icon{flex-shrink:0;width:42px;height:42px;border-radius:var(--radius-md);background:color-mix(in oklch,var(--sci-amber) 16%,transparent);color:var(--sci-amber);display:flex;align-items:center;justify-content:center}
+.sci-vat__body{min-width:0}
+.sci-vat__k{font-size:var(--text-xs);font-weight:700;color:var(--sci-amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+[data-theme="dark"] .sci-vat__k{color:#fbbf24}
+.sci-vat__t{font-family:var(--font-display);font-weight:800;color:var(--color-text);font-size:clamp(1.15rem,1rem + .6vw,1.4rem);margin:0 0 var(--space-2);line-height:1.25}
+.sci-vat__d{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.65;margin:0}
+.sci-vat__d strong{color:var(--color-text)}
+.sci-vat-math{display:grid;grid-template-columns:1fr;gap:var(--space-2);margin-top:var(--space-3);padding:var(--space-3);background:var(--color-surface-offset);border-radius:var(--radius-md);border:1px solid var(--color-divider);font-variant-numeric:tabular-nums}
+@media(min-width:560px){.sci-vat-math{grid-template-columns:repeat(3,1fr)}}
+.sci-vat-math__item{font-size:var(--text-xs);color:var(--color-text-muted)}
+.sci-vat-math__item strong{display:block;font-family:var(--font-display);font-size:var(--text-base);color:var(--color-text);font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums}
+
+/* ── MELT CALC WIDGET ───────────────────────────────────── */
+.sci-calc{margin:var(--space-8) 0;border:1px solid color-mix(in oklch,var(--sci-gold) 30%,var(--color-border));border-radius:var(--radius-xl);background:linear-gradient(180deg,color-mix(in oklch,var(--sci-gold) 6%,var(--color-surface)),var(--color-surface) 70%);overflow:hidden;scroll-margin-top:84px;box-shadow:var(--shadow-sm)}
+.sci-calc__head{padding:var(--space-5) var(--space-5) var(--space-4);border-bottom:1px solid var(--color-border);display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap;justify-content:space-between}
+.sci-calc__head-l{display:flex;align-items:center;gap:var(--space-3)}
+.sci-calc__icon{width:38px;height:38px;border-radius:var(--radius-md);background:color-mix(in oklch,var(--sci-gold) 18%,transparent);color:var(--sci-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sci-calc__title{font-family:var(--font-display);font-weight:800;color:var(--color-text);font-size:var(--text-lg);margin:0;line-height:1.2}
+.sci-calc__sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:2px}
+.sci-calc__live{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--sci-emerald);text-transform:uppercase;letter-spacing:.06em}
+.sci-calc__body{padding:var(--space-5)}
+@media(min-width:640px){.sci-calc__body{padding:var(--space-6)}}
+.sci-calc__row{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin-bottom:var(--space-4)}
+@media(min-width:560px){.sci-calc__row{grid-template-columns:1fr 1fr}}
+.sci-calc__grp{display:flex;flex-direction:column;gap:6px;min-width:0}
+.sci-calc__lab{font-size:var(--text-xs);font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.06em}
+.sci-calc__inp,.sci-calc__sel{width:100%;padding:12px 14px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-base);color:var(--color-text);min-height:44px;-webkit-appearance:none;appearance:none;font-variant-numeric:tabular-nums}
+.sci-calc__inp:focus,.sci-calc__sel:focus{border-color:var(--sci-gold);outline:none;box-shadow:0 0 0 3px color-mix(in oklch,var(--sci-gold) 20%,transparent)}
+.sci-calc__sel-wrap{position:relative}
+.sci-calc__sel-wrap::after{content:"▾";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--color-text-muted);pointer-events:none;font-size:var(--text-xs)}
+.sci-calc__hint{font-size:var(--text-xs);color:var(--color-text-faint);margin-top:4px;line-height:1.4}
+.sci-calc__res{display:grid;grid-template-columns:1fr;gap:var(--space-3);padding:var(--space-4) var(--space-5);background:color-mix(in oklch,var(--sci-gold) 8%,var(--color-surface));border:1px solid color-mix(in oklch,var(--sci-gold) 25%,var(--color-border));border-radius:var(--radius-lg);margin-top:var(--space-3)}
+@media(min-width:560px){.sci-calc__res{grid-template-columns:repeat(3,1fr);align-items:end}}
+.sci-calc__res-item{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sci-calc__res-l{font-size:10px;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.08em}
+.sci-calc__res-v{font-family:var(--font-display);font-weight:800;font-size:clamp(1.3rem,1rem + 1.5vw,1.85rem);color:var(--sci-gold-ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.1;transition:transform .25s ease-out}
+.sci-calc__res-v.is-bump{transform:scale(1.04)}
+.sci-calc__res-v.sci-sub{color:var(--color-text);font-size:clamp(1rem,.9rem + .8vw,1.3rem)}
+.sci-calc__res-s{font-size:10px;color:var(--color-text-faint)}
+
+/* ── COMPARISON TABLE ───────────────────────────────────── */
+.sci-tablewrap{margin:var(--space-6) 0;border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;background:var(--color-surface)}
+.sci-tablescroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.sci-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);min-width:680px}
+table.sci-table thead th{text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--color-text-faint);padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border-bottom:1px solid var(--color-border);white-space:nowrap;position:sticky;top:0}
+table.sci-table tbody td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);color:var(--color-text-muted);vertical-align:middle;line-height:1.45}
+table.sci-table tbody tr:last-child td{border-bottom:none}
+table.sci-table tbody tr{transition:background .15s}
+table.sci-table tbody tr:hover{background:color-mix(in oklch,var(--sci-gold) 5%,transparent)}
+table.sci-table td:first-child{color:var(--color-text);font-weight:700;font-family:var(--font-display)}
+table.sci-table .sci-melt{font-variant-numeric:tabular-nums;font-weight:700;color:var(--sci-gold-ink)}
+.sci-scrollhint{font-size:var(--text-xs);color:var(--color-text-faint);text-align:center;padding:var(--space-2);background:var(--color-surface-offset);border-top:1px solid var(--color-divider)}
+@media(min-width:760px){.sci-scrollhint{display:none}}
+
+/* ── STEPS ──────────────────────────────────────────────── */
+.sci-steps{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin:var(--space-6) 0;counter-reset:step}
+.sci-step{position:relative;display:grid;grid-template-columns:auto 1fr;gap:var(--space-4);padding:var(--space-4) var(--space-5);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);counter-increment:step;transition:border-color .2s,transform .2s}
+.sci-step:hover{border-color:color-mix(in oklch,var(--sci-gold) 35%,var(--color-border));transform:translateX(2px)}
+.sci-step__num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:#fff;background:linear-gradient(135deg,var(--sci-gold),var(--sci-gold-deep));box-shadow:0 4px 12px color-mix(in oklch,var(--sci-gold) 30%,transparent)}
+.sci-step__num::before{content:counter(step)}
+.sci-step__body{min-width:0}
+.sci-step__t{font-family:var(--font-display);font-weight:700;color:var(--color-text);font-size:var(--text-base);margin:6px 0 4px;line-height:1.3}
+.sci-step__d{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;margin:0}
+.sci-step__d code{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:.92em;background:var(--color-surface-offset);padding:2px 6px;border-radius:var(--radius-sm);color:var(--color-text);border:1px solid var(--color-divider)}
+
+/* ── FAQ ACCORDION ──────────────────────────────────────── */
+.sci-faq{margin:var(--space-5) 0;list-style:none;padding:0}
+.sci-faqitem{border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface);margin-bottom:var(--space-3);overflow:hidden;transition:border-color .15s}
+.sci-faqitem:hover{border-color:color-mix(in oklch,var(--sci-gold) 30%,var(--color-border))}
+.sci-faqitem[open]{border-color:color-mix(in oklch,var(--sci-gold) 50%,var(--color-border));box-shadow:var(--shadow-sm)}
+.sci-faqitem summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4) var(--space-5);font-weight:700;color:var(--color-text);font-size:var(--text-base);line-height:1.35;font-family:var(--font-display)}
+.sci-faqitem summary::-webkit-details-marker{display:none}
+.sci-faqitem summary:hover{color:var(--sci-gold-ink)}
+.sci-faqitem summary .sci-faqic{flex-shrink:0;width:22px;height:22px;color:var(--color-text-muted);transition:transform .25s;border-radius:50%;background:var(--color-surface-offset);padding:3px}
+.sci-faqitem[open] summary .sci-faqic{transform:rotate(45deg);color:var(--sci-gold);background:color-mix(in oklch,var(--sci-gold) 14%,transparent)}
+.sci-faqitem__a{padding:0 var(--space-5) var(--space-4);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7}
+.sci-faqitem__a strong{color:var(--color-text)}
+.sci-faqitem__a a{color:var(--color-primary);text-decoration:underline;text-underline-offset:2px}
+
+/* ── CTA ────────────────────────────────────────────────── */
+.sci-cta{margin:var(--space-10) 0;border-radius:var(--radius-xl);padding:var(--space-8) var(--space-6);text-align:center;position:relative;overflow:hidden;border:1px solid color-mix(in oklch,var(--sci-gold) 30%,var(--color-border));background:linear-gradient(135deg,color-mix(in oklch,var(--sci-gold) 12%,var(--color-surface)),var(--color-surface) 60%,color-mix(in oklch,var(--sci-teal) 8%,var(--color-surface)))}
+.sci-cta::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,color-mix(in oklch,var(--sci-gold) 12%,transparent),transparent 50%),radial-gradient(circle at 80% 70%,color-mix(in oklch,var(--sci-teal) 10%,transparent),transparent 50%);pointer-events:none;z-index:0}
+.sci-cta>*{position:relative;z-index:1}
+.sci-cta__icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--sci-gold),var(--sci-gold-deep));color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-3);box-shadow:0 8px 24px color-mix(in oklch,var(--sci-gold) 30%,transparent)}
+.sci-cta h3{font-family:var(--font-display);font-weight:800;font-size:clamp(1.2rem,1rem + 1vw,1.7rem);color:var(--color-text);margin:0 0 var(--space-2);line-height:1.2}
+.sci-cta p{font-size:var(--text-sm);color:var(--color-text-muted);max-width:54ch;margin:0 auto var(--space-5);line-height:1.65}
+.sci-ctabtns{display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center}
+.sci-ctabtn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-6);background:var(--color-primary);color:#fff;border-radius:var(--radius-full);font-weight:700;font-size:var(--text-sm);text-decoration:none;box-shadow:var(--shadow-md);transition:background .15s,transform .15s,box-shadow .15s;min-height:44px}
+.sci-ctabtn:hover{background:var(--color-primary-hover);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow-lg);text-decoration:none}
+.sci-ctabtn--ghost{background:transparent;color:var(--color-primary);border:1px solid var(--color-primary)}
+.sci-ctabtn--ghost:hover{background:var(--color-primary);color:#fff}
+
+/* ── SOURCES + DISCLAIMER ───────────────────────────────── */
+.sci-sources{margin-top:var(--space-8);border-top:1px solid var(--color-border);padding-top:var(--space-5)}
+.sci-sources h2{font-size:var(--text-base);font-family:var(--font-display);color:var(--color-text);margin:0 0 var(--space-3)}
+.sci-sources ol{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.7;margin:0;padding-left:var(--space-5)}
+.sci-sources ol li{margin-bottom:6px}
+.sci-sources a{color:var(--color-primary);text-decoration:underline;text-underline-offset:2px}
+.sci-disclaimer{margin-top:var(--space-6);padding:var(--space-4) var(--space-5);background:var(--color-surface-offset);border-radius:var(--radius-md);border-left:3px solid var(--color-border);font-size:var(--text-xs);color:var(--color-text-faint);line-height:1.7}
+.sci-disclaimer strong{color:var(--color-text-muted)}
+
+/* ── RELATED ARTICLES ───────────────────────────────────── */
+.sci-related{max-width:var(--sci-maxw);margin:0 auto;padding:var(--space-10) var(--space-4) var(--space-12)}
+.sci-related>h2{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-text);margin:0 0 var(--space-6)}
+.sci-related-grid{display:grid;grid-template-columns:1fr;gap:var(--space-4)}
+@media(min-width:560px){.sci-related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.sci-related-grid{grid-template-columns:repeat(3,1fr)}}
+.sci-rcard{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;transition:border-color .15s,transform .15s,box-shadow .15s}
+.sci-rcard:hover{border-color:var(--color-primary);transform:translateY(-2px);box-shadow:var(--shadow-md);text-decoration:none}
+.sci-rcard__tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sci-gold-ink);margin-bottom:var(--space-2);padding:3px 8px;background:color-mix(in oklch,var(--sci-gold) 10%,transparent);border-radius:var(--radius-full)}
+.sci-rcard__title{font-family:var(--font-display);font-weight:700;font-size:var(--text-base);color:var(--color-text);margin-bottom:var(--space-2);line-height:1.3}
+.sci-rcard__desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55;margin:0}
+
+/* ── BREADCRUMB ─────────────────────────────────────────── */
+.sci-bc-wrap{max-width:var(--sci-maxw);margin:0 auto;padding:var(--space-3) var(--space-4)}
+.sci-bc{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-1);list-style:none;padding:0;margin:0;font-size:var(--text-sm);color:var(--color-text-muted)}
+.sci-bc li+li::before{content:"/";margin:0 var(--space-1);color:var(--color-text-faint)}
+.sci-bc a{color:var(--color-text-muted);text-decoration:none}
+.sci-bc a:hover{color:var(--color-primary)}
+.sci-bc li[aria-current="page"]{color:var(--color-text);font-weight:500}
+
+/* article-wrap legacy reset for this page */
+.article-wrap.sci-article{max-width:none;padding:0;margin:0}
+
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 <!-- Microsoft Clarity -->
@@ -517,127 +856,683 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
   </div>
 </nav>
 
-<div class="breadcrumb-wrap">
-  <ol class="breadcrumb" aria-label="Breadcrumb">
+<div id="sci-progress" aria-hidden="true"></div>
+
+<div class="sci-bc-wrap">
+  <ol class="sci-bc" aria-label="Breadcrumb">
     <li><a href="/">Home</a></li>
     <li><a href="/blog/">Blog</a></li>
-    <li aria-current="page">Gold &amp; Silver Price Outlook</li>
+    <li aria-current="page">Silver Coins for UK Investors</li>
   </ol>
 </div>
 
-<div class="breadcrumb-wrap"><ol class="breadcrumb" aria-label="Breadcrumb">
-<li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li aria-current="page">Silver Coins for UK Investors: Junk Silver, Britannias, and Maple Leafs Compared</li>
-</ol></div>
-<article class="article-wrap" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-tag">Silver Guide</div>
-  <h1 class="article-title" itemprop="headline">Silver Coins for UK Investors: Junk Silver, Britannias, and Maple Leafs Compared</h1>
-  <div class="article-byline">
-    By <a href="/authors/goldpricetools-editorial-team/" itemprop="author">GoldPriceTools Editorial Team</a>
-    &middot; <time datetime="2026-06-15" itemprop="datePublished">2026-05-03</time>
-    &middot; <span style="font-size:0.8em;color:var(--color-text-faint)">Last updated: 3 May 2026</span>
+<article class="article-wrap sci-article" itemscope itemtype="https://schema.org/BlogPosting">
+
+  <!-- ═══ HERO ═══ -->
+  <header class="sci-hero">
+    <div class="sci-hero__bg" aria-hidden="true"></div>
+    <div class="sci-hero__grid" aria-hidden="true"></div>
+    <div class="sci-hero__inner">
+      <div class="sci-kicker"><span class="sci-kicker__dot"></span> UK Investor Guide &middot; Updated 15 June 2026</div>
+      <h1 itemprop="headline">Silver Coins for <span class="sci-accent-silver">UK Investors</span>, priced in <span class="sci-accent-gold">USD</span></h1>
+      <p class="sci-hero__lead">Junk silver, pre-decimal sterling, CGT-exempt Britannias, Canadian Maple Leafs and how to calculate live melt value — anchored to the global USD spot price, with GBP conversions for the UK market.</p>
+      <div class="sci-byline">
+        By <a href="/authors/goldpricetools-editorial-team/" itemprop="author">GoldPriceTools Editorial Team</a>
+        <span class="dot" aria-hidden="true"></span>
+        <time datetime="2026-05-03" itemprop="datePublished">3 May 2026</time>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Last updated <time datetime="2026-06-15" itemprop="dateModified">15 June 2026</time></span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>~9 min read</span>
+      </div>
+
+      <!-- Live spot panel -->
+      <div class="sci-spot" aria-label="Live silver spot price">
+        <div class="sci-spot__head">
+          <span class="sci-spot__label">Silver Spot &middot; XAG / USD</span>
+          <span class="sci-spot__live"><span class="live-dot"></span> Live &middot; LBMA</span>
+        </div>
+        <div class="sci-spot__main">
+          <span class="sci-spot__big" id="sci-spot-usd">—</span>
+          <span class="sci-spot__unit">USD / troy oz</span>
+        </div>
+        <div class="sci-spot__fx">≈ <strong id="sci-spot-gbp">—</strong> / oz &middot; <strong id="sci-spot-eur">—</strong> / oz</div>
+        <div class="sci-spot__meta">
+          <span>USD / gram: <strong id="sci-spot-gram">—</strong></span>
+          <span>USD / kilo: <strong id="sci-spot-kilo">—</strong></span>
+          <span>Refresh <strong>60s</strong></span>
+        </div>
+      </div>
+
+      <!-- Hero stat chips -->
+      <div class="sci-hero-stats" role="list">
+        <div class="sci-hstat sci-hstat--silver" role="listitem">
+          <div class="sci-hstat__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>Coin types covered</div>
+          <div class="sci-hstat__v">6</div>
+          <div class="sci-hstat__s">Britannia · Maple Leaf · Eagle · Phil · Krug · Junk</div>
+        </div>
+        <div class="sci-hstat sci-hstat--gold" role="listitem">
+          <div class="sci-hstat__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg>Premium range</div>
+          <div class="sci-hstat__v">8 – 25 %</div>
+          <div class="sci-hstat__s">Over spot, retail 1oz coins</div>
+        </div>
+        <div class="sci-hstat sci-hstat--teal" role="listitem">
+          <div class="sci-hstat__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>CGT on Britannia</div>
+          <div class="sci-hstat__v">0 %</div>
+          <div class="sci-hstat__s">UK legal tender exempt</div>
+        </div>
+        <div class="sci-hstat sci-hstat--amber" role="listitem">
+          <div class="sci-hstat__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>UK VAT on silver</div>
+          <div class="sci-hstat__v">20 %</div>
+          <div class="sci-hstat__s">Applied at purchase, non-recoverable</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ ARTICLE SHELL ═══ -->
+  <div class="sci-shell">
+    <div class="sci-layout">
+      <!-- TOC — mobile inline, desktop sticky sidebar (grid area) -->
+      <details class="sci-toc" open>
+        <summary>
+          Contents
+          <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+        </summary>
+        <div class="sci-toc__box">
+          <nav aria-label="Article contents">
+            <a href="#why">Why silver coins?</a>
+            <a href="#coins">Six silver coins compared</a>
+            <a href="#cgt">CGT exemption explained</a>
+            <a href="#calc">Live melt value calculator</a>
+            <a href="#vat">UK VAT impact</a>
+            <a href="#compare">Side-by-side table</a>
+            <a href="#how">How to calculate melt value</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+        </div>
+      </details>
+
+      <main class="sci-main">
+
+        <div class="sci-prose">
+          <p class="sci-lead sci-reveal">Silver coins offer a distinctive combination: a tangible precious metal, smaller purchase sizes than gold, and — for certain UK coins — the same CGT exemption as Gold Sovereigns and Britannias. Whether you're drawn to the community of silver stackers, the melt value of pre-decimal coinage, or the investment logic of the gold-silver ratio, this guide covers the main silver coin types available to UK investors in 2026 and how to calculate what each one is worth today, anchored to the live USD spot price.</p>
+
+          <!-- ═══ WHY SILVER COINS ═══ -->
+          <section class="sci-sec sci-reveal" id="why">
+            <div class="sci-sec__kick">Section 01 &middot; The case</div>
+            <h2>Why silver coins rather than silver bars?</h2>
+            <p>Silver bars are the cheapest way to buy silver by weight — lower premiums, fewer numismatic considerations. But coins have specific advantages for UK investors. Certain Royal Mint silver coins are CGT-exempt as UK legal tender (the same logic as Gold Britannias and Sovereigns). Coins also come in smaller denominations, making them easier to liquidate in fractions: selling one coin at a time rather than an entire bar. The trade-off is that coin premiums over spot are significantly higher than bar premiums.</p>
+
+            <div class="sci-feat" role="list">
+              <div class="sci-feat__item" role="listitem">
+                <div class="sci-feat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></div>
+                <div class="sci-feat__t">Legal tender CGT shield</div>
+                <p class="sci-feat__d">Silver Britannias and Sovereigns count as UK legal tender — gains are fully exempt from Capital Gains Tax regardless of profit.</p>
+              </div>
+              <div class="sci-feat__item" role="listitem">
+                <div class="sci-feat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="6"/><circle cx="15" cy="15" r="6"/></svg></div>
+                <div class="sci-feat__t">Fractional liquidity</div>
+                <p class="sci-feat__d">Sell a single 1oz coin at a time. With a 1kg bar you're forced to liquidate the entire position in one transaction.</p>
+              </div>
+              <div class="sci-feat__item" role="listitem">
+                <div class="sci-feat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg></div>
+                <div class="sci-feat__t">Global recognisability</div>
+                <p class="sci-feat__d">Britannias, Eagles and Maple Leafs are recognised worldwide — easy to buy and sell in any major bullion market.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ COIN SHOWCASE ═══ -->
+          <section class="sci-sec sci-reveal" id="coins">
+            <div class="sci-sec__kick">Section 02 &middot; The lineup</div>
+            <h2>Six silver coins, ranked for UK investors</h2>
+            <p>Each card shows live melt value calculated from the current USD silver spot. Retail premium ranges reflect typical 2026 dealer pricing for 1oz coins. CGT status is the UK position.</p>
+
+            <div class="sci-coins">
+
+              <!-- 1. Silver Britannia (FEATURED) -->
+              <article class="sci-coin sci-coin--feat" id="coin-britannia">
+                <div class="sci-coin__top">
+                  <div class="sci-coin__rank">
+                    <span class="sci-coin__num">01</span>
+                  </div>
+                  <div class="sci-coin__pill-row">
+                    <span class="sci-pill sci-pill--editor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Editor's pick</span>
+                    <span class="sci-pill sci-pill--cgt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> CGT exempt</span>
+                    <span class="sci-pill sci-pill--purity">.999 fine</span>
+                  </div>
+                </div>
+                <div class="sci-coin__body">
+                  <h3 class="sci-coin__title">Silver Britannia (1 oz)</h3>
+                  <div class="sci-coin__sub">UK · Royal Mint · £2 face</div>
+                  <p class="sci-coin__desc">The flagship British silver bullion coin. Struck in <strong>.999 fine silver</strong> with a £2 face value, the Britannia is UK legal tender — which is the single most important fact for a UK investor: <strong>profits are CGT-exempt</strong>. New designs are issued annually, which can add a collector premium for specific years.</p>
+                  <div class="sci-coin__stats">
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Live melt @ spot</span>
+                      <span class="sci-cstat__v is-live" data-melt="0.999">$—</span>
+                      <span class="sci-cstat__s">USD per 1 oz coin</span>
+                    </div>
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Retail premium</span>
+                      <span class="sci-cstat__v">15 – 25 %</span>
+                      <span class="sci-cstat__s">Over spot at major dealers</span>
+                    </div>
+                  </div>
+                  <div class="sci-coin__meta">
+                    <span class="sci-coin__meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Best for UK CGT planning</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 2. Canadian Silver Maple Leaf -->
+              <article class="sci-coin" id="coin-maple">
+                <div class="sci-coin__top">
+                  <div class="sci-coin__rank"><span class="sci-coin__num">02</span></div>
+                  <div class="sci-coin__pill-row">
+                    <span class="sci-pill sci-pill--no-cgt">CGT applies</span>
+                    <span class="sci-pill sci-pill--purity">.9999 fine</span>
+                  </div>
+                </div>
+                <div class="sci-coin__body">
+                  <h3 class="sci-coin__title">Canadian Silver Maple Leaf (1 oz)</h3>
+                  <div class="sci-coin__sub">Canada · RCM · CAD $5 face</div>
+                  <p class="sci-coin__desc">The <strong>highest purity</strong> mainstream silver coin globally (.9999). Laser micro-engraved radial-line security pattern and a year-coded privy mark. Lower premium than the Britannia, but not UK legal tender — so any UK gains are subject to CGT at 18% or 24% above the £3,000 annual allowance.</p>
+                  <div class="sci-coin__stats">
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Live melt @ spot</span>
+                      <span class="sci-cstat__v is-live" data-melt="0.9999">$—</span>
+                      <span class="sci-cstat__s">USD per 1 oz coin</span>
+                    </div>
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Retail premium</span>
+                      <span class="sci-cstat__v">8 – 15 %</span>
+                      <span class="sci-cstat__s">Cheapest of the big 4 sovereign mints</span>
+                    </div>
+                  </div>
+                  <div class="sci-coin__meta">
+                    <span class="sci-coin__meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a14 14 0 0 1 0 20 14 14 0 0 1 0-20"/></svg> Best global liquidity per pound</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 3. US Junk Silver -->
+              <article class="sci-coin" id="coin-junk">
+                <div class="sci-coin__top">
+                  <div class="sci-coin__rank"><span class="sci-coin__num">03</span></div>
+                  <div class="sci-coin__pill-row">
+                    <span class="sci-pill sci-pill--no-cgt">CGT applies (UK)</span>
+                    <span class="sci-pill sci-pill--purity">90 % silver</span>
+                  </div>
+                </div>
+                <div class="sci-coin__body">
+                  <h3 class="sci-coin__title">US Junk Silver (Pre-1965)</h3>
+                  <div class="sci-coin__sub">USA · Dimes, Quarters, Halves, Dollars</div>
+                  <p class="sci-coin__desc">Circulated pre-1965 US coins struck in <strong>90% silver</strong>. Called "junk" only because they carry no collector premium — they trade purely on melt. A standard <strong>$1,000 face-value bag</strong> contains approximately <strong>715 troy oz of pure silver</strong>. To value: multiply face value by <code>0.715</code>, then multiply by USD spot. See our <a href="/us-silver-dollar-values">US silver dollar values guide</a>.</p>
+                  <div class="sci-coin__stats">
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Live melt — $1 face</span>
+                      <span class="sci-cstat__v is-live" data-melt="0.715">$—</span>
+                      <span class="sci-cstat__s">$1 face value × 0.715 troy oz</span>
+                    </div>
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Retail premium</span>
+                      <span class="sci-cstat__v">3 – 8 %</span>
+                      <span class="sci-cstat__s">Closest to spot of any sovereign coin</span>
+                    </div>
+                  </div>
+                  <div class="sci-coin__meta">
+                    <span class="sci-coin__meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 21"/><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 3"/></svg> Lowest premium per ounce</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 4. UK Pre-Decimal Silver -->
+              <article class="sci-coin" id="coin-predec">
+                <div class="sci-coin__top">
+                  <div class="sci-coin__rank"><span class="sci-coin__num">04</span></div>
+                  <div class="sci-coin__pill-row">
+                    <span class="sci-pill sci-pill--no-cgt">CGT applies (numismatic)</span>
+                    <span class="sci-pill sci-pill--purity">.925 / .500</span>
+                  </div>
+                </div>
+                <div class="sci-coin__body">
+                  <h3 class="sci-coin__title">UK Pre-Decimal Silver</h3>
+                  <div class="sci-coin__sub">UK · Florins, Half-crowns, Shillings, Sixpences</div>
+                  <p class="sci-coin__desc">Three eras: <strong>pre-1920 = 92.5% sterling</strong>, <strong>1920–1946 = 50% silver</strong>, <strong>1947+ = no silver</strong>. The 1947 reform replaced silver entirely with cupro-nickel. Identify by date and monarch. A pre-war florin contains about <strong>2.83 g of pure silver</strong>; a sterling florin about <strong>10.46 g</strong>. Sold by weight rather than per-coin.</p>
+                  <div class="sci-coin__stats">
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Live melt — 1 g .925</span>
+                      <span class="sci-cstat__v is-live" data-melt-g="0.925">$—</span>
+                      <span class="sci-cstat__s">Per gram, pre-1920 sterling</span>
+                    </div>
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Live melt — 1 g 50%</span>
+                      <span class="sci-cstat__v is-live" data-melt-g="0.500">$—</span>
+                      <span class="sci-cstat__s">Per gram, 1920–1946 coins</span>
+                    </div>
+                  </div>
+                  <div class="sci-coin__meta">
+                    <span class="sci-coin__meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Best historical character</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 5. American Silver Eagle -->
+              <article class="sci-coin" id="coin-eagle">
+                <div class="sci-coin__top">
+                  <div class="sci-coin__rank"><span class="sci-coin__num">05</span></div>
+                  <div class="sci-coin__pill-row">
+                    <span class="sci-pill sci-pill--no-cgt">CGT applies (UK)</span>
+                    <span class="sci-pill sci-pill--purity">.999 fine</span>
+                  </div>
+                </div>
+                <div class="sci-coin__body">
+                  <h3 class="sci-coin__title">American Silver Eagle (1 oz)</h3>
+                  <div class="sci-coin__sub">USA · US Mint · USD $1 face</div>
+                  <p class="sci-coin__desc">The most globally recognised silver bullion coin by name. Struck in <strong>.999 fine silver</strong> with a USD $1 face. Highest premium of the major sovereign-mint silvers — driven by US domestic demand. <strong>Not UK legal tender</strong>, so no UK CGT exemption.</p>
+                  <div class="sci-coin__stats">
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Live melt @ spot</span>
+                      <span class="sci-cstat__v is-live" data-melt="0.999">$—</span>
+                      <span class="sci-cstat__s">USD per 1 oz coin</span>
+                    </div>
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Retail premium</span>
+                      <span class="sci-cstat__v">15 – 22 %</span>
+                      <span class="sci-cstat__s">Highest of major sovereign 1oz</span>
+                    </div>
+                  </div>
+                  <div class="sci-coin__meta">
+                    <span class="sci-coin__meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg> Best US-market liquidity</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 6. Austrian Philharmonic -->
+              <article class="sci-coin" id="coin-phil">
+                <div class="sci-coin__top">
+                  <div class="sci-coin__rank"><span class="sci-coin__num">06</span></div>
+                  <div class="sci-coin__pill-row">
+                    <span class="sci-pill sci-pill--no-cgt">CGT applies (UK)</span>
+                    <span class="sci-pill sci-pill--purity">.999 fine</span>
+                  </div>
+                </div>
+                <div class="sci-coin__body">
+                  <h3 class="sci-coin__title">Austrian Silver Philharmonic (1 oz)</h3>
+                  <div class="sci-coin__sub">Austria · €1.50 face · Eurozone legal tender</div>
+                  <p class="sci-coin__desc">Eurozone counterpart to the Eagle and Britannia. Struck in <strong>.999 fine silver</strong>, with a €1.50 face value. Typically the lowest premium of the European sovereign-mint silvers, making it competitive with the Maple Leaf on a per-ounce basis. Not UK legal tender — no UK CGT exemption.</p>
+                  <div class="sci-coin__stats">
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Live melt @ spot</span>
+                      <span class="sci-cstat__v is-live" data-melt="0.999">$—</span>
+                      <span class="sci-cstat__s">USD per 1 oz coin</span>
+                    </div>
+                    <div class="sci-cstat">
+                      <span class="sci-cstat__l">Retail premium</span>
+                      <span class="sci-cstat__v">8 – 12 %</span>
+                      <span class="sci-cstat__s">Among the cheapest sovereign 1oz</span>
+                    </div>
+                  </div>
+                  <div class="sci-coin__meta">
+                    <span class="sci-coin__meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> Best European liquidity</span>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- ═══ CGT SPOTLIGHT ═══ -->
+          <section class="sci-cgt sci-reveal" id="cgt">
+            <div class="sci-cgt__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <div class="sci-sec__kick">Section 03 &middot; The CGT shield</div>
+            <h2>CGT exemption — the single most important factor</h2>
+            <p class="sci-cgt__lead">For UK investors, <strong>Capital Gains Tax</strong> can erode 18–24% of profit at higher rate. UK legal tender silver coins side-step this entirely, regardless of how much profit you make. This is the same logic that applies to Gold Sovereigns and Gold Britannias.</p>
+            <div class="sci-cgt-grid">
+              <div class="sci-cgt-card sci-cgt-card--yes">
+                <div class="sci-cgt-card__t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> CGT-exempt</div>
+                <p class="sci-cgt-card__d"><strong>Silver Britannia</strong> (£2 face), <strong>Silver Sovereign</strong>, and any other Royal Mint silver coin with a sterling face value — counted as "coin of the realm" and exempt under TCGA 1992 s.21(1)(b).</p>
+              </div>
+              <div class="sci-cgt-card sci-cgt-card--no">
+                <div class="sci-cgt-card__t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> CGT applies</div>
+                <p class="sci-cgt-card__d"><strong>Maple Leaf, American Eagle, Philharmonic, Krugerrand, US junk silver</strong> — and any silver bar. Gains above the annual exempt amount (£3,000 for 2026/27) are taxable at 18% or 24%.</p>
+              </div>
+            </div>
+            <p class="sci-cgt__lead" style="margin-bottom:0">If you're building a meaningful position and care about after-tax return, <strong>Silver Britannias usually win on a like-for-like basis</strong> despite their higher headline premium. We cover the full mechanics in our <a href="/blog/uk-gold-cgt-guide">UK gold CGT guide</a>.</p>
+          </section>
+
+          <!-- ═══ LIVE CALCULATOR ═══ -->
+          <section class="sci-calc sci-reveal" id="calc" aria-label="Live silver melt value calculator">
+            <div class="sci-calc__head">
+              <div class="sci-calc__head-l">
+                <div class="sci-calc__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="13" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="13" y1="15" x2="16" y2="15"/><line x1="8" y1="19" x2="10" y2="19"/><line x1="13" y1="19" x2="16" y2="19"/></svg></div>
+                <div>
+                  <h3 class="sci-calc__title">Live silver melt value calculator</h3>
+                  <div class="sci-calc__sub">Pick a coin, enter quantity — uses live USD spot.</div>
+                </div>
+              </div>
+              <span class="sci-calc__live"><span class="live-dot"></span> Live spot</span>
+            </div>
+            <div class="sci-calc__body">
+              <div class="sci-calc__row">
+                <div class="sci-calc__grp">
+                  <label class="sci-calc__lab" for="sci-coinpick">Coin type</label>
+                  <div class="sci-calc__sel-wrap">
+                    <select id="sci-coinpick" class="sci-calc__sel">
+                      <option value="0.999|1oz">Silver Britannia (1 oz, .999)</option>
+                      <option value="0.9999|1oz">Canadian Maple Leaf (1 oz, .9999)</option>
+                      <option value="0.999|1oz">American Silver Eagle (1 oz, .999)</option>
+                      <option value="0.999|1oz">Austrian Philharmonic (1 oz, .999)</option>
+                      <option value="0.999|1oz">South African Krugerrand (1 oz, .999)</option>
+                      <option value="0.715|1usd">US Junk Silver — $1 face value (90%)</option>
+                      <option value="0.925|g">UK Pre-1920 silver — per gram (.925)</option>
+                      <option value="0.500|g">UK 1920–1946 silver — per gram (.500)</option>
+                    </select>
+                  </div>
+                  <div class="sci-calc__hint">Sterling 92.5% coins valued by total weight × 0.925.</div>
+                </div>
+                <div class="sci-calc__grp">
+                  <label class="sci-calc__lab" for="sci-qty">Quantity</label>
+                  <input type="number" id="sci-qty" class="sci-calc__inp" value="1" min="0" step="any" inputmode="decimal">
+                  <div class="sci-calc__hint" id="sci-unit-hint">Number of 1 oz coins.</div>
+                </div>
+              </div>
+              <div class="sci-calc__res" aria-live="polite">
+                <div class="sci-calc__res-item">
+                  <span class="sci-calc__res-l">Live melt value</span>
+                  <span class="sci-calc__res-v" id="sci-calc-usd">$—</span>
+                  <span class="sci-calc__res-s">USD &middot; primary</span>
+                </div>
+                <div class="sci-calc__res-item">
+                  <span class="sci-calc__res-l">≈ GBP</span>
+                  <span class="sci-calc__res-v sci-sub" id="sci-calc-gbp">£—</span>
+                  <span class="sci-calc__res-s">Via Frankfurter FX</span>
+                </div>
+                <div class="sci-calc__res-item">
+                  <span class="sci-calc__res-l">Pure silver</span>
+                  <span class="sci-calc__res-v sci-sub" id="sci-calc-oz">— oz</span>
+                  <span class="sci-calc__res-s">Troy ounces</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ VAT CALLOUT ═══ -->
+          <section class="sci-vat sci-reveal" id="vat">
+            <div class="sci-vat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div class="sci-vat__body">
+              <div class="sci-vat__k">Important · UK VAT</div>
+              <h2 class="sci-vat__t">Silver carries 20% UK VAT — gold does not</h2>
+              <p class="sci-vat__d">A critical difference from gold: <strong>silver coins and bars are subject to 20% UK VAT</strong> at purchase. This VAT is <strong>not recoverable</strong> by retail investors. Investment gold (≥99.5% purity) is VAT-exempt under EU-inherited HMRC rules; silver, platinum and palladium are not.</p>
+              <div class="sci-vat-math">
+                <div class="sci-vat-math__item">Cash invested<strong>$100.00</strong></div>
+                <div class="sci-vat-math__item">Of which is VAT<strong>$16.67</strong></div>
+                <div class="sci-vat-math__item">Silver actually bought<strong>$83.33</strong></div>
+              </div>
+              <p class="sci-vat__d" style="margin-top:var(--space-3)">Combined with a typical 10–20% coin premium, your effective entry cost is meaningfully above spot. Silver ETCs (paper exposure) don't carry VAT and may be more efficient for pure price exposure, but you give up the physical-tender CGT exemption.</p>
+            </div>
+          </section>
+
+          <!-- ═══ COMPARISON TABLE ═══ -->
+          <section class="sci-sec sci-reveal" id="compare">
+            <div class="sci-sec__kick">Section 04 &middot; Side-by-side</div>
+            <h2>Specifications at a glance</h2>
+            <p>All values denominated in USD against the live LBMA spot price shown at the top of the page. Premium ranges reflect typical 2026 retail dealer pricing for 1 oz coins.</p>
+            <div class="sci-tablewrap">
+              <div class="sci-tablescroll">
+                <table class="sci-table" aria-label="Silver coins comparison">
+                  <thead>
+                    <tr>
+                      <th>Coin</th>
+                      <th>Purity</th>
+                      <th>Weight</th>
+                      <th>Face value</th>
+                      <th>Live melt (USD)</th>
+                      <th>Premium</th>
+                      <th>UK CGT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Silver Britannia</td>
+                      <td>.999</td>
+                      <td>1 oz</td>
+                      <td>£2</td>
+                      <td class="sci-melt" data-melt="0.999">$—</td>
+                      <td>15 – 25 %</td>
+                      <td><span class="sci-pill sci-pill--cgt">Exempt</span></td>
+                    </tr>
+                    <tr>
+                      <td>Maple Leaf</td>
+                      <td>.9999</td>
+                      <td>1 oz</td>
+                      <td>CAD $5</td>
+                      <td class="sci-melt" data-melt="0.9999">$—</td>
+                      <td>8 – 15 %</td>
+                      <td><span class="sci-pill sci-pill--no-cgt">Taxable</span></td>
+                    </tr>
+                    <tr>
+                      <td>American Eagle</td>
+                      <td>.999</td>
+                      <td>1 oz</td>
+                      <td>USD $1</td>
+                      <td class="sci-melt" data-melt="0.999">$—</td>
+                      <td>15 – 22 %</td>
+                      <td><span class="sci-pill sci-pill--no-cgt">Taxable</span></td>
+                    </tr>
+                    <tr>
+                      <td>Austrian Philharmonic</td>
+                      <td>.999</td>
+                      <td>1 oz</td>
+                      <td>€1.50</td>
+                      <td class="sci-melt" data-melt="0.999">$—</td>
+                      <td>8 – 12 %</td>
+                      <td><span class="sci-pill sci-pill--no-cgt">Taxable</span></td>
+                    </tr>
+                    <tr>
+                      <td>South African Krugerrand</td>
+                      <td>.999</td>
+                      <td>1 oz</td>
+                      <td>ZAR 1</td>
+                      <td class="sci-melt" data-melt="0.999">$—</td>
+                      <td>8 – 12 %</td>
+                      <td><span class="sci-pill sci-pill--no-cgt">Taxable</span></td>
+                    </tr>
+                    <tr>
+                      <td>US junk silver ($1 face)</td>
+                      <td>90 %</td>
+                      <td>0.715 oz</td>
+                      <td>$1 face</td>
+                      <td class="sci-melt" data-melt="0.715">$—</td>
+                      <td>3 – 8 %</td>
+                      <td><span class="sci-pill sci-pill--no-cgt">Taxable</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="sci-scrollhint">← swipe to compare →</div>
+            </div>
+          </section>
+
+          <!-- ═══ HOW TO CALCULATE ═══ -->
+          <section class="sci-sec sci-reveal" id="how">
+            <div class="sci-sec__kick">Section 05 &middot; The maths</div>
+            <h2>How to calculate any silver coin's melt value</h2>
+            <p>Same formula for every coin — only the silver fraction changes. Always work from USD spot first (the global reference), then convert if you need GBP.</p>
+            <ol class="sci-steps">
+              <li class="sci-step">
+                <div class="sci-step__num"></div>
+                <div class="sci-step__body">
+                  <h3 class="sci-step__t">Get the silver spot price</h3>
+                  <p class="sci-step__d">Use the live USD spot at the top of this page — sourced from the LBMA market via <code>gold-api.com</code>, refreshed every 60 seconds. This is the single global reference price.</p>
+                </div>
+              </li>
+              <li class="sci-step">
+                <div class="sci-step__num"></div>
+                <div class="sci-step__body">
+                  <h3 class="sci-step__t">Find pure silver content per coin</h3>
+                  <p class="sci-step__d">1 oz coins (Britannia, Eagle, Maple, Phil, Krugerrand): pure silver content = <code>1.0 × purity</code>. US 90% junk silver: <code>face value × 0.715 troy oz</code>. UK sterling (.925) coins: <code>weight g × 0.925 ÷ 31.1035</code>.</p>
+                </div>
+              </li>
+              <li class="sci-step">
+                <div class="sci-step__num"></div>
+                <div class="sci-step__body">
+                  <h3 class="sci-step__t">Multiply by USD spot</h3>
+                  <p class="sci-step__d"><code>melt_usd = pure_oz × spot_usd</code>. That's the bullion melt value — what a dealer's machine prices a coin at before applying a buy-back discount.</p>
+                </div>
+              </li>
+              <li class="sci-step">
+                <div class="sci-step__num"></div>
+                <div class="sci-step__body">
+                  <h3 class="sci-step__t">Convert to GBP if needed</h3>
+                  <p class="sci-step__d">Use a current USD→GBP rate (we use the European Central Bank rate via Frankfurter). <code>melt_gbp = melt_usd × usdgbp_rate</code>. Dealer buy-back is typically 85–95% of melt.</p>
+                </div>
+              </li>
+              <li class="sci-step">
+                <div class="sci-step__num"></div>
+                <div class="sci-step__body">
+                  <h3 class="sci-step__t">Skip the maths</h3>
+                  <p class="sci-step__d">Use the <a href="/silver-coins-calculator">live silver coins calculator</a> for US junk silver, the <a href="/silver-price-per-kilo">silver per kilo tool</a> for bars and weight-based coins, and the live calculator above for sovereign-mint coins.</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- ═══ CTA ═══ -->
+          <section class="sci-cta sci-reveal" aria-label="Open the silver calculator">
+            <div class="sci-cta__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="13" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="13" y1="15" x2="16" y2="15"/></svg></div>
+            <h3>Price every silver coin you own in seconds</h3>
+            <p>Whether you're checking a single Britannia, a $1,000 junk-silver bag, or a tin of pre-decimal florins — we have a live USD-anchored calculator for it.</p>
+            <div class="sci-ctabtns">
+              <a href="/silver-coins-calculator" class="sci-ctabtn">Silver Coins Calculator <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              <a href="/silver-price-per-kilo" class="sci-ctabtn sci-ctabtn--ghost">Silver Price Per Kilo</a>
+            </div>
+          </section>
+
+          <!-- ═══ FAQ ═══ -->
+          <section class="sci-sec sci-reveal" id="faq">
+            <div class="sci-sec__kick">Section 06 &middot; FAQ</div>
+            <h2>Frequently asked questions</h2>
+            <div class="sci-faq">
+              <details class="sci-faqitem">
+                <summary>
+                  What is junk silver?
+                  <svg class="sci-faqic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="sci-faqitem__a">Junk silver refers to pre-1965 US coins (dimes, quarters, half-dollars) that contain <strong>90% silver</strong> but have no numismatic premium — they're traded purely for their silver content. The term is misleading: this silver is far from junk. UK equivalent: <strong>pre-1920 British coins (92.5% sterling)</strong> and <strong>1920–1946 British coins (50% silver)</strong>. Junk silver offers the cheapest way to buy silver close to spot price.</div>
+              </details>
+              <details class="sci-faqitem">
+                <summary>
+                  Are silver coins CGT-exempt in the UK?
+                  <svg class="sci-faqic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="sci-faqitem__a">UK legal-tender silver coins — including <strong>Silver Britannias</strong> — are CGT-exempt as 'coin of the realm', the same as gold Britannias and Sovereigns. Foreign silver coins (Maple Leafs, American Eagles, Philharmonics, Krugerrands) are <strong>not CGT-exempt</strong>, and gains above the annual exempt amount are taxable at 18% or 24%. This makes Silver Britannias particularly attractive for UK investors building a sizeable position.</div>
+              </details>
+              <details class="sci-faqitem">
+                <summary>
+                  What is the best silver coin to buy in the UK?
+                  <svg class="sci-faqic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="sci-faqitem__a">For most UK investors the <strong>Silver Britannia</strong> (1 oz .999) is the best single choice: CGT-exempt, recognised worldwide, and available from the Royal Mint and every major dealer. For maximum silver content per pound — and if your gains stay within the £3,000 CGT allowance — a <strong>Canadian Maple Leaf</strong> or <strong>Austrian Philharmonic</strong> offers a lower premium. Silver bars are cheapest of all by weight, but carry no CGT shield and no fractional liquidity.</div>
+              </details>
+              <details class="sci-faqitem">
+                <summary>
+                  Why does silver have VAT but gold doesn't?
+                  <svg class="sci-faqic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="sci-faqitem__a">Investment gold (coins and bars of ≥99.5% purity) is VAT-exempt under EU-inherited UK legislation. Silver, platinum and palladium do not benefit from this exemption — standard <strong>20% VAT</strong> applies at purchase. This significantly raises the effective cost of physical silver and makes silver <strong>ETCs</strong> (which don't attract VAT) more cost-effective for pure price exposure, though they sacrifice physical possession and the legal-tender CGT shield.</div>
+              </details>
+              <details class="sci-faqitem">
+                <summary>
+                  How do I calculate the melt value of a silver coin?
+                  <svg class="sci-faqic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="sci-faqitem__a">Multiply the coin's <strong>pure silver weight in troy ounces</strong> by the current <strong>silver spot price in USD per troy ounce</strong>. For sterling (.925) coins, multiply total weight in grams by 0.925, then divide by 31.1035 to get pure troy ounces. For 90% US junk silver, multiply face value by <strong>0.715</strong> to get troy ounces of silver, then multiply by spot. The live calculator above does this automatically using the same LBMA spot price referenced across all GoldPriceTools pages.</div>
+              </details>
+              <details class="sci-faqitem">
+                <summary>
+                  What is the silver premium and how much should I pay over spot?
+                  <svg class="sci-faqic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </summary>
+                <div class="sci-faqitem__a">The silver premium is the dealer's mark-up above the live spot price. Typical 2026 retail premiums: silver bars <strong>5–10%</strong>, generic rounds <strong>8–12%</strong>, Maple Leafs &amp; Philharmonics <strong>8–15%</strong>, Silver Britannias &amp; American Eagles <strong>15–25%</strong>, proof and limited-mintage coins <strong>25–60%</strong>. Smaller coin sizes (1/2 oz, 1/4 oz) carry materially higher per-ounce premiums. Always compare quoted prices to the live spot before buying.</div>
+              </details>
+            </div>
+          </section>
+
+          <!-- SOURCES + DISCLAIMER -->
+          <section class="sci-sources sci-reveal">
+            <h2>Sources &amp; references</h2>
+            <ol>
+              <li>LBMA Silver Price — daily benchmark fix, via gold-api.com (refresh 60s).</li>
+              <li>HMRC, <em>Capital Gains Tax: legal tender coins of the realm</em> — TCGA 1992 s.21(1)(b).</li>
+              <li>HMRC, <em>VAT Notice 701/21A: investment gold</em> — silver is excluded from the exemption.</li>
+              <li>The Royal Mint, <em>Silver Britannia bullion specifications</em>.</li>
+              <li>Royal Canadian Mint, <em>Silver Maple Leaf specifications</em> — .9999 purity.</li>
+              <li>Frankfurter / European Central Bank reference rate (USD → GBP / EUR conversion).</li>
+            </ol>
+            <div class="sci-disclaimer"><strong>Editorial note:</strong> This page is informational, not financial advice. Live prices are indicative LBMA-derived spot values refreshed every 60 seconds; the actual transaction price you receive from a dealer will differ. Tax treatment depends on individual circumstances and the rules at the time of disposal. Consult a qualified adviser for personal advice.</div>
+          </section>
+
+        </div><!-- /.sci-prose -->
+      </main>
+
+    </div>
   </div>
-  <div class="prose">
-    <p>Silver coins offer a distinctive combination: a tangible precious metal, smaller purchase sizes than gold, and for certain UK coins, the same CGT exemption as Gold Sovereigns and Britannias. Whether you are drawn to the community of silver stackers, the melt value of pre-decimal coinage, or the investment logic of the gold-silver ratio, this guide covers the main silver coin types available to UK investors in 2026 — and how to calculate what each one is worth today.</p>
-
-    <h2>Why Silver Coins Rather Than Silver Bars?</h2>
-    <p>Silver bars are the cheapest way to buy silver by weight — lower premiums, fewer numismatic considerations. But coins have specific advantages for UK investors: certain Royal Mint silver coins are CGT-exempt as UK legal tender (the same logic as Gold Britannias and Sovereigns). Coins also come in smaller denominations, making them easier to liquidate in fractions — selling one coin at a time rather than an entire bar. The trade-off is that coin premiums over spot are significantly higher than bar premiums.</p>
-
-    <h2>US Junk Silver (90% Coin Silver)</h2>
-    <p>Pre-1965 US circulated coins — dimes, quarters, half dollars, and silver dollars — were struck in <strong>90% silver</strong>. They are called "junk silver" not because they are worthless, but because they have no collector premium — they trade purely on their silver melt value. This makes them one of the most liquid forms of small-denomination silver. The standard pricing unit is a "face value bag" — e.g., $1,000 face value of pre-1965 dimes contains approximately 715 troy oz of pure silver. To calculate the melt value of junk silver: multiply the face value in dollars by 0.715 (for standard 90% coins), then multiply by the current silver spot price in USD per troy oz. Our <a href="/guides/us-silver-dollar-values">US silver dollar values guide</a> provides current melt values for all pre-1965 US coin denominations.</p>
-
-    <h2>UK Pre-Decimal Silver Coinage</h2>
-    <p>British pre-decimal coins offer another route to physical silver with historical character. The silver content varies significantly by era:</p>
-    <ul>
-      <li><strong>Pre-1920 coins</strong> (florins, half-crowns, shillings, sixpences): <strong>92.5% (sterling) silver</strong>. These are genuinely sterling silver and carry meaningful melt value. Identifiable by the absence of "NEW PENCE" or decimal markings.</li>
-      <li><strong>1920–1946 coins:</strong> <strong>50% silver</strong>. The silver content was reduced in 1920 to conserve reserves. Still contain real silver — a pre-war florin (1920–1946) contains approximately 2.83g of pure silver.</li>
-      <li><strong>1947 and later pre-decimal cupro-nickel coins:</strong> <strong>No silver at all.</strong> The 1947 reform replaced all silver with cupro-nickel entirely. Many people assume old British coins contain silver — only those minted before 1947 do.</li>
-    </ul>
-    <p>To identify silver pre-decimal coins: look for the monarch's head (George V, George VI, or pre-decimal Elizabeth II) and check the date. Any coin dated 1919 or earlier is 92.5% sterling. Any coin dated 1920–1946 is 50% silver. Any florin, half-crown, shilling, or sixpence dated 1947 or later has no silver content.</p>
-
-    <h2>Silver Britannia Coins (CGT-Exempt)</h2>
-    <p>The 1 oz Silver Britannia is struck in <strong>999 fine (99.9%) silver</strong> with a £2 face value, making it CGT-exempt as UK legal tender — the same exemption as the Gold Britannia. The Royal Mint produces new designs annually, which can add a collector premium on top of the silver melt value. As of early May 2026, with silver at approximately $74.76/oz (~£59/oz), a 1 oz Silver Britannia carries a retail premium of approximately 15–25% over silver spot — higher than bars, but justified by the CGT exemption and liquidity. The annual design series also makes Silver Britannias popular with collectors, who may pay premiums above melt value for specific years.</p>
-
-    <h2>Canadian Silver Maple Leaf</h2>
-    <p>The 1 oz <strong>Canadian Silver Maple Leaf</strong> is struck in 999.9 fine (99.99%) silver — the highest purity of any mainstream silver coin globally. It has a CAD $5 face value, making it legal tender in Canada but <strong>not in the UK</strong>. This means it does <em>not</em> qualify for CGT exemption in the UK. However, the Maple Leaf is one of the most internationally recognised silver coins and typically trades at lower premiums than the Silver Britannia — roughly 8–15% over spot versus 15–25% for Britannias. Its security features include a laser micro-engraved radial-line pattern and a security privy mark (maple leaf with year). For investors who are less concerned about CGT (e.g., because their gains fall within the £3,000 annual exempt amount), the Maple Leaf offers excellent liquidity globally.</p>
-
-    <h2>Other Popular Silver Coins</h2>
-    <ul>
-      <li><strong>American Silver Eagle (1 oz, 999 fine, USD $1 face):</strong> US legal tender, not UK legal tender. High global name recognition. Premium ~15–20% over spot. Not CGT-exempt in the UK.</li>
-      <li><strong>Austrian Silver Philharmonic (1 oz, 999 fine, €1.50 face):</strong> Eurozone legal tender. Not CGT-exempt in the UK. Lower premium than Eagles (~8–12% over spot).</li>
-      <li><strong>South African Silver Krugerrand (1 oz, 999 fine):</strong> Legal tender in South Africa. Premium ~8–12% over spot. Not CGT-exempt in UK.</li>
-    </ul>
-
-    <h2>UK VAT on Silver</h2>
-    <p>A critical difference from gold: <strong>silver coins and bars are subject to 20% UK VAT at purchase</strong> (unlike investment gold, which is VAT-exempt). This VAT is not recoverable by retail investors. It means that even before considering the dealer premium, you are paying 20% above the silver spot value. A £100 investment in silver at spot actually buys you £83.33 worth of metal. This VAT cost significantly increases the breakeven price needed before a silver investment becomes profitable, and is an important consideration when comparing silver to gold investments.</p>
-
-    <h2>How to Calculate Silver Coin Melt Value</h2>
-    <p>The melt value formula for any silver coin: multiply the coin's <strong>pure silver weight in troy oz</strong> by the <strong>current silver spot price in GBP per troy oz</strong>. For sterling (.925) coins: multiply the total weight in grams by 0.925, then divide by 31.1035 to get troy oz. For 50% silver coins: use 0.500 instead of 0.925. Our <a href="/silver-price-per-kilo">silver price calculator</a> can check live prices in GBP instantly.</p>
-    <div class="cta-box"><h3>Calculate Your Silver's Live Value</h3><p>Check the current price of 925 sterling, 999 fine silver, and pre-decimal coins using GoldPriceTools' live silver calculator.</p><a href="/silver-price-per-kilo" class="cta-btn">Open Silver Calculator &rarr;</a></div>
-  </div>
-  
-<!-- FAQ Section -->
-<section style="padding:2rem 0 0;">
-  <h2 style="font-size:1.3rem;font-weight:700;color:var(--color-text);margin-bottom:1.2rem;">Frequently Asked Questions</h2>
-  <div class="faq-container">
-    <div class="faq-card">
-      <h3 class="faq-q">What is junk silver?</h3>
-      <p class="faq-answer">Junk silver refers to pre-1965 US coins (dimes, quarters, half-dollars) that contain 90% silver but have no numismatic premium — they're traded purely for their silver content. The term is misleading: this silver is far from junk. UK equivalent: pre-1920 British coins (50% silver) and 1920–1946 British coins (50% silver). Junk silver offers a cheap way to buy silver near spot price.</p>
-    </div>
-    <div class="faq-card">
-      <h3 class="faq-q">Are silver coins CGT-exempt in the UK?</h3>
-      <p class="faq-answer">UK legal tender silver coins — including Silver Britannias — are CGT-exempt as 'coin of the realm', the same as gold Britannias and Sovereigns. Foreign silver coins (e.g. Canadian Maple Leafs, American Eagles) are not CGT-exempt and any gains are subject to UK CGT at 18% or 24%. This makes Silver Britannias particularly attractive for UK investors.</p>
-    </div>
-    <div class="faq-card">
-      <h3 class="faq-q">What is the best silver coin to buy in the UK?</h3>
-      <p class="faq-answer">For UK investors, the Silver Britannia (1oz .999 fine silver) is generally the best choice: CGT-exempt, VAT-free (as legal tender), recognisable worldwide, and available from the Royal Mint and major dealers. The Silver Sovereign is another option. For maximum silver content per £, silver bars typically have lower premiums than coins.</p>
-    </div>
-    <div class="faq-card">
-      <h3 class="faq-q">Why does silver have VAT but gold doesn't?</h3>
-      <p class="faq-answer">Investment gold (coins and bars of ≥99.5% purity) is VAT-exempt in the UK under EU-inherited legislation. Silver, platinum and palladium do not benefit from this exemption — standard 20% VAT applies. This significantly increases the effective cost of buying silver coins or bars, and makes silver ETCs (which don't attract VAT) more cost-effective for pure investment exposure.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Related Guides Section -->
-<section class="related-guides" >
-  <div class="container" >
-    <h2>Related Articles &amp; Guides</h2>
-    <div class="related-guides-grid">
-      <a href="/silver-price-per-kilo" class="related-card">
-        <div class="related-card__tag">Live Price</div>
-        <div class="related-card__title">Silver Price Per Kilo</div>
-        <div class="related-card__desc">Today's live silver price per kilogram in GBP and USD.</div>
-      </a>
-      <a href="/800-silver-price-per-gram" class="related-card">
-        <div class="related-card__tag">Live Price</div>
-        <div class="related-card__title">.800 Silver Price Per Gram</div>
-        <div class="related-card__desc">Price for .800 coin silver — common in junk silver from Europe.</div>
-      </a>
-      <a href="/900-silver-price-per-gram" class="related-card">
-        <div class="related-card__tag">Live Price</div>
-        <div class="related-card__title">.900 Silver Price Per Gram</div>
-        <div class="related-card__desc">Price for .900 coin silver — US 90% junk silver standard.</div>
-      </a>
-      <a href="/blog/uk-gold-cgt-guide" class="related-card">
-        <div class="related-card__tag">Article</div>
-        <div class="related-card__title">UK Gold CGT Guide</div>
-        <div class="related-card__desc">CGT rules for silver coins — which are exempt and which aren't.</div>
-      </a>
-      <a href="/guides/what-is-925-sterling-silver" class="related-card">
-        <div class="related-card__tag">Guide</div>
-        <div class="related-card__title">What is 925 Sterling Silver?</div>
-        <div class="related-card__desc">Understand silver purity grades: .800, .900, .925 and .999 compared.</div>
-      </a>
-      <a href="/guides/gold-vs-silver-investment" class="related-card">
-        <div class="related-card__tag">Guide</div>
-        <div class="related-card__title">Gold vs Silver Investment</div>
-        <div class="related-card__desc">Should you buy silver coins or gold coins? Investment comparison.</div>
-      </a>
-    </div>
-  </div>
-</section>
 
 </article>
+
+<!-- ═══ RELATED ARTICLES ═══ -->
+<section class="sci-related" aria-label="Related articles">
+  <h2>Related articles &amp; tools</h2>
+  <div class="sci-related-grid">
+    <a href="/silver-price-per-kilo" class="sci-rcard">
+      <span class="sci-rcard__tag">Live price</span>
+      <div class="sci-rcard__title">Silver Price Per Kilo</div>
+      <p class="sci-rcard__desc">Today's live silver price per kilogram in USD, with GBP and EUR conversions.</p>
+    </a>
+    <a href="/800-silver-price-per-gram" class="sci-rcard">
+      <span class="sci-rcard__tag">Live price</span>
+      <div class="sci-rcard__title">.800 Silver Per Gram</div>
+      <p class="sci-rcard__desc">Live price for .800 coin silver — common in European junk silver coins.</p>
+    </a>
+    <a href="/900-silver-price-per-gram" class="sci-rcard">
+      <span class="sci-rcard__tag">Live price</span>
+      <div class="sci-rcard__title">.900 Silver Per Gram</div>
+      <p class="sci-rcard__desc">Live price for .900 coin silver — the US 90% junk silver standard.</p>
+    </a>
+    <a href="/silver-coins-calculator" class="sci-rcard">
+      <span class="sci-rcard__tag">Calculator</span>
+      <div class="sci-rcard__title">US Silver Coin Calculator</div>
+      <p class="sci-rcard__desc">Junk-silver melt value for dimes, quarters, halves, and Morgan/Peace dollars.</p>
+    </a>
+    <a href="/us-silver-dollar-values" class="sci-rcard">
+      <span class="sci-rcard__tag">Guide</span>
+      <div class="sci-rcard__title">US Silver Dollar Values</div>
+      <p class="sci-rcard__desc">Every silver dollar type — Morgan, Peace, Eisenhower — with live melt values.</p>
+    </a>
+    <a href="/blog/uk-gold-cgt-guide" class="sci-rcard">
+      <span class="sci-rcard__tag">Article</span>
+      <div class="sci-rcard__title">UK Gold &amp; Silver CGT Guide</div>
+      <p class="sci-rcard__desc">Capital Gains Tax rules for precious metals — which coins escape CGT and which don't.</p>
+    </a>
+    <a href="/guides/what-is-925-sterling-silver" class="sci-rcard">
+      <span class="sci-rcard__tag">Guide</span>
+      <div class="sci-rcard__title">What is 925 Sterling Silver?</div>
+      <p class="sci-rcard__desc">Silver purity grades — .800, .900, .925 and .999 explained for buyers.</p>
+    </a>
+    <a href="/silver-purity-grades" class="sci-rcard">
+      <span class="sci-rcard__tag">Reference</span>
+      <div class="sci-rcard__title">Silver Purity Grades</div>
+      <p class="sci-rcard__desc">All international silver purity standards in a single reference table.</p>
+    </a>
+    <a href="/gold-silver-ratio" class="sci-rcard">
+      <span class="sci-rcard__tag">Live ratio</span>
+      <div class="sci-rcard__title">Gold &middot; Silver Ratio</div>
+      <p class="sci-rcard__desc">The classic timing indicator — when silver is cheap relative to gold, stackers buy.</p>
+    </a>
+  </div>
+</section>
 <footer>
   <div class="footer-inner">
     <div class="footer-brand-col">
@@ -714,23 +1609,181 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     <span>Spot data refreshes every 60 seconds. Prices sourced from LBMA via gold-api.com.</span>
   </div>
 </footer>
-<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js");});}
-</script>
+<script>if("serviceWorker"in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js");});}</script>
+
 <script>
-const TROY=31.1035,API='https://api.gold-api.com/price';
-function fmt(v){return '$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
-function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
-async function loadTicker(){
-  try{
-    const[gr,sr]=await Promise.all([fetch(API+'/XAU',{cache:'no-store'}),fetch(API+'/XAG',{cache:'no-store'})]);
-    const[g,s]=await Promise.all([gr.json(),sr.json()]);
-    const gG=g.price/TROY;
-    [['t-xau',fmt(g.price)],['t-24k',fmt(gG*.9999)],['t-18k',fmt(gG*.75)],['t-14k',fmt(gG*.5833)],['t-10k',fmt(gG*.4167)],
-     ['t-xau2',fmt(g.price)],['t-24k2',fmt(gG*.9999)],['t-18k2',fmt(gG*.75)],['t-14k2',fmt(gG*.5833)],['t-10k2',fmt(gG*.4167)],
-     ['t-xag',fmt(s.price)],['t-agkg',fmt(s.price/TROY*1000)]]
-    .forEach(([id,v])=>set(id,v));
-  }catch(e){}
-}
-loadTicker();setInterval(loadTicker,60000);
+/* ═══════════════════════════════════════════════════════════════
+   Silver Coins UK — live price engine
+   Shared data sources across goldpricetools.com (DO NOT change):
+     • Silver spot: https://api.gold-api.com/price/XAG  (LBMA, USD/oz)
+     • Gold spot:   https://api.gold-api.com/price/XAU  (ticker)
+     • FX rates:    https://api.frankfurter.dev/v1/latest?from=USD&to=GBP,EUR
+   USD is primary. GBP/EUR are conversions. Refresh every 60s.
+═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+  const API='https://api.gold-api.com/price';
+  const FX='https://api.frankfurter.dev/v1/latest?from=USD&to=GBP,EUR';
+  const TROY=31.1035, OZ_PER_KG=32.1507, REFRESH_MS=60000;
+
+  const $=id=>document.getElementById(id);
+  const fmtUSD=v=>'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmtGBP=v=>'£'+v.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmtEUR=v=>'€'+v.toLocaleString('en-IE',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmtOz=v=>v.toLocaleString('en-US',{minimumFractionDigits:3,maximumFractionDigits:3})+' oz';
+  const set=(id,v)=>{const e=$(id);if(e)e.textContent=v;};
+
+  let silverUSD=null, goldUSD=null, gbpRate=null, eurRate=null;
+
+  /* ── 1. SHARED TICKER ───────────────────────────────────── */
+  function renderTicker(){
+    if(!goldUSD || !silverUSD) return;
+    const gG=goldUSD/TROY;
+    [['t-xau',fmtUSD(goldUSD)],['t-xau2',fmtUSD(goldUSD)],
+     ['t-24k',fmtUSD(gG*.9999)],['t-24k2',fmtUSD(gG*.9999)],
+     ['t-18k',fmtUSD(gG*.75)],['t-18k2',fmtUSD(gG*.75)],
+     ['t-14k',fmtUSD(gG*.5833)],['t-14k2',fmtUSD(gG*.5833)],
+     ['t-10k',fmtUSD(gG*.4167)],['t-10k2',fmtUSD(gG*.4167)],
+     ['t-xag',fmtUSD(silverUSD)],['t-xag2',fmtUSD(silverUSD)],
+     ['t-agkg',fmtUSD(silverUSD*OZ_PER_KG)],['t-agkg2',fmtUSD(silverUSD*OZ_PER_KG)]
+    ].forEach(([id,v])=>set(id,v));
+  }
+
+  /* ── 2. HERO SPOT PANEL ─────────────────────────────────── */
+  function renderHeroSpot(){
+    if(silverUSD==null) return;
+    set('sci-spot-usd', fmtUSD(silverUSD));
+    set('sci-spot-gram', fmtUSD(silverUSD/TROY));
+    set('sci-spot-kilo', fmtUSD(silverUSD*OZ_PER_KG));
+    if(gbpRate) set('sci-spot-gbp', fmtGBP(silverUSD*gbpRate));
+    if(eurRate) set('sci-spot-eur', fmtEUR(silverUSD*eurRate));
+  }
+
+  /* ── 3. COIN CARDS + TABLE (data-melt / data-melt-g) ────── */
+  function renderCoinMelts(){
+    if(silverUSD==null) return;
+    document.querySelectorAll('[data-melt]').forEach(el=>{
+      const factor=parseFloat(el.getAttribute('data-melt'));
+      if(!isFinite(factor)) return;
+      el.textContent = fmtUSD(silverUSD * factor);
+    });
+    document.querySelectorAll('[data-melt-g]').forEach(el=>{
+      const purity=parseFloat(el.getAttribute('data-melt-g'));
+      if(!isFinite(purity)) return;
+      el.textContent = fmtUSD((silverUSD/TROY) * purity);
+    });
+  }
+
+  /* ── 4. INTERACTIVE CALCULATOR ──────────────────────────── */
+  function calcMelt(){
+    const pickEl=$('sci-coinpick'), qtyEl=$('sci-qty');
+    if(!pickEl || !qtyEl || silverUSD==null) return;
+    const parts=pickEl.value.split('|');
+    const factor=parseFloat(parts[0]);
+    const unit=parts[1] || '1oz';
+    const qty=Math.max(0, parseFloat(qtyEl.value)||0);
+    let pureOz=0;
+    if(unit==='1oz')      pureOz = qty * 1.0 * factor;        // 1oz coins
+    else if(unit==='1usd') pureOz = qty * 0.715;              // $ face junk silver
+    else if(unit==='g')   pureOz = (qty * factor) / TROY;     // per gram
+    const usd = pureOz * silverUSD;
+    const gbp = gbpRate ? usd * gbpRate : null;
+    const usdEl=$('sci-calc-usd'), gbpEl=$('sci-calc-gbp'), ozEl=$('sci-calc-oz');
+    if(usdEl){
+      usdEl.textContent = fmtUSD(usd);
+      if(usd>0){ usdEl.classList.remove('is-bump'); void usdEl.offsetWidth; usdEl.classList.add('is-bump'); }
+    }
+    if(gbpEl) gbpEl.textContent = gbp!=null ? fmtGBP(gbp) : '£—';
+    if(ozEl)  ozEl.textContent  = fmtOz(pureOz);
+    // hint
+    const hintEl=$('sci-unit-hint');
+    if(hintEl){
+      if(unit==='1oz')      hintEl.textContent='Number of 1 oz coins.';
+      else if(unit==='1usd') hintEl.textContent='Face value in US dollars (e.g. 100 = $100 face bag).';
+      else                  hintEl.textContent='Total weight of coins in grams.';
+    }
+  }
+
+  /* ── 5. FETCH + ORCHESTRATE ─────────────────────────────── */
+  async function fetchFX(){
+    try{
+      const r=await fetch(FX,{cache:'no-store'}); if(!r.ok) return;
+      const d=await r.json();
+      if(d && d.rates){ gbpRate=d.rates.GBP; eurRate=d.rates.EUR; }
+    }catch(e){}
+  }
+  async function fetchSpot(){
+    try{
+      const [gr,sr]=await Promise.all([
+        fetch(API+'/XAU',{cache:'no-store'}),
+        fetch(API+'/XAG',{cache:'no-store'})
+      ]);
+      if(gr.ok){ const g=await gr.json(); if(g && g.price) goldUSD=g.price; }
+      if(sr.ok){ const s=await sr.json(); if(s && s.price) silverUSD=s.price; }
+    }catch(e){}
+  }
+  async function refresh(){
+    await Promise.all([fetchSpot(), fetchFX()]);
+    renderTicker();
+    renderHeroSpot();
+    renderCoinMelts();
+    calcMelt();
+  }
+
+  /* ── 6. INIT ────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const pickEl=$('sci-coinpick'), qtyEl=$('sci-qty');
+    if(pickEl) pickEl.addEventListener('change', calcMelt);
+    if(qtyEl) qtyEl.addEventListener('input', calcMelt);
+    refresh();
+    setInterval(refresh, REFRESH_MS);
+  });
+
+  /* ── 7. READING PROGRESS BAR ─────────────────────────── */
+  const bar=document.getElementById('sci-progress');
+  if(bar){
+    const onScroll=()=>{
+      const h=document.documentElement;
+      const max=h.scrollHeight - h.clientHeight;
+      const pct=max>0 ? (h.scrollTop / max) * 100 : 0;
+      bar.style.width = pct.toFixed(1)+'%';
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  }
+
+  /* ── 8. SCROLL REVEAL ──────────────────────────────── */
+  document.documentElement.classList.add('sci-js');
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }});
+    }, {rootMargin:'0px 0px -10% 0px', threshold:0.05});
+    document.querySelectorAll('.sci-reveal').forEach(el=>io.observe(el));
+  }else{
+    document.querySelectorAll('.sci-reveal').forEach(el=>el.classList.add('is-in'));
+  }
+
+  /* ── 9. TOC ACTIVE-LINK HIGHLIGHTING ───────────────── */
+  const tocLinks=Array.from(document.querySelectorAll('.sci-toc a[href^="#"]'));
+  if(tocLinks.length && 'IntersectionObserver' in window){
+    const map=new Map();
+    tocLinks.forEach(a=>{
+      const id=a.getAttribute('href').slice(1);
+      const t=document.getElementById(id);
+      if(t) map.set(t,a);
+    });
+    const tio=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        const a=map.get(e.target); if(!a) return;
+        if(e.isIntersecting){
+          tocLinks.forEach(x=>x.classList.remove('is-active'));
+          a.classList.add('is-active');
+        }
+      });
+    },{rootMargin:'-30% 0px -60% 0px', threshold:0});
+    map.forEach((_,t)=>tio.observe(t));
+  }
+})();
 </script>
 </body></html>
