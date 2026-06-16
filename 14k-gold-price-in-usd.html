@@ -652,7 +652,6 @@ async function fetchSpot(){
 Promise.all([fetchFx(),fetchSpot()]);
 setInterval(fetchSpot,60000);
 </script>
-<script>
 <script id="mega-menu-js">(function(){
   const themeBtn=document.querySelector('[data-theme-toggle]'),root=document.documentElement;
   let theme=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
