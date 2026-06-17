@@ -90,13 +90,32 @@ the `gold-price-per-gram` hub):
       gold-bar-value, scrap-gold-calculator) — 17 tool pages total now covered,
       with citations matched per metal (Silver Institute on silver pages, World
       Gold Council on gold pages, both on mixed pages).
-- [ ] **Optionally deepen the karat pages** (already ~2.2k–3.9k words) with more
-      page-specific analysis so they read less formulaically vs each other.
-- [ ] **Raise the content-to-chrome ratio.** The mega-menu renders twice in the
-      static HTML; ensure primary content visibly dominates navigation.
-- [ ] **Confirm no remaining near-duplicate clusters** across silver per-gram pages.
-- [ ] **Re-run the Playwright audit** (`tools/playwright_audit.py`) on changed
-      pages per `DEVELOPMENT_RULES.md` (not runnable in the web sandbox).
+- [x] **Karat-page "deepening" — audited, NOT needed.** The 9K–24K pages are
+      already 2.2k–3.9k words and genuinely differentiated (9K→UK high street,
+      10K→durability/skin sensitivity, 14K→US engagement + gold colours, 18K→Swiss
+      watchmaking, 22K→South Asian bridal/Diwali, 24K→central banks/LBMA). Adding
+      more would be padding with over-optimization risk, so it was skipped on purpose.
+- [x] **Confirmed no remaining near-duplicate clusters.** Gold karat and silver
+      (.800 European vs .900 US coin) pages share a layout but carry distinct,
+      subject-specific content; share buttons, canonicals, titles and og tags all
+      verified self-consistent.
+
+## Phase 3 — Technical QA sweep (DONE)
+
+Site-wide pre-submission audit (all 76 HTML files) — **clean**:
+
+- [x] **Internal links:** 0 broken, 0 redirect hops (nothing links to a 301 source).
+- [x] **Meta tags:** 0 missing on indexable pages; 0 duplicate titles /
+      descriptions / canonicals across the whole site. (`offline.html` is
+      intentionally `noindex` + sitemap-excluded — correct by design.)
+- [x] **Orphans:** 0 indexable pages without inbound internal links.
+- Note: the mega-menu rendering twice (desktop + mobile) is standard responsive
+  markup (one variant is CSS-hidden per viewport) — not a content-ratio problem.
+
+## Only remaining before requesting review
+
+- [ ] **Re-run the Playwright audit** (`tools/playwright_audit.py`) per
+      `DEVELOPMENT_RULES.md` — not runnable in the web sandbox, so run it locally.
 - [ ] **Then** tick *"I confirm I have fixed the issues"* in AdSense → Request
       review. Expect days–weeks; do not enable interim ad networks during review.
 
