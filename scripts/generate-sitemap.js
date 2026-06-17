@@ -3,6 +3,11 @@
  * Sitemap generator — scans all HTML pages, extracts canonical URLs + hreflang
  * alternates, derives lastmod from git history, and writes sitemap.xml.
  *
+ * Also emits image-sitemap.xml from the SAME page data so the two can never
+ * drift apart (image:title / image:caption are sourced from each page's live
+ * og:title / og:description). Pages excluded via wantsImage() (about, contact,
+ * privacy-policy, terms) are omitted, mirroring the inline image entries.
+ *
  * Priority / changefreq table mirrors the hand-maintained sitemap:
  *   /                                   → 1.0  hourly
  *   /10k|14k|18k-gold-price-per-gram    → 0.95 hourly
@@ -24,6 +29,7 @@ const { execSync } = require('child_process');
 
 const ROOT = process.cwd();
 const SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
+const IMAGE_SITEMAP_PATH = path.join(ROOT, 'image-sitemap.xml');
 const DEFAULT_IMAGE = 'https://assets.goldpricetools.com/og-image.jpg';
 
 // ── helpers ───────────────────────────────────────────────────────────────────
@@ -204,3 +210,31 @@ lines.push('');
 
 fs.writeFileSync(SITEMAP_PATH, lines.join('\n'), 'utf8');
 console.log(`✅ sitemap.xml written — ${pages.length} URL(s)`);
+
+// ── render image-sitemap.xml ────────────────────────────────────────────────────
+// Built from the same `pages` array (same order, same image data) so it stays in
+// lock-step with the inline <image:image> entries in sitemap.xml.
+const imgPages = pages.filter((p) => wantsImage(p.canonical));
+const imgLines = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+  '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
+];
+
+for (const { canonical, imgUrl, imgTitle, imgDesc, isHomepage } of imgPages) {
+  imgLines.push('  <url>');
+  imgLines.push(`    <loc>${canonical}</loc>`);
+  imgLines.push('    <image:image>');
+  imgLines.push(`    <image:loc>${imgUrl}</image:loc>`);
+  if (imgTitle) imgLines.push(`    <image:title>${xmlEsc(imgTitle)}</image:title>`);
+  if (imgDesc)  imgLines.push(`    <image:caption>${xmlEsc(imgDesc)}</image:caption>`);
+  if (isHomepage) imgLines.push('    <image:geo_location>United Kingdom</image:geo_location>');
+  imgLines.push('    </image:image>');
+  imgLines.push('  </url>');
+}
+
+imgLines.push('</urlset>');
+imgLines.push('');
+
+fs.writeFileSync(IMAGE_SITEMAP_PATH, imgLines.join('\n'), 'utf8');
+console.log(`✅ image-sitemap.xml written — ${imgPages.length} URL(s)`);

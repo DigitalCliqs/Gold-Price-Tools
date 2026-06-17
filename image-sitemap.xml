@@ -15,7 +15,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>10K Gold Price Per Gram Today (Live)</image:title>
-    <image:caption>Real-time 10K gold price per gram in GBP and USD. 41.67% pure gold. Updated every 60 seconds.</image:caption>
+    <image:caption>Real-time 10K gold price per gram in USD, GBP, EUR and INR. 41.67% pure gold — the US legal minimum. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
   <url>
@@ -30,24 +30,24 @@
     <loc>https://goldpricetools.com/18k-gold-price-per-gram</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>18K Gold Price Per Gram Today (Live)</image:title>
-    <image:caption>Real-time 18K gold price per gram in GBP and USD. 75% pure gold. Updated every 60 seconds.</image:caption>
+    <image:title>18K Gold Price Per Gram Today (Live USD)</image:title>
+    <image:caption>Real-time 18K gold price per gram in USD, GBP, EUR. 75% pure gold — fine jewellery and Swiss watch standard. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/scrap-gold-calculator</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Scrap Gold Calculator — Live Melt Value</image:title>
-    <image:caption>Free scrap gold calculator. Enter weight and karat to find the live melt value of your gold jewellery in GBP and USD.</image:caption>
+    <image:title>Scrap Gold Calculator — Live USD Melt Value</image:title>
+    <image:caption>Free scrap gold calculator. Enter weight and karat to find the live melt value of your gold jewellery in USD (primary), GBP, EUR and INR.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/silver-price-per-kilo</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Silver Price Per Kilo Today (Live)</image:title>
-    <image:caption>Real-time silver price per kilogram, gram and troy ounce in GBP and USD. Updated every 60 seconds.</image:caption>
+    <image:title>Silver Price Per Kilo Today (Live USD)</image:title>
+    <image:caption>Real-time silver price per kilogram in USD, GBP, EUR — per gram and troy ounce included. 1kg bullion, .999 fine silver. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
   <url>
@@ -55,7 +55,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>What Is 14K Gold? Purity, Price &amp; Uses Explained</image:title>
-    <image:caption>14 karat gold purity (58.33%), hallmarks, price per gram, durability, and how it compares to 18K and 24K gold.</image:caption>
+    <image:caption>14 karat gold purity (58.33%), hallmarks, price per gram, durability, and how it compares to 10K, 18K and 24K gold.</image:caption>
     </image:image>
   </url>
   <url>
@@ -78,8 +78,8 @@
     <loc>https://goldpricetools.com/22k-gold-price-per-gram</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>22K Gold Price Per Gram Today (Live)</image:title>
-    <image:caption>Real-time 22K gold price per gram in USD, GBP, EUR. 91.67% pure gold. Updated every 60 seconds.</image:caption>
+    <image:title>22K Gold Price Per Gram Today (Live USD)</image:title>
+    <image:caption>Real-time 22K gold price per gram in USD, INR, GBP, EUR. 91.67% pure gold · 916 hallmark · the South Asian bridal standard. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
   <url>
@@ -94,24 +94,24 @@
     <loc>https://goldpricetools.com/24k-gold-price-per-gram</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>24K Gold Price Per Gram Today (Live)</image:title>
-    <image:caption>Real-time 24K gold price per gram in USD, GBP, EUR. 99.9% pure gold. Updated every 60 seconds.</image:caption>
+    <image:title>24K Gold Price Per Gram Today (Live USD)</image:title>
+    <image:caption>Real-time 24K gold price per gram in USD, INR, GBP, EUR. 99.9% pure gold &amp;middot; 999 hallmark &amp;middot; the LBMA benchmark. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/800-silver-price-per-gram</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>.800 European Silver Price Per Gram Today (Live)</image:title>
-    <image:caption>Live .800 European silver price per gram in GBP &amp; USD. Also shows price per troy ounce and per 100g. Updated every 60 seconds from LBMA spot market.</image:caption>
+    <image:title>.800 European Silver Price Per Gram Today (Live USD)</image:title>
+    <image:caption>Real-time .800 Continental silver price per gram in USD, GBP, EUR. Free calculator for antique German &amp; Italian flatware. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/900-silver-price-per-gram</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>.900 Coin Silver Price Per Gram Today (Live)</image:title>
-    <image:caption>Live .900 coin silver price per gram in GBP &amp; USD. Also shows price per troy ounce and per 100g. Updated every 60 seconds from LBMA spot market.</image:caption>
+    <image:title>.900 Coin Silver Price Per Gram Today (Live USD)</image:title>
+    <image:caption>Real-time .900 US coin silver price per gram in USD, GBP, EUR. Free Morgan Dollar, pre-1965 quarter, dime &amp; junk silver bag calculator. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
   <url>
@@ -166,16 +166,16 @@
     <loc>https://goldpricetools.com/blog/best-uk-gold-dealers-2026</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Best UK Gold Dealers 2026 | GoldPriceTools</image:title>
-    <image:caption>Compare the best UK gold dealers in 2026: Royal Mint, BullionByPost, Chards, BullionVault. Covers premiums, buyback spreads and BNTA membership.</image:caption>
+    <image:title>Best UK Gold Dealers in 2026: Reviewed, Ranked &amp; Compared</image:title>
+    <image:caption>The 9 best UK gold dealers in 2026 — Royal Mint, BullionByPost, Atkinsons, Solomon Global, Chards, Hatton Garden Metals, BullionVault, The Pure Gold Company and Sharps Pixley — ranked by premium, service, BNTA status and award recognition.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/blog/gold-etf-vs-physical-gold-uk</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold ETFs vs Physical Gold UK 2026 | GoldPriceTools</image:title>
-    <image:caption>Gold ETFs vs physical gold coins and bars for UK investors in 2026. Covers costs, ISA eligibility, CGT treatment and the best strategy.</image:caption>
+    <image:title>Gold ETFs vs Physical Gold: UK Investor's Guide 2026 | GoldPriceTools</image:title>
+    <image:caption>Gold ETFs vs physical gold for UK investors in 2026. Compare SGLN, SGLP, PHAU and Royal Mint coins — costs, CGT, ISA eligibility, liquidity and risk explained.</image:caption>
     </image:image>
   </url>
   <url>
@@ -190,8 +190,8 @@
     <loc>https://goldpricetools.com/blog/gold-vs-bitcoin-2026</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold vs Bitcoin 2026: UK Investor Comparison | GoldPriceTools</image:title>
-    <image:caption>Gold up 80% vs Bitcoin down 14% in 2026 year-to-date. Compare performance, volatility, liquidity, costs and UK tax treatment.</image:caption>
+    <image:title>Gold vs Bitcoin in 2026: Store of Value, Performance &amp; Portfolio Guide</image:title>
+    <image:caption>Gold hit $5,589 while Bitcoin pulled back to ~$82k. We compare market cap, returns, volatility, store-of-value credentials, correlation and portfolio allocation.</image:caption>
     </image:image>
   </url>
   <url>
@@ -207,7 +207,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>Is Gold Overpriced in 2026? | GoldPriceTools</image:title>
-    <image:caption>Gold hit record highs above $5,500 in 2026. We examine five frameworks — real yields, inflation-adjusted price, M2 ratio, gold-silver ratio and GBP pricing.</image:caption>
+    <image:caption>Gold hit $5,589 in January 2026, then corrected toward $4,500. Five valuation frameworks — real rates, inflation-adjusted price, M2 ratio, Dow-to-gold ratio and gold-silver ratio — examined.</image:caption>
     </image:image>
   </url>
   <url>
@@ -231,10 +231,9 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>Gold Karat Purities: 9K to 24K Explained | GoldPriceTools</image:title>
-    <image:caption>What does 9K, 10K, 14K, 18K, 22K or 24K gold mean? Every common gold karat, its hallmark, purity percentage, and melt value calculation.</image:caption>
+    <image:caption>Every common gold karat explained — purity %, hallmark, typical colour, and live melt value per gram in USD. 9K, 10K, 14K, 18K, 22K and 24K.</image:caption>
     </image:image>
   </url>
-
   <url>
     <loc>https://goldpricetools.com/editorial-standards/</loc>
     <image:image>
@@ -247,8 +246,8 @@
     <loc>https://goldpricetools.com/gold-bar-value</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold Bar Value Calculator — How Much Is a Gold Bar Worth?</image:title>
-    <image:caption>Live gold bar value calculator. Find out how much your 1 oz, 10 oz, 1 kg, or Good Delivery gold bar is worth today. Prices updated every 60 seconds.</image:caption>
+    <image:title>Gold Bar Value Calculator — Live USD Melt Value (1g to 400oz Good Delivery)</image:title>
+    <image:caption>Live gold bar value calculator with USD-primary pricing. Calculate the melt value of any standard bar size from 1g retail to 400oz LBMA Good Delivery in USD, GBP, EUR &amp; INR.</image:caption>
     </image:image>
   </url>
   <url>
@@ -264,7 +263,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>Gold Price Per Gram Today — Live All Karats (GBP &amp; USD)</image:title>
-    <image:caption>Live gold price per gram today for all karats: 9K, 10K, 14K, 18K, 22K and 24K in GBP, USD, and EUR. Updated every 60 seconds from LBMA spot.</image:caption>
+    <image:caption>Live gold price per gram today for all karats: 9K, 10K, 14K, 18K, 22K and 24K in USD, GBP, and EUR. Updated every 60 seconds from LBMA spot.</image:caption>
     </image:image>
   </url>
   <url>
@@ -280,7 +279,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>Gold Price Today 10K — Live 10 Karat Gold Value</image:title>
-    <image:caption>Live 10K gold price today per gram in GBP and USD. 10 karat gold (417 hallmark) contains 41.67% pure gold — the US legal minimum.</image:caption>
+    <image:caption>Live 10K gold price today per gram in USD and GBP. 10 karat gold (417 hallmark) contains 41.67% pure gold — the US legal minimum.</image:caption>
     </image:image>
   </url>
   <url>
@@ -288,7 +287,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>Gold Price Today 14K — Live 14 Karat Gold Value</image:title>
-    <image:caption>Live 14K gold price today in GBP and USD per gram, per troy ounce, and per tola. Updated every 60 seconds from the LBMA spot market.</image:caption>
+    <image:caption>Live 14K gold price today in USD and GBP per gram, per troy ounce, and per tola. Updated every 60 seconds from the LBMA spot market.</image:caption>
     </image:image>
   </url>
   <url>
@@ -296,7 +295,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>Gold Price Today 18K — Live 18 Karat Gold Value</image:title>
-    <image:caption>Real-time 18K gold price today in GBP and USD. 18 karat gold (750 hallmark) is 75% pure gold — the standard for fine jewellery and luxury watches.</image:caption>
+    <image:caption>Real-time 18K gold price today in USD and GBP. 18 karat gold (750 hallmark) is 75% pure gold — the standard for fine jewellery and luxury watches.</image:caption>
     </image:image>
   </url>
   <url>
@@ -351,8 +350,8 @@
     <loc>https://goldpricetools.com/guides/gold-bar-guide</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold Bar Guide: Sizes, Weights, and Good Delivery</image:title>
-    <image:caption>Explore different gold bar sizes from 1g to 400oz Good Delivery bars. Learn how gold bars are priced and valued.</image:caption>
+    <image:title>Gold Bar Guide: Sizes, Weights &amp; Valuations 2026</image:title>
+    <image:caption>Complete gold bar guide 2026: every size from 1g to 400oz, live valuations, cast vs minted, top refineries, where to buy, and how to spot fakes.</image:caption>
     </image:image>
   </url>
   <url>
@@ -375,40 +374,40 @@
     <loc>https://goldpricetools.com/guides/gold-price-history</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold Price History — All-Time Highs and Key Milestones</image:title>
-    <image:caption>A complete gold price history covering all-time highs, major market events, and long-term price trends from 1970 to 2026.</image:caption>
+    <image:title>Gold Price History — All-Time Highs and Key Milestones (1920–2026)</image:title>
+    <image:caption>From $35 under Bretton Woods to $5,589 in 2026 — the complete history of gold prices, crashes, and milestones in one definitive guide.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/guides/gold-price-prediction-2026</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold Price Prediction 2026: Forecast &amp; Market Outlook</image:title>
-    <image:caption>Read our gold price prediction for 2026. Explore market forecasts, trends, and expert outlooks for precious metals.</image:caption>
+    <image:title>Gold Price Prediction 2026: Market Forecast &amp; Outlook (2026–2050)</image:title>
+    <image:caption>Gold smashed $5,589 in January 2026. Where does it go next? Forecasts from major banks for 2026, 2027, 2030 and beyond.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/guides/gold-purity-guide</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold Purity Guide: Karats &amp; Hallmarks | GoldPriceTools</image:title>
-    <image:caption>Complete guide to gold purity: what karats mean, how to read hallmarks, and the difference between 9K, 14K, 18K, 22K and 24K gold.</image:caption>
+    <image:title>Gold Purity Guide: 9K to 24K Explained (2026)</image:title>
+    <image:caption>Complete gold purity guide 2026: karats, fineness, hallmarks, home &amp; XRF testing, value per karat, and global purity preferences.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/guides/gold-vs-silver-investment</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold Price Guide 2026: Live Prices, History, Forecasts &amp; How to Invest</image:title>
-    <image:caption>Discover live gold prices, historical trends, key price drivers, expert forecasts, and smart investment strategies in our comprehensive gold price guide for 2026.</image:caption>
+    <image:title>Gold vs Silver Investment 2026: Which Is Better? Live Prices &amp; Ratio</image:title>
+    <image:caption>Compare gold and silver as investments in 2026 with live USD spot prices, the live gold-silver ratio, and a side-by-side split calculator.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/guides/how-much-is-a-gold-ring-worth</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>How Much Is a Gold Ring Worth? Live Calculator &amp; Value Guide 2026</image:title>
-    <image:caption>Find out exactly how much your gold ring is worth. Use our live calculator — enter weight and karat to get melt value in GBP, USD, EUR and 7 more currencies, updated every 60 seconds.</image:caption>
+    <image:title>How Much Is a Gold Ring Worth? Live USD Calculator &amp; 2026 Value Guide</image:title>
+    <image:caption>Enter weight and karat to value any gold ring in USD at the live gold spot price — updated every 60 seconds. Melt value, realistic offer range, and where to sell for the most.</image:caption>
     </image:image>
   </url>
   <url>
@@ -432,7 +431,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>How to Sell Gold Jewellery &amp; Get the Best Price in 2026</image:title>
-    <image:caption>Find out how to sell gold jewellery for the best price in 2026. Compare buyers, calculate your gold's value, avoid scams, and get cash fast — complete guide.</image:caption>
+    <image:caption>Find out how to sell gold jewellery for the best price in 2026. Compare buyers, calculate your gold's value in USD, avoid scams, and get cash fast — complete guide.</image:caption>
     </image:image>
   </url>
   <url>
@@ -440,7 +439,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>How to Store Gold and Silver at Home Safely in 2026</image:title>
-    <image:caption>Safest ways to store gold &amp; silver at home: safe ratings, positioning, insurance requirements, and when to use professional vault storage instead.</image:caption>
+    <image:caption>The complete 2026 guide to storing gold and silver at home: UL safe ratings explained, fire protection, anchoring, tarnish prevention, insurance gaps and when to use professional vault storage instead.</image:caption>
     </image:image>
   </url>
   <url>
@@ -455,8 +454,8 @@
     <loc>https://goldpricetools.com/guides/indian-gold-silver-prices</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Indian Gold &amp; Silver Prices: Live Rates in INR</image:title>
-    <image:caption>Check live gold and silver prices in India. Get the latest rates in INR (₹) for 24K, 22K, and 18K gold, plus silver per kg.</image:caption>
+    <image:title>Indian Gold &amp; Silver Prices: Live INR Rates, Calculator &amp; 2026 Guide</image:title>
+    <image:caption>Live INR gold &amp; silver rates across every karat and weight unit, how India's price is built from global spot, the May 2026 duty hike, a live calculator &amp; how to invest.</image:caption>
     </image:image>
   </url>
   <url>
@@ -487,8 +486,8 @@
     <loc>https://goldpricetools.com/guides/silver-price-guide</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Silver Price Guide: Spot Price &amp; 925 Sterling Value</image:title>
-    <image:caption>Complete guide to silver prices. Learn about the silver spot price, 925 sterling silver value, and historical trends.</image:caption>
+    <image:title>Silver Price Guide 2026: Spot Price &amp; Sterling Silver Explained</image:title>
+    <image:caption>Silver broke $100 for the first time in history in January 2026, peaking at $121.62. Complete guide to silver spot price, sterling value, drivers and forecasts.</image:caption>
     </image:image>
   </url>
   <url>
@@ -503,16 +502,16 @@
     <loc>https://goldpricetools.com/guides/troy-ounce-guide</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Troy Ounce Guide: Conversions, History &amp; Meaning</image:title>
-    <image:caption>What is a troy ounce? Learn the difference between a troy ounce and a standard gram, conversion formulas, and precious metals history.</image:caption>
+    <image:title>The Troy Ounce Guide: Precious Metals Weights Explained</image:title>
+    <image:caption>1 troy ounce = 31.1035 grams. The complete guide to troy ounce conversions, history, and how precious metals are weighed - with a live converter.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/guides/us-silver-dollar-values</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>US Silver Dollar Values: Coin Prices &amp; Melt Values</image:title>
-    <image:caption>Find current values for US silver dollars. Learn about the silver content and melt values of historic American silver coins.</image:caption>
+    <image:title>US Silver Dollar Values: Pricing, Melt Value &amp; Collector Guide</image:title>
+    <image:caption>Silver content, live melt values and collector prices for every major US silver dollar — Morgan, Peace, Eisenhower, Susan B. Anthony and the American Silver Eagle.</image:caption>
     </image:image>
   </url>
   <url>
@@ -520,7 +519,7 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>What Affects the Price of Gold?</image:title>
-    <image:caption>Discover the key factors that influence the price of gold, including inflation, interest rates, central bank reserves, geopolitical events, and ETF demand.</image:caption>
+    <image:caption>Twelve forces drive the gold price every day — Fed policy, the US dollar, central bank buying, ETF flows, geopolitics and more. The complete 2026 guide.</image:caption>
     </image:image>
   </url>
   <url>
@@ -536,18 +535,17 @@
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>When Is the Best Time to Sell Scrap Gold? Market Timing Guide 2026</image:title>
-    <image:caption>Is now a good time to sell scrap gold? Find out how gold market timing works, when prices peak, where to get the best price, and how much your scrap gold is worth.</image:caption>
+    <image:caption>Is now a good time to sell scrap gold? See live USD gold prices, how timing and seasonal patterns work, where to get the highest payout, and what your scrap gold is worth per gram.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/how-many-grams-in-troy-ounce</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>How Many Grams in a Troy Ounce? (31.1035g Explained)</image:title>
-    <image:caption>A troy ounce equals 31.1035 grams. Learn the difference from regular ounces and how to convert for gold pricing.</image:caption>
+    <image:title>How Many Grams in a Troy Ounce? 31.1035g — Live USD Converter</image:title>
+    <image:caption>A troy ounce equals 31.1035 grams. Live USD gold &amp; silver prices, instant unit conversion, and the LBMA international standard explained.</image:caption>
     </image:image>
   </url>
-
   <url>
     <loc>https://goldpricetools.com/silver-coins-calculator</loc>
     <image:image>
@@ -560,16 +558,16 @@
     <loc>https://goldpricetools.com/silver-purity-grades</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Silver Purity Grades &amp; Live Prices | GoldPriceTools</image:title>
-    <image:caption>Live prices for all silver purities: .999, .925, .900 and .800. Per gram, per oz, per kilo. Updated every 60 seconds.</image:caption>
+    <image:title>Silver Purity Grades: .999, .925, .900, .800 Live USD Prices</image:title>
+    <image:caption>Live silver purity prices in USD per gram, troy ounce and kilo for all four grades. Universal purity calculator, hallmark identification and heritage guide. Updated every 60 seconds.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://goldpricetools.com/us-silver-dollar-values</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>US Silver Dollar Values &amp; Coin Calculator | GoldPriceTools</image:title>
-    <image:caption>Calculate the live melt value of US silver dollars including Morgan, Peace, and Eisenhower dollars. Updated with real-time silver prices.</image:caption>
+    <image:title>US Silver Dollar Values — Live Melt Value Calculator</image:title>
+    <image:caption>Find the live melt value of US silver dollars — Morgan, Peace, Trade, Eisenhower &amp; American Silver Eagle — in USD with real-time silver spot prices.</image:caption>
     </image:image>
   </url>
   <url>
