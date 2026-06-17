@@ -21,7 +21,7 @@
 
   <url>
     <loc>https://goldpricetools.com/10k-gold-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/10k-gold-price-per-gram"/>
@@ -36,7 +36,7 @@
 
   <url>
     <loc>https://goldpricetools.com/14k-gold-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/14k-gold-price-per-gram"/>
@@ -51,7 +51,7 @@
 
   <url>
     <loc>https://goldpricetools.com/18k-gold-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/18k-gold-price-per-gram"/>
@@ -66,7 +66,7 @@
 
   <url>
     <loc>https://goldpricetools.com/scrap-gold-calculator</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/scrap-gold-calculator"/>
@@ -81,7 +81,7 @@
 
   <url>
     <loc>https://goldpricetools.com/silver-price-per-kilo</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/silver-price-per-kilo"/>
@@ -110,38 +110,8 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/14k-gold-price-in-usd</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/14k-gold-price-in-usd"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/14k-gold-price-in-usd"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/14k-gold-price-in-usd"/>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>14K Gold Price in USD — Live 14 Karat Gold Value in Dollars</image:title>
-      <image:caption>Live 14K gold price in USD (US Dollars) per gram, per ounce, and per dwt. Real-time 585 gold value for US buyers and sellers.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://goldpricetools.com/18k-gold-price-in-gbp</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/18k-gold-price-in-gbp"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/18k-gold-price-in-gbp"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/18k-gold-price-in-gbp"/>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>18K Gold Price in GBP — Live 18 Karat Gold Value in Pounds</image:title>
-      <image:caption>Live 18K gold price in GBP (British Pounds) per gram, per ounce, and per tola. Real-time 18 karat gold value for UK buyers and sellers.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://goldpricetools.com/22k-gold-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/22k-gold-price-per-gram"/>
@@ -171,7 +141,7 @@
 
   <url>
     <loc>https://goldpricetools.com/24k-gold-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/24k-gold-price-per-gram"/>
@@ -186,7 +156,7 @@
 
   <url>
     <loc>https://goldpricetools.com/800-silver-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/800-silver-price-per-gram"/>
@@ -201,7 +171,7 @@
 
   <url>
     <loc>https://goldpricetools.com/900-silver-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/900-silver-price-per-gram"/>
@@ -216,7 +186,7 @@
 
   <url>
     <loc>https://goldpricetools.com/9k-gold-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/9k-gold-price-per-gram"/>
@@ -478,23 +448,8 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/gold-per-gram-today</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-per-gram-today"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-per-gram-today"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-per-gram-today"/>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Gold Price Per Gram Today — Live All Karats (GBP &amp; USD)</image:title>
-      <image:caption>Live gold price per gram today for all karats: 9K, 10K, 14K, 18K, 22K and 24K in USD, GBP, and EUR. Updated every 60 seconds from LBMA spot.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://goldpricetools.com/gold-price-per-gram</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-price-per-gram"/>
@@ -508,53 +463,8 @@
   </url>
 
   <url>
-    <loc>https://goldpricetools.com/gold-price-today-10k</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-price-today-10k"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-price-today-10k"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-price-today-10k"/>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Gold Price Today 10K — Live 10 Karat Gold Value</image:title>
-      <image:caption>Live 10K gold price today per gram in USD and GBP. 10 karat gold (417 hallmark) contains 41.67% pure gold — the US legal minimum.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://goldpricetools.com/gold-price-today-14k</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-price-today-14k"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-price-today-14k"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-price-today-14k"/>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Gold Price Today 14K — Live 14 Karat Gold Value</image:title>
-      <image:caption>Live 14K gold price today in USD and GBP per gram, per troy ounce, and per tola. Updated every 60 seconds from the LBMA spot market.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://goldpricetools.com/gold-price-today-18k</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-price-today-18k"/>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/gold-price-today-18k"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/gold-price-today-18k"/>
-    <image:image>
-      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-      <image:title>Gold Price Today 18K — Live 18 Karat Gold Value</image:title>
-      <image:caption>Real-time 18K gold price today in USD and GBP. 18 karat gold (750 hallmark) is 75% pure gold — the standard for fine jewellery and luxury watches.</image:caption>
-    </image:image>
-  </url>
-
-  <url>
     <loc>https://goldpricetools.com/gold-silver-ratio</loc>
-    <lastmod>2026-06-04</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/gold-silver-ratio"/>
@@ -978,7 +888,7 @@
 
   <url>
     <loc>https://goldpricetools.com/how-many-grams-in-troy-ounce</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/how-many-grams-in-troy-ounce"/>
@@ -1008,7 +918,7 @@
 
   <url>
     <loc>https://goldpricetools.com/silver-purity-grades</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/silver-purity-grades"/>
@@ -1088,7 +998,7 @@
 
   <url>
     <loc>https://goldpricetools.com/privacy-policy</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/privacy-policy"/>
@@ -1098,7 +1008,7 @@
 
   <url>
     <loc>https://goldpricetools.com/terms</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/terms"/>

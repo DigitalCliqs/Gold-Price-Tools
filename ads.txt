@@ -1,1 +1,12 @@
 google.com, pub-8849494330640880, DIRECT, f08c47fec0942fa0
+
+# ── Interim ad networks (DISABLED) ──────────────────────────────────────────
+# Uncomment and replace with the EXACT line(s) from your network dashboard when
+# you activate interim monetization. See docs/interim-ad-network-setup.md.
+# Do NOT enable during a fresh Google AdSense review.
+#
+# Adsterra  (Dashboard → Profile → ads.txt):
+# adsterra.com, <YOUR_ADSTERRA_PUBLISHER_ID>, DIRECT, <CERTIFICATION_ID>
+#
+# Monetag   (Dashboard → Sites → ads.txt):
+# monetag.com, <YOUR_MONETAG_ID>, DIRECT
