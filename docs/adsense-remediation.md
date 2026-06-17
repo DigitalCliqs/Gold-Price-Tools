@@ -83,9 +83,13 @@ the `gold-price-per-gram` hub):
 
 ## Phase 2 — STILL REMAINING before requesting review
 
-- [ ] **Extend the same "Sources, methodology & review" section** to the other
-      price/calculator pages (silver per-gram/kilo, gold-silver-ratio,
-      gold-bar-value, 24-hour-prices, scrap/coins calculators).
+- [x] **Extended the "Sources, methodology & review" section site-wide** to the
+      remaining 10 live-price/calculator tool pages (silver per-kilo, .800/.900
+      silver per-gram, silver-coins-calculator, us-silver-dollar-values,
+      gold-silver-ratio, 24-hour-gold-silver-prices, zakat calculator,
+      gold-bar-value, scrap-gold-calculator) — 17 tool pages total now covered,
+      with citations matched per metal (Silver Institute on silver pages, World
+      Gold Council on gold pages, both on mixed pages).
 - [ ] **Optionally deepen the karat pages** (already ~2.2k–3.9k words) with more
       page-specific analysis so they read less formulaically vs each other.
 - [ ] **Raise the content-to-chrome ratio.** The mega-menu renders twice in the
