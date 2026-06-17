@@ -61,27 +61,38 @@ Mechanics:
 
 ---
 
-## Phase 2 — REMAINING before requesting review
+## Phase 2 — DONE (second change set)
 
-These are content/quality improvements that materially raise approval odds and
-also strengthen organic rankings (the site's traffic source). Prioritized:
+Content + E-E-A-T improvements on the **7 gold price-per-gram pages** (9K–24K +
+the `gold-price-per-gram` hub):
 
-- [ ] **Thicken the surviving price pages with unique value.** Add original
-      analysis beyond a templated fact + 3 FAQs: methodology, historical context,
-      buyer/seller guidance, region specifics, distinct FAQs per page. Target the
-      thinner survivors first (`gold-price-per-gram` ≈1.1k words; the karat
-      per-gram pages are richer but still formulaic).
-- [ ] **Raise the content-to-chrome ratio.** The mega-menu is rendered twice in
-      the static HTML; ensure primary content visibly dominates navigation.
-- [ ] **Foreground E-E-A-T on price pages (YMYL).** Visible author byline +
-      credentials, "reviewed by", clear last-updated date, and linked sources /
-      methodology on every price/calculator page (already present on the pillar
-      guides — extend it site-wide).
-- [ ] **Confirm no remaining near-duplicate clusters.** Audit the `*-gold-price-
-      per-gram` and silver per-gram pages for templated sameness; differentiate
-      or consolidate further if needed.
+- [x] **Foreground E-E-A-T on the gold price pages (YMYL).** Added a consistent
+      *"Sources, methodology & review"* section to every one — organisational
+      byline (linked author page), human review date, and authoritative outbound
+      citations (LBMA, World Gold Council, gold-api.com) + a link to Editorial
+      Standards. Styles centralised once in `assets/site.css` (`.gpt-sources` /
+      `.gpt-byline`).
+- [x] **Thickened the thinnest survivor** (`gold-price-per-gram`, ~1.1k → ~1.85k
+      words): added a top byline and three original sections (units: gram vs troy
+      oz vs pennyweight; what moves the per-gram price; spot vs real buy/sell
+      price) plus three unique FAQs.
+- [x] **Fixed a correctness bug** — `gold-price-per-gram` share buttons pointed at
+      `/18k-gold-price-per-gram`; now canonical.
+- [x] **Verified** JSON-LD validates (217 blocks / 76 files) and `<section>` tags
+      balanced on all edited pages.
+
+## Phase 2 — STILL REMAINING before requesting review
+
+- [ ] **Extend the same "Sources, methodology & review" section** to the other
+      price/calculator pages (silver per-gram/kilo, gold-silver-ratio,
+      gold-bar-value, 24-hour-prices, scrap/coins calculators).
+- [ ] **Optionally deepen the karat pages** (already ~2.2k–3.9k words) with more
+      page-specific analysis so they read less formulaically vs each other.
+- [ ] **Raise the content-to-chrome ratio.** The mega-menu renders twice in the
+      static HTML; ensure primary content visibly dominates navigation.
+- [ ] **Confirm no remaining near-duplicate clusters** across silver per-gram pages.
 - [ ] **Re-run the Playwright audit** (`tools/playwright_audit.py`) on changed
-      pages per `DEVELOPMENT_RULES.md`.
+      pages per `DEVELOPMENT_RULES.md` (not runnable in the web sandbox).
 - [ ] **Then** tick *"I confirm I have fixed the issues"* in AdSense → Request
       review. Expect days–weeks; do not enable interim ad networks during review.
 

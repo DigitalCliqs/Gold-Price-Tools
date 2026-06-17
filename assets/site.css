@@ -222,3 +222,16 @@ body {
   color: #fff !important;
   text-decoration: none !important;
 }
+
+/* gpt-eeat byline + sources (Phase 2) */
+.gpt-byline{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-size:.875rem;color:var(--color-text-muted);margin:0 0 1.25rem}
+.gpt-byline a{color:var(--color-primary);font-weight:500;text-decoration:none}
+.gpt-byline a:hover{text-decoration:underline}
+.gpt-byline__sep{opacity:.45}
+.gpt-sources{box-sizing:border-box;width:calc(100% - 2rem);max-width:920px;margin:2.5rem auto;padding:1.5rem 1.75rem;background:var(--color-surface-offset,var(--color-surface));border:1px solid var(--color-border);border-radius:.75rem}
+.gpt-sources h2{font-family:var(--font-display);font-size:1.25rem;color:var(--color-text);margin:0 0 .75rem}
+.gpt-sources p{font-size:.9375rem;color:var(--color-text-muted);line-height:1.65;margin:0 0 .75rem}
+.gpt-sources ul{margin:0 0 .75rem;padding-left:1.25rem}
+.gpt-sources li{font-size:.9375rem;color:var(--color-text-muted);line-height:1.7;margin-bottom:.25rem}
+.gpt-sources a{color:var(--color-primary);text-decoration:none}
+.gpt-sources a:hover{text-decoration:underline}
