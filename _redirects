@@ -22,6 +22,11 @@
 /guides/gold-karat-explained.html          /                                          301
 /calculators/scrap-gold-calculator         /scrap-gold-calculator                     301
 /indian-gold-silver-prices                 /guides/indian-gold-silver-prices          301
+# GSC "Not found (404)" cleanup — legacy/variant URLs with live equivalents
+/privacy                                   /privacy-policy                            301
+/authors/james-smith/                      /authors/goldpricetools-editorial-team/    301
+/guides/scrap-gold-guide.html              /guides/how-to-sell-gold-jewellery         301
+/guides/how-to-calculate-scrap-gold-value  /scrap-gold-calculator                     301
 
 # Clean URL routing — strip .html extension (301 redirect + 200 rewrite pairs)
 /10k-gold-price-per-gram.html              /10k-gold-price-per-gram                   301
@@ -66,8 +71,8 @@
 /gold-silver-ratio                         /gold-silver-ratio.html                    200
 /gold-silver-test-kit-reviews.html         /gold-silver-test-kit-reviews              301
 /gold-silver-test-kit-reviews              /gold-silver-test-kit-reviews.html         200
-/guides/best-time-to-sell-scrap-gold.html  /guides/best-time-to-sell-scrap-gold       301
-/guides/best-time-to-sell-scrap-gold       /guides/best-time-to-sell-scrap-gold.html  200
+/guides/best-time-to-sell-scrap-gold.html  /guides/what-is-best-time-to-sell-scrap-gold 301
+/guides/best-time-to-sell-scrap-gold       /guides/what-is-best-time-to-sell-scrap-gold 301
 /guides/difference-between-gold-filled-and-gold-plated.html /guides/difference-between-gold-filled-and-gold-plated 301
 /guides/difference-between-gold-filled-and-gold-plated /guides/difference-between-gold-filled-and-gold-plated.html 200
 /guides/gold-bar-guide.html                /guides/gold-bar-guide                     301

@@ -78,8 +78,41 @@ content, or low search demand). This is not a technical bug; the fix is
 content-side — strengthen the pages, add internal links, ensure each is
 genuinely distinct. **To target:** export the 7 URLs from GSC.
 
-## What's needed to action the rest
-For the URL-specific reasons (404s, the two duplicates, crawled-not-indexed),
-GSC's category counts aren't enough — the **exact URLs** are required. Export
-them from each issue row (or provide `gsc_token.json` so the GSC API scripts in
-`scripts/` can pull them) and they can be fixed surgically.
+## URL-level resolution (2026-06-18)
+
+The example URLs were exported from GSC and actioned in `_redirects`:
+
+**Fixed — added 301s to live equivalents:**
+- `/privacy` → `/privacy-policy`
+- `/guides/how-to-calculate-scrap-gold-value` → `/scrap-gold-calculator`
+- `/authors/james-smith/` (trailing-slash variant) → `/authors/goldpricetools-editorial-team/`
+- `/guides/scrap-gold-guide.html` (`.html` variant) → `/guides/how-to-sell-gold-jewellery`
+
+**Fixed — broken redirect rule (latent bug):** `/guides/best-time-to-sell-scrap-gold`
+was a `200` rewrite to `/guides/best-time-to-sell-scrap-gold.html`, **a file that
+doesn't exist** (the page is `what-is-best-time-to-sell-scrap-gold.html`), so it
+served a 404. Both the bare and `.html` forms now `301` to
+`/guides/what-is-best-time-to-sell-scrap-gold`.
+
+**Already fixed (awaiting Google recrawl):** `/gold-and-silver-price-today`,
+`/live-gold-silver-price-today`, `/gold-rates-today`, `/gold-price-chart`,
+`/guides/gold-karat-explained`(`.html`), `/guides/sell-gold-jewellery`,
+`/indian-gold-silver-prices` all gained 301s in the 2026-06-17 consolidation —
+after their last crawl, which is why they still showed as 404.
+
+**Left to 404 (correct — no source in current code, will drop out):**
+`/$1`, `/g`, `/oz`, `/oz)`, `/XAU` (URL-extraction noise from page text/symbols),
+`/chart-data/gold-1y.json`, `/chart-data/gold-10y.json` (old chart paths, no
+longer referenced), `/api`, `/api/chart` (internal endpoints, `Disallow`ed in
+robots.txt), and `https://assets.goldpricetools.com/` (separate CDN subdomain,
+outside this repo).
+
+**Page with redirect (4):** `http://`, `http://www`, `https://www` variants and
+`/editorial-standards` (→ trailing-slash canonical) — all correct protocol/host/
+slash canonicalisation. No change needed.
+
+## Still needs the URLs (when you're ready)
+The two **Duplicate** rows and **Crawled - currently not indexed** (7) are the
+only outstanding reasons. Export those URLs from each GSC issue row (or provide
+`gsc_token.json` so the GSC API scripts in `scripts/` can pull them) to action
+them surgically.
