@@ -482,7 +482,7 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .sipp-keyfact dd{font-size:var(--text-base);font-weight:700;color:var(--color-text);margin:0;line-height:1.2;font-variant-numeric:tabular-nums}
 
 /* ---- Layout: content + sticky TOC ---- */
-.sipp-layout{display:grid;grid-template-columns:1fr;gap:var(--space-8)}
+.sipp-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-8)}.sipp-layout>*{min-width:0}
 .sipp-toc{order:-1}
 .sipp-toc details{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden}
 .sipp-toc summary{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);padding:var(--space-4);font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-text);cursor:pointer;list-style:none}
