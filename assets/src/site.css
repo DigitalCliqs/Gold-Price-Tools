@@ -1,0 +1,237 @@
+/*
+ * GoldPriceTools — site-wide responsive & accessibility fixes
+ * Applied via <link rel="stylesheet" href="/assets/site.css"> on all pages.
+ * Addresses: touch targets, table overflow, touch-action, overscroll, landscape.
+ */
+
+/* ── 0. Status colour variables (price up/down indicators) ── */
+:root {
+  --color-up: #4ade80;
+  --color-down: #f87171;
+
+  /* ── Z-index scale — single source of truth for stacking order ── */
+  --z-ticker-overlay: 2;   /* fade-edge gradients inside .ticker-wrap */
+  --z-nav: 200;            /* sticky site-nav bar */
+  --z-mobile: 199;         /* mobile drawer — slides under nav bar */
+  --z-panel: 300;          /* mega-panel dropdowns — above nav */
+  --z-consent: 99999;      /* Google consent / funding-choices overlay */
+}
+
+/* ── 1. Remove 300ms tap delay on all interactive elements ── */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+/* ── 2. Table overflow — prevent horizontal bleed on mobile/tablet ── */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+}
+
+/* ── 3. Touch targets — minimum 44×44px for icon buttons ── */
+.theme-toggle,
+.hamburger {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.hamburger {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chart range buttons — bump tap area on mobile */
+@media (max-width: 768px) {
+  .chart-btn {
+    min-height: 36px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* ── 3b. Price direction colours — use tokens, not bare hex ── */
+/*
+ * Inline <style> blocks on each page hard-code #4ade80 / #f87171 for up/down
+ * indicators. site.css loads AFTER those blocks, so these rules win via
+ * cascade order and ensure --color-up / --color-down are always the source
+ * of truth. Changing the token propagates everywhere automatically.
+ */
+.ticker-change.up,
+.spot-card-change.up {
+  color: var(--color-up);
+}
+
+.ticker-change.down,
+.spot-card-change.down {
+  color: var(--color-down);
+}
+
+.live-dot {
+  background: var(--color-up);
+}
+
+/* ── 3c. Interactive cursors — pointer on all clickable non-button elements ── */
+/*
+ * .chart-btn uses <button> tags (cursor:pointer inherited from global reset),
+ * but .calc-tab and similar role-button elements need explicit declaration.
+ */
+.chart-btn,
+.calc-tab {
+  cursor: pointer;
+}
+
+/* ── 3d. Chart button active/hover text colour — use token not bare hex ── */
+/*
+ * Every page inline-defines `.chart-btn:hover { color:#0f0e0c }` which is the
+ * raw dark-theme background value. In light mode this makes the active button
+ * text invisible (dark text on a gold background is fine, but the value must
+ * track the actual background token). site.css loads after inline <style>
+ * blocks, so this rule wins and fixes the colour on all pages at once.
+ */
+.chart-btn:hover,
+.chart-btn.active {
+  color: var(--color-bg);
+}
+
+/* ── 4. Overscroll — prevent accidental pull-to-refresh in mobile menu ── */
+.mobile-menu {
+  overscroll-behavior: contain;
+}
+
+/* ── 5. Landscape orientation — prevent chart and hero from being too tall ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .chart-wrap {
+    height: 180px !important;
+  }
+
+  .hero {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .spot-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .spot-card {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .spot-card-value {
+    font-size: 1rem;
+  }
+}
+
+/* ── 6. Calc tabs — smooth touch scroll ── */
+.calc-tabs {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── 7. Horizontal scroll guard — catch any overflow at body level ── */
+body {
+  overflow-x: hidden;
+}
+
+/* ── 8. Tablet two-column fix — hero doesn't collapse too early ── */
+@media (min-width: 600px) and (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .spot-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── 9. Main nav trigger — ensure adequate tap height on tablet ── */
+@media (max-width: 900px) {
+  .mega-nav__trigger {
+    min-height: 44px;
+  }
+}
+
+/* ── 10. Footer — compact gap on small mobile ── */
+/*
+ * Each page's inline <style> handles the column breakpoints:
+ *   max-width:900px → 3 cols
+ *   max-width:600px → 2 cols
+ * A 768px override here would win in the cascade (site.css loads after inline
+ * styles) and incorrectly collapse the footer to 2 cols between 601–768px.
+ * This rule is therefore scoped to ≤600px and only tightens the gap — it
+ * does not change column count, avoiding the conflict.
+ */
+@media (max-width: 600px) {
+  .footer-inner {
+    gap: 1.5rem;
+  }
+}
+
+/* ── 11. Sidebar — don't stick on tablet (no space) ── */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: static;
+  }
+}
+
+/* ── 12. Scrap table inputs — larger tap area on mobile ── */
+@media (max-width: 600px) {
+  .scrap-table input {
+    min-height: 40px;
+    font-size: 1rem;
+  }
+
+  .form-input,
+  .form-select {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+}
+
+/* ── 13. Reduced motion — also disable smooth scrolling ── */
+/*
+ * Each page's inline <style> resets animation/transition durations, but
+ * html { scroll-behavior: smooth } is not covered by duration resets.
+ * Users who prefer reduced motion should also get instant scroll jumps.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* CTA button — prevent a:visited from overriding white text */
+.cta-btn,
+.cta-btn:link,
+.cta-btn:visited,
+.cta-btn:hover,
+.cta-btn:active {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+/* gpt-eeat byline + sources (Phase 2) */
+.gpt-byline{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-size:.875rem;color:var(--color-text-muted);margin:0 0 1.25rem}
+.gpt-byline a{color:var(--color-primary);font-weight:500;text-decoration:none}
+.gpt-byline a:hover{text-decoration:underline}
+.gpt-byline__sep{opacity:.45}
+.gpt-sources{box-sizing:border-box;width:calc(100% - 2rem);max-width:920px;margin:2.5rem auto;padding:1.5rem 1.75rem;background:var(--color-surface-offset,var(--color-surface));border:1px solid var(--color-border);border-radius:.75rem}
+.gpt-sources h2{font-family:var(--font-display);font-size:1.25rem;color:var(--color-text);margin:0 0 .75rem}
+.gpt-sources p{font-size:.9375rem;color:var(--color-text-muted);line-height:1.65;margin:0 0 .75rem}
+.gpt-sources ul{margin:0 0 .75rem;padding-left:1.25rem}
+.gpt-sources li{font-size:.9375rem;color:var(--color-text-muted);line-height:1.7;margin-bottom:.25rem}
+.gpt-sources a{color:var(--color-primary);text-decoration:none}
+.gpt-sources a:hover{text-decoration:underline}
