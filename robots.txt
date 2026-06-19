@@ -9,7 +9,6 @@
 # Location: https://goldpricetools.com/llms.txt
 
 User-agent: *
-Content-Signal: search=yes,ai-input=yes,ai-train=no
 Allow: /
 Allow: /?q=
 Allow: /chart-data/
