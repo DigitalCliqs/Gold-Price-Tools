@@ -5,12 +5,16 @@
   "description": "GoldPriceTools static site toolchain",
   "scripts": {
     "validate": "node scripts/validate-jsonld.js",
-    "fetch-charts": "python3 scripts/fetch-chart-data.py"
+    "fetch-charts": "python3 scripts/fetch-chart-data.py",
+    "minify": "node scripts/minify-assets.js"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
     "googleapis": "^171.4.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
   }
 }
