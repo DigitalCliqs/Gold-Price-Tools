@@ -111,8 +111,40 @@ outside this repo).
 `/editorial-standards` (→ trailing-slash canonical) — all correct protocol/host/
 slash canonicalisation. No change needed.
 
-## Still needs the URLs (when you're ready)
-The two **Duplicate** rows and **Crawled - currently not indexed** (7) are the
-only outstanding reasons. Export those URLs from each GSC issue row (or provide
-`gsc_token.json` so the GSC API scripts in `scripts/` can pull them) to action
-them surgically.
+## Final three reasons resolved (2026-06-19)
+
+The remaining example URLs were exported from GSC and assessed:
+
+**Crawled - currently not indexed (7):** Six are non-page resources that are
+*supposed* to be crawled but not indexed as search results — `sitemap.xml`,
+`image-sitemap.xml`, `robots.txt`, and three `chart-data/*.json` data files
+(allowed in robots.txt because Googlebot fetches them to render the charts).
+This is normal and correct; no fix is possible or desirable. The seventh,
+`/guides/troy-ounce-guide.html`, has a correct self→clean canonical and is just
+slow to consolidate. **No change needed.**
+
+**Duplicate without user-selected canonical (1):**
+`/gold-silver-test-kit-reviews.html` — its canonical was finalised on 2026-06-11,
+*after* the 27 May crawl shown in GSC, so the report is stale. The page now has
+a correct self→clean canonical. **No change needed; clears on re-crawl.**
+
+**Duplicate, Google chose different canonical than user (1):**
+`/guides/gold-price-guide` — technically correct (proper H1, self-canonical, in
+sitemap, well-linked, ~9% verbatim overlap with the history page, so not a true
+duplicate). The cause was that this broad hub re-stated content owned by focused
+pages, so Google folded it into one of them. **Fixed by reframing it as a true
+hub:** the intro now positions it as an overview and links to the focused guides;
+the History section's deep prose + duplicate annual-average table were condensed
+to a summary + a "read the full guide" CTA (chart and ad slot kept); and a
+forecast-guide CTA was added. Live widgets, JSON-LD, and the `gp-intro-oz` /
+`histChart` hooks were all preserved. This differentiates the hub from its spokes
+so Google can index it on its own. If Google still overrides the canonical after
+re-crawl, the fallback is consolidation (301 into the strongest focused page).
+
+## Status
+All eight GSC "why pages aren't indexed" reasons have now been worked through.
+The redirect/404 and canonical issues are fixed in code; the remaining counts are
+either working-as-intended (redirects, alternates, intentional noindex), benign
+non-page resources, or stale reports that clear on the next crawl. Use **Validate
+Fix** on the *Not found (404)* and *Page with redirect* reports to prompt a
+re-crawl.
