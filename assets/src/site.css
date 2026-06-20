@@ -362,14 +362,46 @@ main p a:not([class]) {
 
 /* ── 15. Accessibility — gold TEXT contrast on the light theme ────────────────
  * --color-gold-bright (#d19900) is used for live price values and small labels,
- * which were only ~2.4:1 on light surfaces. Darkened to #8a6300 (≥4.5:1 small
- * text, incl. on gold-tinted cards). This affects the TOKEN, so gold *text*
- * everywhere on light passes AA in one place.
+ * which were only ~2.4:1 on light surfaces. Darkened to #6f5000 — clears
+ * 4.5:1 for small text on BOTH plain and gold-tinted backgrounds (the latter
+ * needs the extra darkening). One token fix covers all gold text on light.
  *   • Gold gradient backgrounds (--gold-grad / --grad-text) are hardcoded hex,
  *     so hero headings and CTA buttons stay bright (unaffected by this token).
  *   • Dark theme is untouched (gold-bright there is ~8.6:1).
  * Any element that uses the SOLID token as a background with dark text is
  * re-brightened just below so its text contrast is preserved. */
 [data-theme="light"] {
-  --color-gold-bright: #8a6300;
+  --color-gold-bright: #6f5000;
+}
+
+/* ── 16. Accessibility round 2 — remaining WCAG AA contrast + link cases ──────
+ * axe-core ground truth found a second tier of low-contrast text the round-1
+ * muted/gold fix didn't cover: the --color-text-faint label tier, the green
+ * "live" badge, gold text on gold-tinted pills, and three in-text links the
+ * home underline rule didn't reach (<td> and .gpt-sources). */
+
+/* (a) --color-text-faint was used for readable small labels (table headers,
+ * hallmarks, weight hints) at ~1.8–3.3:1. Darken both themes to clear 4.5:1. */
+:root,
+[data-theme="light"] {
+  --color-text-faint: #6b6a66;
+}
+[data-theme="dark"] {
+  --color-text-faint: #8c8b86;
+}
+
+/* (b) Green "live" badge: --color-success (#0f7a3d) is used as BOTH the badge
+ * text and a 12% background tint, so darkening the token raises its contrast.
+ * Light theme only (dark badge is unaffected). */
+[data-theme="light"] {
+  --color-success: #07602b;
+}
+
+/* (c) link-in-text-block: underline in-text links missed by the §14 rule —
+ * links inside table cells and the data-sources block. */
+main td a:not([class]),
+.gpt-sources a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: from-font;
 }
