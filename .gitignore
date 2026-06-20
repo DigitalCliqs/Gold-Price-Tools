@@ -29,3 +29,24 @@ tools/psi-mcp/
 
 # Playwright audit output (regenerable screenshots/strips)
 tmp/
+
+# Local SEO/analytics audit scripts — contain hardcoded API keys, keep local only
+scripts/audit_bing.py
+scripts/audit_clarity.py
+scripts/audit_ga.py
+scripts/audit_gsc.py
+scripts/audit_psi.py
+scripts/clarity_comprehensive_audit.py
+scripts/clarity_full_audit.py
+scripts/full_bing_audit.py
+scripts/fix_analytics_ads.py
+scripts/inspect_urls.py
+scripts/run_mcp_client.py
+
+# Audit output / reports (regenerable, may contain account data)
+scripts/clarity_audit_results.json
+reports/bing_tools.json
+reports/ahref-issues-june/
+
+# Local scratch work
+scratch/
