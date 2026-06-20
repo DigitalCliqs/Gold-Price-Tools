@@ -359,3 +359,17 @@ main p a:not([class]) {
   text-underline-offset: 0.15em;
   text-decoration-thickness: from-font;
 }
+
+/* ── 15. Accessibility — gold TEXT contrast on the light theme ────────────────
+ * --color-gold-bright (#d19900) is used for live price values and small labels,
+ * which were only ~2.4:1 on light surfaces. Darkened to #8a6300 (≥4.5:1 small
+ * text, incl. on gold-tinted cards). This affects the TOKEN, so gold *text*
+ * everywhere on light passes AA in one place.
+ *   • Gold gradient backgrounds (--gold-grad / --grad-text) are hardcoded hex,
+ *     so hero headings and CTA buttons stay bright (unaffected by this token).
+ *   • Dark theme is untouched (gold-bright there is ~8.6:1).
+ * Any element that uses the SOLID token as a background with dark text is
+ * re-brightened just below so its text contrast is preserved. */
+[data-theme="light"] {
+  --color-gold-bright: #8a6300;
+}
