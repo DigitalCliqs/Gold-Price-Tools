@@ -328,3 +328,34 @@ body {
 .gpt-sources li{font-size:.9375rem;color:var(--color-text-muted);line-height:1.7;margin-bottom:.25rem}
 .gpt-sources a{color:var(--color-primary);text-decoration:none}
 .gpt-sources a:hover{text-decoration:underline}
+
+/* ── 14. Accessibility — WCAG AA contrast + link distinguishability ───────────
+ * Fixes axe/PSI "color-contrast" and "link-in-text-block" on the home + price/
+ * calculator template. site.css loads after each page's inline <style>, so these
+ * token overrides win site-wide. The guide template (.gp-prose) already underlines
+ * its prose links; this extends the same affordance to plain links elsewhere.
+ *
+ * --color-text-muted was #7a7974 in BOTH themes and failed AA (light ~3.8–4.1:1,
+ * dark ~3.9–4.4:1). New per-theme values clear 4.5:1 on every surface while
+ * staying clearly muted vs --color-text:
+ *   light: #666561 (≥4.6:1 on light surfaces)
+ *   dark:  #909089 (≥4.5:1 on dark surfaces)
+ * Order matters: the dark rule must follow the :root/light rule so it wins on
+ * dark pages (equal specificity → later source order).
+ */
+:root,
+[data-theme="light"] {
+  --color-text-muted: #666561;
+}
+[data-theme="dark"] {
+  --color-text-muted: #909089;
+}
+
+/* In-content prose links: underline so they're distinguishable without relying
+ * on colour. Scoped to UNCLASSED <a> inside <main> paragraphs, which excludes
+ * nav, buttons, cards, CTAs and breadcrumbs (all carry classes / live in <li>). */
+main p a:not([class]) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: from-font;
+}
