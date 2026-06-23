@@ -1,6 +1,6 @@
 # robots.txt for GoldPriceTools
 # https://developers.google.com/search/docs/crawling-indexing/robots/intro
-# Last updated: 2026-05-16
+# Last updated: 2026-06-23
 
 # ─────────────────────────────────────────────────
 # LLM / AI Discovery Files
@@ -21,6 +21,7 @@ Disallow: /*?
 
 Sitemap: https://goldpricetools.com/sitemap.xml
 Sitemap: https://goldpricetools.com/image-sitemap.xml
+Sitemap: https://goldpricetools.com/news-sitemap.xml
 
 User-agent: Googlebot
 Allow: /
