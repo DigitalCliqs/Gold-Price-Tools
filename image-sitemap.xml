@@ -59,6 +59,14 @@
     </image:image>
   </url>
   <url>
+    <loc>https://goldpricetools.com/news/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>Gold &amp; Silver Market News &amp; Price Updates</image:title>
+    <image:caption>Live gold and silver market news and price updates from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://goldpricetools.com/22k-gold-price-per-gram</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>

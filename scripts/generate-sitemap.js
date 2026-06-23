@@ -116,6 +116,7 @@ function getSchedule(url) {
   if (/^\/(10|14|18)k-gold-price-per-gram$/.test(p)) return { priority: '0.95', changefreq: 'hourly' };
   if (/^\/(scrap-gold-calculator|silver-price-per-kilo)$/.test(p)) return { priority: '0.9', changefreq: 'hourly' };
   if (p === '/gold-and-silver-price-today/') return { priority: '0.9', changefreq: 'always' };
+  if (p === '/news/') return { priority: '0.8', changefreq: 'daily' };
   if (/^\/guides\/(what-is-14k-gold|how-to-calculate-scrap-gold)$/.test(p)) return { priority: '0.8', changefreq: 'monthly' };
   if (p.startsWith('/guides/')) return { priority: '0.75', changefreq: 'monthly' };
   if (/^\/(about|contact)$/.test(p)) return { priority: '0.4', changefreq: 'yearly' };
