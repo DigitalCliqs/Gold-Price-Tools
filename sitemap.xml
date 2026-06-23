@@ -110,6 +110,21 @@
   </url>
 
   <url>
+    <loc>https://goldpricetools.com/news/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://goldpricetools.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://goldpricetools.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://goldpricetools.com/blog/"/>
+    <image:image>
+      <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+      <image:title>Gold &amp; Silver Market News &amp; Price Updates</image:title>
+      <image:caption>Live gold and silver market news and price updates from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://goldpricetools.com/22k-gold-price-per-gram</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
