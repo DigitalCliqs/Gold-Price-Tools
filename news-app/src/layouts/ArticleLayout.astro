@@ -1,0 +1,117 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/article.css';
+import { categoryTitle, SITE, AUTHOR_URL } from '../lib/categories';
+import ShareButtons from '../components/ShareButtons.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import PrevNext from '../components/PrevNext.astro';
+
+interface Related { slug: string; title: string; category: string; description: string; }
+interface Props {
+  data: {
+    title: string; description: string; category: string; tags: string[];
+    pubDate: Date; updatedDate?: Date; image?: string; imageAlt: string;
+    imageCredit?: string; imageCreditUrl?: string; author: string;
+  };
+  slug: string;
+  readMins: number;
+  related?: Related[];
+  prev?: { slug: string; title: string };
+  next?: { slug: string; title: string };
+}
+const { data, slug, readMins, related = [], prev, next } = Astro.props;
+const canonical = `${SITE}/news/${slug}/`;
+const catTitle = categoryTitle(data.category);
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const published = data.pubDate;
+const updated = data.updatedDate ?? data.pubDate;
+const showUpdated = data.updatedDate && data.updatedDate.getTime() !== published.getTime();
+const ogImage = data.image
+  ? (data.image.startsWith('http') ? data.image : SITE + data.image)
+  : 'https://assets.goldpricetools.com/og-image.jpg';
+
+const newsArticle = {
+  '@context': 'https://schema.org', '@type': 'NewsArticle',
+  headline: data.title, description: data.description, url: canonical,
+  datePublished: published.toISOString(), dateModified: updated.toISOString(),
+  author: { '@type': 'Organization', name: data.author, url: AUTHOR_URL },
+  publisher: {
+    '@type': 'Organization', name: 'GoldPriceTools', url: SITE,
+    logo: { '@type': 'ImageObject', url: `${SITE}/assets/brand/logo-square-1000.png`, width: 1000, height: 1000 },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+  image: { '@type': 'ImageObject', url: ogImage, width: 1200, height: 675 },
+};
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'News', item: `${SITE}/news/` },
+    { '@type': 'ListItem', position: 3, name: catTitle, item: `${SITE}/news/category/${data.category}/` },
+    { '@type': 'ListItem', position: 4, name: data.title },
+  ],
+};
+---
+<BaseLayout title={`${data.title} | GoldPriceTools`} description={data.description} canonical={canonical} ogType="article" image={ogImage}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(newsArticle)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  </Fragment>
+
+  <div class="gso-bc-wrap">
+    <ol class="gso-bc" aria-label="Breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/news/">News</a></li>
+      <li><a href={`/news/category/${data.category}/`}>{catTitle}</a></li>
+      <li aria-current="page">{data.title}</li>
+    </ol>
+  </div>
+
+  <article itemscope itemtype="https://schema.org/NewsArticle">
+    <header class="gso-hero">
+      <div class="gso-hero__bg" aria-hidden="true"></div>
+      <div class="gso-hero__grid" aria-hidden="true"></div>
+      <div class="gso-hero__inner">
+        <span class="gso-kicker">{catTitle}</span>
+        <h1 itemprop="headline">{data.title}</h1>
+        <p class="gso-hero__lead">{data.description}</p>
+        <div class="gso-byline">
+          <span>By <a href={AUTHOR_URL} itemprop="author">{data.author}</a></span>
+          <span class="dot" aria-hidden="true"></span>
+          <span>Published <time datetime={published.toISOString()} itemprop="datePublished">{fmt(published)}</time></span>
+          {showUpdated && (<><span class="dot" aria-hidden="true"></span><span>Updated <time datetime={updated.toISOString()} itemprop="dateModified">{fmt(updated)}</time></span></>)}
+          <span class="dot" aria-hidden="true"></span>
+          <span>{readMins} min read</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="gso-shell">
+      <div class="gso-prose">
+        {data.image && (
+          <figure class="news-figure">
+            <img src={data.image} width="1200" height="675" alt={data.imageAlt} loading="eager" decoding="async" />
+            {data.imageCredit && (
+              <figcaption>Photo: {data.imageCreditUrl
+                ? <a href={data.imageCreditUrl} rel="nofollow noopener" target="_blank">{data.imageCredit}</a>
+                : data.imageCredit}</figcaption>
+            )}
+          </figure>
+        )}
+
+        <slot />
+
+        {data.tags.length > 0 && (
+          <div class="news-tags" aria-label="Tags">
+            {data.tags.map((t) => <a class="news-tag" href={`/news/tag/${t}/`}>#{t.replace(/-/g, ' ')}</a>)}
+          </div>
+        )}
+
+        <ShareButtons url={canonical} title={data.title} />
+        <PrevNext prev={prev} next={next} />
+      </div>
+    </div>
+
+    <RelatedPosts related={related} />
+  </article>
+</BaseLayout>

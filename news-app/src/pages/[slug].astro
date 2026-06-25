@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('news'))
+    .filter((a) => !a.data.draft)
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+  return all.map((entry, i) => {
+    const sameCat = all.filter((a) => a.id !== entry.id && a.data.category === entry.data.category);
+    const others = all.filter((a) => a.id !== entry.id && a.data.category !== entry.data.category);
+    const related = [...sameCat, ...others].slice(0, 3).map((a) => ({
+      slug: a.id, title: a.data.title, category: a.data.category, description: a.data.description,
+    }));
+    const words = (entry.body ?? '').split(/\s+/).filter(Boolean).length;
+    const readMins = Math.max(1, Math.round(words / 200));
+    const prevE = all[i - 1];
+    const nextE = all[i + 1];
+    const prev = prevE ? { slug: prevE.id, title: prevE.data.title } : undefined;
+    const next = nextE ? { slug: nextE.id, title: nextE.data.title } : undefined;
+    return { params: { slug: entry.id }, props: { entry, related, readMins, prev, next } };
+  });
+}
+
+const { entry, related, readMins, prev, next } = Astro.props;
+const { Content } = await render(entry);
+---
+<ArticleLayout data={entry.data} slug={entry.id} readMins={readMins} related={related} prev={prev} next={next}>
+  <Content />
+</ArticleLayout>

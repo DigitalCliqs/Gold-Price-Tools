@@ -1,0 +1,20 @@
+---
+import { categoryTitle } from '../lib/categories';
+interface Related { slug: string; title: string; category: string; description: string; }
+interface Props { related: Related[]; }
+const { related } = Astro.props;
+---
+{related.length > 0 && (
+  <section class="gso-related">
+    <h2>More like this</h2>
+    <div class="gso-related-grid">
+      {related.map((r) => (
+        <a href={`/news/${r.slug}/`} class="gso-rcard">
+          <span class="gso-rcard__tag">{categoryTitle(r.category)}</span>
+          <div class="gso-rcard__title">{r.title}</div>
+          <div class="gso-rcard__desc">{r.description}</div>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

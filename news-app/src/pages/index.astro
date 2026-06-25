@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/magazine.css';
+import { getCollection } from 'astro:content';
+import { categoryTitle, SITE } from '../lib/categories';
+import MarketStrip from '../components/MarketStrip.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FeaturedCard from '../components/FeaturedCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import ListItem from '../components/ListItem.astro';
+import TopStories from '../components/TopStories.astro';
+import LeadPost from '../components/LeadPost.astro';
+
+const all = (await getCollection('news'))
+  .filter((a) => !a.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const featured = all[0];
+const secondary = all[1];
+const fresh = all.slice(1, 6);
+const popular = all.slice(4, 9);
+const topStories = all.slice(2, 6);
+const byCat = (c: string) => all.filter((a) => a.data.category === c).slice(0, 3);
+const sdate = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+
+const goldPosts = byCat('gold');
+const trending = all.slice(0, 5);
+const exclusiveFeat = all[3] ?? all[0];
+const exclusiveMini = all.slice(4, 8);
+const recentFeat = all[2] ?? all[0];
+const recentList = all.slice(3, 8);
+const canonical = `${SITE}/news/`;
+
+const collectionLd = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  name: 'Gold & Silver Market News', url: canonical,
+  description: 'Live gold and silver market news and price updates from the GoldPriceTools editorial team.',
+  isPartOf: { '@type': 'WebSite', name: 'GoldPriceTools', url: SITE },
+};
+---
+<BaseLayout
+  title="Gold & Silver Market News & Price Updates | GoldPriceTools"
+  description="Live gold and silver market news, price moves and analysis from the GoldPriceTools editorial team."
+  canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(collectionLd)} />
+  </Fragment>
+
+  <div class="mag-main">
+    <MarketStrip />
+    <header class="mag-head">
+      <span class="mag-kick">GoldPriceTools &middot; Market News</span>
+      <h1>Gold &amp; Silver <span class="a">Market News</span></h1>
+    </header>
+
+    {featured && (
+      <section class="mag-hero">
+        <div>
+          <div class="mag-col__h">Fresh stories</div>
+          <div class="mag-list">{fresh.map((e) => <ListItem entry={e} />)}</div>
+        </div>
+        <div class="mag-hero__center">
+          <FeaturedCard entry={featured} />
+          {secondary && (
+            <a class="mag-hcard" href={`/news/${secondary.id}/`}>
+              {secondary.data.image && <img src={secondary.data.image} alt={secondary.data.imageAlt} loading="lazy" />}
+              <div class="mag-hcard__body">
+                <span class="mag-li__tag">{categoryTitle(secondary.data.category)}</span>
+                <h3 class="mag-hcard__title">{secondary.data.title}</h3>
+                <div class="mag-meta"><span>{sdate(secondary.data.pubDate)}</span></div>
+              </div>
+            </a>
+          )}
+        </div>
+        <div>
+          <div class="mag-col__h">Popular</div>
+          <div class="mag-list">{popular.map((e) => <ListItem entry={e} />)}</div>
+        </div>
+      </section>
+    )}
+
+    {topStories.length > 0 && <TopStories items={topStories} />}
+
+    {/* Gold — lead posts + sidebar (NewsWeek "Politics"-style block) */}
+    <SectionHead title="Gold" href="/news/category/gold/" />
+    <div class="mag-lead-wrap">
+      <div>{goldPosts.map((e) => <LeadPost entry={e} />)}</div>
+      <aside class="mag-side">
+        <h3 class="mag-side__h">Trending</h3>
+        <div class="mag-list">{trending.map((e) => <ListItem entry={e} />)}</div>
+      </aside>
+    </div>
+
+    {/* Silver + Analysis grids */}
+    <SectionHead title="Silver" href="/news/category/silver/" />
+    <div class="mag-grid">{byCat('silver').map((e) => <ArticleCard entry={e} />)}</div>
+
+    <SectionHead title="Analysis" href="/news/category/analysis/" />
+    <div class="mag-grid">{byCat('analysis').map((e) => <ArticleCard entry={e} />)}</div>
+
+    {/* Exclusive content band */}
+    {exclusiveFeat && (
+      <section class="mag-exclusive">
+        <span class="mag-exclusive__label">Exclusive content</span>
+        <div class="mag-exclusive__grid">
+          <a class="mag-feat mag-feat--ex" href={`/news/${exclusiveFeat.id}/`}>
+            {exclusiveFeat.data.image && <img src={exclusiveFeat.data.image} alt={exclusiveFeat.data.imageAlt} loading="lazy" />}
+            <div class="mag-feat__grad"></div>
+            <div class="mag-feat__body">
+              <span class="mag-tag">{categoryTitle(exclusiveFeat.data.category)}</span>
+              <h3 class="mag-feat__title mag-feat__title--ex">{exclusiveFeat.data.title}</h3>
+            </div>
+          </a>
+          <div class="mag-exclusive__mini">
+            {exclusiveMini.map((e) => (
+              <a class="mag-xmini" href={`/news/${e.id}/`}>
+                {e.data.image && <img src={e.data.image} alt="" loading="lazy" />}
+                <span>
+                  <span class="mag-xmini__tag">{categoryTitle(e.data.category)}</span>
+                  <span class="mag-xmini__t">{e.data.title}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* Recent posts — big featured + list */}
+    <SectionHead title="Recent posts" href="/news/" />
+    <div class="mag-recent">
+      {recentFeat && (
+        <a class="mag-rfeat" href={`/news/${recentFeat.id}/`}>
+          {recentFeat.data.image && <img src={recentFeat.data.image} alt={recentFeat.data.imageAlt} loading="lazy" />}
+          <span class="mag-tag mag-rfeat__tag">{categoryTitle(recentFeat.data.category)}</span>
+          <h3 class="mag-rfeat__title">{recentFeat.data.title}</h3>
+          <p class="mag-rfeat__ex">{recentFeat.data.description}</p>
+        </a>
+      )}
+      <div class="mag-list">{recentList.map((e) => <ListItem entry={e} />)}</div>
+    </div>
+
+    <p class="mag-credit">Photos provided by
+      <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a> and
+      <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</p>
+  </div>
+</BaseLayout>

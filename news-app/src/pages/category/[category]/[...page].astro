@@ -1,0 +1,96 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/magazine.css';
+import { getCollection } from 'astro:content';
+import { CATEGORY_SLUGS, categoryTitle, categoryBlurb, SITE } from '../../../lib/categories';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import ListItem from '../../../components/ListItem.astro';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const all = (await getCollection('news'))
+    .filter((a) => !a.data.draft)
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+  return CATEGORY_SLUGS.flatMap((cat) => {
+    const posts = all.filter((a) => a.data.category === cat);
+    return paginate(posts, {
+      params: { category: cat },
+      props: { trending: all.slice(0, 5) },
+      pageSize: 9,
+    });
+  });
+}) satisfies GetStaticPaths;
+
+const { page, trending } = Astro.props;
+const category = Astro.params.category!;
+const title = categoryTitle(category);
+const blurb = categoryBlurb(category);
+const base = `${SITE}/news/category/${category}/`;
+const canonical = page.currentPage > 1 ? `${base}${page.currentPage}/` : base;
+const pagePath = (n: number) => (n === 1 ? `/news/category/${category}/` : `/news/category/${category}/${n}/`);
+
+const ld = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  name: `${title} News`, url: canonical, description: blurb,
+  isPartOf: { '@type': 'WebSite', name: 'GoldPriceTools', url: SITE },
+};
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'News', item: `${SITE}/news/` },
+    { '@type': 'ListItem', position: 3, name: title },
+  ],
+};
+---
+<BaseLayout title={`${title} News | GoldPriceTools`} description={blurb} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  </Fragment>
+
+  <div class="mag-main">
+    <div class="gso-bc-wrap">
+      <ol class="gso-bc" aria-label="Breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/news/">News</a></li>
+        <li aria-current="page">{title}</li>
+      </ol>
+    </div>
+
+    <header class="mag-archhead">
+      <h1>{title} <span class="a">News</span></h1>
+      <p>{blurb}</p>
+    </header>
+
+    <nav class="mag-chips" aria-label="News categories">
+      <a class="mag-chip" href="/news/">All</a>
+      {CATEGORY_SLUGS.map((c) => (
+        <a class="mag-chip" href={`/news/category/${c}/`} aria-current={c === category ? 'page' : undefined}>{categoryTitle(c)}</a>
+      ))}
+    </nav>
+
+    <div class="mag-archive-wrap">
+      <div>
+        {page.data.length > 0 ? (
+          <div class="mag-grid">{page.data.map((e) => <ArticleCard entry={e} />)}</div>
+        ) : (
+          <p style="color:var(--color-text-muted)">No articles in this category yet — check back soon.</p>
+        )}
+
+        {page.lastPage > 1 && (
+          <nav class="mag-pagination" aria-label="Pagination">
+            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((n) => (
+              <a class={n === page.currentPage ? 'is-active' : ''} href={pagePath(n)}>{n}</a>
+            ))}
+          </nav>
+        )}
+      </div>
+
+      <aside class="mag-side">
+        <h3 class="mag-side__h">Trending</h3>
+        <div class="mag-list">{trending.map((e) => <ListItem entry={e} />)}</div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
