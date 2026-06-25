@@ -14,6 +14,7 @@ Allow: /?q=
 Allow: /chart-data/
 Allow: /ads.txt
 Disallow: /scripts/
+Disallow: /news-app/
 Disallow: /worker/
 Disallow: /workers/
 Disallow: /api/
