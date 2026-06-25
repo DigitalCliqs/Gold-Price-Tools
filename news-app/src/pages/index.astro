@@ -10,6 +10,9 @@ import ArticleCard from '../components/ArticleCard.astro';
 import ListItem from '../components/ListItem.astro';
 import TopStories from '../components/TopStories.astro';
 import LeadPost from '../components/LeadPost.astro';
+import TopHeadlines from '../components/TopHeadlines.astro';
+import SocialBar from '../components/SocialBar.astro';
+import MiniPosts from '../components/MiniPosts.astro';
 
 const all = (await getCollection('news'))
   .filter((a) => !a.data.draft)
@@ -20,6 +23,9 @@ const secondary = all[1];
 const fresh = all.slice(1, 6);
 const popular = all.slice(4, 9);
 const topStories = all.slice(2, 6);
+const headlines = all.slice(0, 5);
+const heroCards = all.slice(2, 4);
+const miniPosts = all.slice(0, 8);
 const byCat = (c: string) => all.filter((a) => a.data.category === c).slice(0, 3);
 const sdate = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
 
@@ -53,33 +59,42 @@ const collectionLd = {
       <h1>Gold &amp; Silver <span class="a">Market News</span></h1>
     </header>
 
+    <TopHeadlines items={headlines} />
+
     {featured && (
       <section class="mag-hero">
         <div>
           <div class="mag-col__h">Fresh stories</div>
+          <div class="mag-col__sub">Today &middot; our editors&rsquo; hand-picked stories</div>
           <div class="mag-list">{fresh.map((e) => <ListItem entry={e} />)}</div>
         </div>
-        <div class="mag-hero__center">
-          <FeaturedCard entry={featured} />
-          {secondary && (
-            <a class="mag-hcard" href={`/news/${secondary.id}/`}>
-              {secondary.data.image && <img src={secondary.data.image} alt={secondary.data.imageAlt} loading="lazy" />}
-              <div class="mag-hcard__body">
-                <span class="mag-li__tag">{categoryTitle(secondary.data.category)}</span>
-                <h3 class="mag-hcard__title">{secondary.data.title}</h3>
-                <div class="mag-meta"><span>{sdate(secondary.data.pubDate)}</span></div>
-              </div>
+        <FeaturedCard entry={featured} />
+        <div class="mag-vcol">
+          {heroCards.map((e) => (
+            <a class="mag-vcard" href={`/news/${e.id}/`}>
+              {e.data.image && <img src={e.data.image} alt={e.data.imageAlt} loading="lazy" />}
+              <span class="mag-vcard__tag">{categoryTitle(e.data.category)}</span>
+              <span class="mag-vcard__t">{e.data.title}</span>
             </a>
-          )}
+          ))}
         </div>
-        <div>
+        <div class="mag-popbox">
           <div class="mag-col__h">Popular</div>
           <div class="mag-list">{popular.map((e) => <ListItem entry={e} />)}</div>
         </div>
       </section>
     )}
 
-    {topStories.length > 0 && <TopStories items={topStories} />}
+    <SocialBar />
+
+    {topStories.length > 0 && (
+      <section class="mag-breaking">
+        <span class="mag-breaking__label">Top Stories</span>
+        <TopStories items={topStories} />
+      </section>
+    )}
+
+    <MiniPosts items={miniPosts} />
 
     {/* Gold — lead posts + sidebar (NewsWeek "Politics"-style block) */}
     <SectionHead title="Gold" href="/news/category/gold/" />

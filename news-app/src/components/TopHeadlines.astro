@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { categoryTitle } from '../lib/categories';
+interface Props { items: CollectionEntry<'news'>[]; }
+const { items } = Astro.props;
+const d = (x: Date) => x.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+<div class="mag-headlines" aria-label="Latest headlines">
+  <button class="mag-hl-arrow" type="button" aria-label="Previous">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="mag-headlines__track">
+    {items.map((e) => (
+      <a class="mag-hl" href={`/news/${e.id}/`}>
+        <span class="mag-hl__tag">{categoryTitle(e.data.category)}</span>
+        <span class="mag-hl__t">{e.data.title}</span>
+        <time>{d(e.data.pubDate)}</time>
+      </a>
+    ))}
+  </div>
+  <button class="mag-hl-arrow" type="button" aria-label="Next">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>

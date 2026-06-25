@@ -30,3 +30,12 @@ export const categoryBlurb = (slug: string): string =>
 
 export const SITE = 'https://goldpricetools.com';
 export const AUTHOR_URL = `${SITE}/authors/goldpricetools-editorial-team/`;
+
+// Social links for the "Join us on social media" bar.
+// TODO: replace '#' with your real profile URLs (or leave '#' to hide-as-placeholder).
+export const SOCIALS = {
+  facebook: '#',
+  x: '#',
+  instagram: '#',
+  youtube: '#',
+};
