@@ -13,6 +13,7 @@ import LeadPost from '../components/LeadPost.astro';
 import TopHeadlines from '../components/TopHeadlines.astro';
 import SocialBar from '../components/SocialBar.astro';
 import MiniPosts from '../components/MiniPosts.astro';
+import WmSectionHead from '../components/WmSectionHead.astro';
 
 const all = (await getCollection('news'))
   .filter((a) => !a.data.draft)
@@ -34,7 +35,8 @@ const trending = all.slice(0, 5);
 const exclusiveFeat = all[3] ?? all[0];
 const exclusiveMini = all.slice(4, 8);
 const recentFeat = all[2] ?? all[0];
-const recentList = all.slice(3, 8);
+const recentMore = all.slice(5, 8);
+const recentList = all.slice(0, 5);
 const canonical = `${SITE}/news/`;
 
 const collectionLd = {
@@ -141,18 +143,24 @@ const collectionLd = {
       </section>
     )}
 
-    {/* Recent posts — big featured + list */}
-    <SectionHead title="Recent posts" href="/news/" />
+    {/* Recent posts — watermark head + featured + 3-card row + sidebar box */}
+    <WmSectionHead title="Recent posts" wm="Latest" />
     <div class="mag-recent">
-      {recentFeat && (
-        <a class="mag-rfeat" href={`/news/${recentFeat.id}/`}>
-          {recentFeat.data.image && <img src={recentFeat.data.image} alt={recentFeat.data.imageAlt} loading="lazy" />}
-          <span class="mag-tag mag-rfeat__tag">{categoryTitle(recentFeat.data.category)}</span>
-          <h3 class="mag-rfeat__title">{recentFeat.data.title}</h3>
-          <p class="mag-rfeat__ex">{recentFeat.data.description}</p>
-        </a>
-      )}
-      <div class="mag-list">{recentList.map((e) => <ListItem entry={e} />)}</div>
+      <div>
+        {recentFeat && (
+          <a class="mag-rfeat" href={`/news/${recentFeat.id}/`}>
+            {recentFeat.data.image && <img src={recentFeat.data.image} alt={recentFeat.data.imageAlt} loading="lazy" />}
+            <span class="mag-tag mag-rfeat__tag">{categoryTitle(recentFeat.data.category)}</span>
+            <h3 class="mag-rfeat__title">{recentFeat.data.title}</h3>
+            <p class="mag-rfeat__ex">{recentFeat.data.description}</p>
+          </a>
+        )}
+        <div class="mag-recent__more">{recentMore.map((e) => <ArticleCard entry={e} />)}</div>
+      </div>
+      <aside class="mag-side">
+        <h3 class="mag-side__h">More to read</h3>
+        <div class="mag-list">{recentList.map((e) => <ListItem entry={e} />)}</div>
+      </aside>
     </div>
 
     <p class="mag-credit">Photos provided by
