@@ -1,0 +1,8 @@
+---
+interface Props { title: string; wm: string; }
+const { title, wm } = Astro.props;
+---
+<div class="mag-wmhead">
+  <span class="mag-wmhead__wm" aria-hidden="true">{wm}</span>
+  <h2>{title}</h2>
+</div>
