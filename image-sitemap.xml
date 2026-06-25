@@ -62,8 +62,8 @@
     <loc>https://goldpricetools.com/news/</loc>
     <image:image>
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
-    <image:title>Gold &amp; Silver Market News &amp; Price Updates</image:title>
-    <image:caption>Live gold and silver market news and price updates from the GoldPriceTools editorial team.</image:caption>
+    <image:title>Gold &amp;#38; Silver Market News &amp;#38; Price Updates | GoldPriceTools</image:title>
+    <image:caption>Live gold and silver market news, price moves and analysis from the GoldPriceTools editorial team.</image:caption>
     </image:image>
   </url>
   <url>
@@ -512,6 +512,270 @@
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>How Many Grams in a Troy Ounce? 31.1035g — Live USD Converter</image:title>
     <image:caption>A troy ounce equals 31.1035 grams. Live USD gold &amp; silver prices, instant unit conversion, and the LBMA international standard explained.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/category/analysis/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>Analysis News | GoldPriceTools</image:title>
+    <image:caption>Deeper data-driven analysis of the precious-metals market.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/category/gold/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>Gold News | GoldPriceTools</image:title>
+    <image:caption>Gold prices, demand, central-bank buying and bullion news.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/category/market-updates/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>Market Updates News | GoldPriceTools</image:title>
+    <image:caption>Timely gold and silver market commentary and price moves.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/category/silver/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>Silver News | GoldPriceTools</image:title>
+    <image:caption>Silver prices, industrial demand, coins and the gold-silver ratio.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/central-banks-bought-290-tonnes-gold-q2/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/g2.jpg</image:loc>
+    <image:title>Central Banks Bought 290 Tonnes of Gold in Q2 | GoldPriceTools</image:title>
+    <image:caption>Official-sector demand stayed elevated as emerging-market banks kept diversifying reserves away from the dollar.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/gold-holds-above-4500-fed-pause/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/g1.jpg</image:loc>
+    <image:title>Gold Holds Above $4,500 as the Fed Signals a Pause | GoldPriceTools</image:title>
+    <image:caption>Bullion steadied near multi-month highs after policymakers hinted rate cuts may slow, keeping real yields and the dollar in focus.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/gold-silver-ratio-narrows-to-62/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/a1.jpg</image:loc>
+    <image:title>The Gold-to-Silver Ratio Just Narrowed to 62 — Here's Why | GoldPriceTools</image:title>
+    <image:caption>The ratio's slide signals silver outperformance. We unpack what the gold-silver ratio is telling investors now.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/platinum-vs-gold-relative-value/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/a3.jpg</image:loc>
+    <image:title>Platinum vs Gold: The 2026 Relative-Value Case | GoldPriceTools</image:title>
+    <image:caption>With the platinum discount near record extremes, contrarians are circling. We weigh the trade.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/silver-coins-for-beginners/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/s2.jpg</image:loc>
+    <image:title>Silver Coins for Beginners: Junk Silver to Britannias | GoldPriceTools</image:title>
+    <image:caption>A practical guide to the most accessible entry point into precious metals — and the VAT traps to avoid.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/silver-surges-industrial-demand/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/s1.jpg</image:loc>
+    <image:title>Silver Surges 4% on Industrial and Solar Demand | GoldPriceTools</image:title>
+    <image:caption>A tightening physical market and record solar installations pushed silver to its best week since March.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/analysis/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#analysis — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;analysis&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/beginners/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#beginners — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;beginners&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/central-banks/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#central banks — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;central banks&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/coins/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#coins — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;coins&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/demand/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#demand — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;demand&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/equities/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#equities — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;equities&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/fed/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#fed — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;fed&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/gold-silver-ratio/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#gold silver ratio — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;gold silver ratio&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/industrial-demand/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#industrial demand — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;industrial demand&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/miners/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#miners — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;miners&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/platinum/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#platinum — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;platinum&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/real-yields/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#real yields — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;real yields&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/relative-value/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#relative value — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;relative value&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/reserves/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#reserves — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;reserves&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/royal-mint/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#royal mint — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;royal mint&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/solar/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#solar — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;solar&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/spot-price/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#spot price — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;spot price&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/uk/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#uk — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;uk&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/vat/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#vat — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;vat&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/weekly-wrap/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#weekly wrap — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;weekly wrap&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/uk-physical-gold-demand-three-year-high/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/g3.jpg</image:loc>
+    <image:title>UK Physical Gold Demand Hits a Three-Year High | GoldPriceTools</image:title>
+    <image:caption>Royal Mint sales and ISA-eligible coins drove a surge in retail buying across Britain this quarter.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/weekly-wrap-gold-eases-silver-shines/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/m1.jpg</image:loc>
+    <image:title>Weekly Wrap: Gold Eases, Silver Shines, Ratio Falls | GoldPriceTools</image:title>
+    <image:caption>Your 60-second read on the precious-metals moves that mattered this week and the levels to watch next.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/why-gold-miners-lagged-bullion/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/a4.jpg</image:loc>
+    <image:title>Why Miners Lagged Bullion — and Whether That Lasts | GoldPriceTools</image:title>
+    <image:caption>Gold equities have trailed the metal again. Cost inflation and capital discipline explain the gap.</image:caption>
     </image:image>
   </url>
   <url>

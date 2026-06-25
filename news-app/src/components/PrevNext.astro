@@ -1,0 +1,15 @@
+---
+interface Item { slug: string; title: string; }
+interface Props { prev?: Item; next?: Item; }
+const { prev, next } = Astro.props;
+---
+{(prev || next) && (
+  <nav class="gso-prevnext" aria-label="More articles">
+    {prev ? (
+      <a class="gso-pn" href={`/news/${prev.slug}/`}><span>&larr; Previous</span><strong>{prev.title}</strong></a>
+    ) : <span></span>}
+    {next ? (
+      <a class="gso-pn gso-pn--next" href={`/news/${next.slug}/`}><span>Next &rarr;</span><strong>{next.title}</strong></a>
+    ) : <span></span>}
+  </nav>
+)}

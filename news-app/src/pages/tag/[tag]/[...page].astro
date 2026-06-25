@@ -1,0 +1,81 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/magazine.css';
+import { getCollection } from 'astro:content';
+import { SITE } from '../../../lib/categories';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import ListItem from '../../../components/ListItem.astro';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const all = (await getCollection('news'))
+    .filter((a) => !a.data.draft)
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+  const tags = [...new Set(all.flatMap((a) => a.data.tags))];
+  return tags.flatMap((tag) => {
+    const posts = all.filter((a) => a.data.tags.includes(tag));
+    return paginate(posts, {
+      params: { tag },
+      props: { trending: all.slice(0, 5), allTags: tags },
+      pageSize: 9,
+    });
+  });
+}) satisfies GetStaticPaths;
+
+const { page, trending, allTags } = Astro.props;
+const tag = Astro.params.tag!;
+const label = tag.replace(/-/g, ' ');
+const base = `${SITE}/news/tag/${tag}/`;
+const canonical = page.currentPage > 1 ? `${base}${page.currentPage}/` : base;
+const pagePath = (n: number) => (n === 1 ? `/news/tag/${tag}/` : `/news/tag/${tag}/${n}/`);
+const desc = `Gold and silver news tagged "${label}" from the GoldPriceTools editorial team.`;
+
+const ld = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  name: `#${label}`, url: canonical, description: desc,
+  isPartOf: { '@type': 'WebSite', name: 'GoldPriceTools', url: SITE },
+};
+---
+<BaseLayout title={`#${label} — News | GoldPriceTools`} description={desc} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  </Fragment>
+
+  <div class="mag-main">
+    <div class="gso-bc-wrap">
+      <ol class="gso-bc" aria-label="Breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/news/">News</a></li>
+        <li aria-current="page">#{label}</li>
+      </ol>
+    </div>
+
+    <header class="mag-archhead">
+      <h1><span class="a">#</span>{label}</h1>
+      <p>{desc}</p>
+    </header>
+
+    <nav class="mag-chips" aria-label="Tags">
+      {allTags.slice(0, 14).map((t) => (
+        <a class="mag-chip" href={`/news/tag/${t}/`} aria-current={t === tag ? 'page' : undefined}>{t.replace(/-/g, ' ')}</a>
+      ))}
+    </nav>
+
+    <div class="mag-archive-wrap">
+      <div>
+        <div class="mag-grid">{page.data.map((e) => <ArticleCard entry={e} />)}</div>
+        {page.lastPage > 1 && (
+          <nav class="mag-pagination" aria-label="Pagination">
+            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((n) => (
+              <a class={n === page.currentPage ? 'is-active' : ''} href={pagePath(n)}>{n}</a>
+            ))}
+          </nav>
+        )}
+      </div>
+      <aside class="mag-side">
+        <h3 class="mag-side__h">Trending</h3>
+        <div class="mag-list">{trending.map((e) => <ListItem entry={e} />)}</div>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

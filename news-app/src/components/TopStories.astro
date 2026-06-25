@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { categoryTitle } from '../lib/categories';
+interface Props { items: CollectionEntry<'news'>[]; }
+const { items } = Astro.props;
+---
+<div class="mag-top">
+  {items.map((e) => (
+    <a class="mag-topcard" href={`/news/${e.id}/`}>
+      {e.data.image && <img src={e.data.image} alt={e.data.imageAlt} loading="lazy" />}
+      <div class="mag-topcard__grad"></div>
+      <div class="mag-topcard__body">
+        <span class="mag-tag">{categoryTitle(e.data.category)}</span>
+        <h3 class="mag-topcard__title">{e.data.title}</h3>
+      </div>
+    </a>
+  ))}
+</div>

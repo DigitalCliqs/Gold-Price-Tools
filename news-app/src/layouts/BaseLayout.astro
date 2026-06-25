@@ -1,0 +1,61 @@
+---
+import '../styles/chrome.css';
+import '../styles/news.css';
+import Ticker from '../components/Ticker.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogType?: string;
+  image?: string;
+}
+const {
+  title = 'Gold & Silver Market News | GoldPriceTools',
+  description = 'Live gold and silver market news and price updates from the GoldPriceTools editorial team.',
+  canonical,
+  ogType = 'website',
+  image = 'https://assets.goldpricetools.com/og-image.jpg',
+} = Astro.props;
+const base = import.meta.env.BASE_URL; // "/news/"
+---
+<!doctype html>
+<html lang="en-GB" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f0e0c" />
+    <script is:inline>
+      (function () { var r = document.documentElement; var s = localStorage.getItem('gpt-theme'); var t = s || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'); r.setAttribute('data-theme', t); })();
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <link rel="icon" type="image/svg+xml" href="https://assets.goldpricetools.com/logo.svg" />
+    <link rel="dns-prefetch" href="https://assets.goldpricetools.com" />
+    <link rel="dns-prefetch" href="https://api.gold-api.com" />
+    <link rel="stylesheet" href="https://assets.goldpricetools.com/site.css" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Ticker />
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <script src={base + 'scripts/chrome.js'} defer is:inline></script>
+  </body>
+</html>

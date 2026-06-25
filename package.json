@@ -6,7 +6,8 @@
   "scripts": {
     "validate": "node scripts/validate-jsonld.js",
     "fetch-charts": "python3 scripts/fetch-chart-data.py",
-    "minify": "node scripts/minify-assets.js"
+    "minify": "node scripts/minify-assets.js",
+    "build-news": "npm --prefix news-app run build && node scripts/sync-news.js && node scripts/build-news-sitemap.js && node scripts/generate-sitemap.js"
   },
   "engines": {
     "node": ">=20"

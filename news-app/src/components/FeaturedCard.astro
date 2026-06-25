@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { categoryTitle } from '../lib/categories';
+interface Props { entry: CollectionEntry<'news'>; }
+const { entry } = Astro.props;
+const { data, id } = entry;
+const date = data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+<a class="mag-feat" href={`/news/${id}/`}>
+  {data.image && <img src={data.image} alt={data.imageAlt} loading="eager" />}
+  <div class="mag-feat__grad"></div>
+  <div class="mag-feat__body">
+    <span class="mag-tag">{categoryTitle(data.category)}</span>
+    <h2 class="mag-feat__title">{data.title}</h2>
+    <p class="mag-feat__ex">{data.description}</p>
+    <div class="mag-feat__meta">By {data.author} &middot; {date}</div>
+  </div>
+</a>

@@ -50,3 +50,13 @@ reports/ahref-issues-june/
 
 # Local scratch work
 scratch/
+
+# Local API keys (Unsplash / Pexels image fetch) — never commit
+.env
+.env.local
+.env.*.local
+
+# Astro news-app build artifacts
+news-app/node_modules
+news-app/dist
+news-app/.astro

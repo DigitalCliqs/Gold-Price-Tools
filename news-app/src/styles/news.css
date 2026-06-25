@@ -1,0 +1,31 @@
+/* Shared news component styles — theme-aware via design tokens (work in light + dark). */
+.news-figure { margin: 0 0 1.6rem; }
+.news-figure img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--color-border); }
+.news-figure figcaption { margin-top: .5rem; font-size: .8rem; color: var(--color-text-faint); }
+.news-figure figcaption a { color: var(--color-text-muted); }
+
+.news-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.8rem 0 1rem; }
+.news-tag { font-size: .78rem; color: var(--color-text-muted); background: var(--color-surface-offset);
+  border: 1px solid var(--color-border); border-radius: 999px; padding: 5px 12px; text-decoration: none;
+  text-transform: capitalize; transition: color .15s, border-color .15s; }
+.news-tag:hover { color: var(--color-primary); border-color: var(--color-primary); }
+
+.news-share { display: flex; align-items: center; gap: 10px; margin: 1.6rem 0 .5rem; padding-top: 1.2rem;
+  border-top: 1px solid var(--color-divider); }
+.news-share__label { font-size: .78rem; font-weight: 600; color: var(--color-text-faint);
+  text-transform: uppercase; letter-spacing: .06em; }
+.news-share__btn { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px;
+  border-radius: 8px; border: 1px solid var(--color-border); color: var(--color-text-muted); text-decoration: none;
+  transition: color .15s, border-color .15s; }
+.news-share__btn:hover { color: var(--color-primary); border-color: var(--color-primary); }
+.news-share__btn svg { width: 16px; height: 16px; }
+
+/* prev / next navigation */
+.gso-prevnext { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 2rem 0; }
+.gso-pn { display: block; padding: 14px 16px; border: 1px solid var(--color-border); border-radius: 12px; text-decoration: none; transition: border-color .15s; }
+.gso-pn:hover { border-color: var(--color-primary); }
+.gso-pn span { font-size: .74rem; color: var(--color-text-faint); text-transform: uppercase; letter-spacing: .05em; }
+.gso-pn strong { display: block; font-family: var(--font-display); font-weight: 500; font-size: 1rem; color: var(--color-text); margin-top: 4px; line-height: 1.25; }
+.gso-pn:hover strong { color: var(--color-primary); }
+.gso-pn--next { text-align: right; }
+@media (max-width: 640px) { .gso-prevnext { grid-template-columns: 1fr; } }
