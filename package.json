@@ -8,7 +8,10 @@
     "fetch-charts": "python3 scripts/fetch-chart-data.py",
     "minify": "node scripts/minify-assets.js",
     "optimize-images": "node scripts/optimize-news-images.js",
-    "build-news": "npm --prefix news-app run build && node scripts/sync-news.js && node scripts/build-news-sitemap.js && node scripts/generate-sitemap.js"
+    "news:suggest": "node scripts/news-meta.mjs suggest",
+    "news:emit": "node scripts/news-meta.mjs emit",
+    "validate-news": "node scripts/news-meta.mjs check",
+    "build-news": "npm run validate-news && npm --prefix news-app run build && node scripts/sync-news.js && node scripts/build-news-sitemap.js && node scripts/generate-sitemap.js"
   },
   "engines": {
     "node": ">=20"

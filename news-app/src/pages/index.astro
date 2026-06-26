@@ -19,7 +19,9 @@ const all = (await getCollection('news'))
   .filter((a) => !a.data.draft)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const featured = all[0];
+// Hero: the newest article flagged `featured: true`, else the newest overall.
+// (`all` is sorted newest-first, so .find returns the most recent featured.)
+const featured = all.find((a) => a.data.featured) ?? all[0];
 const secondary = all[1];
 const fresh = all.slice(1, 6);
 const popular = all.slice(4, 9);
