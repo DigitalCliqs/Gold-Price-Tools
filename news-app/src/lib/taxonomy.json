@@ -1,0 +1,59 @@
+{
+  "$comment": "Single source of truth for news routing. Consumed by content.config.ts (tag normalization + the build-time contract) and by scripts/news-meta.mjs (the classifier/linter that suggests category+tags and validates articles). Keep category keys in sync with content.config.ts's category enum and lib/categories.ts. Edit this file to teach the system new tags or routing keywords.",
+
+  "categories": {
+    "market-updates": {
+      "title": "Market Updates",
+      "fallback": true,
+      "match": ["weekly wrap", "week in review", "weekly roundup", "roundup", "session", "wrap", "today's market", "market moved", "this week", "daily"]
+    },
+    "gold": {
+      "title": "Gold",
+      "match": ["gold", "bullion", "xau", "sovereign", "krugerrand", "gold price", "gold demand", "royal mint gold", "gold-backed"]
+    },
+    "silver": {
+      "title": "Silver",
+      "match": ["silver", "xag", "britannia", "industrial demand", "industrial silver", "solar", "silver price", "silver coins", "junk silver"]
+    },
+    "analysis": {
+      "title": "Analysis",
+      "type_overlay": true,
+      "$comment": "Routing keywords only. Kept specific on purpose: generic words like 'ratio' appear in plain price stories too, so they are NOT here (the gold-silver-ratio TAG handles those). Every real analysis piece carries one of these stronger signals, usually in the title.",
+      "match": ["analysis", "forecast", "outlook", "relative value", "relative-value", "valuation", "scenario", "technical analysis", "why", "whether", " vs ", "versus", "case for", "deep dive", "what it means"]
+    }
+  },
+
+  "tags": {
+    "spot-price":        { "label": "Spot Price",        "synonyms": ["price", "spot", "spot-prices"], "keywords": ["spot price", "per ounce", "an ounce", "$/oz", "price action", "closed at", "rose to", "fell to", "rallied", "eased"] },
+    "central-banks":     { "label": "Central Banks",     "synonyms": ["central-bank", "central bank", "cbs"], "keywords": ["central bank", "central-bank", "official sector", "official-sector", "pboc", "reserve bank", "monetary authority", "reserves buying"] },
+    "demand":            { "label": "Demand",            "synonyms": ["buying"], "keywords": ["demand", "appetite", "inflows", "buying interest", "physical demand"] },
+    "reserves":          { "label": "Reserves",          "synonyms": [], "keywords": ["reserves", "reserve holdings", "foreign reserves", "diversify reserves"] },
+    "fed":               { "label": "Federal Reserve",   "synonyms": ["federal-reserve", "fomc", "powell"], "keywords": ["fed", "federal reserve", "fomc", "powell", "rate decision", "rate cut", "rate hike", "pause", "higher for longer"] },
+    "real-yields":       { "label": "Real Yields",       "synonyms": ["real-yield", "yields", "real yield"], "keywords": ["real yield", "real yields", "treasury yield", "10-year", "tips yield"] },
+    "inflation":         { "label": "Inflation",         "synonyms": ["cpi"], "keywords": ["inflation", "cpi", "price pressures", "cost of living"] },
+    "dollar":            { "label": "US Dollar",         "synonyms": ["usd", "dxy", "greenback"], "keywords": ["dollar", "usd", "dxy", "greenback", "softer dollar", "stronger dollar"] },
+    "gold-silver-ratio": { "label": "Gold-Silver Ratio", "synonyms": ["gsr", "ratio", "gold to silver"], "keywords": ["gold-silver ratio", "gold to silver", "gold-to-silver", "the ratio"] },
+    "analysis":          { "label": "Analysis",          "synonyms": ["forecast", "outlook"], "keywords": ["analysis", "forecast", "outlook", "scenario", "valuation", "deep dive"] },
+    "platinum":          { "label": "Platinum",          "synonyms": ["pgm", "xpt"], "keywords": ["platinum", "pgm", "xpt", "platinum group"] },
+    "relative-value":    { "label": "Relative Value",    "synonyms": ["relative value"], "keywords": ["relative value", "relative-value", "cross-asset", "versus", " vs "] },
+    "coins":             { "label": "Coins",             "synonyms": ["coin", "bullion coins"], "keywords": ["coin", "coins", "britannia", "sovereign", "krugerrand", "eagle", "maple", "numismatic"] },
+    "bars":              { "label": "Bars",              "synonyms": ["bullion bars", "ingot"], "keywords": ["bar", "bars", "ingot", "minted bar", "cast bar"] },
+    "uk":                { "label": "UK",                "synonyms": ["britain", "united kingdom", "u.k."], "keywords": ["uk", "britain", "british", "royal mint", "hmrc", "sterling", "london"] },
+    "vat":               { "label": "VAT & Tax",         "synonyms": ["tax", "cgt"], "keywords": ["vat", "tax-free", "capital gains", "cgt", "tax efficient"] },
+    "beginners":         { "label": "Beginners",         "synonyms": ["beginner", "starter", "guide"], "keywords": ["beginner", "getting started", "how to start", "first-time", "for beginners", "starter"] },
+    "industrial-demand": { "label": "Industrial Demand", "synonyms": ["industrial"], "keywords": ["industrial demand", "industrial use", "manufacturing", "industrial offtake"] },
+    "solar":             { "label": "Solar",             "synonyms": ["photovoltaic", "pv"], "keywords": ["solar", "photovoltaic", "solar panels", "pv demand"] },
+    "royal-mint":        { "label": "Royal Mint",        "synonyms": ["the royal mint"], "keywords": ["royal mint"] },
+    "weekly-wrap":       { "label": "Weekly Wrap",       "synonyms": ["weekly roundup", "week in review", "weekly wrap-up"], "keywords": ["weekly wrap", "this week", "week in review", "roundup", "wrap-up"] },
+    "miners":            { "label": "Miners",            "synonyms": ["mining stocks", "gold miners", "mining"], "keywords": ["miner", "miners", "mining", "gdx", "producers", "mine supply"] },
+    "equities":          { "label": "Equities",          "synonyms": ["stocks", "shares", "equity"], "keywords": ["equities", "stocks", "shares", "equity market"] }
+  },
+
+  "rules": {
+    "tagMin": 2,
+    "tagMax": 5,
+    "descriptionMin": 60,
+    "descriptionMax": 165,
+    "requireImageWhenPublished": true
+  }
+}
