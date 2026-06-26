@@ -1,0 +1,139 @@
+name: Publish News (automation)
+
+# The "build hands" for automated publishing. n8n (or any orchestrator) sends a
+# repository_dispatch with the article content; this workflow classifies it,
+# fetches + optimizes a hero image, runs the full news build, and opens a PR
+# (optionally auto-merging). See AUTOMATION.md for the contract + n8n wiring.
+#
+# Trigger from n8n (HTTP Request node → GitHub API):
+#   POST /repos/{owner}/{repo}/dispatches
+#   { "event_type": "publish-news", "client_payload": { ...see AUTOMATION.md } }
+#
+# Required repo secrets:  GH_PAT (PR-opening token that triggers checks),
+#   ANTHROPIC_API_KEY, PEXELS_API_KEY  (+ optional UNSPLASH_ACCESS_KEY)
+# Optional repo variable: ANTHROPIC_MODEL (default claude-sonnet-4-6)
+
+on:
+  repository_dispatch:
+    types: [publish-news]
+  workflow_dispatch:
+    inputs:
+      title: { description: 'Headline', required: true }
+      body: { description: 'Article body (markdown)', required: true }
+      slug: { description: 'URL slug (= filename)', required: true }
+      description: { description: 'SEO/social description (60-165 chars)', required: false }
+      image_query: { description: 'Stock-photo search query (defaults to title)', required: false }
+      image_provider: { description: 'pexels | unsplash', required: false, default: 'pexels' }
+      image_alt: { description: 'Image alt text', required: false }
+      pub_date: { description: 'ISO datetime (defaults to now)', required: false }
+      featured: { description: 'Pin to homepage hero', required: false, default: 'false' }
+      auto_merge: { description: 'Auto-merge the PR once checks pass', required: false, default: 'false' }
+
+concurrency:
+  group: publish-news-${{ github.event.client_payload.slug || github.event.inputs.slug }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Classify, build, and open PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: |
+          npm install --no-audit --no-fund
+          npm --prefix news-app install --no-audit --no-fund
+
+      - name: Classify + assemble the article
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL || 'claude-sonnet-4-6' }}
+          TITLE: ${{ github.event.client_payload.title || github.event.inputs.title }}
+          BODY: ${{ github.event.client_payload.body || github.event.inputs.body }}
+          SLUG: ${{ github.event.client_payload.slug || github.event.inputs.slug }}
+          DESCRIPTION: ${{ github.event.client_payload.description || github.event.inputs.description }}
+          PUBDATE: ${{ github.event.client_payload.pub_date || github.event.inputs.pub_date }}
+          IMAGE_ALT: ${{ github.event.client_payload.image_alt || github.event.inputs.image_alt }}
+          FEATURED: ${{ github.event.client_payload.featured || github.event.inputs.featured || 'false' }}
+        run: |
+          set -euo pipefail
+          : "${TITLE:?title is required}" "${BODY:?body is required}" "${SLUG:?slug is required}"
+          printf '%s' "$BODY" > /tmp/body.md
+
+          ARGS=(--title "$TITLE" --slug "$SLUG" --ai)
+          if [ -n "${DESCRIPTION:-}" ]; then ARGS+=(--description "$DESCRIPTION"); fi
+          if [ -n "${PUBDATE:-}" ]; then ARGS+=(--date "$PUBDATE"); fi
+          if [ -n "${IMAGE_ALT:-}" ]; then ARGS+=(--image-alt "$IMAGE_ALT"); fi
+          if [ "${FEATURED}" = "true" ]; then ARGS+=(--featured); fi
+
+          # --ai = the smart (Claude) classifier; fails loudly if misconfigured.
+          node scripts/news-meta.mjs emit "${ARGS[@]}" < /tmp/body.md > /tmp/frontmatter.txt
+          { cat /tmp/frontmatter.txt; echo; cat /tmp/body.md; } > "news-app/src/content/news/${SLUG}.md"
+          echo "SLUG=${SLUG}" >> "$GITHUB_ENV"
+          echo "TITLE=${TITLE}" >> "$GITHUB_ENV"
+          echo "--- assembled news-app/src/content/news/${SLUG}.md ---"
+          head -16 "news-app/src/content/news/${SLUG}.md"
+
+      - name: Fetch + optimize hero image
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          IMAGE_QUERY: ${{ github.event.client_payload.image_query || github.event.inputs.image_query }}
+          IMAGE_PROVIDER: ${{ github.event.client_payload.image_provider || github.event.inputs.image_provider || 'pexels' }}
+        run: |
+          set -euo pipefail
+          QUERY="${IMAGE_QUERY:-$TITLE}"
+          node scripts/fetch-news-image.js --query "$QUERY" --slug "$SLUG" --provider "$IMAGE_PROVIDER"
+          npm run optimize-images
+
+      - name: Build news (validate → astro → sync → sitemaps)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL || 'claude-sonnet-4-6' }}
+        run: npm run build-news
+
+      - name: Commit + open PR
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          AUTO_MERGE: ${{ github.event.client_payload.auto_merge || github.event.inputs.auto_merge || 'false' }}
+        run: |
+          set -euo pipefail
+          BRANCH="news-bot/${SLUG}"
+          git config user.name "news-bot"
+          git config user.email "news-bot@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+          git checkout -b "$BRANCH"
+
+          # Stage only the publish artifacts — never package-lock / node_modules
+          # (the Scope guard forbids the former; the latter is gitignored).
+          git add \
+            "news-app/src/content/news/${SLUG}.md" \
+            assets/news \
+            news/ \
+            sitemap.xml news-sitemap.xml image-sitemap.xml
+          git commit -m "feat(news): publish ${SLUG}"
+          git push -u origin "$BRANCH"
+
+          PR_URL=$(gh pr create --base main --head "$BRANCH" \
+            --title "feat(news): ${TITLE}" \
+            --body "Automated draft (slug \`${SLUG}\`) assembled by the publish-news pipeline. Required checks will run; review and merge to publish.")
+          echo "Opened: $PR_URL"
+
+          if [ "$AUTO_MERGE" = "true" ]; then
+            gh pr merge "$PR_URL" --squash --auto --delete-branch \
+              || echo "Auto-merge not enabled on this repo (needs branch protection) — leaving PR open for review."
+          fi
