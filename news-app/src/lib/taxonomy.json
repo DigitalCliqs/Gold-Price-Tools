@@ -4,19 +4,23 @@
   "categories": {
     "market-updates": {
       "title": "Market Updates",
+      "desc": "Timely, news-style coverage of the precious-metals market: daily/weekly price moves, session recaps, weekly wraps, and roundups that span both gold and silver. The default home for general market news that isn't primarily about one metal or a deep analytical thesis.",
       "fallback": true,
       "match": ["weekly wrap", "week in review", "weekly roundup", "roundup", "session", "wrap", "today's market", "market moved", "this week", "daily"]
     },
     "gold": {
       "title": "Gold",
+      "desc": "Stories whose primary subject is gold — gold price action, gold demand, central-bank gold buying, bullion/coins, mints, and gold-specific drivers.",
       "match": ["gold", "bullion", "xau", "sovereign", "krugerrand", "gold price", "gold demand", "royal mint gold", "gold-backed"]
     },
     "silver": {
       "title": "Silver",
+      "desc": "Stories whose primary subject is silver — silver price action, industrial/solar demand, silver coins, and silver-specific drivers.",
       "match": ["silver", "xag", "britannia", "industrial demand", "industrial silver", "solar", "silver price", "silver coins", "junk silver"]
     },
     "analysis": {
       "title": "Analysis",
+      "desc": "Pieces whose primary PURPOSE is interpretation rather than news: forecasts, outlooks, valuations, the gold-silver ratio as a thesis, relative-value or 'X vs Y' comparisons, technical analysis, and 'why/whether' explainers. A price story that merely mentions a ratio or forecast is NOT analysis — only file here when analysis is the point of the article.",
       "type_overlay": true,
       "$comment": "Routing keywords only. Kept specific on purpose: generic words like 'ratio' appear in plain price stories too, so they are NOT here (the gold-silver-ratio TAG handles those). Every real analysis piece carries one of these stronger signals, usually in the title.",
       "match": ["analysis", "forecast", "outlook", "relative value", "relative-value", "valuation", "scenario", "technical analysis", "why", "whether", " vs ", "versus", "case for", "deep dive", "what it means"]

@@ -88,13 +88,41 @@ You can also feed text directly instead of a file:
 `npm run news:suggest -- --title "Silver Surges" --text "…body…" --json`, or pipe
 the body on stdin.
 
+### Two classifiers: smart (Claude) and lexical
+
+`suggest`/`emit` route an article two ways, both constrained to the **same
+taxonomy**:
+
+- **Smart (Claude)** — reads the article and routes it by its **overall concept**
+  (handles paraphrase and novelty, not just keywords). Used **automatically when
+  `ANTHROPIC_API_KEY` is set** (in `.env.local`). The category is locked to the
+  four slugs and tags to the vocabulary via a JSON schema, so it **cannot return
+  an invalid category or tag**; it may also propose new tags (surfaced separately,
+  never auto-applied). This is the path to use for n8n.
+- **Lexical** — offline keyword matching. Zero-config fallback; runs when no key
+  is set, or when forced with `--lexical`.
+
+Flags: `--ai` (force Claude), `--lexical` (force offline), `--explain` (show the
+model's one-line reasoning), `--print-request` (dump the Claude request without
+sending — key redacted, handy for debugging).
+
+**Enabling the smart classifier:** add to `.env.local` (gitignored):
+```
+ANTHROPIC_API_KEY=sk-ant-...
+# optional — defaults to claude-opus-4-8; haiku is ~5x cheaper and plenty for classification:
+ANTHROPIC_MODEL=claude-haiku-4-5
+```
+Cost is a fraction of a cent per article (classification is one short call).
+
 ## n8n integration (later)
 
 The pieces are deliberately CLI- and JSON-shaped so an automated pipeline can use
-them headlessly:
+them headlessly. With `ANTHROPIC_API_KEY` set in the environment, steps 1–2 use
+the **smart (Claude) classifier** automatically:
 
 1. **Classify**: `node scripts/news-meta.mjs suggest --title "$T" --text "$BODY" --json`
-   → `{ "category": "...", "tags": [...] }`.
+   → `{ "engine": "claude:…", "category": "...", "tags": [...], "new_tags": [...], "reasoning": "..." }`.
+   (Add `--ai` to make a missing key a hard failure instead of a silent lexical fallback.)
 2. **Assemble**: `node scripts/news-meta.mjs emit --title "$T" --slug "$SLUG" --text "$BODY"`
    → front-matter block; prepend it to the body and write
    `news-app/src/content/news/$SLUG.md`.
@@ -104,6 +132,7 @@ them headlessly:
 5. **Publish**: `npm run build-news` then commit the markdown **and** the
    regenerated `/news/` output.
 
-The classifier is **advisory** — it suggests, the schema + linter enforce. n8n (or
-a reviewer) always sets the final `category`; that keeps a wrong guess from
-silently misfiling an article.
+The classifier **suggests**; the JSON schema + the build-time contract **enforce**.
+The category is constrained to the four valid slugs and tags to the vocabulary, so
+a wrong answer can't produce an invalid placement — but for full safety a reviewer
+(or an n8n approval step) can still confirm the `category` before publish.
