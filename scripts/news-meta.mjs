@@ -396,22 +396,26 @@ async function main() {
   }
 
   if (action === 'emit') {
-    const slug = typeof arg('slug') === 'string' ? arg('slug') : 'article-slug';
-    const date = typeof arg('date') === 'string' ? arg('date') : new Date().toISOString().replace(/\.\d+Z$/, 'Z');
+    // Optional flags let an orchestrator (n8n) fill real values; otherwise the
+    // block carries TODO placeholders for hand-authoring.
+    const opt = (name, def) => (typeof arg(name) === 'string' ? arg(name) : def);
+    const yq = (s) => `"${String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+    const bool = (name) => arg(name) === true || arg(name) === 'true';
+    const slug = opt('slug', 'article-slug');
     const block = [
       '---',
-      `title: "${title || 'TODO title'}"`,
-      'description: "TODO: 60-165 char summary for SEO + social"',
+      `title: ${yq(title || 'TODO title')}`,
+      `description: ${yq(opt('description', 'TODO: 60-165 char summary for SEO + social'))}`,
       `category: "${meta.category}"`,
       `tags: [${meta.tags.map((t) => `"${t}"`).join(', ')}]`,
-      `pubDate: ${date}`,
+      `pubDate: ${opt('date', new Date().toISOString().replace(/\.\d+Z$/, 'Z'))}`,
       `image: "/assets/news/${slug}.jpg"`,
-      'imageAlt: "TODO descriptive alt text"',
-      'imageCredit: "Photographer / Pexels"',
-      'imageCreditUrl: "https://www.pexels.com/@photographer"',
+      `imageAlt: ${yq(opt('image-alt', title || 'TODO descriptive alt text'))}`,
+      `imageCredit: ${yq(opt('image-credit', 'Photographer / Pexels'))}`,
+      `imageCreditUrl: ${yq(opt('image-credit-url', 'https://www.pexels.com/@photographer'))}`,
       'author: "GoldPriceTools Editorial Team"',
-      'featured: false',
-      'draft: false',
+      `featured: ${bool('featured')}`,
+      `draft: ${bool('draft')}`,
       '---',
     ].join('\n');
     console.log(block);
