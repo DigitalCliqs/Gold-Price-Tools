@@ -13,10 +13,22 @@
  *   • later — n8n pipes title+body to `suggest --json` (or `emit`) to fill
  *            front-matter, writes the .md, then `check` gates the commit.
  *
+ * Two classifiers share the taxonomy:
+ *   • SMART (Claude) — reads the article and routes it by overall concept;
+ *     constrained to the taxonomy via a json_schema so it can't invent a bad
+ *     category/tag. Used automatically when ANTHROPIC_API_KEY is set (in
+ *     .env.local). This is the recommended path for n8n. Override the model with
+ *     ANTHROPIC_MODEL (default claude-opus-4-8; claude-haiku-4-5 is ~5x cheaper).
+ *   • LEXICAL — offline keyword matching; the zero-config fallback (and --lexical).
+ *
  * Actions:
  *   suggest  Print the suggested category + tags for an article.
  *   emit     Print a ready-to-paste front-matter block (suggested cat+tags).
  *   check    Lint articles against the contract (default: all; or one --file).
+ *
+ * Engine flags (suggest/emit): --ai (force Claude), --lexical (force offline),
+ *   --explain (show the model's reasoning), --print-request (dump the Claude
+ *   request without sending — key redacted).
  *
  * Input (suggest/emit):
  *   --file <path.md>           read title+body from a markdown file, OR
@@ -41,7 +53,19 @@ const CONTENT_DIR = path.join(ROOT, 'news-app', 'src', 'content', 'news');
 
 const TAX = JSON.parse(fs.readFileSync(TAXONOMY_PATH, 'utf8'));
 const CATEGORY_SLUGS = Object.keys(TAX.categories);
+const KNOWN_TAG_SLUGS = Object.keys(TAX.tags);
 const RULES = TAX.rules ?? {};
+
+// Load .env.local / .env (KEY=VALUE; same shape as scripts/fetch-news-image.js)
+// so ANTHROPIC_API_KEY / ANTHROPIC_MODEL are available for the smart classifier.
+for (const f of ['.env.local', '.env']) {
+  const p = path.join(ROOT, f);
+  if (!fs.existsSync(p)) continue;
+  for (const line of fs.readFileSync(p, 'utf8').split(/\r?\n/)) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
+  }
+}
 
 // ── text helpers ──────────────────────────────────────────────────────────
 const norm = (s) => (s || '').toLowerCase().replace(/\s+/g, ' ');
@@ -115,6 +139,117 @@ export function suggestTags(title, body) {
   }
   scored.sort((a, b2) => b2[1] - a[1]);
   return scored.slice(0, RULES.tagMax ?? 5).map(([c]) => c);
+}
+
+// ── Smart classifier (Claude) ───────────────────────────────────────────────
+// The lexical functions above match words; this reads the article and routes it
+// by overall concept. It's the recommended path for n8n. Constrained to the same
+// taxonomy via a json_schema (category is one of the 4 enum slugs; tags must come
+// from the vocabulary), so a wrong free-text answer is impossible. Raw fetch to
+// the Messages API — matches scripts/fetch-news-image.js's zero-dependency style
+// and avoids touching the repo's tracked (scope-guard-protected) package-lock.
+const ANTHROPIC_VERSION = '2023-06-01';
+const DEFAULT_MODEL = 'claude-opus-4-8'; // override with ANTHROPIC_MODEL (e.g. claude-haiku-4-5 for cheaper)
+
+function buildClaudeRequest(title, body) {
+  const cats = Object.entries(TAX.categories)
+    .map(([slug, d]) => `- ${slug} — ${d.desc ?? d.title}`)
+    .join('\n');
+  const tags = Object.entries(TAX.tags)
+    .map(([slug, d]) => `${slug} (${d.label})`)
+    .join(', ');
+
+  const system =
+    'You are a precise news-desk editor for GoldPriceTools, a gold & silver price/news site. ' +
+    'Classify an article into the site taxonomy by its OVERALL CONCEPT and primary purpose — not by isolated keywords.\n\n' +
+    `Categories (choose EXACTLY ONE — the single best home):\n${cats}\n\n` +
+    `Tags: choose the ${RULES.tagMin ?? 2}-${RULES.tagMax ?? 5} most relevant from this controlled vocabulary, using the exact slug:\n${tags}\n\n` +
+    'Only if a clearly central topic has no matching tag, propose up to 2 new lowercase-hyphenated tags in new_tag_suggestions; otherwise return []. ' +
+    'Give a one-sentence reasoning for the category.';
+
+  const text = `${title ? `TITLE: ${title}\n\n` : ''}ARTICLE:\n${(body || '').slice(0, 8000)}`;
+
+  return {
+    url: 'https://api.anthropic.com/v1/messages',
+    headers: {
+      'content-type': 'application/json',
+      'anthropic-version': ANTHROPIC_VERSION,
+      'x-api-key': process.env.ANTHROPIC_API_KEY || '',
+    },
+    body: {
+      model: process.env.ANTHROPIC_MODEL || DEFAULT_MODEL,
+      max_tokens: 1024,
+      system,
+      messages: [{ role: 'user', content: text }],
+      output_config: {
+        format: {
+          type: 'json_schema',
+          schema: {
+            type: 'object',
+            additionalProperties: false,
+            properties: {
+              category: { type: 'string', enum: CATEGORY_SLUGS },
+              tags: { type: 'array', items: { type: 'string', enum: KNOWN_TAG_SLUGS } },
+              new_tag_suggestions: { type: 'array', items: { type: 'string' } },
+              reasoning: { type: 'string' },
+            },
+            required: ['category', 'tags', 'new_tag_suggestions', 'reasoning'],
+          },
+        },
+      },
+    },
+  };
+}
+
+export async function classifyWithClaude(title, body) {
+  if (!process.env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY not set (add it to .env.local)');
+  const req = buildClaudeRequest(title, body);
+
+  let res;
+  for (let attempt = 1; ; attempt++) {
+    res = await fetch(req.url, { method: 'POST', headers: req.headers, body: JSON.stringify(req.body) });
+    if (res.ok) break;
+    if ([429, 500, 529].includes(res.status) && attempt < 3) {
+      await new Promise((r) => setTimeout(r, 800 * attempt));
+      continue;
+    }
+    throw new Error(`Anthropic API ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  }
+
+  const data = await res.json();
+  if (data.stop_reason === 'refusal') throw new Error('model declined to classify this article');
+  const block = (data.content || []).find((b) => b.type === 'text');
+  if (!block) throw new Error('no text content in response');
+  const out = JSON.parse(block.text);
+
+  // Defensively re-validate against the taxonomy (the schema already constrains it).
+  const category = CATEGORY_SLUGS.includes(out.category) ? out.category : classifyCategory(title, body);
+  const tags = [...new Set((out.tags || []).map(normalizeTag).filter(isKnownTag))].slice(0, RULES.tagMax ?? 5);
+  const newTags = [...new Set((out.new_tag_suggestions || []).map(slugify).filter((t) => t && !isKnownTag(t)))].slice(0, 2);
+
+  return { engine: `claude:${req.body.model}`, category, tags, newTags, reasoning: out.reasoning || '' };
+}
+
+// Resolve metadata via the chosen engine. 'auto' uses Claude when a key is
+// present and falls back to lexical on any failure; 'ai' forces Claude (and
+// errors if unavailable); 'lexical' forces the offline keyword classifier.
+async function resolveMeta(title, body, engine) {
+  if (engine !== 'lexical') {
+    const hasKey = !!process.env.ANTHROPIC_API_KEY;
+    if (engine === 'ai' && !hasKey) {
+      console.error('--ai requires ANTHROPIC_API_KEY (add it to .env.local). Or omit --ai to use the lexical fallback.');
+      process.exit(2);
+    }
+    if (hasKey) {
+      try {
+        return await classifyWithClaude(title, body);
+      } catch (e) {
+        if (engine === 'ai') { console.error(`Claude classify failed: ${e.message}`); process.exit(1); }
+        console.error(`! Claude unavailable (${e.message}); using lexical fallback.`);
+      }
+    }
+  }
+  return { engine: 'lexical', category: classifyCategory(title, body), tags: suggestTags(title, body), newTags: [], reasoning: '' };
 }
 
 // ── front-matter (minimal reader; articles use inline scalars + arrays) ──────
@@ -229,15 +364,33 @@ async function main() {
     console.error('Provide --file <path.md>, or --title "…" (with --text "…" or piped stdin).');
     process.exit(2);
   }
-  const category = classifyCategory(title, body);
-  const tags = suggestTags(title, body);
+
+  // Engine: --lexical forces offline keyword matching; --ai forces Claude;
+  // default ('auto') uses Claude when ANTHROPIC_API_KEY is set, else lexical.
+  const engine = arg('lexical') === true ? 'lexical' : (arg('ai') === true ? 'ai' : 'auto');
+
+  // Inspect the exact Claude request without sending it (key redacted).
+  if (arg('print-request') === true) {
+    const req = buildClaudeRequest(title, body);
+    req.headers['x-api-key'] = req.headers['x-api-key'] ? '***redacted***' : '(unset)';
+    console.log(JSON.stringify(req, null, 2));
+    return;
+  }
+
+  const meta = await resolveMeta(title, body, engine);
 
   if (action === 'suggest') {
     if (arg('json') === true) {
-      process.stdout.write(JSON.stringify({ category, tags }) + '\n');
+      process.stdout.write(JSON.stringify({
+        engine: meta.engine, category: meta.category, tags: meta.tags,
+        new_tags: meta.newTags, reasoning: meta.reasoning,
+      }) + '\n');
     } else {
-      console.log(`category: ${category}`);
-      console.log(`tags:     [${tags.map((t) => `"${t}"`).join(', ')}]`);
+      console.log(`engine:   ${meta.engine}`);
+      console.log(`category: ${meta.category}`);
+      console.log(`tags:     [${meta.tags.map((t) => `"${t}"`).join(', ')}]`);
+      if (meta.newTags.length) console.log(`new tags: ${meta.newTags.join(', ')}  (not in vocabulary — add to taxonomy.json if useful)`);
+      if (meta.reasoning && (arg('explain') === true || meta.engine.startsWith('claude'))) console.log(`why:      ${meta.reasoning}`);
     }
     return;
   }
@@ -249,8 +402,8 @@ async function main() {
       '---',
       `title: "${title || 'TODO title'}"`,
       'description: "TODO: 60-165 char summary for SEO + social"',
-      `category: "${category}"`,
-      `tags: [${tags.map((t) => `"${t}"`).join(', ')}]`,
+      `category: "${meta.category}"`,
+      `tags: [${meta.tags.map((t) => `"${t}"`).join(', ')}]`,
       `pubDate: ${date}`,
       `image: "/assets/news/${slug}.jpg"`,
       'imageAlt: "TODO descriptive alt text"',
@@ -262,6 +415,7 @@ async function main() {
       '---',
     ].join('\n');
     console.log(block);
+    if (meta.newTags.length) console.error(`# note: suggested new tags not in vocabulary: ${meta.newTags.join(', ')}`);
     return;
   }
 
