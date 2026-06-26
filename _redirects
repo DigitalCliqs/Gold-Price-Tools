@@ -23,6 +23,7 @@
 /authors/james-smith/                      /authors/goldpricetools-editorial-team/    301
 /guides/scrap-gold-guide.html              /guides/how-to-sell-gold-jewellery         301
 /guides/how-to-calculate-scrap-gold-value  /scrap-gold-calculator                     301
+/gold-and-silver-price-today/              /                                          301
 
 # Clean URL routing — .html -> clean (301). Pages serves clean URLs natively; no 200 rewrites needed.
 /10k-gold-price-per-gram.html              /10k-gold-price-per-gram                   301
