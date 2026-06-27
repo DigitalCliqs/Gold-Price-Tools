@@ -110,3 +110,14 @@ gh api repos/:owner/:repo/dispatches -f event_type=publish-news \
 - Start each site in **review** mode (`auto_merge:false`); flip to `auto_merge:true`
   per site once you trust it. The schema-constrained classifier + the
   `validate-news` gate + the PR checks are the safety net at every stage.
+
+## Site self-description — `/site-contract.json`
+
+This repo also **describes itself** to the factory. `scripts/emit-site-contract.mjs` runs as part of
+`build-news` and writes `site-contract.json` (served at `https://<domain>/site-contract.json`) — the
+site's [Site Contract](https://github.com/DigitalCliqs/RatedStack/blob/main/docs/SITE-CONTRACT.md):
+its taxonomy, content inventory, pages, tools, authors, SEO, and template. It's the **native
+"installed plugin"** — the highest-fidelity adapter (the site describing itself), with the factory's
+external adapters (`repo-introspect`, `generic-crawler`) as fallbacks. Per-site values that aren't
+derivable from files live in `site-contract.config.json` (`name`, `site_id`). The emitter is
+dependency-free and self-checks the output, so a malformed Contract fails the build.
