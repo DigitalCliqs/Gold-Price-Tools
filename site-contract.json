@@ -1,0 +1,282 @@
+{
+  "contract_version": "1.0",
+  "tenant_id": "ratedstack",
+  "site_id": "goldpricetools",
+  "generated_at": "2026-06-27T20:52:23.245Z",
+  "source": {
+    "adapter": "in-site-emitter",
+    "adapter_version": "0.1.0",
+    "method": "native",
+    "coverage": 1,
+    "confidence": 0.95
+  },
+  "identity": {
+    "name": "Gold Price Tools",
+    "domain": "goldpricetools.com"
+  },
+  "capabilities": {
+    "provides": [
+      "taxonomy",
+      "content_inventory",
+      "pages",
+      "tools",
+      "authors",
+      "seo",
+      "template"
+    ],
+    "accepts_dispatch": true,
+    "dispatch_event_types": [
+      "publish-news"
+    ],
+    "writable": true
+  },
+  "taxonomy": {
+    "categories": [
+      {
+        "id": "market-updates",
+        "label": "Market Updates",
+        "description": "Timely, news-style coverage of the precious-metals market: daily/weekly price moves, session recaps, weekly wraps, and roundups that span both gold and silver. The default home for general market news that isn't primarily about one metal or a deep analytical thesis."
+      },
+      {
+        "id": "gold",
+        "label": "Gold",
+        "description": "Stories whose primary subject is gold — gold price action, gold demand, central-bank gold buying, bullion/coins, mints, and gold-specific drivers."
+      },
+      {
+        "id": "silver",
+        "label": "Silver",
+        "description": "Stories whose primary subject is silver — silver price action, industrial/solar demand, silver coins, and silver-specific drivers."
+      },
+      {
+        "id": "analysis",
+        "label": "Analysis",
+        "description": "Pieces whose primary PURPOSE is interpretation rather than news: forecasts, outlooks, valuations, the gold-silver ratio as a thesis, relative-value or 'X vs Y' comparisons, technical analysis, and 'why/whether' explainers. A price story that merely mentions a ratio or forecast is NOT analysis — only file here when analysis is the point of the article."
+      }
+    ],
+    "tags": [
+      "spot-price",
+      "central-banks",
+      "demand",
+      "reserves",
+      "fed",
+      "real-yields",
+      "inflation",
+      "dollar",
+      "gold-silver-ratio",
+      "analysis",
+      "platinum",
+      "relative-value",
+      "coins",
+      "bars",
+      "uk",
+      "vat",
+      "beginners",
+      "industrial-demand",
+      "solar",
+      "royal-mint",
+      "weekly-wrap",
+      "miners",
+      "equities"
+    ]
+  },
+  "content_inventory": {
+    "total": 9,
+    "items": [
+      {
+        "slug": "central-banks-bought-290-tonnes-gold-q2",
+        "title": "Central Banks Bought 290 Tonnes of Gold in Q2",
+        "category": "gold",
+        "tags": [
+          "central-banks",
+          "demand",
+          "reserves"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-20T09:00:00.000Z",
+        "url": "https://goldpricetools.com/news/central-banks-bought-290-tonnes-gold-q2",
+        "word_count": 130
+      },
+      {
+        "slug": "gold-holds-above-4500-fed-pause",
+        "title": "Gold Holds Above $4,500 as the Fed Signals a Pause",
+        "category": "gold",
+        "tags": [
+          "spot-price",
+          "central-banks",
+          "fed",
+          "real-yields"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-25T09:00:00.000Z",
+        "url": "https://goldpricetools.com/news/gold-holds-above-4500-fed-pause",
+        "word_count": 262
+      },
+      {
+        "slug": "gold-silver-ratio-narrows-to-62",
+        "title": "The Gold-to-Silver Ratio Just Narrowed to 62 — Here's Why",
+        "category": "analysis",
+        "tags": [
+          "gold-silver-ratio",
+          "analysis",
+          "spot-price"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-21T09:00:00.000Z",
+        "url": "https://goldpricetools.com/news/gold-silver-ratio-narrows-to-62",
+        "word_count": 184
+      },
+      {
+        "slug": "platinum-vs-gold-relative-value",
+        "title": "Platinum vs Gold: The 2026 Relative-Value Case",
+        "category": "analysis",
+        "tags": [
+          "platinum",
+          "relative-value",
+          "analysis"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-17T09:00:00.000Z",
+        "url": "https://goldpricetools.com/news/platinum-vs-gold-relative-value",
+        "word_count": 131
+      },
+      {
+        "slug": "silver-coins-for-beginners",
+        "title": "Silver Coins for Beginners: Junk Silver to Britannias",
+        "category": "silver",
+        "tags": [
+          "coins",
+          "uk",
+          "vat",
+          "beginners"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-18T09:00:00.000Z",
+        "url": "https://goldpricetools.com/news/silver-coins-for-beginners",
+        "word_count": 134
+      },
+      {
+        "slug": "silver-surges-industrial-demand",
+        "title": "Silver Surges 4% on Industrial and Solar Demand",
+        "category": "silver",
+        "tags": [
+          "spot-price",
+          "industrial-demand",
+          "solar",
+          "gold-silver-ratio"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-22T09:00:00.000Z",
+        "url": "https://goldpricetools.com/news/silver-surges-industrial-demand",
+        "word_count": 170
+      },
+      {
+        "slug": "uk-physical-gold-demand-three-year-high",
+        "title": "UK Physical Gold Demand Hits a Three-Year High",
+        "category": "gold",
+        "tags": [
+          "uk",
+          "coins",
+          "demand",
+          "royal-mint"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-19T09:00:00.000Z",
+        "url": "https://goldpricetools.com/news/uk-physical-gold-demand-three-year-high",
+        "word_count": 111
+      },
+      {
+        "slug": "weekly-wrap-gold-eases-silver-shines",
+        "title": "Weekly Wrap: Gold Eases, Silver Shines, Ratio Falls",
+        "category": "market-updates",
+        "tags": [
+          "spot-price",
+          "weekly-wrap",
+          "gold-silver-ratio"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-25T08:00:00.000Z",
+        "url": "https://goldpricetools.com/news/weekly-wrap-gold-eases-silver-shines",
+        "word_count": 147
+      },
+      {
+        "slug": "why-gold-miners-lagged-bullion",
+        "title": "Why Miners Lagged Bullion — and Whether That Lasts",
+        "category": "analysis",
+        "tags": [
+          "miners",
+          "equities",
+          "analysis"
+        ],
+        "author": "GoldPriceTools Editorial Team",
+        "pub_date": "2026-06-16T09:00:00.000Z",
+        "url": "https://goldpricetools.com/news/why-gold-miners-lagged-bullion",
+        "word_count": 131
+      }
+    ]
+  },
+  "pages": [
+    {
+      "type": "home",
+      "url": "https://goldpricetools.com/"
+    },
+    {
+      "type": "about",
+      "url": "https://goldpricetools.com/about"
+    },
+    {
+      "type": "contact",
+      "url": "https://goldpricetools.com/contact"
+    },
+    {
+      "type": "privacy",
+      "url": "https://goldpricetools.com/privacy-policy"
+    },
+    {
+      "type": "terms",
+      "url": "https://goldpricetools.com/terms"
+    }
+  ],
+  "tools": [
+    {
+      "id": "gold-value-calculator",
+      "label": "Gold Value Calculator",
+      "url": "https://goldpricetools.com/gold-value-calculator",
+      "kind": "calculator"
+    },
+    {
+      "id": "scrap-gold-calculator",
+      "label": "Scrap Gold Calculator",
+      "url": "https://goldpricetools.com/scrap-gold-calculator",
+      "kind": "calculator"
+    },
+    {
+      "id": "silver-coins-calculator",
+      "label": "Silver Coins Calculator",
+      "url": "https://goldpricetools.com/silver-coins-calculator",
+      "kind": "calculator"
+    },
+    {
+      "id": "zakat-gold-silver-calculator",
+      "label": "Zakat Gold Silver Calculator",
+      "url": "https://goldpricetools.com/zakat-gold-silver-calculator",
+      "kind": "calculator"
+    }
+  ],
+  "authors": [
+    {
+      "name": "GoldPriceTools Editorial Team",
+      "url": "https://goldpricetools.com/authors/goldpricetools-editorial-team/"
+    }
+  ],
+  "seo": {
+    "canonical_base": "https://goldpricetools.com",
+    "sitemap_url": "https://goldpricetools.com/sitemap.xml"
+  },
+  "template": {
+    "framework": "astro",
+    "generator": "astro@5.13.0"
+  },
+  "extensions": {
+    "emitter": "in-site-emitter@0.1.0"
+  }
+}
