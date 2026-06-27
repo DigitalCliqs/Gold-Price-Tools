@@ -2,7 +2,7 @@
   "contract_version": "1.0",
   "tenant_id": "ratedstack",
   "site_id": "goldpricetools",
-  "generated_at": "2026-06-27T16:44:24.388Z",
+  "generated_at": "2026-06-27T20:52:23.245Z",
   "source": {
     "adapter": "in-site-emitter",
     "adapter_version": "0.1.0",
