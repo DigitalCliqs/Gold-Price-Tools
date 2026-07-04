@@ -579,6 +579,14 @@
     </image:image>
   </url>
   <url>
+    <loc>https://goldpricetools.com/news/ratedstack-dispatch-smoke-test/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/ratedstack-dispatch-smoke-test.jpg</image:loc>
+    <image:title>RatedStack Dispatch Smoke Test (do not merge) | GoldPriceTools</image:title>
+    <image:caption>Automation smoke test of the RatedStack dispatch path; close without merging.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://goldpricetools.com/news/silver-coins-for-beginners/</loc>
     <image:image>
     <image:loc>https://goldpricetools.com/assets/news/s2.jpg</image:loc>

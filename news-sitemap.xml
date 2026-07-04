@@ -4,25 +4,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://goldpricetools.com/news/gold-holds-above-4500-fed-pause/</loc>
+    <loc>https://goldpricetools.com/news/ratedstack-dispatch-smoke-test/</loc>
     <news:news>
       <news:publication>
         <news:name>GoldPriceTools</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-06-25T09:00:00.000Z</news:publication_date>
-      <news:title>Gold Holds Above $4,500 as the Fed Signals a Pause</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://goldpricetools.com/news/weekly-wrap-gold-eases-silver-shines/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>GoldPriceTools</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-06-25T08:00:00.000Z</news:publication_date>
-      <news:title>Weekly Wrap: Gold Eases, Silver Shines, Ratio Falls</news:title>
+      <news:publication_date>2026-07-04T19:12:05.000Z</news:publication_date>
+      <news:title>RatedStack Dispatch Smoke Test (do not merge)</news:title>
     </news:news>
   </url>
 </urlset>
