@@ -370,20 +370,13 @@ a,button,[role="button"],input,select{transition:color var(--transition),backgro
 .spg-cta-btn:hover{background:var(--color-silver-bright);color:#0f0e0c;transform:translateY(-1px);text-decoration:none}
 [data-theme="light"] .spg-cta-btn:hover{background:var(--color-silver);color:#fff}
 
-/* ── FAQ ── */
-.spg-faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-5) 0 0}
-.spg-faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color var(--transition)}
-.spg-faq-item:hover{border-color:color-mix(in oklch,var(--color-silver-bright) 28%,var(--color-border))}
-.spg-faq-item summary{list-style:none;cursor:pointer}
-.spg-faq-item summary::-webkit-details-marker{display:none}
-.spg-faq-q{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4) var(--space-5);font-size:15px;font-weight:600;color:var(--color-text);text-align:left;transition:background var(--transition);min-height:56px}
-.spg-faq-q:hover{background:var(--color-surface-offset)}
-.spg-faq-q-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--color-silver-bright);transition:transform var(--transition)}
-[data-theme="light"] .spg-faq-q-icon{color:var(--color-silver)}
-.spg-faq-item[open] .spg-faq-q-icon{transform:rotate(45deg)}
-.spg-faq-a{padding:0 var(--space-5) var(--space-5);font-size:14px;color:var(--color-text-muted);line-height:1.7}
-.spg-faq-a p{margin:0 0 var(--space-3);max-width:none}
-.spg-faq-a p:last-child{margin-bottom:0}
+/* ── FAQ STATIC GRID ── */
+.spg-faq-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4);margin:var(--space-5) 0 0}
+.spg-faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+.spg-faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4}
+.spg-faq-a{padding:0;margin:0}
+.spg-faq-a p{font-size:var(--text-sm)!important;line-height:1.6!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
+.spg-faq-a p + p{margin-top:var(--space-2)!important}
 .spg-faq-a strong{color:var(--color-text);font-weight:700}
 
 /* ── DIVIDER ── */
@@ -1310,68 +1303,68 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
     </div>
 
     <div class="spg-faq-list">
-      <details class="spg-faq-item">
-        <summary><div class="spg-faq-q"><span>What is the silver spot price today?</span><span class="spg-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></summary>
+      <div class="spg-faq-item">
+        <h3 class="spg-faq-q">What is the silver spot price today?</h3>
         <div class="spg-faq-a">
           <p>As of mid-May 2026, the silver spot price is approximately <strong>$75&ndash;$78 per troy ounce</strong>, having pulled back from its all-time high of $121.62 reached on January 29, 2026.</p>
           <p>For a live reading updated in real time, Kitco, BullionVault and GoldPriceTools all publish current spot prices.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="spg-faq-item">
-        <summary><div class="spg-faq-q"><span>What is the sterling silver price per gram?</span><span class="spg-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></summary>
+      <div class="spg-faq-item">
+        <h3 class="spg-faq-q">What is the sterling silver price per gram?</h3>
         <div class="spg-faq-a">
           <p>Sterling silver (925) is 92.5% pure silver. At a spot price of approximately $76/troy oz ($2.44/gram for pure silver), sterling silver is worth approximately $2.44 &times; 0.925 = <strong>$2.26 per gram</strong> in melt value. This changes with the live silver spot price.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="spg-faq-item">
-        <summary><div class="spg-faq-q"><span>What is the difference between sterling silver and pure silver?</span><span class="spg-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></summary>
+      <div class="spg-faq-item">
+        <h3 class="spg-faq-q">What is the difference between sterling silver and pure silver?</h3>
         <div class="spg-faq-a">
           <p>Sterling silver (925) is <strong>92.5% silver and 7.5% copper</strong> &mdash; harder and more durable than pure silver, making it suitable for jewellery and cutlery.</p>
           <p>Pure silver (999 fine) is 99.9% silver and is used for investment bars, coins and industrial applications. Sterling silver is worth approximately 7.5% less than fine silver of the same weight.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="spg-faq-item">
-        <summary><div class="spg-faq-q"><span>How is the silver spot price determined?</span><span class="spg-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></summary>
+      <div class="spg-faq-item">
+        <h3 class="spg-faq-q">How is the silver spot price determined?</h3>
         <div class="spg-faq-a">
           <p>The silver spot price emerges from continuous global trading on <strong>COMEX (New York)</strong>, the <strong>LBMA (London)</strong>, and the <strong>Shanghai Futures Exchange</strong>.</p>
           <p>The LBMA publishes a daily Silver Price benchmark at 12:00 PM London time through an electronic auction. The continuous real-time spot price is primarily derived from near-term COMEX futures activity.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="spg-faq-item">
-        <summary><div class="spg-faq-q"><span>Is silver a good investment in 2026?</span><span class="spg-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></summary>
+      <div class="spg-faq-item">
+        <h3 class="spg-faq-q">Is silver a good investment in 2026?</h3>
         <div class="spg-faq-a">
           <p>Silver has structural tailwinds &mdash; persistent supply deficits, booming solar and EV demand, and investment demand aligned with gold &mdash; but is significantly more volatile than gold.</p>
           <p>Most analysts see it as a <strong>complementary position to gold rather than a replacement</strong>. At a gold-silver ratio of ~60:1, silver is near its historical fair value relative to gold.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="spg-faq-item">
-        <summary><div class="spg-faq-q"><span>What is the silver price forecast for 2026?</span><span class="spg-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></summary>
+      <div class="spg-faq-item">
+        <h3 class="spg-faq-q">What is the silver price forecast for 2026?</h3>
         <div class="spg-faq-a">
           <p>Institutional forecasts range widely: J.P. Morgan forecasts an average of $81/oz, Commerzbank targets $90 by year-end, Deutsche Bank projects $100, and Bank of America's bull case reaches $135&ndash;$309.</p>
           <p>The LBMA analyst consensus is <strong>$79.57 on average with a $42&ndash;$165 range</strong>. The wide range reflects genuine uncertainty about industrial demand sustainability.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="spg-faq-item">
-        <summary><div class="spg-faq-q"><span>Where can I track the live silver spot price online?</span><span class="spg-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></summary>
+      <div class="spg-faq-item">
+        <h3 class="spg-faq-q">Where can I track the live silver spot price online?</h3>
         <div class="spg-faq-a">
           <p>The most widely used real-time sources are <strong>Kitco</strong> (kitco.com), <strong>BullionVault</strong> (bullionvault.com), <strong>GoldPrice.org</strong>, and <strong>GoldPriceTools.com</strong>.</p>
           <p>All draw on COMEX and LBMA data and display prices per troy ounce, per gram, and per kilogram.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="spg-faq-item">
-        <summary><div class="spg-faq-q"><span>What was silver's all-time high price?</span><span class="spg-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></div></summary>
+      <div class="spg-faq-item">
+        <h3 class="spg-faq-q">What was silver's all-time high price?</h3>
         <div class="spg-faq-a">
           <p>Silver's all-time intraday high was <strong>$121.62 per troy ounce</strong>, set on <strong>January 29, 2026</strong> on COMEX &mdash; the first time silver had ever traded above $100.</p>
           <p>This surpassed the previous all-time nominal high of $52.80 set during the Hunt Brothers silver squeeze on January 18, 1980.</p>
         </div>
-      </details>
+      </div>
     </div>
 
     <div class="spg-divider" aria-hidden="true">

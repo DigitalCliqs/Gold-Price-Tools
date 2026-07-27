@@ -617,19 +617,13 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .compare-card--spot .compare-card__list li svg{color:var(--color-gold-bright)}
 .compare-card--fut .compare-card__list li svg{color:var(--color-primary)}
 
-/* === FAQ ACCORDION === */
-.faq-list{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-5) 0;max-width:860px}
-.faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .15s}
-.faq-item[open]{border-color:color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border))}
-.faq-item summary{list-style:none;cursor:pointer;padding:var(--space-4) var(--space-5);display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);font-size:var(--text-base);font-weight:600;color:var(--color-text);transition:background .15s}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::marker{display:none}
-.faq-item summary:hover{background:var(--color-surface-offset)}
-.faq-item summary::after{content:'';width:10px;height:10px;border-right:2px solid var(--color-gold-bright);border-bottom:2px solid var(--color-gold-bright);transform:rotate(45deg);transition:transform .2s;flex-shrink:0;margin-top:-4px}
-.faq-item[open] summary::after{transform:rotate(-135deg);margin-top:4px}
-.faq-item__body{padding:0 var(--space-5) var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;border-top:1px solid var(--color-divider)}
-.faq-item__body p{margin-top:var(--space-3)}
-.faq-item__body p:first-child{margin-top:var(--space-3)}
+/* === FAQ STATIC GRID === */
+.faq-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4);margin:var(--space-5) 0;max-width:none}
+.faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+.faq-question{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4}
+.faq-item__body{padding:0;margin:0}
+.faq-item__body p{font-size:var(--text-sm)!important;line-height:1.6!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
+.faq-item__body p + p{margin-top:var(--space-2)!important}
 .faq-item__body strong{color:var(--color-text)}
 
 /* === STEP CARDS for "how to read chart" === */
@@ -1329,38 +1323,38 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 
     <h2 id="faq"><span class="h2-num">11</span> Frequently Asked Questions</h2>
     <div class="faq-list">
-      <details class="faq-item">
-        <summary>What is the gold spot price right now?</summary>
+      <div class="faq-item">
+        <h3 class="faq-question">What is the gold spot price right now?</h3>
         <div class="faq-item__body"><p>As of May 2026, the gold spot price is approximately <strong>$3,200–$4,700 per troy ounce</strong> depending on the date, consolidating after the January 2026 all-time high of <strong>$5,589.38</strong>. For a live reading, BullionVault, Kitco, or GoldPrice.org all publish real-time updates — or use our <a href="/">live calculator</a>.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>What is the gold price per gram today?</summary>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">What is the gold price per gram today?</h3>
         <div class="faq-item__body"><p>Divide the current spot price per troy ounce by <strong>31.1035</strong> to get the per-gram price. At $4,600/oz, that is approximately <strong>$147.90 per gram</strong> of pure (24-karat) gold.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>What is the gold price per kilogram?</summary>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">What is the gold price per kilogram?</h3>
         <div class="faq-item__body"><p>Multiply the spot price per troy ounce by <strong>32.1507</strong>. At $4,600/oz, that gives approximately <strong>$147,893 per kilogram</strong>.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>Why does the physical gold I buy cost more than the spot price?</summary>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">Why does the physical gold I buy cost more than the spot price?</h3>
         <div class="faq-item__body"><p>Because the spot price is a wholesale benchmark for 400-oz institutional bars traded between professional market participants. Physical retail gold requires refining, minting, packaging, insurance, transport, and dealer margin — all added as a <strong>premium</strong> over spot.</p><p>The premium typically ranges from <strong>2–15%</strong> depending on the product, with larger bars carrying lower percentage premiums than small coins.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>What is the difference between bid and ask price for gold?</summary>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">What is the difference between bid and ask price for gold?</h3>
         <div class="faq-item__body"><p>The <strong>bid</strong> is what buyers will pay; the <strong>ask</strong> is what sellers will accept. The spread between them reflects market liquidity and transaction costs. In the wholesale gold market, this spread is typically very narrow ($1–$2). Retail dealers apply a wider effective spread through their buy/sell pricing.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>What is the LBMA Gold Price and why does it matter?</summary>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">What is the LBMA Gold Price and why does it matter?</h3>
         <div class="faq-item__body"><p>The LBMA Gold Price is the globally recognised benchmark published twice daily — at <strong>10:30 AM and 3:00 PM London time</strong> — by the London Bullion Market Association through an electronic auction. It is the standard reference for institutional contracts, central bank valuations, mining royalties, and most large physical gold transactions worldwide.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>How do I read a gold price chart?</summary>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">How do I read a gold price chart?</h3>
         <div class="faq-item__body"><p>Start by looking at the overall trend on a longer time frame (weekly or monthly). Identify support and resistance levels where price has previously reversed. Check whether price is above or below key moving averages (50-day, 200-day). Then zoom in to the daily or shorter time frame to interpret recent candle patterns and short-term momentum. Always interpret technical signals in the context of the macroeconomic environment.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary>What time does the gold market open and close?</summary>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">What time does the gold market open and close?</h3>
         <div class="faq-item__body"><p>Gold trades essentially <strong>23 hours a day</strong> on weekdays as trading passes between Asian, London, and New York sessions. The COMEX gold futures market opens at 18:00 ET Sunday and closes at 17:00 ET Friday, with a brief daily maintenance gap.</p></div>
-      </details>
+      </div>
     </div>
   </div><!-- /.prose -->
 <!-- Social share buttons (WP-34) -->
@@ -1596,15 +1590,6 @@ window.addEventListener('scroll', () => {
   fetchLive();
   setInterval(fetchLive,60000);
 })();
-/* FAQ click analytics */
-document.querySelectorAll('.faq-item').forEach(function(item){
-  item.addEventListener('toggle',function(){
-    if(this.open&&typeof gtag==='function'){
-      const q=this.querySelector('summary');
-      gtag('event','faq_open',{faq_question:q?q.textContent.trim().slice(0,100):''});
-    }
-  });
-});
 </script>
 </body>
 </html>

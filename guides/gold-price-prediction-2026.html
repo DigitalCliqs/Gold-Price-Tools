@@ -398,19 +398,13 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
 .fg-row-fill{position:absolute;top:0;height:100%;border-radius:4px;background:linear-gradient(90deg,#f87171 0%,var(--color-gold-bright) 50%,#4ade80 100%);opacity:.7}
 .fg-row-value{font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);color:var(--color-gold-bright);font-variant-numeric:tabular-nums;flex-shrink:0;white-space:nowrap}
 
-/* ── FAQ ACCORDION ── */
-.faq-list{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-4) 0}
-.faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;transition:border-color var(--transition)}
-.faq-item:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 25%,var(--color-border))}
-.faq-item[open]{border-color:color-mix(in oklch,var(--color-gold-bright) 30%,var(--color-border))}
-.faq-question{padding:var(--space-4) var(--space-5);font-size:var(--text-base);font-weight:600;color:var(--color-text);cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-3);list-style:none;line-height:1.4;-webkit-tap-highlight-color:transparent}
-.faq-question::-webkit-details-marker{display:none}
-.faq-question::marker{display:none}
-.faq-q-icon{width:24px;height:24px;border-radius:50%;background:color-mix(in oklch,var(--color-gold-bright) 12%,var(--color-surface-offset));color:var(--color-gold-bright);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform var(--transition);margin-top:2px}
-.faq-item[open] .faq-q-icon{transform:rotate(180deg)}
-.faq-answer{padding:0 var(--space-5) var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7}
-.faq-answer p{margin:0}
-.faq-answer p + p{margin-top:var(--space-3)}
+/* ── FAQ STATIC GRID ── */
+.faq-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4);margin:var(--space-5) 0}
+.faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+.faq-question{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4}
+.faq-answer{padding:0;margin:0}
+.faq-answer p{font-size:var(--text-sm)!important;line-height:1.6!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
+.faq-answer p + p{margin-top:var(--space-2)!important}
 
 /* ── REFERENCES (small) ── */
 .ref-sup{font-size:.7em;color:var(--color-gold-bright);font-weight:600;vertical-align:super;cursor:default}
@@ -1254,87 +1248,63 @@ footer{background:var(--color-surface);border-top:1px solid var(--color-border);
       <h2 id="faqs">Frequently Asked Questions</h2>
 
       <div class="faq-list">
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>What is the gold price prediction for 2026?</span>
-            <span class="faq-q-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></span>
-          </summary>
+        <div class="faq-item">
+          <h3 class="faq-question">What is the gold price prediction for 2026?</h3>
           <div class="faq-answer">
             <p>The consensus from major institutions ranges from approximately <strong>$4,742</strong> (LBMA 28-analyst average) to <strong>$6,300</strong> (J.P. Morgan's year-end target). Goldman Sachs forecasts $5,400 as their base case; Bank of America targets $6,000; UBS targets $5,900 with an upside scenario of $7,200.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>What is the Goldman Sachs gold forecast for 2026?</span>
-            <span class="faq-q-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></span>
-          </summary>
+        <div class="faq-item">
+          <h3 class="faq-question">What is the Goldman Sachs gold forecast for 2026?</h3>
           <div class="faq-answer">
             <p>Goldman Sachs projects gold at <strong>$5,400 per ounce</strong> by year-end 2026 &mdash; their "highest-conviction long" &mdash; based on sustained central bank buying of approximately 60&ndash;70 tonnes per month, normalising ETF inflows, and a "Fear and Wealth" framework that sees emerging market consumer demand sustaining the floor.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>What is the J.P. Morgan gold prediction for 2026?</span>
-            <span class="faq-q-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></span>
-          </summary>
+        <div class="faq-item">
+          <h3 class="faq-question">What is the J.P. Morgan gold prediction for 2026?</h3>
           <div class="faq-answer">
             <p>J.P. Morgan's year-end 2026 target is <strong>$6,300/oz</strong>, raised in February 2026 from a prior $5,055 target. They also raised their long-term structural floor estimate to $4,500 and maintain an upside scenario of <strong>$8,000&ndash;$8,500</strong> if Western institutional reallocation into gold accelerates.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>Will gold go up or down in 2026?</span>
-            <span class="faq-q-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></span>
-          </summary>
+        <div class="faq-item">
+          <h3 class="faq-question">Will gold go up or down in 2026?</h3>
           <div class="faq-answer">
             <p>The majority of major bank forecasts are bullish for H2 2026 from current consolidation levels. The base case is that gold regains momentum and tests the <strong>$5,000&ndash;$6,000 range</strong> later in the year. The bear case &mdash; driven by dollar strength, higher real rates, or geopolitical de-escalation &mdash; could push gold toward $3,400&ndash;$4,000.</p>
             <p>The World Gold Council notes the bull scenarios are more probable than the bear scenarios given current structural conditions.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>What is the gold price prediction for 2030?</span>
-            <span class="faq-q-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></span>
-          </summary>
+        <div class="faq-item">
+          <h3 class="faq-question">What is the gold price prediction for 2030?</h3>
           <div class="faq-answer">
             <p>Forecasts for 2030 range widely. The base case across major institutions is <strong>$7,500&ndash;$9,000/oz</strong>, assuming continued central bank buying, persistent de-dollarisation, and moderate inflation. Bullish models from CoinCodex and Yardeni Research project $10,000&ndash;$12,000. J.P. Morgan's long-term model implies <strong>$8,000&ndash;$8,500</strong> based on household portfolio rebalancing.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>Will gold reach $6,000 in 2026?</span>
-            <span class="faq-q-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></span>
-          </summary>
+        <div class="faq-item">
+          <h3 class="faq-question">Will gold reach $6,000 in 2026?</h3>
           <div class="faq-answer">
             <p>Most major banks say yes in their year-end forecasts. <strong>J.P. Morgan, Wells Fargo, and Bank of America</strong> all target $6,000 or above. The live debate among analysts is whether gold consolidates first and reaches $6,000 later in the year, or whether the current pullback is deeper than expected. A weekly close above $5,500 technical resistance would likely trigger the run toward $6,000.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>What would cause gold prices to fall in 2026?</span>
-            <span class="faq-q-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></span>
-          </summary>
+        <div class="faq-item">
+          <h3 class="faq-question">What would cause gold prices to fall in 2026?</h3>
           <div class="faq-answer">
             <p>The primary downside risks are: a revival of US dollar strength, rising real interest rates that increase the opportunity cost of gold, a geopolitical de-escalation that unwinds the risk premium, central bank selling driven by energy/defense spending pressures, or a broader profit-taking correction after 2025's extraordinary gains.</p>
           </div>
-        </details>
+        </div>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            <span>Is gold still a good investment at current prices?</span>
-            <span class="faq-q-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></span>
-          </summary>
+        <div class="faq-item">
+          <h3 class="faq-question">Is gold still a good investment at current prices?</h3>
           <div class="faq-answer">
             <p>Most institutional research maintains a positive strategic view on gold despite elevated prices, citing structural under-allocation in Western portfolios, continued de-dollarisation trends, and the long-run store-of-value case.</p>
             <p>However, near-term risk is real after a 65&ndash;70% run &mdash; investors entering now should consider a <strong>phased entry</strong> rather than a single lump-sum position, and should size any gold allocation proportionate to the downside scenarios they can absorb.</p>
           </div>
-        </details>
+        </div>
       </div>
 
       <div class="disclaimer">

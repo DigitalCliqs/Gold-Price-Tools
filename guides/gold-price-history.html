@@ -676,19 +676,13 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .gph-infl-real{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--color-gold-bright);font-variant-numeric:tabular-nums}
 .gph-infl-row.highlight{background:color-mix(in oklch,var(--color-gold-bright) 6%,transparent)}
 
-/* FAQ accordion */
-.gph-faq-list{display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-5) 0 0}
-.gph-faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color var(--transition)}
-.gph-faq-item:hover{border-color:color-mix(in oklch,var(--color-gold-bright) 28%,var(--color-border))}
-.gph-faq-item summary{list-style:none;cursor:pointer}
-.gph-faq-item summary::-webkit-details-marker{display:none}
-.gph-faq-q{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4) var(--space-5);font-size:15px;font-weight:600;color:var(--color-text);text-align:left;transition:background var(--transition);min-height:56px}
-.gph-faq-q:hover{background:var(--color-surface-offset)}
-.gph-faq-q-icon{flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--color-gold-bright);transition:transform var(--transition)}
-.gph-faq-item[open] .gph-faq-q-icon{transform:rotate(45deg)}
-.gph-faq-a{padding:0 var(--space-5) var(--space-5);font-size:14px;color:var(--color-text-muted);line-height:1.7}
-.gph-faq-a p{margin:0 0 var(--space-3);max-width:none}
-.gph-faq-a p:last-child{margin-bottom:0}
+/* FAQ static grid */
+.gph-faq-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4);margin:var(--space-5) 0 0}
+.gph-faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+.gph-faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4}
+.gph-faq-a{padding:0;margin:0}
+.gph-faq-a p{font-size:var(--text-sm)!important;line-height:1.6!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
+.gph-faq-a p + p{margin-top:var(--space-2)!important}
 .gph-faq-a ul{margin:var(--space-2) 0;padding-left:var(--space-5)}
 .gph-faq-a li{margin-bottom:4px;font-size:14px;color:var(--color-text-muted)}
 .gph-faq-a strong{color:var(--color-text);font-weight:700}
@@ -1506,73 +1500,43 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
     </div>
 
     <div class="gph-faq-list">
-      <details class="gph-faq-item">
-        <summary>
-          <div class="gph-faq-q">
-            <span>What is the highest price of gold in history?</span>
-            <span class="gph-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </div>
-        </summary>
+      <div class="gph-faq-item">
+        <h3 class="gph-faq-q">What is the highest price of gold in history?</h3>
         <div class="gph-faq-a">
           <p>Gold's all-time high is <strong>$5,589.38 per troy ounce</strong>, reached intraday on January 28, 2026. This price also, for the first time, exceeded the 1980 peak adjusted for inflation.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="gph-faq-item">
-        <summary>
-          <div class="gph-faq-q">
-            <span>What was the highest gold price in history when adjusted for inflation?</span>
-            <span class="gph-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </div>
-        </summary>
+      <div class="gph-faq-item">
+        <h3 class="gph-faq-q">What was the highest gold price in history when adjusted for inflation?</h3>
         <div class="gph-faq-a">
           <p>For decades, the 1980 peak of $850 held the record in real terms &mdash; equivalent to approximately <strong>$3,500 in today's dollars</strong>. The 2026 nominal high of $5,589 finally surpassed it on an inflation-adjusted basis &mdash; the first time in 45 years that real-terms parity was achieved.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="gph-faq-item">
-        <summary>
-          <div class="gph-faq-q">
-            <span>What caused the biggest crash in gold price history?</span>
-            <span class="gph-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </div>
-        </summary>
+      <div class="gph-faq-item">
+        <h3 class="gph-faq-q">What caused the biggest crash in gold price history?</h3>
         <div class="gph-faq-a">
           <p>The 1980&ndash;1999 bear market is the largest in gold's modern history &mdash; a <strong>65% decline over 19 years</strong>. It was caused primarily by Paul Volcker's aggressive interest rate hikes (rates above 19%), which crushed inflation, restored dollar credibility, and made interest-bearing assets far more attractive than gold.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="gph-faq-item">
-        <summary>
-          <div class="gph-faq-q">
-            <span>What is the historical gold-to-silver ratio?</span>
-            <span class="gph-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </div>
-        </summary>
+      <div class="gph-faq-item">
+        <h3 class="gph-faq-q">What is the historical gold-to-silver ratio?</h3>
         <div class="gph-faq-a">
           <p>The long-term historical average is approximately <strong>55&ndash;65:1</strong>. It peaked at a record 124:1 during the COVID-19 panic in March 2020 and compressed to approximately 55:1 by May 2026 as silver recovered strongly.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="gph-faq-item">
-        <summary>
-          <div class="gph-faq-q">
-            <span>What is gold's historical rate of return compared to stocks?</span>
-            <span class="gph-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </div>
-        </summary>
+      <div class="gph-faq-item">
+        <h3 class="gph-faq-q">What is gold's historical rate of return compared to stocks?</h3>
         <div class="gph-faq-a">
           <p>From 2000 to 2026, gold has significantly outperformed equities (<strong>+1,580% vs +615% for the S&amp;P 500</strong>). Over the very long run (since 1928), equities have averaged approximately 9.9% annually versus gold's approximately 5%. Gold outperforms in specific periods &mdash; high inflation, financial crises, and dollar weakness &mdash; while equities outperform in periods of growth and price stability.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="gph-faq-item">
-        <summary>
-          <div class="gph-faq-q">
-            <span>When did gold first cross $1,000, $2,000, $3,000, $4,000, and $5,000?</span>
-            <span class="gph-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </div>
-        </summary>
+      <div class="gph-faq-item">
+        <h3 class="gph-faq-q">When did gold first cross $1,000, $2,000, $3,000, $4,000, and $5,000?</h3>
         <div class="gph-faq-a">
           <ul>
             <li><strong>$1,000:</strong> First crossed February 2009</li>
@@ -1583,19 +1547,14 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
           </ul>
           <p>Each $500 increment was reached faster than the last &mdash; a compression that reflected the accelerating momentum of the 2024&ndash;2026 bull market.</p>
         </div>
-      </details>
+      </div>
 
-      <details class="gph-faq-item">
-        <summary>
-          <div class="gph-faq-q">
-            <span>What is the lowest gold price in modern history?</span>
-            <span class="gph-faq-q-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </div>
-        </summary>
+      <div class="gph-faq-item">
+        <h3 class="gph-faq-q">What is the lowest gold price in modern history?</h3>
         <div class="gph-faq-a">
           <p>Since the start of free-market gold trading in 1971, the lowest price was approximately <strong>$112.50 in August 1976</strong>. Before that, the fixed $35 price under the Bretton Woods system (1944&ndash;1971) represents the long-term floor of the fixed-price era.</p>
         </div>
-      </details>
+      </div>
     </div>
   </section>
 

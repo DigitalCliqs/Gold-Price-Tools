@@ -542,8 +542,8 @@ blockquote strong{color:var(--color-text)}
   <div class="currency-row">
     <label for="pgCurrency">Display currency:</label>
     <select class="form-select" id="pgCurrency" style="width:auto;padding:.4rem .8rem">
+      <option value="USD" selected>USD ($)</option>
       <option value="GBP">GBP (&#163;)</option>
-      <option value="USD">USD ($)</option>
       <option value="EUR">EUR (&#8364;)</option>
     </select>
   </div>
@@ -841,7 +841,7 @@ function fmtVal(usdVal,cur){
 }
 
 function updateAll(ozUSD){
-  const cur=document.getElementById('pgCurrency')?.value||'GBP';
+  const cur=document.getElementById('pgCurrency')?.value||'USD';
   const TROY=31.1035;
   const purities=[{p:0.999,id:'999'},{p:0.925,id:'925'},{p:0.900,id:'900'},{p:0.800,id:'800'}];
 

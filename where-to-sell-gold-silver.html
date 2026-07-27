@@ -690,20 +690,13 @@ article > a,article > ul li a,article > ol li a{color:var(--color-primary);text-
 .ed-warning__body h3{font-size:var(--text-sm)!important;font-weight:700;color:var(--color-text);margin:0 0 4px!important;line-height:1.3}
 .ed-warning__body p{font-size:var(--text-xs)!important;line-height:1.55!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
 
-/* ─── FAQ ACCORDION ────────────────────────────────────────── */
-.ed-faq{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-5) 0}
-.ed-faq details{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s}
-.ed-faq details:hover{border-color:var(--color-primary)}
-.ed-faq details[open]{border-color:color-mix(in oklch,var(--color-gold-bright) 40%,var(--color-border));background:color-mix(in oklch,var(--color-gold) 3%,var(--color-surface))}
-.ed-faq summary{list-style:none;cursor:pointer;padding:var(--space-4) var(--space-5);font-family:var(--font-display);font-size:var(--text-base);font-weight:600;color:var(--color-text);display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);line-height:1.4;transition:background .15s}
-.ed-faq summary::-webkit-details-marker{display:none}
-.ed-faq summary::after{content:"";flex-shrink:0;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--color-text-muted);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-size:14px 14px;background-position:center;background-repeat:no-repeat;color:var(--color-text-muted);transition:transform .25s,border-color .25s,color .25s}
-.ed-faq details[open] summary::after{transform:rotate(180deg);border-color:var(--color-gold-bright);color:var(--color-gold-bright)}
-.ed-faq summary:hover{background:var(--color-surface-offset)}
-.ed-faq details[open] summary{background:transparent}
-.ed-faq__body{padding:0 var(--space-5) var(--space-5);border-top:1px solid var(--color-divider);padding-top:var(--space-4);margin-top:0}
-.ed-faq__body p{font-size:var(--text-sm)!important;line-height:1.7!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
-.ed-faq__body p + p{margin-top:var(--space-3)!important}
+/* ─── FAQ STATIC CARDS ────────────────────────────────────────── */
+.ed-faq{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4);margin:var(--space-5) 0}
+.ed-faq__item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+.ed-faq__q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4}
+.ed-faq__body{padding:0;margin:0}
+.ed-faq__body p{font-size:var(--text-sm)!important;line-height:1.6!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
+.ed-faq__body p + p{margin-top:var(--space-2)!important}
 
 /* ─── PULL QUOTE ───────────────────────────────────────────── */
 .ed-pullquote{margin:var(--space-6) 0;padding:var(--space-5) var(--space-6);border-left:3px solid var(--color-gold-bright);background:var(--color-surface-offset);border-radius:0 var(--radius-md) var(--radius-md) 0;font-family:var(--font-display);font-size:clamp(1.0625rem,.8vw + .9rem,1.375rem);font-weight:500;line-height:1.5;color:var(--color-text);font-style:italic;letter-spacing:-.01em}
@@ -1521,60 +1514,60 @@ article > a,article > ul li a,article > ol li a{color:var(--color-primary);text-
       <section id="faq">
         <h2>Frequently Asked Questions</h2>
         <div class="ed-faq">
-          <details>
-            <summary>Where is the best place to sell gold?</summary>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">Where is the best place to sell gold?</h3>
             <div class="ed-faq__body">
               <p>For investment-grade bullion coins and bars, online bullion dealers (APMEX, JM Bullion, BullionByPost, SD Bullion) consistently offer the best rates — <strong>95–99% of spot</strong>. For jewellery and scrap, specialist precious metal dealers offer the best combination of fair pricing, speed, and professional testing.</p>
             </div>
-          </details>
-          <details>
-            <summary>How do I find gold buyers near me?</summary>
+          </div>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">How do I find gold buyers near me?</h3>
             <div class="ed-faq__body">
               <p>Search for &quot;precious metal dealers&quot; or &quot;coin dealers&quot; with strong Trustpilot and Google reviews in your area, or ask for recommendations from local collector communities. Avoid anonymous cash-for-gold kiosks and pop-up buyers. National trade association directories (BNTA in the UK, ICTA in the US) list vetted, reputable dealers by location.</p>
             </div>
-          </details>
-          <details>
-            <summary>What is scrap gold and how do I sell it?</summary>
+          </div>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">What is scrap gold and how do I sell it?</h3>
             <div class="ed-faq__body">
               <p>Scrap gold includes any gold jewellery, broken or unwearable pieces, dental gold, or gold items being sold for metal content only — not design or collector value. Scrap is bought at a percentage of its melt value by dealers and refiners. The higher the purity and gold content, the more you receive per gram. Always run the numbers with a <a href="/scrap-gold-calculator">scrap gold calculator</a> first.</p>
             </div>
-          </details>
-          <details>
-            <summary>How do I sell gold coins near me?</summary>
+          </div>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">How do I sell gold coins near me?</h3>
             <div class="ed-faq__body">
               <p>Local coin dealers (LCS) offer same-day assessment and payment for most bullion and numismatic coins. For bullion, online dealers typically offer better rates than local shops for common coins; for rare or collectible coins, a local specialist who knows the numismatic market may provide a better result. Always get 2–3 quotes.</p>
             </div>
-          </details>
-          <details>
-            <summary>Can I sell silver for cash?</summary>
+          </div>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">Can I sell silver for cash?</h3>
             <div class="ed-faq__body">
               <p>Yes — specialist dealers, bullion buyback services, and local coin dealers all buy silver coins, bars, and jewellery. For sterling silver (925) jewellery and silverware, specialist online buyers often offer better rates than local dealers. <strong>Silver-plated items (EPNS, silver-plated cutlery) have almost no silver value</strong> and cannot be sold as silver.</p>
             </div>
-          </details>
-          <details>
-            <summary>How do I sell gold and silver tax-free?</summary>
+          </div>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">How do I sell gold and silver tax-free?</h3>
             <div class="ed-faq__body">
               <p>Tax rules vary by jurisdiction. In the UK, selling CGT-exempt coins (Gold and Silver Britannias, Gold Sovereigns from the Royal Mint) generates no CGT regardless of profit. In the US, using a Roth IRA or similar tax-advantaged account structure can eliminate capital gains tax on qualifying disposals. Staying within your annual CGT allowance is another route. Always consult a tax professional for advice specific to your situation.</p>
             </div>
-          </details>
-          <details>
-            <summary>How do I sell gold online safely?</summary>
+          </div>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">How do I sell gold online safely?</h3>
             <div class="ed-faq__body">
               <p>Use only established, reviewed dealers with transparent pricing and clear return policies. Check Trustpilot and Google reviews. Always use tracked, insured shipping with declared value. Keep proof of postage. Lock your price before shipping and confirm the dealer's process for returns if you decline the final offer.</p>
             </div>
-          </details>
-          <details>
-            <summary>Where can I sell gold bars?</summary>
+          </div>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">Where can I sell gold bars?</h3>
             <div class="ed-faq__body">
               <p>Gold bars — particularly LBMA-accredited bars from refiners like PAMP, Valcambi, and Perth Mint — are best sold to specialist bullion dealers who recognise their provenance and can offer rates close to spot. Banks rarely buy gold bars directly from private sellers; specialist dealers and online bullion buyback services are the primary route for most private individuals.</p>
             </div>
-          </details>
-          <details>
-            <summary>Do pawn shops pay good money for gold?</summary>
+          </div>
+          <div class="ed-faq__item">
+            <h3 class="ed-faq__q">Do pawn shops pay good money for gold?</h3>
             <div class="ed-faq__body">
               <p>Pawn shops typically pay only <strong>25–60% of melt value</strong> for gold jewellery — among the lowest rates in the market. The same 14K ring weighing 5 grams could net $118 at a pawn shop versus $400+ at a specialist dealer. Pawn shops offer speed and immediate cash, but at a steep cost. Only use them when you need cash in your hands within the hour and have no alternative.</p>
             </div>
-          </details>
+          </div>
         </div>
       </section>
 

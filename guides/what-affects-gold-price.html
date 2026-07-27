@@ -673,20 +673,14 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 .wa-ref-card__row{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3)}
 .wa-ref-card__lab{font-size:10px;color:var(--color-text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 
-/* ── FAQ ACCORDION ── */
-.wa-faq{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-5) 0}
-.wa-faq__item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color var(--transition)}
-.wa-faq__item[open]{border-color:color-mix(in oklch,var(--wa-gold) 35%,var(--color-border))}
-.wa-faq__q{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4) var(--space-5);cursor:pointer;font-size:var(--text-base);font-weight:600;color:var(--color-text);user-select:none;list-style:none;min-height:56px;transition:background var(--transition);line-height:1.4}
-.wa-faq__q::-webkit-details-marker{display:none}
-.wa-faq__q::marker{display:none}
-.wa-faq__q:hover{background:var(--color-surface-offset)}
-.wa-faq__icon{flex-shrink:0;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-full);background:color-mix(in oklch,var(--wa-gold) 12%,transparent);color:var(--wa-gold);transition:transform var(--transition)}
-.wa-faq__item[open] .wa-faq__icon{transform:rotate(45deg)}
-.wa-faq__a{padding:0 var(--space-5) var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;max-width:68ch}
-.wa-faq__a p{margin:0 0 var(--space-2)}
-.wa-faq__a p:last-child{margin-bottom:0}
-.wa-faq__a strong{color:var(--color-text);font-weight:600}
+/* ── FAQ STATIC GRID ── */
+.wa-faq-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4);margin:var(--space-5) 0 0}
+.wa-faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+.wa-faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4}
+.wa-faq-a{padding:0;margin:0}
+.wa-faq-a p{font-size:var(--text-sm)!important;line-height:1.6!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
+.wa-faq-a p + p{margin-top:var(--space-2)!important}
+.wa-faq-a strong{color:var(--color-text);font-weight:700}
 
 /* ── PREMIUM CTA ── */
 .wa-cta{background:linear-gradient(135deg,color-mix(in oklch,var(--wa-gold) 10%,var(--color-surface)),color-mix(in oklch,var(--wa-gold) 4%,var(--color-surface)));border:1px solid color-mix(in oklch,var(--wa-gold) 28%,var(--color-border));border-radius:var(--radius-xl);padding:var(--space-6);margin:var(--space-8) 0;position:relative;overflow:hidden;text-align:center}
@@ -1695,82 +1689,61 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
         <span class="wa-section__eyebrow">Common questions</span>
         <h2 class="wa-section__title">Frequently Asked Questions</h2>
 
-        <div class="wa-faq">
-          <details class="wa-faq__item">
-            <summary class="wa-faq__q">
-              <span>What factors affect the price of gold most?</span>
-              <span class="wa-faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-            </summary>
-            <div class="wa-faq__a">
+        <div class="wa-faq-list">
+          <div class="wa-faq-item">
+            <h3 class="wa-faq-q">What factors affect the price of gold most?</h3>
+            <div class="wa-faq-a">
               <p>The three most powerful factors are <strong>US real interest rates and Federal Reserve monetary policy</strong>, <strong>the US dollar exchange rate</strong>, and <strong>central bank gold buying and selling activity</strong>. Together they explain the majority of gold's medium-term price direction.</p>
               <p>Geopolitical risk, inflation expectations, ETF flows and supply-demand fundamentals add significant noise and can dominate the short term.</p>
             </div>
-          </details>
-
-          <details class="wa-faq__item">
-            <summary class="wa-faq__q">
-              <span>What affects gold prices in forex (XAU/USD)?</span>
-              <span class="wa-faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-            </summary>
-            <div class="wa-faq__a">
+          </div>
+ 
+          <div class="wa-faq-item">
+            <h3 class="wa-faq-q">What affects gold prices in forex (XAU/USD)?</h3>
+            <div class="wa-faq-a">
               <p>In forex, gold's price is most immediately driven by the <strong>dollar index (DXY)</strong>, <strong>real US yields (TIPS)</strong>, <strong>Federal Reserve policy signals</strong>, US economic data releases (CPI, NFP), and risk sentiment.</p>
               <p>Gold is effectively a long anti-dollar position with safe-haven properties — traders watch the DXY and Fed rhetoric as their primary gold signals.</p>
             </div>
-          </details>
-
-          <details class="wa-faq__item">
-            <summary class="wa-faq__q">
-              <span>What is affecting gold prices today in 2026?</span>
-              <span class="wa-faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-            </summary>
-            <div class="wa-faq__a">
+          </div>
+ 
+          <div class="wa-faq-item">
+            <h3 class="wa-faq-q">What is affecting gold prices today in 2026?</h3>
+            <div class="wa-faq-a">
               <p>As of 2026, the dominant factors are:</p>
               <p><strong>Central bank buying</strong> at near-record levels (~60 tonnes/month), a <strong>weak-to-moderate US dollar</strong>, <strong>geopolitical uncertainty</strong> spanning trade policy and conflict risks, <strong>falling real interest rates</strong> as the Fed's easing cycle resumes, and <strong>record ETF inflows</strong> as Western institutional investors increase gold allocations.</p>
             </div>
-          </details>
-
-          <details class="wa-faq__item">
-            <summary class="wa-faq__q">
-              <span>How is the price of gold determined?</span>
-              <span class="wa-faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-            </summary>
-            <div class="wa-faq__a">
+          </div>
+ 
+          <div class="wa-faq-item">
+            <h3 class="wa-faq-q">How is the price of gold determined?</h3>
+            <div class="wa-faq-a">
               <p>Through <strong>continuous global trading</strong> across COMEX futures and the London OTC market, with the <strong>twice-daily LBMA Gold Price auction</strong> providing the primary benchmark for institutional and physical transactions.</p>
               <p>The auction is electronic, conducted by ICE Benchmark Administration, with 15 participating institutions matching buy and sell orders until equilibrium is reached.</p>
             </div>
-          </details>
-
-          <details class="wa-faq__item">
-            <summary class="wa-faq__q">
-              <span>Who determines the price of gold?</span>
-              <span class="wa-faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-            </summary>
-            <div class="wa-faq__a">
+          </div>
+ 
+          <div class="wa-faq-item">
+            <h3 class="wa-faq-q">Who determines the price of gold?</h3>
+            <div class="wa-faq-a">
               <p><strong>No single entity.</strong> The gold price is the output of continuous global trading activity across futures markets, the London OTC market, the LBMA auction process, and the aggregate supply and demand decisions of central banks, investors, miners, jewellers, and industrial users worldwide.</p>
             </div>
-          </details>
-
-          <details class="wa-faq__item">
-            <summary class="wa-faq__q">
-              <span>What causes the gold price to go down?</span>
-              <span class="wa-faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-            </summary>
-            <div class="wa-faq__a">
+          </div>
+ 
+          <div class="wa-faq-item">
+            <h3 class="wa-faq-q">What causes the gold price to go down?</h3>
+            <div class="wa-faq-a">
               <p>Gold typically falls when US real interest rates rise (bonds become more attractive), the US dollar strengthens, geopolitical risks subside, economic growth improves and risk appetite increases, or when ETF and speculative long positions unwind.</p>
               <p>The <strong>2022 bear market</strong> is the clearest recent example — the Fed's rate-hiking cycle drove gold from $2,050 to $1,630.</p>
             </div>
-          </details>
-
-          <details class="wa-faq__item">
-            <summary class="wa-faq__q">
-              <span>What will affect gold prices in the future?</span>
-              <span class="wa-faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-            </summary>
-            <div class="wa-faq__a">
+          </div>
+ 
+          <div class="wa-faq-item">
+            <h3 class="wa-faq-q">What will affect gold prices in the future?</h3>
+            <div class="wa-faq-a">
               <p>The structural outlook depends on whether these conditions persist: central bank de-dollarisation buying, low/negative real interest rates, a structurally weaker US dollar, and elevated global debt and fiscal deficits.</p>
               <p>If these reverse — through restored dollar credibility, rising real rates, and improved fiscal positions — gold prices would face <strong>meaningful headwinds</strong>.</p>
             </div>
-          </details>
+          </div>
         </div>
       </section>
 

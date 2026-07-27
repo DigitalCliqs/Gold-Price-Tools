@@ -489,10 +489,7 @@ article.article-wrap .article-title,h1.article-title{font-family:var(--font-disp
 
 /* ── table of contents ── */
 .spg-toc{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);margin:var(--space-6) 0}
-.spg-toc>summary{cursor:pointer;font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-text);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-2)}
-.spg-toc>summary::-webkit-details-marker{display:none}
-.spg-toc>summary svg{transition:transform var(--transition);flex-shrink:0;color:var(--color-text-muted)}
-.spg-toc[open]>summary svg{transform:rotate(180deg)}
+.spg-toc-title{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;color:var(--color-text)}
 .spg-toc__list{list-style:none;padding:0;margin:var(--space-4) 0 0;display:grid;grid-template-columns:1fr;gap:2px;counter-reset:toc}
 @media(min-width:680px){.spg-toc__list{grid-template-columns:1fr 1fr;column-gap:var(--space-5)}}
 .spg-toc__list a{display:flex;gap:var(--space-3);align-items:baseline;padding:var(--space-2) var(--space-2);border-radius:var(--radius-sm);font-size:var(--text-sm);color:var(--color-text-muted);text-decoration:none;line-height:1.4}
@@ -647,16 +644,14 @@ table.spg-table tbody tr.is-featured td{background:color-mix(in oklch,var(--colo
 .spg-howto li div{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.55}
 .spg-howto li strong{color:var(--color-text);font-weight:700}
 
-/* ── FAQ accordion ── */
-.spg-faq{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-5) 0}
-.spg-faq details{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}
-.spg-faq details[open]{border-color:var(--spg-silver-soft)}
-.spg-faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-4) var(--space-5);font-size:var(--text-base);font-weight:600;color:var(--color-text)}
-.spg-faq summary::-webkit-details-marker{display:none}
-.spg-faq summary svg{flex-shrink:0;color:var(--color-text-muted);transition:transform var(--transition)}
-.spg-faq details[open] summary svg{transform:rotate(45deg)}
-.spg-faq__a{padding:0 var(--space-5) var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7}
-.spg-faq__a strong{color:var(--color-gold-bright);font-weight:700}
+/* ── FAQ STATIC GRID ── */
+.spg-faq-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4);margin:var(--space-5) 0 0}
+.spg-faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)}
+.spg-faq-q{font-size:var(--text-sm);font-weight:600;color:var(--color-text);line-height:1.4}
+.spg-faq-a{padding:0;margin:0}
+.spg-faq-a p{font-size:var(--text-sm)!important;line-height:1.6!important;color:var(--color-text-muted)!important;margin:0!important;max-width:none!important}
+.spg-faq-a p + p{margin-top:var(--space-2)!important}
+.spg-faq-a strong{color:var(--color-text);font-weight:700}
 
 /* ── jump-to-calculator pill ── */
 .spg-jump{display:inline-flex;align-items:center;gap:var(--space-2);margin-top:var(--space-4);padding:var(--space-3) var(--space-5);background:var(--color-primary);color:#fff;border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:700;text-decoration:none;transition:background var(--transition),transform var(--transition)}
@@ -822,10 +817,8 @@ table.spg-table tbody tr.is-featured td{background:color-mix(in oklch,var(--colo
   </section>
 
   <!-- ── TABLE OF CONTENTS ── -->
-  <details class="spg-toc" open>
-    <summary>On this page
-      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-    </summary>
+  <nav class="spg-toc" aria-label="Table of contents">
+    <div class="spg-toc-title">On this page</div>
     <ul class="spg-toc__list">
       <li><a href="#spg-today">Silver price per gram today</a></li>
       <li><a href="#spg-formula">The core formula</a></li>
@@ -843,7 +836,7 @@ table.spg-table tbody tr.is-featured td{background:color-mix(in oklch,var(--colo
       <li><a href="#spg-howto">Step-by-step summary</a></li>
       <li><a href="#spg-faq">FAQ</a></li>
     </ul>
-  </details>
+  </nav>
 
   <!-- ── SILVER PRICE TODAY ── -->
   <div class="prose">
@@ -1285,39 +1278,39 @@ table.spg-table tbody tr.is-featured td{background:color-mix(in oklch,var(--colo
     <h2 id="spg-faq">Frequently Asked Questions</h2>
   </div>
 
-  <div class="spg-faq">
-    <details>
-      <summary>What is the silver price per gram today?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
-      <div class="spg-faq__a">As of 20 May 2026, pure 999 silver is about <strong>$2.41 per gram</strong> and 925 sterling about <strong>$2.23 per gram</strong>, based on a spot price of $74.96/oz. These values change continuously &mdash; use the live calculator above, or check MeltValue.com, Bullion.com or GoldPriceTools.com.</div>
-    </details>
-    <details>
-      <summary>What is the 925 sterling silver price per gram today?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
-      <div class="spg-faq__a">925 sterling is worth 92.5% of the pure per-gram price. At $74.96/oz that is <strong>$2.23 per gram</strong>. At $80/oz it would be about $2.38 per gram.</div>
-    </details>
-    <details>
-      <summary>How do I calculate the silver price per gram?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
-      <div class="spg-faq__a">Divide the spot price per troy ounce by 31.1035 to get the price per gram of 999 pure silver, then multiply by the purity decimal (<strong>0.925</strong> for sterling, 0.800 for 800 silver, and so on).</div>
-    </details>
-    <details>
-      <summary>What is the scrap silver price per gram?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
-      <div class="spg-faq__a">Scrap silver is valued at its melt value using the formula above. Dealers typically pay <strong>75&ndash;90% of melt</strong> when buying, depending on volume, purity clarity and item type.</div>
-    </details>
-    <details>
-      <summary>What is the silver price per gram in USD?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
-      <div class="spg-faq__a">At about $74.96/oz: 999 fine = <strong>~$2.41/g</strong>; 925 sterling = ~$2.23/g; 900 coin silver = ~$2.17/g; 800 silver = ~$1.93/g.</div>
-    </details>
-    <details>
-      <summary>How much is 1 gram of silver worth?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
-      <div class="spg-faq__a">About <strong>$2.41 for pure 999 fine silver</strong> and $2.23 for 925 sterling, based on the 20 May 2026 spot price of $74.96/oz. Use the live calculator for the most current value.</div>
-    </details>
-    <details>
-      <summary>Why has the silver price dropped from its January 2026 peak?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
-      <div class="spg-faq__a">Silver hit an all-time high of <strong>$121.62/oz</strong> in January 2026 on supply deficits, solar/EV demand, a weak dollar and speculative momentum. The correction to the $74&ndash;$79 range reflects profit-taking, a stronger dollar, reduced Fed rate-cut expectations and partial de-escalation of geopolitical risk.</div>
-    </details>
-    <details>
-      <summary>What is the silver price per gram in euro?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary>
-      <div class="spg-faq__a">Multiply the USD per-gram price by the current USD/EUR rate. At $2.41/g, 999 silver is roughly <strong>&euro;2.22/g</strong> and 925 sterling about &euro;2.05/g. Switch the calculator above to EUR for live euro pricing.</div>
-    </details>
+  <div class="spg-faq-list">
+    <div class="spg-faq-item">
+      <h3 class="spg-faq-q">What is the silver price per gram today?</h3>
+      <div class="spg-faq-a"><p>As of 20 May 2026, pure 999 silver is about <strong>$2.41 per gram</strong> and 925 sterling about <strong>$2.23 per gram</strong>, based on a spot price of $74.96/oz. These values change continuously &mdash; use the live calculator above, or check MeltValue.com, Bullion.com or GoldPriceTools.com.</p></div>
+    </div>
+    <div class="spg-faq-item">
+      <h3 class="spg-faq-q">What is the 925 sterling silver price per gram today?</h3>
+      <div class="spg-faq-a"><p>925 sterling is worth 92.5% of the pure per-gram price. At $74.96/oz that is <strong>$2.23 per gram</strong>. At $80/oz it would be about $2.38 per gram.</p></div>
+    </div>
+    <div class="spg-faq-item">
+      <h3 class="spg-faq-q">How do I calculate the silver price per gram?</h3>
+      <div class="spg-faq-a"><p>Divide the spot price per troy ounce by 31.1035 to get the price per gram of 999 pure silver, then multiply by the purity decimal (<strong>0.925</strong> for sterling, 0.800 for 800 silver, and so on).</p></div>
+    </div>
+    <div class="spg-faq-item">
+      <h3 class="spg-faq-q">What is the scrap silver price per gram?</h3>
+      <div class="spg-faq-a"><p>Scrap silver is valued at its melt value using the formula above. Dealers typically pay <strong>75&ndash;90% of melt</strong> when buying, depending on volume, purity clarity and item type.</p></div>
+    </div>
+    <div class="spg-faq-item">
+      <h3 class="spg-faq-q">What is the silver price per gram in USD?</h3>
+      <div class="spg-faq-a"><p>At about $74.96/oz: 999 fine = <strong>~$2.41/g</strong>; 925 sterling = ~$2.23/g; 900 coin silver = ~$2.17/g; 800 silver = ~$1.93/g.</p></div>
+    </div>
+    <div class="spg-faq-item">
+      <h3 class="spg-faq-q">How much is 1 gram of silver worth?</h3>
+      <div class="spg-faq-a"><p>About <strong>$2.41 for pure 999 fine silver</strong> and $2.23 for 925 sterling, based on the 20 May 2026 spot price of $74.96/oz. Use the live calculator for the most current value.</p></div>
+    </div>
+    <div class="spg-faq-item">
+      <h3 class="spg-faq-q">Why has the silver price dropped from its January 2026 peak?</h3>
+      <div class="spg-faq-a"><p>Silver hit an all-time high of <strong>$121.62/oz</strong> in January 2026 on supply deficits, solar/EV demand, a weak dollar and speculative momentum. The correction to the $74&ndash;$79 range reflects profit-taking, a stronger dollar, reduced Fed rate-cut expectations and partial de-escalation of geopolitical risk.</p></div>
+    </div>
+    <div class="spg-faq-item">
+      <h3 class="spg-faq-q">What is the silver price per gram in euro?</h3>
+      <div class="spg-faq-a"><p>Multiply the USD per-gram price by the current USD/EUR rate. At $2.41/g, 999 silver is roughly <strong>&euro;2.22/g</strong> and 925 sterling about &euro;2.05/g. Switch the calculator above to EUR for live euro pricing.</p></div>
+    </div>
   </div>
 
   <section class="share-section">
