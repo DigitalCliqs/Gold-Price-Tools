@@ -563,6 +563,14 @@
     </image:image>
   </url>
   <url>
+    <loc>https://goldpricetools.com/news/gold-price-per-ounce-today/</loc>
+    <image:image>
+    <image:loc>https://goldpricetools.com/assets/news/gold-price-per-ounce-today.jpg</image:loc>
+    <image:title>Gold Price Per Ounce Today: Live Spot Rate, Calculator &amp;#38; Troy Ounce Explained | GoldPriceTools</image:title>
+    <image:caption>See the live gold price per ounce today, use our gold ounce calculator to find melt value, and learn the troy ounce vs. ounce difference before you buy or sell.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://goldpricetools.com/news/gold-silver-ratio-narrows-to-62/</loc>
     <image:image>
     <image:loc>https://goldpricetools.com/assets/news/a1.jpg</image:loc>
@@ -600,6 +608,14 @@
     <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
     <image:title>#analysis — News | GoldPriceTools</image:title>
     <image:caption>Gold and silver news tagged &amp;#34;analysis&amp;#34; from the GoldPriceTools editorial team.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://goldpricetools.com/news/tag/bars/</loc>
+    <image:image>
+    <image:loc>https://assets.goldpricetools.com/og-image.jpg</image:loc>
+    <image:title>#bars — News | GoldPriceTools</image:title>
+    <image:caption>Gold and silver news tagged &amp;#34;bars&amp;#34; from the GoldPriceTools editorial team.</image:caption>
     </image:image>
   </url>
   <url>
